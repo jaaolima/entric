@@ -1,0 +1,32 @@
+<?php
+
+class SenhaModel extends Model {
+
+    function checarPrescritorSenha($email_cpf = null) {
+        global $bruker;
+        $retorno = httpPostAuth("senha_checarPrescritorSenha", array(   "token" => $bruker->token,
+                                                                        "email_cpf" => $email_cpf));
+        return $retorno;
+    }
+
+    function checarPacienteSenha($email_cpf = null) {
+        global $bruker;
+        $retorno = httpPostAuth("senha_checarPacienteSenha", array( "token" => $bruker->token,
+                                                                    "email_cpf" => $email_cpf));
+        return $retorno;
+    }
+
+    function checarCodigoSenhaPaciente($codigo = null) {
+        global $bruker;
+        $retorno = httpPostAuth("senha_checarCodigoSenhaPaciente", array(   "token" => $bruker->token,
+                                                                            "codigo" => $codigo));
+        return $retorno;
+    }
+
+    function checarCodigoSenhaPrescritor($codigo = null) {
+        global $bruker;
+        $retorno = httpPostAuth("senha_checarCodigoSenhaPrescritor", array( "token" => $bruker->token,
+                                                                            "codigo" => $codigo));
+        return $retorno;
+    }
+}

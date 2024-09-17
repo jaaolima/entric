@@ -1,0 +1,12 @@
+.login-menu{
+    background: rgb(7,140,179);
+    background: linear-gradient(31deg, rgba(7,140,179,1) 0%, rgba(12,157,194,1) 35%, rgba(69,207,179,1) 100%); 
+    
+    box-shadow: 22px 1px 9px -14px rgba(0,0,0,0.2) inset;
+    -webkit-box-shadow: 22px 1px 9px -14px rgba(0,0,0,0.2) inset;
+    -moz-box-shadow: 22px 1px 9px -14px rgba(0,0,0,0.2) inset;
+}
+.footer-copyright{
+    font-size: 12px !important;
+    font-family: Arial;
+}

@@ -1,0 +1,19 @@
+{
+    "name": "entric-api",
+    "description": "REST API",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eloy",
+            "email": "eloy@storm.am"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.31",
+        "slim/slim": "^3.9",
+        "monolog/monolog": "^1.23",
+        "vlucas/phpdotenv": "^2.5",
+        "tuupola/slim-jwt-auth": "^2.3"
+    }
+}
