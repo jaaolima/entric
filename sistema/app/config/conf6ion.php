@@ -14,10 +14,10 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	define('BASE_API','https://api.entric.com.br/v1/');
 
 }else{
-	define('BASE_PATH','http://localhost/entric.com.br/sistema');
-	define('BASE_URI','C:\Users\root\Dropbox\entric.com.br\sistema\public\arquivos');
-	define('BASE_SISTEMA_URI','http://localhost/entric.com.br/sistema/arquivos');
-	define('BASE_API','http://localhost/entric.com.br/api/v1/');
+	define('BASE_PATH','http://localhost/entric/sistema');
+	define('BASE_URI','C:\Users\root\Dropbox\entric\sistema\public\arquivos');
+	define('BASE_SISTEMA_URI','http://localhost/entric/sistema/arquivos');
+	define('BASE_API','http://localhost/entric/api/v1/');
 }
 
 define('SMTP_HOST', 'smtp-pulse.com');

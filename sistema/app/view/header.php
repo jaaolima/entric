@@ -43,7 +43,7 @@
             .entric .btn-minus{
                 min-width: 1.5rem !important;
                 padding: .5rem 1rem !important;
-            }eft: 28% !important;
+                left: 28% !important;
             }
             .entric .btn-increment{
                 min-width: 1.5rem !important;

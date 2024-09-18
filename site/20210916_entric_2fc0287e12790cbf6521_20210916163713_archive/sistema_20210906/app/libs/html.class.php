@@ -33,9 +33,9 @@ class HTML {
     }
  
     function includeJs($fileName) {
-        $data = '<script src="'.BASE_PATH.'/js/'.$fileName.'.js"></script>';
+        $data = '<script src="'.BASE_PATH.'/public/js/'.$fileName.'.js"></script>';
         return $data;
-    }
+    } 
  
     function includeCss($fileName) {
         $data = '<link rel="stylesheet" href="'.BASE_PATH.'/public/css/'.$fileName.'.css">';
