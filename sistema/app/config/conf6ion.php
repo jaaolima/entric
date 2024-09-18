@@ -7,7 +7,7 @@ define('VERFOOTER','&copy; 2021 Programa de Alta Hospitalar de Pacientes em Diet
 
 if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	// define('BASE_PATH','https://sistema.entric.com.br');
-	define('BASE_PATH','http://142.93.0.124/');
+	define('BASE_PATH','http://142.93.0.124');
 	define('BASE_URI','/var/www/html/public/arquivos');
 	// define('BASE_SISTEMA_URI','https://sistema.entric.com.br/arquivos');
 	define('BASE_SISTEMA_URI','http://142.93.0.124/arquivos');
