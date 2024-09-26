@@ -13907,7 +13907,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Dumping data for table `usuarios` 
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `senha`, `extra`, `codigo`, `tipo`, `status`, `data_criacao`) VALUES

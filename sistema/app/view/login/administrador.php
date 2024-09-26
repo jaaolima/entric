@@ -61,7 +61,7 @@
 
                         <footer class="page-footer font-small text-white position-absolute fixed-bottom">
                             <div class="footer-copyright text-center py-3 p-2">
-                                <?php echo VERFOOTER;?>
+                                <?php echo VERFOOTER;?> 
                             </div>
                         </footer>
                     </div>

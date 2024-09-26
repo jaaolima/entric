@@ -85,7 +85,7 @@ function _patro_status($opid = -1) {
     $arr["1"] = "Inativo";
     $arr["2"] = "Removido";
     if ($opid == -1) return $arr; else return $arr[$opid];
-}
+} 
 
 function strip_word_html($text, $allowed_tags = '<b><i><sup><sub><em><strong><ol><ul><li><p><u><br>'){
     mb_regex_encoding('UTF-8');
