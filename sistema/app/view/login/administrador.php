@@ -30,7 +30,7 @@
                                             <h4 class="text-center mt-4 t-verde line-bottom pb-4">Administrador, seja bem-vindo!</h4>
                                             <form class="mt-5 mb-5" action="login/administrador" method="post">
                                                 <input type="hidden" name="_token" value="<?php echo generateFormToken('loginAdministrador'); ?>">
-                                                <input type="hidden" name="_ac" value="login">
+                                                <input type="hidden" name="_ac" value="login"> 
 
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
