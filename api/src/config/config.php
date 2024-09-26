@@ -8,7 +8,7 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 
 	define('BASE_PATH','https://entric.com.br/sistema');
 	define('BASE_URI','/home/entriccom/public_html/sistema/public/arquivos');
-	define('BASE_SISTEMA_URI','https://sistema.entric.com.br/arquivos');
+	define('BASE_SISTEMA_URI','https://entric.com.br/arquivos');
 	
 }else{ 
 	define('DB_HOST', 'localhost');
@@ -17,9 +17,9 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	define('DB_NAME', 'entric');
 	define('SECRET', 'M4N4U54M');
 
-	define('BASE_PATH','http://localhost/entric.com.br/sistema');
+	define('BASE_PATH','http://localhost/entric/sistema');
 	define('BASE_URI','/home/entriccom/public_html/sistema/public/arquivos');
-	define('BASE_SISTEMA_URI','http://localhost/entric.com.br/sistema/arquivos');
+	define('BASE_SISTEMA_URI','http://localhost/entric/sistema/arquivos');
 }
 
 
