@@ -8,7 +8,7 @@ class LoginModel extends Model {
                                             "senha" => $senha,
                                             "tipo" => $tipo));
         
-        var_dump($dados);
+        var_dump(BASE_PATH);
         if (isset($dados["status"])){
             // Redirect(BASE_PATH . '/logout');
             return true;
