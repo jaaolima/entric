@@ -11,9 +11,9 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	define('DB_PASSWORD', '6Vn&c;!_WxO)');
 	define('DB_NAME', 'sistema');
 
-	define('BASE_PATH','https://sistema.entric.com.br');
+	define('BASE_PATH','https://entric.com.br');
 	define('BASE_URI','/var/www/html/public/arquivos');
-	define('BASE_SISTEMA_URI','https://sistema.entric.com.br/arquivos');
+	define('BASE_SISTEMA_URI','https://entric.com.br/arquivos');
 
 }else{
 	define('DB_HOST', 'localhost');

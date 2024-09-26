@@ -8,9 +8,9 @@ class LoginModel extends Model {
                                             "senha" => $senha,
                                             "tipo" => $tipo));
         
-
+        var_dump($dados);
         if (isset($dados["status"])){
-            Redirect(BASE_PATH . '/logout');
+            // Redirect(BASE_PATH . '/logout');
             return true;
 
         }else{
@@ -23,12 +23,12 @@ class LoginModel extends Model {
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
 
             if (isset($dados["data"]["paciente_videosalta"])){
-                Redirect(BASE_PATH . '/paciente_videosalta');
+                // Redirect(BASE_PATH . '/paciente_videosalta');
                 return true;
 
             //}else if (isset($dados["data"]["redirect"])){
             }else{
-                Redirect(BASE_PATH . '');
+                // Redirect(BASE_PATH . '');
             }
         }
     }
