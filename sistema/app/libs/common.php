@@ -192,7 +192,7 @@ function httpPostAuth($resource, $post = null){
         'Authorization: Bearer '.$post['token']
     ));
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 1000);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 1000); 
     $post = http_build_query($post);    
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
