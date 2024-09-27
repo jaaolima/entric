@@ -6,7 +6,7 @@ define('TITLE','Entric');
 define('VERFOOTER','&copy; 2021 Programa de Alta Hospitalar de Pacientes em Dieta Enteral - Entric. Todos os direitos reservados.');
 
 if ($_SERVER['SERVER_NAME'] <> "localhost"){
-	define('DB_HOST', '142.93.0.124');
+	define('DB_HOST', 'localhost');
 	define('DB_USER', 'private');
 	define('DB_PASSWORD', '6Vn&c;!_WxO)');
 	define('DB_NAME', 'sistema');
