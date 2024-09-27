@@ -6,7 +6,6 @@ class Database{
 
     function __construct() {
         $conn = $this->connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-        var_dump($conn);
         if (!$conn) exit();
     }
 
