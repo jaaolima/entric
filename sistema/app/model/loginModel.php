@@ -31,7 +31,7 @@ class LoginModel extends Model {
 
             //}else if (isset($dados["data"]["redirect"])){
             }else{
-                Redirect(BASE_PATH . '');
+                // Redirect(BASE_PATH . '');
             }
         }
     }
