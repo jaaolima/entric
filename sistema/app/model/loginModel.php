@@ -10,6 +10,8 @@ class LoginModel extends Model {
         $dados = httpPost("login", array(   "email" => $login,
                                             "senha" => $senha,
                                             "tipo" => $tipo));
+
+        var_dump($dados);
         
         if (isset($dados["status"])){
             Redirect(BASE_PATH . '/logout');
@@ -30,7 +32,7 @@ class LoginModel extends Model {
 
             //}else if (isset($dados["data"]["redirect"])){
             }else{
-                Redirect(BASE_PATH . '');
+                // Redirect(BASE_PATH . '');
             }
         }
     }

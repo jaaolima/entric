@@ -5,7 +5,7 @@ class LoginController extends Controller {
     function beforeAction () {
     }  
     
-    function index($idretorno = null) {
+    function index($idretorno = null) { 
         //echo endecrypt("encrypt", 374);
         if (verifyFormToken("loginForm")){
             if (isset($_POST['_ac'])){
