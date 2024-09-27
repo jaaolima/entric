@@ -5,14 +5,6 @@ error_reporting(E_ALL);
 
 class LoginModel extends Model {
     public function checarLogin($login=null, $senha=null, $tipo=1) {
-        try {
-            $myconn = new PDO("mysql:host=localhost;dbname=sistema;charset=utf8;port=3306", 'private', '6Vn&c;!_WxO)');
-            $myconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Conexão bem-sucedida";
-        } catch (PDOException $e) {
-            echo "Erro de conexão: " . $e->getMessage();
-        }
-
         $dados = httpPost("login", array(   "email" => $login,
                                             "senha" => $senha,
                                             "tipo" => $tipo));
