@@ -19,6 +19,7 @@ class LoginController extends Controller {
                         $logar = $this->LoginModel->checarLogin($email, $senha);
 
                         if (!$logar){
+                            echo 'aqui';
                             alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
 
                         }else{
