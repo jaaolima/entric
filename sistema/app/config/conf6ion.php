@@ -11,7 +11,7 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	define('BASE_URI','/var/www/html/public/arquivos');
 	define('BASE_SISTEMA_URI','https://entric.com.br/arquivos');
 	// define('BASE_SISTEMA_URI','http://142.93.0.124/arquivos');
-	define('BASE_API','https://api.entric.com.br/v1/');
+	define('BASE_API','/var/www/html/api/v1');
 
 }else{
 	define('BASE_PATH','http://localhost/entric.com.br/sistema');
