@@ -26,7 +26,6 @@ class LoginController extends Controller {
                                 alertretorno("toastr['error']('Está conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
 
                             }else{
-                                echo 'aqui';
                                 alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
                             }
                         }
@@ -53,6 +52,7 @@ class LoginController extends Controller {
                         $logar = $this->LoginModel->checarLogin($login, $senha, 3);
 
                         if (!$logar){
+                            echo 'aqui';
                             alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
 
                         }else{
