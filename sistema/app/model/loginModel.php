@@ -4,8 +4,16 @@ ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
 
 class LoginModel extends Model {
-
+    private $con = false;
+    private $conn;
     public function checarLogin($login=null, $senha=null, $tipo=1) {
+        $myconn = new PDO("mysql:host=localhost;dbname=sistema;charset=utf8;port=3306", 'private', '6Vn&c;!_WxO)');         
+        $myconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $this->con = true;
+        $this->conn = $myconn;
+
+        var_dump($myconn);
 
         $dados = httpPost("login", array(   "email" => $login,
                                             "senha" => $senha,

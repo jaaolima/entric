@@ -13,7 +13,7 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 
 	define('BASE_PATH','https://entric.com.br');
 	define('BASE_URI','/var/www/html/public/arquivos');
-	define('BASE_SISTEMA_URI','https://entric.com.br/arquivos');
+	define('BASE_SISTEMA_URI','https://entric.com.br/arquivos'); 
 
 }else{
 	define('DB_HOST', 'localhost');
