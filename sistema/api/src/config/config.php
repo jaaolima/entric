@@ -1,9 +1,9 @@
 <?php
 if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	define('DB_HOST', 'localhost');
-	define('DB_USER', 'entriccom_usuario');
-	define('DB_PASSWORD', 'J@.o=3vuI4@o');
-	define('DB_NAME', 'entriccom_sistema');
+	define('DB_USER', 'private');
+	define('DB_PASSWORD', '6Vn&c;!_WxO)'); 
+	define('DB_NAME', 'sistema');
 	define('SECRET', 'M4N4U54M');
 
 	define('BASE_PATH','https://entric.com.br/sistema');
