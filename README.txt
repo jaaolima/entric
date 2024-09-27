@@ -57,7 +57,7 @@ SISTEMA
 	DB_USER: usuário de acesso ao banco de dados;
 	DB_PASSWORD: senha de acesso ao banco de dados;
 	DB_NAME: nome do banco de dados;
-	SECRET: senha para encriptação;
+	SECRET: senha para encriptação; 
 	
 	BASE_PATH: caminho base do sistema;
 	BASE_URI: caminho interno de diretório do sistema;
