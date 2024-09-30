@@ -1424,7 +1424,7 @@ function checkLogin($msg = null) {
             $date_now = new DateTime();
             $date2    = new DateTime($verifica['data']['payload']['exp']);
             if ($date_now < $date2) {
-                $bruker->token = $_SESSION['token'];
+                 $_SESSION['token'];
                 $bruker->key = $_SESSION['admin_session_key'];
                 $bruker->auth = $_SESSION['admin_session_auth'];
                 $bruker->type = $_SESSION['admin_session_type'];
