@@ -11,7 +11,7 @@ class UtilModel extends Model {
                         ':dados'=> json_encode($_POST).'|||'.json_encode($_POST), 
                         ':data_criacao'=> date('Y-m-d H:i:s'));
 
-        $retorno = httpPostAuth("util_stlog", array("token" => $bruker->token,
+        $retorno = httpPostAuth("util_stlog", array("token" => $_SESSION['token'],
                                                     "qdata" => $qdata ));       
     }
 }
