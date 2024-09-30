@@ -68,7 +68,7 @@
                                                             $relarorio = $dados['Conceitos Básicos'][$i];
                                                             ?>
                                                             <li class="list-group-item" rel="<?php echo $relarorio['id'];?>">
-                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.storm.run/sistema/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
+                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
                                                                 
                                                             </li>
                                                             <?php 
@@ -94,7 +94,7 @@
                                                             $relarorio = $dados['Cuidados Necessários'][$i];
                                                             ?>
                                                             <li class="list-group-item" rel="<?php echo $relarorio['id'];?>">
-                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.storm.run/sistema/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
+                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
                                                                 
                                                             </li>
                                                             <?php 
@@ -122,7 +122,7 @@
                                                             $relarorio = $dados['Preparo e Instalação da Dieta'][$i];
                                                             ?>
                                                             <li class="list-group-item" rel="<?php echo $relarorio['id'];?>">
-                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.storm.run/sistema/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
+                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
                                                                 
                                                                 
                                                             </li>
@@ -149,7 +149,7 @@
                                                             $relarorio = $dados['Complicações'][$i];
                                                             ?>
                                                             <li class="list-group-item" rel="<?php echo $relarorio['id'];?>">
-                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.storm.run/sistema/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
+                                                                <a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a>
                                                                 
                                                             </li>
                                                             <?php 
