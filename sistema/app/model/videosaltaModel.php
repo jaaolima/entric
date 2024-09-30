@@ -4,20 +4,20 @@ class VideosaltaModel extends Model {
 
     function getDados() {
         global $bruker;
-        $retorno = httpPostAuth("videosalta_getDados", array( "token" => $bruker->token));
+        $retorno = httpPostAuth("videosalta_getDados", array( "token" => $_SESSION['token']));
         return $retorno;
     }
 
     function getDado($id) {
         global $bruker;
-        $retorno = httpPostAuth("videosalta_getDado", array( "token" => $bruker->token,
+        $retorno = httpPostAuth("videosalta_getDado", array( "token" => $_SESSION['token'],
                                                              "id" => $id));
         return $retorno;
     }
 
     function cadastrar($dados, $files) {
         global $bruker;
-        $retorno = httpPostAuth("videosalta_cadastrar1", array( "token" => $bruker->token,
+        $retorno = httpPostAuth("videosalta_cadastrar1", array( "token" => $_SESSION['token'],
                                                                 "dados" => $dados));
 
         if ($_FILES['video']['error'] == 4){
@@ -30,7 +30,7 @@ class VideosaltaModel extends Model {
 
             $upload = uploadFile($_FILES['video'], "/videos/".$dir."/");
             if ($upload){
-                $videos = httpPostAuth("videosalta_cadastrar2", array( "token" => $bruker->token,
+                $videos = httpPostAuth("videosalta_cadastrar2", array( "token" => $_SESSION['token'],
                                                                         "id" => $retorno,
                                                                         "link" => "arquivos/videos/".$dir."/".$upload));
             }
@@ -41,7 +41,7 @@ class VideosaltaModel extends Model {
 
     function editar($dados, $files) {
         global $bruker;
-        $retorno = httpPostAuth("videosalta_editar1", array( "token" => $bruker->token,
+        $retorno = httpPostAuth("videosalta_editar1", array( "token" => $_SESSION['token'],
                                                              "dados" => $dados));
 
         if ($_FILES['video']['error'] == 4){
@@ -54,7 +54,7 @@ class VideosaltaModel extends Model {
 
             $upload = uploadFile($_FILES['video'], "/videos/".$dir."/");
             if ($upload){
-                $videos = httpPostAuth("videosalta_editar2", array( "token" => $bruker->token,
+                $videos = httpPostAuth("videosalta_editar2", array( "token" => $_SESSION['token'],
                                                                     "id" => $retorno,
                                                                     "link" => "arquivos/videos/".$dir."/".$upload));
             }
