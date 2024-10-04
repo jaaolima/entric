@@ -5809,7 +5809,7 @@ $app->group("", function () use ($app) {
 		            $mensagem_error = "Este CPF já possui cadastro.";
 		        }
 
-		        if (!$verificar){
+		        if (!$verificar){ 
 		            $bind = array(  ':nome' => $dados["up_nome"],
 		                            ':celular' => $dados["up_celular"],
 		                            ':email' => $dados["up_email"],

@@ -123,6 +123,9 @@ else{
         <ul class="metismenu" id="menu">
             <li class="nav-label"></li>
             <li class="mega-menu mega-menu-lg">
+                <a href="prescritor_prescricaosimplificada"><img src="assets/images/icones/icon-prescricao-simplificada.svg" border="0"><span class="nav-text">Prescrição simplificada</span></a>
+            </li>
+            <li class="mega-menu mega-menu-lg">
                 <a href="prescritor_relatorioalta"><img src="assets/images/icones/icon-gerar-relatorio.png" border="0"><span class="nav-text">Relatório de Alta</span></a>
             </li>
             <li class="mega-menu mega-menu-lg">

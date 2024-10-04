@@ -17,7 +17,7 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Início</a></li>
-                        <li class="breadcrumb-item active"><a href="prescritor_relatorioalta">Relatório de Alta</a></li>
+                        <li class="breadcrumb-item active"><a href="prescritor_relatorioalta">Prescrição Simplificada</a></li>
                     </ol>
                 </div>
             </div>
@@ -29,40 +29,16 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title bb-line mb-5">
-                                <i class="mdi mdi-message-draw"></i> &nbsp; Relatório de Alta
+                                <i class="mdi mdi-message-draw"></i> &nbsp; Prescrição Simplificada
                             </h4>
                             
                             <div class="default-tab bordered-tab entric">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item tabcadastro">
-                                        <a class="nav-link active" data-toggle="tab" href="#cadastro">Cadastro e Busca<br>de Pacientes</a>
-                                    </li>
-                                    <li class="nav-item tabsec tabhistoria">
-                                        <a class="nav-link" data-toggle="tab" href="#historia">História Clínica
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item tabsec tabavaliacao">
-                                        <a class="nav-link" data-toggle="tab" href="#avaliacao">Avaliação<br>Nutricional
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -30px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -30px;"> </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item tabsec tabnecessidades">
-                                        <a class="nav-link" data-toggle="tab" href="#necessidades">Necessidades<br>Nutricionais
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
-                                        </a>
+                                        <a class="nav-link active" data-toggle="tab" href="#cadastro">Dados Gerais</a>
                                     </li>
                                     <li class="nav-item tabsec tabcalculo">
                                         <a class="nav-link" data-toggle="tab" href="#calculo">Cálculo de Terapia<br>Nutricional
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
-                                        </a> 
-                                    </li>
-                                    <li class="nav-item tabsec tabobservacoes">
-                                        <a class="nav-link" data-toggle="tab" href="#observacoes">Observações
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
                                             <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
                                         </a>
