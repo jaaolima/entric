@@ -183,6 +183,7 @@ $app->group("", function () use ($app) {
 	                            "prescritor_ferramentas", 
 	                            "prescritor_fornecedores", 
 	                            "prescritor_relatorioalta", 
+	                            "prescritor_prescricaosimplificada", 
 	                            "prescritor_videosalta", 
 	                            "ajax");
 
