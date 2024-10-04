@@ -17,7 +17,7 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Início</a></li>
-                        <li class="breadcrumb-item active"><a href="prescritor_relatorioalta">Prescrição Simplificada</a></li>
+                        <li class="breadcrumb-item active"><a href="prescritor_prescricaosimplificada">Prescrição Simplificada</a></li>
                     </ol>
                 </div>
             </div>
@@ -56,20 +56,6 @@
                                 <div class="tab-content tab-content-default">
 
                                     <?php require_once("index_cadastro.php"); ?>
-
-                                    <?php require_once("index_historia.php"); ?>
-
-                                    <?php require_once("index_avaliacao.php"); ?>
-
-                                    <?php require_once("index_necessidades.php"); ?>
-
-                                    <?php require_once("index_calculo.php"); ?>
-
-                                    <?php require_once("index_observacoes.php"); ?>
-
-                                    <?php require_once("index_distribuidores.php"); ?>
-
-                                    <?php require_once("index_relatorio.php"); ?>
 
                                 </div>
                             </div>
