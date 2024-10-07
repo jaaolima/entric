@@ -195,6 +195,8 @@ function gtModalProdutoFiltro(_id, _tipo){
                     var carac_oral = JSON.parse(data.carac_oral);
                     $.each(carac_oral, function() {
                         $('#modalfrmproduto').find('input:radio[name="m_carac_oral_fibras[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                        $('#modalfrmproduto').find('input:radio[name="m_carac_oral_calorias[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                        $('#modalfrmproduto').find('input:radio[name="m_carac_oral_proteinas[]"]').filter('[value="'+this+'"]').prop('checked', true);
                         $('#modalfrmproduto').find('input:checkbox[name="m_carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
 
@@ -1426,6 +1428,12 @@ $(function(){
     });
 
     $('#frmproduto').validate({
+        rules: {
+            novo_campo: {
+                required: true, // Exemplo: torna o campo obrigatório
+                minlength: 3    // Exemplo: mínimo de 3 caracteres
+            }
+        },
         errorPlacement: function(error, element) { 
         },
         highlight: function(element, errorClass){

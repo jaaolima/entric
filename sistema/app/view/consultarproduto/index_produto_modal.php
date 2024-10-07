@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal_retorno_produto" tabindex="-1" role="dialog" aria-labelledby="modal_retorno_produto" aria-hidden="true">
-    <div class="modal-dialog modal-lg" style="max-width: 80%;">
+    <div class="modal-dialog modal-lg" style="max-width: 80%;"> 
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Produto</h5>
@@ -179,6 +179,30 @@
                                         <div class="form-check col-sm-6">
                                             <input id="m_calculo_oral_100proteina" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="100% Proteína Vegetal">
                                             <label for="m_calculo_oral_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
+                                        </div>
+                                        <div class="form-check col-sm-4">
+                                            <input id="m_calculo_oral_carac_hipocalorico" disabled name="m_carac_oral_calorias[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipocalórico">
+                                            <label for="m_calculo_oral_carac_hipocalorico" class="form-check-label check-green">Hipocalórico</label>
+                                        </div>
+                                        <div class="form-check col-sm-4">
+                                            <input id="m_calculo_oral_carac_normocalorico" disabled name="m_carac_oral_calorias[]" class="form-check-input styled-checkbox" type="checkbox" value="Normocalórico">
+                                            <label for="m_calculo_oral_carac_normocalorico" class="form-check-label check-green">Normocalórico</label>
+                                        </div>
+                                        <div class="form-check col-sm-4">
+                                            <input id="m_calculo_oral_carac_hipercalórico" disabled name="m_carac_oral_calorias[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipercalórico">
+                                            <label for="m_calculo_oral_carac_hipercalórico" class="form-check-label check-green">Hipercalórico</label>
+                                        </div>
+                                        <div class="form-check col-sm-4">
+                                            <input id="m_calculo_oral_carac_hipoproteico" disabled name="m_carac_oral_proteinas[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipoproteico">
+                                            <label for="m_calculo_oral_carac_hipoproteico" class="form-check-label check-green">Hipoproteico</label>
+                                        </div>
+                                        <div class="form-check col-sm-4">
+                                            <input id="m_calculo_oral_carac_normoproteico" disabled name="m_carac_oral_proteinas[]" class="form-check-input styled-checkbox" type="checkbox" value="Normoproteico">
+                                            <label for="m_calculo_oral_carac_normoproteico" class="form-check-label check-green">Normoproteico</label>
+                                        </div>
+                                        <div class="form-check col-sm-4">
+                                            <input id="m_calculo_oral_carac_hiperproteico" disabled name="m_carac_oral_proteinas[]" class="form-check-input styled-checkbox" type="checkbox" value="Hiperproteico">
+                                            <label for="m_calculo_oral_carac_hiperproteico" class="form-check-label check-green">Hiperproteico</label>
                                         </div>
                                     </div>
                                 </div>

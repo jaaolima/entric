@@ -148,7 +148,7 @@
                                 <div class="row p-4"> 
                                     <div class="col-sm-6">
                                         <div class="form-check">
-                                            <input id="calculo_oral_carac_hipocalorico" name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Hipocalórico">
+                                            <input id="calculo_oral_carac_hipocalorico" required name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Hipocalórico">
                                             <label for="calculo_oral_carac_hipocalorico" class="form-check-label radio-green">Hipocalórico (< 0,9 kcal/ml)</label>
                                         </div>
                                         <div class="form-check">
@@ -162,7 +162,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-check">
-                                            <input id="calculo_oral_carac_hipoproteico" name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Hipoproteico">
+                                            <input id="calculo_oral_carac_hipoproteico" required name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Hipoproteico">
                                             <label for="calculo_oral_carac_hipoproteico" class="form-check-label radio-green">Hipoproteico</label>
                                         </div>
                                         <div class="form-check">
