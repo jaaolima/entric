@@ -211,6 +211,12 @@ class ProdutoModel extends Model {
             if (isset($dados['carac_oral_fibras'])){
                 $carac_oral = array_merge($carac_oral, $dados['carac_oral_fibras']);
             }
+            if (isset($dados['carac_oral_calorias'])){
+                $carac_oral = array_merge($carac_oral, $dados['carac_oral_calorias']);
+            }
+            if (isset($dados['carac_oral_proteinas'])){
+                $carac_oral = array_merge($carac_oral, $dados['carac_oral_proteinas']);
+            }
             $bind[':carac_oral'] = (($carac_oral)?json_encode($carac_oral, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
         }
 
