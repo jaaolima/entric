@@ -411,6 +411,8 @@ function gtProdutoFiltro(_id){
                     var carac_oral = JSON.parse(data.carac_oral);
                     $.each(carac_oral, function() {
                         $('#frmproduto').find('input:radio[name="carac_oral_fibras[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                        $('#frmproduto').find('input:radio[name="carac_oral_proteinas[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                        $('#frmproduto').find('input:radio[name="carac_oral_calorias[]"]').filter('[value="'+this+'"]').prop('checked', true);
                         $('#frmproduto').find('input:checkbox[name="carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
 
