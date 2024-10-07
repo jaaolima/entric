@@ -146,25 +146,71 @@
                                     <label class="grid_label required">Características <span>*</span></label>
                                 </div>
                                 <div class="row p-4"> 
-                                    <div class="form-check col-sm-6">
-                                        <input id="calculo_oral_carac_semsacarose" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
-                                        <label for="calculo_oral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_hipocalorico" name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Hipocalórico">
+                                            <label for="calculo_oral_carac_hipocalorico" class="form-check-label radio-green">Hipocalórico (< 0,9 kcal/ml)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_normocalorico" name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Normocalórico">
+                                            <label for="calculo_oral_carac_normocalorico" class="form-check-label radio-green">Normocalórico (0,9 a 1,2 kcal/ml)</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_hipercalorico" name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Hipercalórico">
+                                            <label for="calculo_oral_carac_hipercalorico" class="form-check-label radio-green">Hipercalórico (> 1,2 kcal/ml)</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check col-sm-6">
-                                        <input id="calculo_oral_carac_comfibras" name="carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Com Fibras">
-                                        <label for="calculo_oral_carac_comfibras" class="form-check-label radio-green">Com Fibras</label>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_hipoproteico" name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Hipoproteico">
+                                            <label for="calculo_oral_carac_hipoproteico" class="form-check-label radio-green">Hipoproteico</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_normoproteico" name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Normoproteico">
+                                            <label for="calculo_oral_carac_normoproteico" class="form-check-label radio-green">Normoproteico</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_hiperproteico" name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Hiperproteico">
+                                            <label for="calculo_oral_carac_hiperproteico" class="form-check-label radio-green">Hiperproteico</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check col-sm-6">
-                                        <input id="calculo_oral_carac_semlactose" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Lactose">
-                                        <label for="calculo_oral_carac_semlactose" class="form-check-label check-green">Sem Lactose</label>
+                                </div>
+                                <div class="row p-4"> 
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_semsacarose" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
+                                            <label for="calculo_oral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_semlactose" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Lactose">
+                                            <label for="calculo_oral_carac_semlactose" class="form-check-label check-green">Sem Lactose</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_100proteina" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="100% Proteína Vegetal">
+                                            <label for="calculo_oral_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_cicatrizacao" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cicatrização">
+                                            <label for="calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
+                                            <label for="calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
+                                            <label for="calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
+                                        </div>
                                     </div>
-                                    <div class="form-check col-sm-6">
-                                        <input id="calculo_oral_carac_semfibras" name="carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Sem Fibras">
-                                        <label for="calculo_oral_carac_semfibras" class="form-check-label radio-green">Sem Fibras</label>
-                                    </div>
-                                    <div class="form-check col-sm-6">
-                                        <input id="calculo_oral_100proteina" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="100% Proteína Vegetal">
-                                        <label for="calculo_oral_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_comfibras" name="carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Com Fibras">
+                                            <label for="calculo_oral_carac_comfibras" class="form-check-label radio-green">Com Fibras</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="calculo_oral_carac_semfibras" name="carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Sem Fibras">
+                                            <label for="calculo_oral_carac_semfibras" class="form-check-label radio-green">Sem Fibras</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

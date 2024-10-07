@@ -185,7 +185,7 @@ $app->group("", function () use ($app) {
 	                            "prescritor_relatorioalta", 
 	                            "prescritor_prescricaosimplificada", 
 	                            "prescritor_videosalta", 
-	                            "ajax");
+	                            "ajax"); 
 
 	        // administrador =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	        }else if (($tipo == 3) or ($tipo == -1)){
@@ -1185,7 +1185,7 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
-		        $produto = $db->insert("produtos", $dados);
+		        $produto = $db->insert("produtos", $dados); 
 
 		        $data = $produto;
 			}

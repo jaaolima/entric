@@ -1545,7 +1545,7 @@ $(function(){
                 var files = $('input[type=file]');
                 for (var i = 0; i < files.length; i++) {
                     if (files[i].files[0]){
-                        formData.append(files[i].name, files[i].files[0]);
+                        formData.append(files[i].name, files[i].files[0]); 
                     }
                 }
                 //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
