@@ -195,6 +195,30 @@
                                         <input id="filtro_calculo_oral_carac_semfibras" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Fibras">
                                         <label for="filtro_calculo_oral_carac_semfibras" class="form-check-label check-green">Sem Fibras</label>
                                     </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_carac_hipocalorico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipocalórico">
+                                        <label for="filtro_calculo_oral_carac_hipocalorico" class="form-check-label check-green">Hipocalórico</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_carac_normocalorico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Normocalórico">
+                                        <label for="filtro_calculo_oral_carac_normocalorico" class="form-check-label check-green">Normocalórico</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_carac_hipercalórico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipercalórico">
+                                        <label for="filtro_calculo_oral_carac_hipercalórico" class="form-check-label check-green">Hipercalórico</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_carac_hipoproteico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipoproteico">
+                                        <label for="filtro_calculo_oral_carac_hipoproteico" class="form-check-label check-green">Hipoproteico</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_carac_normoproteico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Normoproteico">
+                                        <label for="filtro_calculo_oral_carac_normoproteico" class="form-check-label check-green">Normoproteico</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_carac_hiperproteico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hiperproteico">
+                                        <label for="filtro_calculo_oral_carac_hiperproteico" class="form-check-label check-green">Hiperproteico</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
