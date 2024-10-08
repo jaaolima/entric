@@ -282,6 +282,7 @@ class AjaxController extends Controller {
             if ($_POST['_idproduto'] <> ""){                
                 
                 $editar = $produto->ptProduto($_POST);
+                var_dump($editar);
                 if ($editar){
                     echo json_encode(array('message'=>'Produto editado com sucesso.', 'fabricantes'=>$editar['fabricantes']));
                 }
