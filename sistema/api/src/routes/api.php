@@ -1075,7 +1075,7 @@ $app->group("", function () use ($app) {
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
-		return $response;
+		return $data;
 	});
 
 	$app->post("/produto_fabricantes", function (Request $request, Response $response) {
