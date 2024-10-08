@@ -154,7 +154,6 @@ class ProdutoModel extends Model {
 
     function ptProduto($dados) { 
         global $bruker;
-        var_dump($dados);
         if ($dados["fabricante"] == "null") $dados["fabricante"] = null;
         $bind = array(  ':especialidade' => (isset($dados["especialidade"])?json_encode($dados["especialidade"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null),
                         ':id_usuario' => $bruker->usuario['id'],
