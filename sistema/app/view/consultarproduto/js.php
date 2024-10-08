@@ -1430,12 +1430,6 @@ $(function(){
     });
 
     $('#frmproduto').validate({
-        rules: {
-            novo_campo: {
-                required: true, // Exemplo: torna o campo obrigatório
-                minlength: 3    // Exemplo: mínimo de 3 caracteres
-            }
-        },
         errorPlacement: function(error, element) { 
         },
         highlight: function(element, errorClass){
