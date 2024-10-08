@@ -219,6 +219,18 @@
                                         <input id="filtro_calculo_oral_carac_hiperproteico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hiperproteico">
                                         <label for="filtro_calculo_oral_carac_hiperproteico" class="form-check-label check-green">Hiperproteico</label>
                                     </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_cicatrizacao" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cicatrização">
+                                        <label for="filtro_calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
+                                        <label for="filtro_calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
+                                        <label for="filtro_calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

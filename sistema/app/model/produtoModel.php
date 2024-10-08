@@ -152,7 +152,7 @@ class ProdutoModel extends Model {
         }
     }
 
-    function ptProduto($dados) {
+    function ptProduto($dados) { 
         global $bruker;
         if ($dados["fabricante"] == "null") $dados["fabricante"] = null;
         $bind = array(  ':especialidade' => (isset($dados["especialidade"])?json_encode($dados["especialidade"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null),
@@ -205,6 +205,7 @@ class ProdutoModel extends Model {
 
         $carac_oral = array();
         if ($dados["via"]=="Suplemento"){
+            var_dump($dados['carac_oral']);
             if (isset($dados['carac_oral'])){
                 $carac_oral = array_merge($carac_oral, $dados['carac_oral']);
             }

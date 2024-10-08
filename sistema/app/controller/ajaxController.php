@@ -276,7 +276,7 @@ class AjaxController extends Controller {
         }
     }
 
-    function produto_editar() {
+    function produto_editar() { 
         if (isset($_POST['nome']) and (trim($_POST['nome'])<>"")){
             $produto = new ProdutoModel();
             if ($_POST['_idproduto'] <> ""){                
