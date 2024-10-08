@@ -1049,13 +1049,15 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/produto_ptProduto", function (Request $request, Response $response) {
-		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
+		var_dump($result);
 		if ($result) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			var_dump($usuario);
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
