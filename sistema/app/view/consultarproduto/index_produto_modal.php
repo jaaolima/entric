@@ -181,15 +181,15 @@
                                             <label for="m_calculo_oral_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
                                         </div>
                                         <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_cicatrizacao" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cicatrização">
+                                            <input id="m_calculo_oral_cicatrizacao" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cicatrização">
                                             <label for="m_calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
                                         </div>
                                         <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_omega3" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
+                                            <input id="m_calculo_oral_omega3" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
                                             <label for="m_calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
                                         </div>
                                         <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_imunonutricaocirurgica" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
+                                            <input id="m_calculo_oral_imunonutricaocirurgica" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
                                             <label for="m_calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
                                         </div>
                                         <div class="form-check col-sm-6">

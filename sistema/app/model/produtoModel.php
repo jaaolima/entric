@@ -205,7 +205,6 @@ class ProdutoModel extends Model {
 
         $carac_oral = array();
         if ($dados["via"]=="Suplemento"){
-            var_dump($dados['carac_oral']);
             if (isset($dados['carac_oral'])){
                 $carac_oral = array_merge($carac_oral, $dados['carac_oral']);
             }
