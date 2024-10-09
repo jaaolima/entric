@@ -226,7 +226,6 @@ class ProdutoModel extends Model {
             $bind[':foto'] = "/fotos_produtos/".$upfoto;
         }
 
-        var_dump($bind);
         $produto = httpPostAuth("produto_ptProduto", array( "token" => $_SESSION['token'],
                                                             "dados" => $bind));
 
