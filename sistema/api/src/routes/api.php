@@ -1063,6 +1063,7 @@ $app->group("", function () use ($app) {
 				unset($dados['_idproduto']);
 
 				$produto = $db->update("produtos", "WHERE id=".$id, $dados);
+				var_dump('produto', $produto);
 
 		        $data = $produto;
 

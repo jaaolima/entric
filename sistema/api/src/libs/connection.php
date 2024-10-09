@@ -193,7 +193,6 @@ class Database{
                 "UPDATE {$table} SET ".$this->array_to_str($fld)." {$conds}"
             );
             $stmt->execute($bind);
-            echo $stmt;
             $this->conn->commit();
         }
         catch(Exception $e) {
