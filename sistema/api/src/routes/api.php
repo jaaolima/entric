@@ -1052,7 +1052,7 @@ $app->group("", function () use ($app) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);
 		$result = JWTAuth::verifyToken($token);
 		$data = array(['teste']);
-		return $data;
+		echo $data;
 		if ($result) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
