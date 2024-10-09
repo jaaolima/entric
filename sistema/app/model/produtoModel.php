@@ -155,6 +155,7 @@ class ProdutoModel extends Model {
     function ptProduto($dados) { 
         global $bruker;
         if ($dados["fabricante"] == "null") $dados["fabricante"] = null;
+        var_dump($dados['_idproduto']);
         $bind = array(  ':especialidade' => (isset($dados["especialidade"])?json_encode($dados["especialidade"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null),
                         ':id_usuario' => $bruker->usuario['id'],
                         ':via' => $dados["via"],
@@ -230,7 +231,6 @@ class ProdutoModel extends Model {
         $produto = httpPostAuth("produto_ptProduto", array( "token" => $_SESSION['token'],
                                                             "dados" => $bind));
 
-        var_dump($produto);
         if ($produto){
             $produtos_comp_info_nutri = httpPostAuth("produto_delinfo_nutri", array("token" => $_SESSION['token'],
                                                                               "id_produto" => $dados['_idproduto'])); 
