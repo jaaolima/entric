@@ -1059,8 +1059,10 @@ $app->group("", function () use ($app) {
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
+				$id = $dados['_idproduto'];
+				unset($dados['_idproduto']);
 
-				$produto = $db->update("produtos", "WHERE id=".$dados['_idproduto'], $dados);
+				$produto = $db->update("produtos", "WHERE id=".$id, $dados);
 
 		        $data = $produto;
 
