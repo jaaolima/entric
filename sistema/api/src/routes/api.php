@@ -1063,6 +1063,7 @@ $app->group("", function () use ($app) {
 				unset($dados['_idproduto']);
 
 				$produto = $db->update("produtos", "WHERE id=".$id, $dados);
+				var_dump($produto);
 
 		        $data = $produto;
 
@@ -1077,7 +1078,6 @@ $app->group("", function () use ($app) {
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
-		var_dump($data);
 		return $data;
 	});
 
