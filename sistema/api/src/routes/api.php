@@ -1072,11 +1072,11 @@ $app->group("", function () use ($app) {
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
-		var_dump($data);
+		return json_encode($data);
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
-		return $data;
+		// return $data;
 	});
 
 	$app->post("/produto_fabricantes", function (Request $request, Response $response) {
