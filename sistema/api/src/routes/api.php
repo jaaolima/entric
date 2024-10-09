@@ -1052,31 +1052,30 @@ $app->group("", function () use ($app) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
-		return $result;
-		// if ($result) {
-		// 	$db = new Database();
-		// 	$bind = array(':id'=> $result->header->id);
-		// 	$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
 
-		// 	if ($usuario){
-		// 		$dados = $request->getParam("dados");
+			if ($usuario){
+				$dados = $request->getParam("dados");
 
-		// 		$produto = $db->update("produtos", "WHERE id=".$dados['_idproduto'], $bind);
+				$produto = $db->update("produtos", "WHERE id=".$dados['_idproduto'], $bind);
 
-		//         $data = $produto;
+		        $data = $produto;
 
-		// 	}
-		// 	else{
-		// 		$data["status"] = "Erro: Token de autenticação é inválido.";	
-		// 	}
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
 
-		// } else {
-		// 	$data["status"] = "Erro: Token de autenticação é inválido.";
-		// }
-		// $response = $response->withHeader("Content-Type", "application/json");
-		// $response = $response->withStatus(200, "OK");
-		// $response = $response->getBody()->write(json_encode($data));
-		// return $data;
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $data;
 	});
 
 	$app->post("/produto_fabricantes", function (Request $request, Response $response) {

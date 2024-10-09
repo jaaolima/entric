@@ -230,45 +230,44 @@ class ProdutoModel extends Model {
         $produto = httpPostAuth("produto_ptProduto", array( "token" => $_SESSION['token'],
                                                             "dados" => $bind));
 
-        var_dump($produto);
-        // if ($produto){
-        //     $produtos_comp_info_nutri = httpPostAuth("produto_delinfo_nutri", array("token" => $_SESSION['token'],
-        //                                                                       "id_produto" => $dados['_idproduto'])); 
+        if ($produto){
+            $produtos_comp_info_nutri = httpPostAuth("produto_delinfo_nutri", array("token" => $_SESSION['token'],
+                                                                              "id_produto" => $dados['_idproduto'])); 
             
-        //     foreach ($dados as $key => $val) {
-        //         if ($val <> ""){
-        //             if(strpos($key, "info_nutri_") !== false){
-        //                 $descricao = str_replace("info_nutri_", "", $key);
-        //                 $descricao = str_replace("_", " ", $descricao);
-        //                 $bind = array(  ':id_usuario' => $bruker->usuario['id'],
-        //                                 ':id_produto' => $dados['_idproduto'],
-        //                                 ':descricao' => $descricao,
-        //                                 ':valor' => $val);
+            foreach ($dados as $key => $val) {
+                if ($val <> ""){
+                    if(strpos($key, "info_nutri_") !== false){
+                        $descricao = str_replace("info_nutri_", "", $key);
+                        $descricao = str_replace("_", " ", $descricao);
+                        $bind = array(  ':id_usuario' => $bruker->usuario['id'],
+                                        ':id_produto' => $dados['_idproduto'],
+                                        ':descricao' => $descricao,
+                                        ':valor' => $val);
 
-        //                 $produtos_info_nutri = httpPostAuth("produto_ptinfo_nutri", array(  "token" => $_SESSION['token'],
-        //                                                                                     "dados" => $bind)); 
-        //             }
-        //             else if(strpos($key, "compo_") !== false){
-        //                 $descricao = str_replace("compo_", "", $key);
-        //                 $descricao = str_replace("_", " ", $descricao);
-        //                 $bind = array(  ':id_usuario' => $bruker->usuario['id'],
-        //                                 ':id_produto' => $dados['_idproduto'],
-        //                                 ':descricao' => $descricao,
-        //                                 ':valor' => $val);
-        //                 $produtos_composicao = httpPostAuth("produto_ptcomposicao", array(  "token" => $_SESSION['token'],
-        //                                                                                     "dados" => $bind)); 
-        //             }
-        //         }
-        //     }
-        // }
+                        $produtos_info_nutri = httpPostAuth("produto_ptinfo_nutri", array(  "token" => $_SESSION['token'],
+                                                                                            "dados" => $bind)); 
+                    }
+                    else if(strpos($key, "compo_") !== false){
+                        $descricao = str_replace("compo_", "", $key);
+                        $descricao = str_replace("_", " ", $descricao);
+                        $bind = array(  ':id_usuario' => $bruker->usuario['id'],
+                                        ':id_produto' => $dados['_idproduto'],
+                                        ':descricao' => $descricao,
+                                        ':valor' => $val);
+                        $produtos_composicao = httpPostAuth("produto_ptcomposicao", array(  "token" => $_SESSION['token'],
+                                                                                            "dados" => $bind)); 
+                    }
+                }
+            }
+        }
 
-        // if ($produto){
-        //     $fabricante = httpPostAuth("produto_fabricantes", array("token" => $_SESSION['token']));  
-        //     return $fabricante;
-        // }
-        // else{
-        //     return false;
-        // }
+        if ($produto){
+            $fabricante = httpPostAuth("produto_fabricantes", array("token" => $_SESSION['token']));  
+            return $fabricante;
+        }
+        else{
+            return false;
+        }
     }
 
     function ptDisponivel($id, $disponivel) {
