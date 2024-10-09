@@ -178,7 +178,8 @@ class ProdutoModel extends Model {
                         ':indicacao' => $dados["indicacao"],
                         ':descricao' => $dados["descricao"],
                         ':sabores' => $dados["sabores"] ,
-                        ':preparo' => $dados["preparo"] );
+                        ':preparo' => $dados["preparo"],
+                        '_idproduto' => $dados["_idproduto"]);
 
         if (isset($dados['apres_enteral'])){
             $bind[':apres_enteral'] = ($dados["via"]=="Enteral"?json_encode($dados['apres_enteral'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
