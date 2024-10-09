@@ -1060,10 +1060,7 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
-				var_dump($dados['_idproduto']);
-				var_dump($bind);
-
-				$produto = $db->update("produtos", "WHERE id=".$dados['_idproduto'], $bind);
+				$produto = $db->update("produtos", "WHERE id=".$dados['_idproduto'], $dados);
 
 		        $data = $produto;
 
