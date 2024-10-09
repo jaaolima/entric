@@ -187,7 +187,6 @@ class Database{
         foreach( $bind as $k=>$v){
             $fld[]= str_replace(':', '', $k)."=".$k;
         }
-        var_dump($fld);
         $this->conn->beginTransaction();
         try {
             $stmt = $this->conn->prepare(
