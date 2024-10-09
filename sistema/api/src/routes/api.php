@@ -1051,7 +1051,8 @@ $app->group("", function () use ($app) {
 	$app->post("/produto_ptProduto", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);
 		$result = JWTAuth::verifyToken($token);
-		$data = array();
+		$data = array(['teste']);
+		return $data;
 		if ($result) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
@@ -1072,7 +1073,6 @@ $app->group("", function () use ($app) {
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
-		return json_encode($data);
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
