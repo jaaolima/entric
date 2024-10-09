@@ -1051,7 +1051,7 @@ $app->group("", function () use ($app) {
 	$app->post("/produto_ptProduto", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);
 		$result = JWTAuth::verifyToken($token);
-		$data = array(['teste']);
+		$data = array();
 		if ($result) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
@@ -1059,6 +1059,8 @@ $app->group("", function () use ($app) {
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
+
+				var_dump($dados);
 
 				$produto = $db->update("produtos", "WHERE id=".$dados['_idproduto'], $bind);
 
