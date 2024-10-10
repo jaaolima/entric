@@ -15,7 +15,7 @@ if (!isset($bruker->type)){
     ?>
     <ul class="metismenu" id="menu">
         <li class="nav-label"></li>
-        <li class="mega-menu mega-menu-lg">
+        <li class="mega-menu mega-menu-lg"> 
             <a href="paciente_videosalta"><img src="assets/images/icones/icon-video-alta.png" border="0"><span class="nav-text">Vídeos de Alta</span></a>
         </li>
         <li class="mega-menu mega-menu-lg">
