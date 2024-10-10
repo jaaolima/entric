@@ -1,7 +1,7 @@
 function b_lo(_this){
     setTimeout(function() { b_res(_this) }, 60000);
     _this.html(_this.attr("data-loading-text"));
-    _this.attr("disabled", "disabled");
+    _this.attr("disabled", "disabled"); 
 }
 
 function b_res(_this){

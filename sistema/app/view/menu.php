@@ -118,7 +118,7 @@ else{
         </ul>
         <?php
     }
-    else if ($bruker->type == "prescritor"){
+    else if ($bruker->type == "prescritor"){ 
         ?>
         <ul class="metismenu" id="menu">
             <li class="nav-label"></li>

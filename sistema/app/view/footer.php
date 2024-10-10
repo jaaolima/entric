@@ -1,4 +1,4 @@
-    <script src="js/jquery/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery/jquery-3.6.0.min.js"></script> 
     <script src="assets/plugins/common/common.min.js"></script>
     <script src="assets/js/custom.min.js"></script>
     <script src="assets/js/settings.js"></script>

@@ -6,7 +6,7 @@
                 <span class="brand-title"><img src="assets/images/logo-text.png"></span>
             </a>
         </div>
-    </div>
+    </div> 
 
     <div class="header">    
         <div class="header-content">
