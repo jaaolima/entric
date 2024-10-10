@@ -1,11 +1,11 @@
 <div id="main-wrapper">
 
-    <!-- <?php require_once (ROOT . DS . 'app'. DS . 'view' . DS . 'header-top.php'); ?> -->
+    <?php require_once (ROOT . DS . 'app'. DS . 'view' . DS . 'header-top.php'); ?>
 
     <div class="nk-sidebar">
         <div class="nk-nav-scroll">
 
-            <!-- <?php require_once (ROOT . DS . 'app'. DS . 'view' . DS . 'menu.php'); ?> -->
+            <?php require_once (ROOT . DS . 'app'. DS . 'view' . DS . 'menu.php'); ?>
 
         </div>
     </div> 
@@ -72,7 +72,7 @@
     <div class="footer">
         <div class="copyright">            
 
-            <!-- <p><?php echo VERFOOTER;?></p> -->
+            <p><?php echo VERFOOTER;?></p>
 
         </div>
     </div>
