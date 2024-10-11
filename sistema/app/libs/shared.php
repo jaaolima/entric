@@ -43,7 +43,7 @@ function callHook() {
     try {
         $controllerName = $controller.'Controller';
         if (!class_exists($controllerName, true)) {
-            @header("Location: ".BASE_PATH);
+            @header("Location: ".BASE_PATH); 
             exit();
         }
         if ((isset($bruker->menu)) and (!startsWith($url,"v/"))) {
