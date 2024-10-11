@@ -55,13 +55,13 @@
                                 </ul> -->
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item tabcadastro">
-                                        <a class="nav-link active" data-toggle="tab" href="#cadastro">Cadastro e Busca<br>de Pacientes</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#cadastro">Dados Gerais</a>
                                     </li>
                                     <li class="nav-item tabsec tabcalculo">
                                         <a class="nav-link" data-toggle="tab" href="#calculo">Cálculo de Terapia<br>Nutricional
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
                                             <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
-                                        </a> 
+                                        </a>                                                       
                                     </li>
                                     <li class="nav-item tabsec tabdistribuidores">
                                         <a class="nav-link" data-toggle="tab" href="#distribuidores">Pontos de Venda
