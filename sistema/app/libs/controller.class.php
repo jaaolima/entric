@@ -15,7 +15,7 @@ class Controller {
         $model = ucfirst($controller)."Model";
         $this->doNotRenderHeader = 0;
         $this->render = 1;
-        $this->$model = new $model;
+        $this->$model = new $model; 
         $this->_template = new Template($controller,$action);
     }
 
