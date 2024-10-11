@@ -57,35 +57,11 @@
                                     <li class="nav-item tabcadastro">
                                         <a class="nav-link active" data-toggle="tab" href="#cadastro">Cadastro e Busca<br>de Pacientes</a>
                                     </li>
-                                    <li class="nav-item tabsec tabhistoria">
-                                        <a class="nav-link" data-toggle="tab" href="#historia">História Clínica
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item tabsec tabavaliacao">
-                                        <a class="nav-link" data-toggle="tab" href="#avaliacao">Avaliação<br>Nutricional
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -30px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -30px;"> </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item tabsec tabnecessidades">
-                                        <a class="nav-link" data-toggle="tab" href="#necessidades">Necessidades<br>Nutricionais
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
-                                        </a>
-                                    </li>
                                     <li class="nav-item tabsec tabcalculo">
                                         <a class="nav-link" data-toggle="tab" href="#calculo">Cálculo de Terapia<br>Nutricional
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
                                             <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
                                         </a> 
-                                    </li>
-                                    <li class="nav-item tabsec tabobservacoes">
-                                        <a class="nav-link" data-toggle="tab" href="#observacoes">Observações
-                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
-                                        </a>
                                     </li>
                                     <li class="nav-item tabsec tabdistribuidores">
                                         <a class="nav-link" data-toggle="tab" href="#distribuidores">Pontos de Venda
@@ -101,15 +77,7 @@
 
                                     <?php require_once("index_cadastro.php"); ?>
 
-                                    <?php require_once("index_historia.php"); ?>
-
-                                    <?php require_once("index_avaliacao.php"); ?>
-
-                                    <?php require_once("index_necessidades.php"); ?>
-
                                     <?php require_once("index_calculo.php"); ?>
-
-                                    <?php require_once("index_observacoes.php"); ?>
 
                                     <?php require_once("index_distribuidores.php"); ?>
 
