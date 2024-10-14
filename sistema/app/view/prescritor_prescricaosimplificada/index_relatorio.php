@@ -170,24 +170,6 @@
                 </div>
             </form>
         </div>
-        <div class="col-sm-3">
-
-            <div class="entric_necessidades pt-4">
-                <div class="row b_ltr">
-                    <div class="col-lg-12 text-center text-azul bg-azul2">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i> E-mail
-                    </div>
-                </div>
-
-                <div class="row b_ltrb">
-                    <div class="col-lg-12 pt-5 pb-5 text-center">
-                        Enviar E-MAIL com o <strong>login<br> e senha</strong> para o paciente:<br>
-                        <input type="email" name="email_paciente" id="email_paciente" class="form-control" readonly="readonly" />
-                        <button type="button" class="btn btn-warning btn-form mt-3" id="enviar_email" disabled="disabled">ENVIAR</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>
