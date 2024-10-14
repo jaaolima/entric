@@ -33,22 +33,22 @@
                 ?>
                 <div class="row form-group">
                     <div class="text-center col-sm-12">
-                        <button type="button" class="btn btn-secundary btn-sm">
-                            <span class="btn-icon-right"><i class="fa-regular fa-pen-to-square"></i></span>
+                        <button type="button" class="btn btn-secondary">
+                            <span class="btn-icon-right"><i class="fa fa-regular fa-file"></i></span>
                             Inserir valores manualmente
                         </button>
                         &nbsp;
-                        <button type="button" class="btn btn-warning btn-sm" id="buscar_paciente">
-                            <span class="btn-icon-right"><i class="fa-solid fa-calculator"></i></span>
+                        <button type="button" class="btn btn-warning" id="buscar_paciente">
+                            <span class="btn-icon-right"><i class="fa fa-solid fa-calculator"></i></span>
                             Desejo realizar os cálculos
                         </button>
                     </div>
                 </div>
-                <div class="form-group row pt-5">
+                <!-- <div class="form-group row pt-5">
                     <div class="col-sm-12 text-right">
                         <button type="submit" onclick="fc_cadastrar_paciente();" class="btn btn-warning btn-form">Cadastrar</button>
                     </div>
-                </div>
+                </div> -->
             </form>
         </div>
     </div>
