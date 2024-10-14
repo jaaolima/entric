@@ -148,36 +148,6 @@
                                 <div class="row p-4"> 
                                     <div class="col-sm-6">
                                         <div class="form-check">
-                                            <input id="calculo_oral_carac_hipocalorico" required name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Hipocalórico">
-                                            <label for="calculo_oral_carac_hipocalorico" class="form-check-label radio-green">Hipocalórico (< 0,9 kcal/ml)</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input id="calculo_oral_carac_normocalorico" name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Normocalórico">
-                                            <label for="calculo_oral_carac_normocalorico" class="form-check-label radio-green">Normocalórico (0,9 a 1,2 kcal/ml)</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input id="calculo_oral_carac_hipercalorico" name="carac_oral_calorias[]" class="form-check-input radio-outlined" type="radio" value="Hipercalórico">
-                                            <label for="calculo_oral_carac_hipercalorico" class="form-check-label radio-green">Hipercalórico (> 1,2 kcal/ml)</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-check">
-                                            <input id="calculo_oral_carac_hipoproteico" required name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Hipoproteico">
-                                            <label for="calculo_oral_carac_hipoproteico" class="form-check-label radio-green">Hipoproteico</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input id="calculo_oral_carac_normoproteico" name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Normoproteico">
-                                            <label for="calculo_oral_carac_normoproteico" class="form-check-label radio-green">Normoproteico</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input id="calculo_oral_carac_hiperproteico" name="carac_oral_proteinas[]" class="form-check-input radio-outlined" type="radio" value="Hiperproteico">
-                                            <label for="calculo_oral_carac_hiperproteico" class="form-check-label radio-green">Hiperproteico</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row p-4"> 
-                                    <div class="col-sm-6">
-                                        <div class="form-check">
                                             <input id="calculo_oral_carac_semsacarose" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
                                             <label for="calculo_oral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
                                         </div>
@@ -492,6 +462,12 @@
                                                                     "form-class" => "pt-4",
                                                                     "col" => 12,
                                                                     "label" => "Preparo:",
+                                                                    "textarea" => "height:100%;"
+                                                                ),
+                                                                "observacoes" => array(
+                                                                    "form-class" => "pt-4",
+                                                                    "col" => 12,
+                                                                    "label" => "Observações:",
                                                                     "textarea" => "height:100%;"
                                                                 )
                                                             )

@@ -56,7 +56,7 @@
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item tabcadastro">
                                         <a class="nav-link active" data-toggle="tab" href="#cadastro">Dados Gerais</a>
-                                    </li>
+                                    </li> 
                                     <li class="nav-item tabsec tabcalculo">
                                         <a class="nav-link" data-toggle="tab" href="#calculo">Cálculo de Terapia<br>Nutricional
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>

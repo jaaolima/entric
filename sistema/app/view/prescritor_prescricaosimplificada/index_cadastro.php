@@ -42,7 +42,7 @@
                             <span class="btn-icon-right"><i class="fa fa-solid fa-calculator"></i></span>
                             Desejo realizar os cálculos
                         </button>
-                    </div>
+                    </div> 
                 </div>
                 <!-- <div class="form-group row pt-5">
                     <div class="col-sm-12 text-right">

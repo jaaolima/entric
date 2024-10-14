@@ -48,7 +48,7 @@
 
                                     <?php require_once("index_pesquisa.php"); ?>
 
-                                    <?php require_once("index_filtros.php"); ?>
+                                    <?php require_once("index_filtros.php"); ?> 
 
                                     <?php require_once("index_produto.php"); ?>
 
