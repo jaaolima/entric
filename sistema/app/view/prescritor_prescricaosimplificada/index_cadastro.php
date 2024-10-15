@@ -44,11 +44,35 @@
                         </button>
                     </div> 
                 </div>
-                <!-- <div class="form-group row pt-5">
-                    <div class="col-sm-12 text-right">
-                        <button type="submit" onclick="fc_cadastrar_paciente();" class="btn btn-warning btn-form">Cadastrar</button>
+                <div class="row form-group col-4">
+                    <div class="col-md-12">
+                        <div class="form-group input-group mb-1"> 
+                            <div class="input-group-append">
+                                <span class="input-group-text">Calorias</span>
+                            </div>
+                            <input type="text" placeholder="kcal/kg" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                            <input type="text" placeholder="kcal/dia" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                        </div>
                     </div>
-                </div> -->
+                    <div class="col-md-12">
+                        <div class="form-group input-group mb-1"> 
+                            <div class="input-group-append">
+                                <span class="input-group-text">Proteínas</span>
+                            </div>
+                            <input type="text" placeholder="g/kg" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                            <input type="text" placeholder="g/dia" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group input-group mb-1"> 
+                            <div class="input-group-append">
+                                <span class="input-group-text">Água</span>
+                            </div>
+                            <input type="text" placeholder="ml/kg" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                            <input type="text" placeholder="ml/dia" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
