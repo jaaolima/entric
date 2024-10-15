@@ -47,10 +47,8 @@
                 <div class="row form-group justify-content-center">
                     <div class="col-md-4">
                         <div class="col-md-12">
-                            <div class="form-group input-group mb-1 bg-warning text-end text-white"> 
-                                <div class="input-group-append">
-                                    <span class="input-group-text">Total</span>
-                                </div>
+                            <div class="input-group-append bg-warning text-end text-white">
+                                <span class="input-group-text">Total</span>
                             </div>
                         </div>
                         <div class="col-md-12">
