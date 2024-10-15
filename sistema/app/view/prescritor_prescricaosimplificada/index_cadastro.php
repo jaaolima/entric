@@ -44,15 +44,13 @@
                         </button>
                     </div> 
                 </div>
-                <div class="row form-group text-center">
+                <div class="row form-group justify-content-center">
                     <div class="col-md-4">
                         <div class="col-md-12">
-                            <div class="form-group input-group mb-1"> 
+                            <div class="form-group input-group mb-1 bg-warning text-end"> 
                                 <div class="input-group-append">
-                                    <span class="input-group-text" style="width:150px;">Calorias</span>
+                                    <span class="input-group-text" style="width:150px;">Total</span>
                                 </div>
-                                <input type="text" placeholder="kcal/kg" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
-                                <input type="text" placeholder="kcal/dia" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -75,6 +73,14 @@
                         </div>
                     </div>
                     
+                </div>
+                <div class="row form-group">
+                    <div class="text-center col-sm-12">
+                        <button type="button" class="btn btn-danger">
+                            <span class="btn-icon-right"><i class="bi bi-file-earmark-text"></i></span>
+                            Gerar Prescrição
+                        </button>
+                    </div> 
                 </div>
             </form>
         </div>
