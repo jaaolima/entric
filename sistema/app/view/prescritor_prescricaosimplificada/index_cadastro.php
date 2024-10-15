@@ -47,7 +47,7 @@
                 <div class="row form-group justify-content-center">
                     <div class="col-md-4">
                         <div class="col-md-12">
-                            <div style="display: inline-block;text-align: end;white-space: nowrap;vertical-align: middle;padding: .7rem 1.8rem;font-size: 12px !important;border-radius: 5px;background: #eda349;border-color: #eda349;color: #fff;">
+                            <div class="w-100 mb-2" style="display: inline-block;text-align: end;white-space: nowrap;vertical-align: middle;padding: .7rem 1.8rem;font-size: 12px !important;border-radius: 5px;background: #eda349;border-color: #eda349;color: #fff;">
                                 <span>Total</span>
                             </div>
                         </div>
@@ -56,8 +56,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Calorias</span>
                                 </div>
-                                <input type="text" placeholder="kcal/kg" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
-                                <input type="text" placeholder="kcal/dia" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                                <input type="text" placeholder="kcal/kg" required="required" id="kcal_kg" name="kcal_kg" class="form-control floatcomma" value=""> 
+                                <input type="text" readonly placeholder="kcal/dia" required="required" id="kcal_dia" name="kcal_dia" class="form-control floatcomma" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -65,8 +65,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
-                                <input type="text" placeholder="g/kg" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
-                                <input type="text" placeholder="g/dia" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                                <input type="text" placeholder="g/kg" required="required" id="g_kg" name="g_kg" class="form-control floatcomma" value=""> 
+                                <input type="text" readonly placeholder="g/dia" required="required" id="g_dia" name="g_dia" class="form-control floatcomma" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -74,8 +74,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Água</span>
                                 </div>
-                                <input type="text" placeholder="ml/kg" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
-                                <input type="text" placeholder="ml/dia" required="required" id="altura_valor" name="altura_valor" class="form-control floatcomma" value=""> 
+                                <input type="text" placeholder="ml/kg" required="required" id="ml_kg" name="ml_kg" class="form-control floatcomma" value=""> 
+                                <input type="text" readonly placeholder="ml/dia" required="required" id="ml_dia" name="ml_dia" class="form-control floatcomma" value=""> 
                             </div>
                         </div>
                     </div>
