@@ -5864,7 +5864,6 @@ $app->group("", function () use ($app) {
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
 
-				$verificar = false;
 				// if (isset($dados['cpf']) and ($dados['cpf'] == "") and ($dados['cpf_possui'] == "0")){
 		        //     $retorno = array("error" => "Preencha o formulário corretamente.");
 		        // }
@@ -5878,27 +5877,21 @@ $app->group("", function () use ($app) {
 		        //     $mensagem_error = "Este CPF já possui cadastro.";
 		        // }
 
-		        if (!$verificar){
-		            $bind = array(  ':email' => $dados["email"],
-		                            ':tipo' => 1,
-		                            ':status' => 0,                     
-		                            ':data_criacao' => date("Y-m-d H:i:s") );
-		            $usuario = $db->insert("usuarios", $bind);
+		        $bind = array(  ':email' => $dados["email"],
+								':tipo' => 1,
+								':status' => 0,                     
+								':data_criacao' => date("Y-m-d H:i:s") );
+				$usuario = $db->insert("usuarios", $bind);
 
-		            $bind = array(  ':id_usuario' => $usuario,
-		                            ':id_prescritor' => $id_prescritor,
-		                            ':nome' => $dados["nome"],
-		                            ':peso' => $dados["peso"],
-		                            ':email' => $dados["email"],
-		                            ':data_nascimento' => date2sql($dados["data_nascimento"]),             
-		                            ':data_criacao' => date("Y-m-d H:i:s"));
-		            $retorno = $db->insert("pacientes_simplificada", $bind);
-		            $retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
-
-		        }
-		        else{
-		            $retorno = array("error" => $mensagem_error);
-		        }
+				$bind = array(  ':id_usuario' => $usuario,
+								':id_prescritor' => $id_prescritor,
+								':nome' => $dados["nome"],
+								':peso' => $dados["peso"],
+								':email' => $dados["email"],
+								':data_nascimento' => date2sql($dados["data_nascimento"]),             
+								':data_criacao' => date("Y-m-d H:i:s"));
+				$retorno = $db->insert("pacientes_simplificada", $bind);
+				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
 
 		        $data = $retorno;
 			}

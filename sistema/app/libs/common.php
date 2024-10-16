@@ -175,7 +175,7 @@ function httpPost($resource, $post = null){
         return false;
     }
     curl_close($ch);
-    $obj = json_decode($result, true);
+    $obj = json_decode($result, true); 
     return $obj;
 }
 
@@ -197,7 +197,7 @@ function httpPostAuth($resource, $post = null){
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     $result = curl_exec($ch);
-    // print_r($result);
+    print_r($result);
     if($result === false){
         return false;
     }
