@@ -5877,17 +5877,15 @@ $app->group("", function () use ($app) {
 		        //     $mensagem_error = "Este CPF já possui cadastro.";
 		        // }
 
-		        $bind = array(  ':email' => $dados["email"],
-								':tipo' => 1,
-								':status' => 0,                     
-								':data_criacao' => date("Y-m-d H:i:s") );
-				$usuario = $db->insert("usuarios", $bind);
+		        // $bind = array(  ':email' => $dados["email"],
+				// 				':tipo' => 1,
+				// 				':status' => 0,                     
+				// 				':data_criacao' => date("Y-m-d H:i:s") );
+				// $usuario = $db->insert("usuarios", $bind);
 
-				$bind = array(  ':id_usuario' => $usuario,
-								':id_prescritor' => $id_prescritor,
+				$bind = array(	':id_prescritor' => $id_prescritor,
 								':nome' => $dados["nome"],
 								':peso' => $dados["peso"],
-								':email' => $dados["email"],
 								':data_nascimento' => date2sql($dados["data_nascimento"]),             
 								':data_criacao' => date("Y-m-d H:i:s"));
 				$retorno = $db->insert("pacientes_simplificada", $bind);
