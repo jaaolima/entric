@@ -1289,12 +1289,12 @@ $(function(){
 
     $("#btn_realizar_calculo").on("click", function(){
         $("#div_valores").show();
-        $("[name='div_realizar_calculo']").show();
+        $("[name='div_calculo']").show();
     });
 
     $("#btn_valores_manualmente").on("click", function(){
         $("#div_valores").show();
-        $("[name='div_realizar_calculo']").hide();
+        $("[name='div_calculo']").hide();
     });
 
     $('.numcomma').keypress(function(event) {
