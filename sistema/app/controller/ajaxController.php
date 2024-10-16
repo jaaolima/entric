@@ -197,7 +197,12 @@ class AjaxController extends Controller {
     function cadastrar_paciente(){
         $paciente = $this->AjaxModel->stPaciente($_POST);            
         echo json_encode($paciente);
-    }
+    } 
+
+    function cadastrar_paciente_simplificada(){
+        $paciente = $this->AjaxModel->stPacienteSimplificada($_POST);            
+        echo json_encode($paciente);
+    } 
 
     function busca_formula() {
         @header('Content-Type: application/json');
