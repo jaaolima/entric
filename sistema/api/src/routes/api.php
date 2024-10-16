@@ -5736,11 +5736,11 @@ $app->group("", function () use ($app) {
 		        }
 
 		        if (!$verificar){
-		            // $bind = array(  ':email' => $dados["email"],
-		            //                 ':tipo' => 1,
-		            //                 ':status' => 0,                     
-		            //                 ':data_criacao' => date("Y-m-d H:i:s") );
-		            // $usuario = $db->insert("usuarios", $bind);
+		            $bind = array(  ':email' => $dados["email"],
+		                            ':tipo' => 1,
+		                            ':status' => 0,                     
+		                            ':data_criacao' => date("Y-m-d H:i:s") );
+		            $usuario = $db->insert("usuarios", $bind);
 
 		            $bind = array(  ':id_usuario' => $usuario,
 		                            ':id_prescritor' => $id_prescritor,

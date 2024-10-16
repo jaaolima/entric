@@ -157,6 +157,38 @@ class AjaxController extends Controller {
         }
     }
 
+    function relatorio_salvar_simplificada() {
+        if (isset($_POST['tab'])){
+            if ($_POST['tab'] == "gerar_relatorio") $_POST['action'] = "gerar_relatorio";
+        }
+
+        if (isset($_POST['action'])){
+            switch ($_POST['action']) {
+                case 'calculo':
+                    $calculo = $this->AjaxModel->stCalculo($_POST);
+                    echo json_encode($calculo);
+                break;
+                case 'distribuidores':
+                    $distribuidores = $this->AjaxModel->stDistribuidores($_POST);
+                    echo json_encode($distribuidores);
+                break;
+                case 'relatorio':
+                    $relatorio = $this->AjaxModel->stRelatorio($_POST);
+                    echo json_encode($relatorio);
+                break;
+                case 'gerar_relatorio':
+                    $relatorio = $this->AjaxModel->stRelatorio($_POST, true);
+                    echo json_encode($relatorio);
+                break;
+                default:
+                    echo json_encode(array('error'=>array('message'=>'Erro ao executar função1.')));
+            }
+        }
+        else{
+            echo json_encode(array('error'=>array('message'=>'Erro ao executar função2.')));
+        }
+    }
+
     function relatorio_disponivel() {
         if (isset($_POST['id']) and (trim($_POST['id'])<>"") and isset($_POST['disponivel']) and (trim($_POST['disponivel'])<>"")){            
             $produto = new ProdutoModel();
@@ -421,6 +453,11 @@ class AjaxController extends Controller {
     }
 
     function fracionamento_salvar() {
+        $fracionamento = $this->AjaxModel->stFracionamento($_POST);
+        echo json_encode($fracionamento);
+    }
+
+    function fracionamento_salvar_simplificada() {
         $fracionamento = $this->AjaxModel->stFracionamento($_POST);
         echo json_encode($fracionamento);
     }

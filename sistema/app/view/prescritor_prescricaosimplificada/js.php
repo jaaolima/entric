@@ -725,63 +725,63 @@ function necessidades_agua_total(_this, _event){
     }
 }
 
-function necessidades_peso_checar(){
-    fc_tab_formfilled();
+// function necessidades_peso_checar(){
+//     fc_tab_formfilled();
     
-    var select_increment = 0;
-    var select_peso = "";
-    var select_peso_valor = "";
-    $('.select_peso').each(function() {
-        if ($(this).val() !== "") {
-            select_peso = $(this).val();
-            select_increment = select_increment +1;
-            var input_peso_valor = $(this).parent().parent().find(".input_peso_valor").val();
-            if (input_peso_valor !== "") {
-                select_peso_valor = input_peso_valor;
-                select_increment = select_increment +1;
-            }
-        }
-    });
-    if (select_increment < 2){
-        $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'Por favor, é necessário informar e selecionar o peso na aba Avaliação Nutricional.'
-            });
+//     var select_increment = 0;
+//     var select_peso = "";
+//     var select_peso_valor = "";
+//     $('.select_peso').each(function() {
+//         if ($(this).val() !== "") {
+//             select_peso = $(this).val();
+//             select_increment = select_increment +1;
+//             var input_peso_valor = $(this).parent().parent().find(".input_peso_valor").val();
+//             if (input_peso_valor !== "") {
+//                 select_peso_valor = input_peso_valor;
+//                 select_increment = select_increment +1;
+//             }
+//         }
+//     });
+//     if (select_increment < 2){
+//         $.alert({
+//                 title: 'Atenção',
+//                 icon: 'fa fa-warning',
+//                 type: 'red',
+//                 content: 'Por favor, é necessário informar e selecionar o peso na aba Avaliação Nutricional.'
+//             });
 
-        $("#nec_calorias_peso").find('option[value!=""]').prop('disabled', true);
-        $("#nec_proteinas_peso").find('option[value!=""]').prop('disabled', true);
-        $("#nec_agua_peso").find('option[value!=""]').prop('disabled', true);
-        $('#nec_calorias_peso option:eq(0)').prop('selected', true);
-        $('#nec_calorias_peso_valor').val(select_peso_valor);
-        $('#nec_proteinas_peso option:eq(0)').prop('selected', true);    
-        $('#nec_proteinas_peso_valor').val(select_peso_valor);
-        $('#nec_agua_peso option:eq(0)').prop('selected', true);
-        $('#nec_agua_peso_valor').val(select_peso_valor);
-    }
-    else{
-        if (select_peso !== ""){
-            $('#nec_calorias_peso option[value="'+select_peso+'"]').attr('selected','selected');
-            $('#nec_calorias_peso_valor').val(select_peso_valor);
-            $('#nec_proteinas_peso option[value="'+select_peso+'"]').attr('selected','selected');
-            $('#nec_proteinas_peso_valor').val(select_peso_valor);
-            $('#nec_agua_peso option[value="'+select_peso+'"]').attr('selected','selected');
-            $('#nec_agua_peso_valor').val(select_peso_valor);
-        }else{
-            $('#nec_calorias_peso option:eq(0)').prop('selected', true);
-            $('#nec_calorias_peso_valor').val(select_peso_valor);
-            $('#nec_proteinas_peso option:eq(0)').prop('selected', true);    
-            $('#nec_proteinas_peso_valor').val(select_peso_valor);
-            $('#nec_agua_peso option:eq(0)').prop('selected', true);
-            $('#nec_agua_peso_valor').val(select_peso_valor);
-        }        
-    }
+//         $("#nec_calorias_peso").find('option[value!=""]').prop('disabled', true);
+//         $("#nec_proteinas_peso").find('option[value!=""]').prop('disabled', true);
+//         $("#nec_agua_peso").find('option[value!=""]').prop('disabled', true);
+//         $('#nec_calorias_peso option:eq(0)').prop('selected', true);
+//         $('#nec_calorias_peso_valor').val(select_peso_valor);
+//         $('#nec_proteinas_peso option:eq(0)').prop('selected', true);    
+//         $('#nec_proteinas_peso_valor').val(select_peso_valor);
+//         $('#nec_agua_peso option:eq(0)').prop('selected', true);
+//         $('#nec_agua_peso_valor').val(select_peso_valor);
+//     }
+//     else{
+//         if (select_peso !== ""){
+//             $('#nec_calorias_peso option[value="'+select_peso+'"]').attr('selected','selected');
+//             $('#nec_calorias_peso_valor').val(select_peso_valor);
+//             $('#nec_proteinas_peso option[value="'+select_peso+'"]').attr('selected','selected');
+//             $('#nec_proteinas_peso_valor').val(select_peso_valor);
+//             $('#nec_agua_peso option[value="'+select_peso+'"]').attr('selected','selected');
+//             $('#nec_agua_peso_valor').val(select_peso_valor);
+//         }else{
+//             $('#nec_calorias_peso option:eq(0)').prop('selected', true);
+//             $('#nec_calorias_peso_valor').val(select_peso_valor);
+//             $('#nec_proteinas_peso option:eq(0)').prop('selected', true);    
+//             $('#nec_proteinas_peso_valor').val(select_peso_valor);
+//             $('#nec_agua_peso option:eq(0)').prop('selected', true);
+//             $('#nec_agua_peso_valor').val(select_peso_valor);
+//         }        
+//     }
 
-    necessidades_calorias_total(null, null);
-    necessidades_proteinas_total(null, null);
-    necessidades_agua_total(null, null);
-}
+//     necessidades_calorias_total(null, null);
+//     necessidades_proteinas_total(null, null);
+//     necessidades_agua_total(null, null);
+// }
 
 function volume_total_hidratacao(){
     if (($("#hidratacao_dia").val() != "") && ($("#volume_horario").val() != "")) {
@@ -976,7 +976,7 @@ function salvar_calculo_fracionamento(_this){
 
     $.ajax({
         type: "POST",
-        url: "ajax/fracionamento_salvar",
+        url: "ajax/fracionamento_salvar_simplificada",
         data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
         cache: false,
         dataType: 'json',
@@ -1151,15 +1151,12 @@ function fc_salvar(tab, notify){
     } 
     $.ajax({
         type: "POST",
-        url: "ajax/relatorio_salvar",
+        url: "ajax/relatorio_salvar_simplificada",
         data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab,
         cache: false,
         dataType: 'json',
         success: function( data ){
             if (data.relatorio){
-                if (tab == "historia"){
-                    $("#email_paciente").val(data.email);
-                }
                 $("#id_relatorio").val(data.relatorio);
                 $("#relatorio_code").val(data.relatorio_code);
                 if (tab == "gerar_relatorio"){
@@ -1800,7 +1797,7 @@ $(function(){
         fc_salvar('calculo', true);
     });
     $('a[data-toggle="tab"][href="#calculo"]').on('shown.bs.tab', function (e) {
-        necessidades_peso_checar();
+        // necessidades_peso_checar();
     });
     $("#calculo_voltar").on("click", function(e) {
         $(".tabcalculo").addClass('disabledTab');    
