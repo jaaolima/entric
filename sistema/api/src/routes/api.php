@@ -5727,11 +5727,11 @@ $app->group("", function () use ($app) {
 		        }
 		        if (!isset($dados['cpf']) or ($dados['cpf'] == "")){
 		            $dados['cpf'] = "";
-		            $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
+		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
 		            $mensagem_error = "Já possui cadastro com estes dados.";
 		        }
 		        else{
-		            $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
+		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
 		            $mensagem_error = "Este CPF já possui cadastro.";
 		        }
 
