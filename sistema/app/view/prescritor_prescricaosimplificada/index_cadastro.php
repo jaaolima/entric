@@ -78,7 +78,7 @@
                                 <input name='div_calculo' type="text" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value=""> 
                             </div>
                         </div>
-                        <div class="text-center col-sm-12">
+                        <div class="text-center col-sm-12 mt-4">
                             <button type="button" class="btn btn-danger">
                                 <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
                                 Iniciar Prescrição

@@ -1287,6 +1287,13 @@ $(function(){
     $('#proteina_kg').mask("9,99");
     $('#agua_kg').mask("99");
 
+    $("#kcal_kg").on('blur', function(){
+        peso = $("#peso").val();
+        kcal = $(this).val();
+        total = parseInt(peso) * parseInt(kcal);
+        $("#kcal_dia").val(total);
+    });
+
     $("#btn_realizar_calculo").on("click", function(){
         $("#div_valores").show();
         $("[name='div_calculo']").show();
