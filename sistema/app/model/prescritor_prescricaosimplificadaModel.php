@@ -2,7 +2,7 @@
  
 class Prescritor_prescricaosimplificadaModel extends Model {
 
-    function insertDados($dados) {
+    function insertDados($dados) { 
         /*global $bruker;
 
         if ($dados['cpf_possui'] == "1"){

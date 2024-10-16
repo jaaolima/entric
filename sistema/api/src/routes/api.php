@@ -6,7 +6,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
     "secure" => false,
 	"secret" => SECRET,
 	"rules" => [
-		new \Slim\Middleware\JwtAuthentication\RequestPathRule([
+		new \Slim\Middleware\JwtAuthentication\RequestPathRule([ 
 			"path" => "",
 			"passthrough" => [
 				"/ping",
@@ -46,6 +46,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_getDistribuidores",
 				"/ajax_stPaciente",
 				"/ajax_ptPaciente",
+				"/ajax_stPacienteSimplificada",
 				"/cadastro_cadastrar",
 				"/cadastro_cadastrarPaciente",
 				"/cadastro_chkCodigo",
@@ -85,7 +86,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/prescritor_fornecedores_getDados",
 				"/prescritor_relatorioalta_buscarDados",
 				"/prescritor_videosalta_getDados",
-				"/prescritor_videosalta_getDado",
+				"/prescritor_videosalta_getDado", 
 				"/prescritor_videosalta_cadastrar1",
 				"/prescritor_videosalta_cadastrar2",
 				"/prescritor_videosalta_editar1",
@@ -5726,20 +5727,20 @@ $app->group("", function () use ($app) {
 		        }
 		        if (!isset($dados['cpf']) or ($dados['cpf'] == "")){
 		            $dados['cpf'] = "";
-		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
+		            $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
 		            $mensagem_error = "Já possui cadastro com estes dados.";
 		        }
 		        else{
-		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
+		            $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
 		            $mensagem_error = "Este CPF já possui cadastro.";
 		        }
 
 		        if (!$verificar){
-		            $bind = array(  ':email' => $dados["email"],
-		                            ':tipo' => 1,
-		                            ':status' => 0,                     
-		                            ':data_criacao' => date("Y-m-d H:i:s") );
-		            $usuario = $db->insert("usuarios", $bind);
+		            // $bind = array(  ':email' => $dados["email"],
+		            //                 ':tipo' => 1,
+		            //                 ':status' => 0,                     
+		            //                 ':data_criacao' => date("Y-m-d H:i:s") );
+		            // $usuario = $db->insert("usuarios", $bind);
 
 		            $bind = array(  ':id_usuario' => $usuario,
 		                            ':id_prescritor' => $id_prescritor,
@@ -5755,7 +5756,7 @@ $app->group("", function () use ($app) {
 		                            ':mae' => $dados["mae"],
 		                            ':mae_possui' => $dados["mae_possui"],                     
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
-		            $retorno = $db->insert("pacientes", $bind);
+		            $retorno = $db->insert("pacientes_simplificada", $bind);
 		            $retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
 
 		        }
@@ -5834,6 +5835,70 @@ $app->group("", function () use ($app) {
 		            $retorno = array("error" => $mensagem_error);
 		        }
 				
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_stPacienteSimplificada", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+				$verificar = false;
+				// if (isset($dados['cpf']) and ($dados['cpf'] == "") and ($dados['cpf_possui'] == "0")){
+		        //     $retorno = array("error" => "Preencha o formulário corretamente.");
+		        // }
+		        // if (!isset($dados['cpf']) or ($dados['cpf'] == "")){
+		        //     $dados['cpf'] = "";
+		        //     $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
+		        //     $mensagem_error = "Já possui cadastro com estes dados.";
+		        // }
+		        // else{
+		        //     $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
+		        //     $mensagem_error = "Este CPF já possui cadastro.";
+		        // }
+
+		        if (!$verificar){
+		            $bind = array(  ':email' => $dados["email"],
+		                            ':tipo' => 1,
+		                            ':status' => 0,                     
+		                            ':data_criacao' => date("Y-m-d H:i:s") );
+		            $usuario = $db->insert("usuarios", $bind);
+
+		            $bind = array(  ':id_usuario' => $usuario,
+		                            ':id_prescritor' => $id_prescritor,
+		                            ':nome' => $dados["nome"],
+		                            ':peso' => $dados["peso"],
+		                            ':email' => $dados["email"],
+		                            ':data_nascimento' => date2sql($dados["data_nascimento"]),             
+		                            ':data_criacao' => date("Y-m-d H:i:s"));
+		            $retorno = $db->insert("pacientes_simplificada", $bind);
+		            $retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+
+		        }
+		        else{
+		            $retorno = array("error" => $mensagem_error);
+		        }
 
 		        $data = $retorno;
 			}

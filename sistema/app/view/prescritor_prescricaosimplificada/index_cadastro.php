@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="text-center col-sm-12 mt-4">
-                            <button type="button" class="btn btn-danger">
+                            <button class="btn btn-danger" type="submit" onclick="fc_cadastrar_paciente();">
                                 <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
                                 Iniciar Prescrição
                             </button>

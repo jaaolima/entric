@@ -133,7 +133,7 @@ function fc_cadastrar_paciente(){
             var formSerialize = frm.serialize();
             $.ajax({
                 type: "POST",
-                url: "ajax/cadastrar_paciente",
+                url: "ajax/cadastrar_paciente_simplificada", 
                 data: formSerialize,
                 cache: false,
                 dataType: 'json',
@@ -323,16 +323,14 @@ function fc_iniciar_relatorio(id_paciente){
     $('#id_relatorio').val('');
     $('#relatorio_code').val('');
 
-    fc_salvar('historia', false);        
-
-    $("#enviar_email").prop("disabled", true);
+    fc_salvar('calculo', false);
 
     $('.tabcadastro a').removeClass('active');
     $('#cadastro').removeClass('active').removeClass('show').attr('aria-expanded','false');
 
-    $(".tabhistoria").removeClass('disabledTab');
-    $('.tabhistoria a').addClass('active');
-    $('#historia').addClass('active').addClass('show').attr('aria-expanded','true');
+    $(".tabcalculo").removeClass('disabledTab');
+    $('.tabcalculo a').addClass('active');
+    $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
     $(".tabsec").removeClass('disabledTab').addClass('active');
 
