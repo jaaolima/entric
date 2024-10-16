@@ -1287,6 +1287,16 @@ $(function(){
     $('#proteina_kg').mask("9,99");
     $('#agua_kg').mask("99");
 
+    $("#btn_realizar_calculo").on("click", function(){
+        $("#div_valores").show();
+        $("[name='div_realizar_calculo']").show();
+    });
+
+    $("#btn_valores_manualmente").on("click", function(){
+        $("#div_valores").show();
+        $("[name='div_realizar_calculo']").hide();
+    });
+
     $('.numcomma').keypress(function(event) {
         var $this = $(this);
         if ((event.which != 44 || $this.val().indexOf(',') != -1) &&

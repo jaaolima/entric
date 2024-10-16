@@ -33,20 +33,20 @@
                 ?>
                 <div class="row form-group">
                     <div class="text-center col-sm-12">
-                        <button type="button" class="btn btn-secondary">
+                        <button type="button" class="btn btn-secondary" id="btn_valores_manualmente">
                             <span class="btn-icon-right"><i class="fa fa-regular fa-file"></i></span>
                             Inserir valores manualmente
                         </button>
                         &nbsp;
-                        <button type="button" class="btn btn-warning" id="buscar_paciente">
+                        <button type="button" class="btn btn-warning" id="btn_realizar_calculo">
                             <span class="btn-icon-right"><i class="fa fa-solid fa-calculator"></i></span>
                             Desejo realizar os cálculos
                         </button>
                     </div> 
                 </div>
-                <div class="row form-group justify-content-center">
+                <div class="row form-group justify-content-center" id="div_valores" style="display:none;">
                     <div class="col-md-4">
-                        <div class="col-md-12">
+                        <div class="col-md-12" name='div_calculo'>
                             <div class="w-100 mb-2" style="display: inline-block;text-align: end;white-space: nowrap;vertical-align: middle;padding: .7rem 1.8rem;font-size: 12px !important;border-radius: 5px;background: #eda349;border-color: #eda349;color: #fff;">
                                 <span>Total</span>
                             </div>
@@ -57,7 +57,7 @@
                                     <span class="input-group-text" style="width:150px;">Calorias</span>
                                 </div>
                                 <input type="text" placeholder="kcal/kg" required="required" id="kcal_kg" name="kcal_kg" class="form-control" value=""> 
-                                <input type="text" readonly placeholder="kcal/dia" required="required" id="kcal_dia" name="kcal_dia" class="form-control" value=""> 
+                                <input name='div_calculo' type="text" readonly placeholder="kcal/dia" required="required" id="kcal_dia" name="kcal_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -66,7 +66,7 @@
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
                                 <input type="text" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control" value=""> 
-                                <input type="text" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value=""> 
+                                <input name='div_calculo' type="text" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -75,20 +75,20 @@
                                     <span class="input-group-text" style="width:150px;">Água</span>
                                 </div>
                                 <input type="text" placeholder="ml/kg" required="required" id="agua_kg" name="agua_kg" class="form-control" value=""> 
-                                <input type="text" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value=""> 
+                                <input name='div_calculo' type="text" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value=""> 
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="row form-group">
+                        <div class="text-center col-sm-12">
+                            <button type="button" class="btn btn-danger">
+                                <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
+                                Gerar Prescrição
+                            </button>
+                        </div> 
+                    </div>
                 </div>
-                <div class="row form-group">
-                    <div class="text-center col-sm-12">
-                        <button type="button" class="btn btn-danger">
-                            <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
-                            Gerar Prescrição
-                        </button>
-                    </div> 
-                </div>
+                
             </form>
         </div>
     </div>
