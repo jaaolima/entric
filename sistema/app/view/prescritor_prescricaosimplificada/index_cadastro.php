@@ -65,8 +65,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
-                                <input type="text" placeholder="g/kg" required="required" id="g_kg" name="g_kg" class="form-control" value=""> 
-                                <input type="text" readonly placeholder="g/dia" required="required" id="g_dia" name="g_dia" class="form-control" value=""> 
+                                <input type="text" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control" value=""> 
+                                <input type="text" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -74,8 +74,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Água</span>
                                 </div>
-                                <input type="text" placeholder="ml/kg" required="required" id="ml_kg" name="ml_kg" class="form-control" value=""> 
-                                <input type="text" readonly placeholder="ml/dia" required="required" id="ml_dia" name="ml_dia" class="form-control" value=""> 
+                                <input type="text" placeholder="ml/kg" required="required" id="agua_kg" name="agua_kg" class="form-control" value=""> 
+                                <input type="text" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value=""> 
                             </div>
                         </div>
                     </div>

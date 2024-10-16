@@ -1283,6 +1283,10 @@ $(function(){
         autoclose: true
     });
 
+    $('#kcal_kg').mask("99");
+    $('#proteina_kg').mask("9,99");
+    $('#agua_kg').mask("99");
+
     $('.numcomma').keypress(function(event) {
         var $this = $(this);
         if ((event.which != 44 || $this.val().indexOf(',') != -1) &&
