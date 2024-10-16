@@ -1290,8 +1290,28 @@ $(function(){
     $("#kcal_kg").on('blur', function(){
         peso = $("#peso").val();
         kcal = $(this).val();
-        total = parseInt(peso) * parseInt(kcal);
-        $("#kcal_dia").val(total);
+        if(peso != '' && kcal != ''){
+            total = parseInt(peso) * parseInt(kcal);
+            $("#kcal_dia").val(total);
+        }
+    });
+
+    $("#proteina_kg").on('blur', function(){
+        peso = $("#peso").val();
+        proteina = $(this).val();
+        if(peso != '' && proteina != ''){
+            total = parseInt(peso) * parseInt(proteina);
+            $("#proteina_dia").val(total);
+        }
+    });
+
+    $("#agua_kg").on('blur', function(){
+        peso = $("#peso").val();
+        agua = $(this).val();
+        if(peso != '' && agua != ''){
+            total = parseInt(peso) * parseInt(agua);
+            $("#agua_dia").val(total);
+        }
     });
 
     $("#btn_realizar_calculo").on("click", function(){
