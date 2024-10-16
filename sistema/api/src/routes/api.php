@@ -5756,7 +5756,7 @@ $app->group("", function () use ($app) {
 		                            ':mae' => $dados["mae"],
 		                            ':mae_possui' => $dados["mae_possui"],                     
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
-		            $retorno = $db->insert("pacientes_simplificada", $bind);
+		            $retorno = $db->insert("pacientes", $bind);
 		            $retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
 
 		        }
