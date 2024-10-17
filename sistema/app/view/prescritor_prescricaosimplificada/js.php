@@ -2437,15 +2437,15 @@ $(function(){
     $("#rel_visualizar_relatorio").on("click", function(e) {
         var error_alert = "";
 
-        if (($("#altura").val() != "") && ($("#altura_valor").val() != "") && ($("#altura_valor").val() != "0.00") && ($(".antropometria").find(".select_peso").val() != "") && ($(".antropometria").find(".input_peso_valor").val() != "") && ($(".antropometria").find(".input_peso_valor").val() != "0.000")){
-        }else{
-            error_alert = 'Por favor, informe a "antropometria" na aba "Avaliação Nutricional".';
-        }
+        // if (($("#altura").val() != "") && ($("#altura_valor").val() != "") && ($("#altura_valor").val() != "0.00") && ($(".antropometria").find(".select_peso").val() != "") && ($(".antropometria").find(".input_peso_valor").val() != "") && ($(".antropometria").find(".input_peso_valor").val() != "0.000")){
+        // }else{
+        //     error_alert = 'Por favor, informe a "antropometria" na aba "Avaliação Nutricional".';
+        // }
 
-        if ($("#nec_calorias_peso_valor").val() != ""){
-        }else if (error_alert == ""){
-            error_alert = 'Por favor, informe o valor do peso em calorias e proteínas na aba "Necessidades Nutricionais".';
-        }
+        // if ($("#nec_calorias_peso_valor").val() != ""){
+        // }else if (error_alert == ""){
+        //     error_alert = 'Por favor, informe o valor do peso em calorias e proteínas na aba "Necessidades Nutricionais".';
+        // }
 
         if ($("input[name='calculo_apres_fechado']:checked").val() == 'Fechado') {
             if ($("#hidratacao_dia").val() != ""){
@@ -2472,7 +2472,7 @@ $(function(){
 
             $.ajax({
                 type: "POST",
-                url: "ajax/relatorio_salvar",
+                url: "ajax/relatorio_salvar_simplificada",
                 data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
                 cache: false,
                 dataType: 'json',

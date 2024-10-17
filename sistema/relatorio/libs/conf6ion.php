@@ -11,9 +11,9 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	define('DB_PASSWORD', '6Vn&c;!_WxO)');
 	define('DB_NAME', 'sistema');
 
-	define('BASE_PATH','https://entric.com.br');
-	define('BASE_URI','/var/www/html/public/arquivos');
-	define('BASE_SISTEMA_URI','https://entric.com.br/arquivos'); 
+	define('BASE_PATH','https://entric.com.br/sistema');
+	define('BASE_URI','/home/entriccom/public_html/sistema/public/arquivos');
+	define('BASE_SISTEMA_URI','https://entric.com.br/arquivos');
 
 }else{
 	define('DB_HOST', 'localhost');
@@ -24,6 +24,6 @@ if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	define('BASE_PATH','http://localhost/entric.com.br/sistema');
 	define('BASE_URI','C:\Users\root\Dropbox\entric.com.br\sistema\public\arquivos');
 	define('BASE_SISTEMA_URI','http://localhost/entric.com.br/sistema/arquivos');
-}
+} 
 
 $bruker = new class{};

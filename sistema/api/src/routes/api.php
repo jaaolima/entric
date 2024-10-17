@@ -5794,13 +5794,13 @@ $app->group("", function () use ($app) {
 		                            ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            
-		            if ($set_codigo){
-		                $paciente = $db->select_single_to_array("pacientes", "*", "WHERE id=".$dados['id_paciente'], null);
-		                $bind = array( ':codigo' => $codigo);
-		                $pacientes = $db->update("pacientes", "WHERE id=".$dados['id_paciente'], $bind);
-		                $bind = array( ':codigo' => $codigo, ':status' => 2);
-		                $usuarios = $db->update("usuarios", "WHERE id=".$paciente['id_usuario'], $bind);
-		            }
+		            // if ($set_codigo){
+		            //     $paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=".$dados['id_paciente'], null);
+		            //     $bind = array( ':codigo' => $codigo);
+		            //     $pacientes = $db->update("pacientes_simplificada", "WHERE id=".$dados['id_paciente'], $bind);
+		            //     $bind = array( ':codigo' => $codigo, ':status' => 2);
+		            //     $usuarios = $db->update("usuarios", "WHERE id=".$paciente['id_usuario'], $bind);
+		            // }
 
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
 		        }
@@ -5821,13 +5821,13 @@ $app->group("", function () use ($app) {
 		            else{
 		                $relatorio = $db->select_single_to_array("relatorios_simplificada", "*", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", null);
 		                if ($relatorio){
-		                    if ($set_codigo){
-		                        $paciente = $db->select_single_to_array("pacientes", "*", "WHERE id=".$dados['id_paciente'], null);
-		                        $bind = array( ':codigo' => $codigo);
-		                        $pacientes = $db->update("pacientes", "WHERE id=".$dados['id_paciente'], $bind);
-		                        $bind = array( ':codigo' => $codigo, ':status' => 2);
-		                        $usuarios = $db->update("usuarios", "WHERE id=".$paciente['id_usuario'], $bind);
-		                    }
+		                    // if ($set_codigo){
+		                    //     $paciente = $db->select_single_to_array("pacientes", "*", "WHERE id=".$dados['id_paciente'], null);
+		                    //     $bind = array( ':codigo' => $codigo);
+		                    //     $pacientes = $db->update("pacientes", "WHERE id=".$dados['id_paciente'], $bind);
+		                    //     $bind = array( ':codigo' => $codigo, ':status' => 2);
+		                    //     $usuarios = $db->update("usuarios", "WHERE id=".$paciente['id_usuario'], $bind);
+		                    // }
 		                    $bind = array(  ':codigo' => $codigo,
 		                                    ':rel_logo' => (isset($dados['rel_logo'])?true:null),
 		                                    ':rel_identificacao' => (isset($dados['rel_identificacao'])?true:null),
