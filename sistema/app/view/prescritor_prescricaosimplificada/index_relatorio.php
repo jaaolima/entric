@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="form-group col-sm-1 mb-3"></div>
-                </div>
+                </div> 
 
                 <div class="row entric_group_radio border-0 mt-4 mb-2">
 
@@ -46,60 +46,6 @@
 
                     <div class="form-group col-sm-2 mb-3">
                         <div class="form-check entric_radio pl-0 text-center">
-                            <input id="rel_historia" name="rel_historia" value="História Clínica" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
-                            <label for="rel_historia" class="form-check-label check-green"></label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-6 text-center mb-3">
-                        <div class="form-radio entric_radio">
-                            <label for="rel_historia" class="form-check-label check-green">HISTÓRIA CLÍNICA</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-1 mb-3"></div>
-                </div>
-
-                <div class="row entric_group_radio border-0 mt-4 mb-2">
-
-
-
-                    <div class="form-group col-sm-2 mb-3">
-                        <div class="form-check entric_radio pl-0 text-center">
-                            <input id="rel_avaliacao" name="rel_avaliacao" value="Avaliação Nutricional" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
-                            <label for="rel_avaliacao" class="form-check-label check-green"></label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-6 text-center mb-3">
-                        <div class="form-radio entric_radio">
-                            <label for="rel_avaliacao" class="form-check-label check-green">AVALIAÇÃO NUTRICIONAL</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-1 mb-3"></div>
-                </div>
-
-                <div class="row entric_group_radio border-0 mt-4 mb-2">
-
-
-
-                    <div class="form-group col-sm-2 mb-3">
-                        <div class="form-check entric_radio pl-0 text-center">
-                            <input id="rel_necessidades" name="rel_necessidades" value="Necessidades Nutricionais" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
-                            <label for="rel_necessidades" class="form-check-label check-green"></label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-6 text-center mb-3">
-                        <div class="form-radio entric_radio">
-                            <label for="rel_necessidades" class="form-check-label check-green">NECESSIDADES NUTRICIONAIS</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-1 mb-3"></div>
-                </div>
-
-                <div class="row entric_group_radio border-0 mt-4 mb-2">
-
-
-
-                    <div class="form-group col-sm-2 mb-3">
-                        <div class="form-check entric_radio pl-0 text-center">
                             <input id="rel_calculo" name="rel_calculo" value="Cálculo de Terapia Nutricional" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
                             <label for="rel_calculo" class="form-check-label check-green"></label>
                         </div>
@@ -107,24 +53,6 @@
                     <div class="form-group col-sm-6 text-center mb-3">
                         <div class="form-radio entric_radio">
                             <label for="rel_calculo" class="form-check-label check-green">CÁLCULO DE TERAPIA NUTRICIONAL</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-1 mb-3"></div>
-                </div>
-
-                <div class="row entric_group_radio border-0 mt-4 mb-2">
-
-
-
-                    <div class="form-group col-sm-2 mb-3">
-                        <div class="form-check entric_radio pl-0 text-center">
-                            <input id="rel_observacoes" name="rel_observacoes" value="Observações" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
-                            <label for="rel_observacoes" class="form-check-label check-green"></label>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-6 text-center mb-3">
-                        <div class="form-radio entric_radio">
-                            <label for="rel_observacoes" class="form-check-label check-green">OBSERVAÇÕES</label>
                         </div>
                     </div>
                     <div class="form-group col-sm-1 mb-3"></div>
@@ -160,11 +88,11 @@
                     <div class="form-group col-sm-5">
                         <button type="button" class="btn btn-secondary btn-block" id="rel_gerar_relatorio">
                             <span class="btn-icon-right"><i class="fa fa-file-text"></i></span>
-                            GERAR RELATÓRIO DE ALTA
+                            GERAR PRESCRIÇÃO SIMPLIFICADA
                         </button>
                         <button type="button" class="btn btn-secondary btn-block mt-0 hide" id="rel_imprimir_relatorio">
                             <span class="btn-icon-right"><i class="fa fa-file-text"></i></span>
-                            IMPRIMIR RELATÓRIO DE ALTA
+                            IMPRIMIR PRESCRIÇÃO SIMPLIFICADA
                         </button>
                     </div>
                 </div>

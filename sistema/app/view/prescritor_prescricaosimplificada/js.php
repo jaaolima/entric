@@ -576,103 +576,29 @@ function necessidades_peso(_this){
 }
 
 function necessidades_calorias_total(_this, _event){
-    if (($("#tab_calorias").val() != "") && ($("#nec_calorias_peso_valor").val() != "")) {
-         if ($("#tab_calorias").val() == "#formula_bolso"){ 
-            if (_this != null){
-                var _calorias = _this.val();
-                if ((_calorias).length >= 2){
-                    _event.preventDefault();
-                }
-            }
-
-            var _peso = $("#nec_calorias_peso_valor").val();
-            if (_peso !== ""){
-                _peso = _peso.replace(",", ".");
-                _peso = parseFloat(_peso);
-            }else{
-                _peso = 0;
-            }
-            var _formula_valor = $("#formula_valor").val();
-            $("#kcal_valor").val(numberFormatPrecision((_peso*_formula_valor), 0));
-            _formula_valor = numberFormatPrecision((_peso*_formula_valor), 0)+" ("+_formula_valor+" kcal/kg)";
-            $("#nec_calorias_total").val(_formula_valor);
-            $("#presc_kcal").html(_formula_valor);
-
-            $("#nec_calorias_total").show();
-            $("#nec_calorias_total2").hide();
-        }
-        else if ($("#tab_calorias").val() == "#harris_benedict"){
-            if (($("#fator_atividade_valor").val() != "") && ($("#fator_injuria_valor").val() != "") && ($("#fator_termico_valor").val() != "") && ($("#nec_calorias_peso_valor").val() != "") && ($("#cad_idade").val() != "") && ($("#cad_sexo").val() !="") && ($("#altura_valor").val() != "") ){
-                var _idade = $("#cad_idade").val();
-                var _sexo = $("#cad_sexo").val();
-                var _peso = $("#nec_calorias_peso_valor").val();
-                if (_peso !== ""){
-                    _peso = _peso.replace(",", ".");
-                    _peso = parseFloat(_peso);
-                }else{
-                    _peso = 0;
-                }
-                var _altura = $("#altura_valor").val();
-                if (_altura !== ""){
-                    _altura = _altura.replace(",", ".");
-                    _altura = parseFloat(_altura);
-                }else{
-                    _altura = 0;
-                }
-                var _fator_atividade = $("#fator_atividade_valor").val();
-                var _fator_injuria_valor = $("#fator_injuria_valor").val();
-                var _fator_termico_valor = $("#fator_termico_valor").val();
-
-                if (_sexo == "feminino"){
-                    var _ger = (655 + (9.6 * _peso) + (1.9 * (_altura*100)) - (4.7 *_idade));
-                }else{
-                    var _ger = (66 + (13.8 * _peso) + (5.0 * (_altura*100)) - (6.8 * _idade));                    
-                }
-
-                if (_fator_atividade == "Acamado"){
-                    _fator_atividade = 1.2;   
-                }else if (_fator_atividade == "Acamado + móvel"){
-                    _fator_atividade = 1.25;   
-                }else if (_fator_atividade == "Deambulante"){
-                    _fator_atividade = 1.3;   
-                }
-
-                if (_fator_termico_valor == "38°C"){
-                    _fator_termico_valor = 1.1;   
-                }else if (_fator_termico_valor == "39°C"){
-                    _fator_termico_valor = 1.2;   
-                }else if (_fator_termico_valor == "40°C"){
-                    _fator_termico_valor = 1.3;   
-                }else if (_fator_termico_valor == "41°C"){
-                    _fator_termico_valor = 1.4;   
-                }else if (_fator_termico_valor == "AFEBRIL"){
-                    _fator_termico_valor = 1;   
-                }
-
-                var _nec_calorias_total = (_ger * _fator_atividade * _fator_injuria_valor * _fator_termico_valor);
-                var _nec_calorias_total2 = (_nec_calorias_total / _peso);
-
-                $("#kcal_valor").val(numberFormatPrecision(_nec_calorias_total, 2));
-                _nec_calorias_total = numberFormatPrecision(_nec_calorias_total, 2)+" (kcal/kg)";
-                $("#nec_calorias_total").val(_nec_calorias_total);
-                $("#presc_kcal").html(_nec_calorias_total);
-
-                _nec_calorias_total2 = numberFormatPrecision(_nec_calorias_total2, 2)+" (kcal/kg)";
-                $("#nec_calorias_total2").val(_nec_calorias_total2);
-
-                $("#nec_calorias_total").hide();
-                $("#nec_calorias_total2").show();
-            }
-        }
-        var selecao_dieta = $("#selecao_dieta").val();
-        if (selecao_dieta.length == 0){
-            busca_produto_relatorio();
+    if (_this != null){
+        var _calorias = _this.val();
+        if ((_calorias).length >= 2){
+            _event.preventDefault();
         }
     }
+
+    var _peso = $("#peso").val();
+    if (_peso !== ""){
+        _peso = _peso.replace(",", ".");
+        _peso = parseFloat(_peso);
+    }else{
+        _peso = 0;
+    }
+    var _caloria_valor = $("#kcal_kg").val();
+    $("#kcal_valor").val(numberFormatPrecision((_peso*_caloria_valor), 0));
+    _caloria_valor = numberFormatPrecision((_peso*_caloria_valor), 0)+" ("+_caloria_valor+" kcal/kg)";
+    $("#kcal_valor").val(_caloria_valor);
+    $("#presc_kcal").html(_caloria_valor);
 }
 
 function necessidades_proteinas_total(_this, _event){
-    if ($("#nec_proteinas_peso_valor").val() != "") {
+    if ($("#peso").val() != "") {
         if (_this != null){
             var _ptnval = _this.val();
             //_ptnval = _ptnval.substr(0, 3);
@@ -689,23 +615,23 @@ function necessidades_proteinas_total(_this, _event){
                 }
             }
         }
-        var _peso = $("#nec_proteinas_peso_valor").val();
+        var _peso = $("#peso").val();
         if (_peso !== ""){
             _peso = _peso.replace(",", ".");
             _peso = parseFloat(_peso);
         }else{
             _peso = 0;
         }
-        var _formula_valor = $("#proteinas_valor").val();
+        var _formula_valor = $("#proteina_kg").val();
         $("#ptn_valor").val(numberFormatPrecision((_peso*_formula_valor), 0));
         _formula_valor = numberFormatPrecision((_peso*_formula_valor), 1)+" ("+numberFormatPrecision(_formula_valor, 1)+" g/kg)";
-        $("#nec_proteinas_total").val(_formula_valor);
+        $("#ptn_valor").val(_formula_valor);
         $("#presc_ptn").html(_formula_valor);
     }
 }
 
 function necessidades_agua_total(_this, _event){
-    if ($("#nec_agua_peso_valor").val() != "") {
+    if ($("#peso").val() != "") {
         if (_this != null){
             var _agua = _this.val();
             if ((_agua).length >= 2){
@@ -713,14 +639,14 @@ function necessidades_agua_total(_this, _event){
             }
         }
 
-        var _peso = $("#nec_agua_peso_valor").val();
+        var _peso = $("#peso").val();
         if (_peso !== ""){
             _peso = _peso.replace(",", ".");
             _peso = parseFloat(_peso);
         }else{
             _peso = 0;
         }
-        var _formula_valor = $("#agua_valor").val();
+        var _formula_valor = $("#agua_kg").val();
         $("#nec_agua_total").val( numberFormatPrecision((_peso*_formula_valor), 0)+" ("+numberFormatPrecision(_formula_valor, 0)+" ml/kg)" );
     }
 }
@@ -1739,13 +1665,13 @@ $(function(){
     $("#nec_agua_peso").on("change", function(e) {
         necessidades_peso($(this));        
     });
-    $(".calorias_total").on("change keypress keyup", function(e) {
+    $("#kcal_kg").on("change keypress keyup", function(e) {
         necessidades_calorias_total($(this), e);
     });
-    $(".proteinas_total").on("change keypress keyup", function(e) {
+    $("#proteina_kg").on("change keypress keyup", function(e) {
         necessidades_proteinas_total($(this), e);
     });
-    $(".agua_total").on("change keypress keyup", function(e) {
+    $("#agua_kg").on("change keypress keyup", function(e) {
         necessidades_agua_total($(this), e);
     });
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
