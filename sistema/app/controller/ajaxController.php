@@ -467,6 +467,12 @@ class AjaxController extends Controller {
         echo json_encode($selecao);
     }
 
+    function selecao_salvar_simplificada() {
+        $selecao = $this->AjaxModel->stSelecaoSimplificada($_POST);
+        echo json_encode($selecao);
+    }
+
+
     function afterAction() {
 
     }

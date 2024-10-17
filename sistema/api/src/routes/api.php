@@ -39,6 +39,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_stFracionamento",
 				"/ajax_stFracionamentoSimplificada",
 				"/ajax_stSelecao",
+				"/ajax_stSelecaoSimplificada",
 				"/ajax_stObservacoes",
 				"/ajax_stDistribuidores",
 				"/ajax_stDistribuidoresSimplificada",
@@ -5272,7 +5273,8 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['suplemento_volume_total'])) $dados['suplemento_volume_total'] = null;
 		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
 
-		        $bind = array(  ':categoria' => $dados['categoria'],
+		        $bind = array( 
+								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
 		                        ':tipo_prescricao' => $dados["tipo_prescricao"],
 		                        ':dispositivo' => $dados["dispositivo"],
@@ -5309,6 +5311,7 @@ $app->group("", function () use ($app) {
 
 
 		        if ($dados['id_relatorio'] == ""){
+					$bind['id_paciente'] = $dados['id_paciente'];
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
 		        }
@@ -5474,6 +5477,51 @@ $app->group("", function () use ($app) {
 		        }
 		        else{
 		            $retorno = $db->update("relatorios", "WHERE id=".$dados['id_relatorio'], $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		        }
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_stSelecaoSimplificada", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			if ($usuario){
+				$dados = $request->getParam("dados");
+
+
+		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
+		        if (!isset($dados['margem_calorica'])) $dados['margem_calorica'] = null;
+		        if (!isset($dados['margem_proteica'])) $dados['margem_proteica'] = null;
+
+		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),
+		                        ':margem_calorica' => $dados["margem_calorica"],
+		                        ':margem_proteica' => $dados["margem_proteica"]);
+
+		        if ($dados['id_relatorio'] == ""){
+		            $retorno = $db->insert("relatorios_simplificada", $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
+		        }
+		        else{
+		            $retorno = $db->update("relatorios_simplificada", "WHERE id=".$dados['id_relatorio'], $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		        }
 
