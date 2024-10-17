@@ -602,9 +602,9 @@ function necessidades_proteinas_total(_this, _event){
         if (_this != null){
             var _ptnval = _this.val();
             //_ptnval = _ptnval.substr(0, 3);
-            if ((_ptnval).length >= 3){
-                _event.preventDefault();
-            }
+            // if ((_ptnval).length >= 3){
+            //     _event.preventDefault();
+            // }
             var lastChar = _ptnval[_ptnval.length -1];
 
             if ((lastChar == ".") || (lastChar == ",")){
