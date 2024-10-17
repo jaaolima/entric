@@ -1169,45 +1169,6 @@ function fc_salvar(tab, notify){
                     $(".tabcalculo").addClass('disabledTab');
                     $(".tabobservacoes").addClass('disabledTab');
                     $(".tabdistribuidores").addClass('disabledTab');
-
-                    $('#enviar_email').removeAttr("disabled");
-
-                    $.confirm({
-                        title: '<strong>Atenção</strong>',
-                        content: 'Deseja enviar a senha de acesso do relatório para o e-mail do paciente?',
-                        buttons: {
-                            Sim: {
-                                text: 'Sim',
-                                btnClass: 'btn btn-secondary btn-form',
-                                action: function(){
-                                    var _email_paciente = $("#email_paciente").val();
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "ajax/relatorio_enviar_email",
-                                        data: "&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&email_paciente="+_email_paciente,
-                                        cache: false,
-                                        dataType: 'json',
-                                        success: function( data ){
-                                            $.alert({
-                                                title: 'Atenção',
-                                                icon: 'fa fa-warning',
-                                                type: 'green',
-                                                content: 'E-mail enviado para o paciente.'
-                                            });
-                                        }
-                                    });
-                                    fc_imprimir_relatorio();
-                                }
-                            },
-                            Nao: {
-                                text: 'Não',
-                                btnClass: 'btn btn-default btn-form',
-                                action: function(){
-                                    fc_imprimir_relatorio();
-                                }
-                            }
-                        }
-                    });
                 }
             }
             if (notify == true){
@@ -1804,8 +1765,8 @@ $(function(){
         $('.tabcalculo a').removeClass('active');
         $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
  
-        $('.tabnecessidades a').addClass('active');
-        $('#necessidades').addClass('active').addClass('show').attr('aria-expanded','true');
+        $('.tabcadastro a').addClass('active');
+        $('#cadastro').addClass('active').addClass('show').attr('aria-expanded','true');
     });
     $('#calculo_avancar').on('click', function() {
         if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {

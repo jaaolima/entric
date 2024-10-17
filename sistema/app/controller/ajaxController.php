@@ -165,19 +165,19 @@ class AjaxController extends Controller {
         if (isset($_POST['action'])){
             switch ($_POST['action']) {
                 case 'calculo':
-                    $calculo = $this->AjaxModel->stCalculo($_POST);
+                    $calculo = $this->AjaxModel->stCalculoSimplificada($_POST);
                     echo json_encode($calculo);
                 break;
                 case 'distribuidores':
-                    $distribuidores = $this->AjaxModel->stDistribuidores($_POST);
+                    $distribuidores = $this->AjaxModel->stDistribuidoresSimplificada($_POST);
                     echo json_encode($distribuidores);
                 break;
                 case 'relatorio':
-                    $relatorio = $this->AjaxModel->stRelatorio($_POST);
+                    $relatorio = $this->AjaxModel->stRelatorioSimplificada($_POST);
                     echo json_encode($relatorio);
                 break;
                 case 'gerar_relatorio':
-                    $relatorio = $this->AjaxModel->stRelatorio($_POST, true);
+                    $relatorio = $this->AjaxModel->stRelatorioSimplificada($_POST, true);
                     echo json_encode($relatorio);
                 break;
                 default:
@@ -458,7 +458,7 @@ class AjaxController extends Controller {
     }
 
     function fracionamento_salvar_simplificada() {
-        $fracionamento = $this->AjaxModel->stFracionamento($_POST);
+        $fracionamento = $this->AjaxModel->stFracionamentoSimplificada($_POST);
         echo json_encode($fracionamento);
     }
 

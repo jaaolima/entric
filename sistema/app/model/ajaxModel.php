@@ -165,9 +165,23 @@ class AjaxModel extends Model {
         return $retorno;        
     }
 
+    function stCalculoSimplificada($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stCalculoSimplificada", array(    "token" => $_SESSION['token'],
+                                                            "dados" => $dados));       
+        return $retorno;        
+    }
+
     function stFracionamento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stFracionamento", array(  "token" => $_SESSION['token'],
+                                                                "dados" => $dados));       
+        return $retorno;
+    }
+
+    function stFracionamentoSimplificada($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stFracionamentoSimplificada", array(  "token" => $_SESSION['token'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -193,9 +207,24 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
+    function stDistribuidoresSimplificada($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stDistribuidoresSimplificada", array( "token" => $_SESSION['token'],
+                                                                "dados" => $dados));       
+        return $retorno;
+    }
+
     function stRelatorio($dados, $set_codigo = false) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stRelatorio", array( "token" => $_SESSION['token'],
+                                                           "dados" => $dados,
+                                                           "set_codigo" => $set_codigo));       
+        return $retorno;
+    }
+
+    function stRelatorioSimplificada($dados, $set_codigo = false) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stRelatorioSimplificada", array( "token" => $_SESSION['token'],
                                                            "dados" => $dados,
                                                            "set_codigo" => $set_codigo));       
         return $retorno;
