@@ -5307,6 +5307,8 @@ $app->group("", function () use ($app) {
 		                        ':suplemento_volume_total' => array_json($dados["suplemento_volume_total"], false) ,
 		                        ':hidratacao_agua_livre' => array_json($dados["hidratacao_agua_livre"], false) );
 
+
+				var_dump($dados);
 		        if ($dados['id_relatorio'] == ""){
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
