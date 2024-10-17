@@ -623,8 +623,12 @@ function necessidades_proteinas_total(_this, _event){
             _peso = 0;
         }
         var _formula_valor = $("#proteina_kg").val();
-        console.log(_formula_valor);
-        console.log(_peso);
+        if (_formula_valor !== ""){
+            _formula_valor = _formula_valor.replace(",", ".");
+            _formula_valor = parseFloat(_formula_valor);
+        }else{
+            _formula_valor = 0;
+        }
         $("#ptn_valor").val(numberFormatPrecision((_peso*_formula_valor), 0));
         _formula_valor = numberFormatPrecision((_peso*_formula_valor), 1)+" ("+numberFormatPrecision(_formula_valor, 1)+" g/kg)";
         $("#ptn_valor").val(_formula_valor);
