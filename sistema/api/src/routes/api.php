@@ -5311,7 +5311,7 @@ $app->group("", function () use ($app) {
 
 
 		        if ($dados['id_relatorio'] == ""){
-					$bind['id_paciente'] = $dados['id_paciente'];
+					$bind[':id_paciente'] = $dados['id_paciente'];
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
 		        }
