@@ -1916,8 +1916,8 @@ $(function(){
         $('.tabcalculo a').removeClass('active');
         $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
  
-        $('.tabnecessidades a').addClass('active');
-        $('#necessidades').addClass('active').addClass('show').attr('aria-expanded','true');
+        $('.tabcadastro a').addClass('active');
+        $('#cadastro').addClass('active').addClass('show').attr('aria-expanded','true');
     });
     // -------------------------------------------------------------------------------------------------
     $(".btn_outra_dieta_add").on("click", function(e) {
