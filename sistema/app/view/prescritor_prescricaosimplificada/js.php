@@ -2415,7 +2415,7 @@ $(function(){
                     }
                     if (data.success){
                         var relatorio_code = $("#relatorio_code").val();
-                        window.open("relatorio/"+relatorio_code, "_blank");
+                        window.open("relatorio_simplificada/"+relatorio_code, "_blank");
                     }
                     if (data.error){
                         toastr['error'](data.error.message, '', {positionClass: 'toast-top-right' });
