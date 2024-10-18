@@ -178,7 +178,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> IDENTIFICAÇÃO DO PACIENTE</p>
 			<p><strong>Paciente:</strong> <?php echo ucwords($paciente['nome']);?></p>
-			<?php if ($paciente['mae_possui']==0) { echo "<p><strong>Nome da Mãe:</strong> ".ucwords($paciente['mae'])."</p>"; } ?>
 			<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
 			<?php } ?>
 		<?php
@@ -1042,50 +1041,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			?>
 
-
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONTATOS DO PRESCRITOR</p>
-			<p>
-				<?php 
-				$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id=".$relatorio['id_prescritor'], null);
-				if ($prescritor){
-					echo '<p style="text-align: left;">';
-						if ($prescritor['profissional'] == "Nutricionista"){
-							echo '<strong>'.$prescritor['nome']."</strong><br>";
-							if (($prescritor['regiao_crn']<>"") and ($prescritor['numero_crn'])) echo $prescritor['regiao_crn']." - ".$prescritor['numero_crn'];
-						}else{
-							echo '<strong>'.$prescritor['nome']."</strong><br>";
-							if (($prescritor['regiao_crn']<>"") and ($prescritor['numero_crn']))  echo $prescritor['regiao_crm']." - ".$prescritor['numero_crm'];
-						}
-						
-
-						if (trim($prescritor['cidade']) <> "") echo "<br>".$prescritor['cidade']." ".$prescritor['uf'];
-						
-						if ($prescritor['telefone'] <> ""){
-							$telefone = json_decode($prescritor['telefone'], true);
-							$telefone_disp = json_decode($prescritor['telefone_disp'], true);
-							$telefone_t = false;
-							foreach ($telefone as $k => $v) {
-								if (isset($telefone_disp[$k])){
-									if ($telefone_disp[$k] == "0"){
-										if (!$telefone_t){
-											echo '<br><strong>Telefone:</strong><br>';
-											$telefone_t = true;
-										}
-										echo $v."<br>";
-									}
-								}
-							}
-						}
-
-						if ($prescritor["email_disp"] == "0"){
-							echo '<strong>E-mail:</strong><br>';
-							echo $prescritor["email"]."<br>";
-						}
-
-					echo '</p>';
-				}
-				?>
-			</p>
 
 
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> PONTOS DE VENDA</p>

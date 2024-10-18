@@ -1179,7 +1179,7 @@ $(function(){
         peso = $("#peso").val();
         kcal = $(this).val();
         if(peso != '' && kcal != ''){
-            total = parseInt(peso) * parseInt(kcal);
+            total = parseFloat(peso) * parseFloat(kcal);
             $("#kcal_dia").val(total);
         }
     });
@@ -1188,7 +1188,7 @@ $(function(){
         peso = $("#peso").val();
         proteina = $(this).val();
         if(peso != '' && proteina != ''){
-            total = parseInt(peso) * parseInt(proteina);
+            total = parseFloat(peso) * parseFloat(proteina);
             $("#proteina_dia").val(total);
         }
     });
