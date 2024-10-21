@@ -65,7 +65,7 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
-                                <input type="text" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control " value=""> 
+                                <input type="text" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control div_calculo" value=""> 
                                 <input type="text" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value=""> 
                             </div>
                         </div>
