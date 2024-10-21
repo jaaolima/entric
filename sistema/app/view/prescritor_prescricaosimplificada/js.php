@@ -1206,6 +1206,7 @@ $(function(){
         peso = $("#peso").val();
         proteina = $(this).val();
         if(peso != '' && proteina != ''){
+            proteina = proteina.replace(",", ".");
             total = parseFloat(peso) * parseFloat(proteina);
             $("#proteina_dia").val(total);
         }
