@@ -56,8 +56,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Calorias</span>
                                 </div>
-                                <input type="text" placeholder="kcal/kg" required="required" id="kcal_kg" name="kcal_kg" class="form-control" value=""> 
-                                <input name='div_calculo' type="text" readonly placeholder="kcal/dia" required="required" id="kcal_dia" name="kcal_dia" class="form-control" value=""> 
+                                <input type="text" placeholder="kcal/kg" required="required" id="kcal_kg" name="kcal_kg" class="form-control div_calculo" value=""> 
+                                <input type="text" readonly placeholder="kcal/dia" required="required" id="kcal_dia" name="kcal_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -65,8 +65,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
-                                <input type="text" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control" value=""> 
-                                <input name='div_calculo' type="text" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value=""> 
+                                <input type="text" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control " value=""> 
+                                <input type="text" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -74,8 +74,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Água</span>
                                 </div>
-                                <input type="text" placeholder="ml/kg" required="required" id="agua_kg" name="agua_kg" class="form-control" value=""> 
-                                <input name='div_calculo' type="text" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value=""> 
+                                <input type="text" placeholder="ml/kg" required="required" id="agua_kg" name="agua_kg" class="form-control div_calculo" value=""> 
+                                <input type="text" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="text-center col-sm-12 mt-4">
