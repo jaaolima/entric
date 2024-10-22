@@ -271,6 +271,16 @@ class AjaxController extends Controller {
         //}
     }
 
+    function busca_produto_relatorio_simplificada() {
+        //if (isset($_POST['calculo_apres_aberto_po']) and (trim($_POST['calculo_apres_aberto_po'])<>"")){            
+            $produto = new ProdutoModel();
+            $produtos = $produto->gtProdutoRelatorioSimplificada($_POST);
+            echo $produtos; //echo json_encode($produtos);
+        //}else{            
+            //echo ""; //echo json_encode(array('error'=>array('message'=>'Informe os dados corretamente.')));
+        //}
+    }
+
     function busca_produto() {
         $retorno = array();
         $parameters = explode('?', $_SERVER['REQUEST_URI'], 2);

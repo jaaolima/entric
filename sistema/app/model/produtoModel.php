@@ -8,6 +8,13 @@ class ProdutoModel extends Model {
         return $retorno;
     }
 
+    function gtProdutoRelatorioSimplificada($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("produto_gtProdutoRelatorioSimplificada", array("token" => $_SESSION['token'],
+                                                                    "dados" => $dados));
+        return $retorno;
+    }
+
     function gtProdutoFiltros($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoFiltros", array(  "token" => $_SESSION['token'],
