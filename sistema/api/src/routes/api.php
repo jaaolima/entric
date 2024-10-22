@@ -5314,6 +5314,7 @@ $app->group("", function () use ($app) {
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
 		        }
@@ -5430,6 +5431,8 @@ $app->group("", function () use ($app) {
 		                        ':fra_volume_ml' => $dados["in_volume_ml"]);
 
 		        if ($dados['id_relatorio'] == ""){
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
 		        }
@@ -5519,6 +5522,8 @@ $app->group("", function () use ($app) {
 		                        ':margem_proteica' => $dados["margem_proteica"]);
 
 		        if ($dados['id_relatorio'] == ""){
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
 		        }
@@ -5630,6 +5635,8 @@ $app->group("", function () use ($app) {
 
 		        if ($dados['id_relatorio'] == ""){
 		            $bind = array(  ':distribuidores' => $dados['cad_distribuidores']);
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
 		        }
@@ -5794,6 +5801,9 @@ $app->group("", function () use ($app) {
 		                            ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                            ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
 		                            ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
+
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
 		            $retorno = $db->insert("relatorios_simplificada", $bind);
 		            
 		            // if ($set_codigo){
