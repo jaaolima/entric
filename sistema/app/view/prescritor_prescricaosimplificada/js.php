@@ -1294,16 +1294,14 @@ $(function(){
         $('#id_relatorio').val('');
         $('#relatorio_code').val('');
 
-        fc_salvar('historia', false);        
-
-        $("#enviar_email").prop("disabled", true);
+        fc_salvar('calculo', false);        
 
         $('.tabcadastro a').removeClass('active');
         $('#cadastro').removeClass('active').removeClass('show').attr('aria-expanded','false');
  
-        $(".tabhistoria").removeClass('disabledTab');
-        $('.tabhistoria a').addClass('active');
-        $('#historia').addClass('active').addClass('show').attr('aria-expanded','true');
+        $(".tabcalculo").removeClass('disabledTab');
+        $('.tabcalculo a').addClass('active');
+        $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
         $(".tabsec").removeClass('disabledTab').addClass('active');
 
