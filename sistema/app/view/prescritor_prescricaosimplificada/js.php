@@ -646,6 +646,99 @@ function necessidades_agua_total(_this, _event){
     }
 }
 
+function necessidades_calorias_total_atualizar(_this, _event){
+    if (_this != null){
+        var _calorias = _this.val();
+        if ((_calorias).length >= 2){
+            _event.preventDefault();
+        }
+    }
+
+    var _formula_valor = $("#up_kcal_kg").val();
+    if (_formula_valor !== ""){
+        _formula_valor = _formula_valor.replace(",", ".");
+        _formula_valor = parseFloat(_formula_valor);
+    }
+
+    var _formula_total = $("#up_kcal_dia").val();
+    if (_formula_total !== ""){
+        _formula_total = _formula_total.replace(",", ".");
+        _formula_total = parseFloat(_formula_total);
+    }else{
+        _formula_total = 0;
+    }
+    $("#kcal_valor").val(numberFormatPrecision((_formula_total), 0));
+    _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+_formula_valor+" kcal/kg)";
+    $("#kcal_valor").val(_formula_valor);
+    $("#presc_kcal").html(_formula_valor);
+}
+
+function necessidades_proteinas_total_atualizar(_this, _event){
+    if ($("#up_peso").val() != "") {
+        if (_this != null){
+            var _ptnval = _this.val();
+            //_ptnval = _ptnval.substr(0, 3);
+            // if ((_ptnval).length >= 3){
+            //     _event.preventDefault();
+            // }
+            var lastChar = _ptnval[_ptnval.length -1];
+
+            if ((lastChar == ".") || (lastChar == ",")){
+                if ((_ptnval.indexOf('.') > -1) && (_ptnval.indexOf(',') > -1)) {
+                }
+                else{
+                    _event.stopPropagation();
+                }
+            }
+        }
+        var _formula_valor = $("#up_proteina_kg").val();
+        if (_formula_valor !== ""){
+            _formula_valor = _formula_valor.replace(",", ".");
+            _formula_valor = parseFloat(_formula_valor);
+        }
+
+        var _formula_total = $("#up_proteina_dia").val();
+        if (_formula_total !== ""){
+            _formula_total = _formula_total.replace(",", ".");
+            _formula_total = parseFloat(_formula_total);
+        }else{
+            _formula_total = 0;
+        }
+        $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
+        _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(_formula_valor, 1)+" g/kg)";
+        $("#ptn_valor").val(_formula_valor);
+        $("#presc_ptn").html(_formula_valor);
+    }
+}
+
+function necessidades_agua_total_atualizar(_this, _event){
+    if ($("#up_peso").val() != "") {
+        if (_this != null){
+            var _agua = _this.val();
+            if ((_agua).length >= 2){
+                _event.preventDefault();
+            }
+        }
+
+        var _formula_valor = $("#up_agua_kg").val();
+        if (_formula_valor !== ""){
+            _formula_valor = _formula_valor.replace(",", ".");
+            _formula_valor = parseFloat(_formula_valor);
+        }else{
+            _formula_valor = 0;
+        }
+
+        var _formula_total = $("#up_agua_dia").val();
+        if (_formula_total !== ""){
+            _formula_total = _formula_total.replace(",", ".");
+            _formula_total = parseFloat(_formula_total);
+        }else{
+            _formula_total = 0;
+        }
+        $("#nec_agua_total").val( numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(_formula_valor, 0)+" ml/kg)" );
+    }
+}
+
 // function necessidades_peso_checar(){
 //     fc_tab_formfilled();
     
@@ -1203,20 +1296,36 @@ $(function(){
         $("#agua_dia").attr("readonly", true);
     });
 
-    $("#btn_valores_manualmente:visible").on("click", function(){
-        $("#div_valores:visible").show();
-        $(".div_calculo:visible").hide();
-        $("#kcal_dia:visible").attr("readonly", false);
-        $("#proteina_dia:visible").attr("readonly", false);
-        $("#agua_dia:visible").attr("readonly", false);
+    $("#btn_valores_manualmente").on("click", function(){
+        $("#div_valores").show();
+        $(".div_calculo").hide();
+        $("#kcal_dia").attr("readonly", false);
+        $("#proteina_dia").attr("readonly", false);
+        $("#agua_dia").attr("readonly", false);
     });
 
-    $("#btn_realizar_calculo:visible").on("click", function(){
-        $("#div_valores:visible").show();
-        $(".div_calculo:visible").show();
-        $("#kcal_dia:visible").attr("readonly", true);
-        $("#proteina_dia:visible").attr("readonly", true);
-        $("#agua_dia:visible").attr("readonly", true);
+    $("#btn_realizar_calculo").on("click", function(){
+        $("#div_valores").show();
+        $(".div_calculo").show();
+        $("#kcal_dia").attr("readonly", true);
+        $("#proteina_dia").attr("readonly", true);
+        $("#agua_dia").attr("readonly", true);
+    });
+
+    $("#btn_valores_manualmente_atualizar").on("click", function(){
+        $("#div_valores_atualizar").show();
+        $(".div_calculo_atualizar").hide();
+        $("#up_kcal_dia").attr("readonly", false);
+        $("#up_proteina_dia").attr("readonly", false);
+        $("#up_agua_dia").attr("readonly", false);
+    });
+
+    $("#btn_realizar_calculo_atualizar").on("click", function(){
+        $("#div_valores_atualizar").show();
+        $(".div_calculo_atualizar").show();
+        $("#up_kcal_dia").attr("readonly", true);
+        $("#up_proteina_dia").attr("readonly", true);
+        $("#up_agua_dia").attr("readonly", true);
     });
 
     $('.numcomma').keypress(function(event) {
@@ -1698,6 +1807,26 @@ $(function(){
     });
     $("#agua_kg").on("change keypress keyup", function(e) {
         necessidades_agua_total($(this), e);
+    });
+
+    $("#up_kcal_dia").on("change keypress keyup", function(e) {
+        necessidades_calorias_total_atualizar($(this), e);
+    });
+    $("#up_proteina_dia").on("change keypress keyup", function(e) {
+        necessidades_proteinas_total_atualizar($(this), e);
+    });
+    $("#up_agua_dia").on("change keypress keyup", function(e) {
+        necessidades_agua_total_atualizar($(this), e);
+    });
+
+    $("#up_kcal_kg").on("change keypress keyup", function(e) {
+        necessidades_calorias_total_atualizar($(this), e);
+    });
+    $("#up_proteina_kg").on("change keypress keyup", function(e) {
+        necessidades_proteinas_total_atualizar($(this), e);
+    });
+    $("#up_agua_kg").on("change keypress keyup", function(e) {
+        necessidades_agua_total_atualizar($(this), e);
     });
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     
