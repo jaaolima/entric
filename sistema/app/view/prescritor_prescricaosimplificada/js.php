@@ -1296,6 +1296,34 @@ $(function(){
         }
     });
 
+    $("#up_kcal_kg").on('blur', function(){
+        peso = $("#up_peso").val();
+        kcal = $(this).val();
+        if(peso != '' && kcal != ''){
+            total = parseFloat(peso) * parseFloat(kcal);
+            $("#up_kcal_dia").val(total);
+        }
+    });
+
+    $("#up_proteina_kg").on('blur', function(){
+        peso = $("#up_peso").val();
+        proteina = $(this).val();
+        if(peso != '' && proteina != ''){
+            proteina = proteina.replace(",", ".");
+            total = parseFloat(peso) * parseFloat(proteina);
+            $("#up_proteina_dia").val(total);
+        }
+    });
+
+    $("#up_agua_kg").on('blur', function(){
+        peso = $("#up_peso").val();
+        agua = $(this).val();
+        if(peso != '' && agua != ''){
+            total = parseInt(peso) * parseInt(agua);
+            $("#up_agua_dia").val(total);
+        }
+    });
+
     $("#btn_realizar_calculo").on("click", function(){
         $("#div_valores").show();
         $(".div_calculo").show();
