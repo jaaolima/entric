@@ -1291,6 +1291,12 @@ $(function(){
         }
     });
     $("#gerar_relatorio").on("click", function(e) {
+
+        $("#div_botao_valores").show();
+       
+    });
+
+    $("#iniciar_nova_prescricao").on("click", function(){
         $('#id_relatorio').val('');
         $('#relatorio_code').val('');
 
@@ -1307,7 +1313,7 @@ $(function(){
 
         $("#rel_gerar_relatorio").removeClass("none");
         $("#rel_imprimir_relatorio").addClass("none");
-    });
+    })
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
