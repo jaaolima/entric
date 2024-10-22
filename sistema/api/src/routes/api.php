@@ -6309,9 +6309,9 @@ $app->group("", function () use ($app) {
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
 
-				$bind = array(  ':nome' => $dados["nome"],
-				':peso' => $dados["peso"],
-				':data_nascimento' => date2sql($dados["data_nascimento"]));
+				$bind = array(  ':nome' => $dados["up_nome"],
+				':peso' => $dados["up_peso"],
+				':data_nascimento' => date2sql($dados["up_data_nascimento"]));
 				$retorno = $db->update("pacientes_simplificada", "WHERE id=".$dados['up_id'], $bind);
 				$retorno = array("success" => "Cadastro atualizado com sucesso.");
 				
