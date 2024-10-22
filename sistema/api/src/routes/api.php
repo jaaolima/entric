@@ -6069,10 +6069,13 @@ $app->group("", function () use ($app) {
 		        if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
 		            $bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
 		        }
+				if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+		        }
 		        if ($bind_query <> ""){
 		            $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_simplificada",
-		                                                "id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui",
+		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
 		                                                null);
 		            if ($pacientes){
