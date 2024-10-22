@@ -199,7 +199,7 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
-                                <input type="number" placeholder="g/kg" required="required" id="up_proteina_kg" name="up_proteina_kg" class="form-control div_calculo_atualizar" value="" max='9.9'> 
+                                <input type="number" placeholder="g/kg" required="required" id="up_proteina_kg" name="up_proteina_kg" class="form-control div_calculo_atualizar" value="" max='9,9'> 
                                 <input type="number" readonly placeholder="g/dia" required="required" id="up_proteina_dia" name="up_proteina_dia" class="form-control" value="" max='999'> 
                             </div>
                         </div>
