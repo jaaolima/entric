@@ -1,5 +1,19 @@
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
+
+        <div class="text-center">
+
+            <button type="button" onclick="rangeCaloria(2400);" class="btn <?php echo ($tab1=="cadastrar"?"btn-warning":"btn-secondary"); ?> btn-sm" id="cadastrar_paciente">
+                <span class="btn-icon-right"><i class="fa fa-user"></i></span>
+                CADASTRAR PACIENTE
+            </button>
+            &nbsp;
+            <button type="button" class="btn <?php echo ($tab1=="buscar"?"btn-warning":"btn-secondary"); ?> btn-sm" id="buscar_paciente">
+                <span class="btn-icon-right"><i class="fa fa-search"></i></span>
+                BUSCAR PACIENTE CADASTRADO
+            </button>
+        </div>
+        
         <input type="hidden" name="cad_idade" id="cad_idade" value="" />
         <input type="hidden" name="cad_sexo" id="cad_sexo" value="" />
 
