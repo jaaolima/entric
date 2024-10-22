@@ -70,8 +70,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Calorias</span>
                                 </div>
-                                <input type="number" placeholder="kcal/kg" required="required" id="kcal_kg" name="kcal_kg" class="form-control div_calculo" value="" max='99'> 
-                                <input type="number" readonly placeholder="kcal/dia" required="required" id="kcal_dia" name="kcal_dia" class="form-control" value="" max='9999'> 
+                                <input type="text" placeholder="kcal/kg" required="required" id="kcal_kg" name="kcal_kg" class="form-control div_calculo" value=""> 
+                                <input type="text" readonly placeholder="kcal/dia" required="required" id="kcal_dia" name="kcal_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -79,8 +79,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
-                                <input type="number" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control div_calculo" value="" max='9,9'> 
-                                <input type="number" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value="" max='999'> 
+                                <input type="text" placeholder="g/kg" required="required" id="proteina_kg" name="proteina_kg" class="form-control div_calculo" value=""> 
+                                <input type="text" readonly placeholder="g/dia" required="required" id="proteina_dia" name="proteina_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -88,8 +88,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Água</span>
                                 </div>
-                                <input type="number" placeholder="ml/kg" required="required" id="agua_kg" name="agua_kg" class="form-control div_calculo" value="" max='99'> 
-                                <input type="number" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value="" max='9999'> 
+                                <input type="text" placeholder="ml/kg" required="required" id="agua_kg" name="agua_kg" class="form-control div_calculo" value=""> 
+                                <input type="text" readonly placeholder="ml/dia" required="required" id="agua_dia" name="agua_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="text-center col-sm-12 mt-4">
@@ -190,8 +190,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Calorias</span>
                                 </div>
-                                <input type="number" placeholder="kcal/kg" required="required" id="up_kcal_kg" name="up_kcal_kg" class="form-control div_calculo_atualizar" value="" max='99'> 
-                                <input type="number" readonly placeholder="kcal/dia" required="required" id="up_kcal_dia" name="up_kcal_dia" class="form-control" value="" max='9999'> 
+                                <input type="text" placeholder="kcal/kg" required="required" id="up_kcal_kg" name="up_kcal_kg" class="form-control div_calculo_atualizar" value=""> 
+                                <input type="text" readonly placeholder="kcal/dia" required="required" id="up_kcal_dia" name="up_kcal_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -199,8 +199,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Proteínas</span>
                                 </div>
-                                <input type="number" placeholder="g/kg" required="required" id="up_proteina_kg" name="up_proteina_kg" class="form-control div_calculo_atualizar" value="" max='9,9'> 
-                                <input type="number" readonly placeholder="g/dia" required="required" id="up_proteina_dia" name="up_proteina_dia" class="form-control" value="" max='999'> 
+                                <input type="text" placeholder="g/kg" required="required" id="up_proteina_kg" name="up_proteina_kg" class="form-control div_calculo_atualizar" value=""> 
+                                <input type="text" readonly placeholder="g/dia" required="required" id="up_proteina_dia" name="up_proteina_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -208,8 +208,8 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text" style="width:150px;">Água</span>
                                 </div>
-                                <input type="number" placeholder="ml/kg" required="required" id="up_agua_kg" name="up_agua_kg" class="form-control div_calculo_atualizar" value="" max='99'> 
-                                <input type="number" readonly placeholder="ml/dia" required="required" id="up_agua_dia" name="up_agua_dia" class="form-control" value="" max='9999'> 
+                                <input type="text" placeholder="ml/kg" required="required" id="up_agua_kg" name="up_agua_kg" class="form-control div_calculo_atualizar" value=""> 
+                                <input type="text" readonly placeholder="ml/dia" required="required" id="up_agua_dia" name="up_agua_dia" class="form-control" value=""> 
                             </div>
                         </div>
                         <div class="text-center col-sm-12 mt-4">
