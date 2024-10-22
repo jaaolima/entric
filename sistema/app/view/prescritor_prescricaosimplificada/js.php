@@ -1260,6 +1260,14 @@ $(function(){
     $('#agua_kg').mask("99");
     $('#agua_dia').mask("9999");
 
+
+    $('#up_kcal_kg').mask("99");
+    $('#up_kcal_dia').mask("9999");
+    $('#up_proteina_kg').mask("9,99");
+    $('#up_proteina_dia').mask("999,9");
+    $('#up_agua_kg').mask("99");
+    $('#up_agua_dia').mask("9999");
+
     $("#kcal_kg").on('blur', function(){
         peso = $("#peso").val();
         kcal = $(this).val();
