@@ -230,6 +230,11 @@ class AjaxController extends Controller {
         echo json_encode($paciente);
     }
 
+    function atualizar_paciente_simplificada(){
+        $paciente = $this->AjaxModel->ptPacienteSimplificada($_POST);            
+        echo json_encode($paciente);
+    }
+
     function cadastrar_paciente(){
         $paciente = $this->AjaxModel->stPaciente($_POST);            
         echo json_encode($paciente);

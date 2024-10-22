@@ -227,7 +227,7 @@ function fc_atualizar_paciente(){
             var formSerialize = frm.serialize();
             $.ajax({
                 type: "POST",
-                url: "ajax/atualizar_paciente",
+                url: "ajax/atualizar_paciente_simplificada",
                 data: formSerialize,
                 cache: false,
                 dataType: 'json',
@@ -238,9 +238,7 @@ function fc_atualizar_paciente(){
                             icon: 'fa fa-warning',
                             type: 'green',
                             content: data.success
-                        });
-
-                        $("#email_paciente").val($("#up_email").val());                        
+                        });                    
                     }
                     else{                
                         $.alert({

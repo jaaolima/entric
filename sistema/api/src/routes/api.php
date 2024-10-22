@@ -52,6 +52,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_getDistribuidores",
 				"/ajax_stPaciente",
 				"/ajax_ptPaciente",
+				"/ajax_ptPacienteSimplificada",
 				"/ajax_stPacienteSimplificada",
 				"/cadastro_cadastrar",
 				"/cadastro_cadastrarPaciente",
@@ -6278,6 +6279,41 @@ $app->group("", function () use ($app) {
 		        else{
 		            $retorno = array("error" => $mensagem_error);
 		        }
+				
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_ptPacienteSimplificada", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+				$bind = array(  ':nome' => $dados["nome"],
+				':peso' => $dados["peso"],
+				':data_nascimento' => date2sql($dados["data_nascimento"]));
+				$retorno = $db->update("pacientes_simplificada", "WHERE id=".$dados['up_id'], $bind);
+				$retorno = array("success" => "Cadastro atualizado com sucesso.");
 				
 
 		        $data = $retorno;
