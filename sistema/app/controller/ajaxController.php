@@ -221,6 +221,10 @@ class AjaxController extends Controller {
         echo json_encode($this->AjaxModel->getPacientes($_POST), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES |  JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
     }
 
+    function buscar_paciente_simplificada() {
+        echo json_encode($this->AjaxModel->getPacientesSimplificada($_POST), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES |  JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+    }
+
     function atualizar_paciente(){
         $paciente = $this->AjaxModel->ptPaciente($_POST);            
         echo json_encode($paciente);

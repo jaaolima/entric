@@ -48,6 +48,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_gtRelatorio",
 				"/ajax_EnviarEmailPaciente",
 				"/ajax_getPacientes",
+				"/ajax_getPacientesSimplificada",
 				"/ajax_getDistribuidores",
 				"/ajax_stPaciente",
 				"/ajax_ptPaciente",
@@ -6010,6 +6011,73 @@ $app->group("", function () use ($app) {
 		            if ($pacientes){
 		                for($i = 0; $i < count($pacientes); $i++){
 		                    $relatorios = $db->select_to_array("relatorios",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' AND id_prescritor=".$id_prescritor." ORDER BY id ASC",
+		                                                        null);
+		                    if ($relatorios){
+		                        $pacientes[$i]['relatorios'] = $relatorios;
+		                        rsort($pacientes[$i]['relatorios']);
+		                    }else{
+		                        $pacientes[$i]['relatorios'] = null;
+		                    }
+
+		                    $date = new DateTime($pacientes[$i]['idade']);
+		                    $now = new DateTime();
+		                    $interval = $now->diff($date);
+		                    $pacientes[$i]['idade'] = $interval->y;
+		                }
+		            }
+
+		            $retorno = $pacientes;
+
+		        }else{
+		            $retorno = array();
+		        }
+
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_getPacientesSimplificada", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+
+				$bind_query = "";
+		        if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+		            $bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
+		        }
+		        if ($bind_query <> ""){
+		            $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+		            $pacientes = $db->select_to_array("pacientes_simplificada",
+		                                                "id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui",
+		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
+		                                                null);
+		            if ($pacientes){
+		                for($i = 0; $i < count($pacientes); $i++){
+		                    $relatorios = $db->select_to_array("relatorios_simplificada",
 		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
 		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' AND id_prescritor=".$id_prescritor." ORDER BY id ASC",
 		                                                        null);

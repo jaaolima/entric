@@ -13,7 +13,7 @@
                 BUSCAR PACIENTE CADASTRADO
             </button>
         </div>
-        
+
         <input type="hidden" name="cad_idade" id="cad_idade" value="" />
         <input type="hidden" name="cad_sexo" id="cad_sexo" value="" />
 
@@ -234,18 +234,6 @@
                                             "col" => 12,
                                             "label" => "Nome do Paciente:"
                                         ),
-                                        "data_nascimento" => array(
-                                            "col" => 6,
-                                            "label" => "Data de Nascimento:",
-                                            "class" => "data",
-                                            "placeholder" => "dd/mm/aaaa"
-                                        ),
-                                        "cpf" => array(
-                                            "col" => 6,
-                                            "label" => "CPF:",
-                                            "class" => "cpf",
-                                            "placeholder" => "999.999.999-99"
-                                        )
                                     )
                                 );
                         echo $item_dados;

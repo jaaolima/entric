@@ -293,7 +293,7 @@ function fc_buscar_paciente(){
     var frm = _this.serialize();
     $.ajax({
         type: "POST",
-        url: "ajax/buscar_paciente",
+        url: "ajax/buscar_paciente_simplificada",
         data: frm,
         cache: false,
         dataType: 'json',
