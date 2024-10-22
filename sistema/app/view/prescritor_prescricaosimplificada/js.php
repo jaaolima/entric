@@ -589,7 +589,7 @@ function necessidades_calorias_total(_this, _event){
         _formula_valor = parseFloat(_formula_valor);
     }
 
-    var _formula_total = $("#proteina_kg").val();
+    var _formula_total = $("#kcal_dia").val();
     console.log(_formula_total);
     if (_formula_total !== ""){
         _formula_total = _formula_total.replace(",", ".");
