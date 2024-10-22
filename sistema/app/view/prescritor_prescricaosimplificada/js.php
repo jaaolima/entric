@@ -854,6 +854,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     if (typeof m_proteica === "undefined") {
         m_proteica = new Array(0, 0);
     }
+    console.log(m_calorica);
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
@@ -925,8 +926,6 @@ function rangeCaloria(calorias){
             }
         });
         $('#margem_calorica').on("slide", function(slideEvt) {
-            console.log($("#margem_proteica").val());
-            console.log($("#margem_calorica").val());
             busca_produto_relatorio(slideEvt.value, $("#margem_proteica").val());
         });
         busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
