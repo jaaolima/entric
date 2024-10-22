@@ -1696,13 +1696,13 @@ $(function(){
     $("#nec_agua_peso").on("change", function(e) {
         necessidades_peso($(this));        
     });
-    $("#kcal_kg").on("change keypress keyup", function(e) {
+    $("#kcal_dia").on("change keypress keyup", function(e) {
         necessidades_calorias_total($(this), e);
     });
-    $("#proteina_kg").on("change keypress keyup", function(e) {
+    $("#proteina_dia").on("change keypress keyup", function(e) {
         necessidades_proteinas_total($(this), e);
     });
-    $("#agua_kg").on("change keypress keyup", function(e) {
+    $("#agua_dia").on("change keypress keyup", function(e) {
         necessidades_agua_total($(this), e);
     });
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
