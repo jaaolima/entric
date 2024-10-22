@@ -1203,12 +1203,20 @@ $(function(){
         $("#agua_dia").attr("readonly", true);
     });
 
-    $("#btn_valores_manualmente").on("click", function(){
-        $("#div_valores").show();
-        $(".div_calculo").hide();
-        $("#kcal_dia").attr("readonly", false);
-        $("#proteina_dia").attr("readonly", false);
-        $("#agua_dia").attr("readonly", false);
+    $("#btn_valores_manualmente:visible").on("click", function(){
+        $("#div_valores:visible").show();
+        $(".div_calculo:visible").hide();
+        $("#kcal_dia:visible").attr("readonly", false);
+        $("#proteina_dia:visible").attr("readonly", false);
+        $("#agua_dia:visible").attr("readonly", false);
+    });
+
+    $("#btn_realizar_calculo:visible").on("click", function(){
+        $("#div_valores:visible").show();
+        $(".div_calculo:visible").show();
+        $("#kcal_dia:visible").attr("readonly", true);
+        $("#proteina_dia:visible").attr("readonly", true);
+        $("#agua_dia:visible").attr("readonly", true);
     });
 
     $('.numcomma').keypress(function(event) {
@@ -1291,9 +1299,7 @@ $(function(){
         }
     });
     $("#gerar_relatorio").on("click", function(e) {
-
         $("#div_botao_valores").show();
-       
     });
 
     $("#iniciar_nova_prescricao").on("click", function(){
