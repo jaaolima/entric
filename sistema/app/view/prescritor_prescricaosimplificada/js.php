@@ -54,31 +54,10 @@ function fc_retorno_pacientes(){
         var dados_json = dados;
         
         $('#cad_idade').val(dados_json.idade);
-        $('#cad_sexo').val(dados_json.sexo);
 
         $('#up_id').val(dados_json.id);
         $('#up_nome').val(dados_json.nome);
-        $('#up_celular').val(dados_json.celular);
-        $('#up_pertence').val(dados_json.pertence);
-        $('#up_parentesco').val(dados_json.parentesco);
         $('#up_data_nascimento').val(dados_json.data_nascimento);
-        $('input[type="radio"][name="up_sexo"]').filter('[value='+dados_json.sexo+']').prop('checked', true);
-        $('#up_email').val(dados_json.email);
-        $('#up_cpf').val(dados_json.cpf);
-        if (dados_json.cpf_possui == 1){            
-            $("#up_cpf").removeClass("error");
-            $("#up_cpf").prop('required', false);
-            $("#up_cpf").prop('disabled', true);
-        }
-        $('input[type="checkbox"][name="up_cpf_possui"]').filter('[value='+dados_json.cpf_possui+']').prop('checked', true);
-        $('#up_mae').val(dados_json.mae);
-        if (dados_json.mae_possui == 1){            
-            $("#up_mae").removeClass("error");
-            $("#up_mae").prop('required', false);
-            $("#up_mae").prop('disabled', true);
-        }
-        $('input[type="checkbox"][name="up_mae_possui"]').filter('[value='+dados_json.mae_possui+']').prop('checked', true);
-
         //if ( dados_json.relatorios.length == 0 ) {
         if ( dados_json.relatorios === null ) {
             $('#table_lista_pacientes > tbody').empty();

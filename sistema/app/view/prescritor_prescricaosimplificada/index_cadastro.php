@@ -110,80 +110,27 @@
                     <input type="hidden" name="action" id="action" value="atualizar"/>
                     <input type="hidden" name="up_id" id="up_id" value=""/>
                     <?php
-                    $item_dados =  $html->addRow(
-                                    array(
-                                        "up_nome" => array(
-                                            "col" => 12,
-                                            "label" => "Nome do Paciente:",
-                                            "required" => "required",
-                                        ),
-                                        "up_celular" => array(
-                                            "col" => 4,
-                                            "label" => "Celular:",
-                                            "class" => "telefone",
-                                            "placeholder" => "(99) 99999-9999",
-                                            "required" => "required"
-                                        ),
-                                        "up_pertence" => array(
-                                            "col" => 4,
-                                            "label" => "De quem é o celular?",
-                                            "required" => "required",
-                                            "select" => array(
-                                                "" => "selecione...",
-                                                "paciente" => "Paciente",
-                                                "familiar" => "Familiar",
-                                                "cuidador" => "Cuidador",
-                                            )
-                                        ),
-                                        "up_parentesco" => array(
-                                            "col" => 4,
-                                            "label" => "Qual o Parentesco?"
-                                        ),
-                                        "up_data_nascimento" => array(
-                                            "col" => 4,
-                                            "label" => "Data de Nascimento:",
-                                            "class" => "data",
-                                            "placeholder" => "dd/mm/aaaa",
-                                            "required" => "required"
-                                        ),
-                                        "up_sexo" => array(
-                                            "col" => 4,
-                                            "label" => "Sexo:",
-                                            "radiobutton" => array(
-                                                "masculino" => "Masculino",
-                                                "feminino" => "Feminino",
-                                            ),
-                                            "required" => "required"
-                                        ),
-                                        "up_email" => array(
-                                            "col" => 4,
-                                            "label" => "E-mail:",
-                                            "required" => "required"
-                                        ),
-                                        "up_cpf" => array(
-                                            "col" => 3,
-                                            "label" => "CPF:",
-                                            "class" => "cpf",
-                                            "placeholder" => "999.999.999-99",
-                                            "readonly" => "readonly"
-                                        ),
-                                        "up_cpf_possui" => array(
-                                            "col" => 3,
-                                            "label" => "Desconhece / Não possui",
-                                            "checkbox" => true
-                                        ),
-                                        "up_mae" => array(
-                                            "col" => 4,
-                                            "label" => "Nome da Mãe:",
-                                            "required" => "required"
-                                        ),
-                                        "up_mae_possui" => array(
-                                            "col" => 2,
-                                            "label" => "Desconhece",
-                                            "checkbox" => true
-                                        )
-                                    )
-                                );
+                        $item_dados =  $html->addRow(
+                            array(
+                                "up_nome" => array(
+                                    "col" => 12,
+                                    "label" => "Nome do Paciente:",
+                                    "required" => "required",
+                                ),
+                                "up_data_nascimento" => array(
+                                    "col" => 4,
+                                    "label" => "Data de Nascimento:",
+                                    "class" => "data",
+                                    "placeholder" => "dd/mm/aaaa",
+                                    "required" => "required"
+                                ),
+                                "up_peso" => array(
+                                    "col" => 4,
+                                    "label" => "Peso:",
+                                    "required" => "required"
+                                )
+                            )
+                        );
                         echo $item_dados;
                     ?>
                     <div class="form-group row pt-5">
@@ -259,10 +206,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Nome</th>
-                                                    <th scope="col">CPF</th>
-                                                    <th scope="col">Mãe</th>
                                                     <th scope="col">Data de Nascimento</th>
-                                                    <th scope="col">Sexo</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
