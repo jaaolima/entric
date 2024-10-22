@@ -6082,7 +6082,7 @@ $app->group("", function () use ($app) {
 		                for($i = 0; $i < count($pacientes); $i++){
 		                    $relatorios = $db->select_to_array("relatorios_simplificada",
 		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
-		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' AND id_prescritor=".$id_prescritor." ORDER BY id ASC",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
 		                    if ($relatorios){
 		                        $pacientes[$i]['relatorios'] = $relatorios;

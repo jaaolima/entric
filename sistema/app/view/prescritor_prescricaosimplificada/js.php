@@ -57,6 +57,7 @@ function fc_retorno_pacientes(){
 
         $('#up_id').val(dados_json.id);
         $('#up_nome').val(dados_json.nome);
+        $('#up_peso').val(dados_json.peso);
         $('#up_data_nascimento').val(dados_json.data_nascimento);
         //if ( dados_json.relatorios.length == 0 ) {
         if ( dados_json.relatorios === null ) {
@@ -286,7 +287,7 @@ function fc_buscar_paciente(){
             }else{
                 var tr = '';
                 $.each(data, function(i, item) {
-                    tr += '<tr rel="'+ item.id +'"><td><div class="retorno_pacientes_relatorios" style="display: none;">' + JSON.stringify(item) + '</div>' + item.nome + '</td><td>' + item.cpf + '</td><td>' + item.mae + '</td><td>' + item.data_nascimento + '</td><td>' + item.sexo + '</td></tr>';
+                    tr += '<tr rel="'+ item.id +'"><td><div class="retorno_pacientes_relatorios" style="display: none;">' + JSON.stringify(item) + '</div>' + item.nome + '</td><td>' + item.data_nascimento + '</td></tr>';
                 });
                 $('#table_retorno_pacientes > tbody').empty();
                 $('#table_retorno_pacientes').append(tr);

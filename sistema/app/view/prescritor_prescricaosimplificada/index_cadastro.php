@@ -159,7 +159,7 @@
                 </div>
                 <div class="form-group row pt-5">
                     <div class="col-sm-6 text-left">
-                        <button type="button" onclick="window.location.href='prescritor_relatorioalta'" class="btn btn-secondary btn-form">VOLTAR</button>
+                        <button type="button" onclick="window.location.href='prescritor_prescricaosimplificada'" class="btn btn-secondary btn-form">VOLTAR</button>
                     </div>
                     <div class="col-sm-6 text-right">
                         <button type="button" class="btn btn-warning btn-form" id="gerar_relatorio">GERAR NOVO RELATÓRIO</button>
