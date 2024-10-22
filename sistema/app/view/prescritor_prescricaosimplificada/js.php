@@ -719,7 +719,7 @@ function necessidades_agua_total_atualizar(_this, _event){
                 _event.preventDefault();
             }
         }
-
+ 
         var _formula_valor = $("#up_agua_kg").val();
         if (_formula_valor !== ""){
             _formula_valor = _formula_valor.replace(",", ".");
@@ -925,6 +925,8 @@ function rangeCaloria(calorias){
             }
         });
         $('#margem_calorica').on("slide", function(slideEvt) {
+            console.log($("#margem_proteica").val());
+            console.log($("#margem_calorica").val());
             busca_produto_relatorio(slideEvt.value, $("#margem_proteica").val());
         });
         busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
