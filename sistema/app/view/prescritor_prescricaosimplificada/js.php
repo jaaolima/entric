@@ -855,9 +855,9 @@ function busca_produto_relatorio(m_calorica, m_proteica){
         m_proteica = new Array(0, 0);
     }
     // m_calorica = JSON.stringify(m_calorica);
-    // console.log(m_calorica);
+    console.log(m_calorica);
     // m_proteica = JSON.stringify(m_proteica);
-    // console.log(m_proteica);
+    console.log(m_proteica);
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
