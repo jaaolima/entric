@@ -854,10 +854,10 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     if (typeof m_proteica === "undefined") {
         m_proteica = new Array(0, 0);
     }
-    m_calorica = JSON.stringify(m_calorica);
-    console.log(m_calorica);
-    m_proteica = JSON.stringify(m_proteica);
-    console.log(m_proteica);
+    // m_calorica = JSON.stringify(m_calorica);
+    // console.log(m_calorica);
+    // m_proteica = JSON.stringify(m_proteica);
+    // console.log(m_proteica);
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
@@ -929,7 +929,7 @@ function rangeCaloria(calorias){
             }
         });
         $('#margem_calorica').on("slide", function(slideEvt) {
-            busca_produto_relatorio(slideEvt.value, $("#margem_proteica").val());
+            busca_produto_relatorio($(this).val(), $("#margem_proteica").val());
         });
         busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
     }
@@ -977,7 +977,7 @@ function rangeProteina(proteina){
             }
         });
         $('#margem_proteica').on("slide", function(slideEvt) {
-            busca_produto_relatorio($("#margem_calorica").val(), slideEvt.value);
+            busca_produto_relatorio($("#margem_calorica").val(), $(this).val());
         });
         busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
         $("#selecao_dieta").val("true");
