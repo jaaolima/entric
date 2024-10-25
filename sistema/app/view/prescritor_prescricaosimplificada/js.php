@@ -848,6 +848,7 @@ function checar_pesos(){
 }
 
 function busca_produto_relatorio(m_calorica, m_proteica){
+    console.log(m_calorica, m_proteica);
     if (typeof m_calorica === "undefined") {
         m_calorica = new Array(0, 0);
     }
