@@ -10,7 +10,7 @@ class LoginModel extends Model {
                                             "tipo" => $tipo));
 
         if (isset($dados["status"])){
-            Redirect(BASE_PATH . '/logout');
+            Redirect(BASE_PATH . '/logout'); 
             return true;
 
         }else{

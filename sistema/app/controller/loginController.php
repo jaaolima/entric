@@ -8,7 +8,7 @@ class LoginController extends Controller {
     function index($idretorno = null) { 
         //echo endecrypt("encrypt", 374);
         if (verifyFormToken("loginForm")){
-            if (isset($_POST['_ac'])){
+            if (isset($_POST['_ac'])){ 
 
                 if ($_POST['_ac'] == "login"){
                     if (isset($_POST['email']) == FALSE ) $email = ""; else $email = $_POST['email'];
