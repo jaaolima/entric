@@ -3,7 +3,7 @@ ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
 
-class LoginModel extends Model {
+class LoginModel extends Model { 
     public function checarLogin($login=null, $senha=null, $tipo=1) {
         $dados = httpPost("login", array(   "email" => $login,
                                             "senha" => $senha,
