@@ -1971,6 +1971,7 @@ $app->group("", function () use ($app) {
 		                            if (!isset($nf_ptn_dia)) $nf_ptn_dia = null;
 
 
+									var_dump($margem_liberadas);
 		                            // se tiver no ranger, listar
 		                            if ($margem_liberadas){
 		                                if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
