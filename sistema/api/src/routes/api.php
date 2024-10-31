@@ -2022,6 +2022,8 @@ $app->group("", function () use ($app) {
 		                                                <td>'.$valor_fibra.'</td>
 		                                            </tr>';
 		                                $titulo = "";
+
+										var_dump($retorno);
 		                            }
 
 		                            $cont_array = $cont_array+1;
@@ -2035,7 +2037,6 @@ $app->group("", function () use ($app) {
 		                }
 		            }
 		        }
-				var_dump($retorno);
 		        if ($retorno<>"") $retorno .= "</tbody>";
 
 
