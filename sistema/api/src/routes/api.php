@@ -2091,8 +2091,7 @@ $app->group("", function () use ($app) {
 					$margem_proteica[0] = 0; 
 					$margem_proteica[1] = 0;
 				}
-				var_dump($margem_proteica);
-				var_dump($margem_calorica);
+				
 		        $query = '';
 		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';

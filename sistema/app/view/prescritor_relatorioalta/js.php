@@ -789,6 +789,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     if (typeof m_proteica === "undefined") {
         m_proteica = new Array(0, 0);
     }
+    console.log(m_calorica, m_proteica);
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
