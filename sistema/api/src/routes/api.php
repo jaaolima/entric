@@ -2067,31 +2067,15 @@ $app->group("", function () use ($app) {
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
-
-
+				
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // construção de query MySQL
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		        if (isset($dados['margem_calorica']) and ($dados['margem_calorica'] <> "")){ 
-					// $margem_calorica = json_decode($_POST['margem_calorica'], true);
-					$margem_calorica = explode(",", $dados['margem_calorica']);
-					$margem_calorica[0] = strtok($margem_calorica[0],' ');
-					$margem_calorica[1] = strtok($margem_calorica[1],' ');
-				}else{ 
-					$margem_calorica[0] = 0; $margem_calorica[1] = 0;
-				}
-		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ 
-					// $margem_proteica = json_decode($_POST['margem_proteica'], true);
-					$margem_proteica = explode(",", $dados['margem_proteica']); 
-					$margem_proteica[0] = strtok($margem_proteica[0],' '); 
-					$margem_proteica[1] = strtok($margem_proteica[1],' '); 
-				}else{ 
-					$margem_proteica[0] = 0; 
-					$margem_proteica[1] = 0;
-				}
-				
+				if (isset($dados['margem_calorica']) and ($dados['margem_calorica'] <> "")){ $margem_calorica = explode(",", $dados['margem_calorica']); $margem_calorica[0] = strtok($margem_calorica[0],' '); $margem_calorica[1] = strtok($margem_calorica[1],' '); }else{ $margem_calorica[0] = 0; $margem_calorica[1] = 0;}
+		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ $margem_proteica = explode(",", $dados['margem_proteica']); $margem_proteica[0] = strtok($margem_proteica[0],' '); $margem_proteica[1] = strtok($margem_proteica[1],' '); }else{ $margem_proteica[0] = 0; $margem_proteica[1] = 0;}
+
 		        $query = '';
 		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
