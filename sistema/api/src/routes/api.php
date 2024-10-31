@@ -2060,7 +2060,6 @@ $app->group("", function () use ($app) {
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
-		var_dump($data);
 
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
