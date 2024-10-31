@@ -2023,23 +2023,20 @@ $app->group("", function () use ($app) {
 		                                            </tr>';
 		                                $titulo = "";
 
-										var_dump($retorno);
 		                            }
 
 		                            $cont_array = $cont_array+1;
 		                        }
 
 		                        // ajustar o rowspan da listagem de produtos caso esteja errado
-		                        if (($rowspan <> $medida_dc) and ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
-		                            //$retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
-		                        }
+		                        // if (($rowspan <> $medida_dc) and ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
+		                        //     $retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
+		                        // }
 		                    }
 		                }
 		            }
 		        }
 		        if ($retorno<>"") $retorno .= "</tbody>";
-
-
 
 		        $data = $retorno;
 			}
@@ -2050,6 +2047,8 @@ $app->group("", function () use ($app) {
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
+		var_dump($data);
+		
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
