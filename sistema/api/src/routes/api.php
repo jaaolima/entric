@@ -142,6 +142,19 @@ $app->add(function (Request $request, Response $response, $next) {
 	return $response;
 });
 
+function round_up($valor, $rounded = 1){
+    if ($valor > 0){
+        $final = 0;
+        do {
+            $final = $final + $rounded;
+        } while ($valor > $final);
+        return $final;
+        
+    }else{
+        return $valor;
+    }
+}
+
 $app->group("", function () use ($app) {
 
 	$app->get("/ping", function (Request $request, Response $response) {
@@ -2048,7 +2061,7 @@ $app->group("", function () use ($app) {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
 		var_dump($data);
-		
+
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
