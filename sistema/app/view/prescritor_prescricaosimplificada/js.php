@@ -848,19 +848,22 @@ function checar_pesos(){
 }
 
 function busca_produto_relatorio(m_calorica, m_proteica){
-    console.log(m_calorica, m_proteica);
+
     if (typeof m_calorica === "undefined") {
         m_calorica = new Array(0, 0);
+    }else{
+        m_calorica = m_calorica.split(',');
     }
     if (typeof m_proteica === "undefined") {
         m_proteica = new Array(0, 0);
+    }else{
+        m_proteica = m_proteica.split(',');
     }
+
     m_calorica = JSON.stringify(m_calorica);
     m_proteica = JSON.stringify(m_proteica);
     console.log(m_calorica, m_proteica);
-
     data = $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val();
-    console.log(data);
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
