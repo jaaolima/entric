@@ -129,8 +129,8 @@ else{
                 </a>
                 <!-- Submenu -->
                 <ul>
-                    <li><a href="prescritor_prescricaosimplificada">Dieta Enteral</a></li>
-                    <li><a href="prescritor_suplemento">Suplemento</a></li>
+                    <li class="sub-menu"><a href="prescritor_prescricaosimplificada">Dieta Enteral</a></li>
+                    <li class="sub-menu"><a href="prescritor_suplemento">Suplemento</a></li>
                 </ul>
             </li>
             <li class="mega-menu mega-menu-lg">

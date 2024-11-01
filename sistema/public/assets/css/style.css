@@ -2708,6 +2708,10 @@ svg.pulse-svg .third-circle {
     background-color: #f3f1fa;
 }
 
+.sub-menu:active{
+    color: black !important;
+}
+
 .nk-sidebar .metismenu .has-arrow:after {
     right: 2.5rem;
     top: 48%;
