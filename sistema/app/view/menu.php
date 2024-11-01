@@ -123,7 +123,15 @@ else{
         <ul class="metismenu" id="menu">
             <li class="nav-label"></li>
             <li class="mega-menu mega-menu-lg">
-                <a href="prescritor_prescricaosimplificada"><img src="assets/images/icones/icon-prescricao-simplificada.svg" border="0"><span class="nav-text">Prescrição simplificada</span></a>
+                <a href="#">
+                    <img src="assets/images/icones/icon-prescricao-simplificada.svg" border="0">
+                    <span class="nav-text">Prescrição Simplificada</span>
+                </a>
+                <!-- Submenu -->
+                <ul>
+                    <li><a href="prescritor_prescricaosimplificada">Dieta Enteral</a></li>
+                    <li><a href="prescritor_suplemento">Suplemento</a></li>
+                </ul>
             </li>
             <li class="mega-menu mega-menu-lg">
                 <a href="prescritor_relatorioalta"><img src="assets/images/icones/icon-gerar-relatorio.png" border="0"><span class="nav-text">Relatório de Alta</span></a>
