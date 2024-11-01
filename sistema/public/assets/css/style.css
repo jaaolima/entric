@@ -2708,7 +2708,7 @@ svg.pulse-svg .third-circle {
     background-color: #f3f1fa;
 }
 
-.sub-menu:active{
+.sub-menu.active a{
     color: black !important;
 }
 
