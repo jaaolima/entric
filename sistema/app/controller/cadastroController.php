@@ -9,7 +9,7 @@ class CadastroController extends Controller {
     function index($idretorno = null) {
     }
     
-    function prescritor() {
+    function prescritor() { 
 
         if (isset($_POST['_ac'])){
             if ($_POST['_ac'] == "cadastrar_prescritor"){

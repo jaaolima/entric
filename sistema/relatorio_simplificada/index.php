@@ -801,7 +801,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
 													
 											$volume_final = round_up($volume_horario);
-											$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']);
+											$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']); 
 											$gotejamento = (($volume_final*20) / ($qtd_horas));
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
 													
