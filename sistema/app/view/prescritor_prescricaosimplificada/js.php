@@ -1271,100 +1271,100 @@ $(function(){
     $('#up_agua_kg').mask("9?9");
     $('#up_agua_dia').mask("9?999");
 
-    $("#kcal_kg").on('blur', function(){
-        peso = $("#peso").val();
-        kcal = $(this).val();
-        if(peso != '' && kcal != ''){
-            total = parseFloat(peso) * parseFloat(kcal);
-            $("#kcal_dia").val(total);
-        }
-    });
+    // $("#kcal_kg").on('blur', function(){
+    //     peso = $("#peso").val();
+    //     kcal = $(this).val();
+    //     if(peso != '' && kcal != ''){
+    //         total = parseFloat(peso) * parseFloat(kcal);
+    //         $("#kcal_dia").val(total);
+    //     }
+    // });
 
-    $("#proteina_kg").on('blur', function(){
-        peso = $("#peso").val();
-        proteina = $(this).val();
-        if(peso != '' && proteina != ''){
-            proteina = proteina.replace(",", ".");
-            total = parseFloat(peso) * parseFloat(proteina);
-            $("#proteina_dia").val(total);
-        }
-    });
+    // $("#proteina_kg").on('blur', function(){
+    //     peso = $("#peso").val();
+    //     proteina = $(this).val();
+    //     if(peso != '' && proteina != ''){
+    //         proteina = proteina.replace(",", ".");
+    //         total = parseFloat(peso) * parseFloat(proteina);
+    //         $("#proteina_dia").val(total);
+    //     }
+    // });
 
-    $("#agua_kg").on('blur', function(){
-        peso = $("#peso").val();
-        agua = $(this).val();
-        if(peso != '' && agua != ''){
-            total = parseInt(peso) * parseInt(agua);
-            $("#agua_dia").val(total);
-        }
-    });
+    // $("#agua_kg").on('blur', function(){
+    //     peso = $("#peso").val();
+    //     agua = $(this).val();
+    //     if(peso != '' && agua != ''){
+    //         total = parseInt(peso) * parseInt(agua);
+    //         $("#agua_dia").val(total);
+    //     }
+    // });
 
-    $("#up_kcal_kg").on('blur', function(){
-        peso = $("#up_peso").val();
-        kcal = $(this).val();
-        if(peso != '' && kcal != ''){
-            total = parseFloat(peso) * parseFloat(kcal);
-            $("#up_kcal_dia").val(total);
-        }
-    });
+    // $("#up_kcal_kg").on('blur', function(){
+    //     peso = $("#up_peso").val();
+    //     kcal = $(this).val();
+    //     if(peso != '' && kcal != ''){
+    //         total = parseFloat(peso) * parseFloat(kcal);
+    //         $("#up_kcal_dia").val(total);
+    //     }
+    // });
 
-    $("#up_proteina_kg").on('blur', function(){
-        peso = $("#up_peso").val();
-        proteina = $(this).val();
-        if(peso != '' && proteina != ''){
-            proteina = proteina.replace(",", ".");
-            total = parseFloat(peso) * parseFloat(proteina);
-            $("#up_proteina_dia").val(total);
-        }
-    });
+    // $("#up_proteina_kg").on('blur', function(){
+    //     peso = $("#up_peso").val();
+    //     proteina = $(this).val();
+    //     if(peso != '' && proteina != ''){
+    //         proteina = proteina.replace(",", ".");
+    //         total = parseFloat(peso) * parseFloat(proteina);
+    //         $("#up_proteina_dia").val(total);
+    //     }
+    // });
 
-    $("#up_agua_kg").on('blur', function(){
-        peso = $("#up_peso").val();
-        agua = $(this).val();
-        if(peso != '' && agua != ''){
-            total = parseInt(peso) * parseInt(agua);
-            $("#up_agua_dia").val(total);
-        }
-    });
+    // $("#up_agua_kg").on('blur', function(){
+    //     peso = $("#up_peso").val();
+    //     agua = $(this).val();
+    //     if(peso != '' && agua != ''){
+    //         total = parseInt(peso) * parseInt(agua);
+    //         $("#up_agua_dia").val(total);
+    //     }
+    // });
 
     $("#btn_realizar_calculo").on("click", function(){
         $("#div_valores").show();
         $(".div_calculo").show();
-        $("#kcal_dia").attr("disabled", true);
-        $("#proteina_dia").attr("disabled", true);
-        $("#agua_dia").attr("disabled", true);
+        $("#kcal_dia").attr("readonly", true);
+        $("#proteina_dia").attr("readonly", true);
+        $("#agua_dia").attr("readonly", true);
     });
 
     $("#btn_valores_manualmente").on("click", function(){
         $("#div_valores").show();
         $(".div_calculo").hide();
-        $("#kcal_dia").attr("disabled", false);
-        $("#proteina_dia").attr("disabled", false);
-        $("#agua_dia").attr("disabled", false);
+        $("#kcal_dia").attr("readonly", false);
+        $("#proteina_dia").attr("readonly", false);
+        $("#agua_dia").attr("readonly", false);
     });
 
     $("#btn_realizar_calculo").on("click", function(){
         $("#div_valores").show();
         $(".div_calculo").show();
-        $("#kcal_dia").attr("disabled", true);
-        $("#proteina_dia").attr("disabled", true);
-        $("#agua_dia").attr("disabled", true);
+        $("#kcal_dia").attr("readonly", true);
+        $("#proteina_dia").attr("readonly", true);
+        $("#agua_dia").attr("readonly", true);
     });
 
     $("#btn_valores_manualmente_atualizar").on("click", function(){
         $("#div_valores_atualizar").show();
         $(".div_calculo_atualizar").hide();
-        $("#up_kcal_dia").attr("disabled", false);
-        $("#up_proteina_dia").attr("disabled", false);
-        $("#up_agua_dia").attr("disabled", false);
+        $("#up_kcal_dia").attr("readonly", false);
+        $("#up_proteina_dia").attr("readonly", false);
+        $("#up_agua_dia").attr("readonly", false);
     });
 
     $("#btn_realizar_calculo_atualizar").on("click", function(){
         $("#div_valores_atualizar").show();
         $(".div_calculo_atualizar").show();
-        $("#up_kcal_dia").attr("disabled", true);
-        $("#up_proteina_dia").attr("disabled", true);
-        $("#up_agua_dia").attr("disabled", true);
+        $("#up_kcal_dia").attr("readonly", true);
+        $("#up_proteina_dia").attr("readonly", true);
+        $("#up_agua_dia").attr("readonly", true);
     });
 
     $('.numcomma').keypress(function(event) {
@@ -1839,12 +1839,31 @@ $(function(){
     });
 
     $("#kcal_kg").on("change keypress keyup", function(e) {
+        peso = $("#peso").val();
+        kcal = $(this).val();
+        if(peso != '' && kcal != ''){
+            total = parseFloat(peso) * parseFloat(kcal);
+            $("#kcal_dia").val(total);
+        }
         necessidades_calorias_total($(this), e);
     });
     $("#proteina_kg").on("change keypress keyup", function(e) {
+        peso = $("#peso").val();
+        proteina = $(this).val();
+        if(peso != '' && proteina != ''){
+            proteina = proteina.replace(",", ".");
+            total = parseFloat(peso) * parseFloat(proteina);
+            $("#proteina_dia").val(total);
+        }
         necessidades_proteinas_total($(this), e);
     });
     $("#agua_kg").on("change keypress keyup", function(e) {
+        peso = $("#peso").val();
+        agua = $(this).val();
+        if(peso != '' && agua != ''){
+            total = parseInt(peso) * parseInt(agua);
+            $("#agua_dia").val(total);
+        }
         necessidades_agua_total($(this), e);
     });
 
@@ -1859,12 +1878,31 @@ $(function(){
     });
 
     $("#up_kcal_kg").on("change keypress keyup", function(e) {
+        peso = $("#up_peso").val();
+        kcal = $(this).val();
+        if(peso != '' && kcal != ''){
+            total = parseFloat(peso) * parseFloat(kcal);
+            $("#up_kcal_dia").val(total);
+        }
         necessidades_calorias_total_atualizar($(this), e);
     });
     $("#up_proteina_kg").on("change keypress keyup", function(e) {
+        peso = $("#up_peso").val();
+        proteina = $(this).val();
+        if(peso != '' && proteina != ''){
+            proteina = proteina.replace(",", ".");
+            total = parseFloat(peso) * parseFloat(proteina);
+            $("#up_proteina_dia").val(total);
+        }
         necessidades_proteinas_total_atualizar($(this), e);
     });
     $("#up_agua_kg").on("change keypress keyup", function(e) {
+        peso = $("#up_peso").val();
+        agua = $(this).val();
+        if(peso != '' && agua != ''){
+            total = parseInt(peso) * parseInt(agua);
+            $("#up_agua_dia").val(total);
+        }
         necessidades_agua_total_atualizar($(this), e);
     });
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
