@@ -813,7 +813,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 											$fibras_dia = ($dias_grama * $produto[14]) / 100;
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($fibras_dia, 1)." g";
-										}
+										} 
 									}
 
 									ksort($dados_ordem);
