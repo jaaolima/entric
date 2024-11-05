@@ -2523,6 +2523,8 @@ $app->group("", function () use ($app) {
 		                                $nf_kcal_dia = ($_volume_final * $produtos[$i]['kcal']) / 100;
 		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
 
+										var_dump($_volume_final);
+										var_dump($produtos[$i]['ptn']);
 										$nf_ptn_dia = ($_volume_final * $produtos[$i]['ptn']) / 100;
 		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
 
