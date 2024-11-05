@@ -2520,12 +2520,10 @@ $app->group("", function () use ($app) {
 		                                $sistema = "aberto_liquido";
 		                                $_volume_final = chkfloat($volume_final);
 
-		                                $nf_kcal_dia = ($_volume_final * $produtos[$i]['kcal']) / 100;
+		                                $nf_kcal_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['kcal'])) / 100;
 		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
 
-										var_dump($_volume_final);
-										var_dump($produtos[$i]['ptn']);
-										$nf_ptn_dia = ($_volume_final * $produtos[$i]['ptn']) / 100;
+										$nf_ptn_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['ptn'])) / 100;
 		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
 
 		                                $_fibra = chkstring2float($produtos[$i]['fibras']);               
