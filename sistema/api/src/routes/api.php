@@ -2519,7 +2519,14 @@ $app->group("", function () use ($app) {
 		                                $_valor_proteico = ($_volume_horario / 100) * $_ptn;
 		                                $sistema = "aberto_liquido";
 
+		                                $nf_kcal_dia = ($volume_final * $produtos[$i]['kcal']) / 100;
+		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
+
+										$nf_ptn_dia = ($volume_final * $produtos[$i]['ptn']) / 100;
+		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
+
 		                                $_volume_final = chkfloat($volume_final);
+										
 		                                $_fibra = chkstring2float($produtos[$i]['fibras']);
 		                                                                
 		                                $valor_fibra = ($_volume_final * $_fibra);                                
