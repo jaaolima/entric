@@ -1744,7 +1744,14 @@ $app->group("", function () use ($app) {
 		                                    $valor_calorio = $range_kcal;
 		                                    $valor_proteico = $range_ptn;
 
-		                                    $calorias_dia = $range_kcal;
+		                                    // $calorias_dia = $range_kcal;
+
+											$medida = ((chkstring2float($produto[9]) * chkstring2float($produto[4])) / chkfloat($produto[10]));
+											$medida = round($medida * 2) / 2; // 0.5 arrendodar
+
+											$grama = chkstring2float($produto[11]);
+											$grama = (($grama * $medida) / chkstring2float($produto[9]));
+		                                    $calorias_dia = ;
 		                                    $proteina_dia = $range_ptn;
 
 		                                    if (
@@ -2030,8 +2037,8 @@ $app->group("", function () use ($app) {
 		                                                </td>
 		                                                <td>'.$volume_final.'</td>
 		                                                <td>'.$volume_horario.'</td>
-		                                                <td>'.numberFormatPrecision($valor_calorio, 0).'</td>
-		                                                <td>'.numberFormatPrecision($valor_proteico, 1).'</td>
+		                                                <td>'.$nf_kcal_dia.'</td>
+		                                                <td>'.$nf_ptn_dia.'</td>
 		                                                <td>'.$valor_fibra.'</td>
 		                                            </tr>';
 		                                $titulo = "";
