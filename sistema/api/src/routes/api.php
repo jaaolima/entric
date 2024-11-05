@@ -1744,14 +1744,7 @@ $app->group("", function () use ($app) {
 		                                    $valor_calorio = $range_kcal;
 		                                    $valor_proteico = $range_ptn;
 
-		                                    // $calorias_dia = $range_kcal;
-
-											$medida = ((chkstring2float($produto[9]) * chkstring2float($produto[4])) / chkfloat($produto[10]));
-											$medida = round($medida * 2) / 2; // 0.5 arrendodar
-
-											$grama = chkstring2float($produto[11]);
-											$grama = (($grama * $medida) / chkstring2float($produto[9]));
-		                                    $calorias_dia = ;
+		                                    $calorias_dia = $range_kcal;
 		                                    $proteina_dia = $range_ptn;
 
 		                                    if (
