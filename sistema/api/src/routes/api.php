@@ -2680,8 +2680,8 @@ $app->group("", function () use ($app) {
 		                                                </td>
 		                                                <td>'.$volume_final.'</td>
 		                                                <td>'.$volume_horario.'</td>
-		                                                <td>'.numberFormatPrecision($valor_calorio, 0).'</td>
-		                                                <td>'.numberFormatPrecision($valor_proteico, 1).'</td>
+		                                                <td>'.$nf_kcal_dia.'</td>
+		                                                <td>'.$nf_ptn_dia.'</td>
 		                                                <td>'.$valor_fibra.'</td>
 		                                            </tr>';
 		                                $titulo = "";
