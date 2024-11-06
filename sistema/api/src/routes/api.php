@@ -208,6 +208,7 @@ $app->group("", function () use ($app) {
 	                            "prescritor_fornecedores", 
 	                            "prescritor_relatorioalta", 
 	                            "prescritor_prescricaosimplificada", 
+	                            "prescritor_prescricaosuplemento", 
 	                            "prescritor_videosalta", 
 	                            "ajax"); 
 
