@@ -49,11 +49,13 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_EnviarEmailPaciente",
 				"/ajax_getPacientes",
 				"/ajax_getPacientesSimplificada",
+				"/ajax_getPacientesSuplemento",
 				"/ajax_getDistribuidores",
 				"/ajax_stPaciente",
 				"/ajax_ptPaciente",
 				"/ajax_ptPacienteSimplificada",
 				"/ajax_stPacienteSimplificada",
+				"/ajax_stPacienteSuplemento",
 				"/cadastro_cadastrar",
 				"/cadastro_cadastrarPaciente",
 				"/cadastro_chkCodigo",
@@ -6799,6 +6801,76 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/ajax_getPacientesSuplemento", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+
+				$bind_query = "";
+		        if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+		            $bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
+		        }
+				if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+		        }
+		        if ($bind_query <> ""){
+		            $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+		            $pacientes = $db->select_to_array("pacientes_suplemento",
+		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
+		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
+		                                                null);
+		            if ($pacientes){
+		                for($i = 0; $i < count($pacientes); $i++){
+		                    $relatorios = $db->select_to_array("relatorios_suplemento",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
+		                                                        null);
+		                    if ($relatorios){
+		                        $pacientes[$i]['relatorios'] = $relatorios;
+		                        rsort($pacientes[$i]['relatorios']);
+		                    }else{
+		                        $pacientes[$i]['relatorios'] = null;
+		                    }
+
+		                    $date = new DateTime($pacientes[$i]['idade']);
+		                    $now = new DateTime();
+		                    $interval = $now->diff($date);
+		                    $pacientes[$i]['idade'] = $interval->y;
+		                }
+		            }
+
+		            $retorno = $pacientes;
+
+		        }else{
+		            $retorno = array();
+		        }
+
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/ajax_getDistribuidores", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
@@ -7046,6 +7118,63 @@ $app->group("", function () use ($app) {
 								':data_nascimento' => date2sql($dados["data_nascimento"]),             
 								':data_criacao' => date("Y-m-d H:i:s"));
 				$retorno = $db->insert("pacientes_simplificada", $bind);
+				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_stPacienteSuplemento", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+				// if (isset($dados['cpf']) and ($dados['cpf'] == "") and ($dados['cpf_possui'] == "0")){
+		        //     $retorno = array("error" => "Preencha o formulário corretamente.");
+		        // }
+		        // if (!isset($dados['cpf']) or ($dados['cpf'] == "")){
+		        //     $dados['cpf'] = "";
+		        //     $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
+		        //     $mensagem_error = "Já possui cadastro com estes dados.";
+		        // }
+		        // else{
+		        //     $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
+		        //     $mensagem_error = "Este CPF já possui cadastro.";
+		        // }
+
+		        // $bind = array(  ':email' => $dados["email"],
+				// 				':tipo' => 1,
+				// 				':status' => 0,                     
+				// 				':data_criacao' => date("Y-m-d H:i:s") );
+				// $usuario = $db->insert("usuarios", $bind);
+
+				$bind = array(	':id_prescritor' => $id_prescritor,
+								':nome' => $dados["nome"],
+								':telefone' => $dados["telefone"],
+								':hospital' => $dados["hospital"],
+								':atendimento' => $dados["atendimento"],
+								':data_nascimento' => date2sql($dados["data_nascimento"]),             
+								':data_criacao' => date("Y-m-d H:i:s"));
+				$retorno = $db->insert("pacientes_suplemento", $bind);
 				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
 
 		        $data = $retorno;

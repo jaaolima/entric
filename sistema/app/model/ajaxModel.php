@@ -266,6 +266,14 @@ class AjaxModel extends Model {
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id']));       
         return $retorno;               
+    }  
+    
+    function getPacientesSuplemento($dados = null) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_getPacientesSuplemento", array( "token" => $_SESSION['token'],
+                                                            "dados" => $dados,
+                                                            "id_prescritor" => $bruker->usuario['id']));       
+        return $retorno;               
     }   
 
     function getDistribuidores($dados = null) {
@@ -302,6 +310,14 @@ class AjaxModel extends Model {
     function stPacienteSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
+                                                            "dados" => $dados,
+                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+        return $retorno;
+    } 
+
+    function stPacienteSuplemento($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stPacienteSuplemento", array("token" => $_SESSION['token'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id'] ));       
         return $retorno;

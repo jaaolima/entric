@@ -113,7 +113,7 @@ function fc_cadastrar_paciente(){
             var formSerialize = frm.serialize();
             $.ajax({
                 type: "POST",
-                url: "ajax/cadastrar_paciente_simplificada", 
+                url: "ajax/cadastrar_paciente_suplemento", 
                 data: formSerialize,
                 cache: false,
                 dataType: 'json',
