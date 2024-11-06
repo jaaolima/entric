@@ -1,6 +1,6 @@
 <?php
  
-class Prescritor_prescricaosimplificadaModel extends Model {
+class Prescritor_prescricaosuplementoModel extends Model {
 
     function insertDados($dados) { 
         /*global $bruker;
