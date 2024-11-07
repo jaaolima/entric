@@ -2113,12 +2113,11 @@ $(function(){
             calculo_fil_todos = $(this).val();
         }
         if (calculo_fil_todos == 'Todos') {
-            console.log('Todos');
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').prop('checked', true);
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', true);
         }else{
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').prop('checked', false);
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', false);
         }
     });
 
@@ -2130,9 +2129,11 @@ $(function(){
         if (calculo_fil_todos == 'Todos') {
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').prop('checked', true);
             $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hiperproteico').prop('checked', true);
         }else{
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').prop('checked', false);
             $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hiperproteico').prop('checked', false);
         }
     });
 
@@ -2510,8 +2511,8 @@ $(function(){
             }else{
                 var numi = i;
             }            
-            horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
-                                  '<div class="col-sm-3"><input type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="horario_'+numi+'" class="form-control hora"></div>';
+            horarios = horarios + '<div class="col-sm-3">Horário '+numi+' (opcional):</div>'+
+                                  '<div class="col-sm-3"><input type="text" placeholder="00:00" name="dieta_horario['+numi+']" id="horario_'+numi+'" class="form-control hora"></div>';
         }
         $('.fracio_horario').html(horarios);
         $('.hora').mask("99:99");
@@ -2529,8 +2530,8 @@ $(function(){
                 var numi = i;
             }
             
-            horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
-                                  '<div class="col-sm-3"><input type="text" placeholder="00:00" required="required" name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
+            horarios = horarios + '<div class="col-sm-3">Horário '+numi+' (opcional):</div>'+
+                                  '<div class="col-sm-3"><input type="text" placeholder="00:00"  name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
         }
         $('.hidratacao_horarios').html(horarios);
         $('.hora').mask("99:99");

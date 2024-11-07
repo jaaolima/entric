@@ -8,19 +8,13 @@
             <div class="modal-body">
                 <form id="modal_form_fracionamento" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
                     <div class="row">
-                        <div class="col-sm-6 none" id="modal_sistema_aberto">
+                        <div class="col-sm-12" id="modal_sistema_aberto">
                             <div class="row mt-4">
                                 <div class="col-sm-3">
                                     Quantas vezes ao dia?
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" maxlength="2" required="required" name="fracionamento_dia" id="fracionamento_dia" class="form-control numeros">
-                                </div>
-                                <div class="col-sm-3">
-                                    Horário(s) (opcional):
-                                </div>
-                                <div class="col-sm-3">
-                                    <input type="text" required="required" placeholder="00:00" name="qtas_horas" id="qtas_horas" class="form-control hora">
                                 </div>
                             </div>
                             <div class="row mt-4 fracio_horario">
