@@ -1942,6 +1942,7 @@ $(function(){
         // else{
             
         // }
+        console.log($("input[name='carac_oral'].filtro_1:checked").length, $("input[name='carac_oral'].filtro_2:checked").length, $("input[name='carac_oral'].filtro_3:checked").length, $("input[name='carac_oral'].filtro_4:checked").length);
         if ($("input[name='carac_oral'].filtro_1:checked").length > 0 && 
             $("input[name='carac_oral'].filtro_2:checked").length > 0 && 
             $("input[name='carac_oral'].filtro_3:checked").length > 0 && 
