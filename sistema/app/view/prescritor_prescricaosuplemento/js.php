@@ -227,7 +227,7 @@ function fc_atualizar_paciente(){
             var formSerialize = frm.serialize();
             $.ajax({
                 type: "POST",
-                url: "ajax/atualizar_paciente_simplificada",
+                url: "ajax/atualizar_paciente_suplemento",
                 data: formSerialize,
                 cache: false,
                 dataType: 'json',
@@ -1263,6 +1263,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
+    $('#up_telefone').mask("(99)99999-9999");
 
 
     $('#up_kcal_kg').mask("9?9");

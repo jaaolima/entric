@@ -307,6 +307,14 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
+    function ptPacienteSuplemento($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_ptPacienteSuplemento", array(   "token" => $_SESSION['token'],
+                                                            "dados" => $dados,
+                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+        return $retorno;
+    }
+
     function stPacienteSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
