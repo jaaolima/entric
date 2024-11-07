@@ -1943,10 +1943,10 @@ $(function(){
             
         // }
         console.log($("input[name='carac_oral'].filtro_1:checked").length, $("input[name='carac_oral'].filtro_2:checked").length, $("input[name='carac_oral'].filtro_3:checked").length, $("input[name='carac_oral'].filtro_4:checked").length);
-        if ($("input[name='carac_oral'].filtro_1:checked").length > 0 && 
-            $("input[name='carac_oral'].filtro_2:checked").length > 0 && 
-            $("input[name='carac_oral'].filtro_3:checked").length > 0 && 
-            $("input[name='carac_oral'].filtro_4:checked").length > 0) {
+        if ($("input[name='carac_oral[]'].filtro_1:checked").length > 0 && 
+            $("input[name='carac_oral[]'].filtro_2:checked").length > 0 && 
+            $("input[name='carac_oral[]'].filtro_3:checked").length > 0 && 
+            $("input[name='carac_oral[]'].filtro_4:checked").length > 0) {
             $('#modal_fracionamento').modal('toggle');
 
         }
@@ -2113,11 +2113,12 @@ $(function(){
             calculo_fil_todos = $(this).val();
         }
         if (calculo_fil_todos == 'Todos') {
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').not(this).prop('checked', true);
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').not(this).prop('checked', true);
+            console.log('Todos');
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').prop('checked', true);
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').prop('checked', true);
         }else{
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').not(this).prop('checked', false);
-            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').not(this).prop('checked', false);
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').prop('checked', false);
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').prop('checked', false);
         }
     });
 
@@ -2127,11 +2128,11 @@ $(function(){
             calculo_fil_todos = $(this).val();
         }
         if (calculo_fil_todos == 'Todos') {
-            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').not(this).prop('checked', true);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').not(this).prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').prop('checked', true);
         }else{
-            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').not(this).prop('checked', false);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').not(this).prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').prop('checked', false);
         }
     });
 
@@ -2141,13 +2142,13 @@ $(function(){
             calculo_fil_todos = $(this).val();
         }
         if (calculo_fil_todos == 'Todos') {
-            $('#apresentacao .filtros_oral #calculo_fil_todos3').not(this).prop('checked', true);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').not(this).prop('checked', true);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').not(this).prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_fil_todos3').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').prop('checked', true);
         }else{
-            $('#apresentacao .filtros_oral #calculo_fil_todos3').not(this).prop('checked', false);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').not(this).prop('checked', false);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').not(this).prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_fil_todos3').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').prop('checked', false);
         }
     });
 
