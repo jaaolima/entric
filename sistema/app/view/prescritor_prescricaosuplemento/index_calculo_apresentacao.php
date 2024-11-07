@@ -24,80 +24,69 @@
                     <label for="calculo_fil_todos2" class="form-check-label check-green">Selecionar Todos</label>
                 </div> -->
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_todos2" name="calculo_fil_todos1" value="Todos" class="form-check-input styled-checkbox calculo_fil_todos" type="checkbox">
+                    <input id="calculo_fil_todos1" name="calculo_fil_todos1" value="Todos" class="form-check-input styled-checkbox" type="checkbox">
+                    <label for="calculo_fil_todos1" class="form-check-label check-green">Todos</label>
+                </div>
+                <div class="form-check col-sm-3">
+                    <input id="calculo_fil_todos2" name="calculo_fil_todos2" value="Todos" class="form-check-input styled-checkbox" type="checkbox">
                     <label for="calculo_fil_todos2" class="form-check-label check-green">Todos</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_todos2" name="calculo_fil_todos2" value="Todos" class="form-check-input styled-checkbox calculo_fil_todos" type="checkbox">
-                    <label for="calculo_fil_todos2" class="form-check-label check-green">Todos</label>
+                    <input id="calculo_fil_todos3" name="calculo_fil_todos3" value="Todos" class="form-check-input styled-checkbox" type="checkbox">
+                    <label for="calculo_fil_todos3" class="form-check-label check-green">Todos</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_todos2" name="calculo_fil_todos3" value="Todos" class="form-check-input styled-checkbox calculo_fil_todos" type="checkbox">
-                    <label for="calculo_fil_todos2" class="form-check-label check-green">Todos</label>
-                </div>
-                <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_semsacarose" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
-                    <label for="filtro_calculo_oral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
+                    <input id="calculo_oral_carac_semsacarose" name="carac_oral[]" class="form-check-input styled-checkbox filtro_4" type="checkbox" value="Sem Sacarose">
+                    <label for="calculo_oral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
                 </div>
 
 
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_hipocalorico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipocalórico">
-                    <label for="filtro_calculo_oral_carac_hipocalorico" class="form-check-label check-green">Hipo / Normocalórico(≤ 1,2 kcal/ml)</label>                    
+                    <input id="calculo_oral_carac_hipocalorico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_1" type="checkbox" value="Hipocalórico">
+                    <label for="calculo_oral_carac_hipocalorico" class="form-check-label check-green">Hipo / Normocalórico(≤ 1,2 kcal/ml)</label>                    
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_hipoproteico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipoproteico">
-                    <label for="filtro_calculo_oral_carac_hipoproteico" class="form-check-label check-green">Hipoproteico</label>
+                    <input id="calculo_oral_carac_hipoproteico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_2" type="checkbox" value="Hipoproteico">
+                    <label for="calculo_oral_carac_hipoproteico" class="form-check-label check-green">Hipoproteico</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_comfibras" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Fibras">
-                    <label for="filtro_calculo_oral_carac_comfibras" class="form-check-label check-green">Com Fibras</label>
+                    <input id="calculo_oral_carac_comfibras" name="carac_oral[]" class="form-check-input styled-checkbox filtro_3" type="checkbox" value="Com Fibras">
+                    <label for="calculo_oral_carac_comfibras" class="form-check-label check-green">Com Fibras</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_semlactose2" name="carac_oral[]" value="Sem Lactose" class="form-check-input filtros styled-checkbox" type="checkbox">
+                    <input id="calculo_fil_semlactose2" name="carac_oral[]" value="Sem Lactose" class="form-check-input filtro_4 styled-checkbox" type="checkbox">
                     <label for="calculo_fil_semlactose2" class="form-check-label check-green">Sem Lactose</label>                 
                 </div>
 
                 
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_hipercalórico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hipercalórico">
-                    <label for="filtro_calculo_oral_carac_hipercalórico" class="form-check-label check-green">Hipercalórico</label>
+                    <input id="calculo_oral_carac_hipercalórico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_1" type="checkbox" value="Hipercalórico">
+                    <label for="calculo_oral_carac_hipercalórico" class="form-check-label check-green">Hipercalórico</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_normoproteico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Normoproteico">
-                    <label for="filtro_calculo_oral_carac_normoproteico" class="form-check-label check-green">Normoproteico</label>
+                    <input id="calculo_oral_carac_normoproteico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_2" type="checkbox" value="Normoproteico">
+                    <label for="calculo_oral_carac_normoproteico" class="form-check-label check-green">Normoproteico</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_semfibras" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Fibras">
-                    <label for="filtro_calculo_oral_carac_semfibras" class="form-check-label check-green">Sem Fibras</label>
+                    <input id="calculo_oral_carac_semfibras" name="carac_oral[]" class="form-check-input styled-checkbox filtro_3" type="checkbox" value="Sem Fibras">
+                    <label for="calculo_oral_carac_semfibras" class="form-check-label check-green">Sem Fibras</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_100proteina" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="100% Proteína Vegetal">
-                    <label for="filtro_calculo_oral_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
-                </div>
-
-                <div class="form-check col-sm-3">
-                </div>
-                <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_carac_hiperproteico" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Hiperproteico">
-                    <label for="filtro_calculo_oral_carac_hiperproteico" class="form-check-label check-green">Hiperproteico</label>
-                </div>
-                <div class="form-check col-sm-3">
-                </div>
-                <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_cicatrizacao" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cicatrização">
-                    <label for="filtro_calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
+                    <input id="calculo_oral_100proteina" name="carac_oral[]" class="form-check-input styled-checkbox filtro_4" type="checkbox" value="100% Proteína Vegetal">
+                    <label for="calculo_oral_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
                 </div>
 
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">
+                    <input id="calculo_oral_carac_hiperproteico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_2" type="checkbox" value="Hiperproteico">
+                    <label for="calculo_oral_carac_hiperproteico" class="form-check-label check-green">Hiperproteico</label>
                 </div>
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
-                    <label for="filtro_calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                    <input id="calculo_oral_cicatrizacao" name="carac_oral[]" class="form-check-input styled-checkbox filtro_4" type="checkbox" value="Cicatrização">
+                    <label for="calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
                 </div>
 
                 <div class="form-check col-sm-3">
@@ -107,8 +96,19 @@
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="filtro_calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
-                    <label for="filtro_calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
+                    <input id="calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox filtro_4" type="checkbox" value="Com Ômega 3">
+                    <label for="calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                </div>
+
+                <div class="form-check col-sm-3">
+                </div>
+                <div class="form-check col-sm-3">
+                </div>
+                <div class="form-check col-sm-3">
+                </div>
+                <div class="form-check col-sm-3">
+                    <input id="calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox filtro_4" type="checkbox" value="Imunonutrição cirúrgica">
+                    <label for="calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
                 </div>
 
 

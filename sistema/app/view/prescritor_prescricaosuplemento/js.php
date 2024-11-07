@@ -1939,26 +1939,41 @@ $(function(){
         // else{
             
         // }
+        if ($("input[name='carac_oral'].filtro_1:checked").length > 0 && 
+            $("input[name='carac_oral'].filtro_2:checked").length > 0 && 
+            $("input[name='carac_oral'].filtro_3:checked").length > 0 && 
+            $("input[name='carac_oral'].filtro_4:checked").length > 0) {
+            $('#modal_fracionamento').modal('toggle');
 
-        if ($( "input[name*='calculo_apres_']" ).is(':checked') ){
-            fc_salvar('calculo', false);
-
-            if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
-                salvar_calculo_fracionamento(null);
-            }
-            else{
-                $('#modal_fracionamento').modal('toggle');
-            }                
         }
         else{
             $.alert({
                     title: 'Atenção',
                     icon: 'fa fa-warning',
                     type: 'red',
-                    content: 'Por favor, é necessário selecionar uma apresentação.'
+                    content: 'Por favor, é necessário selecionar a apresentação e características da Prescrição de TNEVO.'
                 });
             return false;
         }
+        // if ($( "input[name*='calculo_apres_']" ).is(':checked') ){
+        //     fc_salvar('calculo', false);
+
+        //     if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
+        //         salvar_calculo_fracionamento(null);
+        //     }
+        //     else{
+        //         $('#modal_fracionamento').modal('toggle');
+        //     }                
+        // }
+        // else{
+        //     $.alert({
+        //             title: 'Atenção',
+        //             icon: 'fa fa-warning',
+        //             type: 'red',
+        //             content: 'Por favor, é necessário selecionar uma apresentação.'
+        //         });
+        //     return false;
+        // }
     });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
         busca_produto_relatorio();
@@ -2088,27 +2103,50 @@ $(function(){
             }
         }
     });
-    $('.calculo_fil_todos').change(function () {
+    $('#calculo_fil_todos1').change(function () {
         var calculo_fil_todos = null;
         if ($(this).is(':checked')){
             calculo_fil_todos = $(this).val();
         }
-        if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
-            if (calculo_fil_todos == 'Todos') {
-                $('#apresentacao .filtros_oral .filtros').not(this).prop('checked', true);
-
-            }else{
-                $('#apresentacao .filtros_oral .filtros').not(this).prop('checked', false);
-            }
+        if (calculo_fil_todos == 'Todos') {
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').not(this).prop('checked', true);
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').not(this).prop('checked', true);
         }else{
-            if (calculo_fil_todos == 'Todos') {
-                $('#apresentacao .filtros_nooral .filtros').not(this).prop('checked', true);
-
-            }else{
-                $('#apresentacao .filtros_nooral .filtros').not(this).prop('checked', false);
-            }
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipocalorico').not(this).prop('checked', false);
+            $('#apresentacao .filtros_oral #filtro_calculo_oral_carac_hipercalórico').not(this).prop('checked', false);
         }
     });
+
+    $('#calculo_fil_todos2').change(function () {
+        var calculo_fil_todos = null;
+        if ($(this).is(':checked')){
+            calculo_fil_todos = $(this).val();
+        }
+        if (calculo_fil_todos == 'Todos') {
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').not(this).prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').not(this).prop('checked', true);
+        }else{
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').not(this).prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').not(this).prop('checked', false);
+        }
+    });
+
+    $('#calculo_fil_todos3').change(function () {
+        var calculo_fil_todos = null;
+        if ($(this).is(':checked')){
+            calculo_fil_todos = $(this).val();
+        }
+        if (calculo_fil_todos == 'Todos') {
+            $('#apresentacao .filtros_oral #calculo_fil_todos3').not(this).prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').not(this).prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').not(this).prop('checked', true);
+        }else{
+            $('#apresentacao .filtros_oral #calculo_fil_todos3').not(this).prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').not(this).prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').not(this).prop('checked', false);
+        }
+    });
+
     $('.filtros').change(function () {
         if ($(this).is(':checked')){
         }else{
