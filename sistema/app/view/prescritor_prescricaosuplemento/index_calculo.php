@@ -5,13 +5,13 @@
         <input type="hidden" name="selecao_dieta" id="selecao_dieta" value="">
 
         <div class="form_blue pb-0">
-            <?php include("index_calculo_categoria.php");?>
+            <!-- <?php include("index_calculo_categoria.php");?> -->
 
 
-            <?php include("index_calculo_dispositivos.php");?>
+            <!-- <?php include("index_calculo_dispositivos.php");?> -->
 
 
-            <?php include("index_calculo_dietaenteral.php");?>
+            <!-- <?php include("index_calculo_dietaenteral.php");?> -->
 
 
             <?php include("index_calculo_apresentacao.php");?>
@@ -20,6 +20,8 @@
 
 
         <?php include("index_calculo_prescricao_nutricional.php");?>
+        <input id="radioOral" class="radio-outlined"  name="tipo_produto" type="radio" checked="checked" value="Suplemento">
+        <input id="radioAdulto" class="radio-outlined"  name="categoria" type="radio" checked="checked" value="Adulto">
 
         <div class="form-group row pt-5">
             <div class="col-sm-6 text-left">

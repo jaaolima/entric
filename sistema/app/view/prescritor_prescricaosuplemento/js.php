@@ -1927,35 +1927,37 @@ $(function(){
         $('#cadastro').addClass('active').addClass('show').attr('aria-expanded','true');
     });
     $('#calculo_avancar').on('click', function() {
-        if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
+        // if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
+        //     $.alert({
+        //             title: 'Atenção',
+        //             icon: 'fa fa-warning',
+        //             type: 'red',
+        //             content: 'Por favor, é necessário selecionar o dispositivo.'
+        //         });
+        //     return false;
+        // }
+        // else{
+            
+        // }
+
+        if ($( "input[name*='calculo_apres_']" ).is(':checked') ){
+            fc_salvar('calculo', false);
+
+            if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
+                salvar_calculo_fracionamento(null);
+            }
+            else{
+                $('#modal_fracionamento').modal('toggle');
+            }                
+        }
+        else{
             $.alert({
                     title: 'Atenção',
                     icon: 'fa fa-warning',
                     type: 'red',
-                    content: 'Por favor, é necessário selecionar o dispositivo.'
+                    content: 'Por favor, é necessário selecionar uma apresentação.'
                 });
             return false;
-        }
-        else{
-            if ($( "input[name*='calculo_apres_']" ).is(':checked') ){
-                fc_salvar('calculo', false);
-
-                if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
-                    salvar_calculo_fracionamento(null);
-                }
-                else{
-                    $('#modal_fracionamento').modal('toggle');
-                }                
-            }
-            else{
-                $.alert({
-                        title: 'Atenção',
-                        icon: 'fa fa-warning',
-                        type: 'red',
-                        content: 'Por favor, é necessário selecionar uma apresentação.'
-                    });
-                return false;
-            }
         }
     });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
