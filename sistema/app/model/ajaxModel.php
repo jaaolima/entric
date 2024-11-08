@@ -172,6 +172,13 @@ class AjaxModel extends Model {
         return $retorno;        
     }
 
+    function stCalculoSuplemento($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stCalculoSuplemento", array(    "token" => $_SESSION['token'],
+                                                            "dados" => $dados));       
+        return $retorno;        
+    }
+
     function stFracionamento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stFracionamento", array(  "token" => $_SESSION['token'],
@@ -186,6 +193,13 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
+    function stFracionamentoSuplemento($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stFracionamentoSuplemento", array(  "token" => $_SESSION['token'],
+                                                                "dados" => $dados));       
+        return $retorno;
+    }
+
     function stSelecao($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stSelecao", array("token" => $_SESSION['token'],
@@ -196,6 +210,13 @@ class AjaxModel extends Model {
     function stSelecaoSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stSelecaoSimplificada", array("token" => $_SESSION['token'],
+                                                        "dados" => $dados));       
+        return $retorno;
+    }
+
+    function stSelecaoSsuplemento($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stSelecaoSsuplemento", array("token" => $_SESSION['token'],
                                                         "dados" => $dados));       
         return $retorno;
     }
@@ -217,6 +238,13 @@ class AjaxModel extends Model {
     function stDistribuidoresSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stDistribuidoresSimplificada", array( "token" => $_SESSION['token'],
+                                                                "dados" => $dados));       
+        return $retorno;
+    }
+
+    function stDistribuidoresSuplemento($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stDistribuidoresSuplemento", array( "token" => $_SESSION['token'],
                                                                 "dados" => $dados));       
         return $retorno;
     }

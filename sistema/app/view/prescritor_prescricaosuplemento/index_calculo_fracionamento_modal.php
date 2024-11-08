@@ -24,7 +24,7 @@
                                     Por quanto tempo?
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" required="required" placeholder="00:00" name="qto_tempo" id="qto_tempo" class="form-control">
+                                    <input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control">
                                 </div>
                             </div>
                         </div>

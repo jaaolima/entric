@@ -862,7 +862,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
-            url: "ajax/busca_produto_relatorio_simplificada",
+            url: "ajax/busca_produto_relatorio_suplemento",
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
             data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val(),
             cache: false,
@@ -995,7 +995,7 @@ function salvar_calculo_fracionamento(_this){
 
     $.ajax({
         type: "POST",
-        url: "ajax/fracionamento_salvar_simplificada",
+        url: "ajax/fracionamento_salvar_suplemento",
         data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
         cache: false,
         dataType: 'json',
@@ -1170,7 +1170,7 @@ function fc_salvar(tab, notify){
     } 
     $.ajax({
         type: "POST",
-        url: "ajax/relatorio_salvar_simplificada",
+        url: "ajax/relatorio_salvar_suplemento",
         data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab,
         cache: false,
         dataType: 'json',
@@ -1994,7 +1994,7 @@ $(function(){
 
         $.ajax({
             type: "POST",
-            url: "ajax/selecao_salvar_simplificada",
+            url: "ajax/selecao_salvar_suplemento",
             data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
             cache: false,
             dataType: 'json',
@@ -2676,7 +2676,7 @@ $(function(){
 
             $.ajax({
                 type: "POST",
-                url: "ajax/relatorio_salvar_simplificada",
+                url: "ajax/relatorio_salvar_suplemento",
                 data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
                 cache: false,
                 dataType: 'json',
@@ -2687,7 +2687,7 @@ $(function(){
                     }
                     if (data.success){
                         var relatorio_code = $("#relatorio_code").val();
-                        window.open("relatorio_simplificada/"+relatorio_code, "_blank");
+                        window.open("relatorio_suplemento/"+relatorio_code, "_blank");
                     }
                     if (data.error){
                         toastr['error'](data.error.message, '', {positionClass: 'toast-top-right' });
