@@ -6690,21 +6690,79 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['calculo_fil_todos'])) $dados['calculo_fil_todos'] = null; else $dados['calculo_fil_todos'] = true;
 		        if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null; else $dados['calculo_apres_liquidocreme'] = true;
 		        if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null; else $dados['calculo_apres_po'] = true;
-		        if (!isset($dados['calculo_fil_semlactose'])) $dados['calculo_fil_semlactose'] = null; else $dados['calculo_fil_semlactose'] = true;
-		        if (!isset($dados['calculo_fil_semfibras'])) $dados['calculo_fil_semfibras'] = null; else $dados['calculo_fil_semfibras'] = true;
-		        if (!isset($dados['calculo_fil_polimerico'])) $dados['calculo_fil_polimerico'] = null; else $dados['calculo_fil_polimerico'] = true;
-		        if (!isset($dados['calculo_fil_semsacarose'])) $dados['calculo_fil_semsacarose'] = null; else $dados['calculo_fil_semsacarose'] = true;
-		        if (!isset($dados['calculo_fil_100proteina'])) $dados['calculo_fil_100proteina'] = null; else $dados['calculo_fil_100proteina'] = true;
-		        if (!isset($dados['calculo_fil_oligomerico'])) $dados['calculo_fil_oligomerico'] = null; else $dados['calculo_fil_oligomerico'] = true;
-		        if (!isset($dados['calculo_fil_comfibras'])) $dados['calculo_fil_comfibras'] = null; else $dados['calculo_fil_comfibras'] = true;
-		        if ($dados['tipo_produto'] == "Oral"){
-		            if (!isset($dados['calculo_fil_todos2'])) $dados['calculo_fil_todos'] = null; else $dados['calculo_fil_todos'] = true;
-		            if (!isset($dados['calculo_fil_semsacarose2'])) $dados['calculo_fil_semsacarose'] = null; else $dados['calculo_fil_semsacarose'] = true;
-		            if (!isset($dados['calculo_fil_comfibras2'])) $dados['calculo_fil_comfibras'] = null; else $dados['calculo_fil_comfibras'] = true;
-		            if (!isset($dados['calculo_fil_semlactose2'])) $dados['calculo_fil_semlactose'] = null; else $dados['calculo_fil_semlactose'] = true;
-		            if (!isset($dados['calculo_fil_semfibras2'])) $dados['calculo_fil_semfibras'] = null; else $dados['calculo_fil_semfibras'] = true;
-		            if (!isset($dados['calculo_fil_100proteina2'])) $dados['calculo_fil_100proteina'] = null; else $dados['calculo_fil_100proteina'] = true;
-		        }
+
+				if(!isset($dados['carac_oral[]'])){
+					$array_carac = $dados['carac_oral[]'];
+
+					if(in_array('Sem Sacarose', $array_carac)){
+						$dados['calculo_fil_semsacarose'] = true;
+					}else{
+						$dados['calculo_fil_semsacarose'] = null;
+					}
+					if(in_array('Sem Lactose', $array_carac)){
+						$dados['calculo_fil_semlactose'] = true;
+					}else{
+						$dados['calculo_fil_semlactose'] = null;
+					}
+					if(in_array('Hipocalórico', $array_carac)){
+						$dados['calculo_fil_hipocalorico'] = true;
+					}else{
+						$dados['calculo_fil_hipocalorico'] = null;
+					}
+					if(in_array('Hipoproteico', $array_carac)){
+						$dados['calculo_fil_hipoproteico'] = true;
+					}else{
+						$dados['calculo_fil_hipoproteico'] = null;
+					}
+					if(in_array('Com Fibras', $array_carac)){
+						$dados['calculo_fil_comfibras'] = true;
+					}else{
+						$dados['calculo_fil_comfibras'] = null;
+					}
+					if(in_array('Hipercalórico', $array_carac)){
+						$dados['calculo_fil_hipercalorico'] = true;
+					}else{
+						$dados['calculo_fil_hipercalorico'] = null;
+					}
+					if(in_array('Normoproteico', $array_carac)){
+						$dados['calculo_fil_normoproteico'] = true;
+					}else{
+						$dados['calculo_fil_normoproteico'] = null;
+					}
+					if(in_array('Sem Fibras', $array_carac)){
+						$dados['calculo_fil_semfibras'] = true;
+					}else{
+						$dados['calculo_fil_semfibras'] = null;
+					}
+					if(in_array('100% Proteína Vegetal', $array_carac)){
+						$dados['calculo_fil_100proteina'] = true;
+					}else{
+						$dados['calculo_fil_100proteina'] = null;
+					}
+					if(in_array('Hiperproteico', $array_carac)){
+						$dados['calculo_fil_hiperproteico'] = true;
+					}else{
+						$dados['calculo_fil_hiperproteico'] = null;
+					}
+					if(in_array('Cicatrização', $array_carac)){
+						$dados['calculo_fil_cicatrizacao'] = true;
+					}else{
+						$dados['calculo_fil_cicatrizacao'] = null;
+					}
+					if(in_array('Com Ômega 3', $array_carac)){
+						$dados['calculo_fil_omega3'] = true;
+					}else{
+						$dados['calculo_fil_omega3'] = null;
+					}
+					if(in_array('Imunonutrição cirúrgica', $array_carac)){
+						$dados['calculo_fil_imunonutricao'] = true;
+					}else{
+						$dados['calculo_fil_imunonutricao'] = null;
+					}
+					if (!isset($dados['calculo_fil_todos1'])) $dados['calculo_fil_todos1'] = null; else $dados['calculo_fil_todos1'] = true;
+		            if (!isset($dados['calculo_fil_todos2'])) $dados['calculo_fil_todos2'] = null; else $dados['calculo_fil_todos2'] = true;
+		            if (!isset($dados['calculo_fil_todos3'])) $dados['calculo_fil_todos3'] = null; else $dados['calculo_fil_todos3'] = true;
+				}
 		        if (!isset($dados['dieta_formula'])) $dados['dieta_formula'] = null;
 		        if (!isset($dados['dieta_volume'])) $dados['dieta_volume'] = null;
 		        if (!isset($dados['dieta_infusao'])) $dados['dieta_infusao'] = null;

@@ -1,4 +1,6 @@
     <div class="row entric_grid mt-0 m-0 p-0 inputs1" id="apresentacao">
+        <input id="radioOral" class="radio-outlined"  name="tipo_produto" type="radio" checked="checked" value="Suplemento">
+        <input id="radioAdulto" class="radio-outlined"  name="categoria" type="radio" checked="checked" value="Adulto">
         <div class="form-group col-sm-4 btrbl apres_oral">
             <div class="form-check">
                 <label class="grid_label">Apresentação</label>
@@ -54,8 +56,8 @@
                     <label for="calculo_oral_carac_comfibras" class="form-check-label check-green">Com Fibras</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_semlactose2" name="carac_oral[]" value="Sem Lactose" class="form-check-input filtro_4 styled-checkbox" type="checkbox">
-                    <label for="calculo_fil_semlactose2" class="form-check-label check-green">Sem Lactose</label>                 
+                    <input id="calculo_fil_semlactose" name="carac_oral[]" value="Sem Lactose" class="form-check-input filtro_4 styled-checkbox" type="checkbox">
+                    <label for="calculo_fil_semlactose" class="form-check-label check-green">Sem Lactose</label>                 
                 </div>
 
                 

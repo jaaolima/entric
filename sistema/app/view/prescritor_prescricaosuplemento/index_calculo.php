@@ -20,8 +20,7 @@
 
 
         <?php include("index_calculo_prescricao_nutricional.php");?>
-        <input id="radioOral" class="radio-outlined"  name="tipo_produto" type="radio" checked="checked" value="Suplemento">
-        <input id="radioAdulto" class="radio-outlined"  name="categoria" type="radio" checked="checked" value="Adulto">
+
 
         <div class="form-group row pt-5">
             <div class="col-sm-6 text-left">
