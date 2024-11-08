@@ -6693,15 +6693,16 @@ $app->group("", function () use ($app) {
 
 				if(isset($dados['carac_oral'])){
 					$array_carac = $dados['carac_oral'];
-					var_dump($array_carac);
 
 					if(in_array('Sem Sacarose', $array_carac)){
 						$dados['calculo_fil_semsacarose'] = true;
 					}else{
 						$dados['calculo_fil_semsacarose'] = null;
+						var_dump("entrou");
 					}
 					if(in_array('Sem Lactose', $array_carac)){
 						$dados['calculo_fil_semlactose'] = true;
+						var_dump("entrou");
 					}else{
 						$dados['calculo_fil_semlactose'] = null;
 					}
