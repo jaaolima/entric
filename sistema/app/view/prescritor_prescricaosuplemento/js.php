@@ -1168,6 +1168,8 @@ function fc_salvar(tab, notify){
         }        
         var frm = _this.serialize();   
     } 
+
+    console.log(form);
     $.ajax({
         type: "POST",
         url: "ajax/relatorio_salvar_suplemento",
