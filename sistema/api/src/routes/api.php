@@ -3338,6 +3338,7 @@ $app->group("", function () use ($app) {
 											null);
 
 										var_dump($valor_ptn);
+										var_dump($produtos[$i]['id']);
 										var_dump($_medida_dc);
 										$verificar_carac = true;
 										if(isset($dados['carac_oral'])){
@@ -3351,7 +3352,7 @@ $app->group("", function () use ($app) {
 												}
 											}
 											if(in_array('Hipoproteico', $array_carac) && $verificar_carac){
-												if(floatval($valor_ptn['valor']) >= 10 || floatval($valor_ptn['valor']) < 20){
+												if(floatval($valor_ptn[0]['valor']) >= 10 || floatval($valor_ptn[0]['valor']) < 20){
 													$verificar_carac = true;
 												}else{
 													$verificar_carac = false;
@@ -3365,14 +3366,14 @@ $app->group("", function () use ($app) {
 												}
 											}
 											if(in_array('Normoproteico', $array_carac) && $verificar_carac){
-												if(floatval($valor_ptn['valor']) >= 10 || floatval($valor_ptn['valor']) <= 20){
+												if(floatval($valor_ptn[0]['valor']) >= 10 || floatval($valor_ptn[0]['valor']) <= 20){
 													$verificar_carac = true;
 												}else{
 													$verificar_carac = false;
 												}
 											}
 											if(in_array('Hiperproteico', $array_carac) && $verificar_carac){
-												if(floatval($valor_ptn['valor']) > 20){
+												if(floatval($valor_ptn[0]['valor']) > 20){
 													$verificar_carac = true;
 												}else{
 													$verificar_carac = false;
