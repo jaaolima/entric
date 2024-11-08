@@ -3337,9 +3337,6 @@ $app->group("", function () use ($app) {
 											'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
 											null);
 
-										// var_dump($valor_ptn);
-										// var_dump($produtos[$i]['id']);
-										// var_dump($_medida_dc);
 										$verificar_carac = true;
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
@@ -3380,6 +3377,8 @@ $app->group("", function () use ($app) {
 												}
 											}
 										}
+										var_dump($verificar_carac);
+										var_dump($produtos[$i]['id']);
 										if($verificar_carac){
 											$retorno .= '<tr>'. $titulo.'
 															<td>
