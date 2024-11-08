@@ -6698,11 +6698,9 @@ $app->group("", function () use ($app) {
 						$dados['calculo_fil_semsacarose'] = true;
 					}else{
 						$dados['calculo_fil_semsacarose'] = null;
-						var_dump("entrou");
 					}
 					if(in_array('Sem Lactose', $array_carac)){
 						$dados['calculo_fil_semlactose'] = true;
-						var_dump("entrou");
 					}else{
 						$dados['calculo_fil_semlactose'] = null;
 					}
@@ -6793,12 +6791,22 @@ $app->group("", function () use ($app) {
 		                        ':calculo_apres_aberto_po' => $dados["calculo_apres_aberto_po"],
 		                        ':calculo_apres_liquidocreme' => $dados["calculo_apres_liquidocreme"],
 		                        ':calculo_apres_po' => $dados["calculo_apres_po"],
-		                        ':calculo_fil_todos' => $dados["calculo_fil_todos"],
-		                        ':calculo_fil_semlactose' => $dados["calculo_fil_semlactose"],
-		                        ':calculo_fil_semfibras' => $dados["calculo_fil_semfibras"],
 		                        ':calculo_fil_semsacarose' => $dados["calculo_fil_semsacarose"],
-		                        ':calculo_fil_100proteina' => $dados["calculo_fil_100proteina"],
+		                        ':calculo_fil_semlactose' => $dados["calculo_fil_semlactose"],
+		                        ':calculo_fil_hipocalorico' => $dados["calculo_fil_hipocalorico"],
+		                        ':calculo_fil_hipoproteico' => $dados["calculo_fil_hipoproteico"],
 		                        ':calculo_fil_comfibras' => $dados["calculo_fil_comfibras"],
+		                        ':calculo_fil_hipercalorico' => $dados["calculo_fil_hipercalorico"],
+		                        ':calculo_fil_normoproteico' => $dados["calculo_fil_normoproteico"],
+		                        ':calculo_fil_semfibras' => $dados["calculo_fil_semfibras"],
+		                        ':calculo_fil_100proteina' => $dados["calculo_fil_100proteina"],
+		                        ':calculo_fil_hiperproteico' => $dados["calculo_fil_hiperproteico"],
+		                        ':calculo_fil_cicatrizacao' => $dados["calculo_fil_cicatrizacao"],
+		                        ':calculo_fil_omega3' => $dados["calculo_fil_omega3"],
+		                        ':calculo_fil_imunonutricao' => $dados["calculo_fil_imunonutricao"],
+		                        ':calculo_fil_todos1' => $dados["calculo_fil_todos1"],
+		                        ':calculo_fil_todos2' => $dados["calculo_fil_todos2"],
+		                        ':calculo_fil_todos3' => $dados["calculo_fil_todos3"],
 		                        ':dieta_formula' => array_json($dados["dieta_formula"], false),
 		                        ':dieta_volume' => array_json($dados["dieta_volume"], false),
 		                        ':dieta_infusao' => array_json($dados["dieta_infusao"], false),
@@ -6816,7 +6824,6 @@ $app->group("", function () use ($app) {
 		                        ':suplemento_horario' => array_json($dados["suplemento_horario"], false) ,
 		                        ':suplemento_volume_total' => array_json($dados["suplemento_volume_total"], false) ,
 		                        ':hidratacao_agua_livre' => array_json($dados["hidratacao_agua_livre"], false) );
-
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
