@@ -3337,9 +3337,9 @@ $app->group("", function () use ($app) {
 											'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
 											null);
 
-										var_dump($valor_ptn);
-										var_dump($produtos[$i]['id']);
-										var_dump($_medida_dc);
+										// var_dump($valor_ptn);
+										// var_dump($produtos[$i]['id']);
+										// var_dump($_medida_dc);
 										$verificar_carac = true;
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
@@ -3351,15 +3351,15 @@ $app->group("", function () use ($app) {
 													$verificar_carac = false;
 												}
 											}
-											if(in_array('Hipoproteico', $array_carac) && $verificar_carac){
-												if(floatval($valor_ptn[0]['valor']) >= 10 || floatval($valor_ptn[0]['valor']) < 20){
+											if(in_array('Hipercalórico', $array_carac) && $verificar_carac){
+												if($_medida_dc > 1.2){
 													$verificar_carac = true;
 												}else{
 													$verificar_carac = false;
 												}
 											}
-											if(in_array('Hipercalórico', $array_carac) && $verificar_carac){
-												if($_medida_dc > 1.2){
+											if(in_array('Hipoproteico', $array_carac) && $verificar_carac){
+												if(floatval($valor_ptn[0]['valor']) < 10){
 													$verificar_carac = true;
 												}else{
 													$verificar_carac = false;
@@ -3380,22 +3380,23 @@ $app->group("", function () use ($app) {
 												}
 											}
 										}
-		                                $retorno .= '<tr>'. $titulo.'
-		                                                <td>
-		                                                    <div class="form-check col-sm-12">
-		                                                        <input id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" disabled class="form-check-input styled-checkbox check_apagado diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$value.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.'___'.$sistema.'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : $calorias_dia).'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : $proteina_dia).'___'.(isset($medida[$key])?$medida[$key]:0).'___'.(isset($final[$key])?$final[$key]:0).'___'.(isset($grama[$key])?$grama[$key]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
-		                                                        <label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" class="form-check-label check-green">'.$value.'</label>
-		                                                    </div>
-		                                                </td>
-		                                                <td>'.$volume_final.'</td>
-		                                                <td>'.$volume_horario.'</td>
-		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
-		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1)).'</td>
-		                                                <td>'.$valor_fibra.'</td>
-		                                            </tr>';
-		                                $titulo = "";
+										if($verificar_carac){
+											$retorno .= '<tr>'. $titulo.'
+															<td>
+																<div class="form-check col-sm-12">
+																	<input id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" disabled class="form-check-input styled-checkbox check_apagado diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$value.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.'___'.$sistema.'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : $calorias_dia).'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : $proteina_dia).'___'.(isset($medida[$key])?$medida[$key]:0).'___'.(isset($final[$key])?$final[$key]:0).'___'.(isset($grama[$key])?$grama[$key]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
+																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" class="form-check-label check-green">'.$value.'</label>
+																</div>
+															</td>
+															<td>'.$volume_final.'</td>
+															<td>'.$volume_horario.'</td>
+															<td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
+															<td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1)).'</td>
+															<td>'.$valor_fibra.'</td>
+														</tr>';
+											$titulo = "";
+										}
 		                            }
-
 		                            $cont_array = $cont_array+1;
 		                        }
 
