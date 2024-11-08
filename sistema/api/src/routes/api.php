@@ -2755,61 +2755,49 @@ $app->group("", function () use ($app) {
 		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
 
-		        if ($dados['tipo_produto'] == "Enteral"){
-		            if (!isset($dados['calculo_apres_fechado'])) $dados['calculo_apres_fechado'] = null;
-		            if (!isset($dados['calculo_apres_aberto_liquido'])) $dados['calculo_apres_aberto_liquido'] = null;
-		            if (!isset($dados['calculo_apres_aberto_po'])) $dados['calculo_apres_aberto_po'] = null;
-		            if (($dados['calculo_apres_fechado'] <> "") or ($dados['calculo_apres_aberto_liquido'] <> "") or ($dados['calculo_apres_aberto_po'] <> "")){
-		                $query.= ' AND (';
-		                    $_or = '';
-		                    if ($dados['calculo_apres_fechado'] <> ""){
-		                        $query.= '(apres_enteral LIKE "%Fechado%")';
-		                        $_or = ' OR ';
-		                    }
-		                    if ($dados['calculo_apres_aberto_liquido'] <> ""){
-		                        $query.= $_or.' (apres_enteral LIKE "%Aberto (Líquido)%")';
-		                        $_or = ' OR ';
-		                    }
-		                    if ($dados['calculo_apres_aberto_po'] <> ""){
-		                        $query.= $_or.' (apres_enteral LIKE "%Aberto (Pó)%")';
-		                    }
-		                $query.= ' )';
-		            }
-		            if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Polimérico")) $query.= ' AND (carac_enteral LIKE "%Polimérico%")';
-		            if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Oligomérico")) $query.= ' AND (carac_enteral LIKE "%Oligomérico%")';
-		            if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Ambos")) $query.= ' AND ((carac_enteral LIKE "%Polimérico%") OR (carac_enteral LIKE "%Oligomérico%"))';
-		            if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Com Fibras")) $query.= ' AND (carac_enteral LIKE "%Com Fibras%")';
-		            if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Sem Fibras")) $query.= ' AND (carac_enteral LIKE "%Sem Fibras%")';
-		            if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Ambos")) $query.= ' AND ((carac_enteral LIKE "%Com Fibras%") OR (carac_enteral LIKE "%Sem Fibras%"))';
-		            if (isset($dados['calculo_fil_semlactose']) and ($dados['calculo_fil_semlactose'] <> "")) $query.= ' AND (carac_enteral LIKE "%Sem Lactose%")';
-		            if (isset($dados['calculo_fil_semsacarose']) and ($dados['calculo_fil_semsacarose'] <> "")) $query.= ' AND (carac_enteral LIKE "%Sem Sacarose%")';
-		            if (isset($dados['calculo_fil_100proteina']) and ($dados['calculo_fil_100proteina'] <> "")) $query.= ' AND (carac_enteral LIKE "%100% Proteína Vegetal%")';
-		        }
-		        else{
-		            if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
-		            if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
-		            if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
-		                $query.= ' AND (';
-		                    $_or = '';
-		                    if ($dados['calculo_apres_liquidocreme'] <> ""){
-		                        $query.= '(apres_oral LIKE "%Líquido / Creme%")';
-		                        $_or = ' OR ';
-		                    }
-		                    if ($dados['calculo_apres_po'] <> ""){
-		                        $query.= $_or.' (apres_oral LIKE "%Pó%")';
-		                        $_or = ' OR ';
-		                    }
-		                $query.= ' )';
-		            }
-		            if (isset($dados['calculo_fil_todos2']) and ($dados['calculo_fil_todos2'] == "Todos")){
-		            }else{
-		                if (isset($dados['calculo_fil_semsacarose2']) and ($dados['calculo_fil_semsacarose2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
-		                if (isset($dados['calculo_fil_comfibras2']) and ($dados['calculo_fil_comfibras2'] <> "")) $query.= ' AND (carac_oral LIKE "%Com Fibras%")';
-		                if (isset($dados['calculo_fil_semlactose2']) and ($dados['calculo_fil_semlactose2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
-		                if (isset($dados['calculo_fil_100proteina2']) and ($dados['calculo_fil_100proteina2'] <> "")) $query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
-		                if (isset($dados['calculo_fil_semfibras2']) and ($dados['calculo_fil_semfibras2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Fibras%")';
-		            }
-		        }
+				if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
+				if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
+				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
+					$query.= ' AND (';
+						$_or = '';
+						if ($dados['calculo_apres_liquidocreme'] <> ""){
+							$query.= '(apres_oral LIKE "%Líquido / Creme%")';
+							$_or = ' OR ';
+						}
+						if ($dados['calculo_apres_po'] <> ""){
+							$query.= $_or.' (apres_oral LIKE "%Pó%")';
+							$_or = ' OR ';
+						}
+					$query.= ' )';
+				}
+				if(isset($dados['carac_oral'])){
+					$array_carac = $dados['carac_oral'];
+
+					if(in_array('Sem Sacarose', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+					}
+					if(in_array('Sem Lactose', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+					}
+					if(in_array('Com Fibras', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Com Fibras%")';
+					}
+					if(in_array('Sem Fibras', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Sem Fibras%")';
+					}
+					if(in_array('100% Proteína Vegetal', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+					}
+					if(in_array('Cicatrização', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Cicatrização%")';
+					}
+					if(in_array('Com Ômega 3', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Com Ômega 3%")';
+					}
+					if(in_array('Imunonutrição cirúrgica', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Imunonutrição cirúrgica%")';
+					}
+				}
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
@@ -3070,7 +3058,9 @@ $app->group("", function () use ($app) {
 		                                    else{
 		                                        //echo "((".$margem_calorica[0]." <= $range_kcal) and (".$margem_calorica[1]." >= $range_kcal)) and ((".$margem_proteica[0]." <= $range_ptn) and (".$margem_proteica[1]." >= $range_ptn)) \n\n ";
 		                                    }
-		                                }
+		                                }else{
+											$margem_liberadas = true;
+										}
 		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -3340,6 +3330,55 @@ $app->group("", function () use ($app) {
 		                                if (trim($produtos[$i]['ptn'])<>"") $_ptn = str_replace(",",".", $produtos[$i]['ptn']); else $_ptn = 1;
 		                                if (trim($produtos[$i]['fibras'])<>"") $_fibras = str_replace(",",".", $produtos[$i]['fibras']); else $_fibras = 1;
 		    
+
+										//verificar caracteristicas tnevo
+										$valor_ptn = $db->select_to_array("produtos_info_nutri",
+											"valor",
+											'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
+											null);
+
+										var_dump($valor_ptn);
+										var_dump($_medida_dc);
+										$verificar_carac = true;
+										if(isset($dados['carac_oral'])){
+											$array_carac = $dados['carac_oral'];
+					
+											if(in_array('Hipocalórico', $array_carac) && $verificar_carac){
+												if($_medida_dc <= 1.2){
+													$verificar_carac = true;
+												}else{
+													$verificar_carac = false;
+												}
+											}
+											if(in_array('Hipoproteico', $array_carac) && $verificar_carac){
+												if(floatval($valor_ptn['valor']) >= 10 || floatval($valor_ptn['valor']) < 20){
+													$verificar_carac = true;
+												}else{
+													$verificar_carac = false;
+												}
+											}
+											if(in_array('Hipercalórico', $array_carac) && $verificar_carac){
+												if($_medida_dc > 1.2){
+													$verificar_carac = true;
+												}else{
+													$verificar_carac = false;
+												}
+											}
+											if(in_array('Normoproteico', $array_carac) && $verificar_carac){
+												if(floatval($valor_ptn['valor']) >= 10 || floatval($valor_ptn['valor']) <= 20){
+													$verificar_carac = true;
+												}else{
+													$verificar_carac = false;
+												}
+											}
+											if(in_array('Hiperproteico', $array_carac) && $verificar_carac){
+												if(floatval($valor_ptn['valor']) > 20){
+													$verificar_carac = true;
+												}else{
+													$verificar_carac = false;
+												}
+											}
+										}
 		                                $retorno .= '<tr>'. $titulo.'
 		                                                <td>
 		                                                    <div class="form-check col-sm-12">
