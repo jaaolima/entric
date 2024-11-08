@@ -6691,9 +6691,8 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null; else $dados['calculo_apres_liquidocreme'] = true;
 		        if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null; else $dados['calculo_apres_po'] = true;
 
-				var_dump($dados);
-				if(isset($dados['carac_oral[]'])){
-					$array_carac = $dados['carac_oral[]'];
+				if(isset($dados['carac_oral'])){
+					$array_carac = $dados['carac_oral'];
 					var_dump($array_carac);
 
 					if(in_array('Sem Sacarose', $array_carac)){
@@ -6796,10 +6795,8 @@ $app->group("", function () use ($app) {
 		                        ':calculo_fil_todos' => $dados["calculo_fil_todos"],
 		                        ':calculo_fil_semlactose' => $dados["calculo_fil_semlactose"],
 		                        ':calculo_fil_semfibras' => $dados["calculo_fil_semfibras"],
-		                        ':calculo_fil_polimerico' => $dados["calculo_fil_polimerico"],
 		                        ':calculo_fil_semsacarose' => $dados["calculo_fil_semsacarose"],
 		                        ':calculo_fil_100proteina' => $dados["calculo_fil_100proteina"],
-		                        ':calculo_fil_oligomerico' => $dados["calculo_fil_oligomerico"],
 		                        ':calculo_fil_comfibras' => $dados["calculo_fil_comfibras"],
 		                        ':dieta_formula' => array_json($dados["dieta_formula"], false),
 		                        ':dieta_volume' => array_json($dados["dieta_volume"], false),
