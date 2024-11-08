@@ -3356,26 +3356,39 @@ $app->group("", function () use ($app) {
 												}
 											}
 											if(in_array('Hipoproteico', $array_carac) && $verificar_carac){
-												if(floatval($valor_ptn[0]['valor']) < 10){
-													$verificar_carac = true;
+												if(isset($valor_ptn[0]['valor'])){
+													if(floatval($valor_ptn[0]['valor']) < 10){
+														$verificar_carac = true;
+													}else{
+														$verificar_carac = false;
+													}
 												}else{
 													$verificar_carac = false;
 												}
 											}
 											if(in_array('Normoproteico', $array_carac) && $verificar_carac){
-												if(floatval($valor_ptn[0]['valor']) >= 10 || floatval($valor_ptn[0]['valor']) <= 20){
-													$verificar_carac = true;
+												if(isset($valor_ptn[0]['valor'])){
+													if(floatval($valor_ptn[0]['valor']) >= 10 || floatval($valor_ptn[0]['valor']) <= 20){
+														$verificar_carac = true;
+													}else{
+														$verificar_carac = false;
+													}
 												}else{
 													$verificar_carac = false;
 												}
 											}
 											if(in_array('Hiperproteico', $array_carac) && $verificar_carac){
-												if(floatval($valor_ptn[0]['valor']) > 20){
-													$verificar_carac = true;
+												if(isset($valor_ptn[0]['valor'])){
+													if(floatval($valor_ptn[0]['valor']) > 20){
+														$verificar_carac = true;
+													}else{
+														$verificar_carac = false;
+													}
 												}else{
 													$verificar_carac = false;
 												}
 											}
+											
 										}
 										var_dump($verificar_carac);
 										var_dump($produtos[$i]['id']);
