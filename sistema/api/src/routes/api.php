@@ -3390,8 +3390,8 @@ $app->group("", function () use ($app) {
 											}
 											
 										}
-										var_dump($verificar_carac);
-										var_dump($produtos[$i]['id']);
+										// var_dump($verificar_carac);
+										// var_dump($produtos[$i]['id']);
 										if($verificar_carac){
 											$retorno .= '<tr>'. $titulo.'
 															<td>
