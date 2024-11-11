@@ -3079,6 +3079,7 @@ $app->group("", function () use ($app) {
 		                        $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
 		                        $medida = json_decode($produtos[$i]['medida'], true);
 		                        $final = json_decode($produtos[$i]['final'], true);
+		                        $volume = json_decode($produtos[$i]['volume'], true);
 		                        $grama = json_decode($produtos[$i]['medida_g'], true);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
@@ -3086,9 +3087,8 @@ $app->group("", function () use ($app) {
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
-		                        foreach ($medida_dc as $key => &$value) {
-
-		                            $dc = str_replace(",", ".", $value);
+								for ($m=0; $m < count($medida_dc); $m++) { 
+									$dc = str_replace(",", ".", $medida_dc[$m]);
 		                            if ($dados['kcal_valor'] > 0){
 		                                if (($dc == "") or ($dc == "0")) $dc = 1;
 		                                $volume_final = $dados['kcal_valor'] / $dc;
@@ -3117,174 +3117,6 @@ $app->group("", function () use ($app) {
 		                            if (trim($produtos[$i]['kcal'])<>"") $_kcal = str_replace(",",".", $produtos[$i]['kcal']); else $_kcal = 1;
 		                            if (trim($produtos[$i]['ptn'])<>"") $_ptn = str_replace(",",".", $produtos[$i]['ptn']); else $_ptn = 1;
 		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-
-		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                            // 2º validação da pesquisa:  refente aos calculos dos dados dos produtos -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                            // calculo reverco de produtos FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                            $sistema = "";
-		                            if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
-
-		                                if (isset($volume_produto[0])){
-		                                    $_volume_produto = str_replace(",",".", trim($volume_produto[0]));
-		                                    $_volume_produto = chkfloat($_volume_produto);
-		                                    $_volume_final_arredondado = round_up($_volume_final, $_volume_produto);
-		                                }else{
-		                                    $$_volume_final_arredondado = $_volume_final;
-		                                }
-
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                $_kcal = $dados['kcal_valor'];
-
-		                                if ($_volume > 0) $_kcal = (($_kcal / $_medida_dc) / $_volume); else $_kcal = ($_kcal / $_medida_dc);
-		                                $_kcal = floor($_kcal);
-		                                $_volume_final_arredondado = $_kcal * $_volume_produto;
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-		                                $_valor_calorico = ($_volume_final_arredondado / 100) * $_kcal; // (500 / 100) * 1   = 5 
-		                                $_valor_proteico = ($_volume_final_arredondado / 100) * $_ptn;  // (500 / 100) * 4.5 = 22.5
-		                                $volume_final = numberFormatPrecision($_volume_final_arredondado, 2)." ml";   
-
-		                                // 2023-03-06 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // formula para ajustar volume final
-		                                if (!is_numeric($valor_calorio)) $valor_calorio = 1;
-		                                if (!is_numeric($_medida_dc)) $_medida_dc = 1;
-		                                $volume_final = $valor_calorio / $_medida_dc;
-		                                $volume_final = numberFormatPrecision($volume_final, 2)." ml";
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-		                                $sistema = "fechado";
-
-
-		                                $_volume_final = chkfloat($volume_final);
-		                                $_fibra = chkstring2float($produtos[$i]['fibras']);
-		                                if ($_fibra > 0)
-		                                    $valor_fibra = ($_volume_final * $_fibra)/100;
-		                                else
-		                                    $valor_fibra = 0;
-
-
-		                            // calculo reverco de produtos ABERTO LÍQUIDO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		                            }
-		                            else if ($produtos[$i]['apres_enteral'] == '["Aberto (Líquido)"]'){
-		                                $_valor_calorico = ($_volume_final / 100) * $_kcal;
-		                                $_valor_proteico = ($_volume_horario / 100) * $_ptn;
-		                                $sistema = "aberto_liquido";
-		                                $_volume_final = chkfloat($volume_final);
-
-		                                $nf_kcal_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['kcal'])) / 100;
-		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
-
-										$nf_ptn_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['ptn'])) / 100;
-		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
-
-		                                $_fibra = chkstring2float($produtos[$i]['fibras']);               
-		                                $valor_fibra = ($_volume_final * $_fibra);                                
-		                                if ($valor_fibra>0) $valor_fibra = $valor_fibra /100; else $valor_fibra = 0;
-
-
-		                            // calculo reverco de produtos ABERTO PÓ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		                            }
-		                            else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
-
-		                                
-		                                $_kcal = $dados['kcal_valor'];
-		                                $volume_final_dieta = $_kcal / $_medida_dc;                        
-		                                $volume_horario = $volume_final_dieta / $fracionamento_dia;
-		                                $volume_horario = (round($volume_horario / 10) * 10);
-
-
-		                                $volume_final_dieta = $volume_horario * $fracionamento_dia;
-		                                $_valor_calorico = ($volume_horario * $_medida_dc) * $fracionamento_dia;
-
-		                                $medida_g = json_decode($produtos[$i]['medida_g'], true);
-		                                if (!isset($medida_g[0])) $medida_g = 1; else $medida_g = $medida_g[0];
-		                                $medida_g = str_replace(",", ".", $medida_g);
-		                                
-		                                $_medida = (isset($medida[$key])?$medida[$key]:0);
-
-		                                $_volume_final = json_decode($produtos[$i]['final'], true);
-		                                if (!isset($_volume_final[0])) $_volume_final = 1; else $_volume_final = $_volume_final[0];
-		                                if (strpos($_volume_final, 'mL') !== false) {
-		                                    $_volume_final = str_replace("mL","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else if ($_volume_final == "1L"){
-		                                    $_volume_final = 1000;
-		                                }
-		                                else if (strpos($_volume_final, 'g cada') !== false) {
-		                                    $_volume_final = str_replace("g cada","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else if (strpos($_volume_final, 'g/cada') !== false) {
-		                                    $_volume_final = str_replace("g/cada","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else if (strpos($_volume_final, 'g') !== false) {
-		                                    $_volume_final = str_replace("g","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else{
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                $medida_grama = ($_medida * $volume_final_dieta) / $_volume_final;
-
-		                                $_valor_proteico = ($medida_grama * $medida_g) / $_medida;
-		                                $_valor_proteico = ($_valor_proteico * $produtos[$i]['ptn']) / 100;
-
-		                                $medidas_horario = ($medida_grama / $fracionamento_dia);
-		                                $medidas_horario = floor($medidas_horario * 2) / 2;                
-		                                $volume_horario = (chknumber($volume_final) / $fracionamento_dia)." ml";
-
-
-		                                $nf_medida = ((chkstring2float($medida[$key]) * chkstring2float($volume_horario)) / chkfloat($final[$key]));
-		                                $nf_medida = round($nf_medida * 2) / 2;
-
-		                                $nf_grama = chkstring2float($grama[$key]);
-		                                $nf_grama = (($nf_grama * $nf_medida) / chkstring2float($medida[$key]));
-
-		                                $nf_dias_grama = ($nf_grama * $fracionamento_dia);
-
-		                                $nf_kcal_dia = ($nf_dias_grama * $produtos[$i]['kcal']) / 100;
-		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
-
-		                                $nf_ptn_dia = ($nf_dias_grama * $produtos[$i]['ptn']) / 100;
-		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
-
-		                                $_valor_calorico = $nf_kcal_dia;
-		                                $_valor_proteico = $nf_ptn_dia;
-
-
-		                                // fibra/dia = calculo  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                $fibras_dia = $nf_dias_grama * chkstring2float($produtos[$i]['fibras']);
-		                                if ($fibras_dia<>0) $fibras_dia = $fibras_dia / 100;
-		                                $valor_fibra = numberFormatPrecision($fibras_dia, 1);
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // 3ª validacao revalida o range das KCAL e PTN -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                //$margem_liberadas = false;
-		                                if (
-		                                    (($margem_calorica[0] <= $_valor_calorico) and ($margem_calorica[1] >= $_valor_calorico)) and
-		                                    (($margem_proteica[0] <= $_valor_proteico) and ($margem_proteica[1] >= $_valor_proteico))
-		                                    ){
-		                                    $margem_liberadas = true;
-		                                    $rowspan = $rowspan+1;
-		                                }
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-		                                
-		                                $sistema = "aberto_po";
-		                            }
 		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -3295,35 +3127,37 @@ $app->group("", function () use ($app) {
 
 		                            // se tiver no ranger, listar
 		                            if ($margem_liberadas){
-		                                if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
-		                                    $volume_horario = " - ";
+		                                // if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
+		                                //     $volume_horario = " - ";
+		                                // }
+
+		                                $apres_oral = $produtos[$i]['apres_oral'];
+		                                $apres_oral_num = '0';
+		                                if ($apres_oral == '["Pó"]'){
+											$apres_oral = 'Pó'; 
+											$apres_oral_num = '1';
+		                                }else if ($apres_oral == '["Líquido / Creme"]'){
+											$apres_oral = 'Líquido / Creme';
+											$apres_oral_num = '2';
 		                                }
 
-		                                $apres_enteral = $produtos[$i]['apres_enteral'];
-		                                $apres_enteral_num = '0';
-		                                if ($apres_enteral == '["Fechado"]'){ $apres_enteral = 'Fechado'; $apres_enteral_num = '1';
-		                                }else if ($apres_enteral == '["Aberto (Líquido)"]'){ $apres_enteral = 'Aberto (Líquido)';  $apres_enteral_num = '2';
-		                                }else if ($apres_enteral == '["Aberto (Pó)"]'){ $apres_enteral = 'Aberto (Pó)'; $apres_enteral_num = '3'; }
-
-		                                if ($retorno_thead <> $apres_enteral){
-		                                    $retorno_thead = $apres_enteral;
+		                                if ($retorno_thead <> $apres_oral){
+		                                    $retorno_thead = $apres_oral;
 		                                    $retorno .= '<thead>
 		                                                    <tr>
 		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
-		                                                        '.$apres_enteral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                        '.$apres_oral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
-		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_enteral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_enteral_num.')"> </th>
-		                                                        <th class="entric_group_destaque5">DIETA</th>
-		                                                        <th class="entric_group_destaque5">DILUIÇÃO (KCAL/ML)</th>
-		                                                        <th class="entric_group_destaque5">VOLUME FINAL</th>
-		                                                        <th class="entric_group_destaque5">VOLUME POR HORÁRIO</th>
-		                                                        <th class="entric_group_destaque5">CALORIA</th>
-		                                                        <th class="entric_group_destaque5">PROTEÍNA</th>
-		                                                        <th class="entric_group_destaque5">FIBRA</th>
+		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')"> </th>
+		                                                        <th class="entric_group_destaque5">PRODUTO </th>
+		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 1) ? '(und.)' : '(porção)').'</th>
+		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
+		                                                        <th class="entric_group_destaque5">CALORIA/dia</th>
+		                                                        <th class="entric_group_destaque5">PROTEÍNA/dia</th>
 		                                                    </tr>
 		                                                </thead>
-		                                                <tbody id="tbody'.$apres_enteral_num.'">';
+		                                                <tbody id="tbody'.$apres_oral_num.'">';
 		                                }
 
 		                                if (trim($produtos[$i]['kcal'])<>"") $_kcal = str_replace(",",".", $produtos[$i]['kcal']); else $_kcal = 1;
@@ -3390,21 +3224,20 @@ $app->group("", function () use ($app) {
 											}
 											
 										}
-										// var_dump($verificar_carac);
-										// var_dump($produtos[$i]['id']);
+
+										if($produtos[$i]['apres_enteral'] == '["Líquido / Creme"]'){
+											$volume_und = $volume[$m];
+											$volume_dia = ($volume_und * $fracionamento_dia) / 100;
+											$caloria_dia = ($volume_dia * $kcal) / 100;
+											$proteina_dia = ($volume_dia * $ptn) / 100;
+										}
+										
 										if($verificar_carac){
 											$retorno .= '<tr>'. $titulo.'
-															<td>
-																<div class="form-check col-sm-12">
-																	<input id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" disabled class="form-check-input styled-checkbox check_apagado diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$value.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.'___'.$sistema.'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : $calorias_dia).'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : $proteina_dia).'___'.(isset($medida[$key])?$medida[$key]:0).'___'.(isset($final[$key])?$final[$key]:0).'___'.(isset($grama[$key])?$grama[$key]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
-																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" class="form-check-label check-green">'.$value.'</label>
-																</div>
-															</td>
-															<td>'.$volume_final.'</td>
-															<td>'.$volume_horario.'</td>
-															<td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
-															<td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1)).'</td>
-															<td>'.$valor_fibra.'</td>
+															<td>'.$volume_und.'</td>
+															<td>'.$volume_dia.'</td>
+															<td>'.$caloria_dia.'</td>
+															<td>'.$proteina_dia.'</td>
 														</tr>';
 											$titulo = "";
 										}
