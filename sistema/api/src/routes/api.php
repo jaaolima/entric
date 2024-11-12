@@ -2801,7 +2801,7 @@ $app->group("", function () use ($app) {
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final",
+		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral",
 		                                            $query." ORDER BY apres_enteral, apres_oral ASC", 
 		                                            null);
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -3225,13 +3225,13 @@ $app->group("", function () use ($app) {
 											
 										}
 
-										if($produtos[$i]['apres_enteral'] == '["Líquido / Creme"]'){
+										if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
 											$volume_und = $volume[$m];
 											$volume_dia = ($volume_und * $fracionamento_dia) / 100;
 											$caloria_dia = ($volume_dia * $kcal) / 100;
 											$proteina_dia = ($volume_dia * $ptn) / 100;
 										}
-										
+
 										if($verificar_carac){
 											$retorno .= '<tr>'. $titulo.'
 															<td>'.$volume_und.'</td>
