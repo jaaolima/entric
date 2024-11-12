@@ -2962,6 +2962,10 @@ $app->group("", function () use ($app) {
 											'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
 											null);
 
+										if($valor_ptn[0]['valor'] == null){
+											$valor_ptn[0]['valor'] = 0;
+										}
+
 										$verificar_carac = true;
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
@@ -2992,24 +2996,23 @@ $app->group("", function () use ($app) {
 											
 										}
 
-										if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
-											$volume_und = $volume[$m] . ' ' . $unidmedida;
-											$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
-											$caloria_dia = ($volume_dia * $kcal) / 100;
-											$proteina_dia = ($volume_dia * $ptn) / 100;
-										}else if($produtos[$i]['apres_oral'] == '["Pó"]'){
-											$volume_und = $final[$m] . ' ' . $unidmedida;
-											$volume_dia = intval($final[$m]) * intval($fracionamento_dia);
-											$valor_energetico = $db->select_to_array("produtos_info_nutri",
-											"valor",
-											'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
-											null);
-											$caloria_dia = ($volume_dia * intval($valor_energetico[0]['valor'])) / 100;
-											$proteina_dia = ($volume_dia * $valor_ptn[0]['valor']) / 100;
-
-										}
-
+										var_dump($verificar_carac);
 										if($verificar_carac){
+											if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
+												$volume_und = $volume[$m] . ' ' . $unidmedida;
+												$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
+												$caloria_dia = ($volume_dia * $kcal) / 100;
+												$proteina_dia = ($volume_dia * $ptn) / 100;
+											}else if($produtos[$i]['apres_oral'] == '["Pó"]'){
+												$volume_und = $final[$m] . ' ' . $unidmedida;
+												$volume_dia = intval($final[$m]) * intval($fracionamento_dia);
+												$valor_energetico = $db->select_to_array("produtos_info_nutri",
+												"valor",
+												'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
+												null);
+												$caloria_dia = ($volume_dia * intval($valor_energetico[0]['valor'])) / 100;
+												$proteina_dia = ($volume_dia * $valor_ptn[0]['valor']) / 100;
+											}
 											$retorno .= '<tr>'. $titulo.'
 															<td>'.$volume_und.'</td>
 															<td>'.$volume_dia. ' ' . $unidmedida.'</td>
