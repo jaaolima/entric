@@ -2799,6 +2799,8 @@ $app->group("", function () use ($app) {
 					}
 				}
 
+				echo $query;
+
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral",
@@ -3214,7 +3216,7 @@ $app->group("", function () use ($app) {
 										if($verificar_carac){
 											$retorno .= '<tr>'. $titulo.'
 															<td>'.$volume_und.'</td>
-															<td>'.$volume_dia.'</td>
+															<td>'.$volume_dia. ' ' . $unidmedida.'</td>
 															<td>'.$caloria_dia.'</td>
 															<td>'.$proteina_dia.'</td>
 														</tr>';
