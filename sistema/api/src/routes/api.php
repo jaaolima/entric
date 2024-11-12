@@ -6627,6 +6627,23 @@ $app->group("", function () use ($app) {
 					if (!isset($dados['calculo_fil_todos1'])) $dados['calculo_fil_todos1'] = null; else $dados['calculo_fil_todos1'] = true;
 		            if (!isset($dados['calculo_fil_todos2'])) $dados['calculo_fil_todos2'] = null; else $dados['calculo_fil_todos2'] = true;
 		            if (!isset($dados['calculo_fil_todos3'])) $dados['calculo_fil_todos3'] = null; else $dados['calculo_fil_todos3'] = true;
+				}else{
+					$dados['calculo_fil_semsacarose'] = null;
+					$dados['calculo_fil_semlactose'] = null;
+					$dados['calculo_fil_hipocalorico'] = null;
+					$dados['calculo_fil_hipoproteico'] = null;
+					$dados['calculo_fil_comfibras'] = null;
+					$dados['calculo_fil_hipercalorico'] = null;
+					$dados['calculo_fil_normoproteico'] = null;
+					$dados['calculo_fil_semfibras'] = null;
+					$dados['calculo_fil_100proteina'] = null;
+					$dados['calculo_fil_hiperproteico'] = null;
+					$dados['calculo_fil_cicatrizacao'] = null;
+					$dados['calculo_fil_omega3'] = null;
+					$dados['calculo_fil_imunonutricao'] = null;
+					$dados['calculo_fil_todos1'] = null;
+					$dados['calculo_fil_todos2'] = null;
+					$dados['calculo_fil_todos3'] = null;
 				}
 		        if (!isset($dados['dieta_formula'])) $dados['dieta_formula'] = null;
 		        if (!isset($dados['dieta_volume'])) $dados['dieta_volume'] = null;
