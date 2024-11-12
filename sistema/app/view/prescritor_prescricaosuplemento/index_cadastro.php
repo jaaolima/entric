@@ -126,9 +126,9 @@
                 </div>
                 <div class="form-group row pt-5">
                     <div class="col-sm-6 text-left">
-                        <button type="button" onclick="window.location.href='prescritor_prescricaosimplificada'" class="btn btn-secondary btn-form">VOLTAR</button>
+                        <button type="button" onclick="window.location.href='prescritor_prescricaosuplemento'" class="btn btn-secondary btn-form">VOLTAR</button>
                     </div>
-                    <div class="col-sm-6 text-right">
+                    <div class="col-sm-6 text-center">
                         <button type="button" class="btn btn-warning btn-form" id="iniciar_nova_prescricao">GERAR NOVO RELATÓRIO</button>
                     </div>
                 </div>
