@@ -2970,8 +2970,6 @@ $app->group("", function () use ($app) {
 											}
 										}
 
-										var_dump($valor_ptn[0]['valor']);
-
 										$verificar_carac = true;
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
