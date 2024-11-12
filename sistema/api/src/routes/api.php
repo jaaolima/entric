@@ -3016,7 +3016,7 @@ $app->group("", function () use ($app) {
 												$proteina_dia = ($volume_dia * $ptn) / 100;
 												$sistema = 'Líquido/Creme';
 											}else if($produtos[$i]['apres_oral'] == '["Pó"]'){
-												$volume_und = $final[$m] . ' ml';
+												$volume_und = str_replace('mL', '', $final[$m]) . ' mL';
 												$volume_dia = intval($final[$m]) * intval($fracionamento_dia);
 												$valor_energetico = $db->select_to_array("produtos_info_nutri",
 												"valor",
@@ -3043,7 +3043,7 @@ $app->group("", function () use ($app) {
 																</div>
 		                                                	</td>
 															<td>'.$volume_und.'</td>
-															<td>'.$volume_dia. ' ml'.'</td>
+															<td>'.$volume_dia. ' mL'.'</td>
 															<td>'.$caloria_dia.'</td>
 															<td>'.$proteina_dia.'</td>
 														</tr>';
