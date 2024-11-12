@@ -3178,52 +3178,28 @@ $app->group("", function () use ($app) {
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
 					
-											if(in_array('Hipocalórico', $array_carac) && $verificar_carac){
-												if($_medida_dc <= 1.2){
+											if(in_array('Hipocalórico', $array_carac) && $_medida_dc <= 1.2) {
+												$verificar_carac = true;
+											} elseif (in_array('Hipercalórico', $array_carac) && $_medida_dc > 1.2) {
+												$verificar_carac = true;
+											} else {
+												$verificar_carac = false;
+											}
+											
+											if ($verificar_carac && isset($valor_ptn[0]['valor'])) {
+												$valor_ptn_valor = floatval($valor_ptn[0]['valor']);
+											
+												if (in_array('Hipoproteico', $array_carac) && $valor_ptn_valor < 10) {
 													$verificar_carac = true;
-												}else{
-													$verificar_carac = false;
-												}
-											}
-											if(in_array('Hipercalórico', $array_carac) && $verificar_carac){
-												if($_medida_dc > 1.2){
+												} elseif (in_array('Normoproteico', $array_carac) && $valor_ptn_valor >= 10 && $valor_ptn_valor <= 20) {
 													$verificar_carac = true;
-												}else{
+												} elseif (in_array('Hiperproteico', $array_carac) && $valor_ptn_valor > 20) {
+													$verificar_carac = true;
+												} else {
 													$verificar_carac = false;
 												}
-											}
-											if(in_array('Hipoproteico', $array_carac) && $verificar_carac){
-												if(isset($valor_ptn[0]['valor'])){
-													if(floatval($valor_ptn[0]['valor']) < 10){
-														$verificar_carac = true;
-													}else{
-														$verificar_carac = false;
-													}
-												}else{
-													$verificar_carac = false;
-												}
-											}
-											if(in_array('Normoproteico', $array_carac) && $verificar_carac){
-												if(isset($valor_ptn[0]['valor'])){
-													if(floatval($valor_ptn[0]['valor']) >= 10 || floatval($valor_ptn[0]['valor']) <= 20){
-														$verificar_carac = true;
-													}else{
-														$verificar_carac = false;
-													}
-												}else{
-													$verificar_carac = false;
-												}
-											}
-											if(in_array('Hiperproteico', $array_carac) && $verificar_carac){
-												if(isset($valor_ptn[0]['valor'])){
-													if(floatval($valor_ptn[0]['valor']) > 20){
-														$verificar_carac = true;
-													}else{
-														$verificar_carac = false;
-													}
-												}else{
-													$verificar_carac = false;
-												}
+											} else {
+												$verificar_carac = false;
 											}
 											
 										}
