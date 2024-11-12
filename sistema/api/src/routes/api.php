@@ -2997,6 +2997,16 @@ $app->group("", function () use ($app) {
 											$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
 											$caloria_dia = ($volume_dia * $kcal) / 100;
 											$proteina_dia = ($volume_dia * $ptn) / 100;
+										}else if($produtos[$i]['apres_oral'] == '["Pó"]'){
+											$volume_und = $final[$m] . ' ' . $unidmedida;
+											$volume_dia = intval($final[$m]) * intval($fracionamento_dia);
+											$valor_energetico = $db->select_to_array("produtos_info_nutri",
+											"valor",
+											'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
+											null);
+											$caloria_dia = ($volume_dia * intval($valor_energetico[0]['valor'])) / 100;
+											$proteina_dia = ($volume_dia * $valor_ptn[0]['valor']) / 100;
+
 										}
 
 										if($verificar_carac){

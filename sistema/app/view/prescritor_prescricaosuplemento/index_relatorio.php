@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group col-sm-6 text-center mb-3">
                         <div class="form-radio entric_radio">
-                            <label for="rel_calculo" class="form-check-label check-green">CÁLCULO DE TERAPIA NUTRICIONAL</label>
+                            <label for="rel_calculo" class="form-check-label check-green">Prescrição TNEVO</label>
                         </div>
                     </div>
                     <div class="form-group col-sm-1 mb-3"></div>
