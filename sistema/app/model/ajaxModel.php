@@ -265,6 +265,14 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
+    function stRelatorioSuplemento($dados, $set_codigo = false) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stRelatorioSuplemento", array( "token" => $_SESSION['token'],
+                                                           "dados" => $dados,
+                                                           "set_codigo" => $set_codigo));       
+        return $retorno;
+    }
+
     function gtRelatorio($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gtRelatorio", array( "token" => $_SESSION['token'],
