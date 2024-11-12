@@ -3015,8 +3015,17 @@ $app->group("", function () use ($app) {
 												"valor",
 												'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
 												null);
-												$caloria_dia = ($volume_dia * intval($valor_energetico[0]['valor'])) / 100;
-												$proteina_dia = ($volume_dia * intval($valor_ptn[0]['valor'])) / 100;
+
+												if(!isset($valor_energetico[0]['valor'])){
+													$valor_energetico[0]['valor'] = 0;
+												}else{
+													if($valor_energetico[0]['valor'] == null){
+														$valor_energetico[0]['valor'] = 0;
+													}
+												}
+
+												$caloria_dia = ($volume_dia * floatval($valor_energetico[0]['valor'])) / 100;
+												$proteina_dia = ($volume_dia * floatval($valor_ptn[0]['valor'])) / 100;
 											}
 											$retorno .= '<tr>'. $titulo.'
 															<td>'.$volume_und.'</td>
