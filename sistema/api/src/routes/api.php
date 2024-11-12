@@ -6806,12 +6806,8 @@ $app->group("", function () use ($app) {
 
 
 		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
-		        if (!isset($dados['margem_calorica'])) $dados['margem_calorica'] = null;
-		        if (!isset($dados['margem_proteica'])) $dados['margem_proteica'] = null;
 
-		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),
-		                        ':margem_calorica' => $dados["margem_calorica"],
-		                        ':margem_proteica' => $dados["margem_proteica"]);
+		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]));
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];

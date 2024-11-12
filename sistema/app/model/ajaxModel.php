@@ -214,9 +214,9 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
-    function stSelecaoSsuplemento($dados) {
+    function stSelecaoSuplemento($dados) {
         global $bruker;
-        $retorno = httpPostAuth("ajax_stSelecaoSsuplemento", array("token" => $_SESSION['token'],
+        $retorno = httpPostAuth("ajax_stSelecaoSuplemento", array("token" => $_SESSION['token'],
                                                         "dados" => $dados));       
         return $retorno;
     }
