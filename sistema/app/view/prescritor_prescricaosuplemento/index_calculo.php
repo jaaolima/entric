@@ -18,10 +18,6 @@
 
         </div>
 
-
-        <?php include("index_calculo_prescricao_nutricional.php");?>
-
-
         <div class="form-group row pt-5">
             <div class="col-sm-6 text-left">
                 <button type="button" class="btn btn-secondary btn-sm" id="calculo_salvar">

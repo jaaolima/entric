@@ -8,28 +8,6 @@
             <div class="modal-body" id="modal-pdf-body">
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
 
-
-
-
-                    <div class="row">
-                        <div class="col-sm-6 text-center">
-                            <label class="grid_label pb-4 mb-3">Variação Calórica: ajuste se necessário.</label><br />
-                            <div class="mt-3">
-                                <b>-10%</b> <input type="text" value="" id="margem_calorica" name="margem_calorica" class="margens_kptn" /> <b>10%</b>
-                                <div class="text-center"><b id="var_calorica"></b></div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 text-center">
-                            <label class="grid_label pb-4 mb-3">Variação Proteica: ajuste se necessário.</label><br />
-                            <div class="mt-3">
-                                <b>-20%</b> <input type="text" value="" id="margem_proteica" name="margem_proteica" class="margens_kptn" /> <b>20%</b>
-                                <div class="text-center"><b id="var_proteina"></b></div>
-                            </div>
-                        </div>
-                    </div>
-
-
                     <table class="table table-bordered" id="dietas_dc">
                         <thead>
                             <tr>
