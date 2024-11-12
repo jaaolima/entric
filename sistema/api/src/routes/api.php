@@ -3082,6 +3082,7 @@ $app->group("", function () use ($app) {
 		                        $medida = json_decode($produtos[$i]['medida'], true);
 		                        $final = json_decode($produtos[$i]['final'], true);
 		                        $volume = json_decode($produtos[$i]['volume'], true);
+		                        $unimedida = json_decode($produtos[$i]['unimedida'], true);
 		                        $grama = json_decode($produtos[$i]['medida_g'], true);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
@@ -3228,7 +3229,7 @@ $app->group("", function () use ($app) {
 										}
 
 										if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
-											$volume_und = $volume[$m];
+											$volume_und = $volume[$m] . ' ' . $unimedida[$m];
 											$volume_dia = ($volume_und * $fracionamento_dia) / 100;
 											$caloria_dia = ($volume_dia * $kcal) / 100;
 											$proteina_dia = ($volume_dia * $ptn) / 100;
