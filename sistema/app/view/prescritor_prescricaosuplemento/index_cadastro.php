@@ -53,7 +53,7 @@
                     echo $item_dados;
                 ?>
                 <div class="row form-group">
-                    <div class="text-end col-sm-12 mt-4">
+                    <div class="text-right col-sm-12 mt-4">
                         <button class="btn btn-danger" type="submit" onclick="fc_cadastrar_paciente();">
                             <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
                             Cadastrar
@@ -129,64 +129,8 @@
                         <button type="button" onclick="window.location.href='prescritor_prescricaosimplificada'" class="btn btn-secondary btn-form">VOLTAR</button>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <button type="button" class="btn btn-warning btn-form" id="gerar_relatorio">GERAR NOVO RELATÓRIO</button>
+                        <button type="button" class="btn btn-warning btn-form" id="iniciar_nova_prescricao">GERAR NOVO RELATÓRIO</button>
                     </div>
-                </div>
-                <div class="row form-group" id="div_botao_valores" style="display:none;">
-                    <div class="text-center col-sm-12">
-                        <button type="button" class="btn btn-secondary" id="btn_valores_manualmente_atualizar">
-                            <span class="btn-icon-right"><i class="fa fa-regular fa-file"></i></span>
-                            Inserir valores manualmente
-                        </button>
-                        &nbsp;
-                        <button type="button" class="btn btn-warning" id="btn_realizar_calculo_atualizar">
-                            <span class="btn-icon-right"><i class="fa fa-solid fa-calculator"></i></span>
-                            Desejo realizar os cálculos
-                        </button>
-                    </div> 
-                </div>
-                <div class="row form-group justify-content-center" id="div_valores_atualizar" style="display:none;">
-                    <div class="col-md-4">
-                        <div class="col-md-12" name='div_calculo_atualizar'>
-                            <div class="w-100 mb-2" style="display: inline-block;text-align: end;white-space: nowrap;vertical-align: middle;padding: .7rem 1.8rem;font-size: 12px !important;border-radius: 5px;background: #eda349;border-color: #eda349;color: #fff;">
-                                <span>Total</span>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group input-group mb-1"> 
-                                <div class="input-group-append">
-                                    <span class="input-group-text" style="width:150px;">Calorias</span>
-                                </div>
-                                <input type="text" placeholder="kcal/kg" required="required" id="up_kcal_kg" name="up_kcal_kg" class="form-control div_calculo_atualizar" value=""> 
-                                <input type="text" readonly placeholder="kcal/dia" required="required" id="up_kcal_dia" name="up_kcal_dia" class="form-control" value=""> 
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group input-group mb-1"> 
-                                <div class="input-group-append">
-                                    <span class="input-group-text" style="width:150px;">Proteínas</span>
-                                </div>
-                                <input type="text" placeholder="g/kg" required="required" id="up_proteina_kg" name="up_proteina_kg" class="form-control div_calculo_atualizar" value=""> 
-                                <input type="text" readonly placeholder="g/dia" required="required" id="up_proteina_dia" name="up_proteina_dia" class="form-control" value=""> 
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group input-group mb-1"> 
-                                <div class="input-group-append">
-                                    <span class="input-group-text" style="width:150px;">Água</span>
-                                </div>
-                                <input type="text" placeholder="ml/kg" required="required" id="up_agua_kg" name="up_agua_kg" class="form-control div_calculo_atualizar" value=""> 
-                                <input type="text" readonly placeholder="ml/dia" required="required" id="up_agua_dia" name="up_agua_dia" class="form-control" value=""> 
-                            </div>
-                        </div>
-                        <div class="text-center col-sm-12 mt-4">
-                            <button class="btn btn-danger" type="submit" id="iniciar_nova_prescricao">
-                                <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
-                                Iniciar Prescrição
-                            </button>
-                        </div> 
-                    </div>
-                    
                 </div>
             </div>
 
