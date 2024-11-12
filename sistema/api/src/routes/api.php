@@ -2966,6 +2966,8 @@ $app->group("", function () use ($app) {
 											$valor_ptn[0]['valor'] = 0;
 										}
 
+										var_dump($valor_ptn[0]['valor']);
+
 										$verificar_carac = true;
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
@@ -2996,7 +2998,6 @@ $app->group("", function () use ($app) {
 											
 										}
 
-										var_dump($verificar_carac);
 										if($verificar_carac){
 											if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
 												$volume_und = $volume[$m] . ' ' . $unidmedida;
@@ -3011,7 +3012,7 @@ $app->group("", function () use ($app) {
 												'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
 												null);
 												$caloria_dia = ($volume_dia * intval($valor_energetico[0]['valor'])) / 100;
-												$proteina_dia = ($volume_dia * $valor_ptn[0]['valor']) / 100;
+												$proteina_dia = ($volume_dia * intval($valor_ptn[0]['valor'])) / 100;
 											}
 											$retorno .= '<tr>'. $titulo.'
 															<td>'.$volume_und.'</td>
