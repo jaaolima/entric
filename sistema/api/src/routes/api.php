@@ -3205,7 +3205,7 @@ $app->group("", function () use ($app) {
 										}
 
 										if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
-											$volume_und = $volume[$m] . ' ' . $unidmedida[$m];
+											$volume_und = $volume[$m] . ' ' . $unidmedida;
 											$volume_dia = ($volume_und * $fracionamento_dia) / 100;
 											$caloria_dia = ($volume_dia * $kcal) / 100;
 											$proteina_dia = ($volume_dia * $ptn) / 100;
