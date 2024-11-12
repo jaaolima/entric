@@ -3082,7 +3082,7 @@ $app->group("", function () use ($app) {
 		                        $medida = json_decode($produtos[$i]['medida'], true);
 		                        $final = json_decode($produtos[$i]['final'], true);
 		                        $volume = json_decode($produtos[$i]['volume'], true);
-		                        $unidmedida = json_decode($produtos[$i]['unidmedida'], true);
+		                        $unidmedida = $produtos[$i]['unidmedida'];
 		                        $grama = json_decode($produtos[$i]['medida_g'], true);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
