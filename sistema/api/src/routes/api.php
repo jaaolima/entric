@@ -2942,6 +2942,7 @@ $app->group("", function () use ($app) {
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')"> </th>
 		                                                        <th class="entric_group_destaque5">PRODUTO </th>
+		                                                        <th class="entric_group_destaque5">DILUIÇÃO </th>
 		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 1) ? '(und.)' : '(porção)').'</th>
 		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
 		                                                        <th class="entric_group_destaque5">CALORIA/dia</th>
@@ -3006,6 +3007,7 @@ $app->group("", function () use ($app) {
 												$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
 												$caloria_dia = ($volume_dia * $kcal) / 100;
 												$proteina_dia = ($volume_dia * $ptn) / 100;
+												$sistema = 'Líquido/Creme';
 											}else if($produtos[$i]['apres_oral'] == '["Pó"]'){
 												$volume_und = $final[$m] . ' ' . $unidmedida;
 												$volume_dia = intval($final[$m]) * intval($fracionamento_dia);
@@ -3024,8 +3026,15 @@ $app->group("", function () use ($app) {
 
 												$caloria_dia = ($volume_dia * floatval($valor_energetico[0]['valor'])) / 100;
 												$proteina_dia = ($volume_dia * floatval($valor_ptn[0]['valor'])) / 100;
+												$sistema = 'Pó';
 											}
 											$retorno .= '<tr>'. $titulo.'
+															<td>
+																<div class="form-check col-sm-12">
+																	<input id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" disabled class="form-check-input styled-checkbox check_apagado diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida_dc[$m].']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.'___'.$sistema.'___'.$calorias_dia.'___'.$proteina_dia.'___'.(isset($medida[$m])?$medida[$m]:0).'___'.(isset($final[$m])?$final[$m]:0).'___'.(isset($grama[$m])?$grama[$m]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
+																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-label check-green">'.$medida_dc[$m].'</label>
+																</div>
+		                                                	</td>
 															<td>'.$volume_und.'</td>
 															<td>'.$volume_dia. ' ' . $unidmedida.'</td>
 															<td>'.$caloria_dia.'</td>
@@ -7294,11 +7303,11 @@ $app->group("", function () use ($app) {
 		                                ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                                ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
 		                                ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
-		                $retorno = $db->update("relatorios_simplificada", "WHERE id=".$dados['id_relatorio'], $bind);
+		                $retorno = $db->update("relatorios_suplemento", "WHERE id=".$dados['id_relatorio'], $bind);
 		                $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		            }
 		            else{
-		                $relatorio = $db->select_single_to_array("relatorios_simplificada", "*", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", null);
+		                $relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", null);
 		                if ($relatorio){
 		                    // if ($set_codigo){
 		                    //     $paciente = $db->select_single_to_array("pacientes", "*", "WHERE id=".$dados['id_paciente'], null);
@@ -7316,7 +7325,7 @@ $app->group("", function () use ($app) {
 		                                    ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                                    ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
 		                                    ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
-		                    $retorno = $db->update("relatorios_simplificada", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", $bind);
+		                    $retorno = $db->update("relatorios_suplemento", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", $bind);
 
 		                    /*
 		                    $paciente = $this->select_single_to_array("pacientes", "*", "WHERE id=".$relatorio['id_paciente'], null);
