@@ -2962,8 +2962,12 @@ $app->group("", function () use ($app) {
 											'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
 											null);
 
-										if(!isset($valor_ptn[0]['valor']) && $valor_ptn[0]['valor'] == null){
+										if(!isset($valor_ptn[0]['valor'])){
 											$valor_ptn[0]['valor'] = 0;
+										}else{
+											if($valor_ptn[0]['valor'] == null){
+												$valor_ptn[0]['valor'] = 0;
+											}
 										}
 
 										var_dump($valor_ptn[0]['valor']);
