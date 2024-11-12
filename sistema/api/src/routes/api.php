@@ -2949,7 +2949,7 @@ $app->group("", function () use ($app) {
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')"> </th>
 		                                                        <th class="entric_group_destaque5">PRODUTO </th>
-		                                                        <th class="entric_group_destaque5">DILUIÇÃO </th>
+		                                                        <th class="entric_group_destaque5">DENSIDADE CALÓRICA</th>
 		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 1) ? '(und.)' : '(porção)').'</th>
 		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
 		                                                        <th class="entric_group_destaque5">CALORIA/dia</th>
