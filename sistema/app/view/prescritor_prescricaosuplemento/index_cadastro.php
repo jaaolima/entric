@@ -53,7 +53,7 @@
                     echo $item_dados;
                 ?>
                 <div class="row form-group">
-                    <div class="text-right col-sm-12 mt-4">
+                    <div class="text-center col-sm-12 mt-4">
                         <button class="btn btn-danger" type="submit" onclick="fc_cadastrar_paciente();">
                             <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
                             Cadastrar
@@ -128,7 +128,7 @@
                     <div class="col-sm-6 text-left">
                         <button type="button" onclick="window.location.href='prescritor_prescricaosuplemento'" class="btn btn-secondary btn-form">VOLTAR</button>
                     </div>
-                    <div class="col-sm-6 text-center">
+                    <div class="col-sm-6 text-end">
                         <button type="button" class="btn btn-warning btn-form" id="iniciar_nova_prescricao">GERAR NOVO RELATÓRIO</button>
                     </div>
                 </div>
