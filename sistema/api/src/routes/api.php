@@ -3031,8 +3031,6 @@ $app->group("", function () use ($app) {
 													}
 												}
 
-												var_dump(floatval(str_replace(',', '.', $valor_ptn[0]['valor'])));
-
 												$caloria_dia = ($volume_dia *  floatval(str_replace(',', '.', $valor_energetico[0]['valor']))) / 100;
 												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn[0]['valor']))) / 100;
 												$sistema = 'Pó';
