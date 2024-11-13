@@ -86,7 +86,7 @@
                                 <div class="form-check">
                                     <label class="grid_label required">Características <span>*</span></label>
                                 </div>
-                                <div class="row p-4"> 
+                                <div class="row p-4">  
 
                                     <div class="form-check col-sm-4">
                                         <input id="calculo_enteral_carac_polimerico" required name="carac_enteral_merico[]" class="form-check-input radio-outlined" type="radio" value="Polimérico">
