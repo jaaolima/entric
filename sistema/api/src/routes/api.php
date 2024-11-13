@@ -2969,7 +2969,7 @@ $app->group("", function () use ($app) {
 										//verificar caracteristicas tnevo
 										$valor_ptn = $db->select_to_array("produtos_composicao",
 											"valor",
-											'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
+											'WHERE descricao = "Proteínas" and id_produto = '.$produtos[$i]['id'], 
 											null);
 
 										if(!isset($valor_ptn[0]['valor'])){
