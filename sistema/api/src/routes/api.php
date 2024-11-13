@@ -2947,8 +2947,10 @@ $app->group("", function () use ($app) {
 		                                                        '.$apres_oral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
-		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')"> </th>
-		                                                        <th class="entric_group_destaque5">PRODUTO </th>
+		                                                        <th class="entric_group_destaque5">
+																	<input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')">
+																	PRODUTO 
+																</th>
 		                                                        <th class="entric_group_destaque5">DENSIDADE CALÓRICA</th>
 		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 1) ? '(und.)' : '(porção)').'</th>
 		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
@@ -3039,9 +3041,9 @@ $app->group("", function () use ($app) {
 															<td>
 																<div class="form-check col-sm-12">
 																	<input id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" disabled class="form-check-input styled-checkbox check_apagado diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida_dc[$m].']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.'___'.$sistema.'___'.$calorias_dia.'___'.$proteina_dia.'___'.(isset($medida[$m])?$medida[$m]:0).'___'.(isset($final[$m])?$final[$m]:0).'___'.(isset($grama[$m])?$grama[$m]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
+																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-label check-green">'.$produtos[$i]['nome']."  ".$_nome.'</label>
 																</div>
 		                                                	</td>
-															<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome']."  ".$_nome.'</td>
 															<td>'.$medida_dc[$m].'</td>
 															<td>'.$volume_und.'</td>
 															<td>'.$volume_dia. ' mL'.'</td>
