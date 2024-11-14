@@ -3852,7 +3852,7 @@ $app->group("", function () use ($app) {
 		            $fabricantes = $db->insert("fabricantes", $bind);
 		        }
 
-		        $bind = array(  ':id_paciente' => null,
+		        $bind = array(  ':id_paciente' => 1,
 								':fabricante' => $dados['fabricante'],
 		                        ':distribuidor' => $dados['distribuidor'],
 		                        ':principal_regiao' => $dados['principal_regiao'],
@@ -3867,7 +3867,6 @@ $app->group("", function () use ($app) {
 		                        ':mapa' => $dados['mapa'],
 		                        ':data_criacao' => date("Y-m-d H:i:s"));
 
-				var_dump($bind);
 		        $retorno = $db->insert("distribuidores", $bind);
 
 		        $data = $retorno;
