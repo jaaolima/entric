@@ -3024,11 +3024,6 @@ $app->group("", function () use ($app) {
 												"valor",
 												'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
 												null);
-
-												$valor_ptn = $db->select_to_array("produtos_info_nutri",
-												"valor",
-												'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
-												null);
 												if(!isset($valor_energetico[0]['valor'])){
 													$valor_energetico[0]['valor'] = 0;
 												}else{
@@ -3037,8 +3032,20 @@ $app->group("", function () use ($app) {
 													}
 												}
 
+												$valor_ptn_100ml = $db->select_to_array("produtos_info_nutri",
+												"valor",
+												'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
+												null);
+												if(!isset($valor_ptn_100ml[0]['valor'])){
+													$valor_ptn_100ml[0]['valor'] = 0;
+												}else{
+													if($valor_ptn_100ml[0]['valor'] == null){
+														$valor_ptn_100ml[0]['valor'] = 0;
+													}
+												}
+												
 												$caloria_dia = ($volume_dia *  floatval(str_replace(',', '.', $valor_energetico[0]['valor']))) / 100;
-												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn[0]['valor']))) / 100;
+												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn_100ml[0]['valor']))) / 100;
 												$sistema = 'Pó';
 											}
 											$retorno .= '<tr>
