@@ -3852,7 +3852,8 @@ $app->group("", function () use ($app) {
 		            $fabricantes = $db->insert("fabricantes", $bind);
 		        }
 
-		        $bind = array(  ':fabricante' => $dados['fabricante'],
+		        $bind = array(  ':id_paciente' => null,
+								':fabricante' => $dados['fabricante'],
 		                        ':distribuidor' => $dados['distribuidor'],
 		                        ':principal_regiao' => $dados['principal_regiao'],
 		                        ':desconto' => $dados['desconto'],
