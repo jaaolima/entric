@@ -20,7 +20,7 @@
                         <li class="breadcrumb-item active"><a href="distribuidores">Distribuidores</a></li>
                     </ol>
                 </div>
-            </div>
+            </div> 
 
 
             <div class="row">

@@ -3865,6 +3865,8 @@ $app->group("", function () use ($app) {
 		                        ':whatsapp' => $dados['whatsapp'],
 		                        ':mapa' => $dados['mapa'],
 		                        ':data_criacao' => date("Y-m-d H:i:s"));
+
+				var_dump($bind);
 		        $retorno = $db->insert("distribuidores", $bind);
 
 		        $data = $retorno;

@@ -17,7 +17,7 @@ class DistribuidoresModel extends Model {
     }
 
     function cadastrar($dados) {
-        global $bruker;
+        global $bruker; 
         $retorno = httpPostAuth("distribuidores_cadastrar", array("token" => $_SESSION['token'],
                                                                 "dados" => $dados));
         return $retorno;

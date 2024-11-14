@@ -10,7 +10,7 @@ function abrirEndereco(_id){
         dataType: 'html',
         success: function( data ){
             $("#info_endereco .modal-body").html(data);
-            $('#info_endereco').modal('show');
+            $('#info_endereco').modal('show'); 
         }
     });
 }
