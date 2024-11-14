@@ -2952,7 +2952,7 @@ $app->group("", function () use ($app) {
 																	PRODUTO 
 																</th>
 		                                                        <th class="entric_group_destaque5">DENSIDADE CALÓRICA</th>
-		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 1) ? '(und.)' : '(porção)').'</th>
+		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 2) ? '(und.)' : '(porção)').'</th>
 		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
 		                                                        <th class="entric_group_destaque5">CALORIA/dia</th>
 		                                                        <th class="entric_group_destaque5">PROTEÍNA/dia</th>
@@ -3025,6 +3025,10 @@ $app->group("", function () use ($app) {
 												'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
 												null);
 
+												$valor_ptn = $db->select_to_array("produtos_info_nutri",
+												"valor",
+												'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
+												null);
 												if(!isset($valor_energetico[0]['valor'])){
 													$valor_energetico[0]['valor'] = 0;
 												}else{
