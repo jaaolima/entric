@@ -1555,7 +1555,7 @@ $(function(){
                 //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
                 var formSerializeArray = $("#frmproduto").serializeArray();
                 for (var i = 0; i < formSerializeArray.length; i++) {
-                    if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value != "")){
+                    if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value == "")){
                         if ($(".unidademedida").is(":visible")){
                             formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
                         }
