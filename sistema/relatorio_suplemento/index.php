@@ -177,9 +177,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> DADOS GERAIS</p>
-			<p><strong>Paciente:</strong> <?php echo ucwords($paciente['nome']);?></p>
+			<p><strong>Nome:</strong> <?php echo ucwords($paciente['nome']);?></p>
 			<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
-			<?php if($paciente['telefone'] <> '') echo "<p><strong>Telefone:</strong> ".$paciente['telefone']." </p>"; ?>
 			<?php if($paciente['hospital'] <> '') echo "<p><strong>Hospital:</strong> ".$paciente['hospital']." </p>"; ?>
 			<?php if($paciente['atendimento'] <> '') echo "<p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p>"; ?>
 			<?php } ?>
