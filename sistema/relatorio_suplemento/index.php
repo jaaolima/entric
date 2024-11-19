@@ -186,7 +186,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
-					<p>A Terapia Nutricional Enteral po Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
@@ -1009,6 +1009,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
 										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+										echo "<br><h5 style='color:#45cfb3;margin:0px;'>FACILITE A COMPRA!</h5>
+										<br><h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
+										<br><img src='imagem/qrcode-sistema.png' style='display:inline-block;' width='80' alt=''>";
 									echo '</p>';
 								}
 							}
