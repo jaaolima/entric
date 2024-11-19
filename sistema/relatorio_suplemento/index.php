@@ -211,9 +211,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$horarios[] = $valor;
 					}
 					$_horarios = "";
-					var_dump($horarios);
 					for ($i = 0; $i < count($horarios); $i++) {
-						if($i = count($horarios) - 1){
+						if($i == count($horarios) - 1){
 							$_horarios .= $horarios[$i0];
 						}else{
 							$_horarios .= $horarios[$i0] . ', ';
