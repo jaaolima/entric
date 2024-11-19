@@ -1555,16 +1555,13 @@ $(function(){
                 //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
                 var formSerializeArray = $("#frmproduto").serializeArray();
                 for (var i = 0; i < formSerializeArray.length; i++) {
-                    if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value == "")){
-                        if ($(".unidademedida").is(":visible")){
-                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
+                    if ((formSerializeArray[i].name == "nome")){
+                        if ($("[name='via']:checked").val() == 'Enteral'){
+                            formData.append(formSerializeArray[i].name, $(".nounidademedida input[name=nome]").val());
                         }
                         else{
-                            formData.append(formSerializeArray[i].name, $(".nounidademedida input[name=nome]").val());
+                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
                         }  
-                    }
-                    else{
-                        formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
                     }
                 } 
 
@@ -1646,19 +1643,15 @@ $(function(){
                 //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
                 var formSerializeArray = $("#frmproduto").serializeArray();
                 for (var i = 0; i < formSerializeArray.length; i++) {
-                    if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value != "")){
-                        if ($(".unidademedida").is(":visible")){
-                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
-                        }
-                        else{
+                    if ((formSerializeArray[i].name == "nome")){
+                        if ($("[name='via']:checked").val() == 'Enteral'){
                             formData.append(formSerializeArray[i].name, $(".nounidademedida input[name=nome]").val());
                         }
-                        formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
+                        else{
+                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
+                        }  
                     }
-                    else{
-                        formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
-                    }
-                }
+                } 
 
                 $.ajax({
                     type: "POST",
