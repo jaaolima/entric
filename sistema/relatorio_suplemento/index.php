@@ -910,89 +910,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
-			
-			<?php 
-			if ($relatorio['calculo_apres_fechado'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA FECHADO</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-			<?php 
-			if ($relatorio['calculo_apres_aberto_liquido'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-			<?php 
-			if ($relatorio['calculo_apres_aberto_po'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA ABERTO (PÓ)</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto_po'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-
-
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> PONTOS DE VENDA</p>
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ONDE ENCONTRAR</p>
 			<p>
 				<table width="100%" cellspacing="0" cellpadding="0">
 					<tbody>
@@ -1003,13 +921,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($danone){
 								//echo "<p><strong>PRINCIPAL</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<p style="text-align: left;font-size: 18px;">';
+									echo '<p style="text-align: center;font-size: 18px;">';
 										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
 										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
 										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-										echo "<br><h5 style='color:#45cfb3;margin:0px;'>FACILITE A COMPRA!</h5>
+										echo "<br><h5 style='color:#45cfb3;margin:0px;margin-top:15px;'>FACILITE SUA COMPRA!</h5>
 										<br><h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
 										<br><img src='imagem/qrcode-sistema.png' style='display:inline-block;' width='80' alt=''>";
 									echo '</p>';
