@@ -1563,6 +1563,9 @@ $(function(){
                             formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
                         }  
                     }
+                    else{
+                        formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
+                    }
                 } 
 
                 $.ajax({
@@ -1642,6 +1645,7 @@ $(function(){
                 }
                 //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
                 var formSerializeArray = $("#frmproduto").serializeArray();
+
                 for (var i = 0; i < formSerializeArray.length; i++) {
                     if ((formSerializeArray[i].name == "nome")){
                         if ($("[name='via']:checked").val() == 'Enteral'){
@@ -1650,6 +1654,9 @@ $(function(){
                         else{
                             formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
                         }  
+                    }
+                    else{
+                        formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
                     }
                 } 
 
