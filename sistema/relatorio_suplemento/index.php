@@ -117,7 +117,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			p{
 				line-height: 1.3;
 			}
-			.tabela_p1 tbody tr td{
+			.tabela_p1 tbody tr td{ 
 				height: 30px;
 			}
 
@@ -182,6 +182,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php if($paciente['hospital'] <> '') echo "<p><strong>Hospital:</strong> ".$paciente['hospital']." </p>"; ?>
 			<?php if($paciente['atendimento'] <> '') echo "<p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p>"; ?>
 			<?php } ?>
+
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
+			<div class="col-8">
+				<p>A Terapia Nutricional Enteral po Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+			</div>
+			<div class="col-4" style="text-align:center;">
+				<h4 style="color:#45cfb3;">SAIBA MAIS!</h4>
+				<img src="imagem/qrcode.png" style="display:inline-block;" width="60" alt="">
+			</div>
 		<?php
 		}
 		?>
@@ -190,70 +199,25 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
-			<p>
-			- Prescrevo TNEVO via <?php echo $relatorio['tipo_produto'];?>
+			<p>Utilizar <?php echo $relatorio['fracionamento_dia']; ?> vezes ao dia por <?php echo $relatorio['qto_tempo']; ?>.</p>
 			<?php 
-			// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-			if ($relatorio['tipo_produto']=="Enteral"){ 
-			?>
-				, dispositivo via <?php echo $relatorio['dispositivo'];?>, 
-			<?php } ?>
-
-			<?php 
-			// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-			if ($relatorio['tipo_produto']=="Oral"){ 
-			?>
-				fracionada em <?php echo $relatorio['fra_hidratacao_dia']; if ($relatorio['fra_hidratacao_dia']>1) echo " vezes"; else echo  " vez";?> 
-				às 
-				<?php 
-				$hidrahorario = json_decode($relatorio['fra_hidrahorario'], true);
-				if ($hidrahorario){
-					$cont = 0;
-					foreach ($hidrahorario as &$value) {
-						if ($cont > 0) echo ", ";
-						echo $value;
-						$cont = $cont+1;
+				if ($relatorio['fra_dieta_horario'] <> ""){
+					$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
+					$horarios = array();
+					foreach ($_horarios as $chave => $valor) {
+						$horarios[] = $valor;
 					}
-				}
-				?>
-				, com volume total de <?php echo $relatorio['fra_volume_horario']." ml";?>
-
-				perfazendo um total de: <?php echo ($relatorio['fra_hidratacao_dia']*$relatorio['fra_volume_horario'])." ml por dia.";?>
-			<?php } ?>	
-
-			<?php
-			/*  Tipo de prescrição  MANUAL - acredito */
-			$margem_calorica_a = "-";
-			$margem_calorica_b = "-";
-			$margem_calorica = $relatorio["margem_calorica"];
-			$margem_calorica = explode(",", $margem_calorica);
-			if (count($margem_calorica)>1){
-				$margem_calorica_a = $margem_calorica[0];
-				$margem_calorica_a = explode(" ", $margem_calorica_a);
-				$margem_calorica_a = $margem_calorica_a[0];
-
-				$margem_calorica_b = $margem_calorica[1];
-				$margem_calorica_b = explode(" ", $margem_calorica_b);
-				$margem_calorica_b = $margem_calorica_b[0];
-			}
-
-
-			$margem_proteica_a = "-";
-			$margem_proteica_b = "-";
-			$margem_proteica = $relatorio["margem_proteica"];
-			$margem_proteica = explode(",", $margem_proteica);
-			if (count($margem_proteica)>1){
-				$margem_proteica_a = $margem_proteica[0];
-				$margem_proteica_a = explode(" ", $margem_proteica_a);
-				$margem_proteica_a = $margem_proteica_a[0];
-
-				$margem_proteica_b = $margem_proteica[1];
-				$margem_proteica_b = explode(" ", $margem_proteica_b);
-				$margem_proteica_b = $margem_proteica_b[0];
-			}
-			?>
-			<span>fornecendo de <?php echo $margem_calorica_a;?> a <?php echo $margem_calorica_b;?> calorias/dia, <?php echo $margem_proteica_a;?> a <?php echo $margem_proteica_b;?> gramas de proteína/dia, conforme sugestões de produtos abaixo.</span></p>
-			<p>- Água livre <?php echo $relatorio["fra_volume_ml"];?> ml/dia;</p>
+					$_horarios = "";
+					for ($i = 0; $i < count($horarios); $i++) {
+						if($i = count($horarios) - 1){
+							$_horarios .= $horarios[$i0];
+						}else{
+							$_horarios .= $horarios[$i0] . ', ';
+						}
+					}
+					echo "<p>Horários sugeridos: ".$_horarios.".</p>";
+				} 
+			?>	
 		<?php } ?>	
 
 
@@ -262,7 +226,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ((!$p_header) and (!$p_footer)){
 		?>
 				<?php 
-				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
 				$_produtos_nomes = array();
 				if ($relatorio['dieta_produto_dc'] <> ""){
@@ -288,7 +252,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 
 						<p style="padding-top: 30px;">
-							<strong>SISTEMA FECHADO</strong>
+							<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
@@ -297,28 +261,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th width="24%" height="30px">
 										Produto
 									</th>
-									<th width="10%">
-										Fabricante
-									</th>
 									<th width="12%" class="col_azul">
-										Volume/Dia
-									</th>
-									<th width="12%">
-										Velocidade<br>
-										(bomba de infusão)
-									</th>
-									<th width="12%">
-										Gotejamento<br>
-										(gotas por minuto)
-									</th>
-									<th width="10%">
-										Calorias/dia
-									</th>
-									<th width="10%">
-										Proteína/dia
-									</th>
-									<th width="10%">
-										Fibra/dia
+										Volume(unidade)
 									</th>
 								</tr>
 								<?php
