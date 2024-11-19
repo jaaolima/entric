@@ -200,7 +200,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 		<?php 
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
-			var_dump($relatorio['fracionamento_dia']);
+			var_dump($url);
 		?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
 			<p>Utilizar <?php echo $relatorio['fracionamento_dia']; ?> vezes ao dia por <?php echo $relatorio['qto_tempo']; ?>.</p>
