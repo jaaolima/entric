@@ -213,9 +213,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					$_horarios = "";
 					for ($i = 0; $i < count($horarios); $i++) {
 						if($i == count($horarios) - 1){
-							$_horarios .= $horarios[$i0];
+							$_horarios .= $horarios[$i];
 						}else{
-							$_horarios .= $horarios[$i0] . ', ';
+							$_horarios .= $horarios[$i] . ', ';
 						}
 					}
 					echo "<p>Horários sugeridos: ".$_horarios.".</p>";
