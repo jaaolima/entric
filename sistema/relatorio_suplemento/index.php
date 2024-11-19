@@ -184,13 +184,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php } ?>
 
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
-			<div class="col-8">
-				<p>A Terapia Nutricional Enteral po Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+			<div style="display:flex;">
+				<div style="width:68%;">
+					<p>A Terapia Nutricional Enteral po Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+				</div>
+				<div style="text-align:center;width:32%;">
+					<h4 style="color:#45cfb3;">SAIBA MAIS!</h4>
+					<img src="imagem/qrcode.png" style="display:inline-block;" width="120" alt="">
+				</div>
 			</div>
-			<div class="col-4" style="text-align:center;">
-				<h4 style="color:#45cfb3;">SAIBA MAIS!</h4>
-				<img src="imagem/qrcode.png" style="display:inline-block;" width="60" alt="">
-			</div>
+			
 		<?php
 		}
 		?>
