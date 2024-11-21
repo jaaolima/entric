@@ -200,7 +200,7 @@
                                                                 "nome" => array(
                                                                     "col" => 8,
                                                                     "label" => "Nome do Produto <span>*</span> :",
-                                                                    "form-class" => "unidademedida none required",
+                                                                    "form-class" => "required",
                                                                     "required" => "required"
                                                                 ),
                                                                 "unidmedida" => array(

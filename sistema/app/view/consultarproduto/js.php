@@ -360,7 +360,7 @@ function gtProdutoFiltro(_id){
                     $("#apresentacao_enteral").removeClass("none");
                     $("#apresentacao_oral").addClass("none");
                     $(".unidademedida").removeClass("block").addClass("none");
-                    $(".nounidademedida").removeClass("none").addClass("block");
+                    // $(".nounidademedida").removeClass("none").addClass("block");
                     
                     var apres_enteral = JSON.parse(data.apres_enteral);
                     $.each(apres_enteral, function() {
@@ -391,7 +391,7 @@ function gtProdutoFiltro(_id){
                     $("#apresentacao_enteral").addClass("none");
                     $("#apresentacao_oral").removeClass("none");
                     $(".unidademedida").removeClass("none").addClass("block");
-                    $(".nounidademedida").removeClass("block").addClass("none");
+                    // $(".nounidademedida").removeClass("block").addClass("none");
 
                     if (data.unidmedida == 'gramas') {
                         $('#frmproduto').find('input:radio[name="unidmedida"][value="gramas"]').prop('checked', true);
@@ -420,7 +420,7 @@ function gtProdutoFiltro(_id){
                     $("#apresentacao_enteral").addClass("none");
                     $("#apresentacao_oral").addClass("none");                    
                     $(".unidademedida").removeClass("none").addClass("block");
-                    $(".nounidademedida").removeClass("block").addClass("none");
+                    // $(".nounidademedida").removeClass("block").addClass("none");
 
                     if (data.unidmedida == 'gramas') {
                         $('#frmproduto').find('input:radio[name="unidmedida"][value="gramas"]').prop('checked', true);
@@ -1477,14 +1477,14 @@ $(function(){
                     }
                     //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
                     var formSerializeArray = $("#frmproduto").serializeArray();
-                    for (var i = 0; i < formSerializeArray.length; i++) {                        
-                        if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value == "")){
-                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());                           
+                    for (var i = 0; i < formSerializeArray.length; i++) {
+                        if ((formSerializeArray[i].name == "nome")){
+                            formData.append(formSerializeArray[i].name, $("input[name=nome]").val());  
                         }
                         else{
                             formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
                         }
-                    }
+                    } 
                     formData.append("_idproduto",$("#_idproduto").val());
 
                     $.ajax({
@@ -1549,14 +1549,14 @@ $(function(){
                 }
                 //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
                 var formSerializeArray = $("#frmproduto").serializeArray();
-                for (var i = 0; i < formSerializeArray.length; i++) {                        
-                        if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value == "")){
-                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());                           
-                        }
-                        else{
-                            formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
-                        }
+                for (var i = 0; i < formSerializeArray.length; i++) {
+                    if ((formSerializeArray[i].name == "nome")){
+                        formData.append(formSerializeArray[i].name, $("input[name=nome]").val());  
                     }
+                    else{
+                        formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
+                    }
+                } 
 
                 $.ajax({
                     type: "POST",
@@ -1638,12 +1638,7 @@ $(function(){
 
                 for (var i = 0; i < formSerializeArray.length; i++) {
                     if ((formSerializeArray[i].name == "nome")){
-                        if ($("[name='via']:checked").val() == 'Enteral'){
-                            formData.append(formSerializeArray[i].name, $(".nounidademedida input[name=nome]").val());
-                        }
-                        else{
-                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
-                        }  
+                        formData.append(formSerializeArray[i].name, $("input[name=nome]").val());  
                     }
                     else{
                         formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
