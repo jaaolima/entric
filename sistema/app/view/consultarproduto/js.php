@@ -1248,7 +1248,7 @@ $(function(){
             $("#apresentacao_enteral").removeClass("none");
             $("#apresentacao_oral").addClass("none");
             $(".unidademedida").removeClass("block").addClass("none");
-            $(".nounidademedida").removeClass("none").addClass("block");
+            // $(".nounidademedida").removeClass("none").addClass("block");
             $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
             $("#frmproduto .volmedida").parent().find(".input-group-text").html("g");
 
@@ -1256,7 +1256,7 @@ $(function(){
             $("#apresentacao_enteral").addClass("none");
             $("#apresentacao_oral").removeClass("none");
             $(".unidademedida").removeClass("none").addClass("block");
-            $(".nounidademedida").removeClass("block").addClass("none");
+            // $(".nounidademedida").removeClass("block").addClass("none");
 
             if ($("#frmproduto input[name='unidmedida']:checked").val() == 'gramas') {
                 $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
@@ -1269,7 +1269,7 @@ $(function(){
             $("#apresentacao_enteral").addClass("none");
             $("#apresentacao_oral").addClass("none");
             $(".unidademedida").removeClass("none").addClass("block");
-            $(".nounidademedida").removeClass("block").addClass("none");
+            // $(".nounidademedida").removeClass("block").addClass("none");
 
             if ($("#frmproduto input[name='unidmedida']:checked").val() == 'gramas') {
                 $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
@@ -1479,12 +1479,7 @@ $(function(){
                     var formSerializeArray = $("#frmproduto").serializeArray();
                     for (var i = 0; i < formSerializeArray.length; i++) {                        
                         if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value == "")){
-                            if ($(".unidademedida").is(":visible")){
-                                formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
-                            }
-                            else{
-                                formData.append(formSerializeArray[i].name, $(".nounidademedida input[name=nome]").val());
-                            }                            
+                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());                           
                         }
                         else{
                             formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
@@ -1554,19 +1549,14 @@ $(function(){
                 }
                 //var formSerializeArray = $("#frmproduto :input:not(:hidden)").serializeArray();
                 var formSerializeArray = $("#frmproduto").serializeArray();
-                for (var i = 0; i < formSerializeArray.length; i++) {
-                    if ((formSerializeArray[i].name == "nome")){
-                        if ($("[name='via']:checked").val() == 'Enteral'){
-                            formData.append(formSerializeArray[i].name, $(".nounidademedida input[name=nome]").val());
+                for (var i = 0; i < formSerializeArray.length; i++) {                        
+                        if ((formSerializeArray[i].name == "nome") && (formSerializeArray[i].value == "")){
+                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());                           
                         }
                         else{
-                            formData.append(formSerializeArray[i].name, $(".unidademedida input[name=nome]").val());
-                        }  
+                            formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
+                        }
                     }
-                    else{
-                        formData.append(formSerializeArray[i].name, formSerializeArray[i].value);
-                    }
-                } 
 
                 $.ajax({
                     type: "POST",

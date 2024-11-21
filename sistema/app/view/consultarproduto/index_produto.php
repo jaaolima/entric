@@ -217,16 +217,6 @@
                                                         ).
                                                         $html->addRow(
                                                             array(
-                                                                "nome" => array(
-                                                                    "col" => 12,
-                                                                    "label" => "Nome do Produto <span>*</span> :",
-                                                                    "form-class" => "nounidademedida required",
-                                                                    "required" => "required"
-                                                                )
-                                                            )
-                                                        ).
-                                                        $html->addRow(
-                                                            array(
                                                                 "contapres" => array(
                                                                     "class" => "mb-0",
                                                                     "type" => "div",
