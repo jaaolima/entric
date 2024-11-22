@@ -401,9 +401,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 											$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
-											$medida = chkstring2float($produto[6]); // 0.5 arrendodar
+											$medida = chkstring2float($produto[8]); // 0.5 arrendodar
 
-											$grama = chkstring2float($produto[11]);
+											$grama = chkstring2float($produto[10]);
 
 											if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
 												$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
