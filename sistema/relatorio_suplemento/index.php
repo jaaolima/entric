@@ -380,7 +380,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							  <tr>
 							    <th rowspan="2">Produto</th>
 							    <th colspan="2" class="col_azul">Quantidade(Porção)</th>
-							    <th rowspan="2" class="col_azul">Volume(Porção)</th>
+							    <th rowspan="2">Volume(Porção)</th>
 							  </tr>
 							  <tr>
 							    <th class="col_azul">Gramas</th>
@@ -395,6 +395,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$dados_ordem = array();
 									foreach ($dieta_produto_dc as &$value) {
 										$produto = explode("___", $value);
+										var_dump($produto);
 										if ($produto[5] == "Pó"){
 											$produto[1] = trim($produto[1]);
 
