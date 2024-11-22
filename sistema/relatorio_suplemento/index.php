@@ -274,7 +274,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								$dados_ordem = array();
 								foreach ($dieta_produto_dc as &$value) {
 									$produto = explode("___", $value);
-									if ($produto[6] == "fechado"){
+									var_dump($produto);
+									if ($produto[5] == "Líquido/Creme"){
 										$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
 										if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
@@ -320,7 +321,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											$font_destaque = "style='font-size: 14px;'";
 										}
 
-										var_dump($valor);
 										?>
 										<tr>
 											<td width="12%" class="col_azul">
