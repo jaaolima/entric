@@ -323,10 +323,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										?>
 										<tr>
 											<td width="12%" class="col_azul">
-												<?php echo $valor[1];?>
+												<?php echo $valor[0];?>
 											</td>
 											<td width="12%">
-												<?php echo $valor[4];?>
+												<?php echo $valor[2] . 'mL';?>
 											</td>
 										</tr>
 										<?php
