@@ -274,7 +274,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								$dados_ordem = array();
 								foreach ($dieta_produto_dc as &$value) {
 									$produto = explode("___", $value);
-									var_dump($produto);
 									if ($produto[5] == "Líquido/Creme"){
 										$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
@@ -314,7 +313,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								foreach ($dados_ordem as $chave => $valores) {
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
-										$produto[1] = trim($valor[0]);
+										var_dump($valor);
 
 										$font_destaque = "";
 										if ($valor[1] == "Danone"){
