@@ -285,6 +285,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
 										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
 										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[3];
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
 										
 										$volume_final = chkfloat($produto[3]);
 										$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
@@ -313,7 +314,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								foreach ($dados_ordem as $chave => $valores) {
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
-										var_dump($valor);
 
 										$font_destaque = "";
 										if ($valor[1] == "Danone"){
@@ -322,11 +322,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 										?>
 										<tr>
-											<td width="12%" class="col_azul">
+											<td width="12%" >
 												<?php echo $valor[0];?>
 											</td>
-											<td width="12%">
-												<?php echo $valor[2] . 'mL';?>
+											<td width="12%" class="col_azul">
+												<?php echo $valor[3] . 'mL';?>
 											</td>
 										</tr>
 										<?php
