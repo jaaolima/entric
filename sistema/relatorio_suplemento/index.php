@@ -384,7 +384,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							  </tr>
 							  <tr>
 							    <th class="col_azul">Gramas</th>
-							    <th class="col_azul">Medida</th>
+							    <th class="col_azul">Medidas</th>
 							  </tr>
 							</thead>
 							<tbody>
@@ -399,11 +399,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											$produto[1] = trim($produto[1]);
 
 											$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
-
-											// volume horario e volume dia
-											$volume_dia = chkfloat($produto[3]);
-											$volume_horario = ($volume_dia / $relatorio['fra_fracionamento_dia']);
-											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 											$medida = ((chkstring2float($produto[9]) * chkstring2float($produto[4])) / chkfloat($produto[10]));
 											$medida = round($medida * 2) / 2; // 0.5 arrendodar
@@ -422,30 +417,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($grama, 1);
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
-
-											$dias_grama = ($grama * $relatorio['fra_fracionamento_dia']);
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($dias_grama, 1);
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = ($medida * $relatorio['fra_fracionamento_dia']);
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = chkstring2float($produto[3]);
-											
-											$volume_final = round_up($volume_horario);
-											$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']);
-											$velocidade = ($volume_final / ($qtd_horas/60));
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
-													
-											$volume_final = round_up($volume_horario);
-											$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']); 
-											$gotejamento = (($volume_final*20) / ($qtd_horas));
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
-													
-											$kcal_dia = ($dias_grama * $produto[12]) / 100;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($kcal_dia, 0)." kcal";
-													
-											$ptn_dia = ($dias_grama * $produto[13]) / 100;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($ptn_dia, 1)." g";
-
-											$fibras_dia = ($dias_grama * $produto[14]) / 100;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($fibras_dia, 1)." g";
 										} 
 									}
 
@@ -453,7 +424,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									foreach ($dados_ordem as $chave => $valores) {
 										for ($i = 0; $i < count($valores); $i++) {
 											$valor = $valores[$i];
-											var_dump($valor);
 
 											$font_destaque = "";
 											if ($valor[1] == "Danone"){
@@ -475,7 +445,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								?>
 							</tbody>
 							</table>
-
 						</p>
 					</div>	
 					<?php 
