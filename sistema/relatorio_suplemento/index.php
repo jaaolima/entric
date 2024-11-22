@@ -232,21 +232,21 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
 				$_produtos_nomes = array();
-				if ($relatorio['dieta_produto_dc'] <> ""){
-					$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+				// if ($relatorio['dieta_produto_dc'] <> ""){
+				// 	$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 
-					// para fazer o merge no nome do produto e fabricante;
-					$_produtos_nomes_usados = array();
-					foreach ($dieta_produto_dc as &$value) {
-						$produto = explode("___", $value);
-						$produto[1] = trim($produto[1]);
-						if ($produto[6] == "fechado"){
-							if (isset($_produtos_nomes[ $produto[1] ])) $_produtos_nomes[ $produto[1] ] = $_produtos_nomes[ $produto[1] ] + 1;
-							else $_produtos_nomes[ $produto[1] ] = 1;
-						}
-					}
-				}
-				if (($relatorio['calculo_apres_fechado'] == 1) and (count($_produtos_nomes) > 0)) {
+				// 	// para fazer o merge no nome do produto e fabricante;
+				// 	$_produtos_nomes_usados = array();
+				// 	foreach ($dieta_produto_dc as &$value) {
+				// 		$produto = explode("___", $value);
+				// 		$produto[1] = trim($produto[1]);
+				// 		if ($produto[5] == "fechado"){
+				// 			if (isset($_produtos_nomes[ $produto[1] ])) $_produtos_nomes[ $produto[1] ] = $_produtos_nomes[ $produto[1] ] + 1;
+				// 			else $_produtos_nomes[ $produto[1] ] = 1;
+				// 		}
+				// 	}
+				// }
+				if (($relatorio['calculo_apres_liquidocreme'] == 1)) {
 					if (!$landscape){
 						echo "</div>";
 					}
@@ -319,49 +319,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										if ($valor[1] == "Danone"){
 											$font_destaque = "style='font-size: 14px;'";
 										}
+
+										var_dump($valor);
 										?>
 										<tr>
-											<?php 
-											if (isset($_produtos_nomes[$produto[1]]) and ($_produtos_nomes[$produto[1]] > 1) and (!isset($_produtos_nomes_usados[$produto[1]]))){
-												$_produtos_nomes_usados[$produto[1]] = true;
-												?>
-												<td width="24%" height="30px" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
-													<?php echo $valor[0];?>
-												</td>
-												<td width="10%" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>">
-													<?php echo $valor[1];?>
-												</td>
-												<?php
-											}
-											else if (!isset($_produtos_nomes_usados[$produto[1]])){
-												$_produtos_nomes_usados[$produto[1]] = true;
-												?>
-												<td width="24%" height="30px" <?php echo $font_destaque;?>>
-													<?php echo $valor[0];?>
-												</td>
-												<td width="10%">
-													<?php echo $valor[1];?>
-												</td>
-												<?php
-											}
-											?>
 											<td width="12%" class="col_azul">
-												<?php echo $valor[2];?>
-											</td>
-											<td width="12%">
-												<?php echo $valor[3];?>
+												<?php echo $valor[1];?>
 											</td>
 											<td width="12%">
 												<?php echo $valor[4];?>
-											</td>
-											<td width="12%">
-												<?php echo $valor[5];?>									
-											</td>
-											<td width="12%">
-												<?php echo $valor[6];?>
-											</td>
-											<td width="12%">
-												<?php echo $valor[7];?>
 											</td>
 										</tr>
 										<?php
@@ -370,35 +336,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 							?>
 							</table>
-							<span class="modo_uso">
-								<?php							
-								if ($relatorio['fra_hidrahorario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
-									foreach ($_horarios as $chave => $valor) {
-										$horarios[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios[$i]."h ";
-									}
-									$horarios = $_horarios;
-								}
-								?>
-								<br>
-								<strong>Modo de Uso:</strong> Instalar dieta às <?php echo $relatorio['fra_h_i_dieta'];?>. Após o término da primeira dieta, instalar a próxima (caso haja mais de uma dieta). Correr a dieta em <?php echo $relatorio['fra_h_inf_dieta'];?> h. Com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios;?>.
-								<?php 
-								if (trim($relatorio['fra_info_complementares']) <> ""){
-									echo $relatorio['fra_info_complementares'];
-								}
-								?>
-							</span>
 						</p>
 					</div>			
 					<?php
