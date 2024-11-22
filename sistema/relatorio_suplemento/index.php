@@ -395,7 +395,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$dados_ordem = array();
 									foreach ($dieta_produto_dc as &$value) {
 										$produto = explode("___", $value);
-										var_dump($produto);
 										if ($produto[5] == "Pó"){
 											$produto[1] = trim($produto[1]);
 
