@@ -401,11 +401,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 											$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
-											$medida = ((chkstring2float($produto[9]) * chkstring2float($produto[4])) / chkfloat($produto[10]));
-											$medida = round($medida * 2) / 2; // 0.5 arrendodar
+											$medida = chkstring2float($produto[6]); // 0.5 arrendodar
 
 											$grama = chkstring2float($produto[11]);
-											$grama = (($grama * $medida) / chkstring2float($produto[9]));
 
 											if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
 												$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
@@ -415,7 +413,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[2];
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($grama, 1);
+											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $grama;
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
 											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
 										} 
