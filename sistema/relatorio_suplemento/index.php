@@ -379,7 +379,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<thead>
 							  <tr>
 							    <th rowspan="2">Produto</th>
-							    <th colspan="3" class="col_azul">Quantidade(Porção)</th>
+							    <th colspan="2" class="col_azul">Quantidade(Porção)</th>
 							    <th rowspan="2" class="col_azul">Volume(Porção)</th>
 							  </tr>
 							  <tr>
