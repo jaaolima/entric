@@ -846,15 +846,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 
-
-		<?php 
-		if ($p_footer) {
-		?>	
-			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
-		<?php
-		}
-		?>
-
+		<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ONDE ENCONTRAR</p>
 			<p>
 				<table width="100%" cellspacing="0" cellpadding="0">
@@ -902,19 +894,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</tbody>
 				</table>
 			</p>
-
-		<?php 
-		if ($p_footer) {
-		?>	
-			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
-		<?php
-		}
-		?>
+		</div>
 
 		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
-
+		<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
 			<?php 
@@ -1023,7 +1008,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php 
 			}
 			?>
-
+		</div>
 		<?php
 		}
 		?>
