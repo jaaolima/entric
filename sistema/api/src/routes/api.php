@@ -2303,7 +2303,6 @@ $app->group("", function () use ($app) {
 		                                        $_ptn_total = ($qtd_bolsas * $_volume * $ptn) / 100;
 
 
-		                                        $_nome = "<span style='color: #ff0000;'>N</span> qtd bolsas= $qtd_bolsas kcal = $_kcal_total ptn = $_ptn_total "; // retirar depois    
 		                                        $valor_calorio = $_kcal_total;
 		                                        $valor_proteico = $_ptn_total;
 		                                        $calorias_dia = $_kcal_total;
@@ -2335,7 +2334,6 @@ $app->group("", function () use ($app) {
 		                                    }                                
 		                                    $_ptn_total = $_ptn * $ptn;
 
-		                                    $_nome = "<span style='color: #ff0000;'>N</span> kcal = $_kcal ptn = $_ptn_total ";  // retirar depois                                    
 		                                    $calorias_dia = $_kcal;
 		                                    $proteina_dia = $_ptn_total;
 
