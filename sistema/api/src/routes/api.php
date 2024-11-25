@@ -2399,8 +2399,6 @@ $app->group("", function () use ($app) {
 		                                    $range_ptn = ($medida_grama * $medida_g) / $medida;
 		                                    $range_ptn = ($range_ptn * $produtos[$i]['ptn']) / 100;
 
-		                                    $_nome = "<span style='color: #ff0000;'>N</span> kcal = $range_kcal ptn = $range_ptn";  // retirar depois
-
 		                                    $valor_calorio = $range_kcal;
 		                                    $valor_proteico = $range_ptn;
 
