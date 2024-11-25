@@ -830,18 +830,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					$landscape = true;
 				}
 				?>
-
-
-
-
-
-				<?php
-				if ((!$p_produtos) and (!$p_header)){
-					if ($landscape){
-						echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
-					}
-				}
-				?>
 		<?php
 		}
 		?>
