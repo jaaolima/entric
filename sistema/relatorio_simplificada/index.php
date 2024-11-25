@@ -181,10 +181,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
 			<?php } ?>
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
-					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> é uma maneira de forcener nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
@@ -273,19 +273,22 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($relatorio['dieta_produto_dc'] <> ""){
 								?>
 								<tr>
-									<th width="24%" height="30px">
+									<th height="30px">
 										Produto
 									</th>
-									<th width="12%" class="col_azul">
-										Volume/Dia
+									<th  class="col_azul">
+										Volume/Horário
 									</th>
-									<th width="12%">
-										Velocidade<br>
-										(bomba de infusão)
+									<th rowspan="2">
+										Velocidade de adminstração
 									</th>
-									<th width="12%">
-										Gotejamento<br>
-										(gotas por minuto)
+								</tr>
+								<tr>
+									<th>
+										Bomba de infusão
+									</th>
+									<th >
+										Gotas/min
 									</th>
 								</tr>
 								<?php
@@ -334,18 +337,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
 										$produto[1] = trim($valor[0]);
-
-										$font_destaque = "";
-										if ($valor[1] == "Danone"){
-											$font_destaque = "style='font-size: 14px;'";
-										}
 										?>
 										<tr>
 											<?php 
 											if (isset($_produtos_nomes[$produto[1]]) and ($_produtos_nomes[$produto[1]] > 1) and (!isset($_produtos_nomes_usados[$produto[1]]))){
 												$_produtos_nomes_usados[$produto[1]] = true;
 												?>
-												<td width="24%" height="30px" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
+												<td width="24%" height="30px" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>">
 													<?php echo $valor[0];?>
 												</td>
 												<?php
@@ -353,7 +351,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											else if (!isset($_produtos_nomes_usados[$produto[1]])){
 												$_produtos_nomes_usados[$produto[1]] = true;
 												?>
-												<td width="24%" height="30px" <?php echo $font_destaque;?>>
+												<td width="24%" height="30px">
 													<?php echo $valor[0];?>
 												</td>
 												<?php
@@ -453,13 +451,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th  class="col_azul">
 										Volume/Horário
 									</th>
-									<th >
-										Velocidade<br>
-										(bomba de infusão)
+									<th rowspan="2">
+										Velocidade de adminstração
 									</th>
+								</tr>
+								<tr>
 									<th>
-										Gotejamento<br>
-										(gotas por minuto)
+										Bomba de infusão
+									</th>
+									<th >
+										Gotas/min
 									</th>
 								</tr>
 								<?php
@@ -511,18 +512,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
 										$produto[1] = trim($valor[0]);
-
-										$font_destaque = "";
-										if ($valor[1] == "Danone"){
-											$font_destaque = "style='font-size: 14px;'";
-										}
 										?>
 										<tr>
 											<?php 
 											if (isset($_produtos_nomes[$produto[1]]) and ($_produtos_nomes[$produto[1]] > 1) and (!isset($_produtos_nomes_usados[$produto[1]]))){
 												$_produtos_nomes_usados[$produto[1]] = true;
 												?>
-												<td height="30px" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
+												<td height="30px" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" >
 													<?php echo $valor[0];?>
 												</td>
 												
@@ -533,7 +529,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											else if (!isset($_produtos_nomes_usados[$produto[1]])){
 												$_produtos_nomes_usados[$produto[1]] = true;
 												?>
-												<td <?php echo $font_destaque;?>>
+												<td >
 													<?php echo $valor[0];?>
 												</td>											
 												<?php
@@ -734,17 +730,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											$valor = $valores[$i];
 
 											$produto[1] = trim($valor[0]);
-											$font_destaque = "";
-											if ($valor[1] == "Danone"){
-												$font_destaque = "style='font-size: 14px;'";
-											}
 											?>
 											<tr>
 												<?php 
 												if (isset($_produtos_nomes[ $produto[1] ]) and ($_produtos_nomes[ $produto[1] ] > 1) and (!isset($_produtos_nomes_usados[ $produto[1] ]))){
 													$_produtos_nomes_usados[ $produto[1] ] = true;
 													?>
-													<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
+													<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" >
 														<?php echo $valor[0];?>
 													</td>
 													<?php
@@ -752,7 +744,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												else if (!isset($_produtos_nomes_usados[ $produto[1] ])){
 													$_produtos_nomes_usados[ ($produto[1]) ] = true;
 													?>
-													<td <?php echo $font_destaque;?>>
+													<td >
 														<?php echo $valor[0];?>
 													</td>
 													<?php
@@ -968,34 +960,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			?>
 
-
-
-			<?php 
-			if ($relatorio['codigo']<>""){
-			?>
-				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> FINAL DO RELATÓRIO</p>
-				<p>
-				<table style="width:100%">
-					<thead>
-						<tr>
-							<td style="width:20%">
-								<img src="imagem/qrcode-sistema.png" width="100%" border="0" />
-							</td>
-							<td style="width:5%"></td>
-							<td style="width:75%">
-								<p>Scaneie ao qrcode ao lado com a camera do celular para:</p>
-								<p>
-								- Reimprimir orientação de alta;<br>
-								- Acessar vídeos instrutivos;<br>
-								- Consultar pontos de vendas de dieta;</p>
-							</td>
-						</tr>
-					</thead>
-				</table>
-				</p>
-			<?php 
-			}
-			?>
 		</div>
 		<?php
 		}
