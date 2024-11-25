@@ -317,11 +317,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
 
-										$font_destaque = "";
-										if ($valor[1] == "Danone"){
-											$font_destaque = "style='font-size: 14px;'";
-										}
-
 										?>
 										<tr>
 											<td width="12%" >
@@ -425,13 +420,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										for ($i = 0; $i < count($valores); $i++) {
 											$valor = $valores[$i];
 
-											$font_destaque = "";
-											if ($valor[1] == "Danone"){
-												$font_destaque = "style='font-size: 14px;'";
-											}
+											// $font_destaque = "";
+											// if ($valor[1] == "Danone"){
+											// 	$font_destaque = "style='font-size: 14px;'";
+											// }
 											?>
 											<tr>
-												<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
+												<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>">
 													<?php echo $valor[0];?>
 												</td>
 												<td class="col_azul"><?php echo $valor[3];?></td>
@@ -528,34 +523,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</tbody>
 				</table>
 			</p>
-
-
-			<?php 
-			if ($relatorio['codigo']<>""){
-			?>
-				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> FINAL DO RELATÓRIO</p>
-				<p>
-				<table style="width:100%">
-					<thead>
-						<tr>
-							<td style="width:20%">
-								<img src="imagem/qrcode-sistema.png" width="100%" border="0" />
-							</td>
-							<td style="width:5%"></td>
-							<td style="width:75%">
-								<p>Scaneie ao qrcode ao lado com a camera do celular para:</p>
-								<p>
-								- Reimprimir orientação de alta;<br>
-								- Acessar vídeos instrutivos;<br>
-								- Consultar pontos de vendas de dieta;</p>
-							</td>
-						</tr>
-					</thead>
-				</table>
-				</p>
-			<?php 
-			}
-			?>
 
 		<?php
 		}

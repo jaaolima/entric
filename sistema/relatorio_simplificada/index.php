@@ -273,10 +273,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($relatorio['dieta_produto_dc'] <> ""){
 								?>
 								<tr>
-									<th height="30px">
+									<th rowspan="2" height="30px">
 										Produto
 									</th>
-									<th  class="col_azul">
+									<th rowspan="2" class="col_azul">
 										Volume/Horário
 									</th>
 									<th colspan="2">
@@ -445,10 +445,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($relatorio['dieta_produto_dc'] <> ""){
 								?>
 								<tr>
-									<th height="30px">
+									<th rowspan="2" height="30px">
 										Produto
 									</th>
-									<th  class="col_azul">
+									<th rowspan="2" class="col_azul">
 										Volume/Horário
 									</th>
 									<th colspan="2">
