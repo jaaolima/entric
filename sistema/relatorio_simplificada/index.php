@@ -1000,6 +1000,5 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
-		</div>
 	</body>
 </html>
