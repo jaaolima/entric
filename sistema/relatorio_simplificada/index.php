@@ -263,7 +263,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</div>";
 					}
 					?>				
-					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
+					<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
 						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 
 						<p style="padding-top: 30px;">
@@ -437,7 +437,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</div>";
 					}
 					?>				
-					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>"  style="page-break-before: always;">
+					<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>"  style="page-break-before: always;">
 						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 					
 						<p style="padding-top: 30px;">
@@ -646,7 +646,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</div>";
 					}
 					?>
-					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
+					<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
 						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 
 						<p style="padding-top: 30px;">
