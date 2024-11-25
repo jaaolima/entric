@@ -2287,7 +2287,7 @@ $app->group("", function () use ($app) {
 		                                            $kcal = trim($produtos[$i]['kcal']);
 		                                            $kcal = str_replace(",",".", $kcal);
 		                                        }
-		                                        $_kcal_total = $qtd_bolsas * $_volume * $kcal;
+		                                        $_kcal_total = ($qtd_bolsas * $_volume * $kcal) / 100;
 		                                    
 
 		                                        /*
