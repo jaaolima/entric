@@ -2272,8 +2272,8 @@ $app->group("", function () use ($app) {
 
 		                                        variação calórica = 1500
 		                                    */
-											var_dump($_volume);
-											var_dump($_medida_dc);
+											if($_volume == 0) $_volume = 1;
+											if($_medida_dc == 0) $_medida_dc = 1;
 		                                    $kcal_valor_minimo = $margem_calorica[0] / $_volume / $_medida_dc;
 		                                    $kcal_valor_minimo1 = $kcal_valor_minimo;
 		                                    $kcal_valor_minimo = ceil($kcal_valor_minimo);
