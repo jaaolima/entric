@@ -180,6 +180,17 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<p><strong>Paciente:</strong> <?php echo ucwords($paciente['nome']);?></p>
 			<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
 			<?php } ?>
+
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
+			<div style="display:flex;margin-top:15px;">
+				<div style="width:68%;">
+					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+				</div>
+				<div style="text-align:center;width:32%;">
+					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
+					<img src="imagem/qrcode.png" style="display:inline-block;" width="120" alt="">
+				</div>
+			</div>
 		<?php
 		}
 		?>
@@ -188,37 +199,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
-			<p>
-			- Prescrevo terapia nutricional via <?php echo $relatorio['tipo_produto'];?>
-			<?php 
-			// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-			if ($relatorio['tipo_produto']=="Enteral"){ 
-			?>
-				, dispositivo via <?php echo $relatorio['dispositivo'];?>, 
-			<?php } ?>
-
-			<?php 
-			// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-			if ($relatorio['tipo_produto']=="Oral"){ 
-			?>
-				fracionada em <?php echo $relatorio['fra_hidratacao_dia']; if ($relatorio['fra_hidratacao_dia']>1) echo " vezes"; else echo  " vez";?> 
-				às 
-				<?php 
-				$hidrahorario = json_decode($relatorio['fra_hidrahorario'], true);
-				if ($hidrahorario){
-					$cont = 0;
-					foreach ($hidrahorario as &$value) {
-						if ($cont > 0) echo ", ";
-						echo $value;
-						$cont = $cont+1;
-					}
-				}
-				?>
-				, com volume total de <?php echo $relatorio['fra_volume_horario']." ml";?>
-
-				perfazendo um total de: <?php echo ($relatorio['fra_hidratacao_dia']*$relatorio['fra_volume_horario'])." ml por dia.";?>
-			<?php } ?>	
-
 			<?php
 			/*  Tipo de prescrição  MANUAL - acredito */
 			$margem_calorica_a = "-";
@@ -250,8 +230,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				$margem_proteica_b = $margem_proteica_b[0];
 			}
 			?>
-			<span>fornecendo de <?php echo $margem_calorica_a;?> a <?php echo $margem_calorica_b;?> calorias/dia, <?php echo $margem_proteica_a;?> a <?php echo $margem_proteica_b;?> gramas de proteína/dia, conforme sugestões de produtos abaixo.</span></p>
-			<p>- Água livre <?php echo $relatorio["fra_volume_ml"];?> ml/dia;</p>
+			<p><strong>Calorias:</strong> <?php echo $margem_calorica_a;?> a <?php echo $margem_calorica_b;?> Kcal/dia</p>
+			<p><strong>Proteína:</strong> <?php echo $margem_proteica_a;?> a <?php echo $margem_proteica_b;?> g/dia</p>
+			<p><strong>Água:</strong> <?php echo $relatorio["fra_volume_ml"];?> ml/dia</p>
 		<?php } ?>	
 
 
@@ -295,9 +276,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th width="24%" height="30px">
 										Produto
 									</th>
-									<th width="10%">
-										Fabricante
-									</th>
 									<th width="12%" class="col_azul">
 										Volume/Dia
 									</th>
@@ -308,15 +286,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th width="12%">
 										Gotejamento<br>
 										(gotas por minuto)
-									</th>
-									<th width="10%">
-										Calorias/dia
-									</th>
-									<th width="10%">
-										Proteína/dia
-									</th>
-									<th width="10%">
-										Fibra/dia
 									</th>
 								</tr>
 								<?php
@@ -379,9 +348,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												<td width="24%" height="30px" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
 													<?php echo $valor[0];?>
 												</td>
-												<td width="10%" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>">
-													<?php echo $valor[1];?>
-												</td>
 												<?php
 											}
 											else if (!isset($_produtos_nomes_usados[$produto[1]])){
@@ -389,9 +355,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												?>
 												<td width="24%" height="30px" <?php echo $font_destaque;?>>
 													<?php echo $valor[0];?>
-												</td>
-												<td width="10%">
-													<?php echo $valor[1];?>
 												</td>
 												<?php
 											}
@@ -404,15 +367,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											</td>
 											<td width="12%">
 												<?php echo $valor[4];?>
-											</td>
-											<td width="12%">
-												<?php echo $valor[5];?>									
-											</td>
-											<td width="12%">
-												<?php echo $valor[6];?>
-											</td>
-											<td width="12%">
-												<?php echo $valor[7];?>
 											</td>
 										</tr>
 										<?php
@@ -493,34 +447,19 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($relatorio['dieta_produto_dc'] <> ""){
 								?>
 								<tr>
-									<th width="18%" height="30px">
+									<th height="30px">
 										Produto
 									</th>
-									<th width="14%">
-										Fabricante
-									</th>
-									<th width="8%" class="col_azul">
+									<th  class="col_azul">
 										Volume/Horário
 									</th>
-									<th width="8%">
-										Volume/Dia
-									</th>
-									<th width="14%">
+									<th >
 										Velocidade<br>
 										(bomba de infusão)
 									</th>
-									<th width="10%">
+									<th>
 										Gotejamento<br>
 										(gotas por minuto)
-									</th>
-									<th width="8%">
-										Calorias/dia
-									</th>
-									<th width="8%">
-										Proteína/dia
-									</th>
-									<th width="8%">
-										Fibra/dia
 									</th>
 								</tr>
 								<?php
@@ -586,9 +525,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												<td height="30px" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
 													<?php echo $valor[0];?>
 												</td>
-												<td rowspan="<?php echo $_produtos_nomes[$produto[1]];?>">
-													<?php echo $valor[1];?>
-												</td>
 												
 												<?php
 												/*
@@ -599,9 +535,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												?>
 												<td <?php echo $font_destaque;?>>
 													<?php echo $valor[0];?>
-												</td>
-												<td>
-													<?php echo $valor[1];?>
 												</td>											
 												<?php
 											}
@@ -609,23 +542,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											<td  class="col_azul">
 												<?php echo $valor[2];?>
 											</td>
-											<td>
-												<?php echo $valor[3];?>
-											</td>
 											<td >
 												<?php echo $valor[4];?>
 											</td>
 											<td>
 												<?php echo $valor[5];?>
-											</td>
-											<td>
-												<?php echo $valor[6];?>
-											</td>
-											<td>
-												<?php echo $valor[7];?>
-											</td>
-											<td>
-												<?php echo $valor[8];?>
 											</td>
 										</tr>
 										<?php
@@ -735,23 +656,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<thead>
 							  <tr>
 							    <th rowspan="2">Produto</th>
-							    <th rowspan="2">Fabricante</th>
-							    <th rowspan="2">Diluição<br>(Kcal/ml)</th>
 							    <th colspan="3" class="col_azul">Quantidade/Horário</th>
-							    <th colspan="3">Quantidade/dia</th>
 							    <th rowspan="2">Velocidade<br>(bomba de infusão)</th>
 							    <th rowspan="2">Gotejamento<br>(gotas por minuto)</th>
-							    <th rowspan="2">Calorias/dia</th>
-							    <th rowspan="2">Proteína/dia</th>
-							    <th rowspan="2">Fibra/dia</th>
 							  </tr>
 							  <tr>
 							    <th class="col_azul">Gramas</th>
 							    <th class="col_azul">Medida</th>
 							    <th class="col_azul">Volume</th>
-							    <th>Gramas</th>
-							    <th>Medida</th>
-							    <th>Volume</th>
 							  </tr>
 							</thead>
 							<tbody>
@@ -835,9 +747,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 													<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" <?php echo $font_destaque;?>>
 														<?php echo $valor[0];?>
 													</td>
-													<td rowspan="<?php echo $_produtos_nomes[$produto[1]];?>">
-														<?php echo $valor[1];?>
-													</td>
 													<?php
 												}
 												else if (!isset($_produtos_nomes_usados[ $produto[1] ])){
@@ -846,24 +755,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 													<td <?php echo $font_destaque;?>>
 														<?php echo $valor[0];?>
 													</td>
-													<td>
-														<?php echo $valor[1];?>
-													</td>
 													<?php
 												}
 												?>
-												<td><?php echo $valor[2];?></td>
 												<td class="col_azul"><?php echo $valor[3];?></td>
 												<td class="col_azul"><?php echo $valor[4];?></td>
 												<td class="col_azul"><?php echo $valor[5];?></td>
-												<td><?php echo $valor[6];?></td>
-												<td><?php echo $valor[7];?></td>
-												<td><?php echo $valor[8];?></td>
 												<td><?php echo $valor[9];?></td>
 												<td><?php echo $valor[10];?></td>
-												<td><?php echo $valor[11];?></td>
-												<td><?php echo $valor[12];?></td>
-												<td><?php echo $valor[13];?></td>
 											</tr>
 											<?php
 										}
@@ -1043,7 +942,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> PONTOS DE VENDA</p>
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ONDE ENCONTRAR</p>
 			<p>
 				<table width="100%" cellspacing="0" cellpadding="0">
 					<tbody>
@@ -1054,12 +953,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($danone){
 								//echo "<p><strong>PRINCIPAL</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<p style="text-align: left;font-size: 18px;">';
+									echo '<p style="text-align: center;font-size: 18px;">';
 										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
 										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
 										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+										echo "<br><h5 style='color:#45cfb3;margin:0px;margin-top:15px;'>FACILITE SUA COMPRA!</h5>
+										<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
+										<br><img src='imagem/qrcode-sistema.png' style='display:inline-block;' width='80' alt=''>";
 									echo '</p>';
 								}
 							}
