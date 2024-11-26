@@ -25,8 +25,7 @@ $url = $_GET['url'];
     }
 </style>
 <iframe src="https://entric.com.br/relatorio_suplemento/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
-<?php
-/*
+
 <script>
 function printIframe(id) {
     var iframe = document.frames ? document.frames[id] : document.getElementById(id);
@@ -37,5 +36,3 @@ function printIframe(id) {
 }
 printIframe('relatorio');
 </script>
-*/
-?>
