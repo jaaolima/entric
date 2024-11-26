@@ -2323,7 +2323,9 @@ $app->group("", function () use ($app) {
 		                                            ){
 		                                            $margem_liberadas = true;
 		                                            $_nome = "";
-		                                        }
+		                                        }else{
+													$margem_liberadas = false;
+												}
 		                                    }
 		                                }
 		                                else if ($produtos[$i]['apres_enteral'] == '["Aberto (Líquido)"]'){
