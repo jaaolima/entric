@@ -2512,10 +2512,10 @@ $app->group("", function () use ($app) {
 
 		                                // 2023-03-06 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                                // formula para ajustar volume final
-		                                if (!is_numeric($valor_calorio)) $valor_calorio = 1;
-		                                if (!is_numeric($_medida_dc)) $_medida_dc = 1;
-		                                $volume_final = $valor_calorio / $_medida_dc;
-		                                $volume_final = numberFormatPrecision($volume_final, 2)." ml";
+		                                // if (!is_numeric($valor_calorio)) $valor_calorio = 1;
+		                                // if (!is_numeric($_medida_dc)) $_medida_dc = 1;
+		                                // $volume_final = $valor_calorio / $_medida_dc;
+		                                // $volume_final = numberFormatPrecision($volume_final, 2)." ml";
 		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 		                                $sistema = "fechado";
