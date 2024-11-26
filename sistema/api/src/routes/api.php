@@ -2317,6 +2317,7 @@ $app->group("", function () use ($app) {
 		                                        $valor_proteico = $_ptn_total;
 		                                        $calorias_dia = $_kcal_total;
 		                                        $proteina_dia = $_ptn_total;
+												var_dump($_kcal_total);
 		                                        if (
 		                                            (($margem_calorica[0] <= $_kcal_total) and ($margem_calorica[1] >= $_kcal_total)) and
 		                                            (($margem_proteica[0] <= $_ptn_total) and ($margem_proteica[1] >= $_ptn_total))
