@@ -5,9 +5,9 @@ set_time_limit(0);
 
 function Redirect($url, $permanent = false){
     if (headers_sent() === false){
-        header('Location: https://sistema.entric.com.br/', true, ($permanent === true) ? 301 : 302);
+        header('Location: https://entric.com.br/', true, ($permanent === true) ? 301 : 302);
     }else{
-        echo '<script type="text/javascript">window.location.href = "https://sistema.entric.com.br/";</script>';
+        echo '<script type="text/javascript">window.location.href = "https://entric.com.br/";</script>';
     }
     exit();
 }
@@ -25,8 +25,7 @@ $url = $_GET['url'];
     }
 </style>
 <iframe src="https://entric.com.br/relatorio/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
-<?php
-/*
+
 <script>
 function printIframe(id) {
     var iframe = document.frames ? document.frames[id] : document.getElementById(id);
@@ -37,5 +36,3 @@ function printIframe(id) {
 }
 printIframe('relatorio');
 </script>
-*/
-?>
