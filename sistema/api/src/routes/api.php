@@ -2272,19 +2272,23 @@ $app->group("", function () use ($app) {
 
 		                                        variação calórica = 1500
 		                                    */
-											if($_volume == 0) $_volume = 1;
-											if($_medida_dc == 0) $_medida_dc = 1;
-		                                    $kcal_valor_minimo = $margem_calorica[0] / $_volume / $_medida_dc;
-		                                    $kcal_valor_minimo1 = $kcal_valor_minimo;
-		                                    $kcal_valor_minimo = ceil($kcal_valor_minimo);
-		                                    $kcal_valor_maximo = $margem_calorica[1] / $_volume / $_medida_dc;
-		                                    $kcal_valor_maximo1 = $kcal_valor_maximo;
-		                                    $kcal_valor_maximo = floor($kcal_valor_maximo);
+											if($_volume == 0 || $_medida_dc == 0){
+												$kcal_valor_minimo = 0;
+												$kcal_valor_minimo = ceil($kcal_valor_minimo);
+												$kcal_valor_maximo = 1;
+												$kcal_valor_maximo = floor($kcal_valor_maximo);
+											} else{
+												$kcal_valor_minimo = $margem_calorica[0] / $_volume / $_medida_dc;
+												$kcal_valor_minimo1 = $kcal_valor_minimo;
+												$kcal_valor_minimo = ceil($kcal_valor_minimo);
+												$kcal_valor_maximo = $margem_calorica[1] / $_volume / $_medida_dc;
+												$kcal_valor_maximo1 = $kcal_valor_maximo;
+												$kcal_valor_maximo = floor($kcal_valor_maximo);
+											}
 		                                    if ($kcal_valor_minimo <= $kcal_valor_maximo){
 		                                        $qtd_bolsas = $kcal_valor_minimo;
-												var_dump($qtd_bolsas, $_volume, $_medida_dc);
 		                                        $_kcal_total = $qtd_bolsas * $_volume * $_medida_dc;
-		                                    
+
 		                                        /*
 		                                        - valor proteina ===================================================================================================
 		                                        1) ver numero inteiro de bolsas: 
