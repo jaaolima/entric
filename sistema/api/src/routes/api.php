@@ -2282,12 +2282,7 @@ $app->group("", function () use ($app) {
 		                                    $kcal_valor_maximo = floor($kcal_valor_maximo);
 		                                    if ($kcal_valor_minimo <= $kcal_valor_maximo){
 		                                        $qtd_bolsas = $kcal_valor_minimo;
-												$kcal = 1;
-		                                        if (trim($produtos[$i]['kcal']) <> ""){
-		                                            $kcal = trim($produtos[$i]['kcal']);
-		                                            $kcal = str_replace(",",".", $kcal);
-		                                        }
-		                                        $_kcal_total = ($qtd_bolsas * $_volume * $kcal) / 100;
+		                                        $_kcal_total = $qtd_bolsas * $_volume * $_medida_dc;
 		                                    
 
 		                                        /*
@@ -2697,8 +2692,8 @@ $app->group("", function () use ($app) {
 		                                                </td>
 		                                                <td>'.$volume_final.'</td>
 		                                                <td>'.$volume_horario.'</td>
-		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
-		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1)).'</td>
+		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($nf_kcal_dia, 0)).'</td>
+		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($nf_ptn_dia, 1)).'</td>
 		                                                <td>'.$valor_fibra.'</td>
 		                                            </tr>';
 		                                $titulo = "";
