@@ -24,7 +24,7 @@ $url = $_GET['url'];
         padding: 0px;
     }
 </style>
-<iframe src="https://pdf.entric.com.br/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
+<iframe src="https://entric.com.br/relatorio/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
 <?php
 /*
 <script>

@@ -2686,7 +2686,7 @@ $(function(){
     });
     $("#rel_imprimir_relatorio").on("click", function(e) {        
         var relatorio_code = $("#relatorio_code").val();
-        window.open("https://entric.com.br/"+relatorio_code, "_blank");
+        window.open("https://entric.com.br/relatorio_simplificada/imprimir/"+relatorio_code, "_blank");
     });
     $("#enviar_email").on("click", function(e) {
         var _email_paciente = $("#email_paciente").val();
