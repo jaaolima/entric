@@ -2317,10 +2317,9 @@ $app->group("", function () use ($app) {
 		                                        $valor_proteico = $_ptn_total;
 		                                        $calorias_dia = $_kcal_total;
 		                                        $proteina_dia = $_ptn_total;
-												var_dump($margem_calorica[0], $margem_calorica[1], intval($_kcal_total));
 		                                        if (
-		                                            (($margem_calorica[0] <= intval($_kcal_total)) and ($margem_calorica[1] >= intval($_kcal_total))) and
-		                                            (($margem_proteica[0] <= $_ptn_total) and ($margem_proteica[1] >= $_ptn_total))
+		                                            ((intval($margem_calorica[0]) <= intval($_kcal_total)) and (intval($margem_calorica[1]) >= intval($_kcal_total))) and
+		                                            ((intval($margem_proteica[0]) <= intval($_ptn_total)) and (intval($margem_proteica[1]) >= intval($_ptn_total)))
 		                                            ){
 		                                            $margem_liberadas = true;
 		                                            $_nome = "";
