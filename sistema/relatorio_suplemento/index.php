@@ -218,6 +218,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$_horarios .= $horarios[$i] . ', ';
 						}
 					}
+					var_dump($_horarios);
 					if($_horarios != ''){
 						echo "<p>Horários sugeridos: ".$_horarios.".</p>";
 					}
