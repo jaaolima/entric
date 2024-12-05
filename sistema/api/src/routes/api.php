@@ -3022,6 +3022,10 @@ $app->group("", function () use ($app) {
 											
 										}
 
+										if($produtos[$i]['id'] == '338'){
+											var_dump($verificar_carac);
+										}
+
 										if($verificar_carac){
 											if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
 												$volume_und = $volume[$m] . ' ' . $unidmedida;
