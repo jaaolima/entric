@@ -2856,7 +2856,7 @@ $app->group("", function () use ($app) {
 
 		                            $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
 		                            $_nome = "";  // retirar depois
-
+									$_medida_dc = 1;
 		                            for ($j = 0; $j < count($volume_produto); $j++){
 		                                $_volume = str_replace(" ","", trim($volume_produto[$j]));
 
@@ -2894,7 +2894,6 @@ $app->group("", function () use ($app) {
 		                                else{
 		                                    $_volume = chkfloat($_volume);
 		                                }
-		                                $_medida_dc = 1;
 		                                if (isset($medida_dc[$j]) && $medida_dc[$j] != ''){
 											
 		                                    $_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
