@@ -2837,8 +2837,6 @@ $app->group("", function () use ($app) {
 		                $fracionamento_dia = 1;
 		            }
 
-					var_dump($produtos);
-
 		            for ($i = 0; $i < count($produtos); $i++){
 		                $kcal = $produtos[$i]['kcal'];
 		                $ptn = $produtos[$i]['ptn'];
@@ -2996,9 +2994,6 @@ $app->group("", function () use ($app) {
 											$array_carac = $dados['carac_oral'];
 
 											
-											if($produtos[$i]['id'] == '338'){
-												var_dump($_medida_dc);
-											}
 											if(in_array('Hipocalórico', $array_carac) && $_medida_dc <= 1.2) {
 												$verificar_carac = true;
 											} elseif (in_array('Hipercalórico', $array_carac) && $_medida_dc > 1.2) {
