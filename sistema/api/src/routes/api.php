@@ -2837,6 +2837,8 @@ $app->group("", function () use ($app) {
 		                $fracionamento_dia = 1;
 		            }
 
+					var_dump($produtos);
+
 		            for ($i = 0; $i < count($produtos); $i++){
 		                $kcal = $produtos[$i]['kcal'];
 		                $ptn = $produtos[$i]['ptn'];

@@ -4,7 +4,7 @@ ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
 
 class LoginModel extends Model { 
-    public function checarLogin($login=null, $senha=null, $tipo=1) {
+    public function checarLogin($login=null, $senha=null, $tipo=1, $id_paciente=null) {
         $dados = httpPost("login", array(   "email" => $login,
                                             "senha" => $senha,
                                             "tipo" => $tipo));
@@ -21,6 +21,11 @@ class LoginModel extends Model {
             $_SESSION['admin_session_type'] = $dados['data']['session']['admin_session_type'];
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
+
+            if($id_paciente != null){
+                Redirect(BASE_PATH . '/paciente_prescricaosimplificada?id_paciente='.$id_paciente);
+                return true;
+            }
 
             if (isset($dados["data"]["paciente_videosalta"])){
                 Redirect(BASE_PATH . '/paciente_videosalta');

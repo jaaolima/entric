@@ -1,3 +1,8 @@
+<?php 
+    if(isset($_REQUEST['id_paciente'])){
+        $id_paciente = $_REQUEST['id_paciente'];
+    }
+?>
 <body class="h-100">
     <div id="preloader">
         <div class="loader">
@@ -19,7 +24,7 @@
                 </div>
 
                 <div class="col-xl-7 p-0 login-menu">
-                    <div class="container h-100">
+                    <div class="container h-100"> 
                         
                         <div class="row align-items-center h-100 pt-5 pb-5">
                             
@@ -31,6 +36,7 @@
                                             <form class="mt-5 mb-5" action="login/prescritor" method="post">
                                                 <input type="hidden" name="_token" value="<?php echo generateFormToken('loginPrescritor'); ?>">
                                                 <input type="hidden" name="_ac" value="login"> 
+                                                <input type="hidden" name="id_paciente" value="<?php echo $id_paciente; ?>"> 
 
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">

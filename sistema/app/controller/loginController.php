@@ -133,10 +133,11 @@ class LoginController extends Controller {
 
             if ($_POST['_ac'] == "login"){
                 if (isset($_POST['login']) == FALSE ) $login = ""; else $login = $_POST['login'];
+                if (isset($_POST['id_paciente']) == FALSE ) $id_paciente = ""; else $id_paciente = $_POST['id_paciente'];
                 if (isset($_POST['senha']) == FALSE ) $senha = ""; else $senha = $_POST['senha'];
 
                 if (($login<>"") and ($senha<>"")){                    
-                    $logar = $this->LoginModel->checarLogin($login, $senha, 2);
+                    $logar = $this->LoginModel->checarLogin($login, $senha, 2, $id_paciente); 
 
                     if (!$logar){
                         alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
