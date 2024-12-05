@@ -2895,7 +2895,10 @@ $app->group("", function () use ($app) {
 		                                    $_volume = chkfloat($_volume);
 		                                }
 		                                $_medida_dc = 1;
-		                                if (isset($medida_dc[$j])){
+		                                if (isset($medida_dc[$j]) && $medida_dc[$j] != ''){
+											if($produtos[$i]['id'] == '338'){
+												var_dump($medida_dc[$j]);
+											}
 		                                    $_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
 		                                    if ($_medida_dc=="") $_medida_dc = 1;
 		                                }
@@ -2996,10 +2999,7 @@ $app->group("", function () use ($app) {
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
 
-											if($produtos[$i]['id'] == '338'){
-												var_dump($_medida_dc);
-												var_dump(floatval($valor_ptn[0]['valor']));
-											}
+											
 					
 											if(in_array('Hipocalórico', $array_carac) && $_medida_dc <= 1.2) {
 												$verificar_carac = true;
