@@ -184,7 +184,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
-					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> é uma maneira de forcener nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
+					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> É uma maneira de fornecer nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
@@ -650,17 +650,24 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
 							<thead>
-							  <tr>
-							    <th rowspan="2">Produto</th>
-							    <th colspan="3" class="col_azul">Quantidade/Horário</th>
-							    <th rowspan="2">Velocidade<br>(bomba de infusão)</th>
-							    <th rowspan="2">Gotejamento<br>(gotas por minuto)</th>
-							  </tr>
-							  <tr>
-							    <th class="col_azul">Gramas</th>
-							    <th class="col_azul">Medida</th>
-							    <th class="col_azul">Volume</th>
-							  </tr>
+								<tr>
+									<th rowspan="2">Produto</th>
+									<th colspan="3" class="col_azul">Quantidade/Horário</th>
+									<th colspan="2">
+										Velocidade de adminstração
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">Gramas</th>
+									<th class="col_azul">Medida</th>
+									<th class="col_azul">Volume</th>
+									<th>
+										Bomba de infusão
+									</th>
+									<th >
+										Gotas/min
+									</th>
+								</tr>
 							</thead>
 							<tbody>
 								<?php
