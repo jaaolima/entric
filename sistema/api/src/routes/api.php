@@ -2898,7 +2898,6 @@ $app->group("", function () use ($app) {
 		                                if (isset($medida_dc[$j]) && $medida_dc[$j] != ''){
 											
 		                                    $_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
-		                                    if ($_medida_dc=="") $_medida_dc = 1;
 		                                }
 		                                $calorias_dia = "";
 		                                $proteina_dia = "";
