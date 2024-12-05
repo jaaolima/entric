@@ -2995,6 +2995,11 @@ $app->group("", function () use ($app) {
 										$verificar_carac = true;
 										if(isset($dados['carac_oral'])){
 											$array_carac = $dados['carac_oral'];
+
+											if($produtos[$i]['id'] == '338'){
+												var_dump($_medida_dc);
+												var_dump(floatval($valor_ptn[0]['valor']));
+											}
 					
 											if(in_array('Hipocalórico', $array_carac) && $_medida_dc <= 1.2) {
 												$verificar_carac = true;
@@ -3022,9 +3027,7 @@ $app->group("", function () use ($app) {
 											
 										}
 
-										if($produtos[$i]['id'] == '338'){
-											var_dump($verificar_carac);
-										}
+										
 
 										if($verificar_carac){
 											if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
