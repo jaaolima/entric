@@ -254,90 +254,94 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					if (!$landscape){
 						echo "</div>";
 					}
-					?>				
-					<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+					if ($relatorio['dieta_produto_dc'] <> ""){
 
-						<p style="padding-top: 30px;">
-							<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
-							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
-							<?php
-							if ($relatorio['dieta_produto_dc'] <> ""){
-								?>
-								<tr>
-									<th width="24%" height="30px">
-										Produto
-									</th>
-									<th width="12%" class="col_azul">
-										Volume(unidade)
-									</th>
-								</tr>
-								<?php
-								$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 
-								$dados_ordem = array();
-								foreach ($dieta_produto_dc as &$value) {
-									$produto = explode("___", $value);
-									if ($produto[5] == "Líquido/Creme"){
-										$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
+						$dados_ordem = array();
+						foreach ($dieta_produto_dc as &$value) {
+							$produto = explode("___", $value);
+							if ($produto[5] == "Líquido/Creme"){
+								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
-										if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
-											$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
-										else
-											$cont_dados = 0;
+								if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
+									$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
+								else
+									$cont_dados = 0;
 
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[3];
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
-										
-										$volume_final = chkfloat($produto[3]);
-										$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
-										if (($qtd_horas>0) and ($volume_final>0)) $velocidade = ($volume_final / ($qtd_horas/60));
-										else $velocidade = 0;
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[3];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
+								
+								$volume_final = chkfloat($produto[3]);
+								$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
+								if (($qtd_horas>0) and ($volume_final>0)) $velocidade = ($volume_final / ($qtd_horas/60));
+								else $velocidade = 0;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
 
-										$volume_final = chkfloat($produto[3]);
-										$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
-										if (($qtd_horas>0) and ($volume_final>0)) $gotejamento = (($volume_final*20) / ($qtd_horas));
-										else $gotejamento = 0;
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
+								$volume_final = chkfloat($produto[3]);
+								$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
+								if (($qtd_horas>0) and ($volume_final>0)) $gotejamento = (($volume_final*20) / ($qtd_horas));
+								else $gotejamento = 0;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
 
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[7]." kcal";
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[8]." g";
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[7]." kcal";
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[8]." g";
 
-										$volume_final = chkfloat($produto[3]);											
-										if ($produto_cad){ $fibra = moeda2float($produto_cad['fibras']); } else{ $fibra = 0;	 }
-										$fibra_dia = ($volume_final * $fibra)/100;
+								$volume_final = chkfloat($produto[3]);											
+								if ($produto_cad){ $fibra = moeda2float($produto_cad['fibras']); } else{ $fibra = 0;	 }
+								$fibra_dia = ($volume_final * $fibra)/100;
 
-										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $fibra_dia." g";
-									}
-								}
-
-								ksort($dados_ordem);
-								foreach ($dados_ordem as $chave => $valores) {
-									for ($i = 0; $i < count($valores); $i++) {
-										$valor = $valores[$i];
-
-										?>
-										<tr height="30px">
-											<td width="12%" >
-												<?php echo $valor[0];?>
-											</td>
-											<td width="12%" class="col_azul">
-												<?php echo $valor[3];?>
-											</td>
-										</tr>
-										<?php
-									}
-								}
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $fibra_dia." g";
 							}
-							?>
-							</table>
-						</p>
-					</div>			
+						}
+						if($dados_ordem != []){
+						?>				
+						<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
+							<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+
+							<p style="padding-top: 30px;">
+								<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
+								<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
+								<?php
+								if ($relatorio['dieta_produto_dc'] <> ""){
+									?>
+									<tr>
+										<th width="24%" height="30px">
+											Produto
+										</th>
+										<th width="12%" class="col_azul">
+											Volume(unidade)
+										</th>
+									</tr>
+									<?php
+									ksort($dados_ordem);
+									foreach ($dados_ordem as $chave => $valores) {
+										for ($i = 0; $i < count($valores); $i++) {
+											$valor = $valores[$i];
+
+											?>
+											<tr height="30px">
+												<td width="12%" >
+													<?php echo $valor[0];?>
+												</td>
+												<td width="12%" class="col_azul">
+													<?php echo $valor[3];?>
+												</td>
+											</tr>
+											<?php
+										}
+									}
+								}
+								?>
+								</table>
+							</p>
+						</div>			
 					<?php
-					$landscape = true;
+						$landscape = true;
+						}
+					}
 				}
 				?>
 
@@ -364,59 +368,59 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				// }
 
 				if (($relatorio['calculo_apres_po'] == 1)) {
-					if (!$landscape){
-						echo "</div>";
-					}
-					?>
-					<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+					if ($relatorio['dieta_produto_dc'] <> ""){
+						if (!$landscape){
+							echo "</div>";
+						}
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 
-						<p style="padding-top: 30px;">
-							<strong>EM PÓ - PARA DILUIR</strong>
+						$dados_ordem = array();
+						foreach ($dieta_produto_dc as &$value) {
+							$produto = explode("___", $value);
+							if ($produto[5] == "Pó"){
+								$produto[1] = trim($produto[1]);
 
-							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
-							<thead>
-							  <tr>
-							    <th rowspan="2">Produto</th>
-							    <th colspan="2" class="col_azul">Quantidade(Porção)</th>
-							    <th rowspan="2">Volume(Porção)</th>
-							  </tr>
-							  <tr>
-							    <th class="col_azul">Gramas</th>
-							    <th class="col_azul">Medidas</th>
-							  </tr>
-							</thead>
-							<tbody>
-								<?php
-								if ($relatorio['dieta_produto_dc'] <> ""){
-									$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
-									$dados_ordem = array();
-									foreach ($dieta_produto_dc as &$value) {
-										$produto = explode("___", $value);
-										if ($produto[5] == "Pó"){
-											$produto[1] = trim($produto[1]);
+								$medida = chkstring2float($produto[8]); // 0.5 arrendodar
 
-											$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
+								$grama = chkstring2float($produto[10]);
 
-											$medida = chkstring2float($produto[8]); // 0.5 arrendodar
+								if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
+									$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
+								else
+									$cont_dados = 0;
 
-											$grama = chkstring2float($produto[10]);
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[2];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $grama;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
+							} 
+						}
+						if($dados_ordem != []){
+						?>
+						<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
+							<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 
-											if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
-												$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
-											else
-												$cont_dados = 0;
+							<p style="padding-top: 30px;">
+								<strong>EM PÓ - PARA DILUIR</strong>
 
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[2];
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $grama;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
-										} 
-									}
-
+								<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
+								<thead>
+								<tr>
+									<th rowspan="2">Produto</th>
+									<th colspan="2" class="col_azul">Quantidade(Porção)</th>
+									<th rowspan="2">Volume(Porção)</th>
+								</tr>
+								<tr>
+									<th class="col_azul">Gramas</th>
+									<th class="col_azul">Medidas</th>
+								</tr>
+								</thead>
+								<tbody>
+									<?php
 									ksort($dados_ordem);
 									foreach ($dados_ordem as $chave => $valores) {
 										for ($i = 0; $i < count($valores); $i++) {
@@ -438,14 +442,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											<?php
 										}
 									}
-								}
-								?>
-							</tbody>
-							</table>
-						</p>
-					</div>	
-					<?php 
-					$landscape = true;
+									?>
+								</tbody>
+								</table>
+							</p>
+						</div>	
+					<?php
+						$landscape = true;
+						}
+					}
 				}
 				?>
 
