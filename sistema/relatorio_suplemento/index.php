@@ -320,7 +320,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										$valor = $valores[$i];
 
 										?>
-										<tr>
+										<tr height="30px">
 											<td width="12%" >
 												<?php echo $valor[0];?>
 											</td>
@@ -454,9 +454,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 
 				<?php
-				if ((!$p_produtos) and (!$p_header)){
-					if ($landscape){
-						echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
+				if ($relatorio['rel_distribuidores']<>""){
+					if ((!$p_produtos) and (!$p_header)){
+						if ($landscape){
+							echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
+						}
 					}
 				}
 				?>

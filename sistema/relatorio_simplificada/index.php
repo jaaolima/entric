@@ -738,7 +738,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 											$produto[1] = trim($valor[0]);
 											?>
-											<tr>
+											<tr >
 												<?php 
 												if (isset($_produtos_nomes[ $produto[1] ]) and ($_produtos_nomes[ $produto[1] ] > 1) and (!isset($_produtos_nomes_usados[ $produto[1] ]))){
 													$_produtos_nomes_usados[ $produto[1] ] = true;
