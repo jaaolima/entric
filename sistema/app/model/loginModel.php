@@ -22,10 +22,10 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
 
-            if($id_paciente != null){
-                Redirect(BASE_PATH . '/paciente_prescricaosimplificada?id_paciente='.$id_paciente);
-                return true;
-            }
+            // if($id_paciente != null){
+            //     Redirect(BASE_PATH . '/paciente_prescricaosimplificada?id_paciente='.$id_paciente);
+            //     return true;
+            // }
 
             if (isset($dados["data"]["paciente_videosalta"])){
                 Redirect(BASE_PATH . '/paciente_videosalta');
