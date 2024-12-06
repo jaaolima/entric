@@ -464,7 +464,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 
-
+		<?php 
+			if ($relatorio['rel_distribuidores']<>""){
+		?>
 		<?php 
 		if ($p_footer) {
 		?>	
@@ -526,6 +528,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</table>
 			</p>
 
+		<?php
+		}
+		?>
 		<?php
 		}
 		?>
