@@ -3007,9 +3007,9 @@ $app->group("", function () use ($app) {
 											
 												if (in_array('Hipoproteico', $array_carac) && $valor_ptn_valor < 10) {
 													$verificar_carac = true;
-												} elseif (in_array('Normoproteico', $array_carac) && $valor_ptn_valor >= 10 && $valor_ptn_valor <= 20) {
+												} elseif (in_array('Normoproteico', $array_carac) && $valor_ptn_valor >= 10 && $valor_ptn_valor < 20) {
 													$verificar_carac = true;
-												} elseif (in_array('Hiperproteico', $array_carac) && $valor_ptn_valor > 20) {
+												} elseif (in_array('Hiperproteico', $array_carac) && $valor_ptn_valor >= 20) {
 													$verificar_carac = true;
 												} else {
 													$verificar_carac = false;

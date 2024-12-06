@@ -202,7 +202,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
-			<p>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia por <?php echo $relatorio['fra_qto_tempo']; ?>.</p>
+			<p>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?>.</p>
 			<?php 
 				if ($relatorio['fra_dieta_horario'] <> ""){
 					$_horarios = json_decode($relatorio['fra_dieta_horario'], true);

@@ -883,9 +883,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</p>
 		</div>
 		<?php 
-			if ($relatorio['rel_distribuidores']<>""){
-		?>
-		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
 		<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
@@ -970,9 +967,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			?>
 
 		</div>
-		<?php
-		}
-		?>
 		<?php
 		}
 		?>
