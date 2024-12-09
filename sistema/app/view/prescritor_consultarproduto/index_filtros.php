@@ -128,8 +128,8 @@
                                         <label for="filtro_calculo_fil_semfibras" class="form-check-label radio-green">Sem Fibras</label>
                                     </div>
                                     <div class="form-check col-sm-3">
-                                        <input id="filtro_calculo_fil_100proteina" name="filtro_calculo_fil_100proteina" value="100% Proteína Vergetal" class="form-check-input filtros styled-checkbox" type="checkbox">
-                                        <label for="filtro_calculo_fil_100proteina" class="form-check-label check-green">100% Proteína Vergetal</label>
+                                        <input id="filtro_calculo_fil_100proteina" name="filtro_calculo_fil_100proteina" value="100% Proteína Vegetal" class="form-check-input filtros styled-checkbox" type="checkbox">
+                                        <label for="filtro_calculo_fil_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
                                     </div>
                                     <div class="form-check col-sm-3">
                                     </div>
@@ -196,6 +196,18 @@
                                     <div class="form-check col-sm-6">
                                         <input id="filtro_calculo_oral_carac_semfibras" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Fibras">
                                         <label for="filtro_calculo_oral_carac_semfibras" class="form-check-label check-green">Sem Fibras</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_cicatrizacao" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cicatrização">
+                                        <label for="filtro_calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
+                                        <label for="filtro_calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                                    </div>
+                                    <div class="form-check col-sm-6">
+                                        <input id="filtro_calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
+                                        <label for="filtro_calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
                                     </div>
                                 </div>
                             </div>

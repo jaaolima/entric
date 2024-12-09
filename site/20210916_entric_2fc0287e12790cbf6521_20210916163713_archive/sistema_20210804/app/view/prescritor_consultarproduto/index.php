@@ -105,7 +105,7 @@
                                                     </div>
                                                     <div class="form-check col-sm-4">
                                                         <input id="calculo_fil_polimerico" class="form-check-input styled-checkbox" type="checkbox">
-                                                        <label for="calculo_fil_polimerico" class="form-check-label check-green">100% Proteína Vergetal</label>
+                                                        <label for="calculo_fil_polimerico" class="form-check-label check-green">100% Proteína Vegetal</label>
                                                     </div>
                                                     <div class="form-check col-sm-4">
                                                         <input id="calculo_fil_semsacarose" class="form-check-input styled-checkbox" type="checkbox">

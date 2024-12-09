@@ -2451,6 +2451,7 @@ $app->group("", function () use ($app) {
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
+								$medida_dc = array_unique($medida_dc);
 		                        foreach ($medida_dc as $key => &$value) {
 
 		                            $dc = str_replace(",", ".", $value);

@@ -46,8 +46,8 @@
                     <label for="calculo_fil_semfibras" class="form-check-label radio-green">Sem Fibras</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_100proteina" name="calculo_fil_100proteina" value="100% Proteína Vergetal" class="form-check-input filtros styled-checkbox" type="checkbox">
-                    <label for="calculo_fil_100proteina" class="form-check-label check-green">100% Proteína Vergetal</label>
+                    <input id="calculo_fil_100proteina" name="calculo_fil_100proteina" value="100% Proteína Vegetal" class="form-check-input filtros styled-checkbox" type="checkbox">
+                    <label for="calculo_fil_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
                 </div>
                 <div class="form-check col-sm-3">
                 </div>
@@ -120,8 +120,8 @@
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_100proteina2" name="calculo_fil_100proteina2" value="100% Proteína Vergetal" class="form-check-input filtros styled-checkbox" type="checkbox">
-                    <label for="calculo_fil_100proteina2" class="form-check-label check-green">100% Proteína Vergetal</label>
+                    <input id="calculo_fil_100proteina2" name="calculo_fil_100proteina2" value="100% Proteína Vegetal" class="form-check-input filtros styled-checkbox" type="checkbox">
+                    <label for="calculo_fil_100proteina2" class="form-check-label check-green">100% Proteína Vegetal</label>
                 </div>
                 <div class="form-check col-sm-3">
                 </div>
