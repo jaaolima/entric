@@ -1317,7 +1317,7 @@ $app->group("", function () use ($app) {
 
 		        $verifica = $db->select_single_to_array("produtos",
 		                                            "*",
-		                                            "WHERE nome='".$dados['nome']."'", 
+		                                            "WHERE nome='".$dados['nome']."' and via='".$dados['via']."'", 
 		                                            null);
 
 		        $data = $verifica;
