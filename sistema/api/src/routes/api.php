@@ -2757,7 +2757,7 @@ $app->group("", function () use ($app) {
 								// 	var_dump($rowspan);
 								// 	var_dump($medida_dc);
 								// }
-		                        if (($rowspan <> count($medida_dc)) && ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
+		                        if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
 		                            $retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
 		                        }
 		                    }
