@@ -2482,13 +2482,13 @@ $app->group("", function () use ($app) {
 		                        $medida = json_decode($produtos[$i]['medida'], true);
 		                        $final = json_decode($produtos[$i]['final'], true);
 		                        $grama = json_decode($produtos[$i]['medida_g'], true);
+								$medida_dc = array_unique($medida_dc);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
 		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome']."  ".$_nome.'</td>';
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
-								$medida_dc = array_unique($medida_dc);
 		                        foreach ($medida_dc as $key => &$value) {
 
 		                            $dc = str_replace(",", ".", $value);
@@ -2753,14 +2753,7 @@ $app->group("", function () use ($app) {
 		                        }
 
 		                        // ajustar o rowspan da listagem de produtos caso esteja errado
-								// if($produtos[$i]['id'] == '406'){
-								// 	var_dump($rowspan);
-								// 	var_dump($rowspan);
-								// 	var_dump($medida_dc);
-								// }
-		                        if ($sistema == 'aberto_po'){
-									var_dump('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">');
-									var_dump('<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">');
+		                        if (($rowspan <> count($medida_dc)) && ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
 		                            $retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
 		                        }
 		                    }
