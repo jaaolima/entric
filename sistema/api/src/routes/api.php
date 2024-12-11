@@ -2423,6 +2423,43 @@ $app->group("", function () use ($app) {
 		                                        $margem_liberadas = true;
 		                                    }
 		                                    else{
+												// $cal_atual = $range_kcal;
+												// $prot_atual = $range_ptn;
+												// $cal_min = $margem_calorica[0];
+												// $cal_max = $margem_calorica[1];
+												// $prot_min = $margem_proteica[0];
+												// $prot_max = $margem_proteica[1];
+												// $peso_atual = $_volume_final;
+
+												// // Calorias e proteínas por grama do produto
+												// $cal_per_g = $cal_atual / $peso_atual;
+												// $prot_per_g = $prot_atual / $peso_atual;
+
+												// // Determinar o peso necessário para ficar dentro da faixa de calorias
+												// $peso_cal_min = $cal_min / $cal_per_g;
+												// $peso_cal_max = $cal_max / $cal_per_g;
+
+												// // Determinar o peso necessário para ficar dentro da faixa de proteínas
+												// $peso_prot_min = $prot_min / $prot_per_g;
+												// $peso_prot_max = $prot_max / $prot_per_g;
+
+												// // Interseção dos pesos permitidos
+												// $peso_min = max($peso_cal_min, $peso_prot_min);
+												// $peso_max = min($peso_cal_max, $peso_prot_max);
+
+												// // Verificar se existe uma interseção válida
+												// if ($peso_min <= $peso_max) {
+												// 	// Calcular as calorias e proteínas correspondentes ao peso ajustado
+												// 	$peso_ajustado = $peso_min; // Pegamos o peso mínimo válido dentro do intervalo
+												// 	$cal_ajustado = $peso_ajustado * $cal_per_g;
+												// 	$prot_ajustado = $peso_ajustado * $prot_per_g;
+
+												// 	return [
+												// 		'peso' => $peso_ajustado,
+												// 		'calorias' => $cal_ajustado,
+												// 		'proteinas' => $prot_ajustado,
+												// 	];
+												// }
 		                                        //echo "((".$margem_calorica[0]." <= $range_kcal) and (".$margem_calorica[1]." >= $range_kcal)) and ((".$margem_proteica[0]." <= $range_ptn) and (".$margem_proteica[1]." >= $range_ptn)) \n\n ";
 		                                    }
 		                                }

@@ -613,7 +613,7 @@ function necessidades_proteinas_total(_this, _event){
         }
         $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
         _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(_formula_valor, 1)+" g/kg)";
-        $("#ptn_valor").val(_formula_valor);
+        // $("#ptn_valor").val(_formula_valor);
         $("#presc_ptn").html(_formula_valor);
     }
 }
