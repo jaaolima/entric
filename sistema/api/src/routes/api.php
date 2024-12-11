@@ -2759,8 +2759,8 @@ $app->group("", function () use ($app) {
 								// 	var_dump($medida_dc);
 								// }
 		                        if ($sistema == 'aberto_po'){
-									echo '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">';
-									echo '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">';
+									var_dump('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">');
+									var_dump('<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">');
 		                            $retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
 		                        }
 		                    }
