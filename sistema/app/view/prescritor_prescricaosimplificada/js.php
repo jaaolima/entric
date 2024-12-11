@@ -576,7 +576,7 @@ function necessidades_calorias_total(_this, _event){
     }
     $("#kcal_valor").val(numberFormatPrecision((_formula_total), 0));
     _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+_formula_valor+" kcal/kg)";
-    $("#kcal_valor").val(_formula_valor);
+    // $("#kcal_valor").val(_formula_valor);
     $("#presc_kcal").html(_formula_valor);
 }
 
