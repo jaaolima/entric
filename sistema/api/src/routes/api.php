@@ -2753,7 +2753,11 @@ $app->group("", function () use ($app) {
 		                        }
 
 		                        // ajustar o rowspan da listagem de produtos caso esteja errado
-		                        if (($rowspan <> $medida_dc) and ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
+								if($produtos[$i]['id'] == '406'){
+									var_dump($rowspan);
+									var_dump($medida_dc);
+								}
+		                        if (($rowspan <> $medida_dc) && ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
 		                            $retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
 		                        }
 		                    }
