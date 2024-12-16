@@ -178,16 +178,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> DADOS GERAIS</p>
 			<div style="display:flex;">
-				<div>
+				<div style="width:50%;">
 					<p><strong>Nome:</strong> <?php echo ucwords($paciente['nome']);?></p>
 				</div>
-				<div>
+				<div style="width:50%;">
 					<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
 				</div>
 			</div>
 			<div style="display:flex;">
-				<?php if($paciente['hospital'] <> '') echo "<div><p><strong>Hospital:</strong> ".$paciente['hospital']." </p></div>"; ?>
-				<?php if($paciente['atendimento'] <> '') echo "<div><p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p></div>"; ?>
+				<?php if($paciente['hospital'] <> '') echo "<div style='width:50%;'><p><strong>Hospital:</strong> ".$paciente['hospital']." </p></div>"; ?>
+				<?php if($paciente['atendimento'] <> '') echo "<div style='width:50%;'><p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p></div>"; ?>
 			</div>
 			<?php } ?>
 
@@ -198,7 +198,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
-					<img src="imagem/qrcode.png" style="display:inline-block;" width="120" alt="">
+					<img src="imagem/qrcode.png" style="display:inline-block;" width="80" alt="">
 				</div>
 			</div>
 			
@@ -240,6 +240,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
+				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções.</p>
 				<?php 
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
@@ -305,10 +306,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 						if($dados_ordem != []){
-						?>				
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções.</p>
-
-						<p style="padding-top: 30px;">
+						?>
+						<p>
 							<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
 							<?php
@@ -329,7 +328,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										$valor = $valores[$i];
 
 										?>
-										<tr height="30px">
+										<tr height="10px">
 											<td width="12%" >
 												<?php echo $valor[0];?>
 											</td>
@@ -407,8 +406,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 						if($dados_ordem != []){
 						?>
-							<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
-							<p style="padding-top: 30px;">
+							<p>
 								<strong>EM PÓ - PARA DILUIR</strong>
 
 								<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
@@ -435,7 +433,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											// 	$font_destaque = "style='font-size: 14px;'";
 											// }
 											?>
-											<tr>
+											<tr height="10px">
 												<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>">
 													<?php echo $valor[0];?>
 												</td>
