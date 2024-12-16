@@ -178,12 +178,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> DADOS GERAIS</p>
 			<div style="display:flex;">
-				<p><strong>Nome:</strong> <?php echo ucwords($paciente['nome']);?></p>
-				<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
+				<div>
+					<p><strong>Nome:</strong> <?php echo ucwords($paciente['nome']);?></p>
+				</div>
+				<div>
+					<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
+				</div>
 			</div>
 			<div style="display:flex;">
-				<?php if($paciente['hospital'] <> '') echo "<p><strong>Hospital:</strong> ".$paciente['hospital']." </p>"; ?>
-				<?php if($paciente['atendimento'] <> '') echo "<p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p>"; ?>
+				<?php if($paciente['hospital'] <> '') echo "<div><p><strong>Hospital:</strong> ".$paciente['hospital']." </p></div>"; ?>
+				<?php if($paciente['atendimento'] <> '') echo "<div><p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p></div>"; ?>
 			</div>
 			<?php } ?>
 
@@ -490,14 +494,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<p>
 				<table width="100%" cellspacing="0" cellpadding="0">
 					<tbody>
-					<tr style="border-bottom:1px solid #8fcfe5; padding-bottom:10px;">
-						<td style="width:  100%; text-align: center;">
+					<tr>
+						<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
 								//echo "<p><strong>PRINCIPAL</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<div style="display:flex;">
+									echo '<div ">
 										<p style="text-align: center;font-size: 18px;">';
 										echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
@@ -520,9 +524,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 							?>
 						</td>
-					</tr style="padding-top:10px;">
+					</tr>
 					<tr>
-						<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:14px;">
+						<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:14px;padding-top:10px;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
