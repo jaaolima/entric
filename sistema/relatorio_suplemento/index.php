@@ -112,7 +112,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				color: #0092c5;
 				border-bottom: 1px solid #8fcfe5;
 				border-width: 0px 0px 1px 1px !important;
-				padding: 60px 10px 10px 0px;
+				padding: 10px 10px 10px 0px;
 			}
 			p{
 				line-height: 1.3;
@@ -177,10 +177,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> DADOS GERAIS</p>
-			<p><strong>Nome:</strong> <?php echo ucwords($paciente['nome']);?></p>
-			<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
-			<?php if($paciente['hospital'] <> '') echo "<p><strong>Hospital:</strong> ".$paciente['hospital']." </p>"; ?>
-			<?php if($paciente['atendimento'] <> '') echo "<p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p>"; ?>
+			<div style="display:flex;">
+				<p><strong>Nome:</strong> <?php echo ucwords($paciente['nome']);?></p>
+				<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
+			</div>
+			<div style="display:flex;">
+				<?php if($paciente['hospital'] <> '') echo "<p><strong>Hospital:</strong> ".$paciente['hospital']." </p>"; ?>
+				<?php if($paciente['atendimento'] <> '') echo "<p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p>"; ?>
+			</div>
 			<?php } ?>
 
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
@@ -251,9 +255,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				// 	}
 				// }
 				if (($relatorio['calculo_apres_liquidocreme'] == 1)) {
-					if (!$landscape){
-						echo "</div>";
-					}
+					// if (!$landscape){
+					// 	echo "</div>";
+					// }
 					if ($relatorio['dieta_produto_dc'] <> ""){
 
 						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
@@ -298,46 +302,44 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 						if($dados_ordem != []){
 						?>				
-						<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-							<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções.</p>
 
-							<p style="padding-top: 30px;">
-								<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
-								<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
+						<p style="padding-top: 30px;">
+							<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
+							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
+							<?php
+							if ($relatorio['dieta_produto_dc'] <> ""){
+								?>
+								<tr>
+									<th width="24%" height="30px">
+										Produto
+									</th>
+									<th width="12%" class="col_azul">
+										Volume(unidade)
+									</th>
+								</tr>
 								<?php
-								if ($relatorio['dieta_produto_dc'] <> ""){
-									?>
-									<tr>
-										<th width="24%" height="30px">
-											Produto
-										</th>
-										<th width="12%" class="col_azul">
-											Volume(unidade)
-										</th>
-									</tr>
-									<?php
-									ksort($dados_ordem);
-									foreach ($dados_ordem as $chave => $valores) {
-										for ($i = 0; $i < count($valores); $i++) {
-											$valor = $valores[$i];
+								ksort($dados_ordem);
+								foreach ($dados_ordem as $chave => $valores) {
+									for ($i = 0; $i < count($valores); $i++) {
+										$valor = $valores[$i];
 
-											?>
-											<tr height="30px">
-												<td width="12%" >
-													<?php echo $valor[0];?>
-												</td>
-												<td width="12%" class="col_azul">
-													<?php echo $valor[3];?>
-												</td>
-											</tr>
-											<?php
-										}
+										?>
+										<tr height="30px">
+											<td width="12%" >
+												<?php echo $valor[0];?>
+											</td>
+											<td width="12%" class="col_azul">
+												<?php echo $valor[3];?>
+											</td>
+										</tr>
+										<?php
 									}
 								}
-								?>
-								</table>
-							</p>
-						</div>			
+							}
+							?>
+							</table>
+						</p>
 					<?php
 						$landscape = true;
 						}
@@ -369,9 +371,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 				if (($relatorio['calculo_apres_po'] == 1)) {
 					if ($relatorio['dieta_produto_dc'] <> ""){
-						if (!$landscape){
-							echo "</div>";
-						}
+						// if (!$landscape){
+						// 	echo "</div>";
+						// }
 						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 
 						$dados_ordem = array();
@@ -401,9 +403,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 						if($dados_ordem != []){
 						?>
-						<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
 							<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
-
 							<p style="padding-top: 30px;">
 								<strong>EM PÓ - PARA DILUIR</strong>
 
@@ -446,7 +446,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tbody>
 								</table>
 							</p>
-						</div>	
 					<?php
 						$landscape = true;
 						}
@@ -459,13 +458,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 
 				<?php
-				if ($relatorio['rel_distribuidores']<>""){
-					if ((!$p_produtos) and (!$p_header)){
-						if ($landscape){
-							echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
-						}
-					}
-				}
+				// if ($relatorio['rel_distribuidores']<>""){
+				// 	if ((!$p_produtos) and (!$p_header)){
+				// 		if ($landscape){
+				// 			echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
+				// 		}
+				// 	}
+				// }
 				?>
 		<?php
 		}
@@ -474,13 +473,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 			if ($relatorio['rel_distribuidores']<>""){
 		?>
-		<?php 
+		<!-- <?php 
 		if ($p_footer) {
 		?>	
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
 		<?php
 		}
-		?>
+		?> -->
 
 
 		<?php 
@@ -491,14 +490,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<p>
 				<table width="100%" cellspacing="0" cellpadding="0">
 					<tbody>
-					<tr>
+					<tr style="border-bottom:1px solid #8fcfe5; padding-bottom:10px;">
 						<td style="width:  100%; text-align: center;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
 								//echo "<p><strong>PRINCIPAL</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<div>
+									echo '<div style="display:flex;">
 										<p style="text-align: center;font-size: 18px;">';
 										echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
@@ -507,7 +506,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
 										echo "</p>
 										</div>";
-										echo "<div>
+										echo "<div style='display:flex;'>
 												<div>
 													<h5 style='color:#45cfb3;margin:0px;margin-top:15px;'>FACILITE SUA COMPRA!</h5>
 													<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
@@ -521,9 +520,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 							?>
 						</td>
-					</tr>
+					</tr style="padding-top:10px;">
 					<tr>
-						<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;">
+						<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:14px;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
@@ -531,7 +530,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								for ($i = 0; $i < count($danone); $i++) {
 									echo '<div style="width:25%;">
 											<p style="text-align: left;">';									
-												echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
+												echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 												if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 												if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
