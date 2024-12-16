@@ -118,7 +118,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				line-height: 1.3;
 			}
 			.tabela_p1 tbody tr td{ 
-				height: 30px;
+				height: 10px;
 			}
 
 			<?php
