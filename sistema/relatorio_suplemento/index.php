@@ -121,6 +121,27 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				height: 10px;
 			}
 
+			/* Permitir que a tabela seja quebrada entre páginas */
+			table {
+				page-break-inside: auto; /* Permitir quebra de página dentro da tabela */
+			}
+
+			tr {
+				page-break-inside: avoid; /* Evitar quebras dentro de linhas */
+				page-break-after: auto; /* Quebras após linhas, se necessário */
+			}
+
+			td, th {
+				page-break-inside: avoid; /* Evitar quebra dentro de células */
+			}
+
+			/* Garantir margens adequadas para impressão */
+			@media print {
+				body {
+					margin: 1cm; /* Ajuste as margens conforme necessário */
+				}
+			}
+
 			<?php
 			if (($p_produtos) or ($p_header) or ($p_footer)){
 				?>
@@ -240,7 +261,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
-				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções.</p>
+				<p class="text-left subtitutlo" style="margin:0px;"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções.</p>
 				<?php 
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
