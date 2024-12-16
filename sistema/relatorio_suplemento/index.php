@@ -150,8 +150,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				.page{
 					width: 26.5cm;
 					box-shadow: 0 0px 0px #fff;
-					padding-left: 2cm;
-					padding-right: 2cm;
+					padding-left: 1cm;
+					padding-right: 1cm;
 				}
 				.logo_efeito{
 					background-image: url("imagem/logo.png"), url("imagem/efeito2.png");
