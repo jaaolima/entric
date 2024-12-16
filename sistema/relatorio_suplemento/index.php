@@ -210,7 +210,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
-			<p>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?>.</p>
+			<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?>.</p>
 			<?php 
 				if ($relatorio['fra_dieta_horario'] <> ""){
 					$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
@@ -229,7 +229,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 					}
 					if($_horarios != ''){
-						echo "<p>Horários sugeridos: ".$_horarios.".</p>";
+						echo "<p style='margin:0px;'>Horários sugeridos: ".$_horarios.".</p>";
 					}
 				} 
 			?>	
@@ -307,9 +307,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 						if($dados_ordem != []){
 						?>
-						<p>
+						<p style="margin:0px;">
 							<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
-							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
 								?>
@@ -406,10 +406,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 						if($dados_ordem != []){
 						?>
-							<p>
+							<p style="margin:0px;">
 								<strong>EM PÓ - PARA DILUIR</strong>
 
-								<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
+								<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos tabela_p1">
 								<thead>
 								<tr>
 									<th rowspan="2">Produto</th>
