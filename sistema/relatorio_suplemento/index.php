@@ -492,39 +492,52 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<table width="100%" cellspacing="0" cellpadding="0">
 					<tbody>
 					<tr>
-						<td style="width:  50%; border-right: 1px solid #8fcfe5; text-align: center;">
+						<td style="width:  100%; text-align: center;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
 								//echo "<p><strong>PRINCIPAL</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<p style="text-align: center;font-size: 18px;">';
-										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
+									echo '<div>
+										<p style="text-align: center;font-size: 18px;">';
+										echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
 										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-										echo "<br><h5 style='color:#45cfb3;margin:0px;margin-top:15px;'>FACILITE SUA COMPRA!</h5>
-										<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
-										<br><img src='imagem/qrcode-sistema.png' style='display:inline-block;' width='80' alt=''>";
-									echo '</p>';
+										echo "</p>
+										</div>";
+										echo "<div>
+												<div>
+													<h5 style='color:#45cfb3;margin:0px;margin-top:15px;'>FACILITE SUA COMPRA!</h5>
+													<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
+												</div>
+												<div>
+													<img src='imagem/qrcode-sistema.png' style='display:inline-block;' width='80' alt=''>
+												</div>
+											</div>";
+									echo '</div>';
 								}
 							}
 							?>
 						</td>
-						<td style="width:  50%; border-left: 0px solid #8fcfe5; text-align: center;">
+					</tr>
+					<tr>
+						<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
 								//echo "<p><strong>OUTROS</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<p style="text-align: left; padding-left: 20px;">';									
-										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
-										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-									echo '</p>';
+									echo '<div style="width:25%;">
+											<p style="text-align: left;">';									
+												echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
+												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+												if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+												if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+												if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+											echo '</p>';
+									echo '</div>';
 								}
 							}
 							?>

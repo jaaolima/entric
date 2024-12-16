@@ -986,40 +986,52 @@ function rangeProteina(proteina){
 }
 
 function salvar_calculo_fracionamento(_this){
-    var _id_paciente = $("#id_paciente").val();
-    var _id_relatorio = $("#id_relatorio").val();
-    //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
-    var formSerialize = $("#modal_form_fracionamento").serialize();
-    if (_this != null)  b_lo(_this);
-    var selecao_dieta = $("#selecao_dieta").val();
+    if ($("#fracionamento_dia").val() != '') {
+        var _id_paciente = $("#id_paciente").val();
+        var _id_relatorio = $("#id_relatorio").val();
+        //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
+        var formSerialize = $("#modal_form_fracionamento").serialize();
+        if (_this != null)  b_lo(_this);
+        var selecao_dieta = $("#selecao_dieta").val();
 
-    $.ajax({
-        type: "POST",
-        url: "ajax/fracionamento_salvar_suplemento",
-        data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-        cache: false,
-        dataType: 'json',
-        success: function( data ){
-            if (_this != null) b_res(_this);
-            if (_this != null){
-                $('#modal_fracionamento').modal('toggle');
-                $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+        $.ajax({
+            type: "POST",
+            url: "ajax/fracionamento_salvar_suplemento",
+            data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+            cache: false,
+            dataType: 'json',
+            success: function( data ){
+                if (_this != null) b_res(_this);
+                if (_this != null){
+                    $('#modal_fracionamento').modal('toggle');
+                    $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+                        if (selecao_dieta.length == 0){
+                            rangeCaloria($("#kcal_valor").val());
+                            rangeProteina($("#ptn_valor").val());
+                        }
+                        $("#modal_selecao").modal("toggle");
+                    });
+                }else{
                     if (selecao_dieta.length == 0){
                         rangeCaloria($("#kcal_valor").val());
                         rangeProteina($("#ptn_valor").val());
                     }
                     $("#modal_selecao").modal("toggle");
-                });
-            }else{
-                if (selecao_dieta.length == 0){
-                    rangeCaloria($("#kcal_valor").val());
-                    rangeProteina($("#ptn_valor").val());
                 }
-                $("#modal_selecao").modal("toggle");
-            }
 
-        }
-    });
+            }
+        });
+    }
+    else{
+        $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'Por favor, é necessário preencher a quantidade de vezes ao dia.'
+            });
+        return false;
+    }
+    
 }
 
 function check_dieta(_this, diluicao_id){
@@ -1943,7 +1955,6 @@ $(function(){
         // else{
             
         // }
-        console.log($("input[name='carac_oral'].filtro_1:checked").length, $("input[name='carac_oral'].filtro_2:checked").length, $("input[name='carac_oral'].filtro_3:checked").length, $("input[name='carac_oral'].filtro_4:checked").length);
         if ($("input[name='carac_oral[]'].filtro_1:checked").length > 0 && 
             $("input[name='carac_oral[]'].filtro_2:checked").length > 0 && 
             $("input[name='carac_oral[]'].filtro_3:checked").length > 0) {
