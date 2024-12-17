@@ -112,7 +112,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				color: #0092c5;
 				border-bottom: 1px solid #8fcfe5;
 				border-width: 0px 0px 1px 1px !important;
-				padding: 60px 10px 10px 0px;
+				padding: 10px 10px 10px 0px;
 			}
 			p{
 				line-height: 1.3;
@@ -257,10 +257,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				$margem_proteica_b = $margem_proteica_b[0];
 			}
 			?>
-			<div style="display:flex;">
-				<p><strong>Calorias:</strong> <?php echo $margem_calorica_a;?> a <?php echo $margem_calorica_b;?> Kcal/dia</p>
-				<p><strong>Proteína:</strong> <?php echo $margem_proteica_a;?> a <?php echo $margem_proteica_b;?> g/dia</p>
-				<p><strong>Água:</strong> <?php echo $relatorio["fra_volume_ml"];?> ml/dia</p>
+			<div style="display:flex;justify-content:space-around;">
+				<div><p><strong>Calorias:</strong> <?php echo $margem_calorica_a;?> a <?php echo $margem_calorica_b;?> Kcal/dia</p></div>
+				<div><p><strong>Proteína:</strong> <?php echo $margem_proteica_a;?> a <?php echo $margem_proteica_b;?> g/dia</p></div>
+				<div><p><strong>Água:</strong> <?php echo $relatorio["fra_volume_ml"];?> ml/dia</p></div>
 			</div>
 		<?php } ?>	
 
@@ -292,7 +292,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					?>				
 					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 
-					<p style="padding-top: 30px;">
+					<p>
 						<strong>SISTEMA FECHADO</strong>
 						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
 						<?php
@@ -420,7 +420,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								$horarios = $_horarios;
 							}
 							?>
-							<br>
 							<strong>Modo de Uso:</strong> Instalar dieta às <?php echo $relatorio['fra_h_i_dieta'];?>. Após o término da primeira dieta, instalar a próxima (caso haja mais de uma dieta). Correr a dieta em <?php echo $relatorio['fra_h_inf_dieta'];?> h. Com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios;?>.
 							<?php 
 							if (trim($relatorio['fra_info_complementares']) <> ""){
@@ -462,7 +461,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					?>				
 					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 				
-					<p style="padding-top: 30px;">
+					<p >
 						<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
 						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos">
 						<?php
@@ -620,7 +619,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								$horarios_hidra = $_horarios;
 							}
 							?>
-							<br>						
 							<strong>Modo de Uso:</strong> Fracionar a dieta de acordo com o volume por horário. Instalar a dieta <?php echo $relatorio['fra_fracionamento_dia'];?> vezes ao dia, <?php echo $horarios;?>. Correr cada dieta em <?php echo $relatorio['fra_qtas_horas'];?> horas com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios_hidra;?>.
 							<?php 
 							if (trim($relatorio['fra_info_complementares']) <> ""){
@@ -661,193 +659,190 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				}
 
 				if (($relatorio['calculo_apres_aberto_po'] == 1) and (count($_produtos_nomes) > 0)) {
-					if (!$landscape){
-						echo "</div>";
-					}
+					// if (!$landscape){
+					// 	echo "</div>";
+					// }
 					?>
-					<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
 
-						<p style="padding-top: 30px;">
-							<strong>SISTEMA ABERTO (PÓ)</strong>
+					<p>
+						<strong>SISTEMA ABERTO (PÓ)</strong>
 
-							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
-							<thead>
-								<tr>
-									<th rowspan="2">Produto</th>
-									<th colspan="3" class="col_azul">Quantidade/Horário</th>
-									<th colspan="2">
-										Velocidade de adminstração
-									</th>
-								</tr>
-								<tr>
-									<th class="col_azul">Gramas</th>
-									<th class="col_azul">Medida</th>
-									<th class="col_azul">Volume</th>
-									<th>
-										Bomba de infusão
-									</th>
-									<th >
-										Gotas/min
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								if ($relatorio['dieta_produto_dc'] <> ""){
-									$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
+						<thead>
+							<tr>
+								<th rowspan="2">Produto</th>
+								<th colspan="3" class="col_azul">Quantidade/Horário</th>
+								<th colspan="2">
+									Velocidade de adminstração
+								</th>
+							</tr>
+							<tr>
+								<th class="col_azul">Gramas</th>
+								<th class="col_azul">Medida</th>
+								<th class="col_azul">Volume</th>
+								<th>
+									Bomba de infusão
+								</th>
+								<th >
+									Gotas/min
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							if ($relatorio['dieta_produto_dc'] <> ""){
+								$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 
-									$dados_ordem = array();
-									foreach ($dieta_produto_dc as &$value) {
-										$produto = explode("___", $value);
-										if ($produto[6] == "aberto_po"){
-											$produto[1] = trim($produto[1]);
+								$dados_ordem = array();
+								foreach ($dieta_produto_dc as &$value) {
+									$produto = explode("___", $value);
+									if ($produto[6] == "aberto_po"){
+										$produto[1] = trim($produto[1]);
 
-											$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
+										$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
-											// volume horario e volume dia
-											$volume_dia = chkfloat($produto[3]);
-											$volume_horario = ($volume_dia / $relatorio['fra_fracionamento_dia']);
-											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-
+										// volume horario e volume dia
+										$volume_dia = chkfloat($produto[3]);
+										$volume_horario = ($volume_dia / $relatorio['fra_fracionamento_dia']);
+										// =-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-											$medida = ((chkstring2float($produto[9]) * chkstring2float($produto[4])) / chkfloat($produto[10]));
-											$medida = round($medida * 2) / 2; // 0.5 arrendodar
+										$medida = ((chkstring2float($produto[9]) * chkstring2float($produto[4])) / chkfloat($produto[10]));
+										$medida = round($medida * 2) / 2; // 0.5 arrendodar
 
-											$grama = chkstring2float($produto[11]);
-											$grama = (($grama * $medida) / chkstring2float($produto[9]));
+										$grama = chkstring2float($produto[11]);
+										$grama = (($grama * $medida) / chkstring2float($produto[9]));
 
-											if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
-												$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
-											else
-												$cont_dados = 0;
+										if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
+											$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
+										else
+											$cont_dados = 0;
 
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[2];
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($grama, 1);
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = chkstring2float($produto[4]);
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[2];
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($grama, 1);
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = chkstring2float($produto[4]);
 
-											$dias_grama = ($grama * $relatorio['fra_fracionamento_dia']);
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($dias_grama, 1);
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = ($medida * $relatorio['fra_fracionamento_dia']);
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = chkstring2float($produto[3]);
-											
-											$volume_final = round_up($volume_horario);
-											$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']);
-											$velocidade = ($volume_final / ($qtd_horas/60));
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
-													
-											$volume_final = round_up($volume_horario);
-											$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']); 
-											$gotejamento = (($volume_final*20) / ($qtd_horas));
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
-													
-											$kcal_dia = ($dias_grama * $produto[12]) / 100;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($kcal_dia, 0)." kcal";
-													
-											$ptn_dia = ($dias_grama * $produto[13]) / 100;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($ptn_dia, 1)." g";
+										$dias_grama = ($grama * $relatorio['fra_fracionamento_dia']);
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($dias_grama, 1);
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = ($medida * $relatorio['fra_fracionamento_dia']);
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = chkstring2float($produto[3]);
+										
+										$volume_final = round_up($volume_horario);
+										$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']);
+										$velocidade = ($volume_final / ($qtd_horas/60));
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
+												
+										$volume_final = round_up($volume_horario);
+										$qtd_horas = hoursToMinutes($relatorio['fra_qtas_horas']); 
+										$gotejamento = (($volume_final*20) / ($qtd_horas));
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
+												
+										$kcal_dia = ($dias_grama * $produto[12]) / 100;
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($kcal_dia, 0)." kcal";
+												
+										$ptn_dia = ($dias_grama * $produto[13]) / 100;
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($ptn_dia, 1)." g";
 
-											$fibras_dia = ($dias_grama * $produto[14]) / 100;
-											$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($fibras_dia, 1)." g";
-										} 
-									}
+										$fibras_dia = ($dias_grama * $produto[14]) / 100;
+										$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = numberFormatPrecision($fibras_dia, 1)." g";
+									} 
+								}
 
-									ksort($dados_ordem);
-									foreach ($dados_ordem as $chave => $valores) {
-										for ($i = 0; $i < count($valores); $i++) {
-											$valor = $valores[$i];
+								ksort($dados_ordem);
+								foreach ($dados_ordem as $chave => $valores) {
+									for ($i = 0; $i < count($valores); $i++) {
+										$valor = $valores[$i];
 
-											$produto[1] = trim($valor[0]);
-											?>
-											<tr >
-												<?php 
-												if (isset($_produtos_nomes[ $produto[1] ]) and ($_produtos_nomes[ $produto[1] ] > 1) and (!isset($_produtos_nomes_usados[ $produto[1] ]))){
-													$_produtos_nomes_usados[ $produto[1] ] = true;
-													?>
-													<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" >
-														<?php echo $valor[0];?>
-													</td>
-													<?php
-												}
-												else if (!isset($_produtos_nomes_usados[ $produto[1] ])){
-													$_produtos_nomes_usados[ ($produto[1]) ] = true;
-													?>
-													<td >
-														<?php echo $valor[0];?>
-													</td>
-													<?php
-												}
+										$produto[1] = trim($valor[0]);
+										?>
+										<tr >
+											<?php 
+											if (isset($_produtos_nomes[ $produto[1] ]) and ($_produtos_nomes[ $produto[1] ] > 1) and (!isset($_produtos_nomes_usados[ $produto[1] ]))){
+												$_produtos_nomes_usados[ $produto[1] ] = true;
 												?>
-												<td class="col_azul"><?php echo $valor[3];?></td>
-												<td class="col_azul"><?php echo $valor[4];?></td>
-												<td class="col_azul"><?php echo $valor[5];?></td>
-												<td><?php echo $valor[9];?></td>
-												<td><?php echo $valor[10];?></td>
-											</tr>
-											<?php
-										}
+												<td rel="<?php echo $produto[0];?>" rowspan="<?php echo $_produtos_nomes[$produto[1]];?>" >
+													<?php echo $valor[0];?>
+												</td>
+												<?php
+											}
+											else if (!isset($_produtos_nomes_usados[ $produto[1] ])){
+												$_produtos_nomes_usados[ ($produto[1]) ] = true;
+												?>
+												<td >
+													<?php echo $valor[0];?>
+												</td>
+												<?php
+											}
+											?>
+											<td class="col_azul"><?php echo $valor[3];?></td>
+											<td class="col_azul"><?php echo $valor[4];?></td>
+											<td class="col_azul"><?php echo $valor[5];?></td>
+											<td><?php echo $valor[9];?></td>
+											<td><?php echo $valor[10];?></td>
+										</tr>
+										<?php
 									}
 								}
-								?>
-							</tbody>
-							</table>
+							}
+							?>
+						</tbody>
+						</table>
 
-							<span class="modo_uso">
-								<?php
-								$horarios = "";
-								if ($relatorio['fra_dieta_horario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
-									$horarios = array();
-									foreach ($_horarios as $chave => $valor) {
-										$horarios[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios[$i];
-									}
-									$horarios = $_horarios;
+						<span class="modo_uso">
+							<?php
+							$horarios = "";
+							if ($relatorio['fra_dieta_horario'] <> ""){
+								$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
+								$horarios = array();
+								foreach ($_horarios as $chave => $valor) {
+									$horarios[] = $valor;
 								}
+								$_horarios = "";
+								for ($i = 0; $i < count($horarios); $i++) {
+									if ($i == 0) $_horarios .= " às ";
+									else{
+										if (($i+1) == count($horarios))
+											$_horarios .= " e ";
+										else
+											$_horarios .= ", ";
+									}
+									$_horarios .= $horarios[$i];
+								}
+								$horarios = $_horarios;
+							}
 
-								$horarios_hidra = "";
-								if ($relatorio['fra_hidrahorario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
-									$horarios_hidra = array();
-									foreach ($_horarios as $chave => $valor) {
-										$horarios_hidra[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios_hidra); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios_hidra))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios_hidra[$i];
-									}
-									$horarios_hidra = $_horarios;
+							$horarios_hidra = "";
+							if ($relatorio['fra_hidrahorario'] <> ""){
+								$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
+								$horarios_hidra = array();
+								foreach ($_horarios as $chave => $valor) {
+									$horarios_hidra[] = $valor;
 								}
-								?>
-								<br>						
-								<strong>Modo de Uso:</strong> Diluir a quantidade por horário (gramas ou medida) em metade do volume e, após misturar bem, completar com água até chegar ao volume total por horário. Instalar dieta <?php echo $relatorio['fra_fracionamento_dia'];?> vezes ao dia, <?php echo $horarios;?>. Correr cada dieta em <?php echo $relatorio['fra_qtas_horas'];?> horas com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios_hidra;?>.
-								<?php 
-								if (trim($relatorio['fra_info_complementares']) <> ""){
-									echo $relatorio['fra_info_complementares'];
+								$_horarios = "";
+								for ($i = 0; $i < count($horarios_hidra); $i++) {
+									if ($i == 0) $_horarios .= " às ";
+									else{
+										if (($i+1) == count($horarios_hidra))
+											$_horarios .= " e ";
+										else
+											$_horarios .= ", ";
+									}
+									$_horarios .= $horarios_hidra[$i];
 								}
-								?>
-							</span>
-						</p>
-					</div>	
+								$horarios_hidra = $_horarios;
+							}
+							?>
+							<strong>Modo de Uso:</strong> Diluir a quantidade por horário (gramas ou medida) em metade do volume e, após misturar bem, completar com água até chegar ao volume total por horário. Instalar dieta <?php echo $relatorio['fra_fracionamento_dia'];?> vezes ao dia, <?php echo $horarios;?>. Correr cada dieta em <?php echo $relatorio['fra_qtas_horas'];?> horas com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios_hidra;?>.
+							<?php 
+							if (trim($relatorio['fra_info_complementares']) <> ""){
+								echo $relatorio['fra_info_complementares'];
+							}
+							?>
+						</span>
+					</p>
 					<?php 
 					$landscape = true;
 				}
