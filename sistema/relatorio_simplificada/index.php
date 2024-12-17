@@ -193,7 +193,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
 			
-			<p class="text-center linha titulo">PRESCRIÇÃO NUTRICIONAL</p>
+			<p class="text-center linha titulo" style="margin-top:30px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
@@ -290,10 +290,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					// 	echo "</div>";
 					// }
 					?>				
-					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PORDUTOS - Escolha uma das opções</p>
 
 					<p style="margin:0px;">
-						<strong>SISTEMA FECHADO</strong>
+						<strong style="justify-content: center;display: flex;font-size:11pt;">SISTEMA FECHADO</strong>
 						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
 						<?php
 						if ($relatorio['dieta_produto_dc'] <> ""){
@@ -459,10 +459,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					// 	echo "</div>";
 					// }
 					?>				
-					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
-				
 					<p style="margin:0px;">
-						<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
+						<strong style="font-size:11pt;">SISTEMA ABERTO (LÍQUIDO)</strong>
 						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos">
 						<?php
 						if ($relatorio['dieta_produto_dc'] <> ""){
@@ -663,10 +661,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					// 	echo "</div>";
 					// }
 					?>
-					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
-
 					<p style="margin:0px;">
-						<strong>SISTEMA ABERTO (PÓ)</strong>
+						<strong style="justify-content: center;display: flex;font-size:11pt;">SISTEMA ABERTO (PÓ)</strong>
 
 						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
 						<thead>
@@ -922,7 +918,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			if ($relatorio['calculo_apres_fechado'] == 1){
 				?>
 				<p style="text-align: center;">
-				<strong>SISTEMA FECHADO</strong>
+				<strong style="justify-content: center;display: flex;">SISTEMA FECHADO</strong>
 				</p>
 				<?php
 				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);

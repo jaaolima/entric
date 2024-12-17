@@ -193,7 +193,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
 			
-			<p class="text-center linha titulo">PRESCRIÇÃO NUTRICIONAL</p>
+			<p class="text-center linha titulo" style="margin-top:30px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
@@ -329,7 +329,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 						<p style="margin:0px;">
-							<strong>LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
+							<strong style="justify-content: center;display: flex;font-size:11pt;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
@@ -339,7 +339,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										Produto
 									</th>
 									<th width="12%" class="col_azul">
-										Volume(unidade)
+										Volume (unidade)
 									</th>
 								</tr>
 								<?php
@@ -428,14 +428,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 							<p style="margin:0px;">
-								<strong>EM PÓ - PARA DILUIR</strong>
+								<strong style="justify-content: center;display: flex;font-size:11pt;">EM PÓ - PARA DILUIR</strong>
 
 								<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos tabela_p1">
 								<thead>
 								<tr>
 									<th rowspan="2">Produto</th>
-									<th colspan="2" class="col_azul">Quantidade(Porção)</th>
-									<th rowspan="2">Volume(Porção)</th>
+									<th colspan="2" class="col_azul">Quantidade (Porção)</th>
+									<th rowspan="2">Volume (Porção)</th>
 								</tr>
 								<tr>
 									<th class="col_azul">Gramas</th>
