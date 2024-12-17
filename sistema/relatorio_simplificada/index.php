@@ -263,7 +263,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div><p><strong>Água:</strong> <?php echo $relatorio["fra_volume_ml"];?> ml/dia</p></div>
 			</div>
 		<?php } ?>	
-
+		<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PORDUTOS - Escolha uma das opções</p>
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
@@ -290,8 +290,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					// 	echo "</div>";
 					// }
 					?>				
-					<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PORDUTOS - Escolha uma das opções</p>
-
 					<p style="margin:0px;">
 						<strong style="justify-content: center;display: flex;font-size:11pt;">SISTEMA FECHADO</strong>
 						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
@@ -460,7 +458,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					// }
 					?>				
 					<p style="margin:0px;">
-						<strong style="font-size:11pt;">SISTEMA ABERTO (LÍQUIDO)</strong>
+						<strong style="justify-content: center;display: flex;font-size:11pt;">SISTEMA ABERTO (LÍQUIDO)</strong>
 						<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos">
 						<?php
 						if ($relatorio['dieta_produto_dc'] <> ""){
