@@ -118,7 +118,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				line-height: 1.3;
 			}
 			.tabela_p1 tbody tr td{
-				height: 30px;
+				height: 10px;
 			}
 
 			/* Permitir que a tabela seja quebrada entre páginas */
@@ -916,7 +916,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>	
 		</div>
 		<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
+			<p class="text-left subtitutlo" style="margin-top:60px;"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
 			<?php 
 			if ($relatorio['calculo_apres_fechado'] == 1){
