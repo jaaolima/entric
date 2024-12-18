@@ -263,7 +263,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div><p><strong>Água:</strong> <?php echo $relatorio["fra_volume_ml"];?> ml/dia</p></div>
 			</div>
 		<?php } ?>	
-		<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PORDUTOS - Escolha uma das opções</p>
+		<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções</p>
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
