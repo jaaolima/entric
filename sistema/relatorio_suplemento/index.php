@@ -97,7 +97,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			.text-center{
 				text-align: center;
-				/* font-size: 12pt; */
+				font-size: 12pt;
 			}
 			.linha{
 				background-image: url("imagem/linha.png");
@@ -109,7 +109,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			.subtitutlo {
 				font-weight: bold;
-				/* font-size: 11pt; */
+				font-size: 11pt;
 				color: #0092c5;
 				border-bottom: 1px solid #8fcfe5;
 				border-width: 0px 0px 1px 1px !important;
@@ -194,7 +194,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
 			
-			<p class="text-center linha titulo" style="margin-top:30px;">PRESCRIÇÃO NUTRICIONAL</p>
+			<p class="text-center linha titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
@@ -522,7 +522,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								//echo "<p><strong>PRINCIPAL</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
 									echo '<div ">
-										<p style="text-align: center;font-size: 12px;">';
+										<p style="text-align: center;font-size: 13px;">';
 										echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
