@@ -329,7 +329,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 						if($dados_ordem != []){
 						?>
-						<p style="margin:0px;">
+						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
@@ -428,7 +428,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 						if($dados_ordem != []){
 						?>
-							<p style="margin:0px;">
+							<p style="margin:10px 0px;">
 								<strong style="justify-content: center;display: flex;;">EM PÓ - PARA DILUIR</strong>
 
 								<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos tabela_p1">
