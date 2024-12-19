@@ -82,6 +82,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			body{
 				text-align: justify;
 				text-justify: inter-word;
+				font-size: 11px !important;
 			}
 			.logo_efeito{
 				background-image: url("imagem/logo.png"), url("imagem/efeito.png");
@@ -96,7 +97,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			.text-center{
 				text-align: center;
-				font-size: 12pt;
+				/* font-size: 12pt; */
 			}
 			.linha{
 				background-image: url("imagem/linha.png");
@@ -108,7 +109,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			.subtitutlo {
 				font-weight: bold;
-				font-size: 11pt;
+				/* font-size: 11pt; */
 				color: #0092c5;
 				border-bottom: 1px solid #8fcfe5;
 				border-width: 0px 0px 1px 1px !important;
@@ -329,7 +330,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 						<p style="margin:0px;">
-							<strong style="justify-content: center;display: flex;font-size:11pt;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
+							<strong style="justify-content: center;display: flex;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
@@ -428,7 +429,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 							<p style="margin:0px;">
-								<strong style="justify-content: center;display: flex;font-size:11pt;">EM PÓ - PARA DILUIR</strong>
+								<strong style="justify-content: center;display: flex;;">EM PÓ - PARA DILUIR</strong>
 
 								<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos tabela_p1">
 								<thead>
@@ -521,7 +522,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								//echo "<p><strong>PRINCIPAL</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
 									echo '<div ">
-										<p style="text-align: center;font-size: 18px;">';
+										<p style="text-align: center;font-size: 12px;">';
 										echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
@@ -545,7 +546,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						</td>
 					</tr>
 					<tr>
-						<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:14px;padding-top:10px;">
+						<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:11px;padding-top:10px;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
