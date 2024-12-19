@@ -82,7 +82,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			body{
 				text-align: justify;
 				text-justify: inter-word;
-				font-size: 11px !important;
+				font-size: 13px !important;
 			}
 			.logo_efeito{
 				background-image: url("imagem/logo.png"), url("imagem/efeito.png");
