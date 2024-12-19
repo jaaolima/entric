@@ -220,7 +220,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
-					<img src="imagem/qrcode.png" style="display:inline-block;" width="80" alt="">
+					<img src="imagem/qrcode.png" style="display:inline-block;" width="60" alt="">
 				</div>
 			</div>
 			
@@ -536,7 +536,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 													<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
 												</div>
 												<div>
-													<img src='imagem/qrcode-sistema.png' style='display:inline-block;' width='80' alt=''>
+													<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
 												</div>
 											</div>";
 									echo '</div>';
@@ -552,7 +552,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($danone){
 								//echo "<p><strong>OUTROS</strong></p>";
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<div style="width:25%;">
+									echo '<div style="width:25%;margin:10px;">
 											<p style="text-align: left;">';									
 												echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
