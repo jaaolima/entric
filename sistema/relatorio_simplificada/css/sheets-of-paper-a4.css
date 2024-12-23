@@ -71,8 +71,8 @@
 	outline: 0;
 }
 .tabela_produtos{
-	margin-top: 0.5cm;
-	/* font-size: 13px; */
+	margin-top: 5px;
+	font-size: 13px;
 	text-align: center;
 
 	border: 1px inset black;
