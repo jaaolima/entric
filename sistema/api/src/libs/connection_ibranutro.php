@@ -154,10 +154,8 @@ class Database_ibranutro{
     }
 	
     public function select_single_to_array($tables, $fields = '*', $conds = null, $bind = null) {
-        // if(! $res = $this->select_to_array($tables,$fields,$conds,$bind)) return FALSE;
-        // return $res[0];
-        echo "chegou";
-        return $this->select_to_array($tables,$fields,$conds,$bind);
+        if(! $res = $this->select_to_array($tables,$fields,$conds,$bind)) return FALSE;
+        return $res[0];
     }
     
     public function insert($table, $bind, $return_id=TRUE) {

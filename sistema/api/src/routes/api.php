@@ -173,7 +173,7 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/login", function (Request $request, Response $response) {
-		$login = chkemail($request->getParam("email"));
+		$login = $request->getParam("email");
 		$senha = $request->getParam("senha");
 		$tipo = $request->getParam("tipo");
 		$usuario = null;
