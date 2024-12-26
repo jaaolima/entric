@@ -180,6 +180,7 @@ $app->group("", function () use ($app) {
 
 		try {
 			$db = new Database();
+			$db_ibranutro = new Database_ibranutro();
 
 	        $tipo_login = "";
 	        $data = array();
@@ -203,9 +204,9 @@ $app->group("", function () use ($app) {
 	        // pescritor =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	        }else if ($tipo == 2){
 	            $tipo_login = "prescritor";
-	            $bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
-	            $retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
-				$usuario = $db->select_single_to_array("prescritores", "*", "WHERE id_usuario=".$retorno['id'], null);
+	            $bind = array(':email' => ($login));
+	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
+				$usuario = $retorno;
 				$usuario["tipo"] = 2;
 
 	            $menu = array(  "home",
@@ -222,8 +223,8 @@ $app->group("", function () use ($app) {
 	        }else if (($tipo == 3) or ($tipo == -1)){
 	            $tipo_login = "administrador";
 	            $bind = array(':email' => ($login), ':tipo' => $tipo);
-	            $retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND (tipo=:tipo OR tipo=0 OR tipo=-1) AND status=0", $bind);
-				$usuario = $db->select_single_to_array("admin", "*", "WHERE id_usuario=".$retorno['id'], null);
+	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
+				$usuario = $retorno;
 				$usuario["tipo"] = 3;
 
 	            $menu = array(  "home",
@@ -262,7 +263,7 @@ $app->group("", function () use ($app) {
 	        if ($retorno){
 	            // pescritor ou paciente =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	            if (($tipo == 1) or ($tipo == 2)){
-	                $checkpass = verifyHash(chkpasswd($senha), trim($retorno['senha']));
+	                $checkpass = verifyHash(chkpasswd($senha), trim($retorno['ds_senha']));
 	                
 	                if (!$checkpass){
 	                    $tipo_login = "";
@@ -272,7 +273,7 @@ $app->group("", function () use ($app) {
 	            }
 
 	            if ($tipo_login <> ""){
-	                $db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id']));
+	                $db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id_usuario']));
 
 	                if ($_SERVER['SERVER_NAME'] <> "localhost"){
 	                    $res = openssl_pkey_new(array("digest_alg"=>"sha256","private_key_bits"=>512,"private_key_type"=>OPENSSL_KEYTYPE_RSA));
@@ -306,10 +307,10 @@ $app->group("", function () use ($app) {
 	                                ':ip'=> get_ip_address());
 	                $sessions = $db->insert('sessions', $qdata);
 
-	                $qdata = array(':id_usuario'=> $retorno['id'], ':funcao'=> 'login_'.$tipo_login, ':ipaddress'=> get_ip_address(), ':data_criacao'=> date('Y-m-d H:i:s'));
+	                $qdata = array(':id_usuario'=> $retorno['id_usuario'], ':funcao'=> 'login_'.$tipo_login, ':ipaddress'=> get_ip_address(), ':data_criacao'=> date('Y-m-d H:i:s'));
 	                $logs = $db->insert('log', $qdata);
 
-					$token = JWTAuth::getToken($retorno['id'], $login);
+					$token = JWTAuth::getToken($retorno['id_usuario'], $login);
 
 					$data["data"]["session"]['token'] = $token;
 					$data["data"]["session"]['admin_session_id'] = $sessions;
