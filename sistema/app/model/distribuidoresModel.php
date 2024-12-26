@@ -5,7 +5,7 @@ class DistribuidoresModel extends Model {
     function getDados() {
         global $bruker;
         $retorno = httpPostAuth("distribuidores_getDados", array("token" => $_SESSION['token'],
-                                                                "id_paciente" => $bruker->usuario['id']));
+                                                                "id_paciente" => $bruker->usuario['id_usuario']));
         return $retorno;
     }
 

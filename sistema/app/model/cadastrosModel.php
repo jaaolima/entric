@@ -50,7 +50,7 @@ class CadastrosModel extends Model {
     function getDados() {
         global $bruker;
         $retorno = httpPostAuth("cadastros_getDados", array(    "token" => $_SESSION['token'],
-                                                                "id_paciente" => $bruker->usuario['id']));
+                                                                "id_paciente" => $bruker->usuario['id_usuario']));
         return $retorno;
 
     }
@@ -66,7 +66,7 @@ class CadastrosModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("cadastros_cadastrar", array(   "token" => $_SESSION['token'],
                                                                 "dados" => $dados,
-                                                                "id_usuario" => $bruker->usuario['id']));
+                                                                "id_usuario" => $bruker->usuario['id_usuario']));
         return $retorno;
     }
 
@@ -74,7 +74,7 @@ class CadastrosModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("cadastros_cadastrarPrescritor2", array("token" => $_SESSION['token'],
                                                                         "dados" => $dados,
-                                                                        "id_usuario" => $bruker->usuario['id']));
+                                                                        "id_usuario" => $bruker->usuario['id_usuario']));
         return $retorno;
     }
 

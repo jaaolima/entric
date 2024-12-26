@@ -94,8 +94,8 @@ class AjaxModel extends Model {
     function VerVideo($video) {
         global $bruker;
         $retorno = httpPostAuth("ajax_VerVideo", array( "token" => $_SESSION['token'],
-                                                        "dados" => array(   ':id_usuario' => $bruker->usuario['id'],
-                                                                            ':login' => $bruker->usuario['email'],
+                                                        "dados" => array(   ':id_usuario' => $bruker->usuario['id_usuario'],
+                                                                            ':login' => $bruker->usuario['ds_usuario'],
                                                                             ':funcao' => 'video',
                                                                             ':ipaddress'=> get_ip_address(),
                                                                             ':dados' => $bruker->usuario['tipo'].'___'.$video,
@@ -140,7 +140,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_stHistoria", array(   "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id']));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;
     }
 
@@ -277,7 +277,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_gtRelatorio", array( "token" => $_SESSION['token'],
                                                            "id" => $id,
-                                                           "id_prescritor" => $bruker->usuario['id']));       
+                                                           "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;
     }
 
@@ -292,7 +292,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPacientes", array( "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id']));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;               
     }   
 
@@ -300,7 +300,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPacientesSimplificada", array( "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id']));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;               
     }  
     
@@ -308,7 +308,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPacientesSuplemento", array( "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id']));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;               
     }   
 
@@ -323,7 +323,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPaciente", array(   "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
     } 
 
@@ -331,7 +331,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_ptPaciente", array(   "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
     }
 
@@ -339,7 +339,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_ptPacienteSimplificada", array(   "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
     }
 
@@ -347,7 +347,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_ptPacienteSuplemento", array(   "token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
     }
 
@@ -355,7 +355,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
     } 
 
@@ -363,7 +363,7 @@ class AjaxModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPacienteSuplemento", array("token" => $_SESSION['token'],
                                                             "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id'] ));       
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
     } 
 }

@@ -55,7 +55,7 @@ class ProdutoModel extends Model {
 
         if ($dados["fabricante"] == "null") $dados["fabricante"] = null;               
         $bind = array(  ':especialidade' => (isset($dados["especialidade"])?json_encode($dados["especialidade"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null),
-                        ':id_usuario' => $bruker->usuario['id'],
+                        ':id_usuario' => $bruker->usuario['id_usuario'],
                         ':via' => $dados["via"],
                         ':nome' => $dados["nome"],
                         ':unidmedida' => ($dados["via"]=="Enteral"?null:$dados["unidmedida"]),
@@ -130,7 +130,7 @@ class ProdutoModel extends Model {
                     if(strpos($key, "info_nutri_") !== false){
                         $descricao = str_replace("info_nutri_", "", $key);
                         $descricao = str_replace("_", " ", $descricao);
-                        $bind = array(  ':id_usuario' => $bruker->usuario['id'],
+                        $bind = array(  ':id_usuario' => $bruker->usuario['id_usuario'],
                                         ':id_produto' => $produto,
                                         ':descricao' => $descricao,
                                         ':valor' => $val);
@@ -140,7 +140,7 @@ class ProdutoModel extends Model {
                     else if(strpos($key, "compo_") !== false){
                         $descricao = str_replace("compo_", "", $key);
                         $descricao = str_replace("_", " ", $descricao);
-                        $bind = array(  ':id_usuario' => $bruker->usuario['id'],
+                        $bind = array(  ':id_usuario' => $bruker->usuario['id_usuario'],
                                         ':id_produto' => $produto,
                                         ':descricao' => $descricao,
                                         ':valor' => $val);
@@ -165,7 +165,7 @@ class ProdutoModel extends Model {
         global $bruker;
         if ($dados["fabricante"] == "null") $dados["fabricante"] = null;
         $bind = array(  ':especialidade' => (isset($dados["especialidade"])?json_encode($dados["especialidade"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null),
-                        ':id_usuario' => $bruker->usuario['id'],
+                        ':id_usuario' => $bruker->usuario['id_usuario'],
                         ':via' => $dados["via"],
                         ':nome' => $dados["nome"],
                         ':unidmedida' => ($dados["via"]=="Enteral"?null:$dados["unidmedida"]),
@@ -243,7 +243,7 @@ class ProdutoModel extends Model {
                     if(strpos($key, "info_nutri_") !== false){
                         $descricao = str_replace("info_nutri_", "", $key);
                         $descricao = str_replace("_", " ", $descricao);
-                        $bind = array(  ':id_usuario' => $bruker->usuario['id'],
+                        $bind = array(  ':id_usuario' => $bruker->usuario['id_usuario'],
                                         ':id_produto' => $dados['_idproduto'],
                                         ':descricao' => $descricao,
                                         ':valor' => $val);
@@ -254,7 +254,7 @@ class ProdutoModel extends Model {
                     else if(strpos($key, "compo_") !== false){
                         $descricao = str_replace("compo_", "", $key);
                         $descricao = str_replace("_", " ", $descricao);
-                        $bind = array(  ':id_usuario' => $bruker->usuario['id'],
+                        $bind = array(  ':id_usuario' => $bruker->usuario['id_usuario'],
                                         ':id_produto' => $dados['_idproduto'],
                                         ':descricao' => $descricao,
                                         ':valor' => $val);

@@ -23,7 +23,7 @@
                 <ul>
                     <li class="icons">
                         <?php 
-                        if (isset($bruker->usuario['nome'])){
+                        if (isset($bruker->usuario['ds_nome'])){
                         ?>
                         <a href="javascript:void(0)">
                             <i class="mdi mdi-bell"></i>
@@ -61,10 +61,10 @@
 
                     <li class="icons">
                         <?php 
-                        if (isset($bruker->usuario['nome'])){
+                        if (isset($bruker->usuario['ds_nome'])){
                         ?>
                         <a href="javascript:void(0)" class="log-user">
-                            <img src="assets/images/usuario.png" alt=""> Olá,<span><?php echo strtok($bruker->usuario['nome'], " ");?></span>  
+                            <img src="assets/images/usuario.png" alt=""> Olá,<span><?php echo strtok($bruker->usuario['ds_nome'], " ");?></span>  
                             <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
                         </a>
                         <div class="drop-down dropdown-profile animated bounceInDown">
