@@ -20,7 +20,7 @@ class Database_ibranutro{
                 return $myconn;
 
             } catch (PDOException $e) {
-                //print_r($e);
+                print_r($e);
                 echo $e->getMessage();
                 return false;
             }
