@@ -20,7 +20,7 @@ class Database_ibranutro{
                 return $myconn;
 
             } catch (PDOException $e) {
-                print_r($e);
+                // print_r($e);
                 echo $e->getMessage();
                 return false;
             }
@@ -146,6 +146,7 @@ class Database_ibranutro{
             $this->conn->commit();
         }
         catch(Exception $e) {
+            print_r($e);
             $this->conn->rollback();
             echo $e->getMessage();  
             return false;
