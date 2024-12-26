@@ -224,7 +224,7 @@ $app->group("", function () use ($app) {
 	        // administrador =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	        }else if (($tipo == 3) or ($tipo == -1)){
 	            $tipo_login = "administrador";
-	            $bind = array(':email' => ($login), ':tipo' => $tipo);
+	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario = $retorno;
 				$usuario["tipo"] = 3;
