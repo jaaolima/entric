@@ -207,6 +207,8 @@ $app->group("", function () use ($app) {
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario = $retorno;
+
+				var_dump($usuario);
 				$usuario["tipo"] = 2;
 
 	            $menu = array(  "home",
