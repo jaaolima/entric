@@ -3714,8 +3714,9 @@ $app->group("", function () use ($app) {
 		$data = array();
 		if ($result) {
 			$db = new Database();
+			$db_ibranutro = new Database_ibranutro();
 			$bind = array(':id'=> $result->header->id);
-			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id AND status=0", $bind);
+			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id=:id", $bind);
 
 			if ($usuario){	
 				$id_usuario = $request->getParam("id_usuario");
