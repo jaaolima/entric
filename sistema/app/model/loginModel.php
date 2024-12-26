@@ -9,10 +9,9 @@ class LoginModel extends Model {
                                             "senha" => $senha,
                                             "tipo" => $tipo));
 
-                                            var_dump($dados);
         if (isset($dados["status"])){
-            // Redirect(BASE_PATH . '/logout'); 
-            // return true;
+            Redirect(BASE_PATH . '/logout'); 
+            return true;
 
         }else{
             $_SESSION['token'] = $dados['data']['session']['token'];
@@ -23,19 +22,19 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
 
-            // if($id_paciente != null){
-            //     Redirect(BASE_PATH . '/paciente_prescricaosimplificada?id_paciente='.$id_paciente);
-            //     return true;
-            // }
+            if($id_paciente != null){
+                Redirect(BASE_PATH . '/paciente_prescricaosimplificada?id_paciente='.$id_paciente);
+                return true;
+            }
 
-            // if (isset($dados["data"]["paciente_videosalta"])){
-            //     Redirect(BASE_PATH . '/paciente_videosalta');
-            //     return true;
+            if (isset($dados["data"]["paciente_videosalta"])){
+                Redirect(BASE_PATH . '/paciente_videosalta');
+                return true;
 
-            // //}else if (isset($dados["data"]["redirect"])){
-            // }else{
-            //     Redirect(BASE_PATH . '');
-            // }
+            //}else if (isset($dados["data"]["redirect"])){
+            }else{
+                Redirect(BASE_PATH . '');
+            }
         }
     }
 
