@@ -181,6 +181,7 @@ $app->group("", function () use ($app) {
 		try {
 			$db = new Database();
 			$db_ibranutro = new Database_ibranutro();
+			var_dump($db_ibranutro);
 
 	        $tipo_login = "";
 	        $data = array();
@@ -207,8 +208,6 @@ $app->group("", function () use ($app) {
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario = $retorno;
-
-				var_dump($usuario);
 				$usuario["tipo"] = 2;
 
 	            $menu = array(  "home",
@@ -261,7 +260,7 @@ $app->group("", function () use ($app) {
 	                            "ajax");
 	        }
 
-
+			var_dump($retorno);
 	        if ($retorno){
 	            // pescritor ou paciente =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	            if (($tipo == 1) or ($tipo == 2)){
@@ -275,7 +274,6 @@ $app->group("", function () use ($app) {
 	            }
 
 	            if ($tipo_login <> ""){
-					echo "chegou";
 	                $db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id_usuario']));
 
 	                if ($_SERVER['SERVER_NAME'] <> "localhost"){
