@@ -146,10 +146,9 @@ class Database_ibranutro{
             $this->conn->commit();
         }
         catch(Exception $e) {
-            print_r($e);
             $this->conn->rollback();
             echo $e->getMessage();  
-            return false;
+            return $e;
         }
         return $statement->fetchAll( PDO::FETCH_ASSOC );
     }
