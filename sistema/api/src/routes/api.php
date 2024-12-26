@@ -181,7 +181,6 @@ $app->group("", function () use ($app) {
 		try {
 			$db = new Database();
 			$db_ibranutro = new Database_ibranutro();
-			var_dump($db_ibranutro);
 
 	        $tipo_login = "";
 	        $data = array();
