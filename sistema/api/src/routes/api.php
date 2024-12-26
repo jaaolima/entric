@@ -275,6 +275,7 @@ $app->group("", function () use ($app) {
 	            }
 
 	            if ($tipo_login <> ""){
+					echo "chegou";
 	                $db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id_usuario']));
 
 	                if ($_SERVER['SERVER_NAME'] <> "localhost"){
