@@ -11,7 +11,7 @@ class LoginModel extends Model {
 
         if (isset($dados["status"])){
             // Redirect(BASE_PATH . '/logout'); 
-            // return true;
+            return true;
 
         }else{
             $_SESSION['token'] = $dados['data']['session']['token'];
@@ -27,14 +27,14 @@ class LoginModel extends Model {
             //     return true;
             // }
 
-            // if (isset($dados["data"]["paciente_videosalta"])){
-            //     Redirect(BASE_PATH . '/paciente_videosalta');
-            //     return true;
+            if (isset($dados["data"]["paciente_videosalta"])){
+                // Redirect(BASE_PATH . '/paciente_videosalta');
+                return true;
 
-            // //}else if (isset($dados["data"]["redirect"])){
-            // }else{
-            //     Redirect(BASE_PATH . '');
-            // }
+            //}else if (isset($dados["data"]["redirect"])){
+            }else{
+                // Redirect(BASE_PATH . '');
+            }
         }
     }
 
