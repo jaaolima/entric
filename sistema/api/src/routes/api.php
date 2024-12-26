@@ -259,7 +259,6 @@ $app->group("", function () use ($app) {
 	                            "ajax");
 	        }
 
-			var_dump($retorno);
 	        if ($retorno){
 	            // pescritor ou paciente =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	            if (($tipo == 1) or ($tipo == 2)){
@@ -297,7 +296,7 @@ $app->group("", function () use ($app) {
 	                $qdata = array( ':session_time'=> date('Y-m-d H:i:s'),
 	                                ':session_start'=> date('Y-m-d H:i:s'),
 	                                ':session_key'=> $public,
-	                                ':user_id'=> $retorno['id'],
+	                                ':user_id'=> $retorno['id_usuario'],
 	                                ':uid'=> $uid,
 	                                ':nonce'=> $nonce,
 	                                ':type'=> $tipo_login,
