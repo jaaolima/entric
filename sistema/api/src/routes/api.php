@@ -262,7 +262,7 @@ $app->group("", function () use ($app) {
 	        if ($retorno){
 	            // pescritor ou paciente =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	            if (($tipo == 1) or ($tipo == 2)){
-	                $checkpass = verifyHash(chkpasswd($senha), trim($retorno['ds_senha']));
+	                $checkpass = hash("SHA512", $senha) == trim($retorno['ds_senha']);
 	                
 	                if (!$checkpass){
 	                    $tipo_login = "";
