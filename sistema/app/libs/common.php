@@ -1419,21 +1419,30 @@ function checkLogin($msg = null) {
         //@session_destroy();
 
     }else{
-        $verifica = httpGetAuth("check", array("token" => $_SESSION['token']));
-        if (isset($verifica['data']['payload']['exp'])){
-            $date_now = new DateTime();
-            $date2    = new DateTime($verifica['data']['payload']['exp']);
-            if ($date_now < $date2) {
-                 $_SESSION['token'];
-                $bruker->key = $_SESSION['admin_session_key'];
-                $bruker->auth = $_SESSION['admin_session_auth'];
-                $bruker->type = $_SESSION['admin_session_type'];
-                //$bruker->type = $_SESSION['admin_session_user']['tipo'];
-                $bruker->menu = $_SESSION['admin_session_menu'];
-                $bruker->usuario = $_SESSION['admin_session_user'];
-                $return = true;
-            }
-        }
+
+        $_SESSION['token'];
+        $bruker->key = $_SESSION['admin_session_key'];
+        $bruker->auth = $_SESSION['admin_session_auth'];
+        $bruker->type = $_SESSION['admin_session_type'];
+        //$bruker->type = $_SESSION['admin_session_user']['tipo'];
+        $bruker->menu = $_SESSION['admin_session_menu'];
+        $bruker->usuario = $_SESSION['admin_session_user'];
+        $return = true;
+        // $verifica = httpGetAuth("check", array("token" => $_SESSION['token']));
+        // if (isset($verifica['data']['payload']['exp'])){
+        //     $date_now = new DateTime();
+        //     $date2    = new DateTime($verifica['data']['payload']['exp']);
+        //     if ($date_now < $date2) {
+        //          $_SESSION['token'];
+        //         $bruker->key = $_SESSION['admin_session_key'];
+        //         $bruker->auth = $_SESSION['admin_session_auth'];
+        //         $bruker->type = $_SESSION['admin_session_type'];
+        //         //$bruker->type = $_SESSION['admin_session_user']['tipo'];
+        //         $bruker->menu = $_SESSION['admin_session_menu'];
+        //         $bruker->usuario = $_SESSION['admin_session_user'];
+        //         $return = true;
+        //     }
+        // }
     }
 
     if (!$return){
