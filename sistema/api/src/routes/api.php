@@ -424,7 +424,7 @@ $app->group("", function () use ($app) {
 	                $qdata = array(':id_usuario'=> $retorno['id_usuario'], ':funcao'=> 'login_'.$tipo_login, ':ipaddress'=> get_ip_address(), ':data_criacao'=> date('Y-m-d H:i:s'));
 	                $logs = $db->insert('log', $qdata);
 
-					$token = JWTAuth::getToken($retorno['id_usuario'], $login);
+					$token = JWTAuth::getToken($retorno['id_usuario'], $usuario['ds_usuario']);
 
 					$data["data"]["session"]['token'] = $token;
 					$data["data"]["session"]['admin_session_id'] = $sessions;
