@@ -42,7 +42,8 @@ print_r($bruker);
         //$this->set('breadcrumb','Bem-vindo');
         //$this->set('dados', $this->HomeModel->getDados() );
         $this->set('bruker', $bruker);
-        Redirect(BASE_PATH . '/prescritor_relatorioalta');   
+        var_dump($_GET);
+        // Redirect(BASE_PATH . '/prescritor_relatorioalta');   
     }
 
     function administrador() {
