@@ -1399,7 +1399,7 @@ function checkLoginSession() {
         unset($_SESSION['admin_session_user']);    
         unset($_SESSION['admin_session_menu']);
         //@session_destroy();
-        // Redirect(BASE_PATH . '/login');
+        Redirect(BASE_PATH . '/login');
         return false;
     }
 }
@@ -1410,6 +1410,7 @@ function checkLogin($msg = null) {
     global $bruker;
     $return = false;
 
+    var_dump($_SESSION);
     if ((isset($_SESSION['admin_session_id']) == FALSE) or (isset($_SESSION['admin_session_auth']) == FALSE)){
         unset($_SESSION['admin_session_id']);
         unset($_SESSION['admin_session_auth']);
@@ -1446,7 +1447,7 @@ function checkLogin($msg = null) {
     }
 
     if (!$return){
-        // Redirect(BASE_PATH . '/login');
+        Redirect(BASE_PATH . '/login');
         return false;
     }
 }
