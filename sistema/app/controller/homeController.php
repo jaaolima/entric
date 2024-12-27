@@ -49,7 +49,7 @@ print_r($bruker);
         //$this->set('dados', $this->HomeModel->getDados() );
         $this->set('bruker', $bruker);
         var_dump($_GET);
-        Redirect(BASE_PATH . '/prescritor_relatorioalta');   
+        // Redirect(BASE_PATH . '/prescritor_relatorioalta');   
     }
 
     function administrador() {
