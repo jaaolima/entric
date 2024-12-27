@@ -1399,7 +1399,7 @@ function checkLoginSession() {
         unset($_SESSION['admin_session_user']);    
         unset($_SESSION['admin_session_menu']);
         //@session_destroy();
-        // Redirect(BASE_PATH . '/login');
+        Redirect(BASE_PATH . '/login');
         return false;
     }
 }
@@ -1446,7 +1446,7 @@ function checkLogin($msg = null) {
     }
 
     if (!$return){
-        // Redirect(BASE_PATH . '/login');
+        Redirect(BASE_PATH . '/login');
         return false;
     }
 }
