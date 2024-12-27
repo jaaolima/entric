@@ -48,13 +48,12 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
 
-            var_dump($_SESSION);
-            // if($tipo == 'simplificada'){
-            //     Redirect(BASE_PATH . '/prescristor_prescricaosimplificada');
-            // }
-            // if($tipo == 'suplemento'){
-            //     Redirect(BASE_PATH . '/prescristor_prescricaosuplemento');
-            // }
+            if($tipo == 'simplificada'){
+                Redirect(BASE_PATH . '/prescristor_prescricaosimplificada');
+            }
+            if($tipo == 'suplemento'){
+                Redirect(BASE_PATH . '/prescristor_prescricaosuplemento');
+            }
         }
     }
 
