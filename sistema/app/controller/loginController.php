@@ -218,13 +218,15 @@ class LoginController extends Controller {
     }
 
     function loginDireto(){
-        if(isset($_POST['session']) && isset($_POST['id_usuario'])){
-            $login = new LoginModel();
-            $tipo = $_POST['tipo'];
-            // $login->checarLoginIbranutro($_POST['id_usuario'], $tipo);
-            var_dump($login);
+        if(isset($_GET['session']) && isset($_GET['id_usuario'])){
+            $tipo = $_GET['tipo'];
+            $logar = $this->LoginModel->checarLoginIbranutro($_GET['id_usuario'], $tipo);
+            if (!$logar){
+                alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
+
+            }
         }    
-        var_dump($_POST);
+        var_dump($_GET);
     }
 
 
