@@ -225,7 +225,6 @@ class LoginController extends Controller {
 
             }
         }    
-        var_dump($session, $id_usuario, $tipo);
     }
 
 
