@@ -218,13 +218,13 @@ class LoginController extends Controller {
     }
 
     function loginDireto(){
-        if(isset($_REQUEST['session']) && isset($_REQUEST['id_usuario'])){
+        if(isset($_POST['session']) && isset($_POST['id_usuario'])){
             $login = new LoginModel();
-            $tipo = $_REQUEST['tipo'];
-            $login->checarLoginIbranutro($_REQUEST['id_usuario'], $tipo);
+            $tipo = $_POST['tipo'];
+            // $login->checarLoginIbranutro($_POST['id_usuario'], $tipo);
             var_dump($login);
         }    
-        var_dump($_REQUEST);
+        var_dump($_POST);
     }
 
 
