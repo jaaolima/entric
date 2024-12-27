@@ -1,6 +1,10 @@
 <?php 
-    if(isset($_REQUEST['id_paciente'])){
-        $id_paciente = $_REQUEST['id_paciente'];
+    if(isset($_REQUEST['session']) && isset($_REQUEST['id_usuario'])){
+        $login = new LoginModel();
+        $tipo = $_REQUEST['tipo'];
+        $login->checarLoginIbranutro($_REQUEST['id_usuario'], $tipo);
+    }else{
+        $id_paciente = '';
     }
 ?>
 <body class="h-100">
@@ -35,8 +39,7 @@
                                             <h4 class="text-center mt-4 t-verde line-bottom pb-4">Prescritor, seja bem-vindo!</h4>
                                             <form class="mt-5 mb-5" action="login/prescritor" method="post">
                                                 <input type="hidden" name="_token" value="<?php echo generateFormToken('loginPrescritor'); ?>">
-                                                <input type="hidden" name="_ac" value="login"> 
-                                                <input type="hidden" name="id_paciente" value="<?php echo $id_paciente; ?>"> 
+                                                <input type="hidden" name="_ac" value="login">
 
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">

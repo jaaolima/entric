@@ -11,6 +11,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 			"passthrough" => [
 				"/ping",
 				"/login",			
+				"/login_ibranutro",			
 				"/check",
 				"/ajax_getPatrocinador",
 				"/ajax_getAdministrador",
@@ -329,6 +330,114 @@ $app->group("", function () use ($app) {
 	                        $data["data"]["redirect"] = "redirect";
 	                        $response = $response->withStatus(202, "Accepted");
 	                    }
+
+	    			}else{
+						$data["status"] = "Erro 208: Usuário não encontrado ou inativo.";
+						$response = $response->withStatus(400, "Bad Request");
+	    			}
+
+	            }else{
+					$data["status"] = "Erro 213: Usuário não encontrado ou inativo.";
+					$response = $response->withStatus(400, "Bad Request");
+	            }
+
+	        }else{
+				$data["status"] = "Erro 218: Usuário não encontrado ou inativo.";
+				$response = $response->withStatus(400, "Bad Request");
+	        }
+
+			$response = $response->withHeader("Content-Type", "application/json");		
+			$response = $response->getBody()->write(json_encode($data));
+			return $response;
+
+		} catch (PDOException $e) {
+		} catch (Exception $e) {
+		} finally {
+			$db = null;
+		}
+	});
+
+	$app->post("/login_ibranutro", function (Request $request, Response $response) {
+		$id_usuario = $request->getParam("id_usuario");
+		$usuario = null;
+
+		try {
+			$db = new Database();
+			$db_ibranutro = new Database_ibranutro();
+
+	        $tipo_login = "";
+	        $data = array();
+	        $retorno = null;
+
+	        $tipo_login = "prescritor";
+			$bind = array(':id_usuario' => ($id_usuario));
+			$retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id_usuario", $bind);
+			$usuario = $retorno;
+			$usuario["tipo"] = 2;
+
+			$menu = array(  "home",
+							"prescritor_consultarproduto", 
+							"prescritor_ferramentas", 
+							"prescritor_fornecedores", 
+							"prescritor_relatorioalta", 
+							"prescritor_prescricaosimplificada", 
+							"prescritor_prescricaosuplemento", 
+							"prescritor_videosalta", 
+							"ajax"); 
+
+	        if ($retorno){
+	            if ($tipo_login <> ""){
+	                $db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id_usuario']));
+
+	                if ($_SERVER['SERVER_NAME'] <> "localhost"){
+	                    $res = openssl_pkey_new(array("digest_alg"=>"sha256","private_key_bits"=>512,"private_key_type"=>OPENSSL_KEYTYPE_RSA));
+	                    @openssl_pkey_export($res,$private);
+	                    $public = @openssl_pkey_get_details($res); 
+	                }else{                    
+	                    $public["key"] = uninumber();
+	                    $private = $public["key"];
+	                }
+
+	                $public = (isset($public["key"])?$public["key"]:null);
+	                $nonce = rand(2,99999);
+	                $uid = uidauth();
+
+	                $type2fa = 0;
+	                $data2fa = rand(111111, 999999);
+
+	    			$nopin = true;
+	    			$awaiting_token = true;
+	    			
+	                $qdata = array( ':session_time'=> date('Y-m-d H:i:s'),
+	                                ':session_start'=> date('Y-m-d H:i:s'),
+	                                ':session_key'=> $public,
+	                                ':user_id'=> $retorno['id_usuario'],
+	                                ':uid'=> $uid,
+	                                ':nonce'=> $nonce,
+	                                ':type'=> $tipo_login,
+	                                ':awaiting'=> (($awaiting_token) ? 'Y' : 'N'),
+	                                ':type2fa'=> $type2fa,
+	                                ':data2fa'=> $data2fa,
+	                                ':ip'=> get_ip_address());
+	                $sessions = $db->insert('sessions', $qdata);
+
+	                $qdata = array(':id_usuario'=> $retorno['id_usuario'], ':funcao'=> 'login_'.$tipo_login, ':ipaddress'=> get_ip_address(), ':data_criacao'=> date('Y-m-d H:i:s'));
+	                $logs = $db->insert('log', $qdata);
+
+					$token = JWTAuth::getToken($retorno['id_usuario'], $login);
+
+					$data["data"]["session"]['token'] = $token;
+					$data["data"]["session"]['admin_session_id'] = $sessions;
+					$data["data"]["session"]['admin_session_key'] = $private;
+					$data["data"]["session"]['admin_session_auth'] = $uid;
+					$data["data"]["session"]['admin_session_type'] = $tipo_login;
+					$data["data"]["session"]['admin_session_menu'] = $menu;
+					$data["data"]["session"]['admin_session_user'] = $usuario;
+					$response = $response->withStatus(202, "Accepted");
+
+	    			if ($nopin){
+	                    $data["data"]["redirect"] = "redirect";
+	                    $response = $response->withStatus(202, "Accepted");
 
 	    			}else{
 						$data["status"] = "Erro 208: Usuário não encontrado ou inativo.";
