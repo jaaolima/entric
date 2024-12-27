@@ -17,7 +17,8 @@ print_r($bruker);
         }
         else if (isset($bruker->type) and ($bruker->type == "prescritor")){
             //Redirect(BASE_PATH . '/home/prescritor');
-            Redirect(BASE_PATH . '/prescritor_relatorioalta');       
+            var_dump($_GET);
+            // Redirect(BASE_PATH . '/prescritor_relatorioalta');       
         }
         else if (isset($bruker->type) and ($bruker->type == "administrador")){
             Redirect(BASE_PATH . '/home/administrador');   
@@ -43,7 +44,7 @@ print_r($bruker);
         //$this->set('dados', $this->HomeModel->getDados() );
         $this->set('bruker', $bruker);
         var_dump($_GET);
-        // Redirect(BASE_PATH . '/prescritor_relatorioalta');   
+        Redirect(BASE_PATH . '/prescritor_relatorioalta');   
     }
 
     function administrador() {
