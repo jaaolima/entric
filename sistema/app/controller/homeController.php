@@ -17,9 +17,9 @@ print_r($bruker);
         }
         else if (isset($bruker->type) and ($bruker->type == "prescritor")){
             //Redirect(BASE_PATH . '/home/prescritor');
-            if($bruker->type == 'simplificada'){
+            if($bruker->redirect == 'simplificada'){
                 Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');       
-            }else if($bruker->type == "suplemento"){
+            }else if($bruker->redirect == "suplemento"){
                 Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');       
             }else{
                 Redirect(BASE_PATH . '/prescritor_relatorioalta');       
@@ -48,8 +48,7 @@ print_r($bruker);
         //$this->set('breadcrumb','Bem-vindo');
         //$this->set('dados', $this->HomeModel->getDados() );
         $this->set('bruker', $bruker);
-        var_dump($_GET);
-        // Redirect(BASE_PATH . '/prescritor_relatorioalta');   
+        Redirect(BASE_PATH . '/prescritor_relatorioalta');   
     }
 
     function administrador() {
