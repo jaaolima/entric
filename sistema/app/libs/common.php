@@ -1446,7 +1446,7 @@ function checkLogin($msg = null) {
     }
 
     if (!$return){
-        Redirect(BASE_PATH . '/login');
+        // Redirect(BASE_PATH . '/login');
         return false;
     }
 }
