@@ -7,6 +7,8 @@
     }else{
         $id_paciente = '';
     }
+
+    var_dump($_REQUEST);
 ?>
 <body class="h-100">
     <div id="preloader">
