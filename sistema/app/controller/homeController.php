@@ -10,7 +10,7 @@ class HomeController extends Controller {
     function index() {
         global $bruker;
         $this->set('bruker', $bruker);
-print_r($bruker);
+// print_r($bruker);
         if (isset($bruker->type) and ($bruker->type == "paciente")){
             //Redirect(BASE_PATH . '/home/paciente');
             Redirect(BASE_PATH . '/paciente_videosalta');            
