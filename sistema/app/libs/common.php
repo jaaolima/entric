@@ -1427,6 +1427,7 @@ function checkLogin($msg = null) {
         //$bruker->type = $_SESSION['admin_session_user']['tipo'];
         $bruker->menu = $_SESSION['admin_session_menu'];
         $bruker->usuario = $_SESSION['admin_session_user'];
+        $bruker->redirect = $_SESSION['redirect'];
         $return = true;
         // $verifica = httpGetAuth("check", array("token" => $_SESSION['token']));
         // if (isset($verifica['data']['payload']['exp'])){

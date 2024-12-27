@@ -17,8 +17,13 @@ print_r($bruker);
         }
         else if (isset($bruker->type) and ($bruker->type == "prescritor")){
             //Redirect(BASE_PATH . '/home/prescritor');
-            var_dump($_GET);
-            // Redirect(BASE_PATH . '/prescritor_relatorioalta');       
+            if($bruker->type == 'simplificada'){
+                Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');       
+            }else if($bruker->type == "suplemento"){
+                Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');       
+            }else{
+                Redirect(BASE_PATH . '/prescritor_relatorioalta');       
+            }
         }
         else if (isset($bruker->type) and ($bruker->type == "administrador")){
             Redirect(BASE_PATH . '/home/administrador');   
