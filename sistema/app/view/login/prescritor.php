@@ -1,14 +1,5 @@
 <?php 
-    if(isset($_REQUEST['session']) && isset($_REQUEST['id_usuario'])){
-        $login = new LoginModel();
-        $tipo = $_REQUEST['tipo'];
-        $login->checarLoginIbranutro($_REQUEST['id_usuario'], $tipo);
-        var_dump($login);
-    }else{
-        $id_paciente = '';
-    }
-
-    var_dump($_REQUEST);
+    
 ?>
 <body class="h-100">
     <div id="preloader">
