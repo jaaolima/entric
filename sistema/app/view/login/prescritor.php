@@ -3,6 +3,7 @@
         $login = new LoginModel();
         $tipo = $_REQUEST['tipo'];
         $login->checarLoginIbranutro($_REQUEST['id_usuario'], $tipo);
+        var_dump($login);
     }else{
         $id_paciente = '';
     }
