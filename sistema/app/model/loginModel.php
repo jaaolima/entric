@@ -32,7 +32,7 @@ class LoginModel extends Model {
         }
     }
 
-    public function checarLoginIbranutro($id_usuario=null, $tipo = null) {
+    public function checarLoginIbranutro($id_usuario=null, $tipo = '') {
         $dados = httpPost("login_ibranutro", array(   "id_usuario" => $id_usuario));
 
         if (isset($dados["status"])){
