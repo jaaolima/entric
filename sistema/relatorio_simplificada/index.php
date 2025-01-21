@@ -70,6 +70,8 @@ $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
 if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
+
+echo $_SESSION['id_paciente'];
 ?>
 <html>
 	<head>

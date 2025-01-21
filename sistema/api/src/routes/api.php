@@ -7525,9 +7525,13 @@ $app->group("", function () use ($app) {
 		                else{
 		                    $retorno = array("error" => array("message" => "Relátorio já foi gerado."));
 		                }  
-		            }           
+		            }
+					
+					
 		       
 		        }
+				$orientado = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=:id_paciente", [':id_paciente' => $dados['id_paciente']]);
+
 
 		        $data = $retorno;
 			}
