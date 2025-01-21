@@ -1,3 +1,6 @@
+<?php
+    var_dump($_SESSION['paciente']);
+?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
 
