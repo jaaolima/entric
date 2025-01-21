@@ -1,3 +1,6 @@
+<?php
+    echo $_SESSION['id_paciente'];
+?>
 <div id="main-wrapper">
 
     <?php require_once (ROOT . DS . 'app'. DS . 'view' . DS . 'header-top.php'); ?>
@@ -8,7 +11,7 @@
             <?php require_once (ROOT . DS . 'app'. DS . 'view' . DS . 'menu.php'); ?>
 
         </div>
-    </div>  
+    </div>   
 
 
     <div class="content-body">
