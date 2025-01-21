@@ -22,7 +22,7 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = null;
-            $_SESSION['id_paciente'] = null;
+            $_SESSION['paciente'] = ['id_paciente' => null];
 
             if (isset($dados["data"]["paciente_videosalta"])){
                 Redirect(BASE_PATH . '/paciente_videosalta');
@@ -50,7 +50,7 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = $tipo;
-            $_SESSION['id_paciente'] = $id_paciente;
+            $_SESSION['paciente'] = ['id_paciente' => $id_paciente];
         }
     }
 
