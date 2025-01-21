@@ -1428,6 +1428,9 @@ function checkLogin($msg = null) {
         $bruker->menu = $_SESSION['admin_session_menu'];
         $bruker->usuario = $_SESSION['admin_session_user'];
         $bruker->redirect = $_SESSION['redirect'];
+        if($_SESSION['id_paciente'] != null){
+            $bruker->id_paciente = $_SESSION['id_paciente'];
+        }
         $return = true;
         // $verifica = httpGetAuth("check", array("token" => $_SESSION['token']));
         // if (isset($verifica['data']['payload']['exp'])){

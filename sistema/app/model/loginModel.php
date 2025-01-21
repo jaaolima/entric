@@ -22,6 +22,7 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = null;
+            $_SESSION['id_paciente'] = null;
 
             if (isset($dados["data"]["paciente_videosalta"])){
                 Redirect(BASE_PATH . '/paciente_videosalta');
@@ -33,7 +34,7 @@ class LoginModel extends Model {
         }
     }
 
-    public function checarLoginIbranutro($id_usuario=null, $tipo = null) {
+    public function checarLoginIbranutro($id_usuario=null, $tipo = null, $id_paciente = null) {
         $dados = httpPost("login_ibranutro", array(   "id_usuario" => $id_usuario));
 
         if (isset($dados["status"])){
@@ -49,6 +50,7 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = $tipo;
+            $_SESSION['id_paciente'] = $id_paciente;
         }
     }
 

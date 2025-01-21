@@ -217,9 +217,9 @@ class LoginController extends Controller {
 
     }
 
-    function loginDireto($session = null, $id_usuario = null, $tipo = null){
+    function loginDireto($session = null, $id_usuario = null, $tipo = null, $id_paciente = null){
         if(isset($session) && isset($id_usuario)){
-            $logar = $this->LoginModel->checarLoginIbranutro($id_usuario, $tipo);
+            $logar = $this->LoginModel->checarLoginIbranutro($id_usuario, $tipo, $id_paciente);
             if (!$logar){
                 alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
 

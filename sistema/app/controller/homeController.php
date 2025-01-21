@@ -18,9 +18,17 @@ class HomeController extends Controller {
         else if (isset($bruker->type) and ($bruker->type == "prescritor")){
             //Redirect(BASE_PATH . '/home/prescritor');
             if($bruker->redirect == 'simplificada'){
-                Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');       
+                if($bruker->id_paciente == null){
+                    Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');       
+                }else{
+                    Redirect(BASE_PATH . '/prescritor_prescricaosimplificada/'.$bruker->id_paciente);       
+                }
             }else if($bruker->redirect == "suplemento"){
-                Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');       
+                if($bruker->id_paciente == null){
+                    Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');       
+                }else{
+                    Redirect(BASE_PATH . '/prescritor_prescricaosuplemento/'.$bruker->id_paciente);       
+                }  
             }else{
                 Redirect(BASE_PATH . '/prescritor_relatorioalta');       
             }
