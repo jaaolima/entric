@@ -1,9 +1,9 @@
 <?php
     if($_SESSION['paciente_redirect']['id_paciente'] != null){
-        require __DIR__ . '/libs/conf6ion.php';
-        require __DIR__ . '/libs/common.php';
-        require __DIR__ . '/libs/database.class.php';
-        $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$_SESSION['paciente_redirect']['id_paciente']));
+        // require __DIR__ . '/libs/conf6ion.php';
+        // require __DIR__ . '/libs/common.php';
+        // require __DIR__ . '/libs/database.class.php';
+        // $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$_SESSION['paciente_redirect']['id_paciente']));
 
         // var_dump($paciente);
     }
