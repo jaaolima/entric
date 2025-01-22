@@ -1,9 +1,9 @@
 <?php
-    if($_SESSION['paciente_redirect']['id_paciente'] != null){
-        $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$_SESSION['paciente_redirect']['id_paciente']));
+    // if($_SESSION['paciente_redirect']['id_paciente'] != null){
+    //     $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$_SESSION['paciente_redirect']['id_paciente']));
 
-        var_dump($paciente);
-    }
+    //     var_dump($paciente);
+    // }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
