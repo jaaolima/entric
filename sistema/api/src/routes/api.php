@@ -8336,6 +8336,9 @@ $app->group("", function () use ($app) {
 				$retorno = $db->insert("pacientes_suplemento", $bind);
 				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
 
+				//retornar para null
+				$_SESSION['paciente_redirect']['id_paciente'] = null;
+
 		        $data = $retorno;
 			}
 			else{
