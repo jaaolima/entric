@@ -8327,7 +8327,8 @@ $app->group("", function () use ($app) {
 								':telefone' => $dados["telefone"],
 								':hospital' => $dados["hospital"],
 								':atendimento' => $dados["atendimento"],
-								':data_nascimento' => date2sql($dados["data_nascimento"]),             
+								':data_nascimento' => date2sql($dados["data_nascimento"]),    
+								':id_paciente' => $dados["id_paciente"],
 								':data_criacao' => date("Y-m-d H:i:s"));
 				$retorno = $db->insert("pacientes_suplemento", $bind);
 				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);

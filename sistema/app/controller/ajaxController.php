@@ -286,7 +286,7 @@ class AjaxController extends Controller {
         echo json_encode($paciente);
     } 
 
-    function cadastrar_paciente_suplemento(){
+    function cadastrar_paciente_suplemento(){ 
         $paciente = $this->AjaxModel->stPacienteSuplemento($_POST);            
         echo json_encode($paciente);
     } 
