@@ -21,7 +21,7 @@
         <div id="div_cadastrar_paciente" style="<?php echo ($tab1=="cadastrar"?"display: block;":"display: none;"); ?>">
             <form action="prescritor_relatorioalta" id="form_cadastrar_paciente" method="post" autocomplete="off" onsubmit="return false">
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
-                <input type="hidden" name='id_paciente' value="<?php echo $_SESSION['paciente_redirect']['id_paciente']; ?>">
+                <input type="hidden" name='id_paciente' value="<?php echo $_REQUEST; ?>">
                 <?php
                 $item_dados =  $html->addRow(
                                 array(

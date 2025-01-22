@@ -19,13 +19,13 @@ class HomeController extends Controller {
             //Redirect(BASE_PATH . '/home/prescritor');
             if($bruker->redirect == 'simplificada'){
                 if($_SESSION['paciente_redirect']['id_paciente'] != null){
-                    Redirect(BASE_PATH . '/prescritor_prescricaosimplificada?id_paciente='.$_SESSION['paciente_redirect']['id_paciente']);
+                    Redirect(BASE_PATH . '/prescritor_prescricaosimplificada/'.$_SESSION['paciente_redirect']['id_paciente']);
                 }else{
                     Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');
                 }
             }else if($bruker->redirect == "suplemento"){
                 if($_SESSION['paciente_redirect']['id_paciente'] != null){
-                    Redirect(BASE_PATH . '/prescritor_prescricaosuplemento?id_paciente='.$_SESSION['paciente_redirect']['id_paciente']);
+                    Redirect(BASE_PATH . '/prescritor_prescricaosuplemento/'.$_SESSION['paciente_redirect']['id_paciente']);
                 }else{
                     Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');
                 }

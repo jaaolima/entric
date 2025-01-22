@@ -1,5 +1,5 @@
 <?php 
-    echo $_REQUEST['id_paciente'];
+    var_dump($_REQUEST);
 ?>
 <div id="main-wrapper">
 
