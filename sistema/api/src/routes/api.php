@@ -8321,6 +8321,9 @@ $app->group("", function () use ($app) {
 				// 				':status' => 0,                     
 				// 				':data_criacao' => date("Y-m-d H:i:s") );
 				// $usuario = $db->insert("usuarios", $bind);
+				if($dados['id_paciente'] == ''){
+					$dados['id_paciente'] = null;
+				}
 
 				$bind = array(	':id_prescritor' => $id_prescritor,
 								':nome' => $dados["nome"],
