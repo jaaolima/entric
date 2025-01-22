@@ -1,9 +1,8 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
     if($_SESSION['paciente_redirect']['id_paciente'] != null){
-        $db = new Database();
+        require __DIR__ . '/libs/conf6ion.php';
+        require __DIR__ . '/libs/common.php';
+        require __DIR__ . '/libs/database.class.php';
         $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$_SESSION['paciente_redirect']['id_paciente']));
 
         var_dump($paciente);
