@@ -138,8 +138,6 @@ class Database{
         if(! $tb_str = $this->array_to_str($tables)) return FALSE;
         if(! $fld_str =  $this->array_to_str($fields)) $fld_str = '*';
         if($conds) $conds_str = $this->process_conds($conds); else $conds_str ="";
-
-        var_dump($fld_str, $tb_str, $conds_str);
         
         $this->conn->beginTransaction();
         try {
