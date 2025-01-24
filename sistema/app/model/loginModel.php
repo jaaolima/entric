@@ -51,11 +51,11 @@ class LoginModel extends Model {
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = $tipo;
 
-            var_dump($buscar, $tipo);
 
             if($buscar == 'buscar'){
                 if($tipo == 'suplemento'){
                     $paciente = $this->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $id_paciente]);
+                    var_dump($paciente);
                     $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
                 }
                 if($tipo == 'simplificada'){
