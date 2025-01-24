@@ -70,11 +70,9 @@ class LoginModel extends Model {
                                 margin: 0;             
                             }
                             .center {
-                                width: 300px;
-                                height: 200px;
-                                background-color: lightblue;
                                 text-align: center;
                                 line-height: 200px;
+                                font-size: 20px;
                             }
                         </style>
                     </head>
