@@ -55,7 +55,6 @@ class LoginModel extends Model {
             if($buscar == 'buscar'){
                 if($tipo == 'suplemento'){
                     $paciente = $this->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $id_paciente]);
-                    var_dump($paciente);
                     $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
                 }
                 if($tipo == 'simplificada'){
@@ -63,6 +62,7 @@ class LoginModel extends Model {
                     $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
                 }
             }else{
+                echo 'aqui';
                 $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => null];
             }
 
