@@ -1,13 +1,15 @@
 <?php
+    require_once (ROOT . DS . 'api'. DS . 'src' . DS . 'libs' . DS .'connection.php');
     $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
     $_SESSION['paciente_redirect']['id_paciente'] = null;
 
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
-        // $paciente_redirect = $this->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $id_paciente]);
-        // if($paciente_redirect['ds_nome'] != null){
-        //     $nome = $paciente_redirect['ds_nome'];
-        // }
+        $db = new Database();
+        $paciente_redirect = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $id_paciente_redirecionado]);
+        if($paciente_redirect['ds_nome'] != null){
+            $nome = $paciente_redirect['ds_nome'];
+        }
     }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
