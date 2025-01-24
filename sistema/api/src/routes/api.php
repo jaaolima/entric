@@ -4978,8 +4978,6 @@ $app->group("", function () use ($app) {
 
 			if ($usuario){
 				$id_paciente = $request->getParam("id_paciente");
-				var_dump($id_paciente);
-
 		        $paciente = $db->select_single_to_array("pacientes_suplemento",
 		                                            "*",
 		                                            "
