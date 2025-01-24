@@ -8342,7 +8342,8 @@ $app->group("", function () use ($app) {
 				$bind = array(	':id_prescritor' => $id_prescritor,
 								':nome' => $dados["nome"],
 								':peso' => $dados["peso"],
-								':data_nascimento' => date2sql($dados["data_nascimento"]),             
+								':data_nascimento' => date2sql($dados["data_nascimento"]),  
+								':id_paciente' => $dados["id_paciente"],       
 								':data_criacao' => date("Y-m-d H:i:s"));
 				$retorno = $db->insert("pacientes_simplificada", $bind);
 				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);

@@ -580,7 +580,7 @@ function necessidades_calorias_total(_this, _event){
     $("#presc_kcal").html(_formula_valor);
 }
 
-function necessidades_proteinas_total(_this, _event){
+function necessidades_proteinas_total(_this, _event){ 
     if ($("#peso").val() != "") {
         if (_this != null){
             var _ptnval = _this.val();
