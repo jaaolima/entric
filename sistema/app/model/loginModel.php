@@ -50,7 +50,9 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = $tipo;
-            $paciente = httpPostAuth("paciente_getDado", array("id_paciente" => $id_paciente));
+            $paciente = httpPostAuth("paciente_getDado", array( "token" => $_SESSION['token'],
+                                                            "tipo" => $bruker->type,
+                                                            "id_paciente" => $id_paciente));
             var_dump($paciente);
             $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar];
 
