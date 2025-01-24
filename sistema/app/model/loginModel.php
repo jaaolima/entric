@@ -52,7 +52,6 @@ class LoginModel extends Model {
             $_SESSION['redirect'] = $tipo;
             $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar];
 
-
         }
     }
 

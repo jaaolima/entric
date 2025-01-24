@@ -4,10 +4,10 @@
 
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
-        $paciente_redirect = $this->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $id_paciente]);
-        if($paciente_redirect['ds_nome'] != null){
-            $nome = $paciente_redirect['ds_nome'];
-        }
+        // $paciente_redirect = $this->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $id_paciente]);
+        // if($paciente_redirect['ds_nome'] != null){
+        //     $nome = $paciente_redirect['ds_nome'];
+        // }
     }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
