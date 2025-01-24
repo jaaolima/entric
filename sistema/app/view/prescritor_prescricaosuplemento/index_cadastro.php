@@ -1,12 +1,6 @@
 <?php
-    if($_SESSION['paciente_redirect']['id_paciente'] != null){
-        // require __DIR__ . '/libs/conf6ion.php';
-        // require __DIR__ . '/libs/common.php';
-        // require __DIR__ . '/libs/database.class.php';
-        // $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$_SESSION['paciente_redirect']['id_paciente']));
-
-        // var_dump($paciente);
-    }
+    $id_paciente_redirecionado = $_SESSION['paciente']['id_paciente'];
+    $_SESSION['paciente']['id_paciente'] = null;
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
@@ -31,7 +25,7 @@
         <div id="div_cadastrar_paciente" style="<?php echo ($tab1=="cadastrar"?"display: block;":"display: none;"); ?>">
             <form action="prescritor_relatorioalta" id="form_cadastrar_paciente" method="post" autocomplete="off" onsubmit="return false">
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
-                <input type="hidden" name='id_paciente' value="<?php echo $_SESSION['paciente_redirect']['id_paciente']; ?>">
+                <input type="hidden" name='id_paciente' value="<?php echo $id_paciente_redirecionado; ?>">
                 <?php
                 $item_dados =  $html->addRow(
                                 array(
