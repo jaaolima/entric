@@ -156,8 +156,7 @@
                                     array(
                                         "nome" => array(
                                             "col" => 12,
-                                            "label" => "Nome do Paciente:",
-                                            'value' => $nome
+                                            "label" => "Nome do Paciente:"
                                         ),
                                         "data_nascimento" => array(
                                             "col" => 6,
