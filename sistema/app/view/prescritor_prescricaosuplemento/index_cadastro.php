@@ -4,9 +4,9 @@
 
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
-        if($_SESSION['paciente_redirect']['ds_nome'] != null){
-            $nome = $_SESSION['paciente_redirect']['ds_nome'];
-            $_SESSION['paciente_redirect']['ds_nome'] = null;
+        $paciente_redirect = $this->select_single_to_array("pacientes_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $id_paciente]);
+        if($paciente_redirect['ds_nome'] != null){
+            $nome = $paciente_redirect['ds_nome'];
         }
     }
 ?>
