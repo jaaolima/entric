@@ -53,9 +53,17 @@ class LoginModel extends Model {
 
 
             if($buscar == 'buscar'){
-                $paciente = httpPostAuth("paciente_getDado", array( "token" => $_SESSION['token'],
+                if($tipo == 'suplemento'){
+                    $paciente = httpPostAuth("paciente_getDadoSuplemento", array( "token" => $_SESSION['token'],
+                    "id_paciente" => $id_paciente));
+                    $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
+                }
+                if($tipo == 'simplificada'){
+                    $paciente = httpPostAuth("paciente_getDadoSimplificada", array( "token" => $_SESSION['token'],
                                                                     "id_paciente" => $id_paciente));
-                $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
+                    $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
+                }
+                
             }else{
                 $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar];
             }

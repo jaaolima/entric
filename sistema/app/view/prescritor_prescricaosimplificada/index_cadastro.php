@@ -1,5 +1,16 @@
+<?php
+    $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
+    $_SESSION['paciente_redirect']['id_paciente'] = null;
+
+    if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
+        $tab1 = 'buscar';
+        $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
+        $_SESSION['paciente_redirect']['ds_nome'] = null;
+        $_SESSION['paciente_redirect']['buscar'] = null;
+    }
+?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
-    <div class="pt-3">
+    <div class="pt-3"> 
 
         <div class="text-center">
 
@@ -21,6 +32,7 @@
         <div id="div_cadastrar_paciente" style="<?php echo ($tab1=="cadastrar"?"display: block;":"display: none;"); ?>">
             <form action="prescritor_relatorioalta" id="form_cadastrar_paciente" method="post" autocomplete="off" onsubmit="return false">
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
+                <input type="hidden" name='id_paciente' value="<?php echo $id_paciente_redirecionado; ?>">
                 <?php
                 $item_dados =  $html->addRow(
                                 array(
@@ -235,7 +247,8 @@
                                     array(
                                         "nome" => array(
                                             "col" => 12,
-                                            "label" => "Nome do Paciente:"
+                                            "label" => "Nome do Paciente:",
+                                            "value" => $ds_nome
                                         ),
                                         "data_nascimento" => array(
                                             "col" => 6,
