@@ -35,6 +35,7 @@ class LoginModel extends Model {
     }
 
     public function checarLoginIbranutro($id_usuario=null, $tipo = null, $id_paciente = null, $buscar = null) {
+        global $bruker;
         $dados = httpPost("login_ibranutro", array(   "id_usuario" => $id_usuario));
 
         if (isset($dados["status"])){
