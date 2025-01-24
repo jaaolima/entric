@@ -1,6 +1,6 @@
 <?php
-    $id_paciente_redirecionado = $_SESSION['paciente']['id_paciente'];
-    $_SESSION['paciente']['id_paciente'] = null;
+    $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
+    $_SESSION['paciente_redirect']['id_paciente'] = null;
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
