@@ -4,6 +4,10 @@
 
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
+        if($_SESSION['paciente_redirect']['ds_nome'] != null){
+            $nome = $_SESSION['paciente_redirect']['ds_nome'];
+            $_SESSION['paciente_redirect']['ds_nome'] = null;
+        }
     }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
@@ -155,7 +159,8 @@
                                     array(
                                         "nome" => array(
                                             "col" => 12,
-                                            "label" => "Nome do Paciente:"
+                                            "label" => "Nome do Paciente:",
+                                            'value' => $nome
                                         ),
                                         "data_nascimento" => array(
                                             "col" => 6,
