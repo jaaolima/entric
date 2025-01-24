@@ -1,5 +1,4 @@
 <?php
-    require_once (ROOT . DS . 'api'. DS . 'src' . DS . 'libs' . DS .'connection.php');
     $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
     $_SESSION['paciente_redirect']['id_paciente'] = null;
 
