@@ -35,7 +35,6 @@ class LoginModel extends Model {
     }
 
     public function checarLoginIbranutro($id_usuario=null, $tipo = null, $id_paciente = null, $buscar = null) {
-        global $bruker;
         $dados = httpPost("login_ibranutro", array(   "id_usuario" => $id_usuario));
 
         if (isset($dados["status"])){
@@ -52,7 +51,6 @@ class LoginModel extends Model {
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = $tipo;
             $paciente = httpPostAuth("paciente_getDado", array( "token" => $_SESSION['token'],
-                                                            "tipo" => $bruker->type,
                                                             "id_paciente" => $id_paciente));
             var_dump($paciente);
             $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar];
