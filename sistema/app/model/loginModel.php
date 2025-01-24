@@ -60,7 +60,28 @@ class LoginModel extends Model {
                 $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar];
             }
 
-            echo "<div>Estamos te redirecionando.</div>";
+            echo "<head>
+                        <style>
+                            body {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;   
+                                height: 100vh;        
+                                margin: 0;             
+                            }
+                            .center {
+                                width: 300px;
+                                height: 200px;
+                                background-color: lightblue;
+                                text-align: center;
+                                line-height: 200px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class='center'>Estamos te redirecionando!</div>
+                    </body>
+            </html>";
 
         }
     }

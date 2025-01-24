@@ -6,6 +6,7 @@
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
+        $_SESSION['paciente_redirect']['buscar'] = null;
     }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
