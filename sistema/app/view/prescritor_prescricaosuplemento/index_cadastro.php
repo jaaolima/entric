@@ -5,11 +5,6 @@
 
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
-        //fazer buscar old porque o sistema não deixa fazer usando o padrão
-        $conn = new mysqli('142.93.0.124', 'private', '6Vn&c;!_WxO)', 'sistema');
-        $sql = "SELECT * FROM paciente_suplementos WHERE id_paciente = {$id_paciente_redirecionado}";
-        $result = $conn->query($sql);
-        var_dump($result);
     }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
