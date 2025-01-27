@@ -2,6 +2,7 @@
     $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
     $_SESSION['paciente_redirect']['id_paciente'] = null;
 
+    $ds_nome = '';
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
