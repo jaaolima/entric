@@ -7834,8 +7834,9 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$id = $request->getParam("id");
 
-
 		        $relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=".$id." AND codigo IS NULL", null);
+
+				var_dump($relatorio);
 		        if ($relatorio){
 		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
 		            $relatorio["data"] = sql2date($relatorio["data"]);
