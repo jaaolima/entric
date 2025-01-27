@@ -336,9 +336,9 @@ function fc_editar_relatorio(id_relatorio){
                 $(".tabcadastro a").removeClass("active");
                 $("#cadastro").removeClass("active").removeClass("show").attr("aria-expanded","false");
                 
-                $(".tabhistoria").removeClass("disabledTab");
-                $(".tabhistoria a").addClass("active");
-                $("#historia").addClass("active").addClass("show").attr("aria-expanded","true");
+                $(".tabcalculo").removeClass("disabledTab");
+                $(".tabcalculo a").addClass("active");
+                $("#calculo").addClass("active").addClass("show").attr("aria-expanded","true");
                 
                 $(".tabsec").removeClass("disabledTab").addClass("active");
                 $("#rel_gerar_relatorio").removeClass("none");
