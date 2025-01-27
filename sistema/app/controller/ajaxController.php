@@ -251,7 +251,7 @@ class AjaxController extends Controller {
 
     function relatorio_abrir_simplificada() {
         if (isset($_POST['id']) and (trim($_POST['id'])<>"")){            
-            $dados = $this->AjaxModel->gtRelatorio($_POST['id']);
+            $dados = $this->AjaxModel->gtRelatorioSimplificada($_POST['id']);
             echo json_encode($dados);
 
         }else{
@@ -261,7 +261,7 @@ class AjaxController extends Controller {
 
     function relatorio_abrir_suplemento() {
         if (isset($_POST['id']) and (trim($_POST['id'])<>"")){            
-            $dados = $this->AjaxModel->gtRelatorio($_POST['id']);
+            $dados = $this->AjaxModel->gtRelatorioSuplemento($_POST['id']);
             echo json_encode($dados);
 
         }else{
