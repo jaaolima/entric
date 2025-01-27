@@ -249,6 +249,26 @@ class AjaxController extends Controller {
         }
     }
 
+    function relatorio_abrir_simplificada() {
+        if (isset($_POST['id']) and (trim($_POST['id'])<>"")){            
+            $dados = $this->AjaxModel->gtRelatorio($_POST['id']);
+            echo json_encode($dados);
+
+        }else{
+            echo json_encode(array('error'=>array('message'=>'Informe os dados corretamente.')));
+        }
+    }
+
+    function relatorio_abrir_suplemento() {
+        if (isset($_POST['id']) and (trim($_POST['id'])<>"")){            
+            $dados = $this->AjaxModel->gtRelatorio($_POST['id']);
+            echo json_encode($dados);
+
+        }else{
+            echo json_encode(array('error'=>array('message'=>'Informe os dados corretamente.')));
+        }
+    }
+
     function buscar_paciente() {
         echo json_encode($this->AjaxModel->getPacientes($_POST), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES |  JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
     }

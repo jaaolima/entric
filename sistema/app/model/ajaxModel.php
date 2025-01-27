@@ -281,6 +281,22 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
+    function gtRelatorioSimplificada($id) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_gtRelatorioSimplificada", array( "token" => $_SESSION['token'],
+                                                           "id" => $id,
+                                                           "id_prescritor" => $bruker->usuario['id_usuario']));       
+        return $retorno;
+    }
+
+    function gtRelatorioSuplemento($id) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_gtRelatorioSuplemento", array( "token" => $_SESSION['token'],
+                                                           "id" => $id,
+                                                           "id_prescritor" => $bruker->usuario['id_usuario']));       
+        return $retorno;
+    }
+
     function EnviarEmailPaciente($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_EnviarEmailPaciente", array(  "token" => $_SESSION['token'],

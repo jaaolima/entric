@@ -51,6 +51,8 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_stRelatorioSimplificada",
 				"/ajax_stRelatorioSuplemento",
 				"/ajax_gtRelatorio",
+				"/ajax_gtRelatorioSimplificada",
+				"/ajax_gtRelatorioSuplemento",
 				"/ajax_EnviarEmailPaciente",
 				"/ajax_getPacientes",
 				"/ajax_getPacientesSimplificada",
@@ -7756,6 +7758,86 @@ $app->group("", function () use ($app) {
 
 
 		        $relatorio = $db->select_single_to_array("relatorios", "*", "WHERE id=".$id." AND id_prescritor=".$id_prescritor." AND codigo IS NULL", null);
+		        if ($relatorio){
+		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
+		            $relatorio["data"] = sql2date($relatorio["data"]);
+		            $retorno = array("relatorio" => $relatorio);
+		        }
+		        else{
+		            $retorno = array("error" => array("message" => "Relátorio não encontrado."));
+		        }
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_gtRelatorioSimplificada", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			if ($usuario){
+				$id = $request->getParam("id");
+				$id_prescritor = $request->getParam("id_prescritor");
+
+
+		        $relatorio = $db->select_single_to_array("relatorios_simplificada", "*", "WHERE id=".$id." AND id_prescritor=".$id_prescritor." AND codigo IS NULL", null);
+		        if ($relatorio){
+		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
+		            $relatorio["data"] = sql2date($relatorio["data"]);
+		            $retorno = array("relatorio" => $relatorio);
+		        }
+		        else{
+		            $retorno = array("error" => array("message" => "Relátorio não encontrado."));
+		        }
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_gtRelatorioSuplemento", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			if ($usuario){
+				$id = $request->getParam("id");
+				$id_prescritor = $request->getParam("id_prescritor");
+
+
+		        $relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=".$id." AND id_prescritor=".$id_prescritor." AND codigo IS NULL", null);
 		        if ($relatorio){
 		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
 		            $relatorio["data"] = sql2date($relatorio["data"]);

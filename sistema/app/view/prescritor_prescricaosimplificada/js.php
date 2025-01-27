@@ -319,7 +319,7 @@ function fc_iniciar_relatorio(id_paciente){
 function fc_editar_relatorio(id_relatorio){
     $.ajax({
         type: "POST",
-        url: "ajax/relatorio_abrir",
+        url: "ajax/relatorio_abrir_simplificada",
         data: "id="+id_relatorio,
         cache: false,
         dataType: 'json',
