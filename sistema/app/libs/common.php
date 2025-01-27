@@ -154,7 +154,7 @@ function httpGetAuth($resource, $post = null){
 
 function httpPost($resource, $post = null){
     $ch = curl_init();
-    // echo BASE_API.$resource;
+    echo BASE_API.$resource;
     curl_setopt($ch, CURLOPT_URL, BASE_API.$resource);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_HEADER, false);
