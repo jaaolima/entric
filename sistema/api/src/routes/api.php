@@ -7794,10 +7794,9 @@ $app->group("", function () use ($app) {
 			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
 			if ($usuario){
 				$id = $request->getParam("id");
-				$id_prescritor = $request->getParam("id_prescritor");
 
 
-		        $relatorio = $db->select_single_to_array("relatorios_simplificada", "*", "WHERE id=".$id." AND id_prescritor=".$id_prescritor." AND codigo IS NULL", null);
+		        $relatorio = $db->select_single_to_array("relatorios_simplificada", "*", "WHERE id=".$id." AND codigo IS NULL", null);
 		        if ($relatorio){
 		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
 		            $relatorio["data"] = sql2date($relatorio["data"]);
@@ -7834,10 +7833,9 @@ $app->group("", function () use ($app) {
 			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
 			if ($usuario){
 				$id = $request->getParam("id");
-				$id_prescritor = $request->getParam("id_prescritor");
 
 
-		        $relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=".$id." AND id_prescritor=".$id_prescritor." AND codigo IS NULL", null);
+		        $relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=".$id." AND codigo IS NULL", null);
 		        if ($relatorio){
 		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
 		            $relatorio["data"] = sql2date($relatorio["data"]);
