@@ -76,9 +76,9 @@ function fc_retorno_pacientes(){
                     var editar = "";
                 }else{
                     if(item.codigo == ''){
-                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;<a  href=""><i class="fa fa-file-text-o"></i></a>';
+                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
                     }else{
-                        var editar = '<a href=""><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href=""><i class="fa fa-trash-o"></i></a>&nbsp;&nbsp;<a target="_blank" href="https://entric.com.br/relatorio_suplemento/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                        var editar = '<a target="_blank" href="https://entric.com.br/relatorio_suplemento/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
                     }
                 }
 
