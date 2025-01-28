@@ -235,7 +235,7 @@
                             <tr>
                                 <th scope="col">Relatório</th>
                                 <th scope="col">Data</th>
-                                <th scope="col">Editar/Desativar</th>
+                                <th scope="col">Editar/Desativar/Visualizar</th>
                             </tr>
                         </thead>
                         <tbody>

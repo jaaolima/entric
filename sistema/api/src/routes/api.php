@@ -7744,6 +7744,10 @@ $app->group("", function () use ($app) {
 		                                    ':data_criacao'=> date("Y-m-d H:i:s"));
 		                    $interacoes = $this->insert('interacoes', $bind);
 		                    */
+							//salvar orientado EN
+							$dados_paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
+							$bind = array(':st_orientado' => '1');
+							$paciente = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=".$dados_paciente['id_paciente'], $bind);
 
 		                    $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		                }
@@ -7754,10 +7758,6 @@ $app->group("", function () use ($app) {
 		       
 		        }
 
-				//salvar orientado EN
-				$dados_paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
-				$bind = array(':st_orientado' => '1');
-				$paciente = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=".$dados_paciente['id_paciente'], $bind);
 
 		        $data = $retorno;
 			}
@@ -8065,6 +8065,7 @@ $app->group("", function () use ($app) {
 		                                                        null);
 		                    if ($relatorios){
 		                        $pacientes[$i]['relatorios'] = $relatorios;
+								$pacientes[$i]['relatorios']['relatorio_code'] = endecrypt("encrypt", $relatorios['id_relatorio']);
 		                        rsort($pacientes[$i]['relatorios']);
 		                    }else{
 		                        $pacientes[$i]['relatorios'] = null;
@@ -8136,6 +8137,7 @@ $app->group("", function () use ($app) {
 		                                                        null);
 		                    if ($relatorios){
 		                        $pacientes[$i]['relatorios'] = $relatorios;
+								$pacientes[$i]['relatorios']['relatorio_code'] = endecrypt("encrypt", $relatorios['id_relatorio']);
 		                        rsort($pacientes[$i]['relatorios']);
 		                    }else{
 		                        $pacientes[$i]['relatorios'] = null;
