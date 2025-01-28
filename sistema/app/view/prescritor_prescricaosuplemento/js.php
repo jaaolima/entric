@@ -68,6 +68,7 @@ function fc_retorno_pacientes(){
         }else{
             var tr = '';
             $.each(dados_json.relatorios, function(i, item) {
+                console.log(item);
                 var cont = (dados_json.relatorios.length) - i;
                 // item.id
                 var status = "";
