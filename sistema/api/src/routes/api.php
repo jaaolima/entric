@@ -7746,8 +7746,11 @@ $app->group("", function () use ($app) {
 		                    */
 							//salvar orientado EN
 							$dados_paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
+
+							var_dump($dados_paciente);
 							$bind = array(':st_orientado' => '1');
 							$paciente = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=".$dados_paciente['id_paciente'], $bind);
+							var_dump($paciente);
 
 		                    $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		                }
