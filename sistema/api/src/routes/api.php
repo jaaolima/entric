@@ -76,6 +76,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/cadastros_getDados",
 				"/paciente_getDadoSuplemento",
 				"/paciente_getDadoSimplificada",
+				"/paciente_getDadoEN",
 				"/cadastros_getDado",
 				"/cadastros_cadastrar",
 				"/cadastros_cadastrarPrescritor2",
@@ -5015,6 +5016,39 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$id_paciente = $request->getParam("id_paciente");
 		        $paciente = $db->select_single_to_array("pacientes_simplificada",
+		                                            "*",
+		                                            "
+		                                            WHERE id_paciente=".$id_paciente, 
+		                                            null);
+
+		        $data = $paciente;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/paciente_getDadoEN", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+
+			if ($usuario){
+				$id_paciente = $request->getParam("id_paciente");
+		        $paciente = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional",
 		                                            "*",
 		                                            "
 		                                            WHERE id_paciente=".$id_paciente, 
