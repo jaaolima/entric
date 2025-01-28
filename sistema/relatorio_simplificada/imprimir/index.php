@@ -40,7 +40,5 @@ function printIframe(id) {
     ifWin.print();
     return false;
 }
-setTimeout(function () {
-    printIframe('relatorio');
-}, 2000); 
+printIframe('relatorio');
 </script>
