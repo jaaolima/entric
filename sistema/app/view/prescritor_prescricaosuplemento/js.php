@@ -75,6 +75,7 @@ function fc_retorno_pacientes(){
                     status = "checked='checked'";
                     var editar = "";
                 }else{
+                    console.log(item.codigo);
                     if(item.codigo == ''){
                         var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
                     }else{
