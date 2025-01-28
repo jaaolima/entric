@@ -35,4 +35,11 @@ function printIframe(id) {
     return false;
 }
 printIframe('relatorio');
+window.addEventListener('beforeprint', function () {
+    document.body.classList.add('print-background');
+});
+
+window.addEventListener('afterprint', function () {
+    document.body.classList.remove('print-background');
+});
 </script>
