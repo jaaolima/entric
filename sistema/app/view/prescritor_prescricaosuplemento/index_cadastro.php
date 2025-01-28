@@ -129,7 +129,7 @@
                                     "telefone" => array(
                                         "col" => 5,
                                         "label" => "Telefone:",
-                                        "nu_telefone" => $nu_telefone
+                                        "value" => $nu_telefone
                                     ),
                                     "hospital" => array(
                                         "col" => 6,
