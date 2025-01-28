@@ -73,7 +73,11 @@ function fc_retorno_pacientes(){
                     status = "checked='checked'";
                     var editar = "";
                 }else{
-                    var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
+                    if(item.codigo == ''){
+                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
+                    }else{
+                        var editar = '<a target="_blank" href="https://entric.com.br/relatorio_simplificada/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                    }
                 }
 
                 tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td> '+ editar +' </td></tr>';

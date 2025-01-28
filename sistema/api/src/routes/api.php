@@ -8064,8 +8064,10 @@ $app->group("", function () use ($app) {
 		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
 		                    if ($relatorios){
+								for ($j=0; $j < count($relatorios); $j++) { 
+									$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
+								}
 		                        $pacientes[$i]['relatorios'] = $relatorios;
-								$pacientes[$i]['relatorios']['relatorio_code'] = endecrypt("encrypt", $relatorios['id']);
 		                        rsort($pacientes[$i]['relatorios']);
 		                    }else{
 		                        $pacientes[$i]['relatorios'] = null;
