@@ -34,5 +34,7 @@ function printIframe(id) {
     ifWin.print();
     return false;
 }
-printIframe('relatorio');
+setTimeout(function () {
+    printIframe('relatorio');
+}, 2000); 
 </script>

@@ -3,6 +3,10 @@
     $_SESSION['paciente_redirect']['id_paciente'] = null;
 
     $ds_nome = '';
+    $ds_hospital = '';
+    $dt_nascimento = '';
+    $nu_telefone = '';
+    $nu_atendimento = '';
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
