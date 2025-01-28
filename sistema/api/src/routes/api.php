@@ -8136,7 +8136,9 @@ $app->group("", function () use ($app) {
 		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
 		                    if ($relatorios){
-								$relatorios[$i]['relatorio_code'] = endecrypt("encrypt", $relatorios[$i]['id']);
+								for ($j=0; $j < count($relatorios); $j++) { 
+									$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
+								}
 		                        $pacientes[$i]['relatorios'] = $relatorios;
 								// $pacientes[$i]['relatorios'][$i]['relatorio_code'] = endecrypt("encrypt", $relatorios[0]['id']);
 		                        rsort($pacientes[$i]['relatorios']);
