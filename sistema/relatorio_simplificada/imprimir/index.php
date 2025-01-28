@@ -23,12 +23,6 @@ $url = $_GET['url'];
         margin: 0px;
         padding: 0px;
     }
-    @media print {
-        body {
-            -webkit-print-color-adjust: exact; /* Força cores e imagens no Webkit (Chrome, Edge) */
-            print-color-adjust: exact;        /* Força cores e imagens em outros navegadores */
-        }
-    }
 </style>
 <iframe src="https://entric.com.br/relatorio_simplificada/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
 

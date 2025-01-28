@@ -140,6 +140,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			@media print {
 				body {
 					margin: 1cm; /* Ajuste as margens conforme necessário */
+					-webkit-print-color-adjust: exact; /* Força cores e imagens no Webkit (Chrome, Edge) */
+					print-color-adjust: exact;        /* Força cores e imagens em outros navegadores */
 				}
 			}
 
