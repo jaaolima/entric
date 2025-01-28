@@ -7630,7 +7630,7 @@ $app->group("", function () use ($app) {
 		                    $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		                }
 		                else{
-		                    $retorno = array("error" => array("message" => "Relátorio já foi gerado."));
+		                    $retorno = array("error" => array("message" => "Relatório já foi gerado."));
 		                }  
 		            }
 					

@@ -209,7 +209,6 @@
                             <tr>
                                 <th scope="col">Relatório</th>
                                 <th scope="col">Data</th>
-                                <th scope="col" class="text-center">Visualização Disponível para o Paciente</th>
                                 <th scope="col">Editar/Desativar</th>
                             </tr>
                         </thead>

@@ -78,7 +78,7 @@ function fc_retorno_pacientes(){
                     var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
                 }
 
-                tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td class="text-center"><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input disponivel" id="disponivel'+item.id+'" onchange="disponivel('+item.id+', this)" '+status+'><label class="custom-control-label" for="disponivel'+item.id+'"></label></div></td><td> '+ editar +' </td></tr>';
+                tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td> '+ editar +' </td></tr>';
             });
 
             $('#table_lista_pacientes > tbody').empty();
