@@ -73,6 +73,9 @@
         $_SESSION['paciente_redirect']['id_hospital'] = null;
 
         $dt_nascimento = $_SESSION['paciente_redirect']['dt_nascimento'];
+        if($dt_nascimento != null){
+            $dt_nascimento = date('d/m/Y', strtotime($dt_nascimento));
+        }
         $_SESSION['paciente_redirect']['dt_nascimento'] = null;
 
         $nu_telefone = $_SESSION['paciente_redirect']['nu_telefone'];
@@ -121,7 +124,7 @@
                                         "class" => "data",
                                         "placeholder" => "dd/mm/aaaa",
                                         "required" => "required",
-                                        "value" => date('d/m/Y', strtotime($dt_nascimento))
+                                        "value" => $dt_nascimento
                                     ),
                                     "telefone" => array(
                                         "col" => 5,
