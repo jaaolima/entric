@@ -8137,8 +8137,8 @@ $app->group("", function () use ($app) {
 		                                                        null);
 		                    if ($relatorios){
 		                        $pacientes[$i]['relatorios'] = $relatorios;
-								$pacientes[$i]['relatorios']['relatorio_code'] = endecrypt("encrypt", $relatorios['id']);
 		                        rsort($pacientes[$i]['relatorios']);
+								$pacientes[$i]['relatorios']['relatorio_code'] = endecrypt("encrypt", $relatorios['id']);
 		                    }else{
 		                        $pacientes[$i]['relatorios'] = null;
 		                    }
