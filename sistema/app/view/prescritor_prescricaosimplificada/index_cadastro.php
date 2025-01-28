@@ -8,6 +8,77 @@
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
+    }else{
+        $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
+        $_SESSION['paciente_redirect']['ds_nome'] = null;
+
+        $id_hospital = $_SESSION['paciente_redirect']['id_hospital'];
+        switch ($id_hospital) {
+            case '1':
+                $ds_hospital = 'HOSPITAL SANTA HELENA';
+                break;
+            case '3':
+                $ds_hospital = 'HOSPITAL SANTA LÚCIA GAMA';
+                break;
+            case '4':
+                $ds_hospital = 'HOSPITAL SANTA LUCIA SUL';
+                break;
+            case '5':
+                $ds_hospital = 'HOSPITAL SÃO FRANCISCO';
+                break;
+            case '6':
+                $ds_hospital = 'HOSPITAL DO CORAÇÃO';
+                break;
+            case '7':
+                $ds_hospital = 'HOSPITAL SANTA LUZIA';
+                break;
+            case '8':
+                $ds_hospital = 'HOSPITAL DF STAR';
+                break;
+            case '9':
+                $ds_hospital = 'HOSPITAL DE TESTES';
+                break;
+            case '10':
+                $ds_hospital = 'HOSPITAL SANTA LÚCIA NORTE';
+                break;
+            case '11':
+                $ds_hospital = 'HOSPITAL ANCHIETA';
+                break;
+            case '12':
+                $ds_hospital = 'HOSPITAL VILA NOVA STAR';
+                break;
+            case '13':
+                $ds_hospital = 'HOSPITAL SANTA ISABEL';
+                break;
+            case '14':
+                $ds_hospital = 'HOSPITAL DAHER';
+                break;
+            case '15':
+                $ds_hospital = 'HOSPITAL SÃO LUIZ ITAIM';
+                break;
+            case '16':
+                $ds_hospital = 'HOSPITAL SÃO LUIZ MORUMBI';
+                break;
+            case '17':
+                $ds_hospital = 'TERCEIROS VILA NOVA STAR';
+                break;
+            default:
+                $ds_hospital = '';
+                break;
+        }
+        $_SESSION['paciente_redirect']['id_hospital'] = null;
+
+        $dt_nascimento = $_SESSION['paciente_redirect']['dt_nascimento'];
+        if($dt_nascimento != null){
+            $dt_nascimento = date('d/m/Y', strtotime($dt_nascimento));
+        }
+        $_SESSION['paciente_redirect']['dt_nascimento'] = null;
+
+        $nu_telefone = $_SESSION['paciente_redirect']['nu_telefone'];
+        $_SESSION['paciente_redirect']['nu_telefone'] = null;
+
+        $nu_atendimento = $_SESSION['paciente_redirect']['nu_atendimento'];
+        $_SESSION['paciente_redirect']['nu_atendimento'] = null;
     }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
@@ -41,13 +112,15 @@
                                         "col" => 12,
                                         "label" => "Nome do Paciente:",
                                         "required" => "required",
+                                        "value" => $ds_nome
                                     ),
                                     "data_nascimento" => array(
                                         "col" => 4,
                                         "label" => "Data de Nascimento:",
                                         "class" => "data",
                                         "placeholder" => "dd/mm/aaaa",
-                                        "required" => "required"
+                                        "required" => "required",
+                                        "value" => $dt_nascimento
                                     ),
                                     "peso" => array(
                                         "col" => 4,
