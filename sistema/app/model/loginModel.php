@@ -65,6 +65,7 @@ class LoginModel extends Model {
                 }
                 
             }else{
+                $buscar = 'cadastrar';
                 $paciente = httpPostAuth("paciente_getDadoEN", array( "token" => $_SESSION['token'],
                                                                     "id_paciente" => $id_paciente));
                 $_SESSION['paciente_redirect'] = ['id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];
