@@ -2462,6 +2462,10 @@ $app->group("", function () use ($app) {
 		                                        $valor_proteico = $_ptn_total;
 		                                        $calorias_dia = $_kcal_total;
 		                                        $proteina_dia = $_ptn_total;
+
+												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
+													var_dump($produtos[$i]['nome'], $_kcal_total, $_ptn_total);
+												}
 		                                        if (
 		                                            ((intval($margem_calorica[0]) <= intval($_kcal_total)) and (intval($margem_calorica[1]) >= intval($_kcal_total))) and
 		                                            ((intval($margem_proteica[0]) <= intval($_ptn_total)) and (intval($margem_proteica[1]) >= intval($_ptn_total)))
@@ -2470,6 +2474,10 @@ $app->group("", function () use ($app) {
 		                                            $_nome = "";
 		                                        }else{
 													$margem_liberadas = false;
+												}
+
+												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
+													var_dump($margem_liberadas);
 												}
 		                                    }
 		                                }
