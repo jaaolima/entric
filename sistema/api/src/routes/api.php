@@ -2377,11 +2377,7 @@ $app->group("", function () use ($app) {
 		                                else{
 		                                    $_volume = chkfloat($_volume);
 		                                }
-		                                $_medida_dc = 1;
-		                                if (isset($medida_dc[$j])){
-		                                    $_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
-		                                    if ($_medida_dc=="") $_medida_dc = 1;
-		                                }
+		                                
 		                                $calorias_dia = "";
 		                                $proteina_dia = "";
 		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -2398,7 +2394,10 @@ $app->group("", function () use ($app) {
 		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                                if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
 
-
+											$_medida_dc = 1;
+											if (isset($medida_dc[0])){
+												$_medida_dc = $medida_dc[0];
+											}
 		                                    /*
 		                                    - valor caloria =====================================================================================================
 		                                    1) ver numero inteiro de bolsas: 
@@ -2486,6 +2485,11 @@ $app->group("", function () use ($app) {
 		                                        2000 / 100 = 20
 		                                        20 * 4,4 (PTN) = 88
 		                                        */
+
+											$_medida_dc = 1;
+											if (isset($medida_dc[0])){
+												$_medida_dc = $medida_dc[0];
+											}
 		                                    $_kcal = $dados['kcal_valor'];
 		                                    $_ptn = ($_kcal / $_medida_dc);
 		                                    $_ptn = ($_ptn / 100);
@@ -2508,7 +2512,11 @@ $app->group("", function () use ($app) {
 		                                    }
 		                                }
 		                                else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
-		                                    
+											$_medida_dc = 1;
+											if (isset($medida_dc[$j])){
+												$_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
+												if ($_medida_dc=="") $_medida_dc = 1;
+											}
 		                                    $_kcal = $dados['kcal_valor'];
 		                                    $volume_final_dieta = $_kcal / $_medida_dc;
 		                                    $volume_horario = $volume_final_dieta / $fracionamento_dia;
