@@ -2438,8 +2438,13 @@ $app->group("", function () use ($app) {
 		                                            $kcal = trim($produtos[$i]['kcal']);
 		                                            $kcal = str_replace(",",".", $kcal);
 		                                        }
+												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
+													var_dump($produtos[$i]['nome'], $qtd_bolsas, $_volume, $kcal);
+												}
 		                                        $_kcal_total = ($qtd_bolsas * $_volume * $kcal) / 100;
-
+												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
+													var_dump($_kcal_total);
+												}
 		                                        /*
 		                                        - valor proteina ===================================================================================================
 		                                        1) ver numero inteiro de bolsas: 
@@ -2456,16 +2461,16 @@ $app->group("", function () use ($app) {
 		                                            $ptn = str_replace(",",".", $ptn);
 		                                        }
 		                                        $_ptn_total = ($qtd_bolsas * $_volume * $ptn) / 100;
-
+												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
+													var_dump($_ptn_total);
+												}
 
 		                                        $valor_calorio = $_kcal_total;
 		                                        $valor_proteico = $_ptn_total;
 		                                        $calorias_dia = $_kcal_total;
 		                                        $proteina_dia = $_ptn_total;
 
-												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
-													var_dump($produtos[$i]['nome'], $_kcal_total, $_ptn_total);
-												}
+
 		                                        if (
 		                                            ((intval($margem_calorica[0]) <= intval($_kcal_total)) and (intval($margem_calorica[1]) >= intval($_kcal_total))) and
 		                                            ((intval($margem_proteica[0]) <= intval($_ptn_total)) and (intval($margem_proteica[1]) >= intval($_ptn_total)))
@@ -2474,10 +2479,6 @@ $app->group("", function () use ($app) {
 		                                            $_nome = "";
 		                                        }else{
 													$margem_liberadas = false;
-												}
-
-												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
-													var_dump($margem_liberadas);
 												}
 		                                    }
 		                                }
