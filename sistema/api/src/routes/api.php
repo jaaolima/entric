@@ -2424,14 +2424,10 @@ $app->group("", function () use ($app) {
 												$kcal_valor_maximo = floor($kcal_valor_maximo);
 											} else{
 												$kcal_valor_minimo = $margem_calorica[0] / $_volume / $_medida_dc;
-												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
-													var_dump($produtos[$i]['nome'], $margem_calorica[0], $_volume, $_medida_dc);
-												}
+
 												$kcal_valor_minimo1 = $kcal_valor_minimo;
 												$kcal_valor_minimo = ceil($kcal_valor_minimo);
-												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
-													var_dump($kcal_valor_minimo);
-												}
+
 												$kcal_valor_maximo = $margem_calorica[1] / $_volume / $_medida_dc;
 												$kcal_valor_maximo1 = $kcal_valor_maximo;
 												$kcal_valor_maximo = floor($kcal_valor_maximo);
@@ -2446,9 +2442,7 @@ $app->group("", function () use ($app) {
 		                                        }
 
 		                                        $_kcal_total = ($qtd_bolsas * $_volume * $kcal) / 100;
-												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
-													var_dump($_kcal_total);
-												}
+
 		                                        /*
 		                                        - valor proteina ===================================================================================================
 		                                        1) ver numero inteiro de bolsas: 
@@ -2465,9 +2459,7 @@ $app->group("", function () use ($app) {
 		                                            $ptn = str_replace(",",".", $ptn);
 		                                        }
 		                                        $_ptn_total = ($qtd_bolsas * $_volume * $ptn) / 100;
-												if($produtos[$i]['id'] == '32' || $produtos[$i]['id'] == '294'){
-													var_dump($_ptn_total);
-												}
+
 
 		                                        $valor_calorio = $_kcal_total;
 		                                        $valor_proteico = $_ptn_total;
