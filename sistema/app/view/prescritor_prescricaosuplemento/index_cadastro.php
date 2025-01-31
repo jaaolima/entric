@@ -12,7 +12,7 @@
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
-    }else{
+    }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
 
