@@ -58,7 +58,6 @@
                                                     ),
                                                     "telefone" => array(
                                                         "col" => 3,
-                                                        "class" => "telefone",
                                                         "label" => "Telefone:"
                                                     ),
                                                     "whatsapp" => array(
