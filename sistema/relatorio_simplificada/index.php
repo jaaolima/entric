@@ -853,7 +853,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<table width="100%" cellspacing="0" cellpadding="0">
 				<tbody>
 					<tr>
-						<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;">
+						<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">
 							<?php 
 							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 							if ($danone){
@@ -869,8 +869,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										echo "</p>
 										</div>";
 										echo "<div style='display:flex;'>
-												<div>
-													<h5 style='color:#45cfb3;margin:0px;margin-top:15px;'>FACILITE SUA COMPRA!</h5>
+												<div style='text-align:end;'>
+													<h5 style='color:#45cfb3;margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
 													<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE</h5>
 													<h5 style='color:#45cfb3;margin:0px;'>E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
 												</div>
