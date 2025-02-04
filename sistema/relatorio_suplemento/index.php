@@ -16,7 +16,6 @@
 require __DIR__ . '/libs/conf6ion.php';
 require __DIR__ . '/libs/common.php';
 require __DIR__ . '/libs/database.class.php';
-require __DIR__ . '/libs/connection_ibranutro.php';
 //echo endecrypt("encrypt", 466);
 //die();
 if (!isset($_GET['url'])) Redirect(BASE_PATH);
@@ -65,7 +64,6 @@ $relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id
 if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
-$db_ibranutro = new Database_ibranutro();
 $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
 $paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);

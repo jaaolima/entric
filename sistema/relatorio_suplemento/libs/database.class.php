@@ -508,3 +508,4 @@ class Database{
 
 class Model extends Database { }
 $db = new Database();
+$db_ibranutro = new Database_ibranutro();
