@@ -65,8 +65,8 @@ if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
 $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
-$paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
-
+// $paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
+$paciente_ibranutro['id_hospital'] = 9;
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
