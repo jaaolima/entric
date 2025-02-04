@@ -65,6 +65,7 @@ if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
 $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
+$paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
 
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
@@ -571,6 +572,42 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</tbody>
 				</table>
 			</p>
+			<?php 
+				$nome_hospital = '';
+				$telefone = '';
+				if($paciente_ibranutro['id_hospital'] == '11'){
+					$nome_hospital = 'ANCHIETA';
+					$telefone = '(61) 3353-9939';
+				}
+				if($paciente_ibranutro['id_hospital'] == '9'){
+					$nome_hospital = 'TESTE';
+					$telefone = '(99) 9999-9999';
+				}
+				if($paciente_ibranutro['id_hospital'] == '8'){
+					$nome_hospital = 'DF STAR';
+					$telefone = '(61) 3251-3608';
+				}
+				if($paciente_ibranutro['id_hospital'] == '1'){
+					$nome_hospital = 'SANTA HELENA';
+					$telefone = '(61) 3261-3031';
+				}
+				if($paciente_ibranutro['id_hospital'] == '3'){
+					$nome_hospital = 'SANTA LÚCIA GAMA';
+					$telefone = '(61) 3041-6831';
+				}
+				if($paciente_ibranutro['id_hospital'] == '10'){
+					$nome_hospital = 'SANTA LÚCIA NORTE';
+					$telefone = '(61) 3448-9120';
+				}
+				if($paciente_ibranutro['id_hospital'] == '4'){
+					$nome_hospital = 'SANTA LÚCIA SUL';
+					$telefone = '(61) 3445-0292';
+				}
+				if($paciente_ibranutro['id_hospital'] == '16'){
+					$nome_hospital = 'MORUMBI';
+					$telefone = '(11) 3093-2222';
+				}
+			?>
 			<p>
 				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 					<div style="width: 250px;border-top: 1px solid;">
@@ -578,10 +615,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<p>Nutricionista</p>
 							<p style="margin:0px;">(Assinatura e Carimbo)</p>
 						</div>
+						<?php if($nome_hospital != '') : ?>
 						<div>
 							<strong>IBRANUTRO</strong>
-							<p style="margin:0px;">Nome do Hospital - Telefone: (**) *****-****</p>
+							<p style="margin:0px;"><?php echo $nome_hospital; ?> - Telefone: <?php echo $telefone; ?></p>
 						</div>
+						<?php endif; ?>
 					</div>
 				</div>
 			</p>
