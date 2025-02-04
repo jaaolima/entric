@@ -8070,7 +8070,7 @@ $app->group("", function () use ($app) {
 		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
 		        }
 		        if ($bind_query <> ""){
-		            $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_simplificada",
 		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
@@ -8144,7 +8144,7 @@ $app->group("", function () use ($app) {
 		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
 		        }
 		        if ($bind_query <> ""){
-		            $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_suplemento",
 		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
