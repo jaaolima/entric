@@ -571,6 +571,20 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</tbody>
 				</table>
 			</p>
+			<p>
+				<div style="justify-content:center;">
+					<div>
+						<div>
+							<p>Nutricionista</p>
+							<p>(Assinatura e Carimbo)</p>
+						</div>
+						<div>
+							<p>IBRANUTRO</p>
+							<p>Nome do Hospital - Telefone: (**) *****-****</p>
+						</div>
+					</div>
+				</div>
+			</p>
 
 		<?php
 		}
