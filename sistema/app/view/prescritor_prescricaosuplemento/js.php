@@ -20,7 +20,7 @@
     for (var i = 0, l = my_textareas.length; i < l; ++i) $(result_textareas[i]).val($(my_textareas[i]).val());
     for (var i = 0, l = my_selects.length;   i < l; ++i) {
       for (var j = 0, m = my_selects[i].options.length; j < m; ++j) {
-        if (my_selects[i].options[j].selected === true) {
+        if (my_selects[i].options[j].selected === true) { 
           result_selects[i].options[j].selected = true;
         }
       }
@@ -2135,6 +2135,22 @@ $(function(){
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', false);
         }
     });
+
+    $(".filtro_1").on("click", function(){
+        if(!$(this).is(":checked")){
+            $('#calculo_fil_todos1').prop('checked', false);
+        }
+    })
+    $(".filtro_2").on("click", function(){
+        if(!$(this).is(":checked")){
+            $('#calculo_fil_todos2').prop('checked', false);
+        }
+    })
+    $(".filtro_3").on("click", function(){
+        if(!$(this).is(":checked")){
+            $('#calculo_fil_todos3').prop('checked', false);
+        }
+    })
 
     $('#calculo_fil_todos2').change(function () {
         var calculo_fil_todos = null;
