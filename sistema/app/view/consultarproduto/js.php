@@ -302,6 +302,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                 });
 
                 $('#modal_retorno_produto').modal('toggle');
+                abriu_produto = false;
             }
         }
     });
@@ -590,10 +591,14 @@ function formatRepoConsulta(repo) {
     return $container;
 }
 
+abriu_produto = false;
 function formatRepoSelectionConsulta(repo) {
     if (repo.id){
         if (repo.id != ""){
-            gtModalProdutoFiltro(repo.id, 'select2');
+            if(abriu_produto == false){
+                abriu_produto = true;
+                gtModalProdutoFiltro(repo.id, 'select2');
+            }
         }
     }
     console.log(repo);
