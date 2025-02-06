@@ -596,6 +596,7 @@ function formatRepoSelectionConsulta(repo) {
             gtModalProdutoFiltro(repo.id, 'select2');
         }
     }
+    console.log(repo);
     return repo.text;
 }
 
@@ -1307,12 +1308,12 @@ $(function(){
 
     select2_ajax_produto($(".select2_ajax_produto"));    
     select2_consulta_produto($(".select2_consulta_produto"));
-    // $('#select2_consulta_produto').on('dblclick', function () {
-    //     $('.select2_consulta_produto').select2('close');
-    //     if ($(".select2_consulta_produto").select2('val') !== null){
-    //         gtModalProdutoFiltro( $(".select2_consulta_produto").select2('val') , 'select2');
-    //     }
-    // });
+    $('#select2_consulta_produto').on('dblclick', function () {
+        $('.select2_consulta_produto').select2('close');
+        if ($(".select2_consulta_produto").select2('val') !== null){
+            gtModalProdutoFiltro( $(".select2_consulta_produto").select2('val') , 'select2');
+        }
+    });
 
     $('input:radio[name=medida]').change(function () {
         if ($("input[name='medida']:checked").val() == 'g') {
