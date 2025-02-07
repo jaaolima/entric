@@ -140,6 +140,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			@media print {
 				body {
 					margin: 1cm; /* Ajuste as margens conforme necessário */
+					-webkit-print-color-adjust: exact;
+        			print-color-adjust: exact;
+				}
+				body::before {
+					background: url('image/logo.png'), url('imagem/efeito.png');
+					background-repeat: no-repeat;
+					background-position: left 30px;
+					background-size: 150px;
+					background-position: 2cm 1cm, right bottom;
 				}
 			}
 
