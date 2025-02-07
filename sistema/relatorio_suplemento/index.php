@@ -84,13 +84,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				text-justify: inter-word;
 				font-size: 13px !important;
 			}
-			.logo_efeito{
+			/* .logo_efeito{
 				background-image: url("imagem/logo.png"), url("imagem/efeito.png");
 				background-repeat: no-repeat;
 				background-size: 150px;
 				background-position: 2cm 1cm, right bottom;
 				visibility: visible;
-			}
+			} */
 			.titulo {
 				font-weight: bold;
 				color: #45cfb3;
@@ -137,18 +137,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 
 			/* Garantir margens adequadas para impressão */
-			@media print {
-				.logo_efeito {
-					visibility: visible;
-					-webkit-print-color-adjust: exact;
-        			print-color-adjust: exact;
-					background: url('image/logo.png'), url('imagem/efeito.png');
-					background-repeat: no-repeat;
-					background-position: left 30px;
-					background-size: 150px;
-					background-position: 2cm 1cm, right bottom;
-				}
-			}
 
 			<?php
 			if (($p_produtos) or ($p_header) or ($p_footer)){
@@ -164,13 +152,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					padding-left: 2cm;
 					padding-right: 2cm;
 				}
-				.logo_efeito{
+				/* .logo_efeito{
 					background-image: url("imagem/logo.png"), url("imagem/efeito2.png");
 					background-repeat: no-repeat;
 					background-size: 150px;
 					background-position: 2cm 1cm, right bottom;
 					visibility: visible;
-				}
+				} */
 				<?php
 			}
 
@@ -182,13 +170,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					padding-left: 1cm;
 					padding-right: 1cm;
 				}
-				.logo_efeito{
+				/* .logo_efeito{
 					background-image: url("imagem/logo.png"), url("imagem/efeito2.png");
 					background-repeat: no-repeat;
 					background-size: 150px;
 					background-position: 2cm 1cm, right bottom;
 					visibility: visible;
-				}
+				} */
 				<?php
 			}
 			?>
@@ -200,6 +188,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
+			<div style="position:relative; width:100%;">
+				<img style="position:absolute;right:2cm;" src="/sistema/relatorio_suplemento/imagem/logo.png" alt="">
+				<img style="position:absolute;bottom:1cm;" src="/sistema/relatorio_suplemento/imagem/efeito.png" alt="">
+			</div>
 			
 			<p class="text-center linha titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
