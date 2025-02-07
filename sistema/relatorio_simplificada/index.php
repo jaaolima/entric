@@ -186,7 +186,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
-			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
+			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
 			<img style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<p class="text-center linha titulo" style="margin-top:30px;">PRESCRIÇÃO NUTRICIONAL</p>
