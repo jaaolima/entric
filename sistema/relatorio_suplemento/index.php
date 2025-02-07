@@ -139,6 +139,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			/* Garantir margens adequadas para impressão */
 			@media print {
 				.logo_efeito {
+					visibility: visible;
 					-webkit-print-color-adjust: exact;
         			print-color-adjust: exact;
 					background: url('image/logo.png'), url('imagem/efeito.png');
