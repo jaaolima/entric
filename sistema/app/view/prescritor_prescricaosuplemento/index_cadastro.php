@@ -11,11 +11,13 @@
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
         $_SESSION['paciente_redirect']['id_paciente'] = null;
         $sistema = 'EN';
+        $_SESSION['paciente_redirect']['sistema'] = null;
     }
     if($_SESSION['paciente_redirect']['sistema'] == 'ibranutro'){
         $id_admissao_redirecionado = $_SESSION['paciente_redirect']['id_admissao'];
         $_SESSION['paciente_redirect']['id_admissao'] = null;
         $sistema = 'ibranutro';
+        $_SESSION['paciente_redirect']['sistema'] = null;
     }
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
