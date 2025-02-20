@@ -615,8 +615,11 @@ function necessidades_proteinas_total(_this, _event){
         }else{
             _formula_total = 0;
         }
+        proteina_kg = _formula_total / parseFloat($("#peso").val());
+        console.log(proteina_kg);
+        console.log(_formula_total);
         $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
-        _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(_formula_valor, 1)+" g/kg)";
+        _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
         // $("#ptn_valor").val(_formula_valor);
         $("#presc_ptn").html(_formula_valor);
     }
@@ -710,8 +713,12 @@ function necessidades_proteinas_total_atualizar(_this, _event){
         }else{
             _formula_total = 0;
         }
+        proteina_kg = _formula_total / parseFloat($("#peso").val());
+
         $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
-        _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(_formula_valor, 1)+" g/kg)";
+        console.log(proteina_kg);
+        console.log(_formula_total);
+        _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
         // $("#ptn_valor").val(_formula_valor);
         $("#presc_ptn").html(_formula_valor);
     }
