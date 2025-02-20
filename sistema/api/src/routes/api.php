@@ -8589,8 +8589,8 @@ $app->group("", function () use ($app) {
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
 					if($sistema == 'ibranutro'){
-						if($dados['id_paciente'] == ''){
-							$dados['id_paciente'] = null;
+						if($dados['id_admissao'] == ''){
+							$dados['id_admissao'] = null;
 						}
 		
 						$bind = array(	':id_prescritor' => $id_prescritor,
