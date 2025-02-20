@@ -8583,7 +8583,6 @@ $app->group("", function () use ($app) {
 								':nome' => $dados["nome"],
 								':peso' => $dados["peso"],
 								':data_nascimento' => date2sql($dados["data_nascimento"]),  
-								':id_paciente' => $dados["id_paciente"],    
 								':sistema' => 'cadastrado',
 								':data_criacao' => date("Y-m-d H:i:s"));
 					$retorno = $db->insert("pacientes_simplificada", $bind);
