@@ -1,4 +1,5 @@
 <?php
+    $sistema = '';
     if($_SESSION['paciente_redirect']['sistema'] == 'EN'){
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
         $_SESSION['paciente_redirect']['id_paciente'] = null;
