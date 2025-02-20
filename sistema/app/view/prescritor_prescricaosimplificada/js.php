@@ -674,7 +674,7 @@ function necessidades_calorias_total_atualizar(_this, _event){
     }else{
         _formula_total = 0;
     }
-    proteina_kg = _formula_total / parseFloat($("#peso").val());
+    proteina_kg = _formula_total / parseFloat($("#up_peso").val());
 
     $("#kcal_valor").val(numberFormatPrecision((_formula_total), 0));
     _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(proteina_kg)+" kcal/kg)";
@@ -715,7 +715,7 @@ function necessidades_proteinas_total_atualizar(_this, _event){
         }else{
             _formula_total = 0;
         }
-        proteina_kg = _formula_total / parseFloat($("#peso").val());
+        proteina_kg = _formula_total / parseFloat($("#up_peso").val());
 
         $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
         _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
