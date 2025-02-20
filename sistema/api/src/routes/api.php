@@ -8550,7 +8550,7 @@ $app->group("", function () use ($app) {
 										':peso' => $dados["peso"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
 										':id_admissao' => $dados["id_admissao"],    
-										':sistema' => 'cadastrado',
+										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_simplificada", $bind);
 						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
@@ -8568,7 +8568,7 @@ $app->group("", function () use ($app) {
 										':peso' => $dados["peso"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
 										':id_paciente' => $dados["id_paciente"],    
-										':sistema' => 'cadastrado',
+										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_simplificada", $bind);
 						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
