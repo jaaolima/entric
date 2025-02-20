@@ -1,12 +1,22 @@
 <?php
-    $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
-    $_SESSION['paciente_redirect']['id_paciente'] = null;
+    
 
     $ds_nome = '';
     $ds_hospital = '';
     $dt_nascimento = '';
     $nu_telefone = '';
     $nu_atendimento = '';
+    $sistema = '';
+    if($_SESSION['paciente_redirect']['sistema'] == 'EN'){
+        $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
+        $_SESSION['paciente_redirect']['id_paciente'] = null;
+        $sistema = 'EN';
+    }
+    if($_SESSION['paciente_redirect']['sistema'] == 'ibranutro'){
+        $id_admissao_redirecionado = $_SESSION['paciente_redirect']['id_admissao'];
+        $_SESSION['paciente_redirect']['id_admissao'] = null;
+        $sistema = 'ibranutro';
+    }
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
@@ -108,7 +118,14 @@
         <div id="div_cadastrar_paciente" style="<?php echo ($tab1=="cadastrar"?"display: block;":"display: none;"); ?>">
             <form action="prescritor_relatorioalta" id="form_cadastrar_paciente" method="post" autocomplete="off" onsubmit="return false">
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
+                <?php if($sistema == 'EN') : ?>
                 <input type="hidden" name='id_paciente' value="<?php echo $id_paciente_redirecionado; ?>">
+                <input type="hidden" name='sistema' value="<?php echo $sistema; ?>">
+                <?php endif; ?>
+                <?php if($sistema == 'ibranutro') : ?>
+                <input type="hidden" name='id_admissao' value="<?php echo $id_admissao_redirecionado; ?>">
+                <input type="hidden" name='sistema' value="<?php echo $sistema; ?>">
+                <?php endif; ?>
                 <?php
                 $item_dados =  $html->addRow(
                                 array(

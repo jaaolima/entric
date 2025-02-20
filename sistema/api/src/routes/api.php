@@ -76,7 +76,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/cadastros_getDados",
 				"/paciente_getDadoSuplemento",
 				"/paciente_getDadoSimplificada",
-				"/paciente_getDadoEN",
+				"/paciente_getDadoIbranutro",
 				"/cadastros_getDado",
 				"/cadastros_cadastrar",
 				"/cadastros_cadastrarPrescritor2",
@@ -4994,12 +4994,24 @@ $app->group("", function () use ($app) {
 			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
 
 			if ($usuario){
-				$id_paciente = $request->getParam("id_paciente");
-		        $paciente = $db->select_single_to_array("pacientes_suplemento",
-		                                            "*",
-		                                            "
-		                                            WHERE id_paciente=".$id_paciente, 
-		                                            null);
+				$sistema = $request->getParam("sistema");
+				if($sistema == 'ibranutro'){
+					$id_admissao = $request->getParam("id_admissao");
+					$paciente = $db->select_single_to_array("pacientes_suplemento",
+														"*",
+														"
+														WHERE id_admissao=".$id_admissao, 
+														null);
+				}
+				if($sistema == 'EN'){
+					$id_paciente = $request->getParam("id_paciente");
+					$paciente = $db->select_single_to_array("pacientes_suplemento",
+														"*",
+														"
+														WHERE id_paciente=".$id_paciente, 
+														null);
+				}
+				
 
 		        $data = $paciente;
 			}
@@ -5027,12 +5039,23 @@ $app->group("", function () use ($app) {
 			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
 
 			if ($usuario){
-				$id_paciente = $request->getParam("id_paciente");
-		        $paciente = $db->select_single_to_array("pacientes_simplificada",
-		                                            "*",
-		                                            "
-		                                            WHERE id_paciente=".$id_paciente, 
-		                                            null);
+				$sistema = $request->getParam("sistema");
+				if($sistema == 'ibranutro'){
+					$id_admissao = $request->getParam("id_admissao");
+					$paciente = $db->select_single_to_array("pacientes_simplificada",
+														"*",
+														"
+														WHERE id_admissao=".$id_admissao, 
+														null);
+				}
+				if($sistema == 'EN'){
+					$id_paciente = $request->getParam("id_paciente");
+					$paciente = $db->select_single_to_array("pacientes_simplificada",
+														"*",
+														"
+														WHERE id_paciente=".$id_paciente, 
+														null);
+				}
 
 		        $data = $paciente;
 			}
@@ -5049,7 +5072,7 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
-	$app->post("/paciente_getDadoEN", function (Request $request, Response $response) {
+	$app->post("/paciente_getDadoIbranutro", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
@@ -5060,12 +5083,32 @@ $app->group("", function () use ($app) {
 			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
 
 			if ($usuario){
-				$id_paciente = $request->getParam("id_paciente");
-		        $paciente = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional",
+				$sistema = $request->getParam("sistema");
+				if($sistema == 'EN'){
+					$id_paciente = $request->getParam("id_paciente");
+		        	$paciente = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional",
 		                                            "*",
 		                                            "
 		                                            WHERE id_paciente=".$id_paciente, 
 		                                            null);
+				}
+				if($sistema == 'ibranutro'){
+					$id_admissao = $request->getParam("id_admissao");
+		        	$paciente_admissao = $db_ibranutro->select_single_to_array("tb_admissao",
+		                                            "*",
+		                                            "
+		                                            WHERE id_admissao=".$id_admissao, 
+		                                            null);
+
+					$paciente = $db_ibranutro->select_single_to_array("tb_paciente",
+		                                            "*",
+		                                            "
+		                                            WHERE id_paciente=".$paciente_admissao['id_paciente'], 
+		                                            null);
+
+					$paciente['nu_atendimento'] = $paciente_admissao['nu_atendimento'];
+					$paciente['id_hospital'] = $paciente_admissao['id_hospital'];
+				}
 
 		        $data = $paciente;
 			}
@@ -8481,11 +8524,17 @@ $app->group("", function () use ($app) {
 				// 				':data_criacao' => date("Y-m-d H:i:s") );
 				// $usuario = $db->insert("usuarios", $bind);
 
+				$sistema = 'EN';
+				if($dados['id_paciente'] == ''){
+					$dados['id_paciente'] = null;
+					$sistema = 'cadastrado';
+				}
 				$bind = array(	':id_prescritor' => $id_prescritor,
 								':nome' => $dados["nome"],
 								':peso' => $dados["peso"],
 								':data_nascimento' => date2sql($dados["data_nascimento"]),  
-								':id_paciente' => $dados["id_paciente"],       
+								':id_paciente' => $dados["id_paciente"],    
+								':sistema' => $sistema,
 								':data_criacao' => date("Y-m-d H:i:s"));
 				$retorno = $db->insert("pacientes_simplificada", $bind);
 				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
@@ -8537,25 +8586,71 @@ $app->group("", function () use ($app) {
 				// 				':status' => 0,                     
 				// 				':data_criacao' => date("Y-m-d H:i:s") );
 				// $usuario = $db->insert("usuarios", $bind);
-				if($dados['id_paciente'] == ''){
-					$dados['id_paciente'] = null;
+				if(isset($dados['sistema'])){
+					$sistema = $dados['sistema'];
+					if($sistema == 'ibranutro'){
+						if($dados['id_paciente'] == ''){
+							$dados['id_paciente'] = null;
+						}
+		
+						$bind = array(	':id_prescritor' => $id_prescritor,
+										':nome' => $dados["nome"],
+										':telefone' => $dados["telefone"],
+										':hospital' => $dados["hospital"],
+										':atendimento' => $dados["atendimento"],
+										':data_nascimento' => date2sql($dados["data_nascimento"]),    
+										':id_admissao' => $dados["id_admissao"],
+										':sistema' => $sistema,
+										':data_criacao' => date("Y-m-d H:i:s"));
+						$retorno = $db->insert("pacientes_suplemento", $bind);
+						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+		
+						//retornar para null
+						$_SESSION['paciente_redirect']['id_paciente'] = null;
+		
+						$data = $retorno;
+					}
+					if($sistema == 'EN'){
+						if($dados['id_paciente'] == ''){
+							$dados['id_paciente'] = null;
+						}
+		
+						$bind = array(	':id_prescritor' => $id_prescritor,
+										':nome' => $dados["nome"],
+										':telefone' => $dados["telefone"],
+										':hospital' => $dados["hospital"],
+										':atendimento' => $dados["atendimento"],
+										':data_nascimento' => date2sql($dados["data_nascimento"]),    
+										':id_paciente' => $dados["id_paciente"],
+										':sistema' => $sistema,
+										':data_criacao' => date("Y-m-d H:i:s"));
+						$retorno = $db->insert("pacientes_suplemento", $bind);
+						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+		
+						//retornar para null
+						$_SESSION['paciente_redirect']['id_paciente'] = null;
+		
+						$data = $retorno;
+					}
+				}else{
+					$bind = array(	':id_prescritor' => $id_prescritor,
+									':nome' => $dados["nome"],
+									':telefone' => $dados["telefone"],
+									':hospital' => $dados["hospital"],
+									':atendimento' => $dados["atendimento"],
+									':data_nascimento' => date2sql($dados["data_nascimento"]), 
+									':sistema' => 'cadastrado',  
+									':data_criacao' => date("Y-m-d H:i:s"));
+									$retorno = $db->insert("pacientes_suplemento", $bind);
+					$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+
+					//retornar para null
+					$_SESSION['paciente_redirect']['id_paciente'] = null;
+
+					$data = $retorno;
 				}
-
-				$bind = array(	':id_prescritor' => $id_prescritor,
-								':nome' => $dados["nome"],
-								':telefone' => $dados["telefone"],
-								':hospital' => $dados["hospital"],
-								':atendimento' => $dados["atendimento"],
-								':data_nascimento' => date2sql($dados["data_nascimento"]),    
-								':id_paciente' => $dados["id_paciente"],
-								':data_criacao' => date("Y-m-d H:i:s"));
-				$retorno = $db->insert("pacientes_suplemento", $bind);
-				$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
-
-				//retornar para null
-				$_SESSION['paciente_redirect']['id_paciente'] = null;
-
-		        $data = $retorno;
+				
+				
 			}
 			else{
 				$data["status"] = "Erro: Token de autenticação é inválido.";	
