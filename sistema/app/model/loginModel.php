@@ -60,6 +60,12 @@ class LoginModel extends Model {
                             "sistema" => $sistema));
                             $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_admissao' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
                         }
+                        if($tipo == 'simplificada'){
+                            $paciente = httpPostAuth("paciente_getDadoSimplificada", array( "token" => $_SESSION['token'],
+                            "id_admissao" => $id_paciente,
+                            "sistema" => $sistema));
+                            $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_admissao' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
+                        }
                         
                     }else{
                         if($id_paciente != null){
