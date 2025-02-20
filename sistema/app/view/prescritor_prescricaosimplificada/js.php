@@ -578,8 +578,10 @@ function necessidades_calorias_total(_this, _event){
     }else{
         _formula_total = 0;
     }
+    proteina_kg = _formula_total / parseFloat($("#peso").val());
+
     $("#kcal_valor").val(numberFormatPrecision((_formula_total), 0));
-    _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+_formula_valor+" kcal/kg)";
+    _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(proteina_kg, 0)+" kcal/kg)";
     // $("#kcal_valor").val(_formula_valor);
     $("#presc_kcal").html(_formula_valor);
 }
@@ -616,8 +618,6 @@ function necessidades_proteinas_total(_this, _event){
             _formula_total = 0;
         }
         proteina_kg = _formula_total / parseFloat($("#peso").val());
-        console.log(proteina_kg);
-        console.log(_formula_total);
         $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
         _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
         // $("#ptn_valor").val(_formula_valor);
@@ -674,8 +674,10 @@ function necessidades_calorias_total_atualizar(_this, _event){
     }else{
         _formula_total = 0;
     }
+    proteina_kg = _formula_total / parseFloat($("#peso").val());
+
     $("#kcal_valor").val(numberFormatPrecision((_formula_total), 0));
-    _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+_formula_valor+" kcal/kg)";
+    _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(proteina_kg)+" kcal/kg)";
     // $("#kcal_valor").val(_formula_total);
     $("#presc_kcal").html(_formula_valor);
 }
@@ -716,8 +718,6 @@ function necessidades_proteinas_total_atualizar(_this, _event){
         proteina_kg = _formula_total / parseFloat($("#peso").val());
 
         $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
-        console.log(proteina_kg);
-        console.log(_formula_total);
         _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
         // $("#ptn_valor").val(_formula_valor);
         $("#presc_ptn").html(_formula_valor);
