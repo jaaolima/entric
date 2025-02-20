@@ -1,6 +1,11 @@
 <?php
-    $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
-    $_SESSION['paciente_redirect']['id_paciente'] = null;
+    if($_SESSION['paciente_redirect']['sistema'] == 'EN'){
+        $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
+        $_SESSION['paciente_redirect']['id_paciente'] = null;
+        $_SESSION['paciente_redirect']['sistema'] = null;
+    }else{
+        $id_paciente_redirecionado = null;
+    }
 
     $ds_nome = '';
     $ds_hospital = '';
