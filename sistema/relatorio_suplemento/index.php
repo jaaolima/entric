@@ -140,16 +140,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					position: relative !important;
 				}
 
-				.page img {
+				.page .background {
 					position: absolute !important;
 				}
 
-				.page img:first-child {
+				.page .background:first-child {
 					left: 2cm !important;
 					width: 150px !important;
 				}
 
-				.page img:last-child {
+				.page .background:last-child {
 					bottom: 1cm !important;
 					right: 2px !important;
 				}
@@ -207,8 +207,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
-			<img style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
-			<img style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			
 			<p class="text-center linha titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
