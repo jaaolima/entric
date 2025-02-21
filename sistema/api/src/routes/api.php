@@ -7525,6 +7525,7 @@ $app->group("", function () use ($app) {
 		                                ':rel_historia' => (isset($dados['rel_historia'])?true:null),
 		                                ':rel_avaliacao' => (isset($dados['rel_avaliacao'])?true:null),
 		                                ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
+										':rel_prescricao' => (isset($dados['rel_prescricao'])?true:null),
 		                                ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                                ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
 		                                ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
@@ -7547,6 +7548,7 @@ $app->group("", function () use ($app) {
 		                                    ':rel_historia' => (isset($dados['rel_historia'])?true:null),
 		                                    ':rel_avaliacao' => (isset($dados['rel_avaliacao'])?true:null),
 		                                    ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
+											':rel_prescricao' => (isset($dados['rel_prescricao'])?true:null),
 		                                    ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                                    ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
 		                                    ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
