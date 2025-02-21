@@ -145,12 +145,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				}
 
 				.page .background:first-child {
-					left: 2cm !important;
+					left: 0cm !important;
+					top: 0cm !important;
 					width: 150px !important;
 				}
 
 				.page .background:last-child {
-					bottom: 1cm !important;
+					bottom: 0cm !important;
 					right: 2px !important;
 				}
 			}
