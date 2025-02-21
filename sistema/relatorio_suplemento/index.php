@@ -137,6 +137,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			@media print {
 				.page {
+					margin-top: 0px;
 					position: relative !important;
 				}
 
@@ -145,8 +146,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				}
 
 				.page .background:first-child {
-					left: 0cm !important;
-					top: 0cm !important;
+					left: 2cm !important;
+					top: -7cm !important;
 					width: 150px !important;
 				}
 
