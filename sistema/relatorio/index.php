@@ -349,9 +349,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<?php if ($relatorio['rel_prescricao']<>""){ ?>
 				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções</p>
-				<?php 
-				if ((!$p_header) and (!$p_footer)){
-				?>
 					<?php 
 					// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 					$landscape = false;
@@ -926,13 +923,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$landscape = true;
 					}
 					?>
-				<?php
-				}
-				?>
+
 			<?php } ?>
-
-
-
 
 			<?php if ((trim($relatorio['rel_observacoes'])<>"") and (strlen($relatorio['rel_observacoes']) > 3)){ ?>
 			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> OBSERVAÇÕES</p>
@@ -1017,10 +1009,221 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php } ?>	
 
 
-				
 		<?php 
-		if ((!$p_header) and (!$p_footer)){
+		if ($p_footer) {
+		?>	
+			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
+		<?php
+		}
 		?>
+
+
+		<?php 
+		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
+		?>	
+
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
+			
+			<?php 
+			if ($relatorio['calculo_apres_fechado'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong>SISTEMA FECHADO</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['cuidados'] = $config['cuidados'];
+				$relatorio['preparo'] = $config['preparo'];
+				?>
+				<p><strong>Higienização para Manipulação</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['cuidados']);?></p>
+
+
+				<p><strong>Preparo e Instalação da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<?php
+			}
+			?>
+
+			<?php 
+			if ($relatorio['calculo_apres_aberto_liquido'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['cuidados'] = $config['cuidados'];
+				$relatorio['preparo'] = $config['preparo'];
+				?>
+				<p><strong>Higienização para Manipulação</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['cuidados']);?></p>
+
+
+				<p><strong>Preparo e Instalação da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<?php
+			}
+			?>
+
+			<?php 
+			if ($relatorio['calculo_apres_aberto_po'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong>SISTEMA ABERTO (PÓ)</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto_po'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['cuidados'] = $config['cuidados'];
+				$relatorio['preparo'] = $config['preparo'];
+				?>
+				<p><strong>Higienização para Manipulação</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['cuidados']);?></p>
+
+
+				<p><strong>Preparo e Instalação da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<?php
+			}
+			?>
+
+
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONTATOS DO PRESCRITOR</p>
+			<p>
+				<?php 
+				$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id=".$relatorio['id_prescritor'], null);
+				if ($prescritor){
+					echo '<p style="text-align: left;">';
+						if ($prescritor['profissional'] == "Nutricionista"){
+							echo '<strong>'.$prescritor['nome']."</strong><br>";
+							if (($prescritor['regiao_crn']<>"") and ($prescritor['numero_crn'])) echo $prescritor['regiao_crn']." - ".$prescritor['numero_crn'];
+						}else{
+							echo '<strong>'.$prescritor['nome']."</strong><br>";
+							if (($prescritor['regiao_crn']<>"") and ($prescritor['numero_crn']))  echo $prescritor['regiao_crm']." - ".$prescritor['numero_crm'];
+						}
+						
+
+						if (trim($prescritor['cidade']) <> "") echo "<br>".$prescritor['cidade']." ".$prescritor['uf'];
+						
+						if ($prescritor['telefone'] <> ""){
+							$telefone = json_decode($prescritor['telefone'], true);
+							$telefone_disp = json_decode($prescritor['telefone_disp'], true);
+							$telefone_t = false;
+							foreach ($telefone as $k => $v) {
+								if (isset($telefone_disp[$k])){
+									if ($telefone_disp[$k] == "0"){
+										if (!$telefone_t){
+											echo '<br><strong>Telefone:</strong><br>';
+											$telefone_t = true;
+										}
+										echo $v."<br>";
+									}
+								}
+							}
+						}
+
+						if ($prescritor["email_disp"] == "0"){
+							echo '<strong>E-mail:</strong><br>';
+							echo $prescritor["email"]."<br>";
+						}
+
+					echo '</p>';
+				}
+				?>
+			</p>
+
+
+			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> PONTOS DE VENDA</p>
+			<p>
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody>
+					<tr>
+						<td style="width:  50%; border-right: 1px solid #8fcfe5; text-align: center;">
+							<?php 
+							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
+							if ($danone){
+								//echo "<p><strong>PRINCIPAL</strong></p>";
+								for ($i = 0; $i < count($danone); $i++) {
+									echo '<p style="text-align: left;font-size: 18px;">';
+										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
+										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+									echo '</p>';
+								}
+							}
+							?>
+						</td>
+						<td style="width:  50%; border-left: 0px solid #8fcfe5; text-align: center;">
+							<?php 
+							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
+							if ($danone){
+								//echo "<p><strong>OUTROS</strong></p>";
+								for ($i = 0; $i < count($danone); $i++) {
+									echo '<p style="text-align: left; padding-left: 20px;">';									
+										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
+										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+									echo '</p>';
+								}
+							}
+							?>
+							
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</p>
+
+
+			<?php 
+			if ($relatorio['codigo']<>""){
+			?>
+				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> FINAL DO RELATÓRIO</p>
+				<p>
+				<table style="width:100%">
+					<thead>
+						<tr>
+							<td style="width:20%">
+								<img src="imagem/qrcode-sistema.png" width="100%" border="0" />
+							</td>
+							<td style="width:5%"></td>
+							<td style="width:75%">
+								<p>Scaneie ao qrcode ao lado com a camera do celular para:</p>
+								<p>
+								- Reimprimir orientação de alta;<br>
+								- Acessar vídeos instrutivos;<br>
+								- Consultar pontos de vendas de dieta;</p>
+							</td>
+						</tr>
+					</thead>
+				</table>
+				</p>
+			<?php 
+			}
+			?>
+
+			<?php 
+			if ((!$p_header) and (!$p_footer)){
+			?>
 				<?php 
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
@@ -1045,7 +1248,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 					?>				
 					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> Informações Nutricionais Complementares</p>
 
 						<p style="padding-top: 30px;">
 							<strong>SISTEMA FECHADO</strong>
@@ -1705,220 +1908,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				}
 				?>
-		<?php
-		}
-		?>
-
-
-		<?php 
-		if ($p_footer) {
-		?>	
-			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
-		<?php
-		}
-		?>
-
-
-		<?php 
-		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
-		?>	
-
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
-			
-			<?php 
-			if ($relatorio['calculo_apres_fechado'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA FECHADO</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-			<?php 
-			if ($relatorio['calculo_apres_aberto_liquido'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-			<?php 
-			if ($relatorio['calculo_apres_aberto_po'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA ABERTO (PÓ)</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto_po'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONTATOS DO PRESCRITOR</p>
-			<p>
-				<?php 
-				$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id=".$relatorio['id_prescritor'], null);
-				if ($prescritor){
-					echo '<p style="text-align: left;">';
-						if ($prescritor['profissional'] == "Nutricionista"){
-							echo '<strong>'.$prescritor['nome']."</strong><br>";
-							if (($prescritor['regiao_crn']<>"") and ($prescritor['numero_crn'])) echo $prescritor['regiao_crn']." - ".$prescritor['numero_crn'];
-						}else{
-							echo '<strong>'.$prescritor['nome']."</strong><br>";
-							if (($prescritor['regiao_crn']<>"") and ($prescritor['numero_crn']))  echo $prescritor['regiao_crm']." - ".$prescritor['numero_crm'];
-						}
-						
-
-						if (trim($prescritor['cidade']) <> "") echo "<br>".$prescritor['cidade']." ".$prescritor['uf'];
-						
-						if ($prescritor['telefone'] <> ""){
-							$telefone = json_decode($prescritor['telefone'], true);
-							$telefone_disp = json_decode($prescritor['telefone_disp'], true);
-							$telefone_t = false;
-							foreach ($telefone as $k => $v) {
-								if (isset($telefone_disp[$k])){
-									if ($telefone_disp[$k] == "0"){
-										if (!$telefone_t){
-											echo '<br><strong>Telefone:</strong><br>';
-											$telefone_t = true;
-										}
-										echo $v."<br>";
-									}
-								}
-							}
-						}
-
-						if ($prescritor["email_disp"] == "0"){
-							echo '<strong>E-mail:</strong><br>';
-							echo $prescritor["email"]."<br>";
-						}
-
-					echo '</p>';
-				}
-				?>
-			</p>
-
-
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> PONTOS DE VENDA</p>
-			<p>
-				<table width="100%" cellspacing="0" cellpadding="0">
-					<tbody>
-					<tr>
-						<td style="width:  50%; border-right: 1px solid #8fcfe5; text-align: center;">
-							<?php 
-							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
-							if ($danone){
-								//echo "<p><strong>PRINCIPAL</strong></p>";
-								for ($i = 0; $i < count($danone); $i++) {
-									echo '<p style="text-align: left;font-size: 18px;">';
-										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
-										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-									echo '</p>';
-								}
-							}
-							?>
-						</td>
-						<td style="width:  50%; border-left: 0px solid #8fcfe5; text-align: center;">
-							<?php 
-							$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
-							if ($danone){
-								//echo "<p><strong>OUTROS</strong></p>";
-								for ($i = 0; $i < count($danone); $i++) {
-									echo '<p style="text-align: left; padding-left: 20px;">';									
-										echo '<strong>'.$danone[$i]['distribuidor']."</strong><br>".$danone[$i]['fabricante'];
-										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-									echo '</p>';
-								}
-							}
-							?>
-							
-						</td>
-					</tr>
-					</tbody>
-				</table>
-			</p>
-
-
-			<?php 
-			if ($relatorio['codigo']<>""){
-			?>
-				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> FINAL DO RELATÓRIO</p>
-				<p>
-				<table style="width:100%">
-					<thead>
-						<tr>
-							<td style="width:20%">
-								<img src="imagem/qrcode-sistema.png" width="100%" border="0" />
-							</td>
-							<td style="width:5%"></td>
-							<td style="width:75%">
-								<p>Scaneie ao qrcode ao lado com a camera do celular para:</p>
-								<p>
-								- Reimprimir orientação de alta;<br>
-								- Acessar vídeos instrutivos;<br>
-								- Consultar pontos de vendas de dieta;</p>
-							</td>
-						</tr>
-					</thead>
-				</table>
-				</p>
-			<?php 
+			<?php
 			}
 			?>
 

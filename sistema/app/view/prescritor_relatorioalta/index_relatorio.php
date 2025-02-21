@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group col-sm-6 text-center mb-3">
                         <div class="form-radio entric_radio">
-                            <label for="rel_prescricao" class="form-check-label check-green">PRESCRIÇÃO</label>
+                            <label for="rel_prescricao" class="form-check-label check-green">PRESCRIÇÃO NUTRICIONAL</label>
                         </div>
                     </div>
                     <div class="form-group col-sm-1 mb-3"></div>
