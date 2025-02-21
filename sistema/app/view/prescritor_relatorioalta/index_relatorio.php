@@ -100,13 +100,13 @@
 
                     <div class="form-group col-sm-2 mb-3">
                         <div class="form-check entric_radio pl-0 text-center">
-                            <input id="rel_calculo" name="rel_calculo" value="Cálculo de Terapia Nutricional" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
-                            <label for="rel_calculo" class="form-check-label check-green"></label>
+                            <input id="rel_prescricao" name="rel_prescricao" value="Prescricao" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
+                            <label for="rel_prescricao" class="form-check-label check-green"></label>
                         </div>
                     </div>
                     <div class="form-group col-sm-6 text-center mb-3">
                         <div class="form-radio entric_radio">
-                            <label for="rel_calculo" class="form-check-label check-green">CÁLCULO DE TERAPIA NUTRICIONAL</label>
+                            <label for="rel_prescricao" class="form-check-label check-green">PRESCRIÇÃO</label>
                         </div>
                     </div>
                     <div class="form-group col-sm-1 mb-3"></div>
@@ -143,6 +143,24 @@
                     <div class="form-group col-sm-6 text-center mb-3">
                         <div class="form-radio entric_radio">
                             <label for="rel_distribuidores" class="form-check-label check-green">DISTRIBUIDORES</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-1 mb-3"></div>
+                </div>
+                
+                <div class="row entric_group_radio border-0 mt-4 mb-2">
+
+
+
+                    <div class="form-group col-sm-2 mb-3">
+                        <div class="form-check entric_radio pl-0 text-center">
+                            <input id="rel_calculo" name="rel_calculo" value="Cálculo de Terapia Nutricional" class="form-check-input styled-checkbox" type="checkbox">
+                            <label for="rel_calculo" class="form-check-label check-green"></label>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6 text-center mb-3">
+                        <div class="form-radio entric_radio">
+                            <label for="rel_calculo" class="form-check-label check-green">INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</label>
                         </div>
                     </div>
                     <div class="form-group col-sm-1 mb-3"></div>

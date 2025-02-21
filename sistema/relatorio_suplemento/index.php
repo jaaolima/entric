@@ -135,6 +135,25 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			td, th {
 				page-break-inside: avoid; /* Evitar quebra dentro de células */
 			}
+			@media print {
+				.page {
+					position: relative !important;
+				}
+
+				.page img {
+					position: absolute !important;
+				}
+
+				.page img:first-child {
+					left: 2cm !important;
+					width: 150px !important;
+				}
+
+				.page img:last-child {
+					bottom: 1cm !important;
+					right: 2px !important;
+				}
+			}
 
 			/* Garantir margens adequadas para impressão */
 
@@ -217,7 +236,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
-					<img src="imagem/qrcode.png" style="display:inline-block;" width="60" alt="">
+					<img src="imagem/QRCode_via_oral.png" style="display:inline-block;" width="60" alt="">
 				</div>
 			</div>
 			
