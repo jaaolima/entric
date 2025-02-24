@@ -97,7 +97,7 @@ class DUPX_Bootstrap
 	const VERSION			 = '1.4.3';
 
 	public $hasZipArchive     = false;
-	public $hasShellExecUnzip = false;
+	public $hasShellExecUnzip = false; 
 	public $mainInstallerURL;
 	public $installerContentsPath;
 	public $installerExtractPath;
