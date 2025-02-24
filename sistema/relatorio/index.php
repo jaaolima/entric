@@ -1404,6 +1404,35 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 							?>
 							</table>
+							<span class="modo_uso">
+								<?php							
+								if ($relatorio['fra_hidrahorario'] <> ""){
+									$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
+									foreach ($_horarios as $chave => $valor) {
+										$horarios[] = $valor;
+									}
+									$_horarios = "";
+									for ($i = 0; $i < count($horarios); $i++) {
+										if ($i == 0) $_horarios .= " às ";
+										else{
+											if (($i+1) == count($horarios))
+												$_horarios .= " e ";
+											else
+												$_horarios .= ", ";
+										}
+										$_horarios .= $horarios[$i]."h ";
+									}
+									$horarios = $_horarios;
+								}
+								?>
+								<br>
+								<strong>Modo de Uso:</strong> Instalar dieta às <?php echo $relatorio['fra_h_i_dieta'];?>. Após o término da primeira dieta, instalar a próxima (caso haja mais de uma dieta). Correr a dieta em <?php echo $relatorio['fra_h_inf_dieta'];?> h. Com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios;?>.
+								<?php 
+								if (trim($relatorio['fra_info_complementares']) <> ""){
+									echo $relatorio['fra_info_complementares'];
+								}
+								?>
+							</span>
 						</p>
 					</div>			
 					<?php
@@ -1874,14 +1903,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				}
 				?>
 
-
-				<?php
-				if ((!$p_produtos) and (!$p_header)){
-					if ($landscape){
-						echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
-					}
-				}
-				?>
 			<?php
 			}
 			?>
