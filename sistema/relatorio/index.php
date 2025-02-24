@@ -1404,35 +1404,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 							?>
 							</table>
-							<span class="modo_uso">
-								<?php							
-								if ($relatorio['fra_hidrahorario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
-									foreach ($_horarios as $chave => $valor) {
-										$horarios[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios[$i]."h ";
-									}
-									$horarios = $_horarios;
-								}
-								?>
-								<br>
-								<strong>Modo de Uso:</strong> Instalar dieta às <?php echo $relatorio['fra_h_i_dieta'];?>. Após o término da primeira dieta, instalar a próxima (caso haja mais de uma dieta). Correr a dieta em <?php echo $relatorio['fra_h_inf_dieta'];?> h. Com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios;?>.
-								<?php 
-								if (trim($relatorio['fra_info_complementares']) <> ""){
-									echo $relatorio['fra_info_complementares'];
-								}
-								?>
-							</span>
 						</p>
 					</div>			
 					<?php
@@ -1611,59 +1582,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 							?>
 							</table>
-
-							<span class="modo_uso">
-								<?php
-								$horarios = "";
-								if ($relatorio['fra_dieta_horario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
-									$horarios = array();
-									foreach ($_horarios as $chave => $valor) {
-										$horarios[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios[$i];
-									}
-									$horarios = $_horarios;
-								}
-
-								$horarios_hidra = "";
-								if ($relatorio['fra_hidrahorario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
-									$horarios_hidra = array();
-									foreach ($_horarios as $chave => $valor) {
-										$horarios_hidra[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios_hidra); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios_hidra))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios_hidra[$i];
-									}
-									$horarios_hidra = $_horarios;
-								}
-								?>
-								<br>						
-								<strong>Modo de Uso:</strong> Fracionar a dieta de acordo com o volume por horário. Instalar a dieta <?php echo $relatorio['fra_fracionamento_dia'];?> vezes ao dia, <?php echo $horarios;?>. Correr cada dieta em <?php echo $relatorio['fra_qtas_horas'];?> horas com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios_hidra;?>.
-								<?php 
-								if (trim($relatorio['fra_info_complementares']) <> ""){
-									echo $relatorio['fra_info_complementares'];
-								}
-								?>
-							</span>
 						</p>
 					</div>
 					<?php
@@ -1843,59 +1761,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								?>
 							</tbody>
 							</table>
-
-							<span class="modo_uso">
-								<?php
-								$horarios = "";
-								if ($relatorio['fra_dieta_horario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
-									$horarios = array();
-									foreach ($_horarios as $chave => $valor) {
-										$horarios[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios[$i];
-									}
-									$horarios = $_horarios;
-								}
-
-								$horarios_hidra = "";
-								if ($relatorio['fra_hidrahorario'] <> ""){
-									$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
-									$horarios_hidra = array();
-									foreach ($_horarios as $chave => $valor) {
-										$horarios_hidra[] = $valor;
-									}
-									$_horarios = "";
-									for ($i = 0; $i < count($horarios_hidra); $i++) {
-										if ($i == 0) $_horarios .= " às ";
-										else{
-											if (($i+1) == count($horarios_hidra))
-												$_horarios .= " e ";
-											else
-												$_horarios .= ", ";
-										}
-										$_horarios .= $horarios_hidra[$i];
-									}
-									$horarios_hidra = $_horarios;
-								}
-								?>
-								<br>						
-								<strong>Modo de Uso:</strong> Diluir a quantidade por horário (gramas ou medida) em metade do volume e, após misturar bem, completar com água até chegar ao volume total por horário. Instalar dieta <?php echo $relatorio['fra_fracionamento_dia'];?> vezes ao dia, <?php echo $horarios;?>. Correr cada dieta em <?php echo $relatorio['fra_qtas_horas'];?> horas com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios_hidra;?>.
-								<?php 
-								if (trim($relatorio['fra_info_complementares']) <> ""){
-									echo $relatorio['fra_info_complementares'];
-								}
-								?>
-							</span>
 						</p>
 					</div>	
 					<?php 
