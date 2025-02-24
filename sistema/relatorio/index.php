@@ -1237,7 +1237,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			?>
 
-			<?php if ($relatorio['rel_necessidades']<>""){ ?>
+			<?php if ($relatorio['rel_calculo']<>""){ ?>
 
 			<?php 
 			if ((!$p_header) and (!$p_footer)){
@@ -1457,6 +1457,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 					}
 				}
+				var_dump(count($_produtos_nomes));
 				if ( ($relatorio['calculo_apres_aberto_liquido'] == 1) and (count($_produtos_nomes) > 0)){
 					if (!$landscape){
 						echo "</div>";
@@ -1695,6 +1696,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				}
 
+				var_dump(count($_produtos_nomes));
 				if (($relatorio['calculo_apres_aberto_po'] == 1) and (count($_produtos_nomes) > 0)) {
 					if (!$landscape){
 						echo "</div>";
