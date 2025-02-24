@@ -1457,7 +1457,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 					}
 				}
-				var_dump(count($_produtos_nomes));
+				echo count($_produtos_nomes);
 				if ( ($relatorio['calculo_apres_aberto_liquido'] == 1) and (count($_produtos_nomes) > 0)){
 					if (!$landscape){
 						echo "</div>";
@@ -1696,7 +1696,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				}
 
-				var_dump(count($_produtos_nomes));
+				echo count($_produtos_nomes);
 				if (($relatorio['calculo_apres_aberto_po'] == 1) and (count($_produtos_nomes) > 0)) {
 					if (!$landscape){
 						echo "</div>";
