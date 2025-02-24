@@ -56,7 +56,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item tabsec tabcalculo">
-                                        <a class="nav-link" data-toggle="tab" href="#calculo">Prescrição Nutricional
+                                        <a class="nav-link" data-toggle="tab" href="#calculo">Prescrição<br>Nutricional
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
                                             <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
                                         </a> 
