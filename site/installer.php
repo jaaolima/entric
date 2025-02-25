@@ -90,7 +90,7 @@ class DUPX_Bootstrap
 {
 	//@@ Params get dynamically swapped when package is built
 	const ARCHIVE_FILENAME	 = '20210916_entric_2fc0287e12790cbf6521_20210916163713_archive.zip';
-	const ARCHIVE_SIZE		 = '723315350';
+	const ARCHIVE_SIZE		 = '723315350'; 
 	const INSTALLER_DIR_NAME = 'dup-installer';
 	const PACKAGE_HASH		 = '2fc0287-16163713';
     const SECONDARY_PACKAGE_HASH = '16da12b-16163713';
