@@ -3742,38 +3742,24 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/paciente_videosalta_getDados", function (Request $request, Response $response) {
-		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
-		$result = JWTAuth::verifyToken($token);
+		// $token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		// $result = JWTAuth::verifyToken($token);
 		$data = array();
-		if ($result) {
-			$db = new Database();
-			$bind = array(':id'=> $result->header->id);
-			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+		$db = new Database();
+		$retorno = array();
 
-			if ($usuario){
-		    	$retorno = array();
-
-		        $relatorio = $db->select_to_array("videos",
-		                                            "*",
-		                                            "
-		                                            ORDER BY id ASC", 
-		                                            null);
-		        if ($relatorio){
-		            for($i = 0; $i < count($relatorio); $i++){
-		                $retorno[$relatorio[$i]['categoria']][] = $relatorio[$i];
-		            }
-		        }
-
-		        $data = $retorno;
+		$relatorio = $db->select_to_array("videos",
+											"*",
+											"
+											ORDER BY id ASC", 
+											null);
+		if ($relatorio){
+			for($i = 0; $i < count($relatorio); $i++){
+				$retorno[$relatorio[$i]['categoria']][] = $relatorio[$i];
 			}
-			else{
-				$data["status"] = "Erro: Token de autenticação é inválido.";	
-			}
-
-		} else {
-			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
+
+		$data = $retorno;
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
