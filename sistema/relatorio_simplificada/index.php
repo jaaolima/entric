@@ -157,7 +157,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					right: 2px !important;
 				}
 				.page-2{
-					padding-top: 100px !important;
+					padding-top: 50px !important;
 				}
 			}
 
