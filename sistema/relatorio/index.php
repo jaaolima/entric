@@ -65,7 +65,7 @@ if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
 $paciente = $db->select_single_to_array("pacientes", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
-
+$usuario = ['login' => "ibranutro"];
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
@@ -1157,28 +1157,56 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if ($danone){
 								echo '<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">';
 								for ($i = 0; $i < count($danone); $i++) {
-									echo '<div ">
-										<p style="text-align: center;font-size: 13px;">';
-										echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
-										if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-										if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-										if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-										if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-										echo "</p>
-										</div>";
-										echo "<div style='display:flex;'>
-												<div style='text-align:end;'>
-													<h5 style='color:#45cfb3;margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
-													<h5 style='color:#45cfb3;margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO</h5>
-													<h5 style='color:#45cfb3;margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
-												</div>
-												<div>
-													<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
-												</div>
+									if($usuario['login'] != 'ibranutro'){
+										if(in_array($danone[$i]['id'], ['1', '8', '24'])){
+												echo '<div ">
+												<p style="text-align: center;font-size: 13px;">';
+												echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
+												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+												if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+												if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+												if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+												echo "</p>
+												</div>";
+												echo "<div style='display:flex;'>
+														<div style='text-align:end;'>
+															<h5 class='titulo'style='margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
+															<h5 class='titulo'style='margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO</h5>
+															<h5 class='titulo'style='margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
+														</div>
+														<div>
+															<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
+														</div>
+													</div>";
+									
+											echo '</div>
+											</td>';
+										}
+									}
+									else{
+											echo '<div ">
+											<p style="text-align: center;font-size: 13px;">';
+											echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
+											if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+											if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+											if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+											if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+											echo "</p>
 											</div>";
-							
-									echo '</div>
-									</td>';
+											echo "<div style='display:flex;'>
+													<div style='text-align:end;'>
+														<h5 class='titulo'style='margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
+														<h5 class='titulo'style='margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO</h5>
+														<h5 class='titulo'style='margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
+													</div>
+													<div>
+														<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
+													</div>
+												</div>";
+								
+										echo '</div>
+										</td>';
+									}
 								}
 							}
 							?>
