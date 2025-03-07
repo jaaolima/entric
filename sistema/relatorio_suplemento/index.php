@@ -653,8 +653,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 			</p>
 			<?php if($usuario['login'] == "ibranutro") : ?>
-			<div style="display:flex;justify-content: end;padding-bottom:10px;">
+			<div style="display:flex;justify-content: end;">
 				<p style="color: #0092c5;">powered by</p>
+			</div>
+			<div style="display:flex;justify-content: end;padding-bottom:10px;">
 				<img src="imagem/logo.png" height="30px" alt="">
 			</div>
 			<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
