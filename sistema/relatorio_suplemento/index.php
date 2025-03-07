@@ -156,8 +156,17 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					bottom: 0cm !important;
 					right: 2px !important;
 				}
+				.print-footer {
+					position: static !important;
+					margin-top: 30px !important;
+				}
 			}
-
+			.print-footer {
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+				left: 10px;
+			}
 			/* Garantir margens adequadas para impressão */
 
 			<?php
@@ -689,7 +698,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					$telefone = '(11) 3093-2222';
 				}
 			?>
-			<p>
+			<div style="margin-bottom:30px;">
 				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 					<div style="width: 250px;border-top: 1px solid;">
 						<div style="margin-bottom:15px;">
@@ -704,9 +713,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<?php endif; ?>
 					</div>
 				</div>
-			</p>
+			</div>
 			<?php if($usuario['login'] == "ibranutro") : ?>
-			<div style="position:relative; bottom:0px;">
+			<div class="print-footer">
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
