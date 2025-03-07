@@ -160,13 +160,18 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					padding-top: 50px !important;
 				}
 				.print-footer {
-					position: fixed;
-					bottom: 0;
-					left: 0;
-					width: 100%;
+					position: absolute;
+					bottom: 10px;
+					right: 10px;
+					left: 10px;
 				}
 			}
-
+			.print-footer {
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+				left: 10px;
+			}
 
 			<?php
 			if (($p_produtos) or ($p_header) or ($p_footer)){
@@ -995,7 +1000,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</table>
 		</p>
 		<?php if($usuario['login'] == "ibranutro") : ?>
-			<div style="position:relative; bottom:0px;" class="print-footer">
+			<div class="print-footer">
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
@@ -1120,7 +1125,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 			</p>
 			<?php if($usuario['login'] == "ibranutro") : ?>
-			<div style="position:relative; bottom:0px;" class="print-footer">
+			<div class="print-footer">
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
