@@ -156,8 +156,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					bottom: 0cm !important;
 					right: 2px !important;
 				}
-				.subtitulo{
-					margin-top: 80px !important;
+				.page-2{
+					margin-top: 150px !important;
 				}
 			}
 
@@ -999,7 +999,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
-			<p class="text-left subtitutlo" style="margin-top:60px;">
+			<p class="text-left subtitutlo page-2" style="margin-top:60px;">
 			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
 			<?php 
