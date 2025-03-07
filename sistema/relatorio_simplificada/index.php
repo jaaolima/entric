@@ -159,6 +159,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				.page-2{
 					padding-top: 50px !important;
 				}
+				.print-footer {
+					position: static !important;
+					margin-top: 30px !important;
+				}
 			}
 			.print-footer {
 				position: absolute;
