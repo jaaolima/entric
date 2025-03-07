@@ -67,6 +67,7 @@ if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){
 $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
 $paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
+$usuario = ['login' => 'ibranutro'];
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
 if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
@@ -209,14 +210,19 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
+			<?php if($usuario['login'] == 'ibranutro') : ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+			<?php else: ?>
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php endif; ?>
 			
 			<p class="text-center linha titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> DADOS GERAIS</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> DADOS GERAIS</p>
 			<div style="display:flex;">
 				<div style="width:50%;">
 					<p><strong>Nome:</strong> <?php echo ucwords($paciente['nome']);?></p>
@@ -231,7 +237,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php } ?>
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
 					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
@@ -249,7 +256,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA</p>
 			<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?>.</p>
 			<?php 
 				if ($relatorio['fra_dieta_horario'] <> ""){
@@ -280,7 +288,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
-				<p class="text-left subtitutlo" style="margin:0px;"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções.</p>
+				<p class="text-left subtitutlo" style="margin:0px;">
+				<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções.</p>
 				<?php 
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
@@ -528,7 +537,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ONDE ENCONTRAR</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ONDE ENCONTRAR</p>
 			<p>
 				<table width="100%" cellspacing="0" cellpadding="0">
 					<tbody>
@@ -640,6 +650,18 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						</div>
 						<?php endif; ?>
 					</div>
+				</div>
+			</p>
+			<p style="justify-content: end;">
+				<img src="imagem/logo.png" height="80px" alt="">
+			</p>
+			<p style="background-color:darkgray;margin-top:7px;margin-bottom:7px;">
+				<div style="display: flex;margin-top: 50px;">
+					<p>www.ibranutro.com.br</p>
+				</div>
+				<div style="display: flex;margin-top: 50px;">
+					<p>SHCS CR 515 BI C Entrada 42 salas: 104, 107 e 109 - ENTRADA PELA Via</p>
+					<p>W2 Sul - Asa Sul, Brasília - DF, 70381-530</p>
 				</div>
 			</p>
 

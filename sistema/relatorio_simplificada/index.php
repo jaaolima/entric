@@ -65,7 +65,7 @@ if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
 $paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
-
+$usuario = ['login' => 'ibranutro'];
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
@@ -187,13 +187,18 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
 			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
-			<img style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
-			<img style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php if($usuario['login'] == 'ibranutro') : ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+			<?php else: ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php endif; ?>
 			<p class="text-center linha titulo" style="margin-top:30px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> DADOS GERAIS</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> DADOS GERAIS</p>
 			<div style="display:flex;">
 				<div style="width:50%;">
 					<p><strong>Paciente:</strong> <?php echo ucwords($paciente['nome']);?></p>
@@ -204,7 +209,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php } ?>
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> O QUE É A TERAPIA NUTRICIONAL?</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
 					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> É uma maneira de fornecer nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
@@ -221,7 +227,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA</p>
 			<?php
 			/*  Tipo de prescrição  MANUAL - acredito */
 			$margem_calorica_a = "-";
@@ -259,7 +266,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div><p><strong>Água:</strong> <?php echo $relatorio["fra_volume_ml"];?> ml/dia</p></div>
 			</div>
 		<?php } ?>	
-		<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções</p>
+		<p class="text-left subtitutlo">
+		<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções</p>
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
@@ -841,7 +849,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 
-		<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ONDE ENCONTRAR</p>
+		<p class="text-left subtitutlo">
+		<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ONDE ENCONTRAR</p>
 		<p>
 			<table width="100%" cellspacing="0" cellpadding="0">
 				<tbody>
@@ -910,7 +919,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
 			<img style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
-			<p class="text-left subtitutlo" style="margin-top:60px;"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
+			<p class="text-left subtitutlo" style="margin-top:60px;">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
 			<?php 
 			if ($relatorio['calculo_apres_fechado'] == 1){
