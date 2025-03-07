@@ -652,18 +652,20 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</div>
 				</div>
 			</p>
-			<p style="justify-content: end;">
-				<img src="imagem/logo.png" height="80px" alt="">
-			</p>
-			<p style="background-color:darkgray;margin-top:7px;margin-bottom:7px;">
-				<div style="display: flex;margin-top: 50px;">
+			<?php if($usuario['login'] == "ibranutro") : ?>
+			<div style="justify-content: end;">
+				<img src="imagem/logo.png" height="30px" alt="">
+			</div>
+			<div style="display:flex;background-color:darkgray;margin-top:7px;margin-bottom:7px;">
+				<div style="margin-top: 50px;">
 					<p>www.ibranutro.com.br</p>
 				</div>
-				<div style="display: flex;margin-top: 50px;">
+				<div style="margin-top: 50px;">
 					<p>SHCS CR 515 BI C Entrada 42 salas: 104, 107 e 109 - ENTRADA PELA Via</p>
 					<p>W2 Sul - Asa Sul, Brasília - DF, 70381-530</p>
 				</div>
-			</p>
+			</div>
+			<?php endif; ?>
 
 		<?php
 		}
