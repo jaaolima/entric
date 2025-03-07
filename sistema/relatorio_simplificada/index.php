@@ -160,7 +160,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					padding-top: 50px !important;
 				}
 				.print-footer {
-					position: absolute;
+					position: fixed !important;
 					bottom: 10px;
 					right: 10px;
 					left: 10px;
@@ -1108,7 +1108,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php
 			}
 			?>
-			<p>
+			<p style="margin-bottom:30px;">
 				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 					<div style="width: 250px;border-top: 1px solid;">
 						<div style="margin-bottom:15px;">
