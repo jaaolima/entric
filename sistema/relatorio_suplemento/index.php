@@ -566,7 +566,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							echo '<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">';
 							for ($i = 0; $i < count($danone); $i++) {
 								if($usuario['login'] == 'ibranutro' && $danone[$i]['uf'] == 'DF'){
-									if($danone[$i]['id'] == '1' || $danone[$i]['id'] == '8' || $danone[$i]['id'] == '24'){
+									if($danone[$i]['id'] == '1'){
 											echo '<div ">
 											<p style="text-align: center;font-size: 13px;">';
 											echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
@@ -583,7 +583,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 														<h5 class='titulo'style='margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
 													</div>
 													<div>
-														<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
+														<img src='imagem/qrcode-badare.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
 													</div>
 												</div>";
 								
