@@ -179,6 +179,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php
 			}
 			?>
+			<?php if($usuario['login'] == "ibranutro") : ?>
+				.col_azul{
+					background-color: #df7b1b82 !important;
+				}
+				.titulo{
+					color: #df7b1b;
+				}
+			<?php endif; ?>
 		</style>
 	</head>
 	<body class="document">
@@ -216,7 +224,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> É uma maneira de fornecer nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
-					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
+					<h4 class="titulo" style="margin:0px;">SAIBA MAIS!</h4>
 					<img src="imagem/qrcode_video.png" style="display:inline-block;" width="80" alt="">
 				</div>
 			</div>
@@ -960,8 +968,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>	
 		</div>
 		<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
-			<img style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
-			<img style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+		<?php if($usuario['login'] == 'ibranutro') : ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+			<?php else: ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php endif; ?>
 			<p class="text-left subtitutlo" style="margin-top:60px;">
 			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
