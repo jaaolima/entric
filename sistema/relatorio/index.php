@@ -1218,15 +1218,31 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if ($danone){
 									//echo "<p><strong>OUTROS</strong></p>";
 									for ($i = 0; $i < count($danone); $i++) {
-										echo '<div style="width:20%;margin:10px;">
-												<p style="text-align: left;">';									
-													echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
-													if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-													if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-													if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-													if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-												echo '</p>';
-										echo '</div>';
+										if($usuario['login'] == 'ibranutro' && $danone[$i]['uf'] == 'DF'){
+											if($danone[$i]['id'] == '1' || $danone[$i]['id'] == '8' || $danone[$i]['id'] == '24'){
+												echo '<div style="width:20%;margin:10px;">
+														<p style="text-align: left;">';									
+															echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
+															if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+															if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+															if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+															if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+														echo '</p>';
+												echo '</div>';
+											}
+										}
+										else{
+											echo '<div style="width:20%;margin:10px;">
+											<p style="text-align: left;">';									
+												echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
+												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+												if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+												if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+												if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+													echo '</p>';
+											echo '</div>';
+										}
+										
 									}
 									
 								}
