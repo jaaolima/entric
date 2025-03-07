@@ -157,7 +157,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					right: 2px !important;
 				}
 				.subtitulo{
-					margin-top: 70px;
+					margin-top: 80px !important;
 				}
 			}
 
