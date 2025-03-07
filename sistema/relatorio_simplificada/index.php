@@ -159,6 +159,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				.page-2{
 					padding-top: 50px !important;
 				}
+				.print-footer {
+					position: fixed;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+				}
 			}
 
 
@@ -988,6 +994,24 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</tbody>
 			</table>
 		</p>
+		<?php if($usuario['login'] == "ibranutro") : ?>
+			<div style="position:relative; bottom:0px;" class="print-footer">
+				<div style="display:flex;justify-content: end;">
+					<p style="color: #0092c5;font-size:9px;">powered by</p>
+				</div>
+				<div style="display:flex;justify-content: end;padding-bottom:10px;">
+					<img src="imagem/logo.png" height="30px" alt="">
+				</div>
+				<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
+					<div>
+						<p>www.ibranutro.com.br</p>
+					</div>
+					<div style="margin-left:200px;">
+						<p>SHCS CR 515 BI C Entrada 42 salas: 104, 107 e 109 - ENTRADA PELA Via W2 Sul - Asa Sul, Brasília - DF, 70381-530</p>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
 		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
@@ -1096,7 +1120,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 			</p>
 			<?php if($usuario['login'] == "ibranutro") : ?>
-			<div style="position:relative; bottom:0px;">
+			<div style="position:relative; bottom:0px;" class="print-footer">
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
