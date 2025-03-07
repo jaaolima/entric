@@ -202,6 +202,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php
 			}
 			?>
+			<?php if($usuario['login'] == "ibranutro") : ?>
+				.col_azul{
+					background-color: #df7b1b82 !important;
+				}
+				.titulo{
+					color: #df7b1b;
+				}
+			<?php endif; ?>
 		</style>
 	</head>
 	<body class="document">
@@ -244,7 +252,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
-					<h4 style="color:#45cfb3;margin:0px;">SAIBA MAIS!</h4>
+					<h4 class="titulo"style="margin:0px;">SAIBA MAIS!</h4>
 					<img src="imagem/QRCode_via_oral.png" style="display:inline-block;" width="80" alt="">
 				</div>
 			</div>
@@ -559,9 +567,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									</div>";
 									echo "<div style='display:flex;'>
 											<div style='text-align:end;'>
-												<h5 style='color:#45cfb3;margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
-												<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE</h5>
-												<h5 style='color:#45cfb3;margin:0px;'>E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
+												<h5 class='titulo'style='margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
+												<h5 class='titulo'style='margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO</h5>
+												<h5 class='titulo'style='margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
 											</div>
 											<div>
 												<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>

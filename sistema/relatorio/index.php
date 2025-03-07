@@ -1169,8 +1169,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										echo "<div style='display:flex;'>
 												<div style='text-align:end;'>
 													<h5 style='color:#45cfb3;margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
-													<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE</h5>
-													<h5 style='color:#45cfb3;margin:0px;'>E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
+													<h5 style='color:#45cfb3;margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO</h5>
+													<h5 style='color:#45cfb3;margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
 												</div>
 												<div>
 													<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>

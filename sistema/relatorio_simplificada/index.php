@@ -872,8 +872,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									echo "<div style='display:flex;'>
 											<div style='text-align:end;'>
 												<h5 style='color:#45cfb3;margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
-												<h5 style='color:#45cfb3;margin:0px;'>APONTE A CÂMERA PARA O QR CODE</h5>
-												<h5 style='color:#45cfb3;margin:0px;'>E RECEBA NOSSO ATENDIMENTO PERSONALIZADO:</h5>
+												<h5 style='color:#45cfb3;margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO</h5>
+												<h5 style='color:#45cfb3;margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
 											</div>
 											<div>
 												<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
@@ -999,6 +999,24 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php
 			}
 			?>
+			<?php if($usuario['login'] == "ibranutro") : ?>
+			<div style="position:relative; bottom:0px;">
+				<div style="display:flex;justify-content: end;">
+					<p style="color: #0092c5;font-size:9px;">powered by</p>
+				</div>
+				<div style="display:flex;justify-content: end;padding-bottom:10px;">
+					<img src="imagem/logo.png" height="30px" alt="">
+				</div>
+				<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
+					<div>
+						<p>www.ibranutro.com.br</p>
+					</div>
+					<div style="margin-left:200px;">
+						<p>SHCS CR 515 BI C Entrada 42 salas: 104, 107 e 109 - ENTRADA PELA Via W2 Sul - Asa Sul, Brasília - DF, 70381-530</p>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
 
 		</div>
 		<?php
