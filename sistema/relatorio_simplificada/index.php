@@ -997,6 +997,22 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</tbody>
 			</table>
 		</p>
+		<div style="margin-bottom:30px;">
+			<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
+				<div style="width: 250px;border-top: 1px solid;">
+					<div style="margin-bottom:15px;">
+						<p>Nutricionista</p>
+						<p style="margin:0px;">(Assinatura e Carimbo)</p>
+					</div>
+					<?php if($nome_hospital != '') : ?>
+					<div>
+						<strong>IBRANUTRO</strong>
+						<p style="margin:0px;"><?php echo $nome_hospital; ?> - Telefone: <?php echo $telefone; ?></p>
+					</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
 		<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
 				<div style="display:flex;justify-content: end;">
@@ -1106,22 +1122,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php
 			}
 			?>
-			<div style="margin-bottom:30px;">
-				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
-					<div style="width: 250px;border-top: 1px solid;">
-						<div style="margin-bottom:15px;">
-							<p>Nutricionista</p>
-							<p style="margin:0px;">(Assinatura e Carimbo)</p>
-						</div>
-						<?php if($nome_hospital != '') : ?>
-						<div>
-							<strong>IBRANUTRO</strong>
-							<p style="margin:0px;"><?php echo $nome_hospital; ?> - Telefone: <?php echo $telefone; ?></p>
-						</div>
-						<?php endif; ?>
-					</div>
-				</div>
-						</div>
+			
 			<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
 				<div style="display:flex;justify-content: end;">
