@@ -136,6 +136,28 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				page-break-inside: avoid; /* Evitar quebra dentro de células */
 			}
 
+			@media print {
+				.page {
+					margin-top: 0px;
+					position: relative !important;
+				}
+
+				.page .background {
+					position: absolute !important;
+				}
+
+				.page .background:first-child {
+					left: 1cm !important;
+					top: -1cm !important;
+					width: 150px !important;
+				}
+
+				.page .background:last-child {
+					bottom: 0cm !important;
+					right: 2px !important;
+				}
+			}
+
 
 			<?php
 			if (($p_produtos) or ($p_header) or ($p_footer)){
@@ -1054,6 +1076,22 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php
 			}
 			?>
+			<p>
+				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
+					<div style="width: 250px;border-top: 1px solid;">
+						<div style="margin-bottom:15px;">
+							<p>Nutricionista</p>
+							<p style="margin:0px;">(Assinatura e Carimbo)</p>
+						</div>
+						<?php if($nome_hospital != '') : ?>
+						<div>
+							<strong>IBRANUTRO</strong>
+							<p style="margin:0px;"><?php echo $nome_hospital; ?> - Telefone: <?php echo $telefone; ?></p>
+						</div>
+						<?php endif; ?>
+					</div>
+				</div>
+			</p>
 			<?php if($usuario['login'] == "ibranutro") : ?>
 			<div style="position:relative; bottom:0px;">
 				<div style="display:flex;justify-content: end;">
