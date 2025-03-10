@@ -706,10 +706,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<p style="margin:0px;">(Assinatura e Carimbo)</p>
 						</div>
 						<?php if($nome_hospital != '') : ?>
-						<div>
+						<!-- <div>
 							<strong>IBRANUTRO</strong>
 							<p style="margin:0px;"><?php echo $nome_hospital; ?> - Telefone: <?php echo $telefone; ?></p>
-						</div>
+						</div> -->
 						<?php endif; ?>
 					</div>
 				</div>

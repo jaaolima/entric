@@ -1476,7 +1476,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 					?>				
 					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>"  style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 					
 						<p style="padding-top: 30px;">
 							<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
@@ -1659,7 +1659,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 					?>
 					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> SUGESTÃO DE PRODUTOS</p>
+						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 
 						<p style="padding-top: 30px;">
 							<strong>SISTEMA ABERTO (PÓ)</strong>
