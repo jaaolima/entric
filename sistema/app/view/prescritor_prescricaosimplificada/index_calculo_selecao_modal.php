@@ -44,6 +44,7 @@
                     </table>
                 </form>
             </div>
+            <input type="hidden" id="tipo_login" value="<?php echo $_SESSION['login']; ?>">
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-warning" id="salvar_selecao">Salvar Alterações</button>

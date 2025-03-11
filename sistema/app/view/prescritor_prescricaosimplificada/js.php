@@ -1073,16 +1073,30 @@ function fc_collapsecheckbox( $apres_enteral_num){
     }
     else{
         $("#tbody"+$apres_enteral_num).addClass("checked");
-        $("#tbody"+$apres_enteral_num+" .check_dieta").slice(0, 3).each(function() {
-            $(this).prop( "checked", true);
-            let diluicao_id = $(this).attr('rel');
-
-            $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+        if($("#tipo_login").val() == 'ibranutro'){
+            $("#tbody"+$apres_enteral_num+" .check_dieta").slice(0, 3).each(function() {
                 $(this).prop( "checked", true);
-                $(this).attr( "disabled", false);
-                $(this).removeClass( "check_apagado");
+                let diluicao_id = $(this).attr('rel');
+
+                $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                    $(this).prop( "checked", true);
+                    $(this).attr( "disabled", false);
+                    $(this).removeClass( "check_apagado");
+                });
             });
-        });
+        }else{
+            $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
+                $(this).prop( "checked", true);
+                let diluicao_id = $(this).attr('rel');
+
+                $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                    $(this).prop( "checked", true);
+                    $(this).attr( "disabled", false);
+                    $(this).removeClass( "check_apagado");
+                });
+            });
+        }
+       
     }
 }
 
