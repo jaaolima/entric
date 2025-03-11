@@ -1031,20 +1031,31 @@ function salvar_calculo_fracionamento(_this){
     });
 }
 
-function check_dieta(_this, diluicao_id){
-    if ($(_this).is(':checked')){
-        $('.diluicao'+diluicao_id).each(function(){ 
-            $(this).prop( "checked", true );
-            $(this).attr( "disabled", false);
-            $(this).removeClass( "check_apagado");
+function check_dieta(_this, diluicao_id) {
+    let tbody = $(_this).closest("div[id^='tbody']"); // Obtém o tbody correspondente
+    let checkboxes = tbody.find('.diluicao' + diluicao_id); // Checkboxes dentro do tbody específico
+
+    if ($(_this).is(':checked')) {
+        checkboxes.each(function() { 
+            $(this).prop("checked", true);
+            $(this).attr("disabled", false);
+            $(this).removeClass("check_apagado");
+        });
+    } else {
+        checkboxes.each(function() { 
+            $(this).prop("checked", false);
+            $(this).attr("disabled", true);
+            $(this).addClass("check_apagado");
         });
     }
-    else{
-        $('.diluicao'+diluicao_id).each(function(){ 
-            $(this).prop( "checked", false);
-            $(this).attr( "disabled", true);
-            $(this).addClass( "check_apagado");
-        });
+
+    // Controle de limite de 3 checkboxes por tbody
+    let checkedCount = tbody.find('.diluicao' + diluicao_id + ':checked').length;
+
+    if (checkedCount >= 3) {
+        tbody.find('.diluicao' + diluicao_id + ':not(:checked)').prop("disabled", true);
+    } else {
+        tbody.find('.diluicao' + diluicao_id).prop("disabled", false);
     }
 }
 
