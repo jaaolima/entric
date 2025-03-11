@@ -1032,7 +1032,6 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function check_dieta(_this, diluicao_id){
-    let tbody = $(_this).closest("div[id^='tbody']"); // Obtém o tbody correspondente
     if ($(_this).is(':checked')){
         $('.diluicao'+diluicao_id).each(function(){ 
             $(this).prop( "checked", true );
@@ -1047,19 +1046,8 @@ function check_dieta(_this, diluicao_id){
             $(this).addClass( "check_apagado");
         });
     }
-
-    if($("#tipo_login").val() == 'ibranutro'){
-        // Controle de limite de 3 checkboxes por tbody
-        let checkedCount = tbody.find('.diluicao' + diluicao_id + ':checked').length;
-        if (checkedCount >= 3) {
-            tbody.find('.diluicao' + diluicao_id + ':not(:checked)').prop("disabled", true);
-            tbody.find('.diluicao' + diluicao_id + ':not(:checked)').addClass( "check_apagado");
-        } else {
-            tbody.find('.diluicao' + diluicao_id).prop("disabled", false);
-            tbody.find('.diluicao' + diluicao_id).removeClass( "check_apagado");
-        }
-    }
 }
+
 
 function fc_collapseSistema($apres_enteral_num){
     if ($("#tbody"+$apres_enteral_num).hasClass("none")) {
@@ -1087,25 +1075,15 @@ function fc_collapsecheckbox( $apres_enteral_num){
     else{
         $("#tbody"+$apres_enteral_num).addClass("checked");
         if($("#tipo_login").val() == 'ibranutro'){
-            let count = 0;
-            $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
-                if(count < 4){
-                    $(this).prop( "checked", true);
-                    let diluicao_id = $(this).attr('rel');
+            $("#tbody"+$apres_enteral_num+" .check_dieta").slice(0, 3).each(function() {
+                $(this).prop( "checked", true);
+                let diluicao_id = $(this).attr('rel');
 
-                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
-                        $(this).prop( "checked", true);
-                        $(this).attr( "disabled", false);
-                        $(this).removeClass( "check_apagado");
-                    });
-                }else{
-                    let diluicao_id = $(this).attr('rel');
-                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
-                        $(this).attr( "disabled", true);
-                        $(this).removeClass( "check_apagado");
-                    });
-                }
-                
+                $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                    $(this).prop( "checked", true);
+                    $(this).attr( "disabled", false);
+                    $(this).removeClass( "check_apagado");
+                });
             });
         }else{
             $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
