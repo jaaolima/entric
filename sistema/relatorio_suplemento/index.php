@@ -148,7 +148,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 				.page .background:first-child {
 					left: 1cm !important;
-					top: 1cm !important;
 					width: 150px !important;
 				}
 
