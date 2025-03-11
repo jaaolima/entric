@@ -1053,6 +1053,24 @@ function check_dieta(_this, diluicao_id){
             $(this).addClass( "check_apagado");
         });
     }
+
+    if($("#tipo_login").val() == 'ibranutro'){
+        if($(_this).hasClass("check_dieta")){
+            let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
+            let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
+            let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
+
+            if (checkedCount >= 3) {
+                // Desabilita os não selecionados se já houver 3 selecionados
+                checkboxes.not(":checked").prop("disabled", true);
+                checkboxes.not(":checked").addClass("check_apagado");
+            } else {
+                // Reabilita todos se menos de 3 estiverem selecionados
+                checkboxes.prop("disabled", false);
+                checkboxes.removeClass( "check_apagado");
+            }
+        }
+    }
 }
 
 function fc_collapseSistema($apres_enteral_num){
@@ -1081,15 +1099,22 @@ function fc_collapsecheckbox( $apres_enteral_num){
     else{
         $("#tbody"+$apres_enteral_num).addClass("checked");
         if($("#tipo_login").val() == 'ibranutro'){
-            $("#tbody"+$apres_enteral_num+" .check_dieta").slice(0, 3).each(function() {
-                $(this).prop( "checked", true);
-                let diluicao_id = $(this).attr('rel');
-
-                $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+            qtd = 1;
+            $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
+                if(qtd < 4){
                     $(this).prop( "checked", true);
-                    $(this).attr( "disabled", false);
-                    $(this).removeClass( "check_apagado");
-                });
+                    let diluicao_id = $(this).attr('rel');
+
+                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                        $(this).prop( "checked", true);
+                        $(this).attr( "disabled", false);
+                        $(this).removeClass( "check_apagado");
+                    });
+                }else{
+                    $(this).attr( "disabled", true);
+                    $(this).addClass( "check_apagado");
+                }
+                qtd++;
             });
         }else{
             $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {

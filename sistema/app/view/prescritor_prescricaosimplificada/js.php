@@ -1047,19 +1047,21 @@ function check_dieta(_this, diluicao_id){
         });
     }
 
-    if($(_this).hasClass("check_dieta")){
-        let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
-        let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
-        let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
+    if($("#tipo_login").val() == 'ibranutro'){
+        if($(_this).hasClass("check_dieta")){
+            let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
+            let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
+            let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
 
-        if (checkedCount >= 3) {
-            // Desabilita os não selecionados se já houver 3 selecionados
-            checkboxes.not(":checked").prop("disabled", true);
-            checkboxes.not(":checked").addClass("check_apagado");
-        } else {
-            // Reabilita todos se menos de 3 estiverem selecionados
-            checkboxes.prop("disabled", false);
-            checkboxes.removeClass( "check_apagado");
+            if (checkedCount >= 3) {
+                // Desabilita os não selecionados se já houver 3 selecionados
+                checkboxes.not(":checked").prop("disabled", true);
+                checkboxes.not(":checked").addClass("check_apagado");
+            } else {
+                // Reabilita todos se menos de 3 estiverem selecionados
+                checkboxes.prop("disabled", false);
+                checkboxes.removeClass( "check_apagado");
+            }
         }
     }
 }
@@ -1982,6 +1984,14 @@ $(function(){
                     content: 'Por favor, é necessário selecionar o dispositivo.'
                 });
             return false;
+        }if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
+            $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'Por favor, é necessário selecionar o dispositivo.'
+                });
+            return false;
         }
         else{
             if ($( "input[name*='calculo_apres_']" ).is(':checked') ){
@@ -2012,31 +2022,42 @@ $(function(){
         salvar_calculo_fracionamento($(this));
     });
     $("#salvar_selecao").on("click", function(e) {
-        var _this = $(this);
-        var _id_paciente = $("#id_paciente").val();
-        var _id_relatorio = $("#id_relatorio").val();
-        var formSerialize = $("#modal_form_selecao").serialize();
-        b_lo(_this);
+        if ($(".check_dieta").filter(":checked").length === 0) {
+            $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'Por favor, é necessário selecionar pelo menos um produto.'
+                });
+            return false;
+        }else{
+            var _this = $(this);
+            var _id_paciente = $("#id_paciente").val();
+            var _id_relatorio = $("#id_relatorio").val();
+            var formSerialize = $("#modal_form_selecao").serialize();
+            b_lo(_this);
 
-        $.ajax({
-            type: "POST",
-            url: "ajax/selecao_salvar_simplificada",
-            data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-            cache: false,
-            dataType: 'json',
-            success: function( data ){
-                b_res(_this);
+            $.ajax({
+                type: "POST",
+                url: "ajax/selecao_salvar_simplificada",
+                data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+                cache: false,
+                dataType: 'json',
+                success: function( data ){
+                    b_res(_this);
 
-                fc_salvar('calculo', false);
-                $('#modal_selecao').modal('toggle');
-                $('.tabcalculo a').removeClass('active');
-                $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
-         
-                $(".tabdistribuidores").removeClass('disabledTab');
-                $('.tabdistribuidores a').addClass('active');
-                $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
-            }
-        });
+                    fc_salvar('calculo', false);
+                    $('#modal_selecao').modal('toggle');
+                    $('.tabcalculo a').removeClass('active');
+                    $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+            
+                    $(".tabdistribuidores").removeClass('disabledTab');
+                    $('.tabdistribuidores a').addClass('active');
+                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                }
+            });
+        }
+        
 
     });
     $('#calculo_apres_fechado').change(function () {
