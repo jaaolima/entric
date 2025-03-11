@@ -1050,17 +1050,16 @@ function check_dieta(_this, diluicao_id){
     if($(_this).hasClass("check_dieta")){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
         let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
-        console.log(checkboxes);
-
         let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-        console.log(checkedCount);
 
         if (checkedCount >= 3) {
             // Desabilita os não selecionados se já houver 3 selecionados
             checkboxes.not(":checked").prop("disabled", true);
+            checkboxes.addClass( "check_apagado");
         } else {
             // Reabilita todos se menos de 3 estiverem selecionados
             checkboxes.prop("disabled", false);
+            checkboxes.removeClass( "check_apagado");
         }
     }
 }
