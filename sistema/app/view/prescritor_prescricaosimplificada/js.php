@@ -1047,7 +1047,7 @@ function check_dieta(_this, diluicao_id){
         });
     }
 
-    if($(_this).hasClass("chack_dieta")){
+    if($(_this).hasClass("check_dieta")){
         let tbody = $(this).closest("div[id^='tbody']"); // Obtém o tbody correspondente
         console.log(tbody);
         let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
