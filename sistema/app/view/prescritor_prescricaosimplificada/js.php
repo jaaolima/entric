@@ -1031,31 +1031,33 @@ function salvar_calculo_fracionamento(_this){
     });
 }
 
-function check_dieta(_this, diluicao_id) {
+function check_dieta(_this, diluicao_id){
     let tbody = $(_this).closest("div[id^='tbody']"); // Obtém o tbody correspondente
-    let checkboxes = tbody.find('.diluicao' + diluicao_id); // Checkboxes dentro do tbody específico
-
-    if ($(_this).is(':checked')) {
-        checkboxes.each(function() { 
-            $(this).prop("checked", true);
-            $(this).attr("disabled", false);
-            $(this).removeClass("check_apagado");
+    if ($(_this).is(':checked')){
+        $('.diluicao'+diluicao_id).each(function(){ 
+            $(this).prop( "checked", true );
+            $(this).attr( "disabled", false);
+            $(this).removeClass( "check_apagado");
         });
-    } else {
-        checkboxes.each(function() { 
-            $(this).prop("checked", false);
-            $(this).attr("disabled", true);
-            $(this).addClass("check_apagado");
+    }
+    else{
+        $('.diluicao'+diluicao_id).each(function(){ 
+            $(this).prop( "checked", false);
+            $(this).attr( "disabled", true);
+            $(this).addClass( "check_apagado");
         });
     }
 
-    // Controle de limite de 3 checkboxes por tbody
-    let checkedCount = tbody.find('.diluicao' + diluicao_id + ':checked').length;
-
-    if (checkedCount >= 3) {
-        tbody.find('.diluicao' + diluicao_id + ':not(:checked)').prop("disabled", true);
-    } else {
-        tbody.find('.diluicao' + diluicao_id).prop("disabled", false);
+    if($("#tipo_login").val() == 'ibranutro'){
+        // Controle de limite de 3 checkboxes por tbody
+        let checkedCount = tbody.find('.diluicao' + diluicao_id + ':checked').length;
+        if (checkedCount >= 3) {
+            tbody.find('.diluicao' + diluicao_id + ':not(:checked)').prop("disabled", true);
+            tbody.find('.diluicao' + diluicao_id + ':not(:checked)').addClass( "check_apagado");
+        } else {
+            tbody.find('.diluicao' + diluicao_id).prop("disabled", false);
+            tbody.find('.diluicao' + diluicao_id).removeClass( "check_apagado");
+        }
     }
 }
 
@@ -1085,15 +1087,25 @@ function fc_collapsecheckbox( $apres_enteral_num){
     else{
         $("#tbody"+$apres_enteral_num).addClass("checked");
         if($("#tipo_login").val() == 'ibranutro'){
-            $("#tbody"+$apres_enteral_num+" .check_dieta").slice(0, 3).each(function() {
-                $(this).prop( "checked", true);
-                let diluicao_id = $(this).attr('rel');
-
-                $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+            let count = 0;
+            $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
+                if(count < 4){
                     $(this).prop( "checked", true);
-                    $(this).attr( "disabled", false);
-                    $(this).removeClass( "check_apagado");
-                });
+                    let diluicao_id = $(this).attr('rel');
+
+                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                        $(this).prop( "checked", true);
+                        $(this).attr( "disabled", false);
+                        $(this).removeClass( "check_apagado");
+                    });
+                }else{
+                    let diluicao_id = $(this).attr('rel');
+                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                        $(this).attr( "disabled", true);
+                        $(this).removeClass( "check_apagado");
+                    });
+                }
+                
             });
         }else{
             $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
