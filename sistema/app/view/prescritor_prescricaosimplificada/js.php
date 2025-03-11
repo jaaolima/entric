@@ -1032,7 +1032,6 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function check_dieta(_this, diluicao_id){
-   
     if ($(_this).is(':checked')){
         $('.diluicao'+diluicao_id).each(function(){ 
             $(this).prop( "checked", true );
@@ -1046,6 +1045,21 @@ function check_dieta(_this, diluicao_id){
             $(this).attr( "disabled", true);
             $(this).addClass( "check_apagado");
         });
+    }
+
+    if($(_this).hasClass("chack_dieta")){
+        let tbody = $(this).closest("div[id^='tbody']"); // Obtém o tbody correspondente
+        console.log(tbody);
+        let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
+        let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
+
+        if (checkedCount >= 3) {
+            // Desabilita os não selecionados se já houver 3 selecionados
+            checkboxes.not(":checked").prop("disabled", true);
+        } else {
+            // Reabilita todos se menos de 3 estiverem selecionados
+            checkboxes.prop("disabled", false);
+        }
     }
 }
 
@@ -1283,20 +1297,6 @@ function isNumeric(evt) {
 
 $(function(){
     //$(document).on("keydown", disableF5);
-    $(".check_dieta").on("click", function() {
-        let tbody = $(this).closest("div[id^='tbody']"); // Obtém o tbody correspondente
-        console.log(tbody);
-        let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
-        let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-
-        if (checkedCount >= 3) {
-            // Desabilita os não selecionados se já houver 3 selecionados
-            checkboxes.not(":checked").prop("disabled", true);
-        } else {
-            // Reabilita todos se menos de 3 estiverem selecionados
-            checkboxes.prop("disabled", false);
-        }
-    });
     $('#avaliacao .data').datepicker({
         format: "dd/mm/yyyy",
         language: "pt-BR",
