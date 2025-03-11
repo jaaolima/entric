@@ -1073,7 +1073,7 @@ function fc_collapsecheckbox( $apres_enteral_num){
     }
     else{
         $("#tbody"+$apres_enteral_num).addClass("checked");
-        $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
+        $("#tbody"+$apres_enteral_num+" .check_dieta").slice(0, 3).each(function() {
             $(this).prop( "checked", true);
             let diluicao_id = $(this).attr('rel');
 
