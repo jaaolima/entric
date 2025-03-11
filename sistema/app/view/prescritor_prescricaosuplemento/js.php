@@ -1038,41 +1038,6 @@ function salvar_calculo_fracionamento(_this){
     
 }
 
-function check_dieta(_this, diluicao_id){
-    if ($(_this).is(':checked')){
-        $('.diluicao'+diluicao_id).each(function(){ 
-            $(this).prop( "checked", true );
-            $(this).attr( "disabled", false);
-            $(this).removeClass( "check_apagado");
-        });
-    }
-    else{
-        $('.diluicao'+diluicao_id).each(function(){ 
-            $(this).prop( "checked", false);
-            $(this).attr( "disabled", true);
-            $(this).addClass( "check_apagado");
-        });
-    }
-
-    if($("#tipo_login").val() == 'ibranutro'){
-        if($(_this).hasClass("check_dieta")){
-            let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
-            let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
-            let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-
-            if (checkedCount >= 3) {
-                // Desabilita os não selecionados se já houver 3 selecionados
-                checkboxes.not(":checked").prop("disabled", true);
-                checkboxes.not(":checked").addClass("check_apagado");
-            } else {
-                // Reabilita todos se menos de 3 estiverem selecionados
-                checkboxes.prop("disabled", false);
-                checkboxes.removeClass( "check_apagado");
-            }
-        }
-    }
-}
-
 function fc_collapseSistema($apres_enteral_num){
     if ($("#tbody"+$apres_enteral_num).hasClass("none")) {
         $("#tbody"+$apres_enteral_num).removeClass("none");
@@ -1306,7 +1271,23 @@ function isNumeric(evt) {
 
 $(function(){
     //$(document).on("keydown", disableF5);
+    $(".check_dieta").on("click", function(){
+        if($("#tipo_login").val() == 'ibranutro'){
+            let tbody = $(this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
+            let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
+            let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
 
+            if (checkedCount >= 3) {
+                // Desabilita os não selecionados se já houver 3 selecionados
+                checkboxes.not(":checked").prop("disabled", true);
+                checkboxes.not(":checked").addClass("check_apagado");
+            } else {
+                // Reabilita todos se menos de 3 estiverem selecionados
+                checkboxes.prop("disabled", false);
+                checkboxes.removeClass( "check_apagado");
+            }
+        }
+    })
     $('#avaliacao .data').datepicker({
         format: "dd/mm/yyyy",
         language: "pt-BR",
