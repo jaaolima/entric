@@ -1655,13 +1655,13 @@ $app->group("", function () use ($app) {
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final",
-		                                            $query." ORDER BY 
+		                                            $query." ORDER BY apres_enteral, apres_oral ASC,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
 																WHEN fabricante = ' Danone e Nutrimed' THEN 3
 																ELSE 4
-															END, apres_enteral, apres_oral ASC", 
+															END", 
 		                                            null);
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -2310,13 +2310,13 @@ $app->group("", function () use ($app) {
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final",
-		                                            $query." ORDER BY 
+		                                            $query." ORDER BY apres_enteral, apres_oral ASC,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
 																WHEN fabricante = ' Danone e Nutrimed' THEN 3
 																ELSE 4
-															END, apres_enteral, apres_oral ASC", 
+															END", 
 		                                            null);
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -3032,13 +3032,13 @@ $app->group("", function () use ($app) {
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral",
-		                                            $query." ORDER BY 
+		                                            $query." ORDER BY apres_enteral, apres_oral ASC,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
 																WHEN fabricante = ' Danone e Nutrimed' THEN 3
 																ELSE 4
-															END, apres_enteral, apres_oral ASC", 
+															END", 
 		                                            null);
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
