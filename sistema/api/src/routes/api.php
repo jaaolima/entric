@@ -376,7 +376,7 @@ $app->group("", function () use ($app) {
 
 	        $tipo_login = "prescritor";
 			$bind = array(':id_usuario' => ($id_usuario));
-			$retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id_usuario", $bind);
+			$retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id_usuario and st_ativo <> 'D'", $bind);
 			$usuario = $retorno;
 			$usuario["tipo"] = 2;
 
