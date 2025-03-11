@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-
+            <input type="hidden" id="tipo_login" value="<?php echo $_SESSION['login']; ?>">
             <div class="row">
                 
                 <div class="col-lg-12">

@@ -31,7 +31,7 @@
                             <h4 class="card-title bb-line mb-5">
                                 <i class="mdi mdi-message-draw"></i> &nbsp; Prescrição de Suplementação Via Oral
                             </h4>
-                            
+                            <input type="hidden" id="tipo_login" value="<?php echo $_SESSION['login']; ?>">
                             <div class="default-tab bordered-tab entric">
                                 <!-- <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item tabcadastro">
