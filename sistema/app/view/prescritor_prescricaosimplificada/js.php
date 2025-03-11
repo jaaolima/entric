@@ -1032,6 +1032,7 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function check_dieta(_this, diluicao_id){
+   
     if ($(_this).is(':checked')){
         $('.diluicao'+diluicao_id).each(function(){ 
             $(this).prop( "checked", true );
@@ -1047,6 +1048,21 @@ function check_dieta(_this, diluicao_id){
         });
     }
 }
+
+$(".check_dieta").on("click", function() {
+    let tbody = $(this).closest("div[id^='tbody']"); // Obtém o tbody correspondente
+    console.log(tbody);
+    let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
+    let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
+
+    if (checkedCount >= 3) {
+        // Desabilita os não selecionados se já houver 3 selecionados
+        checkboxes.not(":checked").prop("disabled", true);
+    } else {
+        // Reabilita todos se menos de 3 estiverem selecionados
+        checkboxes.prop("disabled", false);
+    }
+});
 
 
 function fc_collapseSistema($apres_enteral_num){
@@ -1075,7 +1091,7 @@ function fc_collapsecheckbox( $apres_enteral_num){
     else{
         $("#tbody"+$apres_enteral_num).addClass("checked");
         if($("#tipo_login").val() == 'ibranutro'){
-            qtd = 0;
+            qtd = 1;
             $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
                 if(qtd < 4){
                     $(this).prop( "checked", true);
