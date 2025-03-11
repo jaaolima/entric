@@ -2039,31 +2039,41 @@ $(function(){
         salvar_calculo_fracionamento($(this));
     });
     $("#salvar_selecao").on("click", function(e) {
-        var _this = $(this);
-        var _id_paciente = $("#id_paciente").val();
-        var _id_relatorio = $("#id_relatorio").val();
-        var formSerialize = $("#modal_form_selecao").serialize();
-        b_lo(_this);
+        if ($(".check_dieta").filter(":checked").length === 0) {
+            $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'Por favor, é necessário selecionar pelo menos um produto.'
+                });
+            return false;
+        }else{
+            var _this = $(this);
+            var _id_paciente = $("#id_paciente").val();
+            var _id_relatorio = $("#id_relatorio").val();
+            var formSerialize = $("#modal_form_selecao").serialize();
+            b_lo(_this);
 
-        $.ajax({
-            type: "POST",
-            url: "ajax/selecao_salvar_suplemento",
-            data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-            cache: false,
-            dataType: 'json',
-            success: function( data ){
-                b_res(_this);
+            $.ajax({
+                type: "POST",
+                url: "ajax/selecao_salvar_suplemento",
+                data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+                cache: false,
+                dataType: 'json',
+                success: function( data ){
+                    b_res(_this);
 
-                fc_salvar('calculo', false);
-                $('#modal_selecao').modal('toggle');
-                $('.tabcalculo a').removeClass('active');
-                $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
-         
-                $(".tabdistribuidores").removeClass('disabledTab');
-                $('.tabdistribuidores a').addClass('active');
-                $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
-            }
-        });
+                    fc_salvar('calculo', false);
+                    $('#modal_selecao').modal('toggle');
+                    $('.tabcalculo a').removeClass('active');
+                    $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+                
+                    $(".tabdistribuidores").removeClass('disabledTab');
+                    $('.tabdistribuidores a').addClass('active');
+                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                }
+            });
+        }
 
     });
     $('#calculo_apres_fechado').change(function () {

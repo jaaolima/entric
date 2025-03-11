@@ -153,7 +153,3 @@ else{
     } 
 }
 ?>
-
-<div style="position: absolute; bottom: 10px; left: 5px; opacity: .3;">
-    <a href="https://corporate.danone.com.br/" target="_blank"><img src="assets/images/danone_branco.png" border="0" /></a>
-</div>
