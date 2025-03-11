@@ -1055,7 +1055,7 @@ function check_dieta(_this, diluicao_id){
         if (checkedCount >= 3) {
             // Desabilita os não selecionados se já houver 3 selecionados
             checkboxes.not(":checked").prop("disabled", true);
-            checkboxes.addClass( "check_apagado");
+            checkboxes.not(":checked").addClass("check_apagado");
         } else {
             // Reabilita todos se menos de 3 estiverem selecionados
             checkboxes.prop("disabled", false);
