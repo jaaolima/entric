@@ -1272,11 +1272,12 @@ function isNumeric(evt) {
 $(function(){
     //$(document).on("keydown", disableF5);
     $(".check_dieta").on("click", function(){
+        console.log("checou");
         if($("#tipo_login").val() == 'ibranutro'){
             let tbody = $(this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
             let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
             let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-
+            console.log(tbody, checkboxes, checkedCount);
             if (checkedCount >= 3) {
                 // Desabilita os não selecionados se já houver 3 selecionados
                 checkboxes.not(":checked").prop("disabled", true);
