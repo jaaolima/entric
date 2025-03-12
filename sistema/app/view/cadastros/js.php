@@ -15,7 +15,7 @@ function fcRemoverFoto(num){
         $("#foto").val("");
         //$("#anexar_foto").html('<br>Carteira Profissional<br>(FRENTE)<br>Arquivo no formato JPEG ou PNG com no máximo 2MB. <input type="file" name="foto" rel="anexar_foto" id="foto" style="display: none;">' );
     }
-    else{
+    else{ 
         $("#anexar_foto"+num).css("background-image", "none");
         $("#anexar_foto"+num).css("background-size", "cover");
         $("#anexar_foto"+num+" span").show();
@@ -314,6 +314,7 @@ $(function(){
         });
     });
 
+
     $('#btn_admin_novo').on("click", function(e) {
         $("#lista_administrador").addClass("none");
         $("#cad_administrador").removeClass("none");
@@ -389,7 +390,22 @@ $(function(){
                     text: 'Confirmar',
                     action: function(){
                         var id = _this.parent('td').prev().html();
-                        _this.parent("td").parent("tr").remove();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "ajax/excluir_cadastro_prescritor",
+                            data: "id="+id,
+                            cache: false,
+                            dataType: 'json',
+                            success: function( data ){
+                                console.log(id);
+                                console.log(_this.closest('tr'));
+                                console.log("----------------------");
+
+                                _this.parent("td").parent("tr").remove();
+                            }
+                        });
+                        
                     }
                 },
                 cancelar: {

@@ -452,6 +452,28 @@ class AjaxController extends Controller {
         }
     }
 
+    function excluir_cadastro_prescritor() {
+        if (isset($_POST['id']) and (trim($_POST['id'])<>"")){
+            $produto = new ProdutoModel();
+            if ($_POST['id'] <> ""){                
+                
+                // $excluir = $this->AjaxModel->excluir_prescritor($_POST);
+                // if ($excluir){
+                //     echo json_encode(array('message'=>'Produto excluído com sucesso.'));
+                // }
+                // else{
+                //     echo json_encode(array('error'=>array('message'=>'Erro ao excluir produto.')));
+                // }
+
+            }else{
+                echo json_encode(array('error'=>array('message'=>'Por favor, pesquise pelo produto antes de excluí-lo.')));
+            }
+
+        }else{
+            echo json_encode(array('error'=>array('message'=>'Informe os dados corretamente.')));
+        }
+    }
+
     function gt_endereco_distribuidor() {
         $dados = $this->AjaxModel->gt_endereco_distribuidor($_POST['id']);
         echo $dados;

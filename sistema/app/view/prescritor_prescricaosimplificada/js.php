@@ -63,7 +63,7 @@ function fc_retorno_pacientes(){
         if ( dados_json.relatorios === null ) {
             $('#table_lista_pacientes > tbody').empty();
             $('#table_lista_pacientes').append('<tr><td colspan="5" class="text-center">Nenhum relatório encontrado</td></tr>');
-        }else{
+        }else{ 
             var tr = '';
             $.each(dados_json.relatorios, function(i, item) {
                 var cont = (dados_json.relatorios.length) - i;
@@ -584,6 +584,9 @@ function necessidades_calorias_total(_this, _event){
     _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(proteina_kg, 0)+" kcal/kg)";
     // $("#kcal_valor").val(_formula_valor);
     $("#presc_kcal").html(_formula_valor);
+
+    rangeCaloria($("#kcal_valor").val());
+
 }
 
 function necessidades_proteinas_total(_this, _event){ 
@@ -622,6 +625,8 @@ function necessidades_proteinas_total(_this, _event){
         _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
         // $("#ptn_valor").val(_formula_valor);
         $("#presc_ptn").html(_formula_valor);
+        
+        rangeProteina($("#ptn_valor").val());
     }
 }
 
@@ -680,6 +685,8 @@ function necessidades_calorias_total_atualizar(_this, _event){
     _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(proteina_kg)+" kcal/kg)";
     // $("#kcal_valor").val(_formula_total);
     $("#presc_kcal").html(_formula_valor);
+
+    rangeCaloria($("#kcal_valor").val());
 }
 
 function necessidades_proteinas_total_atualizar(_this, _event){
@@ -721,6 +728,8 @@ function necessidades_proteinas_total_atualizar(_this, _event){
         _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
         // $("#ptn_valor").val(_formula_valor);
         $("#presc_ptn").html(_formula_valor);
+
+        rangeProteina($("#ptn_valor").val());
     }
 }
 
