@@ -1022,10 +1022,11 @@ function salvar_calculo_fracionamento(_this){
             if (_this != null){
                 $('#modal_fracionamento').modal('toggle');
                 $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
-                    rangeCaloria($("#kcal_valor").val());
-                    rangeProteina($("#ptn_valor").val());
+                    
                     $("#modal_selecao").modal("toggle");
                 });
+                rangeCaloria($("#kcal_valor").val());
+                rangeProteina($("#ptn_valor").val());
             }else{
                 rangeCaloria($("#kcal_valor").val());
                 rangeProteina($("#ptn_valor").val());
