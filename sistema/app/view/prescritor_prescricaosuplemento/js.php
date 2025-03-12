@@ -903,100 +903,93 @@ function busca_produto_relatorio(m_calorica, m_proteica){
 }
 
 function rangeCaloria(calorias){
-    var selecao_dieta = $("#selecao_dieta").val();
-    if (selecao_dieta.length == 0){
-        var perc1 = -4;
-        var perc2 = 4;
-        $("#var_calorica").html(calorias);
-        $("#margem_calorica").slider();
-        $("#margem_calorica").slider("destroy");
-        $('#margem_calorica').slider({
-            id: "exSliderKcal",
-            tooltip: 'always',
-            tooltip_split: true,
-            min: -10,
-            max: 10,
-            step: "0.5",
-            value: [perc1, perc2],
-            formatter: function (val){
-                var _perc1 = Math.abs(val[0]);
-                var _calorias = parseFloat(calorias) * parseFloat(_perc1);
-                _calorias = _calorias / 100;
-                if (val[0] < 0){
-                    _calorias = parseFloat(calorias) - parseFloat(_calorias);
-                }
-                else{
-                    _calorias = parseFloat(calorias) + parseFloat(_calorias);   
-                }
-                val[0] = numberFormatPrecision(_calorias, 0)+" ("+val[0]+"%)";
-
-                var _perc2 = Math.abs(val[1]);
-                var _calorias = parseFloat(calorias) * parseFloat(_perc2);
-                _calorias = _calorias / 100;
-                if (val[1] < 0){
-                    _calorias = parseFloat(calorias) - parseFloat(_calorias);
-                }
-                else{
-                    _calorias = parseFloat(calorias) + parseFloat(_calorias);   
-                }
-                val[1] = numberFormatPrecision(_calorias, 0)+" ("+val[1]+"%)";
-                return val; 
+    var perc1 = -4;
+    var perc2 = 4;
+    $("#var_calorica").html(calorias);
+    $("#margem_calorica").slider();
+    $("#margem_calorica").slider("destroy");
+    $('#margem_calorica').slider({
+        id: "exSliderKcal",
+        tooltip: 'always',
+        tooltip_split: true,
+        min: -10,
+        max: 10,
+        step: "0.5",
+        value: [perc1, perc2],
+        formatter: function (val){
+            var _perc1 = Math.abs(val[0]);
+            var _calorias = parseFloat(calorias) * parseFloat(_perc1);
+            _calorias = _calorias / 100;
+            if (val[0] < 0){
+                _calorias = parseFloat(calorias) - parseFloat(_calorias);
             }
-        });
-        $('#margem_calorica').on("slide", function(slideEvt) {
-            busca_produto_relatorio($(this).val(), $("#margem_proteica").val());
-        });
-        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
-    }
+            else{
+                _calorias = parseFloat(calorias) + parseFloat(_calorias);   
+            }
+            val[0] = numberFormatPrecision(_calorias, 0)+" ("+val[0]+"%)";
+
+            var _perc2 = Math.abs(val[1]);
+            var _calorias = parseFloat(calorias) * parseFloat(_perc2);
+            _calorias = _calorias / 100;
+            if (val[1] < 0){
+                _calorias = parseFloat(calorias) - parseFloat(_calorias);
+            }
+            else{
+                _calorias = parseFloat(calorias) + parseFloat(_calorias);   
+            }
+            val[1] = numberFormatPrecision(_calorias, 0)+" ("+val[1]+"%)";
+            return val; 
+        }
+    });
+    $('#margem_calorica').on("slide", function(slideEvt) {
+        busca_produto_relatorio($(this).val(), $("#margem_proteica").val());
+    });
+    busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
 }
 
 function rangeProteina(proteina){
-    var selecao_dieta = $("#selecao_dieta").val();
-    if (selecao_dieta.length == 0){
-        var perc1 = -6;
-        var perc2 = 6;
-        $("#var_proteina").html(proteina);
-        $("#margem_proteica").slider();
-        $("#margem_proteica").slider("destroy");
-        $('#margem_proteica').slider({
-            id: "exSliderPtn",
-            tooltip: 'always',
-            tooltip_split: true,
-            min: -20,
-            max: 20,
-            step: "0.5",
-            value: [perc1, perc2],
-            formatter: function (val){
-                var _perc1 = Math.abs(val[0]);
-                var _calorias = parseFloat(proteina) * parseFloat(_perc1);
-                _calorias = _calorias / 100;
-                if (val[0] < 0){
-                    _calorias = parseFloat(proteina) - parseFloat(_calorias);
-                }
-                else{
-                    _calorias = parseFloat(proteina) + parseFloat(_calorias);   
-                }
-                val[0] = numberFormatPrecision(_calorias, 0)+" ("+val[0]+"%)";
-
-                var _perc2 = Math.abs(val[1]);
-                var _calorias = parseFloat(proteina) * parseFloat(_perc2);
-                _calorias = _calorias / 100;
-                if (val[1] < 0){
-                    _calorias = parseFloat(proteina) - parseFloat(_calorias);
-                }
-                else{
-                    _calorias = parseFloat(proteina) + parseFloat(_calorias);
-                }
-                val[1] = numberFormatPrecision(_calorias, 0)+" ("+val[1]+"%)";
-                return val;
+    var perc1 = -6;
+    var perc2 = 6;
+    $("#var_proteina").html(proteina);
+    $("#margem_proteica").slider();
+    $("#margem_proteica").slider("destroy");
+    $('#margem_proteica').slider({
+        id: "exSliderPtn",
+        tooltip: 'always',
+        tooltip_split: true,
+        min: -20,
+        max: 20,
+        step: "0.5",
+        value: [perc1, perc2],
+        formatter: function (val){
+            var _perc1 = Math.abs(val[0]);
+            var _calorias = parseFloat(proteina) * parseFloat(_perc1);
+            _calorias = _calorias / 100;
+            if (val[0] < 0){
+                _calorias = parseFloat(proteina) - parseFloat(_calorias);
             }
-        });
-        $('#margem_proteica').on("slide", function(slideEvt) {
-            busca_produto_relatorio($("#margem_calorica").val(), $(this).val());
-        });
-        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
-        $("#selecao_dieta").val("true");
-    }
+            else{
+                _calorias = parseFloat(proteina) + parseFloat(_calorias);   
+            }
+            val[0] = numberFormatPrecision(_calorias, 0)+" ("+val[0]+"%)";
+
+            var _perc2 = Math.abs(val[1]);
+            var _calorias = parseFloat(proteina) * parseFloat(_perc2);
+            _calorias = _calorias / 100;
+            if (val[1] < 0){
+                _calorias = parseFloat(proteina) - parseFloat(_calorias);
+            }
+            else{
+                _calorias = parseFloat(proteina) + parseFloat(_calorias);
+            }
+            val[1] = numberFormatPrecision(_calorias, 0)+" ("+val[1]+"%)";
+            return val;
+        }
+    });
+    $('#margem_proteica').on("slide", function(slideEvt) {
+        busca_produto_relatorio($("#margem_calorica").val(), $(this).val());
+    });
+    busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
 }
 
 function salvar_calculo_fracionamento(_this){
@@ -1006,7 +999,6 @@ function salvar_calculo_fracionamento(_this){
         //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
         var formSerialize = $("#modal_form_fracionamento").serialize();
         if (_this != null)  b_lo(_this);
-        var selecao_dieta = $("#selecao_dieta").val();
 
         $.ajax({
             type: "POST",
@@ -1019,17 +1011,13 @@ function salvar_calculo_fracionamento(_this){
                 if (_this != null){
                     $('#modal_fracionamento').modal('toggle');
                     $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
-                        if (selecao_dieta.length == 0){
-                            rangeCaloria($("#kcal_valor").val());
-                            rangeProteina($("#ptn_valor").val());
-                        }
+                        rangeCaloria($("#kcal_valor").val());
+                        rangeProteina($("#ptn_valor").val());
                         $("#modal_selecao").modal("toggle");
                     });
                 }else{
-                    if (selecao_dieta.length == 0){
-                        rangeCaloria($("#kcal_valor").val());
-                        rangeProteina($("#ptn_valor").val());
-                    }
+                    rangeCaloria($("#kcal_valor").val());
+                    rangeProteina($("#ptn_valor").val());
                     $("#modal_selecao").modal("toggle");
                 }
 
