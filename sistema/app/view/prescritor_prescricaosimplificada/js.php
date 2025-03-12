@@ -955,6 +955,8 @@ function rangeCaloria(calorias){
 }
 
 function rangeProteina(proteina){
+    console.log("chegou");
+    console.log(proteina);
     var selecao_dieta = $("#selecao_dieta").val();
     if (selecao_dieta.length == 0){
         var perc1 = -6;
