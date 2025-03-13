@@ -364,7 +364,6 @@ $app->group("", function () use ($app) {
 						$response = $response->withStatus(400, "Bad Request");
 					}
 				}elseif($usuario_login == 'entric'){
-					echo "entrou entric";
 					if (($tipo == 1) or ($tipo == 2)){
 						$checkpass = hash("SHA512", $senha) == trim($retorno['senha']);
 						
@@ -423,8 +422,10 @@ $app->group("", function () use ($app) {
 						$data["data"]["session"]['admin_session_menu'] = $menu;
 						$data["data"]["session"]['admin_session_user'] = $usuario;
 						$response = $response->withStatus(202, "Accepted");
+						echo "entrou entric";
 	
 						if ($nopin){
+							echo "entrou entric 2";
 							if ($tipo == 1){
 								$data["data"]["paciente_videosalta"] = "paciente_videosalta";
 								$response = $response->withStatus(202, "Accepted");
