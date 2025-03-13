@@ -213,6 +213,7 @@ $app->group("", function () use ($app) {
 	            $tipo_login = "prescritor";
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
+				$usuario = $retorno;
 				$usuario_login = 'ibranutro';
 				if(!$retorno){
 					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
@@ -221,7 +222,6 @@ $app->group("", function () use ($app) {
 					$usuario["tipo"] = 2;
 					$usuario_login = 'entric';
 				}
-				$usuario = $retorno;
 				$usuario["tipo"] = 2;
 
 	            $menu = array(  "home",
@@ -241,6 +241,7 @@ $app->group("", function () use ($app) {
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario_login = 'ibranutro';
+				$usuario = $retorno;
 				if(!$retorno){
 					$bind = array(':email' => ($login), ':tipo' => $tipo);
 					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND (tipo=:tipo OR tipo=0 OR tipo=-1) AND status=0", $bind);
@@ -248,7 +249,6 @@ $app->group("", function () use ($app) {
 					$usuario["tipo"] = 3;
 					$usuario_login = 'entric';
 				}
-				$usuario = $retorno;
 				$usuario["tipo"] = 3;
 
 	            $menu = array(  "home",
