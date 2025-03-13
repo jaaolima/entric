@@ -220,7 +220,7 @@ $app->group("", function () use ($app) {
 					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
 					$usuario_login = 'entric';
 				}
-				var_dump("retorno 2:".$retorno);
+				var_dump($retorno);
 				$usuario = $retorno;
 				$usuario["tipo"] = 2;
 
