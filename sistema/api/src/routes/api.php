@@ -218,6 +218,8 @@ $app->group("", function () use ($app) {
 				if(!$retorno){
 					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
 					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
+					$usuario = $db->select_single_to_array("prescritores", "*", "WHERE id_usuario=".$retorno['id'], null);
+					$usuario["tipo"] = 2;
 					$usuario_login = 'entric';
 				}
 				var_dump($retorno);
@@ -242,8 +244,10 @@ $app->group("", function () use ($app) {
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario_login = 'ibranutro';
 				if(!$retorno){
-					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
-					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
+					$bind = array(':email' => ($login), ':tipo' => $tipo);
+					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND (tipo=:tipo OR tipo=0 OR tipo=-1) AND status=0", $bind);
+					$usuario = $db->select_single_to_array("admin", "*", "WHERE id_usuario=".$retorno['id'], null);
+					$usuario["tipo"] = 3;
 					$usuario_login = 'entric';
 				}
 				$usuario = $retorno;
@@ -365,7 +369,7 @@ $app->group("", function () use ($app) {
 					}
 				}elseif($usuario_login == 'entric'){
 					if (($tipo == 1) or ($tipo == 2)){
-						$checkpass = hash("SHA512", $senha) == trim($retorno['senha']);
+						$checkpass = verifyHash(chkpasswd($senha), trim($retorno['senha']));
 						
 						if (!$checkpass){
 							$tipo_login = "";
