@@ -61,10 +61,17 @@
 
                     <li class="icons">
                         <?php 
-                        if (isset($bruker->usuario['ds_nome'])){
+                        if(!isset($bruker->usuario['ds_nome'])){
+                            $ds_nome = $bruker->usuario['ds_nome'];
+                        }elseif(!isset($bruker->usuario['nome'])){
+                            $ds_nome = $bruker->usuario['nome'];
+                        }else{
+                            $ds_nome = '';
+                        }
+                        if ($ds_nome != ''){
                         ?>
                         <a href="javascript:void(0)" class="log-user">
-                            <img src="assets/images/usuario.png" alt=""> Olá,<span><?php echo strtok($bruker->usuario['ds_nome'], " ");?></span>  
+                            <img src="assets/images/usuario.png" alt=""> Olá,<span><?php echo strtok($ds_nome, " ");?></span>  
                             <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
                         </a>
                         <div class="drop-down dropdown-profile animated bounceInDown">

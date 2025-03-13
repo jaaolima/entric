@@ -386,7 +386,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										Volume/Horário
 									</th>
 									<th colspan="2">
-										Velocidade de adminstração
+										Velocidade de administração
 									</th>
 								</tr>
 								<tr>
@@ -553,7 +553,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										Volume/Horário
 									</th>
 									<th colspan="2">
-										Velocidade de adminstração
+										Velocidade de administração
 									</th>
 								</tr>
 								<tr>
@@ -750,7 +750,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">Produto</th>
 									<th colspan="3" class="col_azul">Quantidade/Horário</th>
 									<th colspan="2">
-										Velocidade de adminstração
+										Velocidade de administração
 									</th>
 								</tr>
 								<tr>
