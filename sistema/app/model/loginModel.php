@@ -22,7 +22,7 @@ class LoginModel extends Model {
             $_SESSION['admin_session_user'] = $dados['data']['session']['admin_session_user'];
             $_SESSION['admin_session_menu'] = $dados['data']['session']['admin_session_menu'];
             $_SESSION['redirect'] = null;
-            $_SESSION['login'] = 'ibranutro';
+            $_SESSION['login'] = $dados['data']['session']['login'];
             $_SESSION['paciente_redirect'] = ['sistema' => null,'id_paciente' => null, 'buscar' => null];
 
             if (isset($dados["data"]["paciente_videosalta"])){
