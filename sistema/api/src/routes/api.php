@@ -215,13 +215,13 @@ $app->group("", function () use ($app) {
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario = $retorno;
 				$usuario_login = 'ibranutro';
-				// if(!$retorno){
-				// 	$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
-				// 	$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
-				// 	$usuario = $db->select_single_to_array("prescritores", "*", "WHERE id_usuario=".$retorno['id'], null);
-				// 	$usuario["tipo"] = 2;
-				// 	$usuario_login = 'entric';
-				// }
+				if(!$retorno){
+					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
+					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
+					$usuario = $db->select_single_to_array("prescritores", "*", "WHERE id_usuario=".$retorno['id'], null);
+					$usuario["tipo"] = 2;
+					$usuario_login = 'entric';
+				}
 				$usuario["tipo"] = 2;
 
 	            $menu = array(  "home",
@@ -242,13 +242,13 @@ $app->group("", function () use ($app) {
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario_login = 'ibranutro';
 				$usuario = $retorno;
-				// if(!$retorno){
-				// 	$bind = array(':email' => ($login), ':tipo' => $tipo);
-				// 	$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND (tipo=:tipo OR tipo=0 OR tipo=-1) AND status=0", $bind);
-				// 	$usuario = $db->select_single_to_array("admin", "*", "WHERE id_usuario=".$retorno['id'], null);
-				// 	$usuario["tipo"] = 3;
-				// 	$usuario_login = 'entric';
-				// }
+				if(!$retorno){
+					$bind = array(':email' => ($login), ':tipo' => $tipo);
+					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND (tipo=:tipo OR tipo=0 OR tipo=-1) AND status=0", $bind);
+					$usuario = $db->select_single_to_array("admin", "*", "WHERE id_usuario=".$retorno['id'], null);
+					$usuario["tipo"] = 3;
+					$usuario_login = 'entric';
+				}
 				$usuario["tipo"] = 3;
 
 	            $menu = array(  "home",
