@@ -114,6 +114,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				border-bottom: 1px solid #8fcfe5;
 				border-width: 0px 0px 1px 1px !important;
 				padding: 10px 10px 10px 0px;
+				margin-top:20px;
 			}
 			p{
 				line-height: 1.3;
@@ -891,7 +892,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<img src='imagem/qrcode-concierge.png' style='display:inline-block;' width='60' alt=''>
 			</div>
 		</div>
-		<P style="text-align: center;margin-top:20px;" class="subtitutlo">ONDE ENCONTRAR?</p>
+		<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
 		<p>
 			<table width="100%" cellspacing="0" cellpadding="0">
 				<tbody>
