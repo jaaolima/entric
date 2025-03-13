@@ -438,7 +438,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									}
 								}
 
-								ksort($dados_ordem);
+								// ksort($dados_ordem);
 								foreach ($dados_ordem as $chave => $valores) {
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
@@ -608,7 +608,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									}
 								}
 
-								ksort($dados_ordem);
+								// ksort($dados_ordem);
 								foreach ($dados_ordem as $chave => $valores) {
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
@@ -827,7 +827,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										} 
 									}
 
-									ksort($dados_ordem);
+									// ksort($dados_ordem);
 									foreach ($dados_ordem as $chave => $valores) {
 										for ($i = 0; $i < count($valores); $i++) {
 											$valor = $valores[$i];
@@ -1387,7 +1387,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									}
 								}
 
-								ksort($dados_ordem);
+								// ksort($dados_ordem);
 								foreach ($dados_ordem as $chave => $valores) {
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
@@ -1559,7 +1559,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									}
 								}
 
-								ksort($dados_ordem);
+								// ksort($dados_ordem);
 								foreach ($dados_ordem as $chave => $valores) {
 									for ($i = 0; $i < count($valores); $i++) {
 										$valor = $valores[$i];
@@ -1749,7 +1749,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										}
 									}
 
-									ksort($dados_ordem);
+									// ksort($dados_ordem);
 									foreach ($dados_ordem as $chave => $valores) {
 										for ($i = 0; $i < count($valores); $i++) {
 											$valor = $valores[$i];
