@@ -882,13 +882,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 		<P style="text-align: center;" class="subtitutlo">FICOU COM DÚVIDAS?</p>
 		<div style="justify-content:center;">
-			<div style='margin-top:10px;text-align:center;'>
+			<div style='margin-top:20px;text-align:center;'>
 				<h5 style='margin:0px;margin-top:8px;'>APONTE A CÂMERA PARA O QR CODE E</h5>
 				<h5 style='margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO DA</h5>
 				<h5 class='titulo'style='margin:0px;'>NUTRICIONISTA CONCIERGE DO IBRANUTRO:</h5>
 			</div>
-			<div style="margin-top:10px;text-align:center;">
-				<img src='imagem/qrcode-concierge.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
+			<div style="margin-top:20px;text-align:center;">
+				<img src='imagem/qrcode-concierge.png' style='display:inline-block;' width='60' alt=''>
 			</div>
 		</div>
 		<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
@@ -1008,7 +1008,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<div class="print-footer">
 				<div style="display:flex;justify-content: end;display:flex;">
 					<div >
-						<p style="color: #0092c5;font-size:9px;">powered by</p>
+						<p style="color: #0092c5;font-size:9px;margin-top: 18px;margin-right: 5px;">powered by</p>
 					</div>
 					<div style="padding-bottom:10px;">
 						<img src="imagem/logo.png" height="30px" alt="">
@@ -1119,11 +1119,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			
 			<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
-				<div style="display:flex;justify-content: end;">
-					<p style="color: #0092c5;font-size:9px;">powered by</p>
-				</div>
-				<div style="display:flex;justify-content: end;padding-bottom:10px;">
-					<img src="imagem/logo.png" height="30px" alt="">
+				<div style="display:flex;justify-content: end;display:flex;">
+					<div >
+						<p style="color: #0092c5;font-size:9px;margin-top: 18px;margin-right: 5px;">powered by</p>
+					</div>
+					<div style="padding-bottom:10px;">
+						<img src="imagem/logo.png" height="30px" alt="">
+					</div>
 				</div>
 				<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
 					<div>
