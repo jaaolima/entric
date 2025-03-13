@@ -8416,11 +8416,14 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
-				if($_SESSION['login'] == 'ibranutro'){
-					$campo_prescritor = 'id_usuario';
-				}elseif($_SESSION['login'] == 'entric'){
-					$campo_prescritor = 'id_prescritor';
-				}
+				// if($_SESSION['login'] == 'ibranutro'){
+				// 	$campo_prescritor = 'id_usuario';
+				// }elseif($_SESSION['login'] == 'entric'){
+				// 	$campo_prescritor = 'id_prescritor';
+				// }
+
+				$campo_prescritor = 'id_prescritor';
+
 
 
 				if (isset($dados['cpf']) and ($dados['cpf'] == "") and ($dados['cpf_possui'] == "0")){
@@ -8658,11 +8661,16 @@ $app->group("", function () use ($app) {
 				// 				':status' => 0,                     
 				// 				':data_criacao' => date("Y-m-d H:i:s") );
 				// $usuario = $db->insert("usuarios", $bind);
-				if($_SESSION['login'] == 'ibranutro'){
-					$campo_prescritor = ':id_usuario';
-				}elseif($_SESSION['login'] == 'entric'){
-					$campo_prescritor = ':id_prescritor';
-				}
+
+
+				// if($_SESSION['login'] == 'ibranutro'){
+				// 	$campo_prescritor = ':id_usuario';
+				// }elseif($_SESSION['login'] == 'entric'){
+				// 	$campo_prescritor = ':id_prescritor';
+				// }
+
+				$campo_prescritor = ':id_prescritor';
+
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
 					if($sistema == 'ibranutro'){
@@ -8761,11 +8769,14 @@ $app->group("", function () use ($app) {
 				// 				':status' => 0,                     
 				// 				':data_criacao' => date("Y-m-d H:i:s") );
 				// $usuario = $db->insert("usuarios", $bind);
-				if($_SESSION['login'] == 'ibranutro'){
-					$campo_prescritor = ':id_usuario';
-				}elseif($_SESSION['login'] == 'entric'){
-					$campo_prescritor = ':id_prescritor';
-				}
+
+
+				// if($_SESSION['login'] == 'ibranutro'){
+				// 	$campo_prescritor = ':id_usuario';
+				// }elseif($_SESSION['login'] == 'entric'){
+				// 	$campo_prescritor = ':id_prescritor';
+				// }
+				$campo_prescritor = ':id_prescritor';
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
 					if($sistema == 'ibranutro'){
