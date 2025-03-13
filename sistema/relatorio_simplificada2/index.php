@@ -114,7 +114,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				border-bottom: 1px solid #8fcfe5;
 				border-width: 0px 0px 1px 1px !important;
 				padding: 10px 10px 10px 0px;
-				margin-top:20px;
+				margin-top:30px;
 			}
 			p{
 				line-height: 1.3;
