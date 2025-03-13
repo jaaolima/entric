@@ -885,7 +885,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<div style='margin-top:20px;text-align:center;'>
 				<h5 style='margin:0px;margin-top:8px;'>APONTE A CÂMERA PARA O QR CODE E</h5>
 				<h5 style='margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO DA</h5>
-				<h5 class='titulo'style='margin:0px;'>NUTRICIONISTA CONCIERGE DO IBRANUTRO:</h5>
+				<h5 style='margin:0px;color:#0092c5;'>NUTRICIONISTA CONCIERGE DO IBRANUTRO:</h5>
 			</div>
 			<div style="margin-top:20px;text-align:center;">
 				<img src='imagem/qrcode-concierge.png' style='display:inline-block;' width='60' alt=''>
@@ -909,6 +909,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 												if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 												if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+												if (trim($danone[$i]['email']) <> "") echo "<br>".$danone[$i]['email'];
 												if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
 												echo "</p>
 											</div>";
