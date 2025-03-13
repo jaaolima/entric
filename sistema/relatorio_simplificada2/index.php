@@ -891,7 +891,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<img src='imagem/qrcode-concierge.png' style='display:inline-block;' width='60' alt=''>
 			</div>
 		</div>
-		<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
+		<P style="text-align: center;margin-top:20px;" class="subtitutlo">ONDE ENCONTRAR?</p>
 		<p>
 			<table width="100%" cellspacing="0" cellpadding="0">
 				<tbody>
@@ -909,7 +909,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 												if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 												if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-												if (trim($danone[$i]['email']) <> "") echo "<br>".$danone[$i]['email'];
+												if (trim($danone[$i]['site']) <> "") echo "<br>".$danone[$i]['site'];
 												if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
 												echo "</p>
 											</div>";
