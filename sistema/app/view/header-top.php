@@ -61,9 +61,9 @@
 
                     <li class="icons">
                         <?php 
-                        if(!isset($bruker->usuario['ds_nome'])){
+                        if(isset($bruker->usuario['ds_nome'])){
                             $ds_nome = $bruker->usuario['ds_nome'];
-                        }elseif(!isset($bruker->usuario['nome'])){
+                        }elseif(isset($bruker->usuario['nome'])){
                             $ds_nome = $bruker->usuario['nome'];
                         }else{
                             $ds_nome = '';
