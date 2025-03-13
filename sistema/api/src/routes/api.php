@@ -214,12 +214,12 @@ $app->group("", function () use ($app) {
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario_login = 'ibranutro';
-				// if(!$retorno == []){
-				// 	$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
-				// 	$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
-				// 	$usuario_login = 'entric';
-				// }
-				var_dump($retorno);
+				var_dump("retorno:".$retorno);
+				if(!$retorno){
+					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
+					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
+					$usuario_login = 'entric';
+				}
 				$usuario = $retorno;
 				$usuario["tipo"] = 2;
 
