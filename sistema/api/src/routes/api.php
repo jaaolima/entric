@@ -424,6 +424,7 @@ $app->group("", function () use ($app) {
 						$data["data"]["session"]['admin_session_type'] = $tipo_login;
 						$data["data"]["session"]['admin_session_menu'] = $menu;
 						$data["data"]["session"]['admin_session_user'] = $usuario;
+						$data["data"]["session"]['login'] = $usuario_login;
 						$response = $response->withStatus(202, "Accepted");
 	
 						if ($nopin){
