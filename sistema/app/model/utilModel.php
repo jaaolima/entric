@@ -3,6 +3,8 @@ class UtilModel extends Model {
 
     public function stlog() {
         global $bruker;
+
+        var_dump($_SESSION);
         
         if($_SESSION['login'] == 'entric'){
             $qdata = array(':id_usuario'=> $bruker->usuario['id'], 
