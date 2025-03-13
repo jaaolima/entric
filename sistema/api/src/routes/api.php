@@ -8416,6 +8416,11 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
+				if($_SESSION['login'] == 'ibranutro'){
+					$campo_prescritor = 'id_usuario';
+				}elseif($_SESSION['login'] == 'entric'){
+					$campo_prescritor = 'id_prescritor';
+				}
 
 
 				if (isset($dados['cpf']) and ($dados['cpf'] == "") and ($dados['cpf_possui'] == "0")){
@@ -8423,11 +8428,11 @@ $app->group("", function () use ($app) {
 		        }
 		        if (!isset($dados['cpf']) or ($dados['cpf'] == "")){
 		            $dados['cpf'] = "";
-		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
+		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE ".$campo_prescritor."=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
 		            $mensagem_error = "Já possui cadastro com estes dados.";
 		        }
 		        else{
-		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
+		            $verificar = $db->select_single_to_array("pacientes", "*", "WHERE ".$campo_prescritor."=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
 		            $mensagem_error = "Este CPF já possui cadastro.";
 		        }
 
@@ -8439,7 +8444,7 @@ $app->group("", function () use ($app) {
 		            $usuario = $db->insert("usuarios", $bind);
 
 		            $bind = array(  ':id_usuario' => $usuario,
-		                            ':id_prescritor' => $id_prescritor,
+									':'.$campo_prescritor => $id_prescritor,
 		                            ':nome' => $dados["nome"],
 		                            ':celular' => $dados["celular"],
 		                            ':email' => $dados["email"],
@@ -8653,6 +8658,11 @@ $app->group("", function () use ($app) {
 				// 				':status' => 0,                     
 				// 				':data_criacao' => date("Y-m-d H:i:s") );
 				// $usuario = $db->insert("usuarios", $bind);
+				if($_SESSION['login'] == 'ibranutro'){
+					$campo_prescritor = ':id_usuario';
+				}elseif($_SESSION['login'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
 					if($sistema == 'ibranutro'){
@@ -8660,7 +8670,7 @@ $app->group("", function () use ($app) {
 							$dados['id_admissao'] = null;
 						}
 		
-						$bind = array(	':id_prescritor' => $id_prescritor,
+						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
 										':peso' => $dados["peso"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
@@ -8678,7 +8688,7 @@ $app->group("", function () use ($app) {
 							$dados['id_paciente'] = null;
 						}
 		
-						$bind = array(	':id_prescritor' => $id_prescritor,
+						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
 										':peso' => $dados["peso"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
@@ -8694,7 +8704,7 @@ $app->group("", function () use ($app) {
 		
 					}
 				}else{
-					$bind = array(	':id_prescritor' => $id_prescritor,
+					$bind = array(	$campo_prescritor => $id_prescritor,
 								':nome' => $dados["nome"],
 								':peso' => $dados["peso"],
 								':data_nascimento' => date2sql($dados["data_nascimento"]),  
@@ -8751,6 +8761,11 @@ $app->group("", function () use ($app) {
 				// 				':status' => 0,                     
 				// 				':data_criacao' => date("Y-m-d H:i:s") );
 				// $usuario = $db->insert("usuarios", $bind);
+				if($_SESSION['login'] == 'ibranutro'){
+					$campo_prescritor = ':id_usuario';
+				}elseif($_SESSION['login'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
 					if($sistema == 'ibranutro'){
@@ -8758,7 +8773,7 @@ $app->group("", function () use ($app) {
 							$dados['id_admissao'] = null;
 						}
 		
-						$bind = array(	':id_prescritor' => $id_prescritor,
+						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
@@ -8779,7 +8794,7 @@ $app->group("", function () use ($app) {
 							$dados['id_paciente'] = null;
 						}
 		
-						$bind = array(	':id_prescritor' => $id_prescritor,
+						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
@@ -8796,7 +8811,7 @@ $app->group("", function () use ($app) {
 		
 					}
 				}else{
-					$bind = array(	':id_prescritor' => $id_prescritor,
+					$bind = array(	$campo_prescritor => $id_prescritor,
 									':nome' => $dados["nome"],
 									':telefone' => $dados["telefone"],
 									':hospital' => $dados["hospital"],
