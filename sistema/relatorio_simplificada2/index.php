@@ -881,7 +881,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 
-		<P style="text-align: center;" class="subtitutlo">FICOU COM DÚVIDAS?</p>
+		<P style="text-align: center;" class="subtitutlo">FALE COM A NUTRICIONISTA CONCIERGE</p>
 		<div style="justify-content:center;">
 			<div style='margin-top:20px;text-align:center;'>
 				<h5 style='margin:0px;margin-top:8px;'>APONTE A CÂMERA PARA O QR CODE E</h5>
