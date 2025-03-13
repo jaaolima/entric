@@ -33,7 +33,7 @@ class CadastrosController extends Controller {
             }else
             if ($_POST['_ac'] == "cadastrar_prescritor"){
 
-                $cadastrar = $this->CadastrosModel->cadastrarPrescritor($_POST, $_FILES);
+                $cadastrar = $this->CadastrosModel->cadastrarPrescritor($_POST, $_FILES); 
 
                 if (isset($cadastrar['error'])) {
                     alertretorno("$.alert({
