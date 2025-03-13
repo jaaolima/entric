@@ -199,6 +199,7 @@ $app->group("", function () use ($app) {
 	            $retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
 				$usuario = $db->select_single_to_array("pacientes", "*", "WHERE id_usuario=".$retorno['id'], null);
 				$usuario["tipo"] = 1;
+				$usuario_login = 'entric';
 
 	            $menu = array(  "home",
 	                            "paciente_contato", 
@@ -212,6 +213,13 @@ $app->group("", function () use ($app) {
 	            $tipo_login = "prescritor";
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
+				$usuario_login = 'ibranutro';
+				if(!$retorno == []){
+					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
+					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
+					$usuario_login = 'entric';
+				}
+				var_dump($retorno);
 				$usuario = $retorno;
 				$usuario["tipo"] = 2;
 
@@ -231,6 +239,12 @@ $app->group("", function () use ($app) {
 	            $tipo_login = "administrador";
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
+				$usuario_login = 'ibranutro';
+				if(!$retorno){
+					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
+					$retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
+					$usuario_login = 'entric';
+				}
 				$usuario = $retorno;
 				$usuario["tipo"] = 3;
 
@@ -254,6 +268,7 @@ $app->group("", function () use ($app) {
 	            $retorno = $db->select_single_to_array("usuarios", "*", "WHERE email=:email AND tipo=:tipo AND status=0", $bind);
 				$usuario = $db->select_single_to_array("patrocinadores", "*", "WHERE id_usuario=".$retorno['id'], null);
 				$usuario["tipo"] = 3;
+				$usuario_login = 'entric';
 
 	            $menu = array(  "home",
 	                            "dashboard", 
@@ -268,84 +283,166 @@ $app->group("", function () use ($app) {
 
 	        if ($retorno){
 	            // pescritor ou paciente =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-	            if (($tipo == 1) or ($tipo == 2)){
-	                $checkpass = hash("SHA512", $senha) == trim($retorno['ds_senha']);
-	                
-	                if (!$checkpass){
-	                    $tipo_login = "";
-						$data["status"] = "Erro: Senha inválida.";
-						$response = $response->withStatus(401, "Unauthorized");
-	                }
-	            }
-
-	            if ($tipo_login <> ""){
-	                $db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id_usuario']));
-
-	                if ($_SERVER['SERVER_NAME'] <> "localhost"){
-	                    $res = openssl_pkey_new(array("digest_alg"=>"sha256","private_key_bits"=>512,"private_key_type"=>OPENSSL_KEYTYPE_RSA));
-	                    @openssl_pkey_export($res,$private);
-	                    $public = @openssl_pkey_get_details($res); 
-	                }else{                    
-	                    $public["key"] = uninumber();
-	                    $private = $public["key"];
-	                }
-
-	                $public = (isset($public["key"])?$public["key"]:null);
-	                $nonce = rand(2,99999);
-	                $uid = uidauth();
-
-	                $type2fa = 0;
-	                $data2fa = rand(111111, 999999);
-
-	    			$nopin = true;
-	    			$awaiting_token = true;
-	    			
-	                $qdata = array( ':session_time'=> date('Y-m-d H:i:s'),
-	                                ':session_start'=> date('Y-m-d H:i:s'),
-	                                ':session_key'=> $public,
-	                                ':user_id'=> $retorno['id_usuario'],
-	                                ':uid'=> $uid,
-	                                ':nonce'=> $nonce,
-	                                ':type'=> $tipo_login,
-	                                ':awaiting'=> (($awaiting_token) ? 'Y' : 'N'),
-	                                ':type2fa'=> $type2fa,
-	                                ':data2fa'=> $data2fa,
-	                                ':ip'=> get_ip_address());
-	                $sessions = $db->insert('sessions', $qdata);
-
-	                $qdata = array(':id_usuario'=> $retorno['id_usuario'], ':funcao'=> 'login_'.$tipo_login, ':ipaddress'=> get_ip_address(), ':data_criacao'=> date('Y-m-d H:i:s'));
-	                $logs = $db->insert('log', $qdata);
-
-					$token = JWTAuth::getToken($retorno['id_usuario'], $login);
-
-					$data["data"]["session"]['token'] = $token;
-					$data["data"]["session"]['admin_session_id'] = $sessions;
-					$data["data"]["session"]['admin_session_key'] = $private;
-					$data["data"]["session"]['admin_session_auth'] = $uid;
-					$data["data"]["session"]['admin_session_type'] = $tipo_login;
-					$data["data"]["session"]['admin_session_menu'] = $menu;
-					$data["data"]["session"]['admin_session_user'] = $usuario;
-					$response = $response->withStatus(202, "Accepted");
-
-	    			if ($nopin){
-	                    if ($tipo == 1){
-	                        $data["data"]["paciente_videosalta"] = "paciente_videosalta";
-	                        $response = $response->withStatus(202, "Accepted");
-	                    }
-	                    else{
-	                        $data["data"]["redirect"] = "redirect";
-	                        $response = $response->withStatus(202, "Accepted");
-	                    }
-
-	    			}else{
-						$data["status"] = "Erro 208: Usuário não encontrado ou inativo.";
+				if($usuario_login == 'ibranutro'){
+					if (($tipo == 1) or ($tipo == 2)){
+						$checkpass = hash("SHA512", $senha) == trim($retorno['ds_senha']);
+						
+						if (!$checkpass){
+							$tipo_login = "";
+							$data["status"] = "Erro: Senha inválida.";
+							$response = $response->withStatus(401, "Unauthorized");
+						}
+					}
+	
+					if ($tipo_login <> ""){
+						$db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id_usuario']));
+	
+						if ($_SERVER['SERVER_NAME'] <> "localhost"){
+							$res = openssl_pkey_new(array("digest_alg"=>"sha256","private_key_bits"=>512,"private_key_type"=>OPENSSL_KEYTYPE_RSA));
+							@openssl_pkey_export($res,$private);
+							$public = @openssl_pkey_get_details($res); 
+						}else{                    
+							$public["key"] = uninumber();
+							$private = $public["key"];
+						}
+	
+						$public = (isset($public["key"])?$public["key"]:null);
+						$nonce = rand(2,99999);
+						$uid = uidauth();
+	
+						$type2fa = 0;
+						$data2fa = rand(111111, 999999);
+	
+						$nopin = true;
+						$awaiting_token = true;
+						
+						$qdata = array( ':session_time'=> date('Y-m-d H:i:s'),
+										':session_start'=> date('Y-m-d H:i:s'),
+										':session_key'=> $public,
+										':user_id'=> $retorno['id_usuario'],
+										':uid'=> $uid,
+										':nonce'=> $nonce,
+										':type'=> $tipo_login,
+										':awaiting'=> (($awaiting_token) ? 'Y' : 'N'),
+										':type2fa'=> $type2fa,
+										':data2fa'=> $data2fa,
+										':ip'=> get_ip_address());
+						$sessions = $db->insert('sessions', $qdata);
+	
+						$qdata = array(':id_usuario'=> $retorno['id_usuario'], ':funcao'=> 'login_'.$tipo_login, ':ipaddress'=> get_ip_address(), ':data_criacao'=> date('Y-m-d H:i:s'));
+						$logs = $db->insert('log', $qdata);
+	
+						$token = JWTAuth::getToken($retorno['id_usuario'], $login);
+	
+						$data["data"]["session"]['token'] = $token;
+						$data["data"]["session"]['admin_session_id'] = $sessions;
+						$data["data"]["session"]['admin_session_key'] = $private;
+						$data["data"]["session"]['admin_session_auth'] = $uid;
+						$data["data"]["session"]['admin_session_type'] = $tipo_login;
+						$data["data"]["session"]['admin_session_menu'] = $menu;
+						$data["data"]["session"]['admin_session_user'] = $usuario;
+						$response = $response->withStatus(202, "Accepted");
+	
+						if ($nopin){
+							if ($tipo == 1){
+								$data["data"]["paciente_videosalta"] = "paciente_videosalta";
+								$response = $response->withStatus(202, "Accepted");
+							}
+							else{
+								$data["data"]["redirect"] = "redirect";
+								$response = $response->withStatus(202, "Accepted");
+							}
+	
+						}else{
+							$data["status"] = "Erro 208: Usuário não encontrado ou inativo.";
+							$response = $response->withStatus(400, "Bad Request");
+						}
+	
+					}else{
+						$data["status"] = "Erro 213: Usuário não encontrado ou inativo.";
 						$response = $response->withStatus(400, "Bad Request");
-	    			}
-
-	            }else{
-					$data["status"] = "Erro 213: Usuário não encontrado ou inativo.";
-					$response = $response->withStatus(400, "Bad Request");
-	            }
+					}
+				}elseif($usuario_login == 'entric'){
+					if (($tipo == 1) or ($tipo == 2)){
+						$checkpass = hash("SHA512", $senha) == trim($retorno['senha']);
+						
+						if (!$checkpass){
+							$tipo_login = "";
+							$data["status"] = "Erro: Senha inválida.";
+							$response = $response->withStatus(401, "Unauthorized");
+						}
+					}
+	
+					if ($tipo_login <> ""){
+						$db->delete("sessions", "WHERE user_id=:id AND type='".$tipo_login."'", array(':id' => $retorno['id']));
+	
+						if ($_SERVER['SERVER_NAME'] <> "localhost"){
+							$res = openssl_pkey_new(array("digest_alg"=>"sha256","private_key_bits"=>512,"private_key_type"=>OPENSSL_KEYTYPE_RSA));
+							@openssl_pkey_export($res,$private);
+							$public = @openssl_pkey_get_details($res); 
+						}else{                    
+							$public["key"] = uninumber();
+							$private = $public["key"];
+						}
+	
+						$public = (isset($public["key"])?$public["key"]:null);
+						$nonce = rand(2,99999);
+						$uid = uidauth();
+	
+						$type2fa = 0;
+						$data2fa = rand(111111, 999999);
+	
+						$nopin = true;
+						$awaiting_token = true;
+						
+						$qdata = array( ':session_time'=> date('Y-m-d H:i:s'),
+										':session_start'=> date('Y-m-d H:i:s'),
+										':session_key'=> $public,
+										':user_id'=> $retorno['id'],
+										':uid'=> $uid,
+										':nonce'=> $nonce,
+										':type'=> $tipo_login,
+										':awaiting'=> (($awaiting_token) ? 'Y' : 'N'),
+										':type2fa'=> $type2fa,
+										':data2fa'=> $data2fa,
+										':ip'=> get_ip_address());
+						$sessions = $db->insert('sessions', $qdata);
+	
+						$qdata = array(':id_usuario'=> $retorno['id'], ':funcao'=> 'login_'.$tipo_login, ':ipaddress'=> get_ip_address(), ':data_criacao'=> date('Y-m-d H:i:s'));
+						$logs = $db->insert('log', $qdata);
+	
+						$token = JWTAuth::getToken($retorno['id'], $login);
+	
+						$data["data"]["session"]['token'] = $token;
+						$data["data"]["session"]['admin_session_id'] = $sessions;
+						$data["data"]["session"]['admin_session_key'] = $private;
+						$data["data"]["session"]['admin_session_auth'] = $uid;
+						$data["data"]["session"]['admin_session_type'] = $tipo_login;
+						$data["data"]["session"]['admin_session_menu'] = $menu;
+						$data["data"]["session"]['admin_session_user'] = $usuario;
+						$response = $response->withStatus(202, "Accepted");
+	
+						if ($nopin){
+							if ($tipo == 1){
+								$data["data"]["paciente_videosalta"] = "paciente_videosalta";
+								$response = $response->withStatus(202, "Accepted");
+							}
+							else{
+								$data["data"]["redirect"] = "redirect";
+								$response = $response->withStatus(202, "Accepted");
+							}
+	
+						}else{
+							$data["status"] = "Erro 208: Usuário não encontrado ou inativo.";
+							$response = $response->withStatus(400, "Bad Request");
+						}
+	
+					}else{
+						$data["status"] = "Erro 213: Usuário não encontrado ou inativo.";
+						$response = $response->withStatus(400, "Bad Request");
+					}
+				}
+	            
 
 	        }else{
 				$data["status"] = "Erro 218: Usuário não encontrado ou inativo.";
