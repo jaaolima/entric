@@ -8648,7 +8648,7 @@ $app->group("", function () use ($app) {
 				$id_prescritor = $request->getParam("id_prescritor");
 
 
-		        $relatorio = $db->select_single_to_array("relatorios", "*", "WHERE id=".$id." AND id_prescritor=".$id_prescritor." AND codigo IS NULL", null);
+		        $relatorio = $db->select_single_to_array("relatorios", "*", "WHERE id=".$id." AND codigo IS NULL", null);
 		        if ($relatorio){
 		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
 		            $relatorio["data"] = sql2date($relatorio["data"]);
@@ -8861,7 +8861,7 @@ $app->group("", function () use ($app) {
 		            $bind_query .= " AND cpf='".$dados['cpf']."'";
 		        }
 		        if ($bind_query <> ""){
-		            $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+		            $bind_query = " ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes",
 		                                                "id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
@@ -8870,7 +8870,7 @@ $app->group("", function () use ($app) {
 		                for($i = 0; $i < count($pacientes); $i++){
 		                    $relatorios = $db->select_to_array("relatorios",
 		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
-		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' AND id_prescritor=".$id_prescritor." ORDER BY id ASC",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
 		                    if ($relatorios){
 		                        $pacientes[$i]['relatorios'] = $relatorios;
@@ -8937,7 +8937,7 @@ $app->group("", function () use ($app) {
 		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
 		        }
 		        if ($bind_query <> ""){
-		            $bind_query = " id_prescritor is not null ".$bind_query;
+		            $bind_query = " ".$bind_query;
 		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_simplificada",
 		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso",
@@ -9018,7 +9018,7 @@ $app->group("", function () use ($app) {
 		        }
 		        if ($bind_query <> ""){
 		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
-		            $bind_query = " id_prescritor is not null ".$bind_query;
+		            $bind_query = " ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_suplemento",
 		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
