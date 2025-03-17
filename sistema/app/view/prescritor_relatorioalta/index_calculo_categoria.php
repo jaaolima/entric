@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-radio">
-                            <input id="radioManual" class="radio-outlined"  name="tipo_prescricao" type="radio" value="Prescrição Manual">
+                            <input id="radioManual" disabled class="radio-outlined"  name="tipo_prescricao" type="radio" value="Prescrição Manual">
                             <label for="radioManual" class="radio-green">Prescrição Manual</label>
                         </div>
                     </div>

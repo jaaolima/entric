@@ -120,6 +120,7 @@
         <div id="div_cadastrar_paciente" style="<?php echo ($tab1=="cadastrar"?"display: block;":"display: none;"); ?>">
             <form action="prescritor_relatorioalta" id="form_cadastrar_paciente" method="post" autocomplete="off" onsubmit="return false">
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
+                <input type="hidden" name="login_tipo" value="<?php echo $_SESSION['login']; ?>">
                 <?php if($sistema == 'EN') : ?>
                 <input type="hidden" name='id_paciente' value="<?php echo $id_paciente_redirecionado; ?>">
                 <input type="hidden" name='sistema' value="<?php echo $sistema; ?>">

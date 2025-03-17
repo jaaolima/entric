@@ -21,6 +21,7 @@ class UtilModel extends Model {
         }
 
         $retorno = httpPostAuth("util_stlog", array("token" => $_SESSION['token'],
+                                                    "login" => $_SESSION['login'],
                                                     "qdata" => $qdata ));       
     }
 }

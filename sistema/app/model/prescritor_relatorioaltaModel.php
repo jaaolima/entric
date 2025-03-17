@@ -84,6 +84,7 @@ class Prescritor_relatorioaltaModel extends Model {
     function buscarDados($dados) { 
         global $bruker;
         $retorno = httpPostAuth("prescritor_relatorioalta_buscarDados", array(  "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                                 "dados" => $dados));
         return $retorno;
     }

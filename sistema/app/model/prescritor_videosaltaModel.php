@@ -4,13 +4,15 @@ class Prescritor_videosaltaModel extends Model {
 
     function getDados() {
         global $bruker;
-        $retorno = httpPostAuth("prescritor_videosalta_getDados", array(  "token" => $_SESSION['token']));
+        $retorno = httpPostAuth("prescritor_videosalta_getDados", array(  "token" => $_SESSION['token'],
+        "login" => $_SESSION['login']));
         return $retorno;
     }
 
     function getDado($id) {
         global $bruker;
         $retorno = httpPostAuth("prescritor_videosalta_getDado", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                         "id" => $id));
         return $retorno;
     }
@@ -18,6 +20,7 @@ class Prescritor_videosaltaModel extends Model {
     function cadastrar($dados, $files) {
         global $bruker;
         $retorno = httpPostAuth("prescritor_videosalta_cadastrar1", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                             "dados" => $dados));
 
         if ($_FILES['video']['error'] == 4){
@@ -31,6 +34,7 @@ class Prescritor_videosaltaModel extends Model {
             $upload = uploadFile($_FILES['video'], "/videos/".$dir."/");
             if ($upload){
                 $videos = httpPostAuth("prescritor_videosalta_cadastrar2", array(   "token" => $_SESSION['token'],
+                "login" => $_SESSION['login'],
                                                                                     "id" => $retorno,
                                                                                     "link" => "arquivos/videos/".$dir."/".$upload ));
             }
@@ -42,6 +46,7 @@ class Prescritor_videosaltaModel extends Model {
     function editar($dados, $files) {
         global $bruker;
         $retorno = httpPostAuth("prescritor_videosalta_editar1", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                         "dados" => $dados));
 
         if ($_FILES['video']['error'] == 4){
@@ -55,6 +60,7 @@ class Prescritor_videosaltaModel extends Model {
             $upload = uploadFile($_FILES['video'], "/videos/".$dir."/");
             if ($upload){
                 $videos = httpPostAuth("prescritor_videosalta_editar2", array(  "token" => $_SESSION['token'],
+                "login" => $_SESSION['login'],
                                                                                 "id" => $dados['id'],
                                                                                 "link" => "arquivos/videos/".$dir."/".$upload ));
             }

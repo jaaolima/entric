@@ -5,6 +5,7 @@ class SenhaModel extends Model {
     function checarPrescritorSenha($email_cpf = null) {
         global $bruker;
         $retorno = httpPostAuth("senha_checarPrescritorSenha", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                         "email_cpf" => $email_cpf));
         return $retorno;
     }
@@ -12,6 +13,7 @@ class SenhaModel extends Model {
     function checarPacienteSenha($email_cpf = null) {
         global $bruker;
         $retorno = httpPostAuth("senha_checarPacienteSenha", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "email_cpf" => $email_cpf));
         return $retorno;
     }
@@ -19,6 +21,7 @@ class SenhaModel extends Model {
     function checarCodigoSenhaPaciente($codigo = null) {
         global $bruker;
         $retorno = httpPostAuth("senha_checarCodigoSenhaPaciente", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                             "codigo" => $codigo));
         return $retorno;
     }
@@ -26,6 +29,7 @@ class SenhaModel extends Model {
     function checarCodigoSenhaPrescritor($codigo = null) {
         global $bruker;
         $retorno = httpPostAuth("senha_checarCodigoSenhaPrescritor", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                             "codigo" => $codigo));
         return $retorno;
     }

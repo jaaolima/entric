@@ -4,13 +4,15 @@ class DashboardModel extends Model {
 
     function getDadosLog() {
         global $bruker;
-        $retorno = httpPostAuth("dashboard_getDadosLog", array("token" => $_SESSION['token']));
+        $retorno = httpPostAuth("dashboard_getDadosLog", array("token" => $_SESSION['token'],
+                                                                "login" => $_SESSION['login']));
         return $retorno;
     }
 
     function getDadosSite($data1, $data2) {
         global $bruker;
         $retorno = httpPostAuth("dashboard_getDadosSite", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "data1" => $data1,
                                                                 "data2" => $data2));
         return $retorno;
@@ -19,6 +21,7 @@ class DashboardModel extends Model {
     function getDadosVideos($data1, $data2) {
         global $bruker;
         $retorno = httpPostAuth("dashboard_getDadosVideos", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "data1" => $data1,
                                                                 "data2" => $data2));
         return $retorno;
@@ -27,6 +30,7 @@ class DashboardModel extends Model {
     function getDadosRelatorios($uf = null, $data1, $data2) {
         global $bruker;
         $retorno = httpPostAuth("dashboard_getDadosRelatorios", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "uf" => $uf,
                                                                     "data1" => $data1,
                                                                     "data2" => $data2));

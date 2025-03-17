@@ -4,6 +4,7 @@ class ProdutoModel extends Model {
     function gtProdutoRelatorio($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorio", array("token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -11,6 +12,7 @@ class ProdutoModel extends Model {
     function gtProdutoRelatorioSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorioSimplificada", array("token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -18,6 +20,7 @@ class ProdutoModel extends Model {
     function gtProdutoRelatorioSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorioSuplemento", array("token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -25,6 +28,7 @@ class ProdutoModel extends Model {
     function gtProdutoFiltros($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoFiltros", array(  "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -32,6 +36,7 @@ class ProdutoModel extends Model {
     function chkProduto($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_chkProduto", array(    "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                 "dados" => $dados)); 
         return $retorno;
     }
@@ -39,6 +44,7 @@ class ProdutoModel extends Model {
     function gtProdutos($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutos", array(    "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));
         return $retorno;
     }
@@ -46,6 +52,7 @@ class ProdutoModel extends Model {
     function gtProduto($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProduto", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                             "dados" => $dados));
         return $retorno;
     }
@@ -122,6 +129,7 @@ class ProdutoModel extends Model {
         }
 
         $produto = httpPostAuth("produto_stProduto", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                             "dados" => $bind));
 
         if ($produto){
@@ -135,6 +143,7 @@ class ProdutoModel extends Model {
                                         ':descricao' => $descricao,
                                         ':valor' => $val);
                         $produtos_info_nutri = httpPostAuth("produto_info_nutri", array("token" => $_SESSION['token'],
+                        "login" => $_SESSION['login'],
                                                                                         "dados" => $bind));                        
                     }
                     else if(strpos($key, "compo_") !== false){
@@ -145,6 +154,7 @@ class ProdutoModel extends Model {
                                         ':descricao' => $descricao,
                                         ':valor' => $val);
                         $produtos_composicao = httpPostAuth("produto_composicao", array("token" => $_SESSION['token'],
+                        "login" => $_SESSION['login'],
                                                                                         "dados" => $bind));   
                     }
                 }
@@ -153,7 +163,8 @@ class ProdutoModel extends Model {
 
 
         if ($produto){
-            $fabricante = httpPostAuth("produto_fabricantes", array("token" => $_SESSION['token']));  
+            $fabricante = httpPostAuth("produto_fabricantes", array("token" => $_SESSION['token'],
+            "login" => $_SESSION['login']));  
             return $fabricante;
         }
         else{
@@ -236,6 +247,7 @@ class ProdutoModel extends Model {
 
         if ($produto){
             $produtos_comp_info_nutri = httpPostAuth("produto_delinfo_nutri", array("token" => $_SESSION['token'],
+            "login" => $_SESSION['login'],
                                                                               "id_produto" => $dados['_idproduto'])); 
             
             foreach ($dados as $key => $val) {
@@ -249,6 +261,7 @@ class ProdutoModel extends Model {
                                         ':valor' => $val);
 
                         $produtos_info_nutri = httpPostAuth("produto_ptinfo_nutri", array(  "token" => $_SESSION['token'],
+                        "login" => $_SESSION['login'],
                                                                                             "dados" => $bind)); 
                     }
                     else if(strpos($key, "compo_") !== false){
@@ -259,6 +272,7 @@ class ProdutoModel extends Model {
                                         ':descricao' => $descricao,
                                         ':valor' => $val);
                         $produtos_composicao = httpPostAuth("produto_ptcomposicao", array(  "token" => $_SESSION['token'],
+                        "login" => $_SESSION['login'],
                                                                                             "dados" => $bind)); 
                     }
                 }
@@ -266,7 +280,8 @@ class ProdutoModel extends Model {
         }
 
         if ($produto){
-            $fabricante = httpPostAuth("produto_fabricantes", array("token" => $_SESSION['token']));  
+            $fabricante = httpPostAuth("produto_fabricantes", array("token" => $_SESSION['token'],
+            "login" => $_SESSION['login']));  
             return $fabricante;
         }
         else{
@@ -277,6 +292,7 @@ class ProdutoModel extends Model {
     function ptDisponivel($id, $disponivel) {
         global $bruker;
         $retorno = httpPostAuth("produto_ptDisponivel", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                 "id" => $id,
                                                                 "disponivel" => $disponivel));
         return $retorno;
@@ -285,6 +301,7 @@ class ProdutoModel extends Model {
     function rmProduto($id) {
         global $bruker;
         $retorno = httpPostAuth("produto_rmProduto", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                                 "id" => $id));
         return $retorno;
     }

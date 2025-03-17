@@ -4,6 +4,7 @@ class AjaxModel extends Model {
     function getPatrocinador($output) {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPatrocinador", array(  "token" => $_SESSION['token'],
+                                                                "login" => $_SESSION['login'],
                                                                 "output" => $output));
         return json_encode($retorno);
     }
@@ -11,6 +12,7 @@ class AjaxModel extends Model {
     function getAdministrador($output) {
         global $bruker;
         $retorno = httpPostAuth("ajax_getAdministrador", array( "token" => $_SESSION['token'],
+                                                                "login" => $_SESSION['login'],
                                                                 "output" => $output));        
         return json_encode($retorno);
     }
@@ -18,6 +20,7 @@ class AjaxModel extends Model {
     function getPrescritor($output) {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPrescritor", array(    "token" => $_SESSION['token'],
+                                                                "login" => $_SESSION['login'],
                                                                 "output" => $output));
         return json_encode($retorno);
     }
@@ -31,6 +34,7 @@ class AjaxModel extends Model {
     function gt_admin($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gt_admin", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                         "id" => $id));
         return $retorno;
     }
@@ -38,6 +42,7 @@ class AjaxModel extends Model {
     function gt_patroc($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gt_patroc", array(    "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "id" => $id));
         return $retorno;
     }
@@ -45,6 +50,7 @@ class AjaxModel extends Model {
     function gt_prescritores($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gt_prescritores", array(    "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "id" => $id));
         return $retorno;
     }
@@ -52,6 +58,7 @@ class AjaxModel extends Model {
     function gt_endereco_distribuidor($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gt_endereco_distribuidor", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                         "id" => $id));
         return $retorno;
     }
@@ -59,6 +66,7 @@ class AjaxModel extends Model {
     function unidades_cadastrar($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_unidades_cadastrar", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -66,6 +74,7 @@ class AjaxModel extends Model {
     function unidades_editar($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_unidades_editar", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -73,6 +82,7 @@ class AjaxModel extends Model {
     function rmUnidade($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_rmUnidade", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                         "dados" => $dados));
         return $retorno;
     }
@@ -80,6 +90,7 @@ class AjaxModel extends Model {
     function fabricantes_editar($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_fabricantes_editar", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -87,6 +98,7 @@ class AjaxModel extends Model {
     function fabricantes_cadastrar($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_fabricantes_cadastrar", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
     }
@@ -94,6 +106,7 @@ class AjaxModel extends Model {
     function VerVideo($video) {
         global $bruker;
         $retorno = httpPostAuth("ajax_VerVideo", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                         "dados" => array(   ':id_usuario' => $bruker->usuario['id_usuario'],
                                                                             ':login' => $bruker->usuario['ds_usuario'],
                                                                             ':funcao' => 'video',
@@ -106,6 +119,7 @@ class AjaxModel extends Model {
     function rmVideo($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_fabricantes_cadastrar", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "id" => $id));
         return $retorno;        
     }
@@ -113,6 +127,7 @@ class AjaxModel extends Model {
     function rmDistribuidor($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_rmDistribuidor", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                              "id" => $id));
         return $retorno;
     }
@@ -120,25 +135,29 @@ class AjaxModel extends Model {
     function rmFabricante($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_rmFabricante", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                              "dados" => $dados));
         return $retorno;
     }
 
     function getFabricantes() {
         global $bruker;
-        $retorno = httpPostAuth("ajax_getFabricantes", array("token" => $_SESSION['token']));
+        $retorno = httpPostAuth("ajax_getFabricantes", array("token" => $_SESSION['token'],
+                                                            "login" => $_SESSION['login']));
         return $retorno;
     }
 
     function gt_fabricantes($output) {
         global $bruker;
-        $retorno = httpPostAuth("ajax_gt_fabricantes", array("token" => $_SESSION['token']));       
+        $retorno = httpPostAuth("ajax_gt_fabricantes", array("token" => $_SESSION['token'],
+                                                            "login" => $_SESSION['login']));       
         return json_encode($retorno);
     }
 
     function stHistoria($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stHistoria", array(   "token" => $_SESSION['token'],
+                                                            "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;
@@ -147,6 +166,7 @@ class AjaxModel extends Model {
     function stAvaliacao($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stAvaliacao", array(  "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados));       
         return $retorno;
     }
@@ -154,6 +174,7 @@ class AjaxModel extends Model {
     function stNecessidades($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stNecessidades", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -161,6 +182,8 @@ class AjaxModel extends Model {
     function stCalculo($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stCalculo", array(    "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'],
                                                             "dados" => $dados));       
         return $retorno;        
     }
@@ -168,6 +191,8 @@ class AjaxModel extends Model {
     function stCalculoSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stCalculoSimplificada", array(    "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'],
                                                             "dados" => $dados));       
         return $retorno;        
     }
@@ -175,6 +200,8 @@ class AjaxModel extends Model {
     function stCalculoSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stCalculoSuplemento", array(    "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
+                                                            "id_prescritor" => $bruker->usuario['id_usuario'],
                                                             "dados" => $dados));       
         return $retorno;        
     }
@@ -182,6 +209,7 @@ class AjaxModel extends Model {
     function stFracionamento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stFracionamento", array(  "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -189,6 +217,7 @@ class AjaxModel extends Model {
     function stFracionamentoSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stFracionamentoSimplificada", array(  "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -196,6 +225,7 @@ class AjaxModel extends Model {
     function stFracionamentoSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stFracionamentoSuplemento", array(  "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -203,6 +233,7 @@ class AjaxModel extends Model {
     function stSelecao($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stSelecao", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                         "dados" => $dados));       
         return $retorno;
     }
@@ -210,6 +241,7 @@ class AjaxModel extends Model {
     function stSelecaoSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stSelecaoSimplificada", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                         "dados" => $dados));       
         return $retorno;
     }
@@ -217,6 +249,7 @@ class AjaxModel extends Model {
     function stSelecaoSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stSelecaoSuplemento", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                         "dados" => $dados));       
         return $retorno;
     }
@@ -224,6 +257,7 @@ class AjaxModel extends Model {
     function stObservacoes($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stObservacoes", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados));       
         return $retorno;
     }
@@ -231,6 +265,7 @@ class AjaxModel extends Model {
     function stDistribuidores($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stDistribuidores", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -238,6 +273,7 @@ class AjaxModel extends Model {
     function stDistribuidoresSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stDistribuidoresSimplificada", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -245,6 +281,7 @@ class AjaxModel extends Model {
     function stDistribuidoresSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stDistribuidoresSuplemento", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados));       
         return $retorno;
     }
@@ -252,6 +289,7 @@ class AjaxModel extends Model {
     function stRelatorio($dados, $set_codigo = false) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stRelatorio", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                            "dados" => $dados,
                                                            "set_codigo" => $set_codigo));       
         return $retorno;
@@ -260,6 +298,7 @@ class AjaxModel extends Model {
     function stRelatorioSimplificada($dados, $set_codigo = false) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stRelatorioSimplificada", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                            "dados" => $dados,
                                                            "set_codigo" => $set_codigo));       
         return $retorno;
@@ -268,6 +307,7 @@ class AjaxModel extends Model {
     function stRelatorioSuplemento($dados, $set_codigo = false) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stRelatorioSuplemento", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                            "dados" => $dados,
                                                            "set_codigo" => $set_codigo));       
         return $retorno;
@@ -276,6 +316,7 @@ class AjaxModel extends Model {
     function gtRelatorio($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gtRelatorio", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                            "id" => $id,
                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;
@@ -284,6 +325,7 @@ class AjaxModel extends Model {
     function gtRelatorioSimplificada($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gtRelatorioSimplificada", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                            "id" => $id,
                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;
@@ -292,6 +334,7 @@ class AjaxModel extends Model {
     function gtRelatorioSuplemento($id) {
         global $bruker;
         $retorno = httpPostAuth("ajax_gtRelatorioSuplemento", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                            "id" => $id,
                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;
@@ -300,6 +343,7 @@ class AjaxModel extends Model {
     function EnviarEmailPaciente($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_EnviarEmailPaciente", array(  "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                     "dados" => $dados));       
         return $retorno;
     }    
@@ -307,6 +351,7 @@ class AjaxModel extends Model {
     function getPacientes($dados = null) {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPacientes", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;               
@@ -315,6 +360,7 @@ class AjaxModel extends Model {
     function getPacientesSimplificada($dados = null) {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPacientesSimplificada", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;               
@@ -323,6 +369,7 @@ class AjaxModel extends Model {
     function getPacientesSuplemento($dados = null) {
         global $bruker;
         $retorno = httpPostAuth("ajax_getPacientesSuplemento", array( "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario']));       
         return $retorno;               
@@ -331,6 +378,7 @@ class AjaxModel extends Model {
     function getDistribuidores($dados = null) {
         global $bruker;
         $retorno = httpPostAuth("ajax_getDistribuidores", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                                 "dados" => $dados ));       
         return $retorno; 
     }
@@ -338,6 +386,7 @@ class AjaxModel extends Model {
     function stPaciente($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPaciente", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
@@ -346,6 +395,7 @@ class AjaxModel extends Model {
     function ptPaciente($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_ptPaciente", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
@@ -354,6 +404,7 @@ class AjaxModel extends Model {
     function ptPacienteSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_ptPacienteSimplificada", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
@@ -362,6 +413,7 @@ class AjaxModel extends Model {
     function ptPacienteSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_ptPacienteSuplemento", array(   "token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
@@ -370,6 +422,7 @@ class AjaxModel extends Model {
     function stPacienteSimplificada($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
@@ -378,6 +431,7 @@ class AjaxModel extends Model {
     function stPacienteSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stPacienteSuplemento", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
                                                             "dados" => $dados,
                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;

@@ -582,7 +582,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				unset($usuario["senha"]);
@@ -610,7 +615,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$qdata = $request->getParam("qdata");
@@ -640,7 +650,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -690,7 +705,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -722,7 +742,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 
@@ -753,7 +778,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -786,7 +816,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -819,7 +854,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -852,7 +892,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -885,7 +930,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -918,7 +968,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 		        $retorno = array();
@@ -956,7 +1011,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$codigo = $request->getParam("codigo");
@@ -987,7 +1047,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$codigo = $request->getParam("codigo");
@@ -1018,7 +1083,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$email_cpf = $request->getParam("email_cpf");
@@ -1090,7 +1160,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$email_cpf = $request->getParam("email_cpf");
@@ -1162,7 +1237,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -1194,7 +1274,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -1234,7 +1319,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1264,7 +1354,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id_produto = $request->getParam("id_produto");
@@ -1295,7 +1390,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1325,7 +1425,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1358,7 +1463,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 	            $fabricante = array();
@@ -1397,7 +1507,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1427,7 +1542,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1457,7 +1577,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1487,7 +1612,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1524,7 +1654,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1556,7 +1691,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1589,7 +1729,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -1683,7 +1828,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -2338,7 +2488,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -3065,7 +3220,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -3437,7 +3597,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -3469,7 +3634,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -3500,7 +3670,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -3532,7 +3707,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -3563,7 +3743,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -3595,7 +3780,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 		        $retorno = array();
@@ -3634,7 +3824,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -3697,7 +3892,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id_paciente = $request->getParam("id_paciente");
@@ -3730,7 +3930,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id_paciente = $request->getParam("id_paciente");
@@ -3768,7 +3973,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
         
@@ -3804,7 +4014,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 		        $retorno = array();
@@ -3838,7 +4053,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id_paciente = $request->getParam("id_paciente");
@@ -3900,7 +4120,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id_paciente = $request->getParam("id_paciente");
@@ -3935,7 +4160,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				
@@ -3968,7 +4198,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$id_usuario = $request->getParam("id_usuario");
@@ -4003,7 +4238,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$id_usuario = $request->getParam("id_usuario");
@@ -4129,7 +4369,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$dados = $request->getParam("dados");
@@ -4179,7 +4424,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$dados = $request->getParam("dados");
@@ -4232,7 +4482,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$id = $request->getParam("id");
@@ -4266,7 +4521,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$id_paciente = $request->getParam("id_paciente");
@@ -4300,7 +4560,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$uf = $request->getParam("uf");
@@ -4366,7 +4631,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$data1 = $request->getParam("data1");
@@ -4423,7 +4693,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$data1 = $request->getParam("data1");
@@ -4480,7 +4755,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 		        $logs = $db->select_to_array( "log",
@@ -4510,7 +4790,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$id_paciente = $request->getParam("id_paciente");	
@@ -4547,7 +4832,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 		        $retorno = array();
@@ -4581,7 +4871,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 		        $retorno = array();
@@ -4615,7 +4910,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){		        
 		        $retorno = $db->select_single_to_array("config",
@@ -4645,7 +4945,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){	
 				$dados = $request->getParam("dados");	        
@@ -4678,7 +4983,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -4742,7 +5052,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -4804,7 +5119,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -4898,7 +5218,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -4943,7 +5268,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -4988,7 +5318,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -5068,7 +5403,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id_paciente = $request->getParam("id_paciente");
@@ -5103,7 +5443,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$sistema = $request->getParam("sistema");
@@ -5148,7 +5493,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$sistema = $request->getParam("sistema");
@@ -5192,7 +5542,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$sistema = $request->getParam("sistema");
@@ -5245,7 +5600,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -5278,7 +5638,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -5327,13 +5692,19 @@ $app->group("", function () use ($app) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
+
 		if ($result) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
-			if ($usuario){
+			if ($usuario){ 
 				$dados = $request->getParam("dados");
 				$id_usuario = $request->getParam("id_usuario");
 
@@ -5360,6 +5731,56 @@ $app->group("", function () use ($app) {
 		                            ':status' => 0,
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->insert("usuarios", $bind);
+
+					if($retorno){
+						// Create the Transport
+						$transport = (new Swift_SmtpTransport('smtp.example.org', 25))
+						->setUsername('your username')
+						->setPassword('your password')
+						;
+
+						// Create the Mailer using your created Transport
+						$mailer = new Swift_Mailer($transport);
+
+						// Create a message
+						$message = (new Swift_Message('Wonderful Subject'))
+						->setFrom(['john@doe.com' => 'John Doe'])
+						->setTo([$dados['login']])
+						->setBody('
+						<p>Olá '.$dados['ds_nome'].',</p>
+						<br>
+						<br>
+						<p>Seja bem-vindo ao <strong>Entric</strong></p>
+						<br>
+						<br>
+						<p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
+						<br>
+						<p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
+						<br>
+						<br>
+						<br>
+						<p>Acesse o sistema agora mesmo: [link de acesso].</p>
+						<br>
+						<br>
+						<p>Atenciosamente,</p>
+						<p>Equipe Entric</p>
+						<br>
+						<br>
+						<div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
+							<div>
+								<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
+							</div>
+							<div style="display:block;margin-top:13px;">
+								<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
+								<p style="color:#0092c5;">site.entric.com.br</p>
+							</div>
+						</div>
+						')
+						;
+
+						// Send the message
+						$result = $mailer->send($message);
+					}
 		        }
 		        
 		        $data = $retorno;
@@ -5385,7 +5806,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -5435,7 +5861,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -5523,7 +5954,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -5589,7 +6025,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
@@ -5632,7 +6073,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$output = $request->getParam("output");
@@ -5697,7 +6143,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$output = $request->getParam("output");
@@ -5761,7 +6212,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$output = $request->getParam("output");
@@ -5828,7 +6284,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 		        $retorno = array();
@@ -5877,7 +6338,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -5905,7 +6371,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -5933,7 +6404,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -5961,7 +6437,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 
 			if ($usuario){
 				$id = $request->getParam("id");
@@ -6011,7 +6492,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6066,7 +6552,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6120,7 +6611,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6151,7 +6647,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6205,7 +6706,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6261,7 +6767,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6292,7 +6803,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$id = $request->getParam("id");
 
@@ -6321,7 +6837,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$id = $request->getParam("id");
 
@@ -6350,7 +6871,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6379,7 +6905,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 
 		        $retorno = array();
@@ -6428,7 +6959,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 
 	        	$retorno = array();
@@ -6484,7 +7020,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -6531,7 +7072,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6610,7 +7156,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -6686,9 +7237,21 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = ':id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
+
+				$id_prescritor = $request->getParam("id_prescritor"); 
 
 				if (!isset($dados['categoria'])) $dados['categoria'] = null;
 		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
@@ -6733,7 +7296,8 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['suplemento_volume_total'])) $dados['suplemento_volume_total'] = null;
 		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
 
-		        $bind = array(  ':categoria' => $dados['categoria'],
+		        $bind = array(  $campo_prescritor => $id_prescritor,
+								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
 		                        ':tipo_prescricao' => $dados["tipo_prescricao"],
 		                        ':dispositivo' => $dados["dispositivo"],
@@ -6780,7 +7344,7 @@ $app->group("", function () use ($app) {
 		        $data = $retorno;
 			}
 			else{
-				$data["status"] = "Erro: Token de autenticação é inválido.";	
+				$data["status"] = "Erro: Token de autenticação é inválido.";
 			}
 
 		} else {
@@ -6800,9 +7364,22 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
+
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = ':id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
+
+				$id_prescritor = $request->getParam("id_prescritor");
 
 				if (!isset($dados['categoria'])) $dados['categoria'] = null;
 		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
@@ -6848,6 +7425,7 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
 
 		        $bind = array( 
+								$campo_prescritor => $id_prescritor,
 								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
 		                        ':tipo_prescricao' => $dados["tipo_prescricao"],
@@ -6918,9 +7496,21 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = ':id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
+
+				$id_prescritor = $request->getParam("id_prescritor");
 
 				if (!isset($dados['categoria'])) $dados['categoria'] = null;
 		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
@@ -7041,6 +7631,7 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
 
 		        $bind = array( 
+								$campo_prescritor => $id_prescritor,
 								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
 		                        ':tipo_prescricao' => $dados["tipo_prescricao"],
@@ -7118,7 +7709,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7177,7 +7773,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7238,7 +7839,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7301,7 +7907,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7347,7 +7958,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7395,7 +8011,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7439,7 +8060,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7477,7 +8103,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7515,7 +8146,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7555,7 +8191,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
@@ -7595,7 +8236,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$set_codigo = $request->getParam("set_codigo");
@@ -7711,7 +8357,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$set_codigo = $request->getParam("set_codigo");
@@ -7842,7 +8493,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$set_codigo = $request->getParam("set_codigo");
@@ -7973,7 +8629,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$id = $request->getParam("id");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8013,7 +8674,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$id = $request->getParam("id");
 
@@ -8052,7 +8718,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$id = $request->getParam("id");
 
@@ -8091,7 +8762,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$retorno = null;
@@ -8154,7 +8830,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8228,7 +8909,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8303,7 +8989,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8379,7 +9070,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$retorno = null;
@@ -8411,18 +9107,23 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
-				// if($_SESSION['login'] == 'ibranutro'){
-				// 	$campo_prescritor = 'id_usuario';
-				// }elseif($_SESSION['login'] == 'entric'){
-				// 	$campo_prescritor = 'id_prescritor';
-				// }
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = 'id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = 'id_prescritor';
+				}
 
-				$campo_prescritor = 'id_prescritor';
+				// $campo_prescritor = 'id_prescritor';
 
 
 
@@ -8491,7 +9192,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8564,7 +9270,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8600,7 +9311,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8637,7 +9353,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8663,13 +9384,13 @@ $app->group("", function () use ($app) {
 				// $usuario = $db->insert("usuarios", $bind);
 
 
-				// if($_SESSION['login'] == 'ibranutro'){
-				// 	$campo_prescritor = ':id_usuario';
-				// }elseif($_SESSION['login'] == 'entric'){
-				// 	$campo_prescritor = ':id_prescritor';
-				// }
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = ':id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
 
-				$campo_prescritor = ':id_prescritor';
+				// $campo_prescritor = ':id_prescritor';
 
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
@@ -8745,7 +9466,12 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
@@ -8771,12 +9497,12 @@ $app->group("", function () use ($app) {
 				// $usuario = $db->insert("usuarios", $bind);
 
 
-				// if($_SESSION['login'] == 'ibranutro'){
-				// 	$campo_prescritor = ':id_usuario';
-				// }elseif($_SESSION['login'] == 'entric'){
-				// 	$campo_prescritor = ':id_prescritor';
-				// }
-				$campo_prescritor = ':id_prescritor';
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = ':id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
+				// $campo_prescritor = ':id_prescritor';
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
 					if($sistema == 'ibranutro'){
