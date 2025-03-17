@@ -9391,9 +9391,10 @@ $app->group("", function () use ($app) {
 
 
 				if($dados['login_tipo'] == 'ibranutro'){
-					$campo_prescritor = ':id_prescritor_ibranutro';
+					$id_prescritor_ibranutro = $id_prescritor;
+					$id_prescritor = null;
 				}elseif($dados['login_tipo'] == 'entric'){
-					$campo_prescritor = ':id_prescritor';
+					$id_prescritor_ibranutro = null;
 				}
 
 				// $campo_prescritor = ':id_prescritor';
@@ -9405,7 +9406,8 @@ $app->group("", function () use ($app) {
 							$dados['id_admissao'] = null;
 						}
 		
-						$bind = array(	$campo_prescritor => $id_prescritor,
+						$bind = array(	':id_prescritor' => $id_prescritor,
+										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
 										':peso' => $dados["peso"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
@@ -9423,7 +9425,8 @@ $app->group("", function () use ($app) {
 							$dados['id_paciente'] = null;
 						}
 		
-						$bind = array(	$campo_prescritor => $id_prescritor,
+						$bind = array(	':id_prescritor' => $id_prescritor,
+										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
 										':peso' => $dados["peso"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
@@ -9439,7 +9442,8 @@ $app->group("", function () use ($app) {
 		
 					}
 				}else{
-					$bind = array(	$campo_prescritor => $id_prescritor,
+					$bind = array(	':id_prescritor' => $id_prescritor,
+									':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 								':nome' => $dados["nome"],
 								':peso' => $dados["peso"],
 								':data_nascimento' => date2sql($dados["data_nascimento"]),  
