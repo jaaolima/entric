@@ -19,17 +19,16 @@ class CadastroController extends Controller {
                 if (($email<>"") and ( (($senha<>"") and ($senha2<>"")) and ($senha == $senha2)) ) {
                     
                     $cadastrar = $this->CadastroModel->cadastrar($_POST, $_FILES);
-                    var_dump($cadastrar);
 
-                    // if (isset($cadastrar['error'])) {
-                    //     alertretorno("$.alert({ title: 'Atenção', icon: 'fa fa-warning', type: 'red', content: '".$cadastrar['error']."', buttons: { Ok: { text: 'Ok', btnClass: 'btn btn-secondary btn-form' } } });");
+                    if (isset($cadastrar['error'])) {
+                        alertretorno("$.alert({ title: 'Atenção', icon: 'fa fa-warning', type: 'red', content: '".$cadastrar['error']."', buttons: { Ok: { text: 'Ok', btnClass: 'btn btn-secondary btn-form' } } });");
 
-                    // }else{
-                    //     alertretorno("$.alert({title: 'Cadastro efetuado com sucesso.',icon: 'fa fa-rocket',type: 'green', content: 'Seu cadastro será liberado e logado automaticamente.',buttons: {Ok: {text: 'Ok',btnClass: 'btn btn-secondary btn-form'}}});", 2);
-                    //     $LoginModel = new LoginModel();
-                    //     $LoginModel->checarLogin($email, $senha, 2);
-                    //     Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
-                    // }
+                    }else{
+                        alertretorno("$.alert({title: 'Cadastro efetuado com sucesso.',icon: 'fa fa-rocket',type: 'green', content: 'Seu cadastro será liberado e logado automaticamente.',buttons: {Ok: {text: 'Ok',btnClass: 'btn btn-secondary btn-form'}}});", 2);
+                        $LoginModel = new LoginModel();
+                        $LoginModel->checarLogin($email, $senha, 2);
+                        Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
+                    }
 
                 }else{
                     alertretorno("toastr['error']('Preencha os campos corretamente.', '', {positionClass: 'toast-top-right' });");
