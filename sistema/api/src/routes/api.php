@@ -5858,7 +5858,7 @@ $app->group("", function () use ($app) {
 		// $result = JWTAuth::verifyToken($token);
 		$data = array();
 		$db = new Database();
-		$bind = array(':id'=> $result->header->id);
+		$bind = array();
 		$db_ibranutro = new Database_ibranutro();
 		// $login = $request->getParam("login");
 		// if($login == 'ibranutro'){
