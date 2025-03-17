@@ -9140,6 +9140,12 @@ $app->group("", function () use ($app) {
 		            $mensagem_error = "Este CPF já possui cadastro.";
 		        }
 
+				if($dados['mae_possui']){
+					$mae = null;
+				}else{
+					$mae = $dados['mae'];
+				}
+
 		        if (!$verificar){
 		            $bind = array(  ':email' => $dados["email"],
 		                            ':tipo' => 1,
@@ -9158,7 +9164,7 @@ $app->group("", function () use ($app) {
 		                            ':sexo' => $dados["sexo"],
 		                            ':cpf' => $dados["cpf"],
 		                            ':cpf_possui' => $dados["cpf_possui"],
-		                            ':mae' => $dados["mae"],
+		                            ':mae' => $mae,
 		                            ':mae_possui' => $dados["mae_possui"],                     
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->insert("pacientes", $bind);
