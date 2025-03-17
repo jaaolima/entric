@@ -7029,12 +7029,19 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
+				if($dados['login_tipo'] == 'ibranutro'){
+					$id_prescritor_ibranutro = $id_prescritor;
+					$id_prescritor = null;
+				}elseif($dados['login_tipo'] == 'entric'){
+					$id_prescritor_ibranutro = null;
+				}
 
 		        $paciente = $db->select_single_to_array("pacientes", "email", "WHERE id=".$dados['id_paciente'], null);
 		        
 		        if ($dados['id_relatorio'] == ""){
 		            $bind = array(  ':id_paciente' => $dados['id_paciente'],
 		                            ':id_prescritor' => $id_prescritor,
+		                            ':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 		                            ':historia' => $dados["historia"],
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->insert("relatorios", $bind);
@@ -7043,6 +7050,7 @@ $app->group("", function () use ($app) {
 		        else{
 		            $bind = array(  ':id_paciente' => $dados['id_paciente'],
 		                            ':id_prescritor' => $id_prescritor,
+		                            ':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 		                            ':historia' => $dados["historia"],
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->update("relatorios", "WHERE id=".$dados['id_relatorio'], $bind);  
