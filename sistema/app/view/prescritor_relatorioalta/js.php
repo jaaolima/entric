@@ -1137,10 +1137,12 @@ function fc_salvar(tab, notify){
         }        
         var frm = _this.serialize();   
     } 
+    login_tipo = $("#login_tipo").val();
+
     $.ajax({
         type: "POST",
         url: "ajax/relatorio_salvar",
-        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab,
+        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo,
         cache: false,
         dataType: 'json',
         success: function( data ){
@@ -2468,11 +2470,12 @@ $(function(){
             var frm = _this.serialize();   
             var _id_paciente = $("#id_paciente").val();
             var _id_relatorio = $("#id_relatorio").val();
+            login_tipo = $("#login_tipo").val();
 
             $.ajax({
                 type: "POST",
                 url: "ajax/relatorio_salvar",
-                data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+                data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&login_tipo="+login_tipo,
                 cache: false,
                 dataType: 'json',
                 success: function( data ){

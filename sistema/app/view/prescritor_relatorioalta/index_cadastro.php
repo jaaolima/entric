@@ -21,7 +21,7 @@
         <div id="div_cadastrar_paciente" style="<?php echo ($tab1=="cadastrar"?"display: block;":"display: none;"); ?>">
             <form action="prescritor_relatorioalta" id="form_cadastrar_paciente" method="post" autocomplete="off" onsubmit="return false">
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
-                <input type="hidden" name="login_tipo" value="<?php echo $_SESSION['login']; ?>">
+                <input type="hidden" name="login_tipo" id="login_tipo" value="<?php echo $_SESSION['login']; ?>">
                 <?php
                 $item_dados =  $html->addRow(
                                 array(
