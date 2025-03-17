@@ -5861,81 +5861,76 @@ $app->group("", function () use ($app) {
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
-			$login = $request->getParam("login");
-			if($login == 'ibranutro'){
-				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
-			}elseif($login == 'entric'){
-				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
-			}
+			// $login = $request->getParam("login");
+			// if($login == 'ibranutro'){
+			// 	$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			// }elseif($login == 'entric'){
+			// 	$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			// }
 
-			if ($usuario){
-				$dados = $request->getParam("dados");
+			$dados = $request->getParam("dados");
 
-		        $retorno = array();
+			$retorno = array();
 
-		        $prescritores = $db->select_single_to_array("prescritores", "*", "WHERE cpf_cnpj='".$dados['cpf_cnpj']."' OR email='".$dados['email']."'",  null);
-		        if ($prescritores){
-		            $retorno['error'] = "O CPF ou E-mail informado já possui cadastro em nosso banco de dados. <a href=\'senha/prescritor\'>Clique aqui</a> para recuperar sua senha.";
+			$prescritores = $db->select_single_to_array("prescritores", "*", "WHERE cpf_cnpj='".$dados['cpf_cnpj']."' OR email='".$dados['email']."'",  null);
+			if ($prescritores){
+				$retorno['error'] = "O CPF ou E-mail informado já possui cadastro em nosso banco de dados. <a href=\'senha/prescritor\'>Clique aqui</a> para recuperar sua senha.";
 
-		        }
-		        else{
-		            if ($dados['profissional'] == "Nutricionista"){
-		                $dados['regiao_crm'] = null;
-		                $dados['numero_crm'] = null;  
-		            }
-		            else{             
-		                $dados['regiao_crn'] = null;
-		                $dados['numero_crn'] = null; 
-		            }
-
-		            $senha = hashPass($dados['senha']);
-		            $bind = array(  ':email' => $dados['email'],
-		                            ':senha' => $senha,
-		                            ':tipo' => 2,
-		                            ':status' => 0, // solicitado para liberar automaticamente  
-		                            ':data_criacao' => date("Y-m-d H:i:s") );
-		            $usuario = $db->insert("usuarios", $bind);
-
-		            $bind = array(  ':id_usuario' => $usuario,
-		                            ':nome' => $dados['nome'],
-		                            ':email_contato' => $dados['email'],
-		                            ':cpf_cnpj' => $dados['cpf_cnpj'],
-		                            ':uf' => $dados['uf'],
-		                            ':cidade' => $dados['cidade'],
-		                            ':telefone' => json_encode($dados['telefone']),
-		                            ':telefone_disp' => json_encode($dados['disp_telefone']),
-		                            ':email' => $dados['email'],
-		                            ':email_disp' => $dados['disp_email'],
-		                            ':profissional' => $dados['profissional'],   
-		                            ':regiao_crm' => $dados['regiao_crm'],   
-		                            ':numero_crm' => $dados['numero_crm'],   
-		                            ':regiao_crn' => $dados['regiao_crn'],   
-		                            ':numero_crn' => $dados['numero_crn'],   
-		                            ':aceito' => (isset($dados['aceito'])?$dados['aceito']:null),
-		                            //':status' => 1,  
-		                            ':status' => 0, // solicitado para liberar automaticamente  
-		                            ':data_criacao' => date("Y-m-d H:i:s") );
-
-		            /*if (isset($_FILES['foto']['error']) and ($_FILES['foto']['error'] == 0)){
-		                $upfoto = uploadFile(  $_FILES['foto'], 
-		                                        "/carteiras");
-		                $bind[':carteira_frente'] = "/carteiras/".$upfoto;
-		            }
-
-		            if (isset($_FILES['foto2']['error']) and ($_FILES['foto2']['error'] == 0)){
-		                $upfoto = uploadFile(  $_FILES['foto2'], 
-		                                        "/carteiras");
-		                $bind[':carteira_verso'] = "/carteiras/".$upfoto;
-		            }*/
-
-		            $retorno = $db->insert("prescritores", $bind);
-		        }
-		        
-		        $data = $retorno;
 			}
 			else{
-				$data["status"] = "Erro: Token de autenticação é inválido.";	
+				if ($dados['profissional'] == "Nutricionista"){
+					$dados['regiao_crm'] = null;
+					$dados['numero_crm'] = null;  
+				}
+				else{             
+					$dados['regiao_crn'] = null;
+					$dados['numero_crn'] = null; 
+				}
+
+				$senha = hashPass($dados['senha']);
+				$bind = array(  ':email' => $dados['email'],
+								':senha' => $senha,
+								':tipo' => 2,
+								':status' => 0, // solicitado para liberar automaticamente  
+								':data_criacao' => date("Y-m-d H:i:s") );
+				$usuario = $db->insert("usuarios", $bind);
+
+				$bind = array(  ':id_usuario' => $usuario,
+								':nome' => $dados['nome'],
+								':email_contato' => $dados['email'],
+								':cpf_cnpj' => $dados['cpf_cnpj'],
+								':uf' => $dados['uf'],
+								':cidade' => $dados['cidade'],
+								':telefone' => json_encode($dados['telefone']),
+								':telefone_disp' => json_encode($dados['disp_telefone']),
+								':email' => $dados['email'],
+								':email_disp' => $dados['disp_email'],
+								':profissional' => $dados['profissional'],   
+								':regiao_crm' => $dados['regiao_crm'],   
+								':numero_crm' => $dados['numero_crm'],   
+								':regiao_crn' => $dados['regiao_crn'],   
+								':numero_crn' => $dados['numero_crn'],   
+								':aceito' => (isset($dados['aceito'])?$dados['aceito']:null),
+								//':status' => 1,  
+								':status' => 0, // solicitado para liberar automaticamente  
+								':data_criacao' => date("Y-m-d H:i:s") );
+
+				/*if (isset($_FILES['foto']['error']) and ($_FILES['foto']['error'] == 0)){
+					$upfoto = uploadFile(  $_FILES['foto'], 
+											"/carteiras");
+					$bind[':carteira_frente'] = "/carteiras/".$upfoto;
+				}
+
+				if (isset($_FILES['foto2']['error']) and ($_FILES['foto2']['error'] == 0)){
+					$upfoto = uploadFile(  $_FILES['foto2'], 
+											"/carteiras");
+					$bind[':carteira_verso'] = "/carteiras/".$upfoto;
+				}*/
+
+				$retorno = $db->insert("prescritores", $bind);
 			}
+			
+			$data = $retorno;
 
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";

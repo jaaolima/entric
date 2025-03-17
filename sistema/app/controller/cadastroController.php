@@ -28,7 +28,7 @@ class CadastroController extends Controller {
                         alertretorno("$.alert({title: 'Cadastro efetuado com sucesso.',icon: 'fa fa-rocket',type: 'green', content: 'Seu cadastro será liberado e logado automaticamente.',buttons: {Ok: {text: 'Ok',btnClass: 'btn btn-secondary btn-form'}}});", 2);
                         $LoginModel = new LoginModel();
                         $LoginModel->checarLogin($email, $senha, 2);
-                        // Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
+                        Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
                     }
 
                 }else{
