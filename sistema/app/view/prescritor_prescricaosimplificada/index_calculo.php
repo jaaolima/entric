@@ -1,7 +1,8 @@
 
 <div class="tab-pane fade" id="calculo" role="tabpanel">
     <form id="prescritor_calculo" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
-        <input type="hidden" name="action" value="calculo">
+        <input type="hidden" name="action" value="calculo"> 
+        <input type="hidden" name="login_tipo" value="<?php echo $_SESSION['login']; ?>">
         <input type="hidden" name="selecao_dieta" id="selecao_dieta" value="">
 
         <div class="form_blue pb-0">
