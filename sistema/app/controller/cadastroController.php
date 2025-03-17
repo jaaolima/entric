@@ -12,7 +12,6 @@ class CadastroController extends Controller {
     function prescritor() { 
         if (isset($_POST['_ac'])){
             if ($_POST['_ac'] == "cadastrar_prescritor"){
-                var_dump($_POST);
                 if (isset($_POST['email']) == FALSE ) $email = ""; else $email = $_POST['email'];
                 if (isset($_POST['senha']) == FALSE ) $senha = ""; else $senha = $_POST['senha'];
                 if (isset($_POST['senha2']) == FALSE ) $senha2 = ""; else $senha2 = $_POST['senha2']; 
