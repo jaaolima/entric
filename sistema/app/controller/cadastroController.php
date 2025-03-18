@@ -88,10 +88,9 @@ class CadastroController extends Controller {
                         $mail->Body    = $mensagem;
                         $mail->Encoding = 'base64';
 
-                        var_dump($mail);
-
                         // Enviar o e-mail
                         $mail->send();
+                        var_dump($mail);
                         // Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
                     }
 
