@@ -218,7 +218,6 @@ $app->group("", function () use ($app) {
 	            $bind = array(':email' => ($login));
 	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
 				$usuario = $retorno;
-				var_dump($retorno);
 				$usuario_login = 'ibranutro';
 				if(!$retorno){
 					$bind = array(':email' => ($login), ':tipo' => chknumber($tipo));
@@ -227,6 +226,8 @@ $app->group("", function () use ($app) {
 					$usuario["tipo"] = 2;
 					$usuario_login = 'entric';
 				}
+				var_dump($retorno);
+				var_dump($usuario);
 				$usuario["tipo"] = 2;
 
 	            $menu = array(  "home",
