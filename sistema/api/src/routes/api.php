@@ -184,6 +184,10 @@ $app->group("", function () use ($app) {
 		$tipo = $request->getParam("tipo");
 		$usuario = null;
 
+		var_dump($login);
+		var_dump($senha);
+		var_dump($tipo);
+
 		try {
 			$db = new Database();
 			$db_ibranutro = new Database_ibranutro();
@@ -283,6 +287,8 @@ $app->group("", function () use ($app) {
 	                            "config", 
 	                            "ajax");
 	        }
+
+			var_dump($retorno);
 
 	        if ($retorno){
 	            // pescritor ou paciente =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
