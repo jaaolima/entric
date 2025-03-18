@@ -81,12 +81,14 @@ class CadastroController extends Controller {
                                             <p style="color:#0092c5;">site.entric.com.br</p>
                                         </div>
                                     </div>';
-
+                        
                         // Content
                         $mail->isHTML(true);
                         $mail->Subject = 'Um novo cadastro de guia!';
                         $mail->Body    = $mensagem;
                         $mail->Encoding = 'base64';
+
+                        var_dump($mail);
 
                         // Enviar o e-mail
                         $mail->send();
