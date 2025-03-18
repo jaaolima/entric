@@ -1,5 +1,10 @@
 <?php
- 
+require 'sistema/api/vendor/PHPMailer/src/PHPMailer.php';
+require 'sistema/api/vendor/PHPMailer/src/SMTP.php';
+require 'sistema/api/vendor/PHPMailer/src/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 class CadastroController extends Controller {
 
     function beforeAction () {
@@ -25,10 +30,66 @@ class CadastroController extends Controller {
 
                     }else{
                         alertretorno("$.alert({title: 'Cadastro efetuado com sucesso.',icon: 'fa fa-rocket',type: 'green', content: 'Seu cadastro será liberado e logado automaticamente.',buttons: {Ok: {text: 'Ok',btnClass: 'btn btn-secondary btn-form'}}});", 2);
-                        // $LoginModel = new LoginModel();
-                        // $LoginModel->checarLogin($email, $senha, 2);
-                        $EmailModel = new EmailModel();
-                        $EmailModel->bemvindo($email);
+                        $LoginModel = new LoginModel();
+                        $LoginModel->checarLogin($email, $senha, 2);
+                        // $EmailModel = new EmailModel();
+                        // $EmailModel->bemvindo($email);
+                        $mail = new PHPMailer(true);
+                        $mail->CharSet = 'UTF-8'; // Definir a codificação para UTF-8
+
+                        $mail->isSMTP();
+                        $mail->Host       = 'smtp-relay.brevo.com'; // Servidor SMTP do Brevo
+                        $mail->SMTPAuth   = true;
+                        $mail->Username   = '84eff4001@smtp-brevo.com'; // Usuário de autenticação fornecido pelo Brevo
+                        $mail->Password   = 'IGLSnw3tvd8kyO41';    // Senha ou API Key fornecida pelo Brevo
+                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Segurança TLS
+                        $mail->Port       = 587; // Porta do servidor SMTP
+
+                        // $mail->SMTPDebug = 2;
+                        // $mail->Debugoutput = 'html';
+
+
+                        // Configurações do e-mail
+                        $mail->setFrom('ibranutrodilemaseticos@gmail.com', 'Entric');
+                        $mail->addAddress($email, $_SESSION['admin_session_user']['nome']);
+
+                        $mensagem = '<p>Olá '.$_SESSION['admin_session_user']['nome'].',</p>
+                                    <br>
+                                    <br>
+                                    <p>Seja bem-vindo ao <strong>Entric</strong></p>
+                                    <br>
+                                    <br>
+                                    <p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
+                                    <br>
+                                    <p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <p>Acesse o sistema agora mesmo: <a href="https://entric.com.br">https://entric.com.br</a>.</p>
+                                    <br>
+                                    <br>
+                                    <p>Atenciosamente,</p>
+                                    <p>Equipe Entric</p>
+                                    <br>
+                                    <br>
+                                    <div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
+                                        <div>
+                                            <img src="https://entric.com.br/relatorio_simplificada/imagem/logo.png" height="45px">
+                                        </div>
+                                        <div style="display:block;margin-top:13px;">
+                                            <a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
+                                            <p style="color:#0092c5;">site.entric.com.br</p>
+                                        </div>
+                                    </div>';
+
+                        // Content
+                        $mail->isHTML(true);
+                        $mail->Subject = 'Um novo cadastro de guia!';
+                        $mail->Body    = $mensagem;
+                        $mail->Encoding = 'base64';
+
+                        // Enviar o e-mail
+                        $mail->send();
                         // Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
                     }
 
