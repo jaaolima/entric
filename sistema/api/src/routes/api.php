@@ -184,7 +184,6 @@ $app->group("", function () use ($app) {
 		$tipo = $request->getParam("tipo");
 		$usuario = null;
 
-		var_dump($senha);
 		try {
 			$db = new Database();
 			$db_ibranutro = new Database_ibranutro();
