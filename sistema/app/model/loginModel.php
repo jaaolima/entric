@@ -10,7 +10,7 @@ class LoginModel extends Model {
                                             "tipo" => $tipo));
 
         if (isset($dados["status"])){
-            Redirect(BASE_PATH . '/logout'); 
+            // Redirect(BASE_PATH . '/logout'); 
             return true;
 
         }else{
@@ -26,11 +26,11 @@ class LoginModel extends Model {
             $_SESSION['paciente_redirect'] = ['sistema' => null,'id_paciente' => null, 'buscar' => null];
 
             if (isset($dados["data"]["paciente_videosalta"])){
-                Redirect(BASE_PATH . '/paciente_videosalta'); 
+                // Redirect(BASE_PATH . '/paciente_videosalta'); 
                 return true;
 
             }else{
-                Redirect(BASE_PATH . '');
+                // Redirect(BASE_PATH . '');
             }
         }
     }
