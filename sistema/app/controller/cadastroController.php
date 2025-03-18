@@ -30,8 +30,8 @@ class CadastroController extends Controller {
 
                     }else{
                         alertretorno("$.alert({title: 'Cadastro efetuado com sucesso.',icon: 'fa fa-rocket',type: 'green', content: 'Seu cadastro será liberado e logado automaticamente.',buttons: {Ok: {text: 'Ok',btnClass: 'btn btn-secondary btn-form'}}});", 2);
-                        $LoginModel = new LoginModel();
-                        $LoginModel->checarLogin($email, $senha, 2);
+                        // $LoginModel = new LoginModel();
+                        // $LoginModel->checarLogin($email, $senha, 2);
                         // $EmailModel = new EmailModel();
                         // $EmailModel->bemvindo($email);
                         $mail = new PHPMailer(true);
@@ -51,9 +51,9 @@ class CadastroController extends Controller {
 
                         // Configurações do e-mail
                         $mail->setFrom('ibranutrodilemaseticos@gmail.com', 'Entric');
-                        $mail->addAddress($email, $_SESSION['admin_session_user']['nome']);
+                        $mail->addAddress($email, 'TESTE');
 
-                        $mensagem = '<p>Olá '.$_SESSION['admin_session_user']['nome'].',</p>
+                        $mensagem = '<p>Olá TESTE,</p>
                                     <br>
                                     <br>
                                     <p>Seja bem-vindo ao <strong>Entric</strong></p>
