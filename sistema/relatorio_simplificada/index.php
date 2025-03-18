@@ -958,7 +958,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										for ($i = 0; $i < count($danone); $i++) {
 											if($usuario['login'] == 'ibranutro' && $danone[$i]['uf'] == 'DF'){
 												if($danone[$i]['id'] == '1' || $danone[$i]['id'] == '8' || $danone[$i]['id'] == '24'){
-													echo '<div style="width:20%;margin:10px;">
+													echo '<div style="width:50%;margin:10px;">
 															<p style="text-align: left;">';									
 																echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 																if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
