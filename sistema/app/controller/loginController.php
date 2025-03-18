@@ -17,13 +17,14 @@ class LoginController extends Controller {
                     if (($email<>"") and ($senha<>"")){
                         
                         $logar = $this->LoginModel->checarLogin($email, $senha);
+                        var_dump($logar);
 
                         if (!$logar){
                             alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
 
                         }else{
                             if ($logar == "email"){
-                                alertretorno("toastr['error']('Está conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
+                                alertretorno("toastr['error']('Esta conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
 
                             }else{
                                 alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
@@ -55,7 +56,7 @@ class LoginController extends Controller {
 
                         }else{
                             if ($logar == "email"){
-                                alertretorno("toastr['error']('Está conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
+                                alertretorno("toastr['error']('Esta conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
 
                             }else{
                                 alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
@@ -87,7 +88,7 @@ class LoginController extends Controller {
 
                         }else{
                             if ($logar == "email"){
-                                alertretorno("toastr['error']('Está conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
+                                alertretorno("toastr['error']('Esta conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
 
                             }else{
                                 alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
@@ -142,7 +143,7 @@ class LoginController extends Controller {
 
                     }else{
                         if ($logar == "email"){
-                            alertretorno("toastr['error']('Está conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
+                            alertretorno("toastr['error']('Esta conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
 
                         }else{
                             alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
@@ -197,7 +198,7 @@ class LoginController extends Controller {
 
                         }else{
                             if ($logar == "email"){
-                                alertretorno("toastr['error']('Está conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
+                                alertretorno("toastr['error']('Esta conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
 
                             }else{
                                 alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
