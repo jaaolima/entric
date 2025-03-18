@@ -170,7 +170,7 @@ function httpPost($resource, $post = null){
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     $result = curl_exec($ch);
-    // print_r($result);
+    print_r($result);
     if($result === false){
         return false;
     }
@@ -197,7 +197,7 @@ function httpPostAuth($resource, $post = null){
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     $result = curl_exec($ch);
-    // print_r($result);
+    print_r($result);
     if($result === false){
         return false;
     }
