@@ -36,14 +36,14 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-user-o" aria-hidden="true"></i></span>
                                                     </div>
-                                                    <input type="text" name="login" class="form-control" placeholder="Login" value="admin@admin.com" required="required">
+                                                    <input type="text" name="login" class="form-control" placeholder="Login" required="required">
                                                 </div>
 
                                                 <div class="input-group mb-5">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
                                                     </div>
-                                                    <input type="password" name="senha" class="form-control" placeholder="Senha" value="admin" required="required">
+                                                    <input type="password" name="senha" class="form-control" placeholder="Senha" required="required">
                                                 </div>
 
                                                 <div class="text-center mb-4 mt-5">
