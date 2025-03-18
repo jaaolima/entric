@@ -144,7 +144,6 @@ class LoginController extends Controller {
 
                     }else{
                         if ($logar == "email"){
-                            var_dump("chegou");
                             alertretorno("toastr['error']('Esta conta ainda não está ativa.', '', {positionClass: 'toast-top-right' });");
 
                         }else{
