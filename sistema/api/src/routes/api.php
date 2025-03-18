@@ -2,6 +2,13 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
+require '../../vendor/PHPMailer/src/PHPMailer.php';
+require '../../vendor/PHPMailer/src/SMTP.php';
+require '../../vendor/PHPMailer/src/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $app->add(new \Slim\Middleware\JwtAuthentication([
     "secure" => false,
 	"secret" => SECRET,
@@ -9539,21 +9546,28 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/enviar_email_bemvindo", function (Request $request, Response $response) {
-		// Create the Transport
-		$transport = (new Swift_SmtpTransport('smtp-relay.brevo.com', 587))
-		->setUsername('812da6002@smtp-brevo.com')
-		->setPassword('QZKMzTv0s5Dc2kC7')
-		;
 
-		// Create the Mailer using your created Transport
-		$mailer = new Swift_Mailer($transport);
+		$email = 'utcpackbrasil@gmail.com';
+        $mail = new PHPMailer(true);
+        $mail->CharSet = 'UTF-8'; // Definir a codificação para UTF-8
 
-		// Create a message
-		$message = (new Swift_Message('Seja bem-vindo ao Entric!'))
-		->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
-		->setTo('victorespucoc@gmail.com')
-		->setBody('
-		<p>Olá TESTE,</p>
+        $mail->isSMTP();
+		$mail->Host       = 'smtp-relay.brevo.com'; // Servidor SMTP do Brevo
+		$mail->SMTPAuth   = true;
+		$mail->Username   = '84eff4001@smtp-brevo.com'; // Usuário de autenticação fornecido pelo Brevo
+		$mail->Password   = 'IGLSnw3tvd8kyO41';    // Senha ou API Key fornecida pelo Brevo
+		$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Segurança TLS
+		$mail->Port       = 587; // Porta do servidor SMTP
+
+		// $mail->SMTPDebug = 2;
+		// $mail->Debugoutput = 'html';
+
+
+		// Configurações do e-mail
+		$mail->setFrom('manawtech@gmail.com', 'Pack Brasil Site');
+		$mail->addAddress($email, 'Pack Brasil');
+
+		$mensagem = '<p>Olá TESTE,</p>
 		<br>
 		<br>
 		<p>Seja bem-vindo ao <strong>Entric</strong></p>
@@ -9580,9 +9594,61 @@ $app->group("", function () use ($app) {
 				<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
 				<p style="color:#0092c5;">site.entric.com.br</p>
 			</div>
-		</div>');
+		</div>';
 
-		$result = $mailer->send($message);
+		// Content
+		$mail->isHTML(true);
+		$mail->Subject = 'Um novo cadastro de guia!';
+		$mail->Body    = $mensagem;
+		$mail->Encoding = 'base64';
+
+		// Enviar o e-mail
+		$mail->send();
+
+		// // Create the Transport
+		// $transport = (new Swift_SmtpTransport('smtp-relay.brevo.com', 587))
+		// ->setUsername('812da6002@smtp-brevo.com')
+		// ->setPassword('QZKMzTv0s5Dc2kC7')
+		// ;
+
+		// // Create the Mailer using your created Transport
+		// $mailer = new Swift_Mailer($transport);
+
+		// // Create a message
+		// $message = (new Swift_Message('Seja bem-vindo ao Entric!'))
+		// ->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
+		// ->setTo('victorespucoc@gmail.com')
+		// ->setBody('
+		// <p>Olá TESTE,</p>
+		// <br>
+		// <br>
+		// <p>Seja bem-vindo ao <strong>Entric</strong></p>
+		// <br>
+		// <br>
+		// <p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
+		// <br>
+		// <p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
+		// <br>
+		// <br>
+		// <br>
+		// <p>Acesse o sistema agora mesmo: [link de acesso].</p>
+		// <br>
+		// <br>
+		// <p>Atenciosamente,</p>
+		// <p>Equipe Entric</p>
+		// <br>
+		// <br>
+		// <div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
+		// 	<div>
+		// 		<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
+		// 	</div>
+		// 	<div style="display:block;margin-top:13px;">
+		// 		<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
+		// 		<p style="color:#0092c5;">site.entric.com.br</p>
+		// 	</div>
+		// </div>');
+
+		// $result = $mailer->send($message);
 
 	});
 
