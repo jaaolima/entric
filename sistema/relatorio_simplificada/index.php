@@ -892,7 +892,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 
 		<div style="display:flex;">
-			<div style="width:50%;">
+			<div style="width:50%;padding-left: 10px;padding-right: 10px;">
 				<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
 				<p>
 					<table width="100%" cellspacing="0" cellpadding="0">
@@ -970,7 +970,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 											else{
-												echo '<div style="width:20%;margin:10px;">
+												echo '<div style="width:50%;margin:10px;">
 												<p style="text-align: left;">';									
 													echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 													if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
@@ -991,7 +991,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</table>
 				</p>
 			</div>
-			<div style="width:50%;">
+			<div style="width:50%;padding-left: 10px;padding-right: 10px;">
 				<P style="text-align: center;" class="subtitutlo">FICOU COM DÚVIDAS?</p>
 				<div style="justify-content:center;">
 					<div style='margin-top:20px;text-align:center;'>
