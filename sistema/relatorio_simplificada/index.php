@@ -20,7 +20,6 @@ require __DIR__ . '/libs/database.class.php';
 //die();
 if (!isset($_GET['url'])) Redirect(BASE_PATH);
 
-var_dump($_SERVER['SERVER_NAME']);
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // imprimir = somente secao de header =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 $p_header = false;
