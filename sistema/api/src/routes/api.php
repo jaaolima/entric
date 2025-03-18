@@ -141,7 +141,8 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/v_gtProdutos",
 				"/v_getDistribuidores",
 				"/v_gt_endereco_distribuidor",
-				"/util_stlog"
+				"/util_stlog",
+				'/enviar_email_bemvindo'
 			]
 		])
 	]
@@ -5731,56 +5732,6 @@ $app->group("", function () use ($app) {
 		                            ':status' => 0,
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->insert("usuarios", $bind);
-
-					if($retorno){
-						// Create the Transport
-						$transport = (new Swift_SmtpTransport('smtp.example.org', 25))
-						->setUsername('your username')
-						->setPassword('your password')
-						;
-
-						// Create the Mailer using your created Transport
-						$mailer = new Swift_Mailer($transport);
-
-						// Create a message
-						$message = (new Swift_Message('Wonderful Subject'))
-						->setFrom(['john@doe.com' => 'John Doe'])
-						->setTo([$dados['login']])
-						->setBody('
-						<p>Olá '.$dados['ds_nome'].',</p>
-						<br>
-						<br>
-						<p>Seja bem-vindo ao <strong>Entric</strong></p>
-						<br>
-						<br>
-						<p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
-						<br>
-						<p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
-						<br>
-						<br>
-						<br>
-						<p>Acesse o sistema agora mesmo: [link de acesso].</p>
-						<br>
-						<br>
-						<p>Atenciosamente,</p>
-						<p>Equipe Entric</p>
-						<br>
-						<br>
-						<div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
-							<div>
-								<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
-							</div>
-							<div style="display:block;margin-top:13px;">
-								<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
-								<p style="color:#0092c5;">site.entric.com.br</p>
-							</div>
-						</div>
-						')
-						;
-
-						// Send the message
-						$result = $mailer->send($message);
-					}
 		        }
 		        
 		        $data = $retorno;
@@ -9585,6 +9536,54 @@ $app->group("", function () use ($app) {
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
 		return $response;
+	});
+
+	$app->post("/enviar_email_bemvindo", function (Request $request, Response $response) {
+		// Create the Transport
+		$transport = (new Swift_SmtpTransport('smtp-relay.brevo.com', 587))
+		->setUsername('812da6002@smtp-brevo.com')
+		->setPassword('QZKMzTv0s5Dc2kC7')
+		;
+
+		// Create the Mailer using your created Transport
+		$mailer = new Swift_Mailer($transport);
+
+		// Create a message
+		$message = (new Swift_Message('Seja bem-vindo ao Entric!'))
+		->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
+		->setTo('victorespucoc@gmail.com')
+		->setBody('
+		<p>Olá TESTE,</p>
+		<br>
+		<br>
+		<p>Seja bem-vindo ao <strong>Entric</strong></p>
+		<br>
+		<br>
+		<p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
+		<br>
+		<p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
+		<br>
+		<br>
+		<br>
+		<p>Acesse o sistema agora mesmo: [link de acesso].</p>
+		<br>
+		<br>
+		<p>Atenciosamente,</p>
+		<p>Equipe Entric</p>
+		<br>
+		<br>
+		<div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
+			<div>
+				<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
+			</div>
+			<div style="display:block;margin-top:13px;">
+				<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
+				<p style="color:#0092c5;">site.entric.com.br</p>
+			</div>
+		</div>');
+
+		$result = $mailer->send($message);
+
 	});
 
 });

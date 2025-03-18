@@ -4,7 +4,7 @@ class CadastrosController extends Controller {
 
     function beforeAction () {
         $util = new UtilModel();
-        $util->stlog();
+        $util->stlog(); 
     }  
 
     function index() {

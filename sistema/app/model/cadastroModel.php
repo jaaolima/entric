@@ -7,7 +7,7 @@ class CadastroModel extends Model {
         // var_dump("chegou");
         $retorno = httpPostAuth("cadastro_cadastrar", array("token" => null, "dados" => $dados));
         return $retorno;
-    }
+    } 
 
     function cadastrarPaciente($dados) {
         global $bruker;

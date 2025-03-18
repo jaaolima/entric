@@ -1,15 +1,15 @@
 <?php
  
-class CadastroController extends Controller {
+class EmailController extends Controller {
 
     function beforeAction () {
 
     }  
     
-    function index($idretorno = null) { 
+    function index($idretorno = null) {
     }
     
-    function prescritor() { 
+    function bemvindo() { 
         if (isset($_POST['_ac'])){
             if ($_POST['_ac'] == "cadastrar_prescritor"){
                 if (isset($_POST['email']) == FALSE ) $email = ""; else $email = $_POST['email'];
@@ -25,11 +25,9 @@ class CadastroController extends Controller {
 
                     }else{
                         alertretorno("$.alert({title: 'Cadastro efetuado com sucesso.',icon: 'fa fa-rocket',type: 'green', content: 'Seu cadastro será liberado e logado automaticamente.',buttons: {Ok: {text: 'Ok',btnClass: 'btn btn-secondary btn-form'}}});", 2);
-                        // $LoginModel = new LoginModel();
-                        // $LoginModel->checarLogin($email, $senha, 2);
-                        $EmailModel = new EmailModel();
-                        $EmailModel->bemvindo($email);
-                        // Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
+                        $LoginModel = new LoginModel();
+                        $LoginModel->checarLogin($email, $senha, 2);
+                        Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
                     }
 
                 }else{
