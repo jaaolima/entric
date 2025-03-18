@@ -45,8 +45,8 @@ class CadastroController extends Controller {
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Segurança TLS
                         $mail->Port       = 587; // Porta do servidor SMTP
 
-                        // $mail->SMTPDebug = 2;
-                        // $mail->Debugoutput = 'html';
+                        $mail->SMTPDebug = 2;
+                        $mail->Debugoutput = 'html';
 
 
                         // Configurações do e-mail
@@ -90,7 +90,6 @@ class CadastroController extends Controller {
 
                         // Enviar o e-mail
                         $mail->send();
-                        var_dump($mail);
                         // Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
                     }
 
