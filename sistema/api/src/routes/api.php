@@ -184,10 +184,6 @@ $app->group("", function () use ($app) {
 		$tipo = $request->getParam("tipo");
 		$usuario = null;
 
-		var_dump($login);
-		var_dump($senha);
-		var_dump($tipo);
-
 		try {
 			$db = new Database();
 			$db_ibranutro = new Database_ibranutro();
@@ -226,8 +222,6 @@ $app->group("", function () use ($app) {
 					$usuario["tipo"] = 2;
 					$usuario_login = 'entric';
 				}
-				var_dump($retorno);
-				var_dump($usuario);
 				$usuario["tipo"] = 2;
 
 	            $menu = array(  "home",
