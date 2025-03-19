@@ -25,7 +25,7 @@ class EmailModel extends Model {
         <p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
         <p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
         <br>
-        <p>Acesse o sistema agora mesmo: [link de acesso].</p>
+        <p>Acesse o sistema agora mesmo: <a href=""https://entric.com.br/">Entric.com.br</a>.</p>
         <p>Atenciosamente,</p>
         <p>Equipe Entric</p>
         <div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
