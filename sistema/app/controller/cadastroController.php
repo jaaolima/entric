@@ -1,5 +1,5 @@
 <?php
-require_once('/var/www/html/sistema/api/vendor/autoload.php');
+// require_once('/var/www/html/sistema/api/vendor/autoload.php');
 class CadastroController extends Controller {
 
     function beforeAction () {
