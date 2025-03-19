@@ -8,6 +8,7 @@ require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/class
 class EmailModel extends Model {
 
     function bemvindo($email) {
+        var_dump($email);
         global $bruker;
         // Create the Transport
         $transport = (new Swift_SmtpTransport('smtp-relay.brevo.com', 587))
@@ -43,5 +44,7 @@ class EmailModel extends Model {
         </div>');
 
         $result = $mailer->send($message);
+
+        var_dump($result);
     }
 }
