@@ -26,7 +26,7 @@ class CadastroController extends Controller {
                     }else{
                         alertretorno("$.alert({title: 'Cadastro efetuado com sucesso.',icon: 'fa fa-rocket',type: 'green', content: 'Seu cadastro será liberado e logado automaticamente.',buttons: {Ok: {text: 'Ok',btnClass: 'btn btn-secondary btn-form'}}});", 2);
                         $EmailModel = new EmailModel();
-                        $EmailModel->bemvindo($email);
+                        echo $EmailModel->bemvindo($email);
                         $LoginModel = new LoginModel();
                         $LoginModel->checarLogin($email, $senha, 2);
                     }
