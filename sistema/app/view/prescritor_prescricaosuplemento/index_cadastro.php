@@ -127,7 +127,7 @@
                 <?php endif; ?>
                 <?php if($sistema == 'ibranutro') : ?>
                 <input type="hidden" name='id_admissao' value="<?php echo $id_admissao_redirecionado; ?>">
-                <input type="hidden" name='sistema' value="<?php echo $sistema; ?>">
+                <input type="hidden" name='sistema' value="<?php echo $sistema; ?>"> 
                 <?php endif; ?>
                 <?php
                 $item_dados =  $html->addRow(

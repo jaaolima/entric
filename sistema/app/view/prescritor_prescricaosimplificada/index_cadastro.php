@@ -4,6 +4,7 @@
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
         $_SESSION['paciente_redirect']['id_paciente'] = null;
         $_SESSION['paciente_redirect']['sistema'] = null;
+        $sistema = 'ibranutro';
     }elseif($_SESSION['paciente_redirect']['sistema'] == 'ibranutro'){
         $id_admissao_redirecionado = $_SESSION['paciente_redirect']['id_admissao'];
         $_SESSION['paciente_redirect']['id_admissao'] = null;
@@ -17,7 +18,7 @@
     $ds_hospital = '';
     $dt_nascimento = '';
     $nu_telefone = '';
-    $nu_atendimento = '';
+    $nu_atendimento = ''; 
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
@@ -127,7 +128,7 @@
                 <?php endif; ?>
                 <?php if($sistema == 'ibranutro') : ?>
                 <input type="hidden" name='id_admissao' value="<?php echo $id_admissao_redirecionado; ?>">
-                <input type="hidden" name='sistema' value="<?php echo $sistema; ?>">
+                <input type="hidden" name='sistema' value="<?php echo $sistema; ?>"> 
                 <?php endif; ?>
                 <?php
                 $item_dados =  $html->addRow(
