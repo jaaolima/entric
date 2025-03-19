@@ -17,27 +17,17 @@ class EmailModel extends Model {
         // Create a message
         $message = (new Swift_Message('Seja bem-vindo ao Entric!'))
         ->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
-        ->setTo('victorespucoc@gmail.com')
+        ->setTo($email)
         ->setBody('
         <p>Olá TESTE,</p>
-        <br>
-        <br>
         <p>Seja bem-vindo ao <strong>Entric</strong></p>
         <br>
-        <br>
         <p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
-        <br>
         <p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
         <br>
-        <br>
-        <br>
         <p>Acesse o sistema agora mesmo: [link de acesso].</p>
-        <br>
-        <br>
         <p>Atenciosamente,</p>
         <p>Equipe Entric</p>
-        <br>
-        <br>
         <div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
             <div>
                 <img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
@@ -49,7 +39,5 @@ class EmailModel extends Model {
         </div>');
 
         $result = $mailer->send($message);
-
-        var_dump($result);
     }
 }
