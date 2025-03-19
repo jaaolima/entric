@@ -4,7 +4,7 @@
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
         $_SESSION['paciente_redirect']['id_paciente'] = null;
         $_SESSION['paciente_redirect']['sistema'] = null;
-        $sistema = 'ibranutro';
+        $sistema = 'EN';
     }elseif($_SESSION['paciente_redirect']['sistema'] == 'ibranutro'){
         $id_admissao_redirecionado = $_SESSION['paciente_redirect']['id_admissao'];
         $_SESSION['paciente_redirect']['id_admissao'] = null;
