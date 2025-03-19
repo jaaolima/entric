@@ -51,7 +51,7 @@ class CadastroController extends Controller {
 
                         // Configurações do e-mail
                         $mail->setFrom('ibranutrodilemaseticos@gmail.com', 'Entric');
-                        $mail->addAddress($email, 'TESTE');
+                        $mail->addAddress('victorespucoc@gmail.com', 'TESTE');
 
                         $mensagem = '<p>Olá TESTE,</p>
                                     <br>
@@ -89,7 +89,8 @@ class CadastroController extends Controller {
                         $mail->Encoding = 'base64';
 
                         // Enviar o e-mail
-                        $mail->send();
+                        echo $mail->send();
+                        
                         // Redirect(BASE_PATH . '/prescritor_relatorioalta');                            
                     }
 
