@@ -5,11 +5,11 @@ require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/class
 require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SmtpTransport.php';
 require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php';
 require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Message.php';
-// require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Exception.php';
+require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SwiftException.php';
 
 class EmailModel extends Model {
 
-    function bemvindo($email) {
+    function bemvindo($email, $nome) {
         try {
             var_dump($email);
             global $bruker;
@@ -22,12 +22,15 @@ class EmailModel extends Model {
             // Create the Mailer using your created Transport
             $mailer = new Swift_Mailer($transport);
 
+            $nomes = explode(" ", $nome);
+            $nome = implode(" ", array_slice($nomes, 0, 2));
+
             // Create a message
             $message = (new Swift_Message('Seja bem-vindo ao Entric!'))
             ->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
             ->setTo($email)
             ->setBody('
-            <p>Olá TESTE,</p>
+            <p>Olá '.$nome.',</p>
             <p>Seja bem-vindo ao <strong>Entric</strong></p>
             <br>
             <p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
