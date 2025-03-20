@@ -9565,16 +9565,16 @@ $app->group("", function () use ($app) {
 		->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
 		->setTo($email)
 		->setBody('
-		<p>Olá '.$nome.',</p>
-		<p>Seja bem-vindo ao <strong>Entric</strong></p>
+		<text>Olá '.$nome.',</text>
+		<text>Seja bem-vindo ao <strong>Entric</strong></text>
 		<br>
-		<p>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </p>
-		<p>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</p>
+		<text>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </text>
+		<text>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</text>
 		<br>
-		<p>Acesse o sistema agora mesmo: <a href=""https://entric.com.br/">Entric.com.br</a>.</p>
-		<p>Atenciosamente,</p>
-		<p>Equipe Entric</p>
-		<div style="display:flex;justify-content:space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
+		<text>Acesse o sistema agora mesmo: <a href=""https://entric.com.br/">Entric.com.br</a>.</text>
+		<text>Atenciosamente,</text>
+		<text>Equipe Entric</text>
+		<div style="display:flex;justify-content: space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
 			<div>
 				<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
 			</div>
