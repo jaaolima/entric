@@ -9576,15 +9576,18 @@ $app->group("", function () use ($app) {
 		<text>Atenciosamente,</text>
 		<text>Equipe Entric</text>
 		<br>
-		<div style="display:flex;justify-content: space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
-			<div>
-				<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
-			</div>
-			<div style="display:block;margin-top:13px;right: 70px;bottom: 10px;position: absolute;">
-				<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
-				<p style="color:#0092c5;">site.entric.com.br</p>
-			</div>
-		</div>');
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 20px 70px;">
+			<tr>
+				<td align="left">
+					<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px" alt="Logo">
+				</td>
+				<td align="right" style="vertical-align: middle;">
+					<a href="mailto:contato@entric.com.br" style="text-decoration: none; color: #000;">contato@entric.com.br</a>
+					<br>
+					<p style="margin: 0; color:#0092c5;">site.entric.com.br</p>
+				</td>
+			</tr>
+		</table>');
 
 		$result = $mailer->send($message);
 
