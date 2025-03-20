@@ -1,5 +1,5 @@
 {
-    "name": "entric-api",
+    "name": "entric/entric-api",
     "description": "REST API",
     "type": "project",
     "license": "MIT",
