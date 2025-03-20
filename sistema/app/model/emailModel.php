@@ -1,11 +1,11 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift.php';
-require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SmtpTransport.php';
-require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php';
-require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Message.php';
-require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SwiftException.php';
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift.php';
+// require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SmtpTransport.php';
+// require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Mailer.php';
+// require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/Message.php';
+// require_once '/var/www/html/sistema/api/vendor/swiftmailer/swiftmailer/lib/classes/Swift/SwiftException.php';
 
 class EmailModel extends Model {
 
