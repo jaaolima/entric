@@ -8800,17 +8800,32 @@ $app->group("", function () use ($app) {
 
 
 				$bind_query = "";
-		        if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
-		            $bind_query .= "nome LIKE '%".$dados['nome']."%'";
-		        }
-		        if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
-		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
-		        }
-		        if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")){
-		            $bind_query .= " AND cpf='".$dados['cpf']."'";
-		        }
+				if($login == 'entric'){
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")){
+						$bind_query .= " AND cpf='".$dados['cpf']."'";
+					}
+					$bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+				}else{
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= "nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")){
+						$bind_query .= " AND cpf='".$dados['cpf']."'";
+					}
+				}
+		        
 		        if ($bind_query <> ""){
 		            $bind_query = " ".$bind_query;
+					
 		            $pacientes = $db->select_to_array("pacientes",
 		                                                "id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
@@ -8879,15 +8894,24 @@ $app->group("", function () use ($app) {
 
 
 				$bind_query = "";
-		        if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
-		            $bind_query .= " nome LIKE '%".$dados['nome']."%'";
-		        }
-				if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
-		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
-		        }
+				if($login == 'entric'){
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+					$bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+				}else{
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= "nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+				}
 		        if ($bind_query <> ""){
 		            $bind_query = " ".$bind_query;
-		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_simplificada",
 		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
@@ -8959,12 +8983,22 @@ $app->group("", function () use ($app) {
 
 
 				$bind_query = "";
-		        if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
-		            $bind_query .= " nome LIKE '%".$dados['nome']."%'";
-		        }
-				if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
-		            $bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
-		        }
+				if($login == 'entric'){
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+					$bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+				}else{
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= "nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+				}
 		        if ($bind_query <> ""){
 		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $bind_query = " ".$bind_query;
@@ -9576,13 +9610,13 @@ $app->group("", function () use ($app) {
 		<text>Atenciosamente,</text>
 		<text>Equipe Entric</text>
 		<br>
-		<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 20px 70px;">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 0px 40px;">
 			<tr>
 				<td align="left">
 					<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px" alt="Logo">
 				</td>
 				<td align="right" style="vertical-align: middle;">
-					<a href="mailto:contato@entric.com.br" style="text-decoration: none; color: #000;">contato@entric.com.br</a>
+					<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
 					<br>
 					<p style="margin: 0; color:#0092c5;">site.entric.com.br</p>
 				</td>
