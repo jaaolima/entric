@@ -9572,13 +9572,15 @@ $app->group("", function () use ($app) {
 		<text>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</text>
 		<br>
 		<text>Acesse o sistema agora mesmo: <a href=""https://entric.com.br/">Entric.com.br</a>.</text>
+		<br>
 		<text>Atenciosamente,</text>
 		<text>Equipe Entric</text>
+		<br>
 		<div style="display:flex;justify-content: space-between;padding:20px;padding-left: 70px;padding-right: 70px;background-color:#0092c51f;">
 			<div>
 				<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px">
 			</div>
-			<div style="display:block;margin-top:13px;">
+			<div style="display:block;margin-top:13px;right: 70px;bottom: 10px;position: absolute;">
 				<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
 				<p style="color:#0092c5;">site.entric.com.br</p>
 			</div>
