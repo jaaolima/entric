@@ -29,7 +29,7 @@
                                         <div class="card-body login-prescritor">
                                             <h4 class="text-center mt-4 t-verde line-bottom pb-4">Cadastrar nova senha!</h4>
                                             <form class="mt-5 mb-5" action="login/prescritor" method="post">
-                                                <input type="hidden" name="_token" value="<?php echo generateFormToken('loginPrescritor'); ?>">
+                                                <!-- <input type="hidden" name="_token" value="<?php echo generateFormToken('loginPrescritor'); ?>"> -->
                                                 <input type="hidden" name="_ac" value="nova_prescritor">
                                                 <input type="hidden" name="_cd" value="<?php echo $codigo;?>">
 

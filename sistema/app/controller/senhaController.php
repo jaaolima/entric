@@ -7,7 +7,7 @@ class SenhaController extends Controller {
     }  
     
     function index($idretorno = null) {
-        if (verifyFormToken("loginForm")){
+        if (verifyFormToken("loginForm")){ 
             if (isset($_POST['_ac'])){
 
                 if ($_POST['_ac'] == "login"){

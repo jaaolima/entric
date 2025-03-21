@@ -1012,35 +1012,16 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/senha_checarCodigoSenhaPrescritor", function (Request $request, Response $response) {
-		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
-		$result = JWTAuth::verifyToken($token);
-		$data = array();
-		if ($result) {
-			$db = new Database();
-			$bind = array(':id'=> $result->header->id);
-			$db_ibranutro = new Database_ibranutro();
-			$login = $request->getParam("login");
-			if($login == 'ibranutro'){
-				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
-			}elseif($login == 'entric'){
-				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
-			}
 
-			if ($usuario){
-				$codigo = $request->getParam("codigo");
+		$db = new Database();
 
-		        $bind = array(  ':extra' => $codigo);
-		        $senha = $db->select_single_to_array("usuarios", "*", "WHERE extra=:extra AND tipo=2 AND status=0",  $bind);
+		$codigo = $request->getParam("codigo");
 
-		        $data = $senha;
-			}
-			else{
-				$data["status"] = "Erro: Token de autenticação é inválido.";	
-			}
+		$bind = array( ':extra' => $codigo);
+		$senha = $db->select_single_to_array("usuarios", "*", "WHERE extra=:extra AND tipo=2 AND status=0",  $bind);
 
-		} else {
-			$data["status"] = "Erro: Token de autenticação é inválido.";
-		}
+		$data = $senha;
+
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
@@ -1161,76 +1142,102 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/senha_checarPrescritorSenha", function (Request $request, Response $response) {
-		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
-		$result = JWTAuth::verifyToken($token);
-		$data = array();
-		if ($result) {
-			$db = new Database();
-			$bind = array(':id'=> $result->header->id);
-			$db_ibranutro = new Database_ibranutro();
-			$login = $request->getParam("login");
-			if($login == 'ibranutro'){
-				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
-			}elseif($login == 'entric'){
-				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
-			}
 
-			if ($usuario){
-				$email_cpf = $request->getParam("email_cpf");
+		$db = new Database();
 
-		        $retorno = false;
-		        $existe = false;
-		        $bind = array(  ':email_cpf' => $email_cpf);
-		        $senha = $db->select_single_to_array("usuarios", "*", "WHERE email=:email_cpf AND tipo=2 AND status=0",  $bind);
+		$email_cpf = $request->getParam("email_cpf");
 
-		        if ($senha){
-		            $existe = $senha['id'];
-		        }
-		        else{
-		            $bind = array(  ':email_cpf' => $email_cpf);
-		            $prescritor = $db->select_single_to_array("prescritores", "*", "WHERE (cpf_cnpj=:email_cpf OR email_contato=:email_cpf OR email=:email_cpf) AND status=0",  $bind);
-		            if ($prescritor){
-		                $existe = $prescritor['id_usuario'];
-		            }
-		        }
+		$retorno = false;
+		$existe = false;
+		$bind = array(  ':email_cpf' => $email_cpf);
+		$senha = $db->select_single_to_array("usuarios", "*", "WHERE email=:email_cpf AND tipo=2 AND status=0",  $bind);
 
-		        if ($existe){
-		            $codigo = randomCode(20);
-		            $bind = array(  ':id' => $existe,
-		                            ':extra' => endecrypt('encrypt', $codigo));
-		            $update = $db->update("usuarios", "WHERE id=:id", $bind);
-
-		            $prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id_usuario=".$existe, null);
-		            $usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=".$existe, null);
-
-		            $dbind = array( ':tipo'=> 'email',
-		                            ':template'=> 'email_senha_prescritor',
-		                            ':assunto'=> 'Link de recuperação de senha',
-		                            ':status'=> 0,
-		                            ':extra'=> $existe);
-		            $delete = $db->delete("interacoes", "WHERE tipo=:tipo AND template=:template AND assunto=:assunto AND status=:status AND extra=:extra", $dbind);
-
-		            $bind = array(  ':tipo'=> 'email',
-		                            ':email'=> $usuario['email'],
-		                            ':template'=> 'email_senha_prescritor',
-		                            ':assunto'=> 'Link de recuperação de senha',
-		                            ':conteudo' => json_encode(array('||NOME||' => strtok($prescritor['nome'], " "), '||CODIGO||' => $codigo, 'email' => $usuario['email'])),
-		                            ':status'=> 0,
-		                            ':extra'=> $existe,
-		                            ':data_criacao'=> date("Y-m-d H:i:s"));
-		            $interacoes = $db->insert('interacoes', $bind);
-		            $retorno = true;
-		        }
-
-		        $data = $retorno;
-			}
-			else{
-				$data["status"] = "Erro: Token de autenticação é inválido.";	
-			}
-
-		} else {
-			$data["status"] = "Erro: Token de autenticação é inválido.";
+		$nome = 'Usuário';
+		if ($senha){
+			$existe = $senha['id'];
 		}
+		else{
+			$bind = array(  ':email_cpf' => $email_cpf);
+			$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE (cpf_cnpj=:email_cpf OR email_contato=:email_cpf OR email=:email_cpf) AND status=0",  $bind);
+			if ($prescritor){
+				$existe = $prescritor['id_usuario'];
+				$nome = $prescritor['nome'];
+			}
+		}
+
+		if ($existe){
+			$codigo = randomCode(20);
+			$bind = array(  ':id' => $existe,
+							':extra' => endecrypt('encrypt', $codigo));
+			$update = $db->update("usuarios", "WHERE id=:id", $bind);
+
+			$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id_usuario=".$existe, null);
+			$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=".$existe, null);
+
+			$dbind = array( ':tipo'=> 'email',
+							':template'=> 'email_senha_prescritor',
+							':assunto'=> 'Link de recuperação de senha',
+							':status'=> 0,
+							':extra'=> $existe);
+			$delete = $db->delete("interacoes", "WHERE tipo=:tipo AND template=:template AND assunto=:assunto AND status=:status AND extra=:extra", $dbind);
+
+			$bind = array(  ':tipo'=> 'email',
+							':email'=> $usuario['email'],
+							':template'=> 'email_senha_prescritor',
+							':assunto'=> 'Link de recuperação de senha',
+							':conteudo' => json_encode(array('||NOME||' => strtok($prescritor['nome'], " "), '||CODIGO||' => $codigo, 'email' => $usuario['email'])),
+							':status'=> 0,
+							':extra'=> $existe,
+							':data_criacao'=> date("Y-m-d H:i:s"));
+			$interacoes = $db->insert('interacoes', $bind);
+			$retorno = true;
+
+			$transport = (new Swift_SmtpTransport('smtp-relay.brevo.com', 587))
+			->setUsername('812da6002@smtp-brevo.com')
+			->setPassword('QZKMzTv0s5Dc2kC7')
+			;
+
+			// Create the Mailer using your created Transport
+			$mailer = new Swift_Mailer($transport);
+
+			$nomes = explode(" ", $nome);
+			$nome = implode(" ", array_slice($nomes, 0, 2));
+
+			// Create a message
+			$message = (new Swift_Message('Seja bem-vindo ao Entric!'))
+			->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
+			->setTo($email_cpf)
+			->setBody('
+			<text>Olá '.$nome.',</text>
+			<br>
+			<text>Recebemos uma solicitação para a recuperação da sua senha no Entric.</text>
+			<br>
+			<text>Para redefinir sua senha, clique no link abaixo:</text>
+			<a href="https://entric.com.br/senha/nova_prescritor/'.endecrypt('encrypt', $codigo).'">https://entric.com.br/redefinir_senha</a>
+			<br>
+			<text>Se você não solicitou a recuperação, por favor, desconsidere este e-mail. Caso tenha dúvidas ou problemas, entre em contato com nossa equipe de suporte.</text>
+			<br>
+			<text>Atenciosamente,</text>
+			<text>Equipe Entric</text>
+			<br>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 0px 40px;">
+				<tr>
+					<td align="left">
+						<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px" alt="Logo">
+					</td>
+					<td align="right" style="vertical-align: middle;">
+						<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
+						<br>
+						<p style="margin: 0; color:#0092c5;">site.entric.com.br</p>
+					</td>
+				</tr>
+			</table>');
+
+			$result = $mailer->send($message);
+		}
+
+		$data = $retorno;
+
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
 		$response = $response->getBody()->write(json_encode($data));
