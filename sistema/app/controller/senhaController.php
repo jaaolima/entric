@@ -170,25 +170,25 @@ class SenhaController extends Controller {
     }
     
     function nova_prescritor($codigo = null) {
-        global $bruker;
+        // global $bruker;
 
-        if ($codigo){
+        // if ($codigo){
             
-            $checar_codigo = $this->SenhaModel->checarCodigoSenhaPrescritor($codigo);
-            if ($checar_codigo){
+        //     $checar_codigo = $this->SenhaModel->checarCodigoSenhaPrescritor($codigo);
+        //     if ($checar_codigo){
 
-                $this->set('codigo', $codigo );
-                $this->set('bruker', $bruker);
+        //         $this->set('codigo', $codigo );
+        //         // $this->set('bruker', $bruker);
 
-            }
-            else{
-                // Redirect(BASE_PATH . '/login');    
-            }
+        //     }
+        //     else{
+        //         // Redirect(BASE_PATH . '/login');    
+        //     }
 
-        }
-        else{
-            // Redirect(BASE_PATH . '/login');
-        }
+        // }
+        // else{
+        //     // Redirect(BASE_PATH . '/login');
+        // }
     }
 
     function afterAction() {
