@@ -1204,7 +1204,7 @@ $app->group("", function () use ($app) {
 			$nome = implode(" ", array_slice($nomes, 0, 2));
 
 			// Create a message
-			$message = (new Swift_Message('Seja bem-vindo ao Entric!'))
+			$message = (new Swift_Message('Recuperação de senha do Entric.'))
 			->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
 			->setTo($email_cpf)
 			->setBody('

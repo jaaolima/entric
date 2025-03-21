@@ -182,12 +182,12 @@ class SenhaController extends Controller {
 
             }
             else{
-                Redirect(BASE_PATH . '/login');    
+                // Redirect(BASE_PATH . '/login');    
             }
 
         }
         else{
-            Redirect(BASE_PATH . '/login');
+            // Redirect(BASE_PATH . '/login');
         }
     }
 
