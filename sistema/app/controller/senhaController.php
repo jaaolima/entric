@@ -169,9 +169,13 @@ class SenhaController extends Controller {
         }
     }
     
-    function nova_prescritor($codigo) {
-        global $bruker;
 
+
+    function afterAction() {
+
+    }
+
+    function nova_prescritor($codigo = null, $codigo2 = null) {
         var_dump($codigo);
 
         // if ($codigo){
@@ -191,10 +195,6 @@ class SenhaController extends Controller {
         // else{
         //     // Redirect(BASE_PATH . '/login');
         // }
-    }
-
-    function afterAction() {
-
     }
  
 }
