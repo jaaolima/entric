@@ -174,23 +174,23 @@ class SenhaController extends Controller {
 
         var_dump($codigo);
 
-        if ($codigo){
+        // if ($codigo){
             
-            $checar_codigo = $this->SenhaModel->checarCodigoSenhaPrescritor($codigo);
-            if ($checar_codigo){
+        //     $checar_codigo = $this->SenhaModel->checarCodigoSenhaPrescritor($codigo);
+        //     if ($checar_codigo){
 
-                $this->set('codigo', $codigo );
-                $this->set('bruker', $bruker);
+        //         $this->set('codigo', $codigo );
+        //         $this->set('bruker', $bruker);
 
-            }
-            else{
-                // Redirect(BASE_PATH . '/login');    
-            }
+        //     }
+        //     else{
+        //         // Redirect(BASE_PATH . '/login');    
+        //     }
 
-        }
-        else{
-            // Redirect(BASE_PATH . '/login');
-        }
+        // }
+        // else{
+        //     // Redirect(BASE_PATH . '/login');
+        // }
     }
 
     function afterAction() {
