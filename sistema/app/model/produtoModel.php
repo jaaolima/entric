@@ -243,6 +243,7 @@ class ProdutoModel extends Model {
         }
 
         $produto = httpPostAuth("produto_ptProduto", array( "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
                                                             "dados" => $bind));
 
         if ($produto){
