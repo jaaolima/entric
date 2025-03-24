@@ -172,6 +172,8 @@ class SenhaController extends Controller {
     function nova_prescritor($codigo = null) {
         global $bruker;
 
+        var_dump($codigo);
+
         if ($codigo){
             
             $checar_codigo = $this->SenhaModel->checarCodigoSenhaPrescritor($codigo);
@@ -182,12 +184,12 @@ class SenhaController extends Controller {
 
             }
             else{
-                Redirect(BASE_PATH . '/login');    
+                // Redirect(BASE_PATH . '/login');    
             }
 
         }
         else{
-            Redirect(BASE_PATH . '/login');
+            // Redirect(BASE_PATH . '/login');
         }
     }
 
