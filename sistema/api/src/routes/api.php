@@ -2147,7 +2147,7 @@ $app->group("", function () use ($app) {
 		                                        $_ptn_total = ($qtd_bolsas * $_volume * $ptn) / 100;
 
 
-		                                        $_nome = "<span style='color: #ff0000;'>N</span> qtd bolsas= $qtd_bolsas kcal = $_kcal_total ptn = $_ptn_total "; // retirar depois    
+		                                        $_nome = ""; // retirar depois    
 		                                        $valor_calorio = $_kcal_total;
 		                                        $valor_proteico = $_ptn_total;
 		                                        $calorias_dia = $_kcal_total;
@@ -2179,7 +2179,7 @@ $app->group("", function () use ($app) {
 		                                    }                                
 		                                    $_ptn_total = $_ptn * $ptn;
 
-		                                    $_nome = "<span style='color: #ff0000;'>N</span> kcal = $_kcal ptn = $_ptn_total ";  // retirar depois                                    
+		                                    $_nome = "";  // retirar depois                                    
 		                                    $calorias_dia = $_kcal;
 		                                    $proteina_dia = $_ptn_total;
 
@@ -2243,7 +2243,7 @@ $app->group("", function () use ($app) {
 		                                    $range_ptn = ($medida_grama * $medida_g) / $medida;
 		                                    $range_ptn = ($range_ptn * $produtos[$i]['ptn']) / 100;
 
-		                                    $_nome = "<span style='color: #ff0000;'>N</span> kcal = $range_kcal ptn = $range_ptn";  // retirar depois
+		                                    $_nome = "";  // retirar depois
 
 		                                    $valor_calorio = $range_kcal;
 		                                    $valor_proteico = $range_ptn;
@@ -2534,8 +2534,8 @@ $app->group("", function () use ($app) {
 		                                                </td>
 		                                                <td>'.$volume_final.'</td>
 		                                                <td>'.$volume_horario.'</td>
-		                                                <td>'.(($sistema == 'aberto_po' || $sistema = 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
-		                                                <td>'.(($sistema == 'aberto_po' || $sistema = 'aberto_liquido') ? str_replace('.', '', $nf_ptn_dia) : numberFormatPrecision($valor_proteico, 1)).'</td>
+		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
+		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1)).'</td>
 		                                                <td>'.$valor_fibra.'</td>
 		                                            </tr>';
 		                                $titulo = "";
