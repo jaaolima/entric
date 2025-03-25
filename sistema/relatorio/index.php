@@ -136,13 +136,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					padding-left: 2cm;
 					padding-right: 2cm;
 				}
-				.logo_efeito{
+				/* .logo_efeito{
 					background-image: url("imagem/logo.png"), url("imagem/efeito2.png");
 					background-repeat: no-repeat;
 					background-size: 150px;
 					background-position: 2cm 1cm, right bottom;
 					visibility: visible;
-				}
+				} */
 				<?php
 			}
 
@@ -154,16 +154,24 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					padding-left: 2cm;
 					padding-right: 2cm;
 				}
-				.logo_efeito{
+				/* .logo_efeito{
 					background-image: url("imagem/logo.png"), url("imagem/efeito2.png");
 					background-repeat: no-repeat;
 					background-size: 150px;
 					background-position: 2cm 1cm, right bottom;
 					visibility: visible;
-				}
+				} */
 				<?php
 			}
 			?>
+			<?php if($usuario['login'] == "ibranutro") : ?>
+				.col_azul{
+					background-color: #df7b1b82 !important;
+				}
+				.titulo{
+					color: #df7b1b;
+				}
+			<?php endif; ?>
 		</style>
 	</head>
 	<body class="document">
@@ -171,13 +179,18 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
-			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
-			
+			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
+			<?php if($usuario['login'] == 'ibranutro') : ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+			<?php else: ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php endif; ?>
 			<p class="text-center linha titulo">RELATÓRIO NUTRICIONAL DE ALTA</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> IDENTIFICAÇÃO DO PACIENTE</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> IDENTIFICAÇÃO DO PACIENTE</p>
 			<p><strong>Paciente:</strong> <?php echo ucwords($paciente['nome']);?></p>
 			<?php if ($paciente['mae_possui']==0) { echo "<p><strong>Nome da Mãe:</strong> ".ucwords($paciente['mae'])."</p>"; } ?>
 			<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
@@ -186,14 +199,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 
 			<?php if (trim($relatorio['historia'])<>""){ ?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> HISTÓRIA CLÍNICA</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> HISTÓRIA CLÍNICA</p>
 			<p><?php echo nl2br($relatorio['historia']);?></p>
 			<?php } ?>
 
 
 
 			<?php if ($relatorio['rel_avaliacao']<>""){ ?>
-				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> AVALIAÇÃO NUTRICIONAL</p>
+				<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> AVALIAÇÃO NUTRICIONAL</p>
 				<p><strong>Data de realização da avaliação:</strong> <?php echo sql2date($relatorio['data']);?></p>
 				<?php 
 				$array_pesos = array();
@@ -342,14 +355,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 
 			<?php if ($relatorio['rel_necessidades']<>""){ ?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> NECESSIDADES NUTRICIONAIS</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> NECESSIDADES NUTRICIONAIS</p>
 			<p><strong>KCAL TOTAL:</strong> <?php echo $relatorio['nec_calorias_total'];?></p>
 			<p><strong>PTN:</strong> <?php echo $relatorio['nec_proteinas_total'];?></p>
 			<p><strong>Água:</strong> <?php echo $relatorio['nec_agua_total'];?></p>
 			<?php } ?>
 
 			<?php if ($relatorio['rel_prescricao']<>""){ ?>
-				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INDICAÇÃO DE PRODUTOS - Escolha uma das opções</p>
+				<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INDICAÇÃO DE PRODUTOS - Escolha uma das opções</p>
 					<?php 
 					// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 					$landscape = false;
@@ -928,7 +941,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php } ?>
 
 			<?php if ((trim($relatorio['rel_observacoes'])<>"") and (strlen($relatorio['rel_observacoes']) > 3)){ ?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> OBSERVAÇÕES</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> OBSERVAÇÕES</p>
 			<p><?php echo $relatorio['observacoes'];?></p>
 			<?php } ?>
 
@@ -942,7 +955,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONDUTA</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA</p>
 			<p>
 			- Prescrevo terapia nutricional via <?php echo $relatorio['tipo_produto'];?>
 			<?php 
@@ -1013,7 +1026,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if ($p_footer) {
 		?>	
-			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
+			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
+			<?php if($usuario['login'] == 'ibranutro') : ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+			<?php else: ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php endif; ?>
 		<?php
 		}
 		?>
@@ -1023,7 +1042,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
 			<?php 
 			if ($relatorio['calculo_apres_fechado'] == 1){
@@ -1104,7 +1123,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			?>
 
 
-			<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONTATOS DO PRESCRITOR</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONTATOS DO PRESCRITOR</p>
 			<p>
 				<?php 
 				$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id=".$relatorio['id_prescritor'], null);
@@ -1261,12 +1280,46 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						</div>
 					</div>
 				</div>
+				
 			</div>
-
+			<div style="margin-bottom:30px;">
+				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
+					<div style="width: 250px;border-top: 1px solid;">
+						<div style="margin-bottom:15px;">
+							<p>Nutricionista</p>
+							<p style="margin:0px;">(Assinatura e Carimbo)</p>
+						</div>
+						<?php if($nome_hospital != '') : ?>
+						<!-- <div>
+							<strong>IBRANUTRO</strong>
+							<p style="margin:0px;"><?php echo $nome_hospital; ?> - Telefone: <?php echo $telefone; ?></p>
+						</div> -->
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+			<?php if($usuario['login'] == "ibranutro") : ?>
+				<div class="print-footer">
+					<div style="display:flex;justify-content: end;">
+						<p style="color: #0092c5;font-size:9px;">powered by</p>
+					</div>
+					<div style="display:flex;justify-content: end;padding-bottom:10px;">
+						<img src="imagem/logo.png" height="30px" alt="">
+					</div>
+					<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
+						<div>
+							<p>www.ibranutro.com.br</p>
+						</div>
+						<div style="margin-left:200px;">
+							<p>SHCS CR 515 BI C Entrada 42 salas: 104, 107 e 109 - ENTRADA PELA Via W2 Sul - Asa Sul, Brasília - DF, 70381-530</p>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
 			<?php 
 			if ($relatorio['codigo']<>""){
 			?>
-				<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> FINAL DO RELATÓRIO</p>
+				<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> FINAL DO RELATÓRIO</p>
 				<p>
 				<table style="width:100%">
 					<thead>
@@ -1318,8 +1371,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</div>";
 					}
 					?>				
-					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
+					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;position:relative;">
+						<?php if($usuario['login'] == 'ibranutro') : ?>
+						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+						<?php else: ?>
+						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+						<?php endif; ?>
+						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 
 						<p style="padding-top: 30px;">
 							<strong>SISTEMA FECHADO</strong>
@@ -1484,8 +1543,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</div>";
 					}
 					?>				
-					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>"  style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
+					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>"  style="page-break-before: always;position:relative;">
+						<?php if($usuario['login'] == 'ibranutro') : ?>
+						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+						<?php else: ?>
+						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+						<?php endif; ?>
+						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 					
 						<p style="padding-top: 30px;">
 							<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
@@ -1667,8 +1732,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</div>";
 					}
 					?>
-					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;">
-						<p class="text-left subtitutlo"><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
+					<div class="page_land <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="page-break-before: always;position:relative;">
+						<?php if($usuario['login'] == 'ibranutro') : ?>
+						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+						<?php else: ?>
+						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+						<?php endif; ?>
+						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 
 						<p style="padding-top: 30px;">
 							<strong>SISTEMA ABERTO (PÓ)</strong>

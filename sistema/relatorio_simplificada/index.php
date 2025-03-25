@@ -1040,7 +1040,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</div>
 				</div>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
