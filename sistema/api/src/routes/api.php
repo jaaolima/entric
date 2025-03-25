@@ -1484,8 +1484,6 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/atualizar_senha_prescritor", function (Request $request, Response $response) {
-		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);
-		$result = JWTAuth::verifyToken($token);
 		$dados = $request->getParam("dados");
         $senha = hashPass($dados['nova_senha']);
 
