@@ -1486,8 +1486,8 @@ $app->group("", function () use ($app) {
 	$app->post("/atualizar_senha_prescritor", function (Request $request, Response $response) {
 		$dados = $request->getParam("dados");
         $senha = hashPass($dados['nova_senha']);
-		// var_dump($senha);
-		// var_dump($dados['_cd']);
+		var_dump($senha);
+		var_dump($dados['_cd']);
 
         $bind = array(  ':extra' => null,
                         ':senha' => $senha);
