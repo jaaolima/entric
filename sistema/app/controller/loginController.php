@@ -102,21 +102,22 @@ class LoginController extends Controller {
                 else if ($_POST['_ac'] == "nova_paciente"){
                     $senha = new SenhaModel();
                     $checar_codigo = $senha->checarCodigoSenhaPaciente($_POST['_cd']);
+                    var_dump($checar_codigo);
                     if ($checar_codigo){
 
                         if ($_POST["nova_senha"] == $_POST["confirmar_nova_senha"]){
                             $atualizar = $this->LoginModel->atualizarSenhaPaciente($_POST);
-                            if (!$atualizar){
-                                alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
+                            // if (!$atualizar){
+                            //     alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
 
-                            }else{
-                                alertretorno("toastr['success']('Senha atualizada com sucesso.', '', {positionClass: 'toast-top-right' });");
-                            }
+                            // }else{
+                            //     alertretorno("toastr['success']('Senha atualizada com sucesso.', '', {positionClass: 'toast-top-right' });");
+                            // }
 
                         }
-                        else{
-                            alertretorno("toastr['error']('Confirmação de senha inválida.', '', {positionClass: 'toast-top-right' });");
-                        }
+                        // else{
+                        //     alertretorno("toastr['error']('Confirmação de senha inválida.', '', {positionClass: 'toast-top-right' });");
+                        // }
 
                     }
                     else{
