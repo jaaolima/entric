@@ -131,7 +131,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/produto_composicao",
 				"/produto_fabricantes",
 				"/produto_ptProduto",
-				"atualizar_senha_prescritor",
+				"/atualizar_senha_prescritor",
 				"/produto_delinfo_nutri",
 				"/produto_ptinfo_nutri",
 				"/produto_ptcomposicao",
