@@ -160,7 +160,7 @@ class LoginController extends Controller {
                 if ($checar_codigo){
 
                     if ($_POST["nova_senha"] == $_POST["confirmar_nova_senha"]){
-                        $atualizar = $this->LoginModel->atualizarSenhaPrescritor($_POST);
+                        $atualizar = $this->LoginModel->atualizarSenhaPrescritor($_POST); 
                         if (!$atualizar){
                             alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
 
