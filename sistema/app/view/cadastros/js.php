@@ -398,6 +398,7 @@ $(function(){
                             cache: false,
                             dataType: 'json',
                             success: function( data ){
+                                toastr['success'](data.message, '', {positionClass: 'toast-top-right' });
                                 console.log(id);
                                 console.log(_this.closest('tr'));
                                 console.log("----------------------");

@@ -454,7 +454,6 @@ class AjaxController extends Controller {
 
     function excluir_cadastro_prescritor() {
         if (isset($_POST['id']) and (trim($_POST['id'])<>"")){
-            $produto = new ProdutoModel();
             if ($_POST['id'] <> ""){                
                 
                 $excluir = $this->AjaxModel->excluir_prescritor($_POST['id']);
