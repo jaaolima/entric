@@ -239,7 +239,7 @@ class ProdutoModel extends Model {
         if (isset($_FILES['foto']['error']) and ($_FILES['foto']['error'] == 0)){
             $upfoto = uploadFile(  $_FILES['foto'], 
                                     "/fotos_produtos");
-            $bind[':foto'] = "/fotos_produtos/".$upfoto;
+            $bind[':foto'] = "/fotos_produtos/".$upfoto; 
         }
 
         $produto = httpPostAuth("produto_ptProduto", array( "token" => $_SESSION['token'],

@@ -428,7 +428,7 @@ class AjaxModel extends Model {
         return $retorno;
     } 
 
-    function stPacienteSuplemento($dados) {
+    function stPacienteSuplemento($dados) { 
         global $bruker;
         $retorno = httpPostAuth("ajax_stPacienteSuplemento", array("token" => $_SESSION['token'],
                                                                         "login" => $_SESSION['login'],
@@ -436,4 +436,12 @@ class AjaxModel extends Model {
                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));       
         return $retorno;
     } 
+
+    function excluir_prescritor($id) {
+        global $bruker;
+        $retorno = httpPostAuth("prescritor_excluirPrescritor", array( "token" => $_SESSION['token'],
+                                                                "login" => $_SESSION['login'],
+                                                                "id" => $id));
+        return $retorno;
+    }
 }

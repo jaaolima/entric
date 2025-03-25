@@ -457,13 +457,13 @@ class AjaxController extends Controller {
             $produto = new ProdutoModel();
             if ($_POST['id'] <> ""){                
                 
-                // $excluir = $this->AjaxModel->excluir_prescritor($_POST);
-                // if ($excluir){
-                //     echo json_encode(array('message'=>'Produto excluído com sucesso.'));
-                // }
-                // else{
-                //     echo json_encode(array('error'=>array('message'=>'Erro ao excluir produto.')));
-                // }
+                $excluir = $this->AjaxModel->excluir_prescritor($_POST['id']);
+                if ($excluir){
+                    echo json_encode(array('message'=>'Produto excluído com sucesso.'));
+                }
+                else{
+                    echo json_encode(array('error'=>array('message'=>'Erro ao excluir produto.')));
+                }
 
             }else{
                 echo json_encode(array('error'=>array('message'=>'Por favor, pesquise pelo produto antes de excluí-lo.')));

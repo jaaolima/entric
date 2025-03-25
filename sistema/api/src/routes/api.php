@@ -137,6 +137,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/produto_ptcomposicao",
 				"/produto_ptDisponivel",
 				"/produto_rmProduto",
+				"/prescritor_excluirPrescritor",
 				"/senha_checarPrescritorSenha",
 				"/senha_checarPacienteSenha",
 				"/senha_checarCodigoSenhaPaciente",
@@ -1278,6 +1279,43 @@ $app->group("", function () use ($app) {
 		        $retorno = $db->delete("produtos", "WHERE id='".$id."'", null); 
 		        $retorno = $db->delete("produtos_composicao", "WHERE id_produto='".$id."'", null); 
 		        $retorno = $db->delete("produtos_info_nutri", "WHERE id_produto='".$id."'", null); 
+
+		        $data = true;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/prescritor_excluirPrescritor", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+
+			if ($usuario){
+				$id = $request->getParam("id");
+
+				$usuario_excluir = $db->select_single_to_array("prescritores", "*", "WHERE id='".$id."'", null);
+		        $retorno = $db->delete("usuarios", "WHERE id='".$usuario_excluir['id_usuario']."'", null); 
+		        $retorno = $db->delete("prescritores", "WHERE id='".$id."'", null); 
 
 		        $data = true;
 			}
