@@ -9682,24 +9682,23 @@ $app->group("", function () use ($app) {
 
 		// Create a message
 		$message = (new Swift_Message('Seja bem-vindo ao Entric!'))
-		->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
+		->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Entric'])
 		->setTo($email)
 		->setBody('
 		<text>Olá '.$nome.',</text>
-		<text>Seja bem-vindo ao <strong>Entric</strong></text>
+		<text>Seja bem-vindo ao <strong>Entric</strong>!</text>
 		<br>
 		<text>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </text>
 		<text>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</text>
 		<br>
-		<text>Acesse o sistema agora mesmo: <a href=""https://entric.com.br/">Entric.com.br</a>.</text>
+		<text>Acesse o sistema agora mesmo: <a href=""https://www.entric.com.br/">www.entric.com.br</a>.</text>
 		<br>
 		<text>Atenciosamente,</text>
 		<text>Equipe Entric</text>
-		<br>
 		<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 0px 40px;">
 			<tr>
 				<td align="left">
-					<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px" alt="Logo">
+					<img src="https://www.entric.com.br/relatorio_simplificada/imagem/logo.png" height="45px" alt="Logo">
 				</td>
 				<td align="right" style="vertical-align: middle;">
 					<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
