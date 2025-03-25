@@ -17,7 +17,8 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 			"path" => "",
 			"passthrough" => [
 				"/ping",
-				"/login",			
+				"/login",
+				"/senha",			
 				"/login_ibranutro",			
 				"/check",
 				"/ajax_getPatrocinador",

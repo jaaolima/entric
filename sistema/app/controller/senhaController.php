@@ -175,7 +175,7 @@ class SenhaController extends Controller {
 
     }
 
-    function nova_prescritor($codigo = 'STV6UDNrY2EveCtrb212QXI1UnQrWks5T1ZXM0ZZYzlHSThydkNCR0JuTT0=') {
+    function nova_prescritor($codigo = null) {
         var_dump($codigo);
 
         if ($codigo){
