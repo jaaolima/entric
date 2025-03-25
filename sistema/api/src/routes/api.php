@@ -2372,14 +2372,17 @@ $app->group("", function () use ($app) {
 		                                $_valor_calorico = ($_volume_final / 100) * $_kcal;
 		                                $_valor_proteico = ($_volume_horario / 100) * $_ptn;
 		                                $sistema = "aberto_liquido";
-
 		                                $_volume_final = chkfloat($volume_final);
-		                                $_fibra = chkstring2float($produtos[$i]['fibras']);
-		                                                                
+
+										$nf_kcal_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['kcal'])) / 100;
+		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
+
+										$nf_ptn_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['ptn'])) / 100;
+		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
+
+		                                $_fibra = chkstring2float($produtos[$i]['fibras']);                      
 		                                $valor_fibra = ($_volume_final * $_fibra);                                
 		                                if ($valor_fibra>0) $valor_fibra = $valor_fibra /100; else $valor_fibra = 0;
-
-
 		                            // calculo reverco de produtos ABERTO PÓ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		                            }
 		                            else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
