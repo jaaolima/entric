@@ -1174,7 +1174,10 @@ $app->group("", function () use ($app) {
 		}
 
 		if ($existe){
-			$codigo = randomCode(20);
+			// $codigo = randomCode(20);
+			$numero = rand(0, 99999999999999999999);
+			$codigo = str_pad($numero, 20, '0', STR_PAD_LEFT); 
+			
 			$bind = array(  ':id' => $existe,
 							':extra' => $codigo);
 			$update = $db->update("usuarios", "WHERE id=:id", $bind);
