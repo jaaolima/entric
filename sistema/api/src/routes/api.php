@@ -18,7 +18,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 			"passthrough" => [
 				"/ping",
 				"/login",
-				"/senha/nova_prescritor/{codigo}",			
+				"/senha/nova_prescritor",			
 				"/login_ibranutro",			
 				"/check",
 				"/ajax_getPatrocinador",
