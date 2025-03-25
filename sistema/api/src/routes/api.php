@@ -18,7 +18,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 			"passthrough" => [
 				"/ping",
 				"/login",
-				"/senha/nova_prescritor",			
+				"/senha",			
 				"/login_ibranutro",			
 				"/check",
 				"/ajax_getPatrocinador",
@@ -181,6 +181,13 @@ function round_up($valor, $rounded = 1){
 $app->group("", function () use ($app) {
 
 	$app->get("/ping", function (Request $request, Response $response) {
+		$data = "pong";
+		$response = $response->withHeader("Content-Type", "application/json");		
+		$response = $response->getBody()->write(json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT));
+		return $response;
+	});
+	
+	$app->get("/senha", function (Request $request, Response $response) {
 		$data = "pong";
 		$response = $response->withHeader("Content-Type", "application/json");		
 		$response = $response->getBody()->write(json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT));
