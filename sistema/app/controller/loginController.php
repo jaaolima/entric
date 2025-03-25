@@ -158,7 +158,6 @@ class LoginController extends Controller {
                 $senha = new SenhaModel();
                 $checar_codigo = $senha->checarCodigoSenhaPrescritor($_POST['_cd']);
                 if ($checar_codigo){
-
                     if ($_POST["nova_senha"] == $_POST["confirmar_nova_senha"]){
                         $atualizar = $this->LoginModel->atualizarSenhaPrescritor($_POST); 
                         if (!$atualizar){

@@ -178,12 +178,14 @@ class LoginModel extends Model {
 
     function atualizarSenhaPrescritor($dados) {
         global $bruker;
-        $senha = hashPass($dados['nova_senha']);
-        $bind = array(  ':extra' => null,
-                        ':senha' => $senha,
-                        ':tipo' => 2,                  
-                        ':status' => 0);
-        $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
+        $senha = httpPostAuth("atualizar_senha_prescritor", array("token" => null,
+                                                                "dados" => $dados));
+        // $senha = hashPass($dados['nova_senha']);
+        // $bind = array(  ':extra' => null,
+        //                 ':senha' => $senha,
+        //                 ':tipo' => 2,                  
+        //                 ':status' => 0);
+        // $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
     
         return true;
     }
