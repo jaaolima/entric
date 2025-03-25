@@ -27,7 +27,7 @@ class SenhaModel extends Model {
 
     function checarCodigoSenhaPrescritor($codigo = null) {
         global $bruker;
-        $retorno = httpPostAuth("senha_checarCodigoSenhaPrescritor", array( "token" => null,
+        $retorno = httpPost("senha_checarCodigoSenhaPrescritor", array( "token" => null,
                                                                             "codigo" => $codigo));
         return $retorno;
     }

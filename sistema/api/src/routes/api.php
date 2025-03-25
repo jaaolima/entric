@@ -1482,6 +1482,24 @@ $app->group("", function () use ($app) {
 		return $data;
 	});
 
+	$app->post("/atualizar_senha_prescritor", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);
+		$result = JWTAuth::verifyToken($token);
+		$dados = $request->getParam("dados");
+        $senha = hashPass($dados['nova_senha']);
+
+		$data = array();
+        $bind = array(  ':extra' => null,
+                        ':senha' => $senha,
+                        ':tipo' => 2,                  
+                        ':status' => 0);
+        $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $data;
+	});
+
 	$app->post("/produto_fabricantes", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
