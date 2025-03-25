@@ -180,17 +180,17 @@ class SenhaController extends Controller {
         if ($codigo){
             $checar_codigo = $this->SenhaModel->checarCodigoSenhaPrescritor($codigo);
             if ($checar_codigo){
-                $this->set('codigo', $codigo );
+                $this->set('codigo', $codigo);
                 // $this->set('bruker', $bruker);
 
             }
             else{
-                Redirect(BASE_PATH . '/login');    
+                // Redirect(BASE_PATH . '/login');    
             }
 
         }
         else{
-            Redirect(BASE_PATH . '/login');
+            // Redirect(BASE_PATH . '/login');
         }
     }
  
