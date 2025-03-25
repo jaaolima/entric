@@ -157,28 +157,26 @@ class LoginController extends Controller {
             else if ($_POST['_ac'] == "nova_prescritor"){
                 $senha = new SenhaModel();
                 $checar_codigo = $senha->checarCodigoSenhaPrescritor($_POST['_cd']);
-                // var_dump($checar_codigo);
                 if ($checar_codigo){
                     if ($_POST["nova_senha"] == $_POST["confirmar_nova_senha"]){
                         $atualizar = $this->LoginModel->atualizarSenhaPrescritor($_POST); 
-                        var_dump($atualizar);
 
-                        // if (!$atualizar){
-                        //     alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
+                        if (!$atualizar){
+                            alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
 
-                        // }else{
-                        //     alertretorno("toastr['success']('Senha atualizada com sucesso.', '', {positionClass: 'toast-top-right' });");
-                        // }
+                        }else{
+                            alertretorno("toastr['success']('Senha atualizada com sucesso.', '', {positionClass: 'toast-top-right' });");
+                        }
 
                     }
-                    // else{
-                    //     alertretorno("toastr['error']('Confirmação de senha inválida.', '', {positionClass: 'toast-top-right' });");
-                    // }
+                    else{
+                        alertretorno("toastr['error']('Confirmação de senha inválida.', '', {positionClass: 'toast-top-right' });");
+                    }
 
                 }
-                // else{
-                //     Redirect(BASE_PATH . '/login');    
-                // }
+                else{
+                    Redirect(BASE_PATH . '/login');    
+                }
             }
         }
     }

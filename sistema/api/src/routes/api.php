@@ -1486,8 +1486,8 @@ $app->group("", function () use ($app) {
 	$app->post("/atualizar_senha_prescritor", function (Request $request, Response $response) {
 		$dados = $request->getParam("dados");
         $senha = hashPass($dados['nova_senha']);
-		var_dump($senha);
-		var_dump($dados['_cd']);
+		// var_dump($senha);
+		// var_dump($dados['_cd']);
 
         $bind = array(  ':extra' => null,
                         ':senha' => $senha,
@@ -1496,7 +1496,6 @@ $app->group("", function () use ($app) {
 
 		$data = false;
         $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
-		// var_dump($retorno);
 		if($retorno){
 			$data = true;
 		}
