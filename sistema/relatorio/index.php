@@ -1122,8 +1122,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			?>
 
-
-			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONTATOS DO PRESCRITOR</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?>
+			<img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONTATOS DO PRESCRITOR</p>
 			<p>
 				<?php 
 				$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id=".$relatorio['id_prescritor'], null);
@@ -1166,6 +1166,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				}
 				?>
 			</p>
+			<?php endif; ?>
 
 			<div style="display:flex;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
