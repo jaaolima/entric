@@ -1379,9 +1379,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 						<?php endif; ?>
-						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
+						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> <p style="margin-top:30px;"> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 
-						<p style="padding-top: 30px;">
+						<p style="">
 							<strong>SISTEMA FECHADO</strong>
 							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" class="tabela_produtos">
 							<?php
@@ -1551,9 +1551,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 						<?php endif; ?>
-						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
+						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> <p style="margin-top:30px;">INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 					
-						<p style="padding-top: 30px;">
+						<p>
 							<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
 							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos">
 							<?php
@@ -1740,9 +1740,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 						<?php endif; ?>
-						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
+						<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> <p style="margin-top:30px;">INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 
-						<p style="padding-top: 30px;">
+						<p>
 							<strong>SISTEMA ABERTO (PÓ)</strong>
 
 							<table width="100%" margin="0" padding="1" border="1" cellspacing="0" cellpadding="1" style="margin-top: 0.5cm;" class="tabela_produtos tabela_p1">
