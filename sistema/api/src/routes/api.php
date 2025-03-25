@@ -1176,7 +1176,7 @@ $app->group("", function () use ($app) {
 		if ($existe){
 			$codigo = randomCode(20);
 			$bind = array(  ':id' => $existe,
-							':extra' => endecrypt('encrypt', $codigo));
+							':extra' => $codigo);
 			$update = $db->update("usuarios", "WHERE id=:id", $bind);
 
 			$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE id_usuario=".$existe, null);
@@ -1221,7 +1221,7 @@ $app->group("", function () use ($app) {
 			<text>Recebemos uma solicitação para a recuperação da sua senha no Entric.</text>
 			<br>
 			<text>Para redefinir sua senha, clique no link abaixo:</text>
-			<a href="https://entric.com.br/senha/nova_prescritor/'.endecrypt('encrypt', $codigo).'">https://entric.com.br/senha/nova_prescritor/'.endecrypt('encrypt', $codigo).'</a>
+			<a href="https://entric.com.br/senha/nova_prescritor/'.$codigo.'">https://entric.com.br/senha/nova_prescritor/'.$codigo.'</a>
 			<br>
 			<text>Se você não solicitou a recuperação, por favor, desconsidere este e-mail. Caso tenha dúvidas ou problemas, entre em contato com nossa equipe de suporte.</text>
 			<br>
