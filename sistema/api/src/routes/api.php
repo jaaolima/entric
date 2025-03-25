@@ -1488,11 +1488,16 @@ $app->group("", function () use ($app) {
         $senha = hashPass($dados['nova_senha']);
 		$db = new Database();
 
+		// var_dump($senha);
+		// var_dump($dados['_cd']);
+
         $bind = array(  ':extra' => null,
-                        ':senha' => $senha);
+                        ':senha' => $senha,
+                        ':tipo' => 2,                  
+                        ':status' => 0);
 
 		$data = false;
-        $retorno = $db->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=".'2'." AND status=".'0', $bind);
+        $retorno = $db->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
 		if($retorno){
 			$data = true;
 		}
