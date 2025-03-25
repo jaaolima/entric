@@ -178,7 +178,7 @@ class LoginModel extends Model {
 
     function atualizarSenhaPrescritor($dados) {
         global $bruker;
-        $retorno = httpPost("atualizar_senha_prescritor", array( "token" => null,
+        $retorno = httpPostAuth("atualizar_senha_prescritor", array( "token" => null,
                                                                 "dados" => $dados));
         return $retorno;
     }
