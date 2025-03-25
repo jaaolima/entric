@@ -1490,12 +1490,10 @@ $app->group("", function () use ($app) {
 		// var_dump($dados['_cd']);
 
         $bind = array(  ':extra' => null,
-                        ':senha' => $senha,
-                        ':tipo' => 2,                  
-                        ':status' => 0);
+                        ':senha' => $senha);
 
 		$data = false;
-        $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
+        $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=".'2'." AND status=".'0', $bind);
 		if($retorno){
 			$data = true;
 		}
