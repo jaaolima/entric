@@ -83,13 +83,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				text-align: justify;
 				text-justify: inter-word;
 			}
-			.logo_efeito{
+			/* .logo_efeito{
 				background-image: url("imagem/logo.png"), url("imagem/efeito.png");
 				background-repeat: no-repeat;
 				background-size: 150px;
 				background-position: 2cm 1cm, right bottom;
 				visibility: visible;
-			}
+			} */
 			.titulo {
 				font-weight: bold;
 				color: #45cfb3;
