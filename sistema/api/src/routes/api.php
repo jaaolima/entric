@@ -1496,6 +1496,7 @@ $app->group("", function () use ($app) {
 
 		$data = false;
         $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
+		var_dump($retorno);
 		if($retorno){
 			$data = true;
 		}
