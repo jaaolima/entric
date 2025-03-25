@@ -187,6 +187,6 @@ class LoginModel extends Model {
         //                 ':status' => 0);
         // $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
     
-        return $senha;
+        return true;
     }
 }
