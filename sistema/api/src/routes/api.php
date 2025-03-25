@@ -1493,8 +1493,12 @@ $app->group("", function () use ($app) {
                         ':senha' => $senha,
                         ':tipo' => 2,                  
                         ':status' => 0);
+
+		$data = false;
         $retorno = $this->update("usuarios", "WHERE extra='".$dados['_cd']."' AND tipo=:tipo AND status=:status", $bind);
-		$data = true;
+		if($retorno){
+			$data = true;
+		}
 
 		$response = $response->withHeader("Content-Type", "application/json");
 		$response = $response->withStatus(200, "OK");
