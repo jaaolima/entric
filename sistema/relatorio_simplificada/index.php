@@ -22,7 +22,6 @@ require __DIR__ . '/libs/common.php';
 require __DIR__ . '/libs/database.class.php';
 //echo endecrypt("encrypt", 466);
 //die();
-session_start();
 var_dump($_SESSION);
 // if(!isset($_SESSION['login'])){
 // 	Redirect(BASE_PATH);
