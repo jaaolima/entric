@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php 
+if(!isset($_SESSION['login'])){
+	Redirect(BASE_PATH);
+}
 // /usr/local/bin/wkhtmltoimage -f jpg --encoding UTF-8 "https://entric.storm.expert/sistema/relatorio/MUk4M1NjelVNQmVPbGUwQXFBS1hFUT09" arquivo.jpg
 // /usr/local/bin/wkhtmltoimage -f jpg --encoding UTF-8 --enable-local-file-access --include-in-outline --enable-plugins --xsl-style-sheet "https://entric.storm.expert/sistema/relatorio/index2.php?url=MUk4M1NjelVNQmVPbGUwQXFBS1hFUT09" arquivo.jpg
 
@@ -67,7 +70,7 @@ if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){
 $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
 $paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
-$usuario = ['login' => 'ibranutro'];
+$usuario = ['login' => 'ibranutro']; 
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
 if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
@@ -236,7 +239,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
 			
-			<p class="text-center linha titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
+			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>

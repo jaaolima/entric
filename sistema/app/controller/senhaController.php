@@ -175,7 +175,7 @@ class SenhaController extends Controller {
 
     }
 
-    function nova_prescritor($codigo = null) {
+    function nova_prescritor($codigo = null) { 
 
         if ($codigo){
             $checar_codigo = $this->SenhaModel->checarCodigoSenhaPrescritor($codigo);

@@ -1163,15 +1163,16 @@ $app->group("", function () use ($app) {
 		$senha = $db->select_single_to_array("usuarios", "*", "WHERE email=:email_cpf AND tipo=2 AND status=0",  $bind);
 
 		$nome = 'Usuário';
+		$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE (cpf_cnpj=:email_cpf OR email_contato=:email_cpf OR email=:email_cpf) AND status=0",  $bind);
+		if ($prescritor){
+			$nome = $prescritor['nome'];
+		}
+
 		if ($senha){
 			$existe = $senha['id'];
-		}
-		else{
-			$bind = array(  ':email_cpf' => $email_cpf);
-			$prescritor = $db->select_single_to_array("prescritores", "*", "WHERE (cpf_cnpj=:email_cpf OR email_contato=:email_cpf OR email=:email_cpf) AND status=0",  $bind);
+		}else{
 			if ($prescritor){
 				$existe = $prescritor['id_usuario'];
-				$nome = $prescritor['nome'];
 			}
 		}
 
@@ -1219,7 +1220,7 @@ $app->group("", function () use ($app) {
 
 			// Create a message
 			$message = (new Swift_Message('Recuperação de senha do Entric.'))
-			->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Ibranutro'])
+			->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Entric'])
 			->setTo($email_cpf)
 			->setBody('
 			<text>Olá '.$nome.',</text>

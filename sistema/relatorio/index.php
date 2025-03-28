@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php 
+if(!isset($_SESSION['login'])){
+	Redirect(BASE_PATH);
+}
 // /usr/local/bin/wkhtmltoimage -f jpg --encoding UTF-8 "https://entric.storm.expert/sistema/relatorio/MUk4M1NjelVNQmVPbGUwQXFBS1hFUT09" arquivo.jpg
 // /usr/local/bin/wkhtmltoimage -f jpg --encoding UTF-8 --enable-local-file-access --include-in-outline --enable-plugins --xsl-style-sheet "https://entric.storm.expert/sistema/relatorio/index2.php?url=MUk4M1NjelVNQmVPbGUwQXFBS1hFUT09" arquivo.jpg
 
@@ -186,7 +189,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
-			<p class="text-center linha titulo">RELATÓRIO NUTRICIONAL DE ALTA</p>
+			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo">RELATÓRIO NUTRICIONAL DE ALTA</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
