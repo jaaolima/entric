@@ -22,8 +22,8 @@ require __DIR__ . '/libs/database.class.php';
 // if(!isset($_SESSION['login'])){
 // 	Redirect(BASE_PATH);
 // }
-session_start();
-var_dump($_SESSION);
+// session_start();
+// var_dump($_SESSION);
 if (!isset($_GET['url'])) Redirect(BASE_PATH);
 
 
