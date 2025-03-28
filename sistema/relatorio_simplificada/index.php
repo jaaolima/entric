@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php 
+session_start();
 if(!isset($_SESSION['login'])){
 	Redirect(BASE_PATH);
 }
