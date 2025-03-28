@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <?php 
-if(!isset($_SESSION['login'])){
-	Redirect(BASE_PATH);
-}
+
 // /usr/local/bin/wkhtmltoimage -f jpg --encoding UTF-8 "https://entric.storm.expert/sistema/relatorio/MUk4M1NjelVNQmVPbGUwQXFBS1hFUT09" arquivo.jpg
 // /usr/local/bin/wkhtmltoimage -f jpg --encoding UTF-8 --enable-local-file-access --include-in-outline --enable-plugins --xsl-style-sheet "https://entric.storm.expert/sistema/relatorio/index2.php?url=MUk4M1NjelVNQmVPbGUwQXFBS1hFUT09" arquivo.jpg
 
@@ -21,6 +19,9 @@ require __DIR__ . '/libs/common.php';
 require __DIR__ . '/libs/database.class.php';
 //echo endecrypt("encrypt", 466);
 //die();
+if(!isset($_SESSION['login'])){
+	Redirect(BASE_PATH);
+}
 if (!isset($_GET['url'])) Redirect(BASE_PATH);
 
 
