@@ -20,7 +20,7 @@ error_reporting(E_ALL);
 require __DIR__ . '/libs/conf6ion.php';
 require __DIR__ . '/libs/common.php';
 require __DIR__ . '/libs/database.class.php';
-var_dump($bruker);
+var_dump($_GET);
 //echo endecrypt("encrypt", 466);
 //die();
 // var_dump($_SESSION);
