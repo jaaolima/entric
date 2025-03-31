@@ -700,6 +700,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 													if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 													if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
 													if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+													if (trim($danone[$i]['site']) <> "") echo "<br>".$danone[$i]['site'];
 													if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
 													echo "</p>
 													</div>";
