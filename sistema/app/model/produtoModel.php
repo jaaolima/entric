@@ -5,7 +5,7 @@ class ProdutoModel extends Model {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorio", array("token" => $_SESSION['token'],
         "login" => $_SESSION['login'],
-                                                                    "dados" => $dados));
+                                                                    "dados" => $dados)); 
         return $retorno;
     }
 
