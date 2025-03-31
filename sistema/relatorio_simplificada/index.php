@@ -20,7 +20,6 @@ error_reporting(E_ALL);
 require __DIR__ . '/libs/conf6ion.php';
 require __DIR__ . '/libs/common.php';
 require __DIR__ . '/libs/database.class.php';
-var_dump($_GET);
 //echo endecrypt("encrypt", 466);
 //die();
 // var_dump($_SESSION);
@@ -73,7 +72,11 @@ if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
 $paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
-$usuario = ['login' => 'ibranutro'];
+if($paciente['id_prescritor_ibranutro'] != ""){
+	$usuario = ['login' => 'ibranutro'];
+}else{
+	$usuario = ['login' => 'entric'];
+}
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
