@@ -13,7 +13,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
     "secure" => false,
 	"secret" => SECRET,
 	"rules" => [
-		new \Slim\Middleware\JwtAuthentication\RequestPathRule([ 
+		new \Slim\Middleware\JwtAuthentication\RequestPathRule([  
 			"path" => "",
 			"passthrough" => [
 				"/ping",
@@ -8882,7 +8882,7 @@ $app->group("", function () use ($app) {
 			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
-				$id_prescritor = $request->getParam("id_prescritor");
+				$id_prescritor = $request->getParam("id_prescritor"); 
 				$retorno = null;
 
 

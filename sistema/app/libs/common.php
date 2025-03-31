@@ -12,7 +12,7 @@ if (!function_exists("bcdiv")) {
 }
   
 if (!function_exists("bcadd")) {
-    function bcadd($_ro, $_lo, $_scale=0) {
+    function bcadd($_ro, $_lo, $_scale=0) { 
         return round($_ro+$_lo, $_scale);
     }
 }
@@ -197,7 +197,7 @@ function httpPostAuth($resource, $post = null){
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     $result = curl_exec($ch);
-    // print_r($result);
+    print_r($result);
     if($result === false){
         return false;
     }
