@@ -8995,7 +8995,7 @@ $app->group("", function () use ($app) {
 					$bind_query = " id_prescritor_ibranutro is not null";
 
 					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
-						$bind_query .= "AND nome LIKE '%".$dados['nome']."%'";
+						$bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
 					}
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
 						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
@@ -9086,7 +9086,7 @@ $app->group("", function () use ($app) {
 					$bind_query = " id_prescritor_ibranutro is not null";
 
 					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
-						$bind_query .= "AND nome LIKE '%".$dados['nome']."%'";
+						$bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
 					}
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
 						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
