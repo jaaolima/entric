@@ -789,7 +789,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 					<div style="width: 250px;border-top: 1px solid;">
 						<div style="margin-bottom:15px;">
-							<p>Precritor</p>
+							<p>Prescritor</p>
 							<p style="margin:0px;">(Assinatura e Carimbo)</p>
 						</div>
 						<?php if($nome_hospital != '') : ?>
