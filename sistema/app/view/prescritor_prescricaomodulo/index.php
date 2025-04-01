@@ -58,7 +58,7 @@
                                         <a class="nav-link active" data-toggle="tab" href="#cadastro">Dados Gerais</a>
                                     </li> 
                                     <li class="nav-item tabsec tabcalculo">
-                                        <a class="nav-link" data-toggle="tab" href="#calculo">Prescrição TNEVO
+                                        <a class="nav-link" data-toggle="tab" href="#calculo">Prescrição Módulos
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
                                             <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
                                         </a>                                                       

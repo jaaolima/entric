@@ -131,7 +131,7 @@ else{
                 <ul>
                     <li class="sub-menu"><a href="prescritor_prescricaosimplificada">Dieta Enteral</a></li>
                     <li class="sub-menu"><a href="prescritor_prescricaosuplemento">Suplemento</a></li>
-                    <li class="sub-menu"><a href="prescritor_prescricaomodulo">Módulo</a></li>
+                    <li class="sub-menu"><a href="prescritor_prescricaomodulo">Módulos</a></li>
                 </ul>
             </li>
             <li class="mega-menu mega-menu-lg">
