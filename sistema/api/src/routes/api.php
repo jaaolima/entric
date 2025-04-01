@@ -1901,6 +1901,20 @@ $app->group("", function () use ($app) {
 		            $query .= $_query;
 		        }
 
+				if (isset($dados['cat_modulo'][0])){
+		            $_query = "";
+		            foreach ($dados['cat_modulo'] as $key => $val) {
+		                if ($val <> "Todos"){
+		                    $_query.= ' AND (cat_modulo LIKE "%'.$val.'%")';
+		                }
+		                else{
+		                    $_query = "";
+		                    break;
+		                }
+		            }
+		            $query .= $_query;
+		        }
+
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = array();
 
