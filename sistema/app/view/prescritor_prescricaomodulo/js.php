@@ -876,7 +876,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
-            url: "ajax/busca_produto_relatorio_modulo",
+            url: "ajax/busca_produto_relatorio_modulo", 
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
             data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val(),
             cache: false,

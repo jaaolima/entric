@@ -731,7 +731,7 @@
                                         );
                             echo $item_dados;
                             ?>
-                        </div>
+                        </div> 
                     </div>
 
                     <div class="col-sm-4 entric_composicao pt-2">
