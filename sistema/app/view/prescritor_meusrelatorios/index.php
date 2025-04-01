@@ -21,10 +21,7 @@
                     </ol>
                 </div>
             </div>
-
-
             <div class="row">
-                
                 <div class="table-responsive pt-5" style="max-height: 400px;">
                     <table class="table table-bordered table-hover table-striped" id="table_lista_relatorios">
                         <thead>

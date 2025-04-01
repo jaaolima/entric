@@ -9,7 +9,7 @@ class ProdutoModel extends Model {
         return $retorno;
     }
 
-    function gtProdutoRelatorioSimplificada($dados) {
+    function gtProdutoRelatorioSimplificada($dados) { 
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorioSimplificada", array("token" => $_SESSION['token'],
         "login" => $_SESSION['login'],
@@ -20,6 +20,14 @@ class ProdutoModel extends Model {
     function gtProdutoRelatorioSuplemento($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorioSuplemento", array("token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
+                                                                    "dados" => $dados));
+        return $retorno;
+    }
+
+    function gtProdutoRelatorioModulo($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("produto_gtProdutoRelatorioModulo", array("token" => $_SESSION['token'],
         "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
@@ -109,6 +117,10 @@ class ProdutoModel extends Model {
 
         if (isset($dados['apres_oral'])){
             $bind[':apres_oral'] = ($dados["via"]=="Suplemento"?json_encode($dados['apres_oral'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
+        }
+
+        if (isset($dados['cat_modulo'])){
+            $bind[':cat_modulo'] = ($dados["via"]=="Módulo"?json_encode($dados['cat_modulo'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
         }
 
         $carac_oral = array();

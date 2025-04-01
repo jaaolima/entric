@@ -12,7 +12,7 @@ function IsJsonString(str) {
     }
 }
 
-function select2_ajax_produto(_this){
+function select2_ajax_produto(_this){ 
     _this.select2({
         ajax: {
             url: "ajax/busca_produto/",
@@ -1254,6 +1254,7 @@ $(function(){
         if ($("#frmproduto input[name='via']:checked").val() == 'Enteral') {
             $("#apresentacao_enteral").removeClass("none");
             $("#apresentacao_oral").addClass("none");
+            $("#apresentacao_modulo").addClass("none");
             $(".unidademedida").removeClass("block").addClass("none");
             // $(".nounidademedida").removeClass("none").addClass("block");
             $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
@@ -1261,7 +1262,22 @@ $(function(){
 
         }else if ($("#frmproduto input[name='via']:checked").val() == 'Suplemento') {
             $("#apresentacao_enteral").addClass("none");
+            $("#apresentacao_modulo").addClass("none");
             $("#apresentacao_oral").removeClass("none");
+            $(".unidademedida").removeClass("none").addClass("block");
+            // $(".nounidademedida").removeClass("block").addClass("none");
+
+            if ($("#frmproduto input[name='unidmedida']:checked").val() == 'gramas') {
+                $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
+                $("#frmproduto .volmedida").parent().find(".input-group-text").html("g");
+            }else{
+                $("#frmproduto .dosagem_quantidade").html("Quantidade por 100ml");
+                $("#frmproduto .volmedida").parent().find(".input-group-text").html("ml");
+            }
+        }else if ($("#frmproduto input[name='via']:checked").val() == 'Módulo') {
+            $("#apresentacao_enteral").addClass("none");
+            $("#apresentacao_modulo").removeClass("none");
+            $("#apresentacao_oral").addClass("none");
             $(".unidademedida").removeClass("none").addClass("block");
             // $(".nounidademedida").removeClass("block").addClass("none");
 
@@ -1275,6 +1291,7 @@ $(function(){
         }else{
             $("#apresentacao_enteral").addClass("none");
             $("#apresentacao_oral").addClass("none");
+            $("#apresentacao_modulo").addClass("none");
             $(".unidademedida").removeClass("none").addClass("block");
             // $(".nounidademedida").removeClass("block").addClass("none");
 

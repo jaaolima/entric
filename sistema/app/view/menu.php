@@ -131,14 +131,15 @@ else{
                 <ul>
                     <li class="sub-menu"><a href="prescritor_prescricaosimplificada">Dieta Enteral</a></li>
                     <li class="sub-menu"><a href="prescritor_prescricaosuplemento">Suplemento</a></li>
+                    <li class="sub-menu"><a href="prescritor_prescricaomodulo">Módulo</a></li>
                 </ul>
             </li>
             <li class="mega-menu mega-menu-lg">
                 <a href="prescritor_relatorioalta"><img src="assets/images/icones/icon-gerar-relatorio.png" border="0"><span class="nav-text">Relatório de Alta</span></a>
             </li>
-            <li class="mega-menu mega-menu-lg">
+            <!-- <li class="mega-menu mega-menu-lg">
                 <a href="prescritor_meusrelatorios"><img src="assets/images/icones/to-do-list.png" border="0"><span class="nav-text">Meus Relatórios</span></a>
-            </li>
+            </li> -->
             <li class="mega-menu mega-menu-lg">
                 <a href="prescritor_consultarproduto"><img src="assets/images/icones/icon-consultar-produto.png" border="0"><span class="nav-text">Consultar Produto</span></a>
             </li>

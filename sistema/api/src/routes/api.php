@@ -46,32 +46,40 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_stCalculo",
 				"/ajax_stCalculoSimplificada",
 				"/ajax_stCalculoSuplemento",
+				"/ajax_stCalculoModulo",
 				"/ajax_stFracionamento",
 				"/ajax_stFracionamentoSimplificada",
 				"/ajax_stFracionamentoSuplemento",
+				"/ajax_stFracionamentoModulo",
 				"/ajax_stSelecao",
 				"/ajax_stSelecaoSimplificada",
 				"/ajax_stSelecaoSuplemento",
+				"/ajax_stSelecaoModulo",
 				"/ajax_stObservacoes",
 				"/ajax_stDistribuidores",
 				"/ajax_stDistribuidoresSimplificada",
 				"/ajax_stRelatorio",
 				"/ajax_stRelatorioSimplificada",
 				"/ajax_stRelatorioSuplemento",
+				"/ajax_stRelatorioModulo",
 				"/ajax_gtRelatorio",
 				"/ajax_gtRelatorioSimplificada",
 				"/ajax_gtRelatorioSuplemento",
+				"/ajax_gtRelatorioModulo",
 				"/ajax_EnviarEmailPaciente",
 				"/ajax_getPacientes",
 				"/ajax_getPacientesSimplificada",
 				"/ajax_getPacientesSuplemento",
+				"/ajax_getPacientesModulo",
 				"/ajax_getDistribuidores",
 				"/ajax_stPaciente",
 				"/ajax_ptPaciente",
 				"/ajax_ptPacienteSimplificada",
 				"/ajax_ptPacienteSuplemento",
+				"/ajax_ptPacienteModulo",
 				"/ajax_stPacienteSimplificada",
 				"/ajax_stPacienteSuplemento",
+				"/ajax_stPacienteModulo",
 				"/cadastro_cadastrar",
 				"/cadastro_cadastrarPaciente",
 				"/cadastro_chkCodigo",
@@ -83,6 +91,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/cadastros_editarPrescritor",
 				"/cadastros_getDados",
 				"/paciente_getDadoSuplemento",
+				"/paciente_getDadoModulo",
 				"/paciente_getDadoSimplificada",
 				"/paciente_getDadoIbranutro",
 				"/cadastros_getDado",
@@ -122,6 +131,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/produto_gtProdutoRelatorio",
 				"/produto_gtProdutoRelatorioSimplificada",
 				"/produto_gtProdutoRelatorioSuplemento",
+				"/produto_gtProdutoRelatorioModulo",
 				"/produto_gtProdutoFiltros",
 				"/produto_chkProduto",
 				"/produto_gtProdutos",
@@ -250,6 +260,7 @@ $app->group("", function () use ($app) {
 	                            "prescritor_meusrelatorios", 
 	                            "prescritor_prescricaosimplificada", 
 	                            "prescritor_prescricaosuplemento", 
+	                            "prescritor_prescricaomodulo", 
 	                            "prescritor_videosalta", 
 	                            "ajax"); 
 
@@ -509,6 +520,7 @@ $app->group("", function () use ($app) {
 							"prescritor_meusrelatorios", 
 							"prescritor_prescricaosimplificada", 
 							"prescritor_prescricaosuplemento", 
+							"prescritor_prescricaomodulo", 
 							"prescritor_videosalta", 
 							"ajax"); 
 
@@ -1220,7 +1232,7 @@ $app->group("", function () use ($app) {
 
 			// Create a message
 			$message = (new Swift_Message('Recuperação de senha do Entric.'))
-			->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Entric'])
+			->setFrom(['contato@entric.com.br' => 'Entric'])
 			->setTo($email_cpf)
 			->setBody('
 			<text>Olá '.$nome.',</text>
@@ -1661,7 +1673,7 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
-	$app->post("/produto_stProduto", function (Request $request, Response $response) {
+	$app->post("/produto_stProduto", function (Request $request, Response $response) { 
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
@@ -3308,6 +3320,383 @@ $app->group("", function () use ($app) {
 	});
 
 	$app->post("/produto_gtProdutoRelatorioSuplemento", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+
+			if ($usuario){
+				$dados = $request->getParam("dados");
+
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // construção de query MySQL
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+				if (isset($dados['margem_calorica']) and ($dados['margem_calorica'] <> "")){ $margem_calorica = explode(",", $dados['margem_calorica']); $margem_calorica[0] = strtok($margem_calorica[0],' '); $margem_calorica[1] = strtok($margem_calorica[1],' '); }else{ $margem_calorica[0] = 0; $margem_calorica[1] = 0;}
+		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ $margem_proteica = explode(",", $dados['margem_proteica']); $margem_proteica[0] = strtok($margem_proteica[0],' '); $margem_proteica[1] = strtok($margem_proteica[1],' '); }else{ $margem_proteica[0] = 0; $margem_proteica[1] = 0;}
+
+		        $query = '';
+		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
+		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
+
+				if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
+				if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
+				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
+					$query.= ' AND (';
+						$_or = '';
+						if ($dados['calculo_apres_liquidocreme'] <> ""){
+							$query.= '(apres_oral LIKE "%Líquido / Creme%")';
+							$_or = ' OR ';
+						}
+						if ($dados['calculo_apres_po'] <> ""){
+							$query.= $_or.' (apres_oral LIKE "%Pó%")';
+							$_or = ' OR ';
+						}
+					$query.= ' )';
+				}
+				if(isset($dados['carac_oral'])){
+					$array_carac = $dados['carac_oral'];
+
+					if(in_array('Sem Sacarose', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+					}
+					if(in_array('Sem Lactose', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+					}
+					if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac)){
+						$query.= ' AND (';
+							$_or = '';
+							if (in_array('Com Fibras', $array_carac)){
+								$query.= '(carac_oral LIKE "%Com Fibras%")';
+								$_or = ' OR ';
+							}
+							if (in_array('Sem Fibras', $array_carac)){
+								$query.= $_or.' (carac_oral LIKE "%Sem Fibras%")';
+								$_or = ' OR ';
+							}
+						$query.= ' )';
+					}
+					if(in_array('100% Proteína Vegetal', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+					}
+					if(in_array('Cicatrização', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Cicatrização%")';
+					}
+					if(in_array('Com Ômega 3', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Com Ômega 3%")';
+					}
+					if(in_array('Imunonutrição cirúrgica', $array_carac)){
+						$query.= ' AND (carac_oral LIKE "%Imunonutrição cirúrgica%")';
+					}
+				}
+
+		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
+		        $produtos = $db->select_to_array("produtos",
+		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral",
+		                                            $query." ORDER BY apres_oral, apres_enteral,
+															CASE 
+																WHEN fabricante = 'PRODIET' THEN 1
+																WHEN fabricante = 'DANONE' THEN 2
+																WHEN fabricante = ' Danone e Nutrimed' THEN 3
+																ELSE 4
+															END", 
+		                                            null);
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+		        $retorno = '';
+		        $retorno_thead = '';
+		        if ($produtos){
+		            if (isset($dados['fracionamento_dia']) and ($dados['fracionamento_dia'] <> "")){
+		                $fracionamento_dia = $dados['fracionamento_dia'];
+		                if ($fracionamento_dia == "0") $fracionamento_dia = 1;
+		            }
+		            else{
+		                $fracionamento_dia = 1;
+		            }
+
+		            for ($i = 0; $i < count($produtos); $i++){
+		                $kcal = $produtos[$i]['kcal'];
+		                $ptn = $produtos[$i]['ptn'];
+		                if ($kcal<>"") $kcal = str_replace(",", ".", $kcal); else $kcal = 0;
+		                if ($ptn<>"") $ptn = str_replace(",", ".", $ptn); else $ptn = 0;
+		                $kcal = floatval($kcal);
+		                $ptn = floatval($ptn);
+
+		                // se tiver mais de 01 volume cadastrado
+		                $margem_liberadas = false;
+		                $volume_produto = json_decode($produtos[$i]['volume'], true);
+		                if (json_last_error() === 0) {
+		                    if (is_array($volume_produto)){
+		                        if (count($volume_produto)>0){
+
+		                            $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
+		                            $_nome = "";  // retirar depois
+									$_medida_dc = 1;
+		                            for ($j = 0; $j < count($volume_produto); $j++){
+		                                $_volume = str_replace(" ","", trim($volume_produto[$j]));
+
+		                                $valor_calorio = "-";
+		                                $valor_proteico = "-";
+		                                $valor_fibra = "-";
+
+
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // formatação de string
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                if (strpos($_volume, 'mL') !== false) {
+		                                    $_volume = str_replace("mL","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else if ($_volume == "1L"){
+		                                    $_volume = 1000;
+		                                }
+		                                else if (strpos($_volume, 'g cada') !== false) {
+		                                    $_volume = str_replace("g cada","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else if (strpos($_volume, 'g/cada') !== false) {
+		                                    $_volume = str_replace("g/cada","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else if (strpos($_volume, 'g') !== false) {
+		                                    $_volume = str_replace("g","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else{
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                if (isset($medida_dc[$j]) && $medida_dc[$j] != ''){
+											
+		                                    $_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
+		                                }
+		                                $calorias_dia = "";
+		                                $proteina_dia = "";
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+										$margem_liberadas = true;
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                            }
+		                        }
+		                    }
+		                }
+
+
+		                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                // se for liberada: se passou pelo ranger acima
+		                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                if ($margem_liberadas){
+		                    $medida_dc = 0;
+		                    if ($produtos[$i]['medida_dc'] <> ""){
+		                        $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
+		                        $medida = json_decode($produtos[$i]['medida'], true);
+		                        $final = json_decode($produtos[$i]['final'], true);
+		                        $volume = json_decode($produtos[$i]['volume'], true);
+		                        $unidmedida = $produtos[$i]['unidmedida'];
+		                        $grama = json_decode($produtos[$i]['medida_g'], true);
+
+		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
+		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome']."  ".$_nome.'</td>';
+
+		                        $cont_array = 0;
+		                        $rowspan = 0;
+								for ($m=0; $m < count($medida_dc); $m++) { 
+									$dc = str_replace(",", ".", $medida_dc[$m]);
+
+		                            // se tiver no ranger, listar
+		                            if ($margem_liberadas){
+		                                // if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
+		                                //     $volume_horario = " - ";
+		                                // }
+
+		                                $apres_oral = $produtos[$i]['apres_oral'];
+		                                $apres_oral_num = '0';
+		                                if ($apres_oral == '["Pó"]'){
+											$apres_oral = 'Pó'; 
+											$apres_oral_num = '1';
+		                                }else if ($apres_oral == '["Líquido / Creme"]'){
+											$apres_oral = 'Líquido / Creme';
+											$apres_oral_num = '2';
+		                                }
+
+		                                if ($retorno_thead <> $apres_oral){
+		                                    $retorno_thead = $apres_oral;
+		                                    $retorno .= '<thead>
+		                                                    <tr>
+		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
+		                                                        '.$apres_oral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                    </tr>
+		                                                    <tr>
+		                                                        <th class="entric_group_destaque5">
+																	<input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')">
+																	PRODUTO 
+																</th>
+		                                                        <th class="entric_group_destaque5">DENSIDADE CALÓRICA</th>
+		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 2) ? '(und.)' : '(porção)').'</th>
+		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
+		                                                        <th class="entric_group_destaque5">CALORIA/dia</th>
+		                                                        <th class="entric_group_destaque5">PROTEÍNA/dia</th>
+		                                                    </tr>
+		                                                </thead>
+		                                                <tbody id="tbody'.$apres_oral_num.'">';
+		                                }
+
+		                                if (trim($produtos[$i]['kcal'])<>"") $_kcal = str_replace(",",".", $produtos[$i]['kcal']); else $_kcal = 1;
+		                                if (trim($produtos[$i]['ptn'])<>"") $_ptn = str_replace(",",".", $produtos[$i]['ptn']); else $_ptn = 1;
+		                                if (trim($produtos[$i]['fibras'])<>"") $_fibras = str_replace(",",".", $produtos[$i]['fibras']); else $_fibras = 1;
+		    
+
+										//verificar caracteristicas tnevo
+										$valor_ptn = $db->select_to_array("produtos_composicao",
+											"valor",
+											'WHERE descricao = "Proteínas" and id_produto = '.$produtos[$i]['id'], 
+											null);
+
+										if(!isset($valor_ptn[0]['valor'])){
+											$valor_ptn[0]['valor'] = 0;
+										}else{
+											if($valor_ptn[0]['valor'] == null){
+												$valor_ptn[0]['valor'] = 0;
+											}
+										}
+
+										$verificar_carac = true;
+										if(isset($dados['carac_oral'])){
+											$array_carac = $dados['carac_oral'];
+
+											
+											if(in_array('Hipocalórico', $array_carac) && $_medida_dc <= 1.2) {
+												$verificar_carac = true;
+											} elseif (in_array('Hipercalórico', $array_carac) && $_medida_dc > 1.2) {
+												$verificar_carac = true;
+											} else {
+												$verificar_carac = false;
+											}
+											
+											if ($verificar_carac && isset($valor_ptn[0]['valor'])) {
+												$valor_ptn_valor = floatval($valor_ptn[0]['valor']);
+											
+												if (in_array('Hipoproteico', $array_carac) && $valor_ptn_valor < 10) {
+													$verificar_carac = true;
+												} elseif (in_array('Normoproteico', $array_carac) && $valor_ptn_valor >= 10 && $valor_ptn_valor < 20) {
+													$verificar_carac = true;
+												} elseif (in_array('Hiperproteico', $array_carac) && $valor_ptn_valor >= 20) {
+													$verificar_carac = true;
+												} else {
+													$verificar_carac = false;
+												}
+											} else {
+												$verificar_carac = false;
+											}
+											
+										}
+
+										
+
+										if($verificar_carac){
+											if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
+												$volume_und = $volume[$m] . ' ' . $unidmedida;
+												$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
+												$caloria_dia = ($volume_dia * $kcal) / 100;
+												$proteina_dia = ($volume_dia * $ptn) / 100;
+												$sistema = 'Líquido/Creme';
+											}else if($produtos[$i]['apres_oral'] == '["Pó"]'){
+												$volume_und = str_replace('mL', '', $final[$m]) . ' mL';
+												$volume_dia = intval($final[$m]) * intval($fracionamento_dia);
+												$valor_energetico = $db->select_to_array("produtos_info_nutri",
+												"valor",
+												'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
+												null);
+												if(!isset($valor_energetico[0]['valor'])){
+													$valor_energetico[0]['valor'] = 0;
+												}else{
+													if($valor_energetico[0]['valor'] == null){
+														$valor_energetico[0]['valor'] = 0;
+													}
+												}
+
+												$valor_ptn_100ml = $db->select_to_array("produtos_info_nutri",
+												"valor",
+												'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
+												null);
+												if(!isset($valor_ptn_100ml[0]['valor'])){
+													$valor_ptn_100ml[0]['valor'] = 0;
+												}else{
+													if($valor_ptn_100ml[0]['valor'] == null){
+														$valor_ptn_100ml[0]['valor'] = 0;
+													}
+												}
+												
+												$caloria_dia = ($volume_dia *  floatval(str_replace(',', '.', $valor_energetico[0]['valor']))) / 100;
+												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn_100ml[0]['valor']))) / 100;
+												$sistema = 'Pó';
+											}
+											$retorno .= '<tr>
+															<td>
+																<div class="form-check col-sm-12">
+																	<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida_dc[$m].']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.'___'.$sistema.'___'.$calorias_dia.'___'.$proteina_dia.'___'.(isset($medida[$m])?$medida[$m]:0).'___'.(isset($final[$m])?$final[$m]:0).'___'.(isset($grama[$m])?$grama[$m]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
+																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-label check-green">'.$produtos[$i]['nome']."  ".$_nome.'</label>
+																</div>
+		                                                	</td>
+															<td>'.$medida_dc[$m].'</td>
+															<td>'.$volume_und.'</td>
+															<td>'.$volume_dia. ' mL'.'</td>
+															<td>'.$caloria_dia.'</td>
+															<td>'.$proteina_dia.'</td>
+														</tr>';
+											$titulo = "";
+										}
+		                            }
+		                            $cont_array = $cont_array+1;
+		                        }
+
+		                        // ajustar o rowspan da listagem de produtos caso esteja errado
+		                        if (($rowspan <> $medida_dc) and ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
+		                            //$retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
+		                        }
+		                    }
+		                }
+		            }
+		        }
+		        if ($retorno<>"") $retorno .= "</tbody>";
+
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/produto_gtProdutoRelatorioModulo", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
@@ -5580,6 +5969,56 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/paciente_getDadoModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+
+			if ($usuario){
+				$sistema = $request->getParam("sistema");
+				if($sistema == 'ibranutro'){
+					$id_admissao = $request->getParam("id_admissao");
+					$paciente = $db->select_single_to_array("pacientes_modulo",
+														"*",
+														"
+														WHERE id_admissao=".$id_admissao, 
+														null);
+				}
+				if($sistema == 'EN'){
+					$id_paciente = $request->getParam("id_paciente");
+					$paciente = $db->select_single_to_array("pacientes_modulo",
+														"*",
+														"
+														WHERE id_paciente=".$id_paciente, 
+														null);
+				}
+				
+
+		        $data = $paciente;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/paciente_getDadoSimplificada", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
@@ -7745,6 +8184,219 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/ajax_stCalculoModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = ':id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
+
+				$id_prescritor = $request->getParam("id_prescritor");
+
+				if (!isset($dados['categoria'])) $dados['categoria'] = null;
+		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
+		        if (!isset($dados['tipo_prescricao'])) $dados['tipo_prescricao'] = null;
+		        if (!isset($dados['dispositivo'])) $dados['dispositivo'] = null;
+		        if (!isset($dados['calculo_apres_fechado'])) $dados['calculo_apres_fechado'] = null; else $dados['calculo_apres_fechado'] = true;
+		        if (!isset($dados['calculo_apres_aberto_liquido'])) $dados['calculo_apres_aberto_liquido'] = null; else $dados['calculo_apres_aberto_liquido'] = true;
+		        if (!isset($dados['calculo_apres_aberto_po'])) $dados['calculo_apres_aberto_po'] = null; else $dados['calculo_apres_aberto_po'] = true;
+		        if (!isset($dados['calculo_fil_todos'])) $dados['calculo_fil_todos'] = null; else $dados['calculo_fil_todos'] = true;
+		        if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null; else $dados['calculo_apres_liquidocreme'] = true;
+		        if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null; else $dados['calculo_apres_po'] = true;
+
+				if(isset($dados['carac_oral'])){
+					$array_carac = $dados['carac_oral'];
+
+					if(in_array('Sem Sacarose', $array_carac)){
+						$dados['calculo_fil_semsacarose'] = true;
+					}else{
+						$dados['calculo_fil_semsacarose'] = null;
+					}
+					if(in_array('Sem Lactose', $array_carac)){
+						$dados['calculo_fil_semlactose'] = true;
+					}else{
+						$dados['calculo_fil_semlactose'] = null;
+					}
+					if(in_array('Hipocalórico', $array_carac)){
+						$dados['calculo_fil_hipocalorico'] = true;
+					}else{
+						$dados['calculo_fil_hipocalorico'] = null;
+					}
+					if(in_array('Hipoproteico', $array_carac)){
+						$dados['calculo_fil_hipoproteico'] = true;
+					}else{
+						$dados['calculo_fil_hipoproteico'] = null;
+					}
+					if(in_array('Com Fibras', $array_carac)){
+						$dados['calculo_fil_comfibras'] = true;
+					}else{
+						$dados['calculo_fil_comfibras'] = null;
+					}
+					if(in_array('Hipercalórico', $array_carac)){
+						$dados['calculo_fil_hipercalorico'] = true;
+					}else{
+						$dados['calculo_fil_hipercalorico'] = null;
+					}
+					if(in_array('Normoproteico', $array_carac)){
+						$dados['calculo_fil_normoproteico'] = true;
+					}else{
+						$dados['calculo_fil_normoproteico'] = null;
+					}
+					if(in_array('Sem Fibras', $array_carac)){
+						$dados['calculo_fil_semfibras'] = true;
+					}else{
+						$dados['calculo_fil_semfibras'] = null;
+					}
+					if(in_array('100% Proteína Vegetal', $array_carac)){
+						$dados['calculo_fil_100proteina'] = true;
+					}else{
+						$dados['calculo_fil_100proteina'] = null;
+					}
+					if(in_array('Hiperproteico', $array_carac)){
+						$dados['calculo_fil_hiperproteico'] = true;
+					}else{
+						$dados['calculo_fil_hiperproteico'] = null;
+					}
+					if(in_array('Cicatrização', $array_carac)){
+						$dados['calculo_fil_cicatrizacao'] = true;
+					}else{
+						$dados['calculo_fil_cicatrizacao'] = null;
+					}
+					if(in_array('Com Ômega 3', $array_carac)){
+						$dados['calculo_fil_omega3'] = true;
+					}else{
+						$dados['calculo_fil_omega3'] = null;
+					}
+					if(in_array('Imunonutrição cirúrgica', $array_carac)){
+						$dados['calculo_fil_imunonutricao'] = true;
+					}else{
+						$dados['calculo_fil_imunonutricao'] = null;
+					}
+					if (!isset($dados['calculo_fil_todos1'])) $dados['calculo_fil_todos1'] = null; else $dados['calculo_fil_todos1'] = true;
+		            if (!isset($dados['calculo_fil_todos2'])) $dados['calculo_fil_todos2'] = null; else $dados['calculo_fil_todos2'] = true;
+		            if (!isset($dados['calculo_fil_todos3'])) $dados['calculo_fil_todos3'] = null; else $dados['calculo_fil_todos3'] = true;
+				}else{
+					$dados['calculo_fil_semsacarose'] = null;
+					$dados['calculo_fil_semlactose'] = null;
+					$dados['calculo_fil_hipocalorico'] = null;
+					$dados['calculo_fil_hipoproteico'] = null;
+					$dados['calculo_fil_comfibras'] = null;
+					$dados['calculo_fil_hipercalorico'] = null;
+					$dados['calculo_fil_normoproteico'] = null;
+					$dados['calculo_fil_semfibras'] = null;
+					$dados['calculo_fil_100proteina'] = null;
+					$dados['calculo_fil_hiperproteico'] = null;
+					$dados['calculo_fil_cicatrizacao'] = null;
+					$dados['calculo_fil_omega3'] = null;
+					$dados['calculo_fil_imunonutricao'] = null;
+					$dados['calculo_fil_todos1'] = null;
+					$dados['calculo_fil_todos2'] = null;
+					$dados['calculo_fil_todos3'] = null;
+				}
+		        if (!isset($dados['dieta_formula'])) $dados['dieta_formula'] = null;
+		        if (!isset($dados['dieta_volume'])) $dados['dieta_volume'] = null;
+		        if (!isset($dados['dieta_infusao'])) $dados['dieta_infusao'] = null;
+		        if (!isset($dados['dieta_fracionamento_dia'])) $dados['dieta_fracionamento_dia'] = null;
+		        if (!isset($dados['dieta_horario_administracao'])) $dados['dieta_horario_administracao'] = null;
+		        if (!isset($dados['dieta_vazao_h'])) $dados['dieta_vazao_h'] = null;
+		        if (!isset($dados['dieta_horario_inicio'])) $dados['dieta_horario_inicio'] = null;
+		        if (!isset($dados['modulo_produto'])) $dados['modulo_produto'] = null;
+		        if (!isset($dados['modulo_quantidade'])) $dados['modulo_quantidade'] = null;
+		        if (!isset($dados['modulo_volume'])) $dados['modulo_volume'] = null;
+		        if (!isset($dados['modulo_horario'])) $dados['modulo_horario'] = null;
+		        if (!isset($dados['modulo_volume_total'])) $dados['modulo_volume_total'] = null;
+		        if (!isset($dados['suplemento_produto'])) $dados['suplemento_produto'] = null;
+		        if (!isset($dados['suplemento_quantidade'])) $dados['suplemento_quantidade'] = null;
+		        if (!isset($dados['suplemento_horario'])) $dados['suplemento_horario'] = null;
+		        if (!isset($dados['suplemento_volume_total'])) $dados['suplemento_volume_total'] = null;
+		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
+
+		        $bind = array( 
+								$campo_prescritor => $id_prescritor,
+								':categoria' => $dados['categoria'],
+		                        ':tipo_produto' => $dados["tipo_produto"],
+		                        ':tipo_prescricao' => $dados["tipo_prescricao"],
+		                        ':dispositivo' => $dados["dispositivo"],
+		                        ':calculo_apres_fechado' => $dados["calculo_apres_fechado"],
+		                        ':calculo_apres_aberto_liquido' => $dados["calculo_apres_aberto_liquido"],
+		                        ':calculo_apres_aberto_po' => $dados["calculo_apres_aberto_po"],
+		                        ':calculo_apres_liquidocreme' => $dados["calculo_apres_liquidocreme"],
+		                        ':calculo_apres_po' => $dados["calculo_apres_po"],
+		                        ':calculo_fil_semsacarose' => $dados["calculo_fil_semsacarose"],
+		                        ':calculo_fil_semlactose' => $dados["calculo_fil_semlactose"],
+		                        ':calculo_fil_hipocalorico' => $dados["calculo_fil_hipocalorico"],
+		                        ':calculo_fil_hipoproteico' => $dados["calculo_fil_hipoproteico"],
+		                        ':calculo_fil_comfibras' => $dados["calculo_fil_comfibras"],
+		                        ':calculo_fil_hipercalorico' => $dados["calculo_fil_hipercalorico"],
+		                        ':calculo_fil_normoproteico' => $dados["calculo_fil_normoproteico"],
+		                        ':calculo_fil_semfibras' => $dados["calculo_fil_semfibras"],
+		                        ':calculo_fil_100proteina' => $dados["calculo_fil_100proteina"],
+		                        ':calculo_fil_hiperproteico' => $dados["calculo_fil_hiperproteico"],
+		                        ':calculo_fil_cicatrizacao' => $dados["calculo_fil_cicatrizacao"],
+		                        ':calculo_fil_omega3' => $dados["calculo_fil_omega3"],
+		                        ':calculo_fil_imunonutricao' => $dados["calculo_fil_imunonutricao"],
+		                        ':calculo_fil_todos1' => $dados["calculo_fil_todos1"],
+		                        ':calculo_fil_todos2' => $dados["calculo_fil_todos2"],
+		                        ':calculo_fil_todos3' => $dados["calculo_fil_todos3"],
+		                        ':dieta_formula' => array_json($dados["dieta_formula"], false),
+		                        ':dieta_volume' => array_json($dados["dieta_volume"], false),
+		                        ':dieta_infusao' => array_json($dados["dieta_infusao"], false),
+		                        ':dieta_fracionamento_dia' => array_json($dados["dieta_fracionamento_dia"], false),
+		                        ':dieta_horario_administracao' => array_json($dados["dieta_horario_administracao"], false),
+		                        ':dieta_vazao_h' => array_json($dados["dieta_vazao_h"], false),
+		                        ':dieta_horario_inicio' => array_json($dados["dieta_horario_inicio"], false),
+		                        ':modulo_produto' => array_json($dados["modulo_produto"], false),
+		                        ':modulo_quantidade' => array_json($dados["modulo_quantidade"], false),
+		                        ':modulo_volume' => array_json($dados["modulo_volume"], false),
+		                        ':modulo_horario' => array_json($dados["modulo_horario"], false),
+		                        ':modulo_volume_total' => array_json($dados["modulo_volume_total"], false) ,
+		                        ':suplemento_produto' => array_json($dados["suplemento_produto"], false) ,
+		                        ':suplemento_quantidade' => array_json($dados["suplemento_quantidade"], false) ,
+		                        ':suplemento_horario' => array_json($dados["suplemento_horario"], false) ,
+		                        ':suplemento_volume_total' => array_json($dados["suplemento_volume_total"], false) ,
+		                        ':hidratacao_agua_livre' => array_json($dados["hidratacao_agua_livre"], false) );
+
+		        if ($dados['id_relatorio'] == ""){
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
+		            $retorno = $db->insert("relatorios_modulo", $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
+		        }
+		        else{
+		            $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio'], $bind);  
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		        }
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/ajax_stFracionamento", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
@@ -7943,6 +8595,74 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/ajax_stFracionamentoModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+
+
+		        if (!isset($dados['h_i_dieta'])) $dados['h_i_dieta'] = null;
+		        if (!isset($dados['h_inf_dieta'])) $dados['h_inf_dieta'] = null;
+		        if (!isset($dados['fracionamento_dia'])) $dados['fracionamento_dia'] = null;
+		        if (!isset($dados['qto_tempo'])) $dados['qto_tempo'] = null;
+		        if (!isset($dados['qtas_horas'])) $dados['qtas_horas'] = null;
+		        if (!isset($dados['dieta_horario'])) $dados['dieta_horario'] = null;
+		        if (!isset($dados['hidratacao_dia'])) $dados['hidratacao_dia'] = null;
+		        if (!isset($dados['volume_horario'])) $dados['volume_horario'] = null;
+		        if (!isset($dados['hidrahorario'])) $dados['hidrahorario'] = null;
+		        if (!isset($dados['info_complementares'])) $dados['info_complementares'] = null;
+		        if (!isset($dados['in_volume_ml'])) $dados['in_volume_ml'] = null;
+
+		        $bind = array(  ':fra_h_i_dieta' => $dados["h_i_dieta"],
+		                        ':fra_h_inf_dieta' => $dados["h_inf_dieta"],
+		                        ':fra_fracionamento_dia' => $dados["fracionamento_dia"],
+		                        ':fra_qto_tempo' => $dados["qto_tempo"],
+		                        ':fra_qtas_horas' => $dados["qtas_horas"],
+		                        ':fra_dieta_horario' => array_json($dados["dieta_horario"]),
+		                        ':fra_hidratacao_dia' => $dados["hidratacao_dia"],
+		                        ':fra_volume_horario' => $dados["volume_horario"],
+		                        ':fra_hidrahorario' => array_json($dados["hidrahorario"]),
+		                        ':fra_info_complementares' => $dados["info_complementares"],
+		                        ':fra_volume_ml' => $dados["in_volume_ml"]);
+
+		        if ($dados['id_relatorio'] == ""){
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
+		            $retorno = $db->insert("relatorios_modulo", $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
+		        }
+		        else{
+		            $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio'], $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		        }
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/ajax_stSelecao", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
@@ -8077,6 +8797,55 @@ $app->group("", function () use ($app) {
 		        }
 		        else{
 		            $retorno = $db->update("relatorios_suplemento", "WHERE id=".$dados['id_relatorio'], $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		        }
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_stSelecaoModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+
+
+		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
+
+		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]));
+
+		        if ($dados['id_relatorio'] == ""){
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
+		            $retorno = $db->insert("relatorios_modulo", $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
+		        }
+		        else{
+		            $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio'], $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		        }
 
@@ -8665,6 +9434,142 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/ajax_stRelatorioModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$set_codigo = $request->getParam("set_codigo");
+
+
+		        if ($set_codigo){
+		            $codigo = strtolower( randomCode(6) );
+		        }else{
+		            $codigo = null;
+		        }
+		        if ($dados['id_relatorio'] == ""){
+		            $bind = array(  ':codigo' => $codigo,
+		                            ':rel_logo' => (isset($dados['rel_logo'])?true:null),
+		                            ':rel_identificacao' => (isset($dados['rel_identificacao'])?true:null),
+		                            ':rel_historia' => (isset($dados['rel_historia'])?true:null),
+		                            ':rel_avaliacao' => (isset($dados['rel_avaliacao'])?true:null),
+		                            ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
+		                            ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
+		                            ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
+		                            ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
+
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
+		            $retorno = $db->insert("relatorios_suplemento", $bind);
+		            
+		            // if ($set_codigo){
+		            //     $paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=".$dados['id_paciente'], null);
+		            //     $bind = array( ':codigo' => $codigo);
+		            //     $pacientes = $db->update("pacientes_simplificada", "WHERE id=".$dados['id_paciente'], $bind);
+		            //     $bind = array( ':codigo' => $codigo, ':status' => 2);
+		            //     $usuarios = $db->update("usuarios", "WHERE id=".$paciente['id_usuario'], $bind);
+		            // }
+
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
+		        }
+		        else{
+
+		            if (!$set_codigo){
+		                $bind = array(  ':rel_logo' => (isset($dados['rel_logo'])?true:null),
+		                                ':rel_identificacao' => (isset($dados['rel_identificacao'])?true:null),
+		                                ':rel_historia' => (isset($dados['rel_historia'])?true:null),
+		                                ':rel_avaliacao' => (isset($dados['rel_avaliacao'])?true:null),
+		                                ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
+		                                ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
+		                                ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
+		                                ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
+		                $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio'], $bind);
+		                $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		            }
+		            else{
+		                $relatorio = $db->select_single_to_array("relatorios_modulo", "*", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", null);
+		                if ($relatorio){
+		                    // if ($set_codigo){
+		                    //     $paciente = $db->select_single_to_array("pacientes", "*", "WHERE id=".$dados['id_paciente'], null);
+		                    //     $bind = array( ':codigo' => $codigo);
+		                    //     $pacientes = $db->update("pacientes", "WHERE id=".$dados['id_paciente'], $bind);
+		                    //     $bind = array( ':codigo' => $codigo, ':status' => 2);
+		                    //     $usuarios = $db->update("usuarios", "WHERE id=".$paciente['id_usuario'], $bind);
+		                    // }
+		                    $bind = array(  ':codigo' => $codigo,
+		                                    ':rel_logo' => (isset($dados['rel_logo'])?true:null),
+		                                    ':rel_identificacao' => (isset($dados['rel_identificacao'])?true:null),
+		                                    ':rel_historia' => (isset($dados['rel_historia'])?true:null),
+		                                    ':rel_avaliacao' => (isset($dados['rel_avaliacao'])?true:null),
+		                                    ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
+		                                    ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
+		                                    ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
+		                                    ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
+		                    $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", $bind);
+
+		                    /*
+		                    $paciente = $this->select_single_to_array("pacientes", "*", "WHERE id=".$relatorio['id_paciente'], null);
+		                    $bind = array(  ':tipo'=> 'email',
+		                                    ':email'=> $paciente['email'],
+		                                    ':assunto'=> 'Relatório de alta disponível',
+		                                    ':template'=> 'email_relatorio_paciente',                                    
+		                                    ':conteudo' => json_encode(array('||NOME||' => strtok($paciente['nome'], " "), '||CODIGO||' => $codigo, 'email' => $paciente['email'])),
+		                                    ':status'=> 0,
+		                                    ':extra'=> $relatorio['id_paciente'],
+		                                    ':data_criacao'=> date("Y-m-d H:i:s"));
+		                    $interacoes = $this->insert('interacoes', $bind);
+		                    */
+							//salvar orientado EN
+							$dados_paciente = $db->select_single_to_array("pacientes_modulo", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
+							if($dados_paciente['sistema'] == 'EN'){
+								if($dados_paciente['id_paciente'] != ''){
+									$bind = array(':st_orientado' => '1');
+									$paciente = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=".$dados_paciente['id_paciente'], $bind);
+								}
+							}
+							if($dados_paciente['sistema'] == 'ibranutro'){
+								if($dados_paciente['id_admissao'] != ''){
+									$bind = array(':st_orientado' => 'S');
+									$paciente = $db_ibranutro->update("tb_admissao", "WHERE id_admissao=".$dados_paciente['id_admissao'], $bind);
+								}
+							}
+
+		                    $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		                }
+		                else{
+		                    $retorno = array("error" => array("message" => "Relatório já foi gerado."));
+		                }  
+		            }           
+		       
+		        }
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/ajax_gtRelatorio", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
@@ -8772,6 +9677,50 @@ $app->group("", function () use ($app) {
 				$id = $request->getParam("id");
 
 		        $relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=".$id." AND codigo IS NULL", null);
+
+		        if ($relatorio){
+		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
+		            $relatorio["data"] = date('d/m/Y', strtotime($relatorio["data"]));
+		            $retorno = array("relatorio" => $relatorio);
+		        }
+		        else{
+		            $retorno = array("error" => array("message" => "Relátorio não encontrado."));
+		        }
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_gtRelatorioModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$id = $request->getParam("id");
+
+		        $relatorio = $db->select_single_to_array("relatorios_modulo", "*", "WHERE id=".$id." AND codigo IS NULL", null);
 
 		        if ($relatorio){
 		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
@@ -9146,6 +10095,99 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/ajax_getPacientesModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+
+				$bind_query = "";
+				if($login == 'entric'){
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+					$bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+				}else{
+					$bind_query = " id_prescritor_ibranutro is not null";
+
+					if (isset($dados['nome']) and (trim($dados['nome']) <> "")){
+						$bind_query .= " AND nome LIKE '%".$dados['nome']."%'";
+					}
+					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")){
+						$bind_query .= " AND data_nascimento='".date2sql($dados['data_nascimento'])."'";
+					}
+				}
+		        if ($bind_query <> ""){
+		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
+		            $bind_query = " ".$bind_query;
+		            $pacientes = $db->select_to_array("pacientes_modulo",
+		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
+		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
+		                                                null);
+		            if ($pacientes){
+		                for($i = 0; $i < count($pacientes); $i++){
+		                    $relatorios = $db->select_to_array("relatorios_modulo",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
+		                                                        null);
+		                    if ($relatorios){
+								for ($j=0; $j < count($relatorios); $j++) { 
+									$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
+								}
+		                        $pacientes[$i]['relatorios'] = $relatorios;
+								// $pacientes[$i]['relatorios'][$i]['relatorio_code'] = endecrypt("encrypt", $relatorios[0]['id']);
+		                        rsort($pacientes[$i]['relatorios']);
+		                    }else{
+		                        $pacientes[$i]['relatorios'] = null;
+		                    }
+
+		                    $date = new DateTime($pacientes[$i]['idade']);
+		                    $now = new DateTime();
+		                    $interval = $now->diff($date);
+		                    $pacientes[$i]['idade'] = $interval->y;
+		                }
+		            }
+
+		            $retorno = $pacientes;
+
+		        }else{
+		            $retorno = array();
+		        }
+
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/ajax_getDistribuidores", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
@@ -9435,6 +10477,48 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/ajax_ptPacienteModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+				$bind = array(  ':nome' => $dados["up_nome"],
+				':telefone' => $dados["up_telefone"],
+				':hospital' => $dados["up_hospital"],
+				':atendimento' => $dados["up_atendimento"],
+				':data_nascimento' => date2sql($dados["up_data_nascimento"]));
+				$retorno = $db->update("pacientes_modulo", "WHERE id=".$dados['up_id'], $bind);
+				$retorno = array("success" => "Cadastro atualizado com sucesso.");
+				
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/ajax_stPacienteSimplificada", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
@@ -9672,6 +10756,126 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+	$app->post("/ajax_stPacienteModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor");
+				$retorno = null;
+
+				// if (isset($dados['cpf']) and ($dados['cpf'] == "") and ($dados['cpf_possui'] == "0")){
+		        //     $retorno = array("error" => "Preencha o formulário corretamente.");
+		        // }
+		        // if (!isset($dados['cpf']) or ($dados['cpf'] == "")){
+		        //     $dados['cpf'] = "";
+		        //     $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND nome='".$dados['nome']."'",  null);
+		        //     $mensagem_error = "Já possui cadastro com estes dados.";
+		        // }
+		        // else{
+		        //     $verificar = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_prescritor=".$id_prescritor." AND cpf='".$dados['cpf']."'",  null);
+		        //     $mensagem_error = "Este CPF já possui cadastro.";
+		        // }
+
+		        // $bind = array(  ':email' => $dados["email"],
+				// 				':tipo' => 1,
+				// 				':status' => 0,                     
+				// 				':data_criacao' => date("Y-m-d H:i:s") );
+				// $usuario = $db->insert("usuarios", $bind);
+
+
+				if($dados['login_tipo'] == 'ibranutro'){
+					$campo_prescritor = ':id_prescritor_ibranutro';
+				}elseif($dados['login_tipo'] == 'entric'){
+					$campo_prescritor = ':id_prescritor';
+				}
+				// $campo_prescritor = ':id_prescritor';
+				if(isset($dados['sistema'])){
+					$sistema = $dados['sistema'];
+					if($sistema == 'ibranutro'){
+						if($dados['id_admissao'] == ''){
+							$dados['id_admissao'] = null;
+						}
+		
+						$bind = array(	$campo_prescritor => $id_prescritor,
+										':nome' => $dados["nome"],
+										':telefone' => $dados["telefone"],
+										':hospital' => $dados["hospital"],
+										':atendimento' => $dados["atendimento"],
+										':data_nascimento' => date2sql($dados["data_nascimento"]),    
+										':id_admissao' => $dados["id_admissao"],
+										':sistema' => $sistema,
+										':data_criacao' => date("Y-m-d H:i:s"));
+						$retorno = $db->insert("pacientes_modulo", $bind);
+						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+		
+						//retornar para null
+						$_SESSION['paciente_redirect']['id_admissao'] = null;
+		
+					}
+					if($sistema == 'EN'){
+						if($dados['id_paciente'] == ''){
+							$dados['id_paciente'] = null;
+						}
+		
+						$bind = array(	$campo_prescritor => $id_prescritor,
+										':nome' => $dados["nome"],
+										':telefone' => $dados["telefone"],
+										':hospital' => $dados["hospital"],
+										':atendimento' => $dados["atendimento"],
+										':data_nascimento' => date2sql($dados["data_nascimento"]),    
+										':id_paciente' => $dados["id_paciente"],
+										':sistema' => $sistema,
+										':data_criacao' => date("Y-m-d H:i:s"));
+						$retorno = $db->insert("pacientes_modulo", $bind);
+						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+		
+						//retornar para null
+						$_SESSION['paciente_redirect']['id_paciente'] = null;
+		
+					}
+				}else{
+					$bind = array(	$campo_prescritor => $id_prescritor,
+									':nome' => $dados["nome"],
+									':telefone' => $dados["telefone"],
+									':hospital' => $dados["hospital"],
+									':atendimento' => $dados["atendimento"],
+									':data_nascimento' => date2sql($dados["data_nascimento"]), 
+									':sistema' => 'cadastrado',  
+									':data_criacao' => date("Y-m-d H:i:s"));
+									$retorno = $db->insert("pacientes_modulo", $bind);
+					$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+
+					//retornar para null
+					$_SESSION['paciente_redirect']['id_paciente'] = null;
+
+				}
+				$data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
 	$app->post("/enviar_email_bemvindo", function (Request $request, Response $response) {
 		$email = $request->getParam("email");
 		$nome = $request->getParam("nome");
@@ -9689,7 +10893,7 @@ $app->group("", function () use ($app) {
 
 		// Create a message
 		$message = (new Swift_Message('Seja bem-vindo ao Entric!'))
-		->setFrom(['ibranutrodilemaseticos@gmail.com' => 'Entric'])
+		->setFrom(['contato@entric.com.br' => 'Entric'])
 		->setTo($email)
 		->setBody('
 		<text>Olá '.$nome.',</text>

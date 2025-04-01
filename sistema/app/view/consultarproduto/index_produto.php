@@ -28,7 +28,7 @@
                                                 <label for="calculo_pediatrico" class="form-check-label check-green">Pediátrico</label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
 
@@ -186,6 +186,49 @@
                             </div>
                         </div>
 
+                        <div id="apresentacao_modulo" class="row entric_grid mt-4 m-0 p-0 none">
+                            <div class="form-group col-sm-3">
+                                <div class="form-check">
+                                    <label class="grid_label required">Categoria <span>*</span></label>
+                                </div>
+                                <div class="col-6 p-4">
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_proteina" required name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Proteína">
+                                        <label for="categoria_modulo_proteina" class="form-check-label radio-green">Proteína</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_colageno_aminoacidos" name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Colágeno ou Aminoácidos">
+                                        <label for="categoria_modulo_colageno_aminoacidos" class="form-check-label radio-green">Colágeno ou Aminoácidos</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_carboidrato" name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Carboidrato">
+                                        <label for="categoria_modulo_carboidrato" class="form-check-label radio-green">Carboidrato</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_lipideo" name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Lipídeo">
+                                        <label for="categoria_modulo_lipideo" class="form-check-label radio-green">Lipídeo</label>
+                                    </div>
+                                </div>
+                                <div class="col-6 p-4">
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_fibras" name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Fibras">
+                                        <label for="categoria_modulo_fibras" class="form-check-label radio-green">Fibras</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_probioticos" name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Probióticos">
+                                        <label for="categoria_modulo_probioticos" class="form-check-label radio-green">Probióticos</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_simbioticos" name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Simbióticos">
+                                        <label for="categoria_modulo_simbioticos" class="form-check-label radio-green">Simbióticos</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="categoria_modulo_espessante" name="cat_modulo[]" class="form-check-input radio-outlined" type="radio" value="Espessante">
+                                        <label for="categoria_modulo_espessante" class="form-check-label radio-green">Espessante</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form_blue">
 
                             <?php

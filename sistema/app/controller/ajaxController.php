@@ -9,7 +9,7 @@ class AjaxController extends Controller {
     function index() {
     }
 
-    function gt_dash_acesso() {
+    function gt_dash_acesso() { 
         @header('Content-Type: application/json; charset=utf-8;');
         $dashboard = new DashboardModel();
         $dashboard = $dashboard->getDadosSite($_POST['data_fim_acesso'], $_POST['data_inicio_acesso']);
@@ -221,6 +221,38 @@ class AjaxController extends Controller {
         }
     }
 
+    function relatorio_salvar_modulo() {
+        if (isset($_POST['tab'])){
+            if ($_POST['tab'] == "gerar_relatorio") $_POST['action'] = "gerar_relatorio";
+        }
+
+        if (isset($_POST['action'])){
+            switch ($_POST['action']) {
+                case 'calculo':
+                    $calculo = $this->AjaxModel->stCalculoModulo($_POST);
+                    echo json_encode($calculo);
+                break;
+                case 'distribuidores':
+                    $distribuidores = $this->AjaxModel->stDistribuidoresModulo($_POST);
+                    echo json_encode($distribuidores);
+                break;
+                case 'relatorio':
+                    $relatorio = $this->AjaxModel->stRelatorioModulo($_POST);
+                    echo json_encode($relatorio);
+                break;
+                case 'gerar_relatorio':
+                    $relatorio = $this->AjaxModel->stRelatorioModulo($_POST, true);
+                    echo json_encode($relatorio);
+                break;
+                default:
+                    echo json_encode(array('error'=>array('message'=>'Erro ao executar função1.')));
+            }
+        }
+        else{
+            echo json_encode(array('error'=>array('message'=>'Erro ao executar função2.')));
+        }
+    }
+
     function relatorio_disponivel() {
         if (isset($_POST['id']) and (trim($_POST['id'])<>"") and isset($_POST['disponivel']) and (trim($_POST['disponivel'])<>"")){            
             $produto = new ProdutoModel();
@@ -269,6 +301,16 @@ class AjaxController extends Controller {
         }
     }
 
+    function relatorio_abrir_modulo() {
+        if (isset($_POST['id']) and (trim($_POST['id'])<>"")){            
+            $dados = $this->AjaxModel->gtRelatorioModulo($_POST['id']);
+            echo json_encode($dados);
+
+        }else{
+            echo json_encode(array('error'=>array('message'=>'Informe os dados corretamente.')));
+        }
+    }
+
     function buscar_paciente() {
         echo json_encode($this->AjaxModel->getPacientes($_POST), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES |  JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
     }
@@ -279,6 +321,10 @@ class AjaxController extends Controller {
 
     function buscar_paciente_suplemento() {
         echo json_encode($this->AjaxModel->getPacientesSuplemento($_POST), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES |  JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
+    }
+
+    function buscar_paciente_modulo() {
+        echo json_encode($this->AjaxModel->getPacientesModulo($_POST), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES |  JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
     }
 
     function atualizar_paciente(){
@@ -296,6 +342,11 @@ class AjaxController extends Controller {
         echo json_encode($paciente);
     }
 
+    function atualizar_paciente_modulo(){
+        $paciente = $this->AjaxModel->ptPacienteModulo($_POST);            
+        echo json_encode($paciente);
+    }
+
     function cadastrar_paciente(){
         $paciente = $this->AjaxModel->stPaciente($_POST);            
         echo json_encode($paciente);
@@ -308,6 +359,11 @@ class AjaxController extends Controller {
 
     function cadastrar_paciente_suplemento(){ 
         $paciente = $this->AjaxModel->stPacienteSuplemento($_POST);            
+        echo json_encode($paciente);
+    } 
+
+    function cadastrar_paciente_modulo(){ 
+        $paciente = $this->AjaxModel->stPacienteModulo($_POST);            
         echo json_encode($paciente);
     } 
 
@@ -357,6 +413,16 @@ class AjaxController extends Controller {
         //}
     }
 
+    function busca_produto_relatorio_modulo() {
+        //if (isset($_POST['calculo_apres_aberto_po']) and (trim($_POST['calculo_apres_aberto_po'])<>"")){            
+            $produto = new ProdutoModel();
+            $produtos = $produto->gtProdutoRelatorioModulo($_POST);
+            echo $produtos; //echo json_encode($produtos);
+        //}else{            
+            //echo ""; //echo json_encode(array('error'=>array('message'=>'Informe os dados corretamente.')));
+        //}
+    }
+
     function busca_produto() {
         $retorno = array();
         $parameters = explode('?', $_SERVER['REQUEST_URI'], 2);
@@ -383,7 +449,7 @@ class AjaxController extends Controller {
         }
     }
 
-    function produto_salvar() {
+    function produto_salvar() { 
         if (isset($_POST['nome']) and (trim($_POST['nome'])<>"")){
             
             $produto = new ProdutoModel();
@@ -583,6 +649,11 @@ class AjaxController extends Controller {
         echo json_encode($fracionamento);
     }
 
+    function fracionamento_salvar_modulo() {
+        $fracionamento = $this->AjaxModel->stFracionamentoModulo($_POST);
+        echo json_encode($fracionamento);
+    }
+
     function selecao_salvar() {
         $selecao = $this->AjaxModel->stSelecao($_POST);
         echo json_encode($selecao);
@@ -595,6 +666,11 @@ class AjaxController extends Controller {
 
     function selecao_salvar_suplemento() {
         $selecao = $this->AjaxModel->stSelecaoSuplemento($_POST);
+        echo json_encode($selecao);
+    }
+
+    function selecao_salvar_modulo() {
+        $selecao = $this->AjaxModel->stSelecaoModulo($_POST);
         echo json_encode($selecao);
     }
 
