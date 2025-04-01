@@ -1905,7 +1905,7 @@ $app->group("", function () use ($app) {
 		        $produtos = array();
 
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, apres_enteral, carac_enteral, apres_oral, carac_oral, fabricante",
+		                                            "id, nome, apres_enteral, carac_enteral, apres_oral, carac_oral, cat_modulo, fabricante",
 		                                            $query." ORDER BY fabricante, nome ASC", 
 		                                            null);
 
