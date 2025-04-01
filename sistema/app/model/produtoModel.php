@@ -237,6 +237,10 @@ class ProdutoModel extends Model {
             $bind[':apres_oral'] = ($dados["via"]=="Suplemento"?json_encode($dados['apres_oral'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
         }
 
+        if (isset($dados['cat_modulo'])){
+            $bind[':cat_modulo'] = ($dados["via"]=="Módulo"?json_encode($dados['cat_modulo'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
+        }
+
         $carac_oral = array();
         if ($dados["via"]=="Suplemento"){
             if (isset($dados['carac_oral'])){
