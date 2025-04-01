@@ -1293,7 +1293,7 @@ $(function(){
 
                     var cat_modulo = jQuery.parseJSON(item.cat_modulo);
                     $.each(cat_modulo, function (cat_modulo_key, cat_modulo_item) {
-                        apresentacao = apresentacao + cat_modulo_item +'<br>';
+                        caracteristicas = caracteristicas + cat_modulo_item +'<br>';
                     });
 
                     rows = rows + '<tr class="tabrow" rel="'+item.id+'">'+ 
