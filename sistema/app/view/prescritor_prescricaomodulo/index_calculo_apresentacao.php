@@ -9,37 +9,37 @@
                 <div class="col-6 p-4">
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_proteina" required name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Proteína">
-                        <label for="categoria_modulo_proteina" class="form-check-label radio-green">Proteína</label>
+                        <label for="categoria_modulo_proteina" class="form-check-label check-green">Proteína</label>
                     </div>
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_colageno_aminoacidos" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Colágeno ou Aminoácidos">
-                        <label for="categoria_modulo_colageno_aminoacidos" class="form-check-label radio-green">Colágeno ou Aminoácidos</label>
+                        <label for="categoria_modulo_colageno_aminoacidos" class="form-check-label check-green">Colágeno ou Aminoácidos</label>
                     </div>
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_carboidrato" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Carboidrato">
-                        <label for="categoria_modulo_carboidrato" class="form-check-label radio-green">Carboidrato</label>
+                        <label for="categoria_modulo_carboidrato" class="form-check-label check-green">Carboidrato</label>
                     </div>
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_lipideo" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Lipídeo">
-                        <label for="categoria_modulo_lipideo" class="form-check-label radio-green">Lipídeo</label>
+                        <label for="categoria_modulo_lipideo" class="form-check-label check-green">Lipídeo</label>
                     </div>
                 </div>
                 <div class="col-6 p-4">
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_fibras" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Fibras">
-                        <label for="categoria_modulo_fibras" class="form-check-label radio-green">Fibras</label>
+                        <label for="categoria_modulo_fibras" class="form-check-label check-green">Fibras</label>
                     </div>
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_probioticos" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Probióticos">
-                        <label for="categoria_modulo_probioticos" class="form-check-label radio-green">Probióticos</label>
+                        <label for="categoria_modulo_probioticos" class="form-check-label check-green">Probióticos</label>
                     </div>
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_simbioticos" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Simbióticos">
-                        <label for="categoria_modulo_simbioticos" class="form-check-label radio-green">Simbióticos</label>
+                        <label for="categoria_modulo_simbioticos" class="form-check-label check-green">Simbióticos</label>
                     </div>
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_espessante" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Espessante">
-                        <label for="categoria_modulo_espessante" class="form-check-label radio-green">Espessante</label>
+                        <label for="categoria_modulo_espessante" class="form-check-label check-green">Espessante</label>
                     </div>
                 </div>
             </div>
