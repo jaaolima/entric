@@ -1247,9 +1247,8 @@ $app->group("", function () use ($app) {
 			<text>Atenciosamente,</text>
 			<text>Equipe Entric</text>
 			<br>
-			<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 0px 40px;">
-				<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:100%;" alt="Logo">	
-			</table>');
+			<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:100%;" alt="Logo">
+			');
 
 			$result = $mailer->send($message);
 		}
