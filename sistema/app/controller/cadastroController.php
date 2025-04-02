@@ -18,7 +18,7 @@ class CadastroController extends Controller {
 
                 if (($email<>"") and ( (($senha<>"") and ($senha2<>"")) and ($senha == $senha2)) ) {
                     
-                    $cadastrar = $this->CadastroModel->cadastrar($_POST, $_FILES); 
+                    $cadastrar = $this->CadastroModel->cadastrar($_POST, $_FILES);  
 
                     if (isset($cadastrar['error'])) {
                         alertretorno("$.alert({ title: 'Atenção', icon: 'fa fa-warning', type: 'red', content: '".$cadastrar['error']."', buttons: { Ok: { text: 'Ok', btnClass: 'btn btn-secondary btn-form' } } });");

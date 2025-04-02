@@ -262,7 +262,7 @@
                                                         ),
                                                         "botao2" => array(
                                                             "col" => 4,
-                                                            "content" => '<p style="clear: "></p><div class="pull-right"><a class="btn btn-default" href="login/prescritor">Voltar</a> <button class="btn btn-warning" type="submit">Cadastrar</button></div>'
+                                                            "content" => '<p style="clear: "></p><div class="pull-right"><a class="btn btn-default" href="login/prescritor">Voltar</a> <button id="cadastrar" class="btn btn-warning" type="submit">Cadastrar</button></div>'
                                                         )
                                                     )
                                                 );
@@ -745,3 +745,15 @@ Estando as partes de livre e comum acordo, firmam o presente Adendo, a fim de pr
             </div>
         </div>
     </div>
+    <script>
+        $("#cadastrar").on("click", function(e) {
+            if(!$("#aceito").val()){
+                $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'É necessário concordar com os termos de uso e as políticas de privacidade.'
+                });
+            }
+        });
+    </script>
