@@ -1095,12 +1095,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<p>Prescritor</p>
 						<p style="margin:0px;">(Assinatura e Carimbo)</p>
 					</div>
-					<?php if($nome_hospital != '') : ?>
-					<!-- <div>
+					<!-- <?php if($nome_hospital != '') : ?>
+					<div>
 						<strong>IBRANUTRO</strong>
 						<p style="margin:0px;"><?php echo $nome_hospital; ?> - Telefone: <?php echo $telefone; ?></p>
-					</div> -->
-					<?php endif; ?>
+					</div>
+					<?php endif; ?> -->
 				</div>
 			</div>
 		</div>
