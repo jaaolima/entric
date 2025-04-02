@@ -161,27 +161,43 @@
                                         <label class="grid_label">Características</label>
                                     </div>
                                     <div class="row p-4"> 
-                                        <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_carac_semsacarose" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_carac_semsacarose" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
                                             <label for="m_calculo_oral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
                                         </div>
-                                        <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_carac_comfibras" disabled required name="m_carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Com Fibras">
-                                            <label for="m_calculo_oral_carac_comfibras" class="form-check-label radio-green">Com Fibras</label>
-                                        </div>
-                                        <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_carac_semlactose" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Lactose">
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_carac_semlactose" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Lactose">
                                             <label for="m_calculo_oral_carac_semlactose" class="form-check-label check-green">Sem Lactose</label>
                                         </div>
-                                        <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_carac_semfibras" disabled name="m_carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Sem Fibras">
-                                            <label for="m_calculo_oral_carac_semfibras" class="form-check-label radio-green">Sem Fibras</label>
-                                        </div>
-                                        <div class="form-check col-sm-6">
-                                            <input id="m_calculo_oral_100proteina" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="100% Proteína Vegetal">
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_100proteina" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="100% Proteína Vegetal">
                                             <label for="m_calculo_oral_100proteina" class="form-check-label check-green">100% Proteína Vegetal</label>
                                         </div>
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_cicatrizacao" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cicatrização">
+                                            <label for="m_calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_omega3" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
+                                            <label for="m_calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_imunonutricaocirurgica" name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
+                                            <label for="m_calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
+                                        </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_carac_comfibras" name="m_carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Com Fibras">
+                                            <label for="m_calculo_oral_carac_comfibras" class="form-check-label radio-green">Com Fibras</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input id="m_calculo_oral_carac_semfibras" name="m_carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Sem Fibras">
+                                            <label for="m_calculo_oral_carac_semfibras" class="form-check-label radio-green">Sem Fibras</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
 

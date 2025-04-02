@@ -186,7 +186,7 @@
                             </div>
                         </div>
 
-                        <div id="apresentacao_modulo" class="row entric_grid mt-4 m-0 p-0 none">
+                        <div id="apresentacao_modulo" class="row entric_grid mt-4 m-0 p-0 none"> 
                             <div class="form-group col-12">
                                 <div class="form-check">
                                     <label class="grid_label required">Categoria <span>*</span></label>
