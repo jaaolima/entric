@@ -1248,16 +1248,7 @@ $app->group("", function () use ($app) {
 			<text>Equipe Entric</text>
 			<br>
 			<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 0px 40px;">
-				<tr>
-					<td align="left">
-						<img src="https://entric.com.br/relatorio_simplificada2/imagem/logo.png" height="45px" alt="Logo">
-					</td>
-					<td align="right" style="vertical-align: middle;">
-						<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
-						<br>
-						<p style="margin: 0; color:#0092c5;">site.entric.com.br</p>
-					</td>
-				</tr>
+				<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:100%;" alt="Logo">	
 			</table>');
 
 			$result = $mailer->send($message);
