@@ -745,15 +745,26 @@ Estando as partes de livre e comum acordo, firmam o presente Adendo, a fim de pr
             </div>
         </div>
     </div>
+    <script src="js/bootstrap/bootstrap-input-spinner/bootstrap-input-spinner.js"></script>
+    <script src="js/bootstrap/bootstrap-input-spinner/custom-editors.js"></script>
+    <script src="js/bootstrap/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="js/jquery/select2/js/select2.full.min.js"></script>
+    <script src="js/jquery/select2/js/pt-BR.js"></script>
+    <script src="js/jquery/bootstrap-slider/bootstrap-slider.min.js"></script>
+    <script src="js/jquery/jquery-confirm/jquery-confirm.min.js" type="text/javascript"></script>
+    <script src="js/jquery/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
     <script>
-        $("#cadastrar").on("click", function(e) {
-            if(!$("#aceito").val()){
-                $.alert({
-                    title: 'Atenção',
-                    icon: 'fa fa-warning',
-                    type: 'red',
-                    content: 'É necessário concordar com os termos de uso e as políticas de privacidade.'
-                });
-            }
+        $(function(){
+            $("#cadastrar").on("click", function(e) {
+                if(!$("#aceito").val()){
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'É necessário concordar com os termos de uso e as políticas de privacidade.'
+                    });
+                }
+            });
         });
     </script>
