@@ -745,3 +745,12 @@ Estando as partes de livre e comum acordo, firmam o presente Adendo, a fim de pr
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById("cadastrar").addEventListener("click", function(e) {
+            const aceito = document.getElementById("aceito").value;
+            if (!aceito) {
+                e.preventDefault(); // Impede o comportamento padrão (ex.: envio de formulário)
+                alert("É necessário concordar com os termos de uso e as políticas de privacidade.");
+            }
+        });
+    </script>
