@@ -8,16 +8,11 @@
 <script src="js/jquery/jquery-confirm/jquery-confirm.min.js" type="text/javascript"></script>
 <script src="js/jquery/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
 <script>
-    $(function(){
-        $("#cadastrar").on("click", function(e) {
-            if(!$("#aceito").val()){
-                $.alert({
-                    title: 'Atenção',
-                    icon: 'fa fa-warning',
-                    type: 'red',
-                    content: 'É necessário concordar com os termos de uso e as políticas de privacidade.'
-                });
-            }
-        });
+    document.getElementById("cadastrar").addEventListener("click", function(e) {
+        const aceito = document.getElementById("aceito").value;
+        if (!aceito) {
+            e.preventDefault(); // Impede o comportamento padrão (ex.: envio de formulário)
+            alert("É necessário concordar com os termos de uso e as políticas de privacidade.");
+        }
     });
 </script>
