@@ -1795,7 +1795,49 @@ $(function(){
         busca_produto_relatorio();
     });
     $("#salvar_alteracoes").on("click", function(e) {
-        salvar_calculo_fracionamento($(this));
+        isValidFrac = true;
+        $('.fracio_horario .hora').each(function(index) {
+            const horario = $(this).val().trim();
+            if (!horario) {
+                isValidFrac = false;
+                $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'O horário ' + (index + 1) + ' é obrigatório.'
+                });
+            } 
+        });
+
+        isValidHid = true;
+        $('.hidratacao_horarios .hora').each(function(index) {
+            const horario = $(this).val().trim();
+            if (!horario) {
+                isValidHid = false;
+                $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'O horário ' + (index + 1) + ' é obrigatório.'
+                });
+            } 
+        });
+
+        if($("#hidratacao_dia").val() != '' && $("#hidratacao_dia").val() != '0'){
+            if($("#volume_horario").val() == ""){
+                isValidHid = false;
+                $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'O volume por horário é obrigatório.'
+                });
+            }
+        }
+
+        if (isValidFrac && isValidHid) {
+            salvar_calculo_fracionamento($(this));
+        }
     });
     $("#salvar_selecao").on("click", function(e) {
         if ($(".check_dieta").filter(":checked").length === 0) {
