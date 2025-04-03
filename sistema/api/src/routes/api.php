@@ -1247,7 +1247,7 @@ $app->group("", function () use ($app) {
 			<text>Atenciosamente,</text>
 			<text>Equipe Entric</text>
 			<br>
-			<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:100%;" alt="Logo">
+			<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">
 			');
 
 			$result = $mailer->send($message);
@@ -2299,7 +2299,7 @@ $app->group("", function () use ($app) {
 		                        $grama = json_decode($produtos[$i]['medida_g'], true);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
-		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].'" </td>';
+		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].' </td>';
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
@@ -10910,18 +10910,8 @@ $app->group("", function () use ($app) {
 		<br>
 		<text>Atenciosamente,</text>
 		<text>Equipe Entric</text>
-		<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0092c51f; padding: 0px 40px;">
-			<tr>
-				<td align="left">
-					<img src="https://www.entric.com.br/relatorio_simplificada/imagem/logo.png" height="45px" alt="Logo">
-				</td>
-				<td align="right" style="vertical-align: middle;">
-					<a href="mailto:contato@entric.com.br">contato@entric.com.br</a>
-					<br>
-					<p style="margin: 0; color:#0092c5;">site.entric.com.br</p>
-				</td>
-			</tr>
-		</table>');
+		<br>
+		<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">');
 
 		$result = $mailer->send($message);
 
