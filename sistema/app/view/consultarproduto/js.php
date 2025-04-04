@@ -782,7 +782,7 @@ function modalFabricantesCadastrar(){
                                     title: 'Atenção',
                                     icon: 'fa fa-warning',
                                     type: 'red',
-                                    content: dados.error.message,
+                                    content: dados.error.message, 
                                 });
                             }
                             else{
