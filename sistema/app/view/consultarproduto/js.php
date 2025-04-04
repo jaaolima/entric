@@ -220,7 +220,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     
                     var cat_modulo = JSON.parse(data.cat_modulo);
                     $.each(cat_modulo, function() {
-                        $('#modalfrmproduto').find('input:radio[name="m_cat_modulo[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                        $('#modalfrmproduto').find('input:checkbox[name="m_cat_modulo[]"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
                     
                     // var carac_oral = JSON.parse(data.carac_oral);
