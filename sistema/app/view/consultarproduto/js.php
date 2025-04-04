@@ -765,6 +765,7 @@ function modalFabricantesCadastrar(){
     $.confirm({
         title: 'Cadastrar Fabricante',
         content: '<div><div class="form-group"><label class="control-label">Fabricante:</label><input type="text" name="add_fabricante" id="add_fabricante" class="form-control" value=""></div></div>',
+        keyboardEnabled: false,
         buttons: {
             Cadastrar: {
                 text: 'Cadastrar',
