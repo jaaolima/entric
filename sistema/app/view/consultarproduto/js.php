@@ -765,7 +765,15 @@ function modalFabricantesCadastrar(){
     $.confirm({
         title: 'Cadastrar Fabricante',
         content: '<div><div class="form-group"><label class="control-label">Fabricante:</label><input type="text" name="add_fabricante" id="add_fabricante" class="form-control" value=""></div></div>',
-        keyboardEnabled: false,
+        onContentReady: function() {
+            const input = this.$content.find('input[type="text"]');
+            input.prop('readonly', false); // Remove readonly
+            input.prop('disabled', false); // Remove disabled
+            input.focus();
+            input.on('keydown', function(e) {
+                console.log('Tecla pressionada:', e.key);
+            });
+        },
         buttons: {
             Cadastrar: {
                 text: 'Cadastrar',
