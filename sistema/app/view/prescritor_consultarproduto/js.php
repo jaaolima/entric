@@ -150,6 +150,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                 if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Enteral') {
                     $("#m_apresentacao_enteral").removeClass("none");
                     $("#m_apresentacao_oral").addClass("none");
+                    $("#m_apresentacao_modulo").addClass("none");
                     $(".m_unidademedida").removeClass("block").addClass("none");
                     $(".m_nounidademedida").removeClass("none").addClass("block");
                     
@@ -175,6 +176,7 @@ function gtModalProdutoFiltro(_id, _tipo){
 
                 }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Suplemento') {
                     $("#m_apresentacao_enteral").addClass("none");
+                    $("#m_apresentacao_modulo").addClass("none");
                     $("#m_apresentacao_oral").removeClass("none");
                     $(".m_unidademedida").removeClass("none").addClass("block");
                     $(".m_nounidademedida").removeClass("block").addClass("none");
@@ -198,9 +200,38 @@ function gtModalProdutoFiltro(_id, _tipo){
                         $('#modalfrmproduto').find('input:checkbox[name="m_carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
 
+                }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Módulo') {
+                    $("#m_apresentacao_enteral").addClass("none");
+                    $("#m_apresentacao_oral").addClass("none");
+                    $("#m_apresentacao_modulo").removeClass("none");
+                    $(".m_unidademedida").removeClass("none").addClass("block");
+                    $(".m_nounidademedida").removeClass("block").addClass("none");
+
+                    if (data.unidmedida == 'gramas') {
+                        $('#modalfrmproduto').find('input:radio[name="m_unidmedida"][value="gramas"]').prop('checked', true);
+                        $("#modalfrmproduto .dosagem_quantidade").html("Quantidade por 100g");
+                    }else{
+                        $('#modalfrmproduto').find('input:radio[name="m_unidmedida"][value="ml"]').prop('checked', true);
+                        $("#modalfrmproduto .dosagem_quantidade").html("Quantidade por 100ml");
+                    }
+                    
+                    var cat_modulo = JSON.parse(data.cat_modulo);
+                    $.each(cat_modulo, function() {
+                        $('#modalfrmproduto').find('input:checkbox[name="m_cat_modulo[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    });
+                    
+                    // var carac_oral = JSON.parse(data.carac_oral);
+                    // $.each(carac_oral, function() {
+                    //     $('#modalfrmproduto').find('input:radio[name="m_carac_oral_fibras[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    //     $('#modalfrmproduto').find('input:radio[name="m_carac_oral_calorias[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    //     $('#modalfrmproduto').find('input:radio[name="m_carac_oral_proteinas[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    //     $('#modalfrmproduto').find('input:checkbox[name="m_carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    // });
+
                 }else{
                     $("#m_apresentacao_enteral").addClass("none");
                     $("#m_apresentacao_oral").addClass("none");
+                    $("#m_apresentacao_modulo").addClass("none");
                     $(".m_unidademedida").removeClass("none").addClass("block");
                     $(".m_nounidademedida").removeClass("block").addClass("none");
 
@@ -389,6 +420,8 @@ function gtProdutoFiltro(_id){
                 if ($('#frmproduto').find("input[name='via']:checked").val() == 'Enteral') {
                     $("#apresentacao_enteral").removeClass("none");
                     $("#apresentacao_oral").addClass("none");
+                    $("#apresentacao_modulo").addClass("none");
+
                     $(".unidademedida").removeClass("block").addClass("none");
                     $(".nounidademedida").removeClass("none").addClass("block");
                     
@@ -419,6 +452,7 @@ function gtProdutoFiltro(_id){
                 }
                 else if ($('#frmproduto').find("input[name='via']:checked").val() == 'Suplemento') {
                     $("#apresentacao_enteral").addClass("none");
+                    $("#apresentacao_modulo").addClass("none");
                     $("#apresentacao_oral").removeClass("none");
                     $(".unidademedida").removeClass("none").addClass("block");
                     $(".nounidademedida").removeClass("block").addClass("none");
@@ -444,9 +478,40 @@ function gtProdutoFiltro(_id){
                         $('#frmproduto').find('input:checkbox[name="carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
 
+                }else if ($('#frmproduto').find("input[name='via']:checked").val() == 'Módulo') {
+                    $("#apresentacao_enteral").addClass("none");
+                    $("#apresentacao_modulo").removeClass("none");
+                    $("#apresentacao_oral").addClass("none");
+                    $(".unidademedida").removeClass("none").addClass("block");
+                    // $(".nounidademedida").removeClass("block").addClass("none");
+
+                    if (data.unidmedida == 'gramas') {
+                        $('#frmproduto').find('input:radio[name="unidmedida"][value="gramas"]').prop('checked', true);
+                        $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
+                        $("#frmproduto .volmedida").parent().find(".input-group-text").html("g");
+                    }else{
+                        $('#frmproduto').find('input:radio[name="unidmedida"][value="ml"]').prop('checked', true);
+                        $("#frmproduto .dosagem_quantidade").html("Quantidade por 100ml");
+                        $("#frmproduto .volmedida").parent().find(".input-group-text").html("ml");
+                    }
+                    
+                    var cat_modulo = JSON.parse(data.cat_modulo);
+                    $.each(cat_modulo, function() {
+                        $('#frmproduto').find('input:radio[name="cat_modulo[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    });
+                    
+                    // var carac_oral = JSON.parse(data.carac_oral);
+                    // $.each(carac_oral, function() {
+                    //     $('#frmproduto').find('input:radio[name="carac_oral_fibras[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    //     $('#frmproduto').find('input:radio[name="carac_oral_proteinas[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    //     $('#frmproduto').find('input:radio[name="carac_oral_calorias[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    //     $('#frmproduto').find('input:checkbox[name="carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    // });
+
                 }else{
                     $("#apresentacao_enteral").addClass("none");
-                    $("#apresentacao_oral").addClass("none");                    
+                    $("#apresentacao_oral").addClass("none");   
+                    $("#apresentacao_modulo").addClass("none");
                     $(".unidademedida").removeClass("none").addClass("block");
                     $(".nounidademedida").removeClass("block").addClass("none");
 
@@ -1259,6 +1324,12 @@ $(function(){
                         caracteristicas = caracteristicas + carac_oral_item +'<br>';
                     });
 
+                    var cat_modulo = jQuery.parseJSON(item.cat_modulo);
+                    $.each(cat_modulo, function (cat_modulo_key, cat_modulo_item) {
+                        caracteristicas = caracteristicas + cat_modulo_item +'<br>';
+                    });
+
+
                     rows = rows + '<tr class="tabrow" rel="'+item.id+'">'+ 
                                 '<td>'+item.id+'</td>'+
                                 '<td>'+item.nome+'</td>'+
@@ -1283,6 +1354,7 @@ $(function(){
     $('#frmproduto input:radio[name=via]').change(function () {
         if ($("#frmproduto input[name='via']:checked").val() == 'Enteral') {
             $("#apresentacao_enteral").removeClass("none");
+            $("#apresentacao_modulo").addClass("none");
             $("#apresentacao_oral").addClass("none");
             $(".unidademedida").removeClass("block").addClass("none");
             $(".nounidademedida").removeClass("none").addClass("block");
@@ -1291,6 +1363,7 @@ $(function(){
 
         }else if ($("#frmproduto input[name='via']:checked").val() == 'Suplemento') {
             $("#apresentacao_enteral").addClass("none");
+            $("#apresentacao_modulo").addClass("none");
             $("#apresentacao_oral").removeClass("none");
             $(".unidademedida").removeClass("none").addClass("block");
             $(".nounidademedida").removeClass("block").addClass("none");
@@ -1302,9 +1375,24 @@ $(function(){
                 $("#frmproduto .dosagem_quantidade").html("Quantidade por 100ml");
                 $("#frmproduto .volmedida").parent().find(".input-group-text").html("ml");
             }
+        }else if ($("#frmproduto input[name='via']:checked").val() == 'Módulo') {
+            $("#apresentacao_enteral").addClass("none");
+            $("#apresentacao_modulo").removeClass("none");
+            $("#apresentacao_oral").addClass("none");
+            $(".unidademedida").removeClass("none").addClass("block");
+            // $(".nounidademedida").removeClass("block").addClass("none");
+
+            if ($("#frmproduto input[name='unidmedida']:checked").val() == 'gramas') {
+                $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
+                $("#frmproduto .volmedida").parent().find(".input-group-text").html("g");
+            }else{
+                $("#frmproduto .dosagem_quantidade").html("Quantidade por 100ml");
+                $("#frmproduto .volmedida").parent().find(".input-group-text").html("ml");
+            }
         }else{
             $("#apresentacao_enteral").addClass("none");
             $("#apresentacao_oral").addClass("none");
+            $("#apresentacao_modulo").addClass("none");
             $(".unidademedida").removeClass("none").addClass("block");
             $(".nounidademedida").removeClass("block").addClass("none");
 
@@ -1330,13 +1418,20 @@ $(function(){
 
     $('#frmfiltroproduto input:radio[name=via]').change(function () {
         if ($("#frmfiltroproduto input[name='via']:checked").val() == 'Enteral') {
+            $("#filtro_apresentacao_modulo").addClass("none");
             $("#filtro_apresentacao_enteral").removeClass("none");
             $("#filtro_apresentacao_oral").addClass("none");
         }else if ($("#frmfiltroproduto input[name='via']:checked").val() == 'Suplemento') {
+            $("#filtro_apresentacao_modulo").addClass("none");
             $("#filtro_apresentacao_enteral").addClass("none");
             $("#filtro_apresentacao_oral").removeClass("none");
+        }else if ($("#frmfiltroproduto input[name='via']:checked").val() == 'Módulo') {
+            $("#filtro_apresentacao_enteral").addClass("none");
+            $("#filtro_apresentacao_oral").addClass("none");
+            $("#filtro_apresentacao_modulo").removeClass("none");
         }else{
             $("#filtro_apresentacao_enteral").addClass("none");
+            $("#filtro_apresentacao_modulo").addClass("none");
             $("#filtro_apresentacao_oral").addClass("none");
         }
     });
