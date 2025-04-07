@@ -878,7 +878,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
             type: "POST",
             url: "ajax/busca_produto_relatorio_modulo", 
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
-            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val(),
+            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica,
             cache: false,
             dataType: 'html',
             success: function( dados ){
@@ -2017,7 +2017,7 @@ $(function(){
         // }
         if ($("input[name='cat_modulo[]']:checked").length > 0) {
             $("#modal_selecao").modal("toggle");
-            // $('#modal_fracionamento').modal('toggle');
+            // $('#modal_fracionamento').modal('toggle'); 
         }
         else{
             $.alert({
@@ -2048,7 +2048,7 @@ $(function(){
         //     return false;
         // }
     });
-    $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
+    $('.entric_query input[type=radio], #apresentacao input[type=checkbox]').on("keyup change", function(e) {
         busca_produto_relatorio();
     });
     $("#salvar_alteracoes").on("click", function(e) {
