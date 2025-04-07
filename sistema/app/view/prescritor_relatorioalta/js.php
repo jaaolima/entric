@@ -1842,6 +1842,58 @@ $(function(){
             } 
         });
 
+        if($("#calculo_apres_fechado").filter(":checked").length > 0){
+            if(isValidFrac){
+                if($("#h_i_dieta").val() == ""){
+                    isValidFrac = false;
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'O campo "Horário de Início da dieta:" é obrigatório.'
+                    });
+                }
+            }
+
+            if(isValidFrac){
+                if($("#h_inf_dieta").val() == ""){
+                    isValidFrac = false;
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'O campo "Quantas horas de infusão da dieta por dia?" é obrigatório.'
+                    });
+                }
+            }
+        }
+
+        if($("#calculo_apres_aberto_liquido").filter(":checked").length > 0 || $("#calculo_apres_aberto_po").filter(":checked").length > 0){
+            if(isValidFrac){
+                if($("#fracionamento_dia").val() == ""){
+                    isValidFrac = false;
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'O campo "Fracionamento / Dia:" é obrigatório.'
+                    });
+                }
+            }
+
+            if(isValidFrac){
+                if($("#qtas_horas").val() == ""){
+                    isValidFrac = false;
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'O campo "Em quantas horas cada dieta deve correr?" é obrigatório.'
+                    });
+                }
+            }
+        }
+
         isValidHid = true;
         $('.hidratacao_horarios .hora').each(function(index) {
             const horario = $(this).val().trim();
