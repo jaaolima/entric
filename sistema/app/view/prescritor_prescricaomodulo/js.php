@@ -1984,18 +1984,15 @@ $(function(){
         // else{
             
         // }
-        if ($("input[name='carac_oral[]'].filtro_1:checked").length > 0 && 
-            $("input[name='carac_oral[]'].filtro_2:checked").length > 0 && 
-            $("input[name='carac_oral[]'].filtro_3:checked").length > 0) {
+        if ($("input[name='cat_modulo[]']:checked").length > 0) {
             $('#modal_fracionamento').modal('toggle');
-
         }
         else{
             $.alert({
                     title: 'Atenção',
                     icon: 'fa fa-warning',
                     type: 'red',
-                    content: 'Por favor, é necessário selecionar a apresentação e características da Prescrição de TNEVO.'
+                    content: 'Por favor, é necessário selecionar a categoria da Prescrição de TNEVO.'
                 });
             return false;
         }
