@@ -1173,7 +1173,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</p>
 			<?php endif; ?>
 
-			<?php if($usuario['login'] == 'ibranutro'): ?>
+			<?php if($usuario['login'] == 'ibranutro' && $relatorio['distribuidores'] == 'df'): ?>
 			<div style="display:flex;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
 					<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>

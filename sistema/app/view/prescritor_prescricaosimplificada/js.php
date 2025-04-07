@@ -1060,6 +1060,20 @@ function check_dieta(_this, diluicao_id){
                 checkboxes.prop("disabled", false);
                 checkboxes.removeClass( "check_apagado");
             }
+        }else{
+            let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
+            let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
+            let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
+
+            if (checkedCount >= 5) {
+                // Desabilita os não selecionados se já houver 3 selecionados
+                checkboxes.not(":checked").prop("disabled", true);
+                checkboxes.not(":checked").addClass("check_apagado");
+            } else {
+                // Reabilita todos se menos de 3 estiverem selecionados
+                checkboxes.prop("disabled", false);
+                checkboxes.removeClass( "check_apagado");
+            }
         }
     }
 }
@@ -1109,16 +1123,33 @@ function fc_collapsecheckbox( $apres_enteral_num){
                 qtd++;
             });
         }else{
+            qtd = 1;
             $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
-                $(this).prop( "checked", true);
-                let diluicao_id = $(this).attr('rel');
-
-                $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                if(qtd < 6){
                     $(this).prop( "checked", true);
-                    $(this).attr( "disabled", false);
-                    $(this).removeClass( "check_apagado");
-                });
+                    let diluicao_id = $(this).attr('rel');
+
+                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                        $(this).prop( "checked", true);
+                        $(this).attr( "disabled", false);
+                        $(this).removeClass( "check_apagado");
+                    });
+                }else{
+                    $(this).attr( "disabled", true);
+                    $(this).addClass( "check_apagado");
+                }
+                qtd++;
             });
+            // $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
+            //     $(this).prop( "checked", true);
+            //     let diluicao_id = $(this).attr('rel');
+
+            //     $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+            //         $(this).prop( "checked", true);
+            //         $(this).attr( "disabled", false);
+            //         $(this).removeClass( "check_apagado");
+            //     });
+            // });
         }
        
     }

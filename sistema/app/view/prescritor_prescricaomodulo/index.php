@@ -17,7 +17,7 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Início</a></li>
-                        <li class="breadcrumb-item active"><a href="prescritor_prescricaosuplementacao">Prescrição TNEVO</a></li>
+                        <li class="breadcrumb-item active"><a href="prescritor_prescricaosuplementacao">Prescrição Módulos</a></li>
                     </ol> 
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title bb-line mb-5">
-                                <i class="mdi mdi-message-draw"></i> &nbsp; Prescrição de Suplementação Via Oral
+                                <i class="mdi mdi-message-draw"></i> &nbsp; Prescrição de Módulos
                             </h4>
                             <input type="hidden" id="tipo_login" value="<?php echo $_SESSION['login']; ?>">
                             <div class="default-tab bordered-tab entric">
