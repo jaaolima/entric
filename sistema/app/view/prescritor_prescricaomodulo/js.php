@@ -1854,7 +1854,7 @@ $(function(){
 
 
 
-    $(".valor_porcao").change(function() {
+    $(".valor_porcao").on('change', function() {
         id = $(this).data("id");
         console.log(id);
 
