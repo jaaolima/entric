@@ -1854,6 +1854,20 @@ $(function(){
 
 
 
+    $(".valor_porcao").change(function() {
+        id = $(this).data("id");
+
+        porcaoElement = $("#porcao_"+id);
+        totalDoseElement = $("#total_dose_"+id);
+        const valorPorcao = parseFloat($(this).val()) || 1;
+
+        const porcao = parseFloat(porcaoElement.text()) || 0;
+
+        const totalDose = porcao * valorPorcao;
+
+        totalDoseElement.text(totalDose.toFixed(2));
+    });
+
 
     // necessidades nutricionais  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     $(".plusminus_ptn").inputSpinner({
