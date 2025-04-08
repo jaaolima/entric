@@ -1047,6 +1047,14 @@ function check_dieta(_this){
         if(inputPorcaoDias.val() == ''){
             inputPorcaoDias.val("1");
         }
+        const $porcaoElement = $irmaos.filter('[name="porcao"]');
+        const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
+
+        const valorPorcao = parseFloat(inputPorcaoDias.val()) || 1; 
+        const porcao = parseFloat($porcaoElement.text()) || 0; 
+        const totalDose = porcao * valorPorcao;
+        
+        $totalDoseElement.text(totalDose);
         inputPorcaoDias.attr("required", true);
     }else{
         inputPorcaoDias.val("");
