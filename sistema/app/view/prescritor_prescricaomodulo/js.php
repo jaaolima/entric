@@ -1037,6 +1037,19 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function check_dieta(_this){
+    const $tdPai = $(input).parent();
+
+    // Obtém os irmãos do <td> pai (outras células da mesma linha)
+    const $irmaos = $tdPai.siblings();
+
+    // Encontra a célula 'porcao' e 'total_dose' pelos atributos 'name'
+    const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+
+    inputPorcaoDias = $porcaoDias.children("input");
+    console.log(inputPorcaoDias);
+    if(inputPorcaoDias == ''){
+        inputPorcaoDias.val("1")
+    }
     console.log("checou");
     if($("#tipo_login").val() == 'ibranutro'){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
