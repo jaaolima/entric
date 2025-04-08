@@ -3871,11 +3871,8 @@ $app->group("", function () use ($app) {
 		                    if ($produtos[$i]['medida_dc'] <> ""){
 		                        $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
 		                        $medida_g = json_decode($produtos[$i]['medida_g'], true);
-		                        $medida = json_decode($produtos[$i]['medida'], true);
-		                        $final = json_decode($produtos[$i]['final'], true);
-		                        $volume = json_decode($produtos[$i]['volume'], true);
-		                        $unidmedida = $produtos[$i]['unidmedida'];
-		                        $grama = json_decode($produtos[$i]['medida_g'], true);
+		                        $medidas = json_decode($produtos[$i]['medida'], true);
+		                        $unidade = json_decode($produtos[$i]['unidade'], true);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
 		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].'</td>';
@@ -3927,19 +3924,19 @@ $app->group("", function () use ($app) {
 		                                                        '.$categoria.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$categoria_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
-		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">
+		                                                        <th rowspan="2" class="entric_group_destaque5">
 																	<input class="form-check-input collapseSistema" id="collapseSistema'.$categoria_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$categoria_num.')">
 																	PRODUTO 
 																</th>
-		                                                        <th colspan="2" style="text-align:center;" class="entric_group_destaque5">DOSAGEM</th>
+		                                                        <th colspan="2" style="text-align:center;" >DOSAGEM</th>
 		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
 		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">PORÇÕES/DIA</th> 
 		                                                    </tr>
 															<tr>
-																<th style="text-align:center;" class="entric_group_destaque5">
+																<th style="text-align:center;" >
 																	MEDIDA
 																</th>
-																<th style="text-align:center;" class="entric_group_destaque5">
+																<th style="text-align:center;" >
 																	PORÇÃO(g ou ml)
 																</th>
 															</tr>
@@ -3947,17 +3944,17 @@ $app->group("", function () use ($app) {
 		                                                <tbody id="tbody'.$categoria_num.'">';
 		                                }										
 
-										$medida = $produtos[$m]['medida']. " " . $produtos[$m]['unidade'];
+										$medida = $medidas[$m]. " " . $unidade[$m];
 										$retorno .= '<tr>
 														<td>
 															<div class="form-check col-sm-12">
-																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$m]['id'].'___'.$produtos[$m]['nome'].'___'.$medida.'___'.$produtos[$m]['medida_g'].'___'.$categoria.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$m]['id'].'" name="produto_dc['.$produtos[$m]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$m]['id'].'___'.$produtos[$m]['nome'].'___'.$medida.'___'.$produtos[$m]['medida_g'].'___'.$categoria.'">
-																<label for="produto_dc['.$produtos[$m]['id'].'___'.$produtos[$m]['nome'].'___'.$medida.'___'.$produtos[$m]['medida_g'].'___'.$categoria.']" class="form-check-label check-green">'.$produtos[$m]['nome'].'</label>
+																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[$m].'___'.$categoria.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[$m].'___'.$categoria.'">
+																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[$m].'___'.$categoria.']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
 															</div>
 														</td>
 														<td>'.$medida.'</td>
-														<td>'.$produtos[$m]['medida_g'].'</td>
-														<td>'.$produtos[$m]['medida_g'].'</td>
+														<td>'.$medida_g[$m].'</td>
+														<td>'.$medida_g[$m].'</td>
 														<td></td>
 													</tr>';
 										$titulo = "";
