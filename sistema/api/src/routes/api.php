@@ -3955,7 +3955,7 @@ $app->group("", function () use ($app) {
 														<td>'.$medida.'</td>
 														<td>'.$medida_g[$m].'</td>
 														<td>'.$medida_g[$m].'</td>
-														<td><input type="number"></td>
+														<td><input min="1" style="width:40px;text-align:center;" type="number"></td>
 													</tr>';
 										$titulo = "";
 		                            }
