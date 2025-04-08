@@ -3954,7 +3954,7 @@ $app->group("", function () use ($app) {
 														<td>'.$medida.'</td>
 														<td name="porcao">'.$medida_g[$m].'</td>
 														<td name="total_dose">'.$medida_g[$m].'</td>
-														<td><input value="1" min="1" style="width:40px;text-align:center;" name="valor_porcao" onchange="fc_porcao_dia(this)" type="number"></td>
+														<td><input min="1" style="width:40px;text-align:center;" name="valor_porcao[]" onchange="fc_porcao_dia(this)" type="number"></td>
 													</tr>';
 										$titulo = "";
 		                            }
@@ -8701,8 +8701,9 @@ $app->group("", function () use ($app) {
 
 
 		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
+		        if (!isset($dados['valor_porcao'])) $dados['valor_porcao'] = null;
 
-		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]));
+		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]));
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];

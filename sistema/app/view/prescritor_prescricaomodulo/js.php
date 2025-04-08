@@ -2085,33 +2085,34 @@ $(function(){
                 });
             return false;
         }else{
-            $("#modal_selecao").modal("hide");
-            $('#modal_fracionamento').modal('toggle'); 
-            // var _this = $(this);
-            // var _id_paciente = $("#id_paciente").val();
-            // var _id_relatorio = $("#id_relatorio").val();
-            // var formSerialize = $("#modal_form_selecao").serialize();
-            // b_lo(_this);
 
-            // $.ajax({
-            //     type: "POST",
-            //     url: "ajax/selecao_salvar_suplemento",
-            //     data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-            //     cache: false,
-            //     dataType: 'json',
-            //     success: function( data ){
-            //         b_res(_this);
+            var _this = $(this);
+            var _id_paciente = $("#id_paciente").val();
+            var _id_relatorio = $("#id_relatorio").val();
+            var formSerialize = $("#modal_form_selecao").serialize();
+            b_lo(_this);
 
-            //         fc_salvar('calculo', false);
-            //         $('#modal_selecao').modal('toggle');
-            //         $('.tabcalculo a').removeClass('active');
-            //         $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+            $.ajax({
+                type: "POST",
+                url: "ajax/selecao_salvar_suplemento",
+                data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+                cache: false,
+                dataType: 'json',
+                success: function( data ){
+                    b_res(_this);
+                    $("#modal_selecao").modal("hide");
+                    $('#modal_fracionamento').modal('toggle'); 
+
+                    fc_salvar('calculo', false);
+                    // $('#modal_selecao').modal('toggle');
+                    // $('.tabcalculo a').removeClass('active');
+                    // $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
                 
-            //         $(".tabdistribuidores").removeClass('disabledTab');
-            //         $('.tabdistribuidores a').addClass('active');
-            //         $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
-            //     }
-            // });
+                    // $(".tabdistribuidores").removeClass('disabledTab');
+                    // $('.tabdistribuidores a').addClass('active');
+                    // $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                }
+            });
         }
 
     });
@@ -2892,28 +2893,4 @@ $(function(){
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 });
 
-$(document).ready(function(){
-    $('input[name="valor_porcao"]').on('input', function() {
-        console.log("chegou");
-        // Obtém o <td> pai do input
-        const $tdPai = $(this).parent();
-
-        // Obtém os irmãos do <td> pai (outras células da mesma linha)
-        const $irmaos = $tdPai.siblings();
-
-        // Encontra a célula 'porcao' e 'total_dose' pelos atributos 'name'
-        const $porcaoElement = $irmaos.filter('[name="porcao"]');
-        const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
-
-        // Obtém os valores
-        const valorPorcao = parseFloat($(this).val()) || 1; // Valor do input, default 1
-        const porcao = parseFloat($porcaoElement.text()) || 0; // Valor da célula porcao, default 0
-
-        // Calcula o total_dose (porcao * valor_porcao)
-        const totalDose = porcao * valorPorcao;
-
-        // Atualiza o valor na célula total_dose
-        $totalDoseElement.text(totalDose.toFixed(2)); // Usa toFixed(2) para 2 casas decimais
-    });
-});
 </script>
