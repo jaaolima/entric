@@ -1038,19 +1038,24 @@ function salvar_calculo_fracionamento(_this){
 
 function check_dieta(_this){
     const $tdPai = $(_this).parent();
-
-    // Obtém os irmãos do <td> pai (outras células da mesma linha)
     const $irmaos = $tdPai.siblings();
-
-    // Encontra a célula 'porcao' e 'total_dose' pelos atributos 'name'
     const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+    console.log($porcaoDias);
+
 
     inputPorcaoDias = $porcaoDias.children("input");
     console.log(inputPorcaoDias);
     if(inputPorcaoDias.val() == ''){
+        console.log("checou1");
         inputPorcaoDias.val("1")
     }
-    console.log("checou");
+
+    if($(_this).is(":checked")){
+        inputPorcaoDias.attr("required");
+        console.log("checou");
+    }else{
+        inputPorcaoDias.removeAttr("required");
+    }
     if($("#tipo_login").val() == 'ibranutro'){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
         let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
