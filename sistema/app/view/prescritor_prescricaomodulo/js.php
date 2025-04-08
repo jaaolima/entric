@@ -1057,6 +1057,8 @@ function check_dieta(_this){
         $totalDoseElement.text(totalDose);
         inputPorcaoDias.attr("required", true);
     }else{
+        const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
+        $totalDoseElement.text('');
         inputPorcaoDias.val("");
         inputPorcaoDias.removeAttr("required");
     }

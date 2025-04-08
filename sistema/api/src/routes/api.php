@@ -8701,7 +8701,6 @@ $app->group("", function () use ($app) {
 
 
 		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
-		        if (!isset($dados['valor_porcao'])) $dados['valor_porcao'] = null;
 
 		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]));
 
@@ -8751,6 +8750,8 @@ $app->group("", function () use ($app) {
 
 
 		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
+		        if (!isset($dados['valor_porcao'])) $dados['valor_porcao'] = null;
+				$dados["valor_porcao"] = array_filter($dados["valor_porcao"]);
 
 		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]));
 
