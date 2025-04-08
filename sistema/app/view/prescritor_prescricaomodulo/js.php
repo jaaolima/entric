@@ -1856,14 +1856,20 @@ $(function(){
 
     $(".valor_porcao").change(function() {
         id = $(this).data("id");
+        console.log(id);
 
         porcaoElement = $("#porcao_"+id);
+        console.log(porcaoElement);
+
         totalDoseElement = $("#total_dose_"+id);
+        console.log(totalDoseElement);
+
         const valorPorcao = parseFloat($(this).val()) || 1;
 
         const porcao = parseFloat(porcaoElement.text()) || 0;
 
         const totalDose = porcao * valorPorcao;
+        console.log(totalDose);
 
         totalDoseElement.text(totalDose.toFixed(2));
     });
