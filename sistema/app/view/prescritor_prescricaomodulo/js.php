@@ -2108,7 +2108,7 @@ $(function(){
                     b_res(_this);
                     $("#modal_selecao").modal("hide");
                     $('#modal_fracionamento').modal('toggle'); 
-
+                    $('.hora').mask("99:99");
                     fc_salvar('calculo', false);
                     // $('#modal_selecao').modal('toggle');
                     // $('.tabcalculo a').removeClass('active');

@@ -3770,8 +3770,7 @@ $app->group("", function () use ($app) {
 															CASE 
 																WHEN p.fabricante = 'PRODIET' THEN 1
 																WHEN p.fabricante = 'DANONE' THEN 2
-																WHEN p.fabricante = ' Danone e Nutrimed' THEN 3
-																ELSE 4
+																ELSE 3
 															END", 
 		                                            null);
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -3954,7 +3953,7 @@ $app->group("", function () use ($app) {
 														<td>'.$medida.'</td>
 														<td name="porcao">'.$medida_g[$m].'</td>
 														<td name="total_dose"></td>
-														<td name="porcao_dias"><input min="1" step="0.5" style="width:40px;text-align:center;" name="valor_porcao[]" onchange="fc_porcao_dia(this)" type="number"></td>
+														<td name="porcao_dias"><input min="0.5" step="0.5" style="width:40px;text-align:center;" name="valor_porcao[]" onchange="fc_porcao_dia(this)" type="number"></td>
 													</tr>';
 										$titulo = "";
 		                            }
