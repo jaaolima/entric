@@ -1295,7 +1295,7 @@ function fc_porcao_dia(input){
     const totalDose = porcao * valorPorcao;
 
     // Atualiza o valor na célula total_dose
-    $totalDoseElement.text(totalDose.toFixed(2)); // Usa toFixed(2) para 2 casas decimais
+    $totalDoseElement.text(totalDose);
 }
 
 function disableF5(e) { 
