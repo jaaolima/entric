@@ -8703,7 +8703,7 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
 		        if (!isset($dados['valor_porcao'])) $dados['valor_porcao'] = null;
 
-		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]));
+		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]));
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
@@ -8752,7 +8752,7 @@ $app->group("", function () use ($app) {
 
 		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
 
-		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]));
+		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]));
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
