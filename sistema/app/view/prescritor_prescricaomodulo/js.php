@@ -1009,20 +1009,15 @@ function salvar_calculo_fracionamento(_this){
             cache: false,
             dataType: 'json',
             success: function( data ){
-                if (_this != null) b_res(_this);
-                if (_this != null){
-                    $('#modal_fracionamento').modal('toggle');
-                    $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
-                        rangeCaloria($("#kcal_valor").val());
-                        rangeProteina($("#ptn_valor").val());
-                        $("#modal_selecao").modal("toggle");
-                    });
-                }else{
-                    rangeCaloria($("#kcal_valor").val());
-                    rangeProteina($("#ptn_valor").val());
-                    $("#modal_selecao").modal("toggle");
-                }
-
+                $('#modal_fracionamento').modal('toggle');
+                $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+                    $('.tabcalculo a').removeClass('active');
+                    $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+                
+                    $(".tabdistribuidores").removeClass('disabledTab');
+                    $('.tabdistribuidores a').addClass('active');
+                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                });
             }
         });
     }

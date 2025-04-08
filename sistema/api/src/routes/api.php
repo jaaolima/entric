@@ -8125,166 +8125,74 @@ $app->group("", function () use ($app) {
 
 				if (!isset($dados['categoria'])) $dados['categoria'] = null;
 		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
-		        if (!isset($dados['tipo_prescricao'])) $dados['tipo_prescricao'] = null;
-		        if (!isset($dados['dispositivo'])) $dados['dispositivo'] = null;
-		        if (!isset($dados['calculo_apres_fechado'])) $dados['calculo_apres_fechado'] = null; else $dados['calculo_apres_fechado'] = true;
-		        if (!isset($dados['calculo_apres_aberto_liquido'])) $dados['calculo_apres_aberto_liquido'] = null; else $dados['calculo_apres_aberto_liquido'] = true;
-		        if (!isset($dados['calculo_apres_aberto_po'])) $dados['calculo_apres_aberto_po'] = null; else $dados['calculo_apres_aberto_po'] = true;
-		        if (!isset($dados['calculo_fil_todos'])) $dados['calculo_fil_todos'] = null; else $dados['calculo_fil_todos'] = true;
-		        if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null; else $dados['calculo_apres_liquidocreme'] = true;
-		        if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null; else $dados['calculo_apres_po'] = true;
 
-				if(isset($dados['carac_oral'])){
-					$array_carac = $dados['carac_oral'];
+				if(isset($dados['cat_modulo'])){
+					$array_cat = $dados['cat_modulo'];
 
-					if(in_array('Sem Sacarose', $array_carac)){
-						$dados['calculo_fil_semsacarose'] = true;
+					if(in_array('Proteína', $array_cat)){
+						$dados['categoria_modulo_proteina'] = true;
 					}else{
-						$dados['calculo_fil_semsacarose'] = null;
+						$dados['categoria_modulo_proteina'] = null;
 					}
-					if(in_array('Sem Lactose', $array_carac)){
-						$dados['calculo_fil_semlactose'] = true;
+					if(in_array('Colágeno ou Aminoácidos', $array_cat)){
+						$dados['categoria_modulo_colageno_aminoacidos'] = true;
 					}else{
-						$dados['calculo_fil_semlactose'] = null;
+						$dados['categoria_modulo_colageno_aminoacidos'] = null;
 					}
-					if(in_array('Hipocalórico', $array_carac)){
-						$dados['calculo_fil_hipocalorico'] = true;
+					if(in_array('Carboidrato', $array_cat)){
+						$dados['categoria_modulo_carboidrato'] = true;
 					}else{
-						$dados['calculo_fil_hipocalorico'] = null;
+						$dados['categoria_modulo_carboidrato'] = null;
 					}
-					if(in_array('Hipoproteico', $array_carac)){
-						$dados['calculo_fil_hipoproteico'] = true;
+					if(in_array('Lipídeo', $array_cat)){
+						$dados['categoria_modulo_lipideo'] = true;
 					}else{
-						$dados['calculo_fil_hipoproteico'] = null;
+						$dados['categoria_modulo_lipideo'] = null;
 					}
-					if(in_array('Com Fibras', $array_carac)){
-						$dados['calculo_fil_comfibras'] = true;
+					if(in_array('Fibras', $array_cat)){
+						$dados['categoria_modulo_fibras'] = true;
 					}else{
-						$dados['calculo_fil_comfibras'] = null;
+						$dados['categoria_modulo_fibras'] = null;
 					}
-					if(in_array('Hipercalórico', $array_carac)){
-						$dados['calculo_fil_hipercalorico'] = true;
+					if(in_array('Probióticos', $array_cat)){
+						$dados['categoria_modulo_probioticos'] = true;
 					}else{
-						$dados['calculo_fil_hipercalorico'] = null;
+						$dados['categoria_modulo_probioticos'] = null;
 					}
-					if(in_array('Normoproteico', $array_carac)){
-						$dados['calculo_fil_normoproteico'] = true;
+					if(in_array('Simbióticos', $array_cat)){
+						$dados['categoria_modulo_simbioticos'] = true;
 					}else{
-						$dados['calculo_fil_normoproteico'] = null;
+						$dados['categoria_modulo_simbioticos'] = null;
 					}
-					if(in_array('Sem Fibras', $array_carac)){
-						$dados['calculo_fil_semfibras'] = true;
+					if(in_array('Espessante', $array_cat)){
+						$dados['categoria_modulo_espessante'] = true;
 					}else{
-						$dados['calculo_fil_semfibras'] = null;
+						$dados['categoria_modulo_espessante'] = null;
 					}
-					if(in_array('100% Proteína Vegetal', $array_carac)){
-						$dados['calculo_fil_100proteina'] = true;
-					}else{
-						$dados['calculo_fil_100proteina'] = null;
-					}
-					if(in_array('Hiperproteico', $array_carac)){
-						$dados['calculo_fil_hiperproteico'] = true;
-					}else{
-						$dados['calculo_fil_hiperproteico'] = null;
-					}
-					if(in_array('Cicatrização', $array_carac)){
-						$dados['calculo_fil_cicatrizacao'] = true;
-					}else{
-						$dados['calculo_fil_cicatrizacao'] = null;
-					}
-					if(in_array('Com Ômega 3', $array_carac)){
-						$dados['calculo_fil_omega3'] = true;
-					}else{
-						$dados['calculo_fil_omega3'] = null;
-					}
-					if(in_array('Imunonutrição cirúrgica', $array_carac)){
-						$dados['calculo_fil_imunonutricao'] = true;
-					}else{
-						$dados['calculo_fil_imunonutricao'] = null;
-					}
-					if (!isset($dados['calculo_fil_todos1'])) $dados['calculo_fil_todos1'] = null; else $dados['calculo_fil_todos1'] = true;
-		            if (!isset($dados['calculo_fil_todos2'])) $dados['calculo_fil_todos2'] = null; else $dados['calculo_fil_todos2'] = true;
-		            if (!isset($dados['calculo_fil_todos3'])) $dados['calculo_fil_todos3'] = null; else $dados['calculo_fil_todos3'] = true;
 				}else{
-					$dados['calculo_fil_semsacarose'] = null;
-					$dados['calculo_fil_semlactose'] = null;
-					$dados['calculo_fil_hipocalorico'] = null;
-					$dados['calculo_fil_hipoproteico'] = null;
-					$dados['calculo_fil_comfibras'] = null;
-					$dados['calculo_fil_hipercalorico'] = null;
-					$dados['calculo_fil_normoproteico'] = null;
-					$dados['calculo_fil_semfibras'] = null;
-					$dados['calculo_fil_100proteina'] = null;
-					$dados['calculo_fil_hiperproteico'] = null;
-					$dados['calculo_fil_cicatrizacao'] = null;
-					$dados['calculo_fil_omega3'] = null;
-					$dados['calculo_fil_imunonutricao'] = null;
-					$dados['calculo_fil_todos1'] = null;
-					$dados['calculo_fil_todos2'] = null;
-					$dados['calculo_fil_todos3'] = null;
+					$dados['categoria_modulo_proteina'] = null;
+					$dados['categoria_modulo_colageno_aminoacidos'] = null;
+					$dados['categoria_modulo_carboidrato'] = null;
+					$dados['categoria_modulo_lipideo'] = null;
+					$dados['categoria_modulo_fibras'] = null;
+					$dados['categoria_modulo_probioticos'] = null;
+					$dados['categoria_modulo_simbioticos'] = null;
+					$dados['categoria_modulo_espessante'] = null;
 				}
-		        if (!isset($dados['dieta_formula'])) $dados['dieta_formula'] = null;
-		        if (!isset($dados['dieta_volume'])) $dados['dieta_volume'] = null;
-		        if (!isset($dados['dieta_infusao'])) $dados['dieta_infusao'] = null;
-		        if (!isset($dados['dieta_fracionamento_dia'])) $dados['dieta_fracionamento_dia'] = null;
-		        if (!isset($dados['dieta_horario_administracao'])) $dados['dieta_horario_administracao'] = null;
-		        if (!isset($dados['dieta_vazao_h'])) $dados['dieta_vazao_h'] = null;
-		        if (!isset($dados['dieta_horario_inicio'])) $dados['dieta_horario_inicio'] = null;
-		        if (!isset($dados['modulo_produto'])) $dados['modulo_produto'] = null;
-		        if (!isset($dados['modulo_quantidade'])) $dados['modulo_quantidade'] = null;
-		        if (!isset($dados['modulo_volume'])) $dados['modulo_volume'] = null;
-		        if (!isset($dados['modulo_horario'])) $dados['modulo_horario'] = null;
-		        if (!isset($dados['modulo_volume_total'])) $dados['modulo_volume_total'] = null;
-		        if (!isset($dados['suplemento_produto'])) $dados['suplemento_produto'] = null;
-		        if (!isset($dados['suplemento_quantidade'])) $dados['suplemento_quantidade'] = null;
-		        if (!isset($dados['suplemento_horario'])) $dados['suplemento_horario'] = null;
-		        if (!isset($dados['suplemento_volume_total'])) $dados['suplemento_volume_total'] = null;
-		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
+
 
 		        $bind = array( 
 								$campo_prescritor => $id_prescritor,
 								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
-		                        ':tipo_prescricao' => $dados["tipo_prescricao"],
-		                        ':dispositivo' => $dados["dispositivo"],
-		                        ':calculo_apres_fechado' => $dados["calculo_apres_fechado"],
-		                        ':calculo_apres_aberto_liquido' => $dados["calculo_apres_aberto_liquido"],
-		                        ':calculo_apres_aberto_po' => $dados["calculo_apres_aberto_po"],
-		                        ':calculo_apres_liquidocreme' => $dados["calculo_apres_liquidocreme"],
-		                        ':calculo_apres_po' => $dados["calculo_apres_po"],
-		                        ':calculo_fil_semsacarose' => $dados["calculo_fil_semsacarose"],
-		                        ':calculo_fil_semlactose' => $dados["calculo_fil_semlactose"],
-		                        ':calculo_fil_hipocalorico' => $dados["calculo_fil_hipocalorico"],
-		                        ':calculo_fil_hipoproteico' => $dados["calculo_fil_hipoproteico"],
-		                        ':calculo_fil_comfibras' => $dados["calculo_fil_comfibras"],
-		                        ':calculo_fil_hipercalorico' => $dados["calculo_fil_hipercalorico"],
-		                        ':calculo_fil_normoproteico' => $dados["calculo_fil_normoproteico"],
-		                        ':calculo_fil_semfibras' => $dados["calculo_fil_semfibras"],
-		                        ':calculo_fil_100proteina' => $dados["calculo_fil_100proteina"],
-		                        ':calculo_fil_hiperproteico' => $dados["calculo_fil_hiperproteico"],
-		                        ':calculo_fil_cicatrizacao' => $dados["calculo_fil_cicatrizacao"],
-		                        ':calculo_fil_omega3' => $dados["calculo_fil_omega3"],
-		                        ':calculo_fil_imunonutricao' => $dados["calculo_fil_imunonutricao"],
-		                        ':calculo_fil_todos1' => $dados["calculo_fil_todos1"],
-		                        ':calculo_fil_todos2' => $dados["calculo_fil_todos2"],
-		                        ':calculo_fil_todos3' => $dados["calculo_fil_todos3"],
-		                        ':dieta_formula' => array_json($dados["dieta_formula"], false),
-		                        ':dieta_volume' => array_json($dados["dieta_volume"], false),
-		                        ':dieta_infusao' => array_json($dados["dieta_infusao"], false),
-		                        ':dieta_fracionamento_dia' => array_json($dados["dieta_fracionamento_dia"], false),
-		                        ':dieta_horario_administracao' => array_json($dados["dieta_horario_administracao"], false),
-		                        ':dieta_vazao_h' => array_json($dados["dieta_vazao_h"], false),
-		                        ':dieta_horario_inicio' => array_json($dados["dieta_horario_inicio"], false),
-		                        ':modulo_produto' => array_json($dados["modulo_produto"], false),
-		                        ':modulo_quantidade' => array_json($dados["modulo_quantidade"], false),
-		                        ':modulo_volume' => array_json($dados["modulo_volume"], false),
-		                        ':modulo_horario' => array_json($dados["modulo_horario"], false),
-		                        ':modulo_volume_total' => array_json($dados["modulo_volume_total"], false) ,
-		                        ':suplemento_produto' => array_json($dados["suplemento_produto"], false) ,
-		                        ':suplemento_quantidade' => array_json($dados["suplemento_quantidade"], false) ,
-		                        ':suplemento_horario' => array_json($dados["suplemento_horario"], false) ,
-		                        ':suplemento_volume_total' => array_json($dados["suplemento_volume_total"], false) ,
-		                        ':hidratacao_agua_livre' => array_json($dados["hidratacao_agua_livre"], false) );
+		                        ':categoria_modulo_proteina' => $dados["categoria_modulo_proteina"],
+		                        ':categoria_modulo_colageno_aminoacidos' => $dados["categoria_modulo_colageno_aminoacidos"],
+		                        ':categoria_modulo_carboidrato' => $dados["categoria_modulo_carboidrato"],
+		                        ':categoria_modulo_lipideo' => $dados["categoria_modulo_lipideo"],
+		                        ':categoria_modulo_fibras' => $dados["categoria_modulo_fibras"],
+		                        ':categoria_modulo_probioticos' => $dados["categoria_modulo_probioticos"],
+		                        ':categoria_modulo_simbioticos' => $dados["categoria_modulo_simbioticos"],
+		                        ':categoria_modulo_espessante' => $dados["categoria_modulo_espessante"]);
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
