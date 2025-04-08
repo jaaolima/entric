@@ -3891,36 +3891,53 @@ $app->group("", function () use ($app) {
 		                                //     $volume_horario = " - ";
 		                                // }
 
-		                                $apres_oral = $produtos[$i]['apres_oral'];
-		                                $apres_oral_num = '0';
-		                                if ($apres_oral == '["Pó"]'){
-											$apres_oral = 'Pó'; 
-											$apres_oral_num = '1';
-		                                }else if ($apres_oral == '["Líquido / Creme"]'){
-											$apres_oral = 'Líquido / Creme';
-											$apres_oral_num = '2';
+		                                $categoria = $produtos[$i]['categoria'];
+		                                $categoria_num = '0';
+		                                if ($categoria == '["Proteína"]'){
+											$categoria = 'Proteína'; 
+											$categoria_num = '1';
+		                                }else if ($categoria == '["Colágeno ou Aminoácidos""]'){
+											$categoria = 'Colágeno ou Aminoácidos"';
+											$categoria_num = '2';
+		                                }else if ($categoria == '["Carboidrato""]'){
+											$categoria = 'Carboidrato"';
+											$categoria_num = '3';
+		                                }else if ($categoria == '["Lipídeo""]'){
+											$categoria = 'Lipídeo"';
+											$categoria_num = '4';
+		                                }else if ($categoria == '["Fibras""]'){
+											$categoria = 'Fibras"';
+											$categoria_num = '5';
+		                                }else if ($categoria == '["Probióticos""]'){
+											$categoria = 'Probióticos"';
+											$categoria_num = '6';
+		                                }else if ($categoria == '["Simbióticos""]'){
+											$categoria = 'Simbióticos"';
+											$categoria_num = '7';
+		                                }else if ($categoria == '["Espessante""]'){
+											$categoria = 'Espessante"';
+											$categoria_num = '8';
 		                                }
 
-		                                if ($retorno_thead <> $apres_oral){
-		                                    $retorno_thead = $apres_oral;
+		                                if ($retorno_thead <> $categoria){
+		                                    $retorno_thead = $categoria;
 		                                    $retorno .= '<thead>
 		                                                    <tr>
 		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
-		                                                        '.$apres_oral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                        '.$categoria.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$categoria_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5">
-																	<input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')">
+																	<input class="form-check-input collapseSistema" id="collapseSistema'.$categoria_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$categoria_num.')">
 																	PRODUTO 
 																</th>
-		                                                        <th class="entric_group_destaque5">DENSIDADE CALÓRICA</th>
-		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 2) ? '(und.)' : '(porção)').'</th>
-		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
-		                                                        <th class="entric_group_destaque5">CALORIA/dia</th>
-		                                                        <th class="entric_group_destaque5">PROTEÍNA/dia</th>
+		                                                        <th class="entric_group_destaque5">MEDIDA</th>
+		                                                        <th class="entric_group_destaque5">PORÇÃO(g ou ml)</th>
+		                                                        <th class="entric_group_destaque5">DOSE TOTAL/DIA</th>
+		                                                        <th class="entric_group_destaque5">PORÇÕES/DIA</th>
 		                                                    </tr>
 		                                                </thead>
-		                                                <tbody id="tbody'.$apres_oral_num.'">';
+		                                                <tbody id="tbody'.$categoria_num.'">';
 		                                }
 
 		                                if (trim($produtos[$i]['kcal'])<>"") $_kcal = str_replace(",",".", $produtos[$i]['kcal']); else $_kcal = 1;
@@ -4023,7 +4040,6 @@ $app->group("", function () use ($app) {
 															<td>'.$medida_dc[$m].'</td>
 															<td>'.$volume_und.'</td>
 															<td>'.$volume_dia. ' mL'.'</td>
-															<td>'.$caloria_dia.'</td>
 															<td>'.$proteina_dia.'</td>
 														</tr>';
 											$titulo = "";
