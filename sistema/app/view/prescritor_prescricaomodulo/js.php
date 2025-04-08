@@ -1854,7 +1854,7 @@ $(function(){
 
 
 
-    $("input[name='valor_porcao']").on('blur', function() {
+    $("input[name='valor_porcao']").on('change', function() {
         id = $(this).data("id");
         console.log(id);
 
