@@ -3765,7 +3765,7 @@ $app->group("", function () use ($app) {
 															categoria JSON PATH '$'
 														)
 													) AS jt",
-		                                            "p.id, p.nome, p.fabricante, p.apres_enteral, p.kcal, p.cho, p.ptn, p.lip, p.fibras, p.medida_dc, p.medida_g, p.medida, p.unidmedida, p.volume, p.apresentacao, p.final, p.apres_oral, p.cat_modulo, JSON_UNQUOTE(JSON_EXTRACT(categoria, '$')) AS categoria",
+		                                            "p.id, p.nome, p.fabricante, p.apres_enteral, p.kcal, p.cho, p.ptn, p.lip, p.fibras, p.medida_dc, p.unidade, p.medida_g, p.medida, p.unidmedida, p.volume, p.apresentacao, p.final, p.apres_oral, p.cat_modulo, JSON_UNQUOTE(JSON_EXTRACT(categoria, '$')) AS categoria",
 		                                            $query." ORDER BY categoria,
 															CASE 
 																WHEN p.fabricante = 'PRODIET' THEN 1
@@ -3806,7 +3806,6 @@ $app->group("", function () use ($app) {
 		                        if (count($volume_produto)>0){
 
 		                            $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
-		                            $_nome = "";  // retirar depois
 									$_medida_dc = 1;
 		                            for ($j = 0; $j < count($volume_produto); $j++){
 		                                $_volume = str_replace(" ","", trim($volume_produto[$j]));
@@ -3871,6 +3870,7 @@ $app->group("", function () use ($app) {
 		                    $medida_dc = 0;
 		                    if ($produtos[$i]['medida_dc'] <> ""){
 		                        $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
+		                        $medida_g = json_decode($produtos[$i]['medida_g'], true);
 		                        $medida = json_decode($produtos[$i]['medida'], true);
 		                        $final = json_decode($produtos[$i]['final'], true);
 		                        $volume = json_decode($produtos[$i]['volume'], true);
@@ -3878,7 +3878,7 @@ $app->group("", function () use ($app) {
 		                        $grama = json_decode($produtos[$i]['medida_g'], true);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
-		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome']."  ".$_nome.'</td>';
+		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].'</td>';
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
@@ -3927,123 +3927,40 @@ $app->group("", function () use ($app) {
 		                                                        '.$categoria.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$categoria_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
-		                                                        <th class="entric_group_destaque5">
+		                                                        <th rowspan="2" class="entric_group_destaque5">
 																	<input class="form-check-input collapseSistema" id="collapseSistema'.$categoria_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$categoria_num.')">
 																	PRODUTO 
 																</th>
-		                                                        <th class="entric_group_destaque5">MEDIDA</th>
-		                                                        <th class="entric_group_destaque5">PORÇÃO(g ou ml)</th>
-		                                                        <th class="entric_group_destaque5">DOSE TOTAL/DIA</th>
-		                                                        <th class="entric_group_destaque5">PORÇÕES/DIA</th>
+		                                                        <th colspan="2" class="entric_group_destaque5">DOSAGEM</th>
+		                                                        <th rowspan="2" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
+		                                                        <th rowspan="2" class="entric_group_destaque5">PORÇÕES/DIA</th> 
 		                                                    </tr>
+															<tr>
+																<th>
+																	MEDIDA
+																</th>
+																<th >
+																	PORÇÃO(g ou ml)
+																</th>
+															</tr>
 		                                                </thead>
 		                                                <tbody id="tbody'.$categoria_num.'">';
-		                                }
+		                                }										
 
-		                                if (trim($produtos[$i]['kcal'])<>"") $_kcal = str_replace(",",".", $produtos[$i]['kcal']); else $_kcal = 1;
-		                                if (trim($produtos[$i]['ptn'])<>"") $_ptn = str_replace(",",".", $produtos[$i]['ptn']); else $_ptn = 1;
-		                                if (trim($produtos[$i]['fibras'])<>"") $_fibras = str_replace(",",".", $produtos[$i]['fibras']); else $_fibras = 1;
-		    
-
-										//verificar caracteristicas tnevo
-										$valor_ptn = $db->select_to_array("produtos_composicao",
-											"valor",
-											'WHERE descricao = "Proteínas" and id_produto = '.$produtos[$i]['id'], 
-											null);
-
-										if(!isset($valor_ptn[0]['valor'])){
-											$valor_ptn[0]['valor'] = 0;
-										}else{
-											if($valor_ptn[0]['valor'] == null){
-												$valor_ptn[0]['valor'] = 0;
-											}
-										}
-
-										$verificar_carac = true;
-										if(isset($dados['carac_oral'])){
-											$array_carac = $dados['carac_oral'];
-
-											
-											if(in_array('Hipocalórico', $array_carac) && $_medida_dc <= 1.2) {
-												$verificar_carac = true;
-											} elseif (in_array('Hipercalórico', $array_carac) && $_medida_dc > 1.2) {
-												$verificar_carac = true;
-											} else {
-												$verificar_carac = false;
-											}
-											
-											if ($verificar_carac && isset($valor_ptn[0]['valor'])) {
-												$valor_ptn_valor = floatval($valor_ptn[0]['valor']);
-											
-												if (in_array('Hipoproteico', $array_carac) && $valor_ptn_valor < 10) {
-													$verificar_carac = true;
-												} elseif (in_array('Normoproteico', $array_carac) && $valor_ptn_valor >= 10 && $valor_ptn_valor < 20) {
-													$verificar_carac = true;
-												} elseif (in_array('Hiperproteico', $array_carac) && $valor_ptn_valor >= 20) {
-													$verificar_carac = true;
-												} else {
-													$verificar_carac = false;
-												}
-											} else {
-												$verificar_carac = false;
-											}
-											
-										}
-
-										
-
-										if($verificar_carac){
-											if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
-												$volume_und = $volume[$m] . ' ' . $unidmedida;
-												$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
-												$caloria_dia = ($volume_dia * $kcal) / 100;
-												$proteina_dia = ($volume_dia * $ptn) / 100;
-												$sistema = 'Líquido/Creme';
-											}else if($produtos[$i]['apres_oral'] == '["Pó"]'){
-												$volume_und = str_replace('mL', '', $final[$m]) . ' mL';
-												$volume_dia = intval($final[$m]) * intval($fracionamento_dia);
-												$valor_energetico = $db->select_to_array("produtos_info_nutri",
-												"valor",
-												'WHERE descricao = "Valor Energético" and id_produto = '.$produtos[$i]['id'], 
-												null);
-												if(!isset($valor_energetico[0]['valor'])){
-													$valor_energetico[0]['valor'] = 0;
-												}else{
-													if($valor_energetico[0]['valor'] == null){
-														$valor_energetico[0]['valor'] = 0;
-													}
-												}
-
-												$valor_ptn_100ml = $db->select_to_array("produtos_info_nutri",
-												"valor",
-												'WHERE descricao = "Proteína (g)" and id_produto = '.$produtos[$i]['id'], 
-												null);
-												if(!isset($valor_ptn_100ml[0]['valor'])){
-													$valor_ptn_100ml[0]['valor'] = 0;
-												}else{
-													if($valor_ptn_100ml[0]['valor'] == null){
-														$valor_ptn_100ml[0]['valor'] = 0;
-													}
-												}
-												
-												$caloria_dia = ($volume_dia *  floatval(str_replace(',', '.', $valor_energetico[0]['valor']))) / 100;
-												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn_100ml[0]['valor']))) / 100;
-												$sistema = 'Pó';
-											}
-											$retorno .= '<tr>
-															<td>
-																<div class="form-check col-sm-12">
-																	<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida_dc[$m].']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.'___'.$sistema.'___'.$calorias_dia.'___'.$proteina_dia.'___'.(isset($medida[$m])?$medida[$m]:0).'___'.(isset($final[$m])?$final[$m]:0).'___'.(isset($grama[$m])?$grama[$m]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
-																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-label check-green">'.$produtos[$i]['nome']."  ".$_nome.'</label>
-																</div>
-		                                                	</td>
-															<td>'.$medida_dc[$m].'</td>
-															<td>'.$volume_und.'</td>
-															<td>'.$volume_dia. ' mL'.'</td>
-															<td>'.$proteina_dia.'</td>
-														</tr>';
-											$titulo = "";
-										}
+										$medida = $produtos[$i]['medida']. " " . $produtos[$i]['unidade'];
+										$retorno .= '<tr>
+														<td>
+															<div class="form-check col-sm-12">
+																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$produtos[$i]['medida_g'].'___'.$categoria.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$produtos[$i]['medida_g'].'___'.$categoria.'">
+																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$produtos[$i]['medida_g'].'___'.$categoria.']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
+															</div>
+														</td>
+														<td>'.$medida.'</td>
+														<td>'.$produtos[$i]['medida_g'].'</td>
+														<td>'.$produtos[$i]['medida_g'].'</td>
+														<td></td>
+													</tr>';
+										$titulo = "";
 		                            }
 		                            $cont_array = $cont_array+1;
 		                        }
