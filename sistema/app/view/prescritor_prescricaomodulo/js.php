@@ -2221,7 +2221,8 @@ $(function(){
     $("input[name='cat_modulo[]']").on("click", function(){
         if($(this).is(":checked")){
             categoria = $(this).attr('id');
-            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+categoria+'</p></div></div><div class="row mt-4"><div class="col-sm-6">Por quanto tempo:</div><div class="col-sm-6"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div class="row mt-4"><div class="col-sm-8">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" required="required" name="horario_1" id="horario_1" class="form-control hora"></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" required="required" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
+            nome = $(this).val();
+            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-6">Por quanto tempo:</div><div class="col-sm-6"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div class="row mt-4"><div class="col-sm-8">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" required="required" name="horario_1" id="horario_1" class="form-control hora"></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" required="required" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
             $("#div_modal_fracionamento").append(html);
         }else{
             categoria = $(this).attr('id');
