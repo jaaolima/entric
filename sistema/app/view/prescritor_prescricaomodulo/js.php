@@ -1039,22 +1039,17 @@ function salvar_calculo_fracionamento(_this){
 function check_dieta(_this){
     const $tdPai = $(_this).parent().parent();
     const $irmaos = $tdPai.siblings();
-    console.log($irmaos);
     const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
-    console.log($porcaoDias);
-
 
     inputPorcaoDias = $porcaoDias.children("input");
-    console.log(inputPorcaoDias);
-    if(inputPorcaoDias.val() == ''){
-        console.log("checou1");
-        inputPorcaoDias.val("1")
-    }
 
     if($(_this).is(":checked")){
-        inputPorcaoDias.attr("required");
-        console.log("checou");
+        if(inputPorcaoDias.val() == ''){
+            inputPorcaoDias.val("1");
+        }
+        inputPorcaoDias.attr("required", true);
     }else{
+        inputPorcaoDias.val("");
         inputPorcaoDias.removeAttr("required");
     }
     if($("#tipo_login").val() == 'ibranutro'){
