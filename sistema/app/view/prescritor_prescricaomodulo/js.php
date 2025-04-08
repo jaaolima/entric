@@ -1047,7 +1047,7 @@ function check_dieta(_this){
 
     inputPorcaoDias = $porcaoDias.children("input");
     console.log(inputPorcaoDias);
-    if(inputPorcaoDias == ''){
+    if(inputPorcaoDias.val() == ''){
         inputPorcaoDias.val("1")
     }
     console.log("checou");
