@@ -2201,6 +2201,7 @@ $(function(){
     });
 
     $('input[name="valor_porcao"]').on('input', function() {
+        console.log("chegou");
         // Obtém o <td> pai do input
         const $tdPai = $(this).parent();
 
