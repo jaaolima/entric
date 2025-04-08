@@ -1853,28 +1853,6 @@ $(function(){
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
-
-    $("input[name='valor_porcao']").on('change', function() {
-        id = $(this).data("id");
-        console.log(id);
-
-        porcaoElement = $("#porcao_"+id);
-        console.log(porcaoElement);
-
-        totalDoseElement = $("#total_dose_"+id);
-        console.log(totalDoseElement);
-
-        const valorPorcao = parseFloat($(this).val()) || 1;
-
-        const porcao = parseFloat(porcaoElement.text()) || 0;
-
-        const totalDose = porcao * valorPorcao;
-        console.log(totalDose);
-
-        totalDoseElement.text(totalDose.toFixed(2));
-    });
-
-
     // necessidades nutricionais  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     $(".plusminus_ptn").inputSpinner({
         /*template:   '<div class="input-group ${groupClass}">' +
@@ -2218,6 +2196,26 @@ $(function(){
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', false);
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', false);
         }
+    });
+
+    $("input[name='valor_porcao']").on('click', function() {
+        id = $(this).data("id");
+        console.log(id);
+
+        porcaoElement = $("#porcao_"+id);
+        console.log(porcaoElement);
+
+        totalDoseElement = $("#total_dose_"+id);
+        console.log(totalDoseElement);
+
+        const valorPorcao = parseFloat($(this).val()) || 1;
+
+        const porcao = parseFloat(porcaoElement.text()) || 0;
+
+        const totalDose = porcao * valorPorcao;
+        console.log(totalDose);
+
+        totalDoseElement.text(totalDose.toFixed(2));
     });
 
     $(".filtro_1").on("click", function(){
