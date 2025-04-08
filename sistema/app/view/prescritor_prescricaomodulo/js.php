@@ -891,11 +891,13 @@ function busca_produto_relatorio(m_calorica, m_proteica){
                     $('#dietas_dc').append(dados);
 
                     fc_collapsecheckbox(1);
-                    $("#collapseSistema1").prop( "checked", true );
                     fc_collapsecheckbox(2);
-                    $("#collapseSistema2").prop( "checked", true );
                     fc_collapsecheckbox(3);
-                    $("#collapseSistema3").prop( "checked", true );
+                    fc_collapsecheckbox(4);
+                    fc_collapsecheckbox(5);
+                    fc_collapsecheckbox(6);
+                    fc_collapsecheckbox(7);
+                    fc_collapsecheckbox(8);
                 }
             }
         });
@@ -1123,13 +1125,22 @@ function fc_collapsecheckbox( $apres_enteral_num){
             $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
                 if(qtd < 4){
                     $(this).prop( "checked", true);
-                    let diluicao_id = $(this).attr('rel');
+                    const $tdPai = $(this).parent().parent();
+                    const $irmaos = $tdPai.siblings();
+                    const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+                    inputPorcaoDias = $porcaoDias.children("input");
+                    if(inputPorcaoDias.val() == ''){
+                        inputPorcaoDias.val("1");
+                    }
+                    const $porcaoElement = $irmaos.filter('[name="porcao"]');
+                    const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
 
-                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
-                        $(this).prop( "checked", true);
-                        $(this).attr( "disabled", false);
-                        $(this).removeClass( "check_apagado");
-                    });
+                    const valorPorcao = parseFloat(inputPorcaoDias.val()) || 1; 
+                    const porcao = parseFloat($porcaoElement.text()) || 0; 
+                    const totalDose = porcao * valorPorcao;
+
+                    $totalDoseElement.text(totalDose);
+                    inputPorcaoDias.attr("required", true);
                 }else{
                     $(this).attr( "disabled", true);
                     $(this).addClass( "check_apagado");
@@ -1141,13 +1152,22 @@ function fc_collapsecheckbox( $apres_enteral_num){
             $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
                 if(qtd < 6){
                     $(this).prop( "checked", true);
-                    let diluicao_id = $(this).attr('rel');
+                    const $tdPai = $(this).parent().parent();
+                    const $irmaos = $tdPai.siblings();
+                    const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+                    inputPorcaoDias = $porcaoDias.children("input");
+                    if(inputPorcaoDias.val() == ''){
+                        inputPorcaoDias.val("1");
+                    }
+                    const $porcaoElement = $irmaos.filter('[name="porcao"]');
+                    const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
 
-                    $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
-                        $(this).prop( "checked", true);
-                        $(this).attr( "disabled", false);
-                        $(this).removeClass( "check_apagado");
-                    });
+                    const valorPorcao = parseFloat(inputPorcaoDias.val()) || 1; 
+                    const porcao = parseFloat($porcaoElement.text()) || 0; 
+                    const totalDose = porcao * valorPorcao;
+
+                    $totalDoseElement.text(totalDose);
+                    inputPorcaoDias.attr("required", true);
                 }else{
                     $(this).attr( "disabled", true);
                     $(this).addClass( "check_apagado");
