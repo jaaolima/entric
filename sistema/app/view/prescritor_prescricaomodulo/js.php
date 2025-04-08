@@ -2062,31 +2062,32 @@ $(function(){
                 });
             return false;
         }else{
-            var _this = $(this);
-            var _id_paciente = $("#id_paciente").val();
-            var _id_relatorio = $("#id_relatorio").val();
-            var formSerialize = $("#modal_form_selecao").serialize();
-            b_lo(_this);
+            $('#modal_fracionamento').modal('toggle'); 
+            // var _this = $(this);
+            // var _id_paciente = $("#id_paciente").val();
+            // var _id_relatorio = $("#id_relatorio").val();
+            // var formSerialize = $("#modal_form_selecao").serialize();
+            // b_lo(_this);
 
-            $.ajax({
-                type: "POST",
-                url: "ajax/selecao_salvar_suplemento",
-                data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-                cache: false,
-                dataType: 'json',
-                success: function( data ){
-                    b_res(_this);
+            // $.ajax({
+            //     type: "POST",
+            //     url: "ajax/selecao_salvar_suplemento",
+            //     data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+            //     cache: false,
+            //     dataType: 'json',
+            //     success: function( data ){
+            //         b_res(_this);
 
-                    fc_salvar('calculo', false);
-                    $('#modal_selecao').modal('toggle');
-                    $('.tabcalculo a').removeClass('active');
-                    $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+            //         fc_salvar('calculo', false);
+            //         $('#modal_selecao').modal('toggle');
+            //         $('.tabcalculo a').removeClass('active');
+            //         $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
                 
-                    $(".tabdistribuidores").removeClass('disabledTab');
-                    $('.tabdistribuidores a').addClass('active');
-                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
-                }
-            });
+            //         $(".tabdistribuidores").removeClass('disabledTab');
+            //         $('.tabdistribuidores a').addClass('active');
+            //         $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+            //     }
+            // });
         }
 
     });

@@ -3925,7 +3925,6 @@ $app->group("", function () use ($app) {
 		                                                    </tr>
 		                                                    <tr>
 		                                                        <th rowspan="2" class="entric_group_destaque5">
-																	<input class="form-check-input collapseSistema" id="collapseSistema'.$categoria_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$categoria_num.')">
 																	PRODUTO 
 																</th>
 		                                                        <th colspan="2" style="text-align:center;" >DOSAGEM</th>
