@@ -1275,10 +1275,10 @@ function fc_salvar(tab, notify){
     });
 }
 
-function fc_porcao_dia(this){
+function fc_porcao_dia(input){
     console.log("chegou");
     // Obtém o <td> pai do input
-    const $tdPai = $(this).parent();
+    const $tdPai = $(input).parent();
 
     // Obtém os irmãos do <td> pai (outras células da mesma linha)
     const $irmaos = $tdPai.siblings();
@@ -1288,7 +1288,7 @@ function fc_porcao_dia(this){
     const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
 
     // Obtém os valores
-    const valorPorcao = parseFloat($(this).val()) || 1; // Valor do input, default 1
+    const valorPorcao = parseFloat($(input).val()) || 1; // Valor do input, default 1
     const porcao = parseFloat($porcaoElement.text()) || 0; // Valor da célula porcao, default 0
 
     // Calcula o total_dose (porcao * valor_porcao)
