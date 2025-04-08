@@ -3893,26 +3893,26 @@ $app->group("", function () use ($app) {
 		                                if ($categoria == 'Proteína'){
 											$categoria = 'Proteína'; 
 											$categoria_num = '1';
-		                                }else if ($categoria == 'Colágeno ou Aminoácidos"'){
-											$categoria = 'Colágeno ou Aminoácidos"';
+		                                }else if ($categoria == 'Colágeno ou Aminoácidos'){
+											$categoria = 'Colágeno ou Aminoácidos';
 											$categoria_num = '2';
-		                                }else if ($categoria == 'Carboidrato"'){
-											$categoria = 'Carboidrato"';
+		                                }else if ($categoria == 'Carboidrato'){
+											$categoria = 'Carboidrato';
 											$categoria_num = '3';
-		                                }else if ($categoria == 'Lipídeo"'){
-											$categoria = 'Lipídeo"';
+		                                }else if ($categoria == 'Lipídeo'){
+											$categoria = 'Lipídeo';
 											$categoria_num = '4';
-		                                }else if ($categoria == 'Fibras"'){
-											$categoria = 'Fibras"';
+		                                }else if ($categoria == 'Fibras'){
+											$categoria = 'Fibras';
 											$categoria_num = '5';
-		                                }else if ($categoria == 'Probióticos"'){
-											$categoria = 'Probióticos"';
+		                                }else if ($categoria == 'Probióticos'){
+											$categoria = 'Probióticos';
 											$categoria_num = '6';
-		                                }else if ($categoria == 'Simbióticos"'){
-											$categoria = 'Simbióticos"';
+		                                }else if ($categoria == 'Simbióticos'){
+											$categoria = 'Simbióticos';
 											$categoria_num = '7';
-		                                }else if ($categoria == 'Espessante"'){
-											$categoria = 'Espessante"';
+		                                }else if ($categoria == 'Espessante'){
+											$categoria = 'Espessante';
 											$categoria_num = '8';
 		                                }
 
