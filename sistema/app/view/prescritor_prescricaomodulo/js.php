@@ -1037,7 +1037,7 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function check_dieta(_this){
-    const $tdPai = $(input).parent();
+    const $tdPai = $(_this).parent();
 
     // Obtém os irmãos do <td> pai (outras células da mesma linha)
     const $irmaos = $tdPai.siblings();
