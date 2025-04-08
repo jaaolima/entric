@@ -3954,7 +3954,7 @@ $app->group("", function () use ($app) {
 														<td>'.$medida.'</td>
 														<td name="porcao">'.$medida_g[$m].'</td>
 														<td name="total_dose">'.$medida_g[$m].'</td>
-														<td><input value="1" min="1" style="width:40px;text-align:center;" class="valor-porcao" type="number"></td>
+														<td><input value="1" min="1" style="width:40px;text-align:center;" name="valor_porcao" type="number"></td>
 													</tr>';
 										$titulo = "";
 		                            }

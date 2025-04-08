@@ -2062,6 +2062,7 @@ $(function(){
                 });
             return false;
         }else{
+            $("#modal_selecao").modal("hide");
             $('#modal_fracionamento').modal('toggle'); 
             // var _this = $(this);
             // var _id_paciente = $("#id_paciente").val();
@@ -2199,7 +2200,7 @@ $(function(){
         }
     });
 
-    $('.valor-porcao').on('input', function() {
+    $('input[name="valor_porcao"]').on('input', function() {
         // Obtém o <td> pai do input
         const $tdPai = $(this).parent();
 
