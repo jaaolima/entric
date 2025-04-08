@@ -1053,7 +1053,7 @@ function check_dieta(_this){
         const valorPorcao = parseFloat(inputPorcaoDias.val()) || 1; 
         const porcao = parseFloat($porcaoElement.text()) || 0; 
         const totalDose = porcao * valorPorcao;
-        
+
         $totalDoseElement.text(totalDose);
         inputPorcaoDias.attr("required", true);
     }else{
@@ -2114,7 +2114,7 @@ $(function(){
 
             $.ajax({
                 type: "POST",
-                url: "ajax/selecao_salvar_suplemento",
+                url: "ajax/selecao_salvar_modulo",
                 data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
                 cache: false,
                 dataType: 'json',
