@@ -2198,24 +2198,26 @@ $(function(){
         }
     });
 
-    $("input[name='valor_porcao']").on('click', function() {
-        id = $(this).data("id");
-        console.log(id);
+    $('.valor-porcao').on('input', function() {
+        // Obtém o <td> pai do input
+        const $tdPai = $(this).parent();
 
-        porcaoElement = $("#porcao_"+id);
-        console.log(porcaoElement);
+        // Obtém os irmãos do <td> pai (outras células da mesma linha)
+        const $irmaos = $tdPai.siblings();
 
-        totalDoseElement = $("#total_dose_"+id);
-        console.log(totalDoseElement);
+        // Encontra a célula 'porcao' e 'total_dose' pelos atributos 'name'
+        const $porcaoElement = $irmaos.filter('[name="porcao"]');
+        const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
 
-        const valorPorcao = parseFloat($(this).val()) || 1;
+        // Obtém os valores
+        const valorPorcao = parseFloat($(this).val()) || 1; // Valor do input, default 1
+        const porcao = parseFloat($porcaoElement.text()) || 0; // Valor da célula porcao, default 0
 
-        const porcao = parseFloat(porcaoElement.text()) || 0;
-
+        // Calcula o total_dose (porcao * valor_porcao)
         const totalDose = porcao * valorPorcao;
-        console.log(totalDose);
 
-        totalDoseElement.text(totalDose.toFixed(2));
+        // Atualiza o valor na célula total_dose
+        $totalDoseElement.text(totalDose.toFixed(2)); // Usa toFixed(2) para 2 casas decimais
     });
 
     $(".filtro_1").on("click", function(){
