@@ -3727,68 +3727,50 @@ $app->group("", function () use ($app) {
 		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ $margem_proteica = explode(",", $dados['margem_proteica']); $margem_proteica[0] = strtok($margem_proteica[0],' '); $margem_proteica[1] = strtok($margem_proteica[1],' '); }else{ $margem_proteica[0] = 0; $margem_proteica[1] = 0;}
 
 		        $query = '';
-		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
-		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
+				if(isset($dados['cat_modulo'])){
+					$array_carac = $dados['cat_modulo'];
 
-				if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
-				if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
-				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
-					$query.= ' AND (';
-						$_or = '';
-						if ($dados['calculo_apres_liquidocreme'] <> ""){
-							$query.= '(apres_oral LIKE "%Líquido / Creme%")';
-							$_or = ' OR ';
-						}
-						if ($dados['calculo_apres_po'] <> ""){
-							$query.= $_or.' (apres_oral LIKE "%Pó%")';
-							$_or = ' OR ';
-						}
-					$query.= ' )';
-				}
-				if(isset($dados['carac_oral'])){
-					$array_carac = $dados['carac_oral'];
+					if(in_array('Proteína', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Proteína%")';
+					}
+					if(in_array('Colágeno ou Aminoácidos', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Colágeno ou Aminoácidos%")';
+					}
+					if(in_array('Carboidrato', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Carboidrato%")';
+					}
+					if(in_array('Lipídeo', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Lipídeo%")';
+					}
+					if(in_array('Fibras', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Fibras%")';
+					}
+					if(in_array('Probióticos', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Probióticos%")';
+					}
+					if(in_array('Simbióticos', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Simbióticos%")';
+					}
+					if(in_array('Espessante', $array_carac)){
+						$query.= ' AND (cat_modulo LIKE "%Espessante%")';
+					}
 
-					if(in_array('Sem Sacarose', $array_carac)){
-						$query.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
-					}
-					if(in_array('Sem Lactose', $array_carac)){
-						$query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
-					}
-					if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac)){
-						$query.= ' AND (';
-							$_or = '';
-							if (in_array('Com Fibras', $array_carac)){
-								$query.= '(carac_oral LIKE "%Com Fibras%")';
-								$_or = ' OR ';
-							}
-							if (in_array('Sem Fibras', $array_carac)){
-								$query.= $_or.' (carac_oral LIKE "%Sem Fibras%")';
-								$_or = ' OR ';
-							}
-						$query.= ' )';
-					}
-					if(in_array('100% Proteína Vegetal', $array_carac)){
-						$query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
-					}
-					if(in_array('Cicatrização', $array_carac)){
-						$query.= ' AND (carac_oral LIKE "%Cicatrização%")';
-					}
-					if(in_array('Com Ômega 3', $array_carac)){
-						$query.= ' AND (carac_oral LIKE "%Com Ômega 3%")';
-					}
-					if(in_array('Imunonutrição cirúrgica', $array_carac)){
-						$query.= ' AND (carac_oral LIKE "%Imunonutrição cirúrgica%")';
-					}
 				}
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
-		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral",
-		                                            $query." ORDER BY apres_oral, apres_enteral,
+		        $produtos = $db->select_to_array("produtos p
+													CROSS JOIN JSON_TABLE(
+														p.cat_modulo,
+														'$[*]' COLUMNS (
+															categoria JSON PATH '$'
+														)
+													) AS jt",
+		                                            "p.id, p.nome, p.fabricante, p.apres_enteral, p.kcal, p.cho, p.ptn, p.lip, p.fibras, p.medida_dc, p.medida_g, p.medida, p.unidmedida, p.volume, p.apresentacao, p.final, p.apres_oral, p.cat_modulo, JSON_UNQUOTE(JSON_EXTRACT(categoria, '$')) AS categoria",
+		                                            $query." ORDER BY categoria,
 															CASE 
-																WHEN fabricante = 'PRODIET' THEN 1
-																WHEN fabricante = 'DANONE' THEN 2
-																WHEN fabricante = ' Danone e Nutrimed' THEN 3
+																WHEN p.fabricante = 'PRODIET' THEN 1
+																WHEN p.fabricante = 'DANONE' THEN 2
+																WHEN p.fabricante = ' Danone e Nutrimed' THEN 3
 																ELSE 4
 															END", 
 		                                            null);
