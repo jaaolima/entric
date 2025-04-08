@@ -3927,19 +3927,19 @@ $app->group("", function () use ($app) {
 		                                                        '.$categoria.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$categoria_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
-		                                                        <th rowspan="2" class="entric_group_destaque5">
+		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">
 																	<input class="form-check-input collapseSistema" id="collapseSistema'.$categoria_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$categoria_num.')">
 																	PRODUTO 
 																</th>
-		                                                        <th colspan="2" class="entric_group_destaque5">DOSAGEM</th>
-		                                                        <th rowspan="2" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
-		                                                        <th rowspan="2" class="entric_group_destaque5">PORÇÕES/DIA</th> 
+		                                                        <th colspan="2" style="text-align:center;" class="entric_group_destaque5">DOSAGEM</th>
+		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
+		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">PORÇÕES/DIA</th> 
 		                                                    </tr>
 															<tr>
-																<th>
+																<th style="text-align:center;" class="entric_group_destaque5">
 																	MEDIDA
 																</th>
-																<th >
+																<th style="text-align:center;" class="entric_group_destaque5">
 																	PORÇÃO(g ou ml)
 																</th>
 															</tr>
@@ -3947,17 +3947,17 @@ $app->group("", function () use ($app) {
 		                                                <tbody id="tbody'.$categoria_num.'">';
 		                                }										
 
-										$medida = $produtos[$i]['medida']. " " . $produtos[$i]['unidade'];
+										$medida = $produtos[$m]['medida']. " " . $produtos[$m]['unidade'];
 										$retorno .= '<tr>
 														<td>
 															<div class="form-check col-sm-12">
-																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$produtos[$i]['medida_g'].'___'.$categoria.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$produtos[$i]['medida_g'].'___'.$categoria.'">
-																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$produtos[$i]['medida_g'].'___'.$categoria.']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
+																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$m]['id'].'___'.$produtos[$m]['nome'].'___'.$medida.'___'.$produtos[$m]['medida_g'].'___'.$categoria.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$m]['id'].'" name="produto_dc['.$produtos[$m]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$m]['id'].'___'.$produtos[$m]['nome'].'___'.$medida.'___'.$produtos[$m]['medida_g'].'___'.$categoria.'">
+																<label for="produto_dc['.$produtos[$m]['id'].'___'.$produtos[$m]['nome'].'___'.$medida.'___'.$produtos[$m]['medida_g'].'___'.$categoria.']" class="form-check-label check-green">'.$produtos[$m]['nome'].'</label>
 															</div>
 														</td>
 														<td>'.$medida.'</td>
-														<td>'.$produtos[$i]['medida_g'].'</td>
-														<td>'.$produtos[$i]['medida_g'].'</td>
+														<td>'.$produtos[$m]['medida_g'].'</td>
+														<td>'.$produtos[$m]['medida_g'].'</td>
 														<td></td>
 													</tr>';
 										$titulo = "";
