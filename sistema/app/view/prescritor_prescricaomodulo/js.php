@@ -2252,12 +2252,20 @@ $(function(){
         if($(this).is(":checked")){
             categoria = $(this).attr('id');
             nome = $(this).val();
-            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-6">Por quanto tempo:</div><div class="col-sm-6"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div class="row mt-4"><div class="col-sm-6">Horário(s) (opcional)</div><div class="col-sm-2"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><div class="col-sm-2"><button type="button" class="btn btn-secondary ml-2" id="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
+            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-6">Por quanto tempo:</div><div class="col-sm-6"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
             $("#div_modal_fracionamento").append(html);
         }else{
             categoria = $(this).attr('id');
             $("#div_"+categoria).remove();
         }
+    })
+
+    $("input[name='novo_horario']").on("click", function(){
+        console.log("chegou");
+        divPai = $(this).parent().parent();
+
+        divPai.append('<div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" name="retirar_horario"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
+
     })
 
     $('#calculo_fil_todos2').change(function () {
