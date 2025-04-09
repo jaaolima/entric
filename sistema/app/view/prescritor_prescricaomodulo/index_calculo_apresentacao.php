@@ -3,7 +3,7 @@
         <input id="radioAdulto" class="radio-outlined"  name="categoria" type="radio" checked="checked" value="Adulto">
         <div class="form-group col-12">
             <div class="form-check">
-                <label class="grid_label required">Categoria <span>*</span></label>
+                <label class="grid_label required">Selecione uma ou mais categorias de módulos <span>*</span></label>
             </div>
             <div class="row">
                 <div class="col-6 p-4">
