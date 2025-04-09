@@ -9345,7 +9345,7 @@ $app->group("", function () use ($app) {
 
 					$bind[':id_paciente'] = $dados['id_paciente'];
 					$bind[':data_criacao'] = date("Y-m-d H:i:s");
-		            $retorno = $db->insert("relatorios_suplemento", $bind);
+		            $retorno = $db->insert("relatorios_modulo", $bind);
 		            
 		            // if ($set_codigo){
 		            //     $paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=".$dados['id_paciente'], null);
