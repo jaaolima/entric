@@ -3733,33 +3733,34 @@ $app->group("", function () use ($app) {
 					$array_carac = $dados['cat_modulo'];
 
 					if(in_array('Proteína', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Proteína%")';
+						$query.= ' OR (cat_modulo LIKE "%Proteína%")';
 					}
 					if(in_array('Colágeno ou Aminoácidos', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Colágeno ou Aminoácidos%")';
+						$query.= ' OR (cat_modulo LIKE "%Colágeno ou Aminoácidos%")';
 					}
 					if(in_array('Carboidrato', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Carboidrato%")';
+						$query.= ' OR (cat_modulo LIKE "%Carboidrato%")';
 					}
 					if(in_array('Lipídeo', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Lipídeo%")';
+						$query.= ' OR (cat_modulo LIKE "%Lipídeo%")';
 					}
 					if(in_array('Fibras', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Fibras%")';
+						$query.= ' OR (cat_modulo LIKE "%Fibras%")';
 					}
 					if(in_array('Probióticos', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Probióticos%")';
+						$query.= ' OR (cat_modulo LIKE "%Probióticos%")';
 					}
 					if(in_array('Simbióticos', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Simbióticos%")';
+						$query.= ' OR (cat_modulo LIKE "%Simbióticos%")';
 					}
 					if(in_array('Espessante', $array_carac)){
-						$query.= ' AND (cat_modulo LIKE "%Espessante%")';
+						$query.= ' OR (cat_modulo LIKE "%Espessante%")';
 					}
+					$query = substr($query, 4);
 
 				}
 
-		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
+		        if ($query <> '') $query = 'WHERE (status=1) AND ('.$query.')';
 		        $produtos = $db->select_to_array("produtos p
 													CROSS JOIN JSON_TABLE(
 														p.cat_modulo,

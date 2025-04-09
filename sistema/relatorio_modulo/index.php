@@ -66,11 +66,11 @@ else{
 
 $url = endecrypt("decrypt", $url);
 if ($url=="") Redirect(BASE_PATH);
-$relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=:id", array(":id"=>$url));
+$relatorio = $db->select_single_to_array("relatorios_modulo", "*", "WHERE id=:id", array(":id"=>$url));
 if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
-$paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
+$paciente = $db->select_single_to_array("pacientes_modulo", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
 $paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
 $config = $db->select_single_to_array("config", "*", "WHERE id=1", null);
 
@@ -261,17 +261,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
 				</div>
 			</div>
-			<div style="display:flex;">
-				<?php if($paciente['hospital'] <> '') echo "<div style='width:50%;'><p><strong>Hospital:</strong> ".$paciente['hospital']." </p></div>"; ?>
-				<?php if($paciente['atendimento'] <> '') echo "<div style='width:50%;'><p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p></div>"; ?>
-			</div>
 			<?php } ?>
 
 			<p class="text-left subtitutlo">
-			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE SÃO OS MÓDULOS NUTRICIONAIS?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
-					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+					<p>Os módulos nutricionais são fórmulas que contêm <span style="color:#0092c5;">nutrientes específicos</span>, escolhidos de acordo com as necessidades de cada paciente. Eles têm o objetivo de complementar a alimentação, ajudando a atender às necessidades nutricionais de forma mais precisa e eficaz.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 class="titulo"style="margin:0px;">SAIBA MAIS!</h4>
@@ -282,38 +278,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
-
-		<?php 
-		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
-		?>
-			<p class="text-left subtitutlo">
-			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA</p>
-			<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?>.</p>
-			<?php 
-				if ($relatorio['fra_dieta_horario'] <> ""){
-					$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
-					$horarios = array();
-					foreach ($_horarios as $chave => $valor) {
-						$horarios[] = $valor;
-					}
-					$_horarios = "";
-					for ($i = 0; $i < count($horarios); $i++) {
-						if($horarios[$i] != ''){
-							if($i == count($horarios) - 1){
-								$_horarios .= $horarios[$i];
-							}else{
-								$_horarios .= $horarios[$i] . ', ';
-							}
-						}
-					}
-					if($_horarios != ''){
-						echo "<p style='margin:0px;'>Horários sugeridos: ".$_horarios.".</p>";
-					}
-				} 
-			?>	
-		<?php } ?>	
-
-
 				
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
