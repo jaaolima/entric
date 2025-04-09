@@ -995,41 +995,74 @@ function rangeProteina(proteina){
 }
 
 function salvar_calculo_fracionamento(_this){
-    if ($("#fracionamento_dia").val() != '') {
-        var _id_paciente = $("#id_paciente").val();
-        var _id_relatorio = $("#id_relatorio").val();
-        //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
-        var formSerialize = $("#modal_form_fracionamento").serialize();
-        if (_this != null)  b_lo(_this);
+    var _id_paciente = $("#id_paciente").val();
+    var _id_relatorio = $("#id_relatorio").val();
+    //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
+    var formSerialize = $("#modal_form_fracionamento").serialize();
+    if (_this != null)  b_lo(_this);
 
-        $.ajax({
-            type: "POST",
-            url: "ajax/fracionamento_salvar_modulo",
-            data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-            cache: false,
-            dataType: 'json',
-            success: function( data ){
-                $('#modal_fracionamento').modal('toggle');
-                $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
-                    $('.tabcalculo a').removeClass('active');
-                    $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
-                
-                    $(".tabdistribuidores").removeClass('disabledTab');
-                    $('.tabdistribuidores a').addClass('active');
-                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
-                });
+    let dados = {};
+
+    // Percorre cada categoria (div com id começando com "div_")
+    $("#div_modal_fracionamento > div[id^='div_']").each(function() {
+        let categoriaNome = $(this).attr("id").replace("div_", ""); // Ex.: "proteina", "aminoacidos"
+        let quantidadeTempo = $(this).find("input[name='qto_tempo']").val() || "";
+        let instrucoes = $(this).find("input[name='instrucoes_uso']").val() || "";
+
+        // Coleta os horários
+        let horarios = [];
+        $(this).find("input[name^='horario_']").each(function() {
+            let horarioValor = $(this).val() || "";
+            if (horarioValor !== "") { // Opcional: só adiciona se não estiver vazio
+                horarios.push(horarioValor);
             }
         });
-    }
-    else{
-        $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'Por favor, é necessário preencher a quantidade de vezes ao dia.'
-            });
-        return false;
-    }
+
+        // Monta o objeto da categoria
+        let categoriaDados = {
+            "quantidade_tempo": quantidadeTempo,
+            "instrucoes": instrucoes
+        };
+
+        // Adiciona os horários dinamicamente (horario1, horario2, etc.)
+        horarios.forEach((horario, index) => {
+            categoriaDados[`horario${index + 1}`] = horario;
+        });
+
+        // Adiciona a categoria ao array principal
+        dados[categoriaNome] = categoriaDados;
+    });
+
+    // Remove valores vazios (opcional)
+    Object.keys(dados).forEach(categoria => {
+        Object.keys(dados[categoria]).forEach(chave => {
+            if (dados[categoria][chave] === "") {
+                delete dados[categoria][chave];
+            }
+        });
+    });
+
+    // Exibe o array resultante (você pode enviar isso para o servidor via AJAX)
+    console.log(dados);
+
+    // $.ajax({
+    //     type: "POST",
+    //     url: "ajax/fracionamento_salvar_modulo",
+    //     data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+    //     cache: false,
+    //     dataType: 'json',
+    //     success: function( data ){
+    //         $('#modal_fracionamento').modal('toggle');
+    //         $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+    //             $('.tabcalculo a').removeClass('active');
+    //             $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+            
+    //             $(".tabdistribuidores").removeClass('disabledTab');
+    //             $('.tabdistribuidores a').addClass('active');
+    //             $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+    //         });
+    //     }
+    // });
     
 }
 
@@ -2262,7 +2295,7 @@ $(function(){
         if($(this).is(":checked")){
             categoria = $(this).attr('id');
             nome = $(this).val();
-            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-6">Por quanto tempo:</div><div class="col-sm-6"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div><div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" onclick="novoHorario(this)" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
+            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-5">Por quanto tempo:</div><div class="col-sm-7"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div><div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" onclick="novoHorario(this)" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
             $("#div_modal_fracionamento").append(html);
         }else{
             categoria = $(this).attr('id');
