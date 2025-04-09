@@ -58,6 +58,8 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_stObservacoes",
 				"/ajax_stDistribuidores",
 				"/ajax_stDistribuidoresSimplificada",
+				"/ajax_stDistribuidoresSuplemento",
+				"/ajax_stDistribuidoresModulo",
 				"/ajax_stRelatorio",
 				"/ajax_stRelatorioSimplificada",
 				"/ajax_stRelatorioSuplemento",
@@ -8850,6 +8852,51 @@ $app->group("", function () use ($app) {
 		        else{
 		            $bind = array(  ':distribuidores' => $dados['cad_distribuidores']);
 		            $retorno = $db->update("relatorios_suplemento", "WHERE id=".$dados['id_relatorio'], $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		        }
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_stDistribuidoresModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+
+		        if ($dados['id_relatorio'] == ""){
+		            $bind = array(  ':distribuidores' => $dados['cad_distribuidores']);
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
+		            $retorno = $db->insert("relatorios_modulo", $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
+		        }
+		        else{
+		            $bind = array(  ':distribuidores' => $dados['cad_distribuidores']);
+		            $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio'], $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		        }
 
