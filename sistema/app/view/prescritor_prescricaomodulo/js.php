@@ -1042,13 +1042,11 @@ function salvar_calculo_fracionamento(_this){
         });
     });
 
-    // Exibe o array resultante (você pode enviar isso para o servidor via AJAX)
-    console.log(dados);
 
     $.ajax({
         type: "POST",
         url: "ajax/fracionamento_salvar_modulo",
-        data: dados+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+        data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+ "&fracionamentoDados=" + encodeURIComponent(JSON.stringify(dados)),
         cache: false,
         dataType: 'json',
         success: function( data ){
