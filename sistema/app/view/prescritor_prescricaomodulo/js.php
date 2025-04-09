@@ -1046,7 +1046,7 @@ function salvar_calculo_fracionamento(_this){
     $.ajax({
         type: "POST",
         url: "ajax/fracionamento_salvar_modulo",
-        data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+ "&fracionamentoDados=" + encodeURIComponent(JSON.stringify(dados)),
+        data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+ "&categoria_fracionamento=" + encodeURIComponent(JSON.stringify(dados)),
         cache: false,
         dataType: 'json',
         success: function( data ){
