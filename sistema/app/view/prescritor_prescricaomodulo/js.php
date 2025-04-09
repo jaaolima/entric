@@ -1045,24 +1045,24 @@ function salvar_calculo_fracionamento(_this){
     // Exibe o array resultante (você pode enviar isso para o servidor via AJAX)
     console.log(dados);
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "ajax/fracionamento_salvar_modulo",
-    //     data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-    //     cache: false,
-    //     dataType: 'json',
-    //     success: function( data ){
-    //         $('#modal_fracionamento').modal('toggle');
-    //         $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
-    //             $('.tabcalculo a').removeClass('active');
-    //             $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+    $.ajax({
+        type: "POST",
+        url: "ajax/fracionamento_salvar_modulo",
+        data: dados+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+        cache: false,
+        dataType: 'json',
+        success: function( data ){
+            $('#modal_fracionamento').modal('toggle');
+            $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+                $('.tabcalculo a').removeClass('active');
+                $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
             
-    //             $(".tabdistribuidores").removeClass('disabledTab');
-    //             $('.tabdistribuidores a').addClass('active');
-    //             $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
-    //         });
-    //     }
-    // });
+                $(".tabdistribuidores").removeClass('disabledTab');
+                $('.tabdistribuidores a').addClass('active');
+                $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+            });
+        }
+    });
     
 }
 
@@ -1418,6 +1418,7 @@ function isNumeric(evt) {
 function novoHorario(_this){
     divPai = $(_this).parent().parent();
     divPai.append('<div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
+    $('.hora').mask("99:99");
 }
 
 function retirarHorario(_this){
