@@ -1383,15 +1383,12 @@ function isNumeric(evt) {
 }
 
 function novoHorario(_this){
-    console.log("chegou");
     divPai = $(_this).parent().parent();
-
     divPai.append('<div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
 }
 
 function retirarHorario(_this){
-    console.log("chegou");
-    divPai = $(_this).parent().parent();
+    divPai = $(_this).parent();
     divPai.remove();
 }
 
