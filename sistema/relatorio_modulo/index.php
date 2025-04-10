@@ -349,16 +349,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
 								echo "<tr height='10px'>
 										<td  >
-											<?php echo ".$produto['produto'].";?>
+											".$produto['produto']."
 										</td>
 										<td class='col_azul'>
-											<?php echo ".$produto['medida'].";?>
+											".$produto['medida']."
 										</td>
 										<td class='col_azul'>
-											<?php echo ".$produto['quantidade'].";?>
+											".$produto['quantidade']."
 										</td>
 										<td  >
-											<?php echo ".$porcao.";?>
+											".$porcao."
 										</td>
 									</tr>
 								";
