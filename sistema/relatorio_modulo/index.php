@@ -322,30 +322,34 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 						for ($i=0; $i < count($dieta_produto_dc); $i++) { 
 							$produto = explode("___", $dieta_produto_dc[$i]);
-
 							if($dieta_produto_dc[$i][4] == "Proteína"){
-								echo "<td  >
-										<?php echo ".$dieta_produto_dc[$i][1].";?>
-									</td>
-									<td class='col_azul'>
-										<?php echo ".$dieta_produto_dc[$i][2].";?>
-									</td>
-									<td class='col_azul'>
-										<?php echo ".$dieta_produto_dc[$i][3].";?>
-									</td>
-									<td  >
-										<?php echo ".$dieta_produto_dc[$i][1].";?>
-									</td>";
+
+								$porcao = floatval($dieta_produto_dc[$i][3]) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											<?php echo ".$dieta_produto_dc[$i][1].";?>
+										</td>
+										<td class='col_azul'>
+											<?php echo ".$dieta_produto_dc[$i][2].";?>
+										</td>
+										<td class='col_azul'>
+											<?php echo ".$dieta_produto_dc[$i][3].";?>
+										</td>
+										<td  >
+											<?php echo ".$porcao.";?>
+										</td>
+									</tr>
+								";
 							}
-							var_dump($dieta_porcao_dia);
 						}
 					}
 					?>
+						</table>
 					</p>
 				<?php
 					$landscape = true;
-					}
-			?>
+				}
+				?>
 		<?php
 		}
 		?>

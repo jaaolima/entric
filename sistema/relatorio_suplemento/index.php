@@ -688,7 +688,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<p>
 						<table width="100%" cellspacing="0" cellpadding="0">
 							<tbody>
-								<tr>
+								<tr> 
 									<?php 
 									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 									if ($danone){
