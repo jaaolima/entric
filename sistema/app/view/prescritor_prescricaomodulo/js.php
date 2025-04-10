@@ -995,72 +995,91 @@ function rangeProteina(proteina){
 }
 
 function salvar_calculo_fracionamento(_this){
-    var _id_paciente = $("#id_paciente").val();
-    var _id_relatorio = $("#id_relatorio").val();
-    //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
-    var formSerialize = $("#modal_form_fracionamento").serialize();
-    if (_this != null)  b_lo(_this);
 
-    let dados = {};
-
-    // Percorre cada categoria (div com id começando com "div_")
-    $("#div_modal_fracionamento > div[id^='div_']").each(function() {
-        let categoriaNome = $(this).attr("id").replace("div_", ""); // Ex.: "proteina", "aminoacidos"
-        let quantidadeTempo = $(this).find("input[name='qto_tempo']").val() || "";
-        let instrucoes = $(this).find("input[name='instrucoes_uso']").val() || "";
-
-        // Coleta os horários
-        let horarios = [];
-        $(this).find("input[name^='horario_']").each(function() {
-            let horarioValor = $(this).val() || "";
-            if (horarioValor !== "") { // Opcional: só adiciona se não estiver vazio
-                horarios.push(horarioValor);
-            }
-        });
-
-        // Monta o objeto da categoria
-        let categoriaDados = {
-            "quantidade_tempo": quantidadeTempo,
-            "instrucoes": instrucoes
-        };
-
-        // Adiciona os horários dinamicamente (horario1, horario2, etc.)
-        horarios.forEach((horario, index) => {
-            categoriaDados[`horario${index + 1}`] = horario;
-        });
-
-        // Adiciona a categoria ao array principal
-        dados[categoriaNome] = categoriaDados;
-    });
-
-    // Remove valores vazios (opcional)
-    Object.keys(dados).forEach(categoria => {
-        Object.keys(dados[categoria]).forEach(chave => {
-            if (dados[categoria][chave] === "") {
-                delete dados[categoria][chave];
-            }
-        });
-    });
-
-
-    $.ajax({
-        type: "POST",
-        url: "ajax/fracionamento_salvar_modulo",
-        data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+ "&categoria_fracionamento=" + encodeURIComponent(JSON.stringify(dados)),
-        cache: false,
-        dataType: 'json',
-        success: function( data ){
-            $('#modal_fracionamento').modal('toggle');
-            $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
-                $('.tabcalculo a').removeClass('active');
-                $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
-            
-                $(".tabdistribuidores").removeClass('disabledTab');
-                $('.tabdistribuidores a').addClass('active');
-                $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+    isValidFrac = true;
+    $('#div_modal_fracionamento input[name="qto_tempo"]').each(function(index) {
+        console.log("chegou");
+        const valor = $(this).val().trim();
+        if (!valor) {
+            isValidFrac = false;
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'Todos os campos "Por quanto tempo:" são obrigatórios.'
             });
-        }
+        } 
     });
+
+    if(isValidFrac){
+        var _id_paciente = $("#id_paciente").val();
+        var _id_relatorio = $("#id_relatorio").val();
+        //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
+        var formSerialize = $("#modal_form_fracionamento").serialize();
+        if (_this != null)  b_lo(_this);
+
+        let dados = {};
+
+        // Percorre cada categoria (div com id começando com "div_")
+        $("#div_modal_fracionamento > div[id^='div_']").each(function() {
+            let categoriaNome = $(this).attr("id").replace("div_", ""); // Ex.: "proteina", "aminoacidos"
+            let quantidadeTempo = $(this).find("input[name='qto_tempo']").val() || "";
+            let instrucoes = $(this).find("input[name='instrucoes_uso']").val() || "";
+
+            // Coleta os horários
+            let horarios = [];
+            $(this).find("input[name^='horario_']").each(function() {
+                let horarioValor = $(this).val() || "";
+                if (horarioValor !== "") { // Opcional: só adiciona se não estiver vazio
+                    horarios.push(horarioValor);
+                }
+            });
+
+            // Monta o objeto da categoria
+            let categoriaDados = {
+                "quantidade_tempo": quantidadeTempo,
+                "instrucoes": instrucoes
+            };
+
+            // Adiciona os horários dinamicamente (horario1, horario2, etc.)
+            horarios.forEach((horario, index) => {
+                categoriaDados[`horario${index + 1}`] = horario;
+            });
+
+            // Adiciona a categoria ao array principal
+            dados[categoriaNome] = categoriaDados;
+        });
+
+        // Remove valores vazios (opcional)
+        Object.keys(dados).forEach(categoria => {
+            Object.keys(dados[categoria]).forEach(chave => {
+                if (dados[categoria][chave] === "") {
+                    delete dados[categoria][chave];
+                }
+            });
+        });
+
+
+        $.ajax({
+            type: "POST",
+            url: "ajax/fracionamento_salvar_modulo",
+            data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+ "&categoria_fracionamento=" + encodeURIComponent(JSON.stringify(dados)),
+            cache: false,
+            dataType: 'json',
+            success: function( data ){
+                $('#modal_fracionamento').modal('toggle');
+                $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+                    $('.tabcalculo a').removeClass('active');
+                    $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+                
+                    $(".tabdistribuidores").removeClass('disabledTab');
+                    $('.tabdistribuidores a').addClass('active');
+                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                });
+            }
+        });
+    }
+    
     
 }
 
