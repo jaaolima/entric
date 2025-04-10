@@ -290,8 +290,35 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				// if (!$landscape){
 				// 	echo "</div>";
 				// }
+				$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+				$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+				$dadosProcessados = [];
+				foreach ($dieta_produto_dc as $chave => $valor) {
+					// Divide a string do valor em partes usando "___" como delimitador
+					$partes = explode("___", $valor);
+				
+					// Extrai as informações
+					$id = $partes[0];           // Ex.: 393
+					$produto = $partes[1];      // Ex.: Isofort Beauty
+					$medida = $partes[2];       // Ex.: 1 Colher-medida
+					$quantidade = $partes[3];   // Ex.: 25
+					$categoria = $partes[4];    // Ex.: Proteína
+				
+					// Monta um array associativo com as informações
+					array_push($dadosProcessados, [
+						'id' => $id,
+						'produto' => $produto,
+						'medida' => $medida,
+						'quantidade' => $quantidade,
+						'categoria' => $categoria
+					]);
+				}
 				if ($relatorio['dieta_produto_dc'] <> ""){
-					if($relatorio['categoria_modulo_proteina']){
+					$temProteina = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Proteína';
+					}));
+					if($temProteina){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">PROTEÍNA</strong>
@@ -316,33 +343,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									</th>
 								</tr>
 						<?php
-						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Proteína"){
@@ -368,8 +368,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</table>
 						</p>";
 					}
-
-					if($relatorio['categoria_modulo_colageno_aminoacidos']){
+					$temColageno = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Colágeno ou Aminoácidos';
+					}));
+					if($temColageno){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">COLÁGENO ou AMINOÁCIDOS</strong>
@@ -446,8 +448,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</table>
 						</p>";
 					}
-
-					if($relatorio['categoria_modulo_carboidrato']){
+					$temCarboidrato = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Carboidrato';
+					}));
+					if($temCarboidrato){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">CARBOIDRATO</strong>
@@ -524,8 +528,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</table>
 						</p>";
 					}
-
-					if($relatorio['categoria_modulo_lipideo']){
+					$temLipideo = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Lipídeo';
+					}));
+					if($temLipideo){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">LIPÍDEO</strong>
@@ -602,8 +608,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</table>
 						</p>";
 					}
-
-					if($relatorio['categoria_modulo_fibras']){
+					$temFibras = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Fibras';
+					}));
+					if($temFibras){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">FIBRAS</strong>
@@ -680,8 +688,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</table>
 						</p>";
 					}
-
-					if($relatorio['categoria_modulo_probioticos']){
+					$temProbioticos = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Probióticos';
+					}));
+					if($temProbioticos){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">PROBIÓTICOS</strong>
@@ -758,8 +768,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</table>
 						</p>";
 					}
-
-					if($relatorio['categoria_modulo_simbioticos']){
+					$temSimbioticos = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Simbióticos';
+					}));
+					if($temSimbioticos){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">SIMBIÓTICOS</strong>
@@ -836,8 +848,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						echo "</table>
 						</p>";
 					}
-
-					if($relatorio['categoria_modulo_espessante']){
+					$temEspessante = !empty(array_filter($dadosProcessados, function($item) {
+						return $item['categoria'] == 'Espessante';
+					}));
+					if($temEspessante){
 						?> 
 						<p style="margin:10px 0px;">
 							<strong style="justify-content: center;display: flex;">ESPESSANTE</strong>
