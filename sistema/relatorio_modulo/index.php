@@ -321,7 +321,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
 
 						$dadosProcessados = [];
-						foreach ($array as $chave => $valor) {
+						foreach ($dieta_produto_dc as $chave => $valor) {
 							// Divide a string do valor em partes usando "___" como delimitador
 							$partes = explode("___", $valor);
 						
