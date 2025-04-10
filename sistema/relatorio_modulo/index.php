@@ -364,10 +364,557 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								";
 							}
 						}
+
+						echo "</table>
+						</p>";
+					}
+
+					if($relatorio['categoria_modulo_colageno_aminoacidos']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">COLÁGENO ou AMINOÁCIDOS</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">
+										Medida
+									</th>
+									<th class="col_azul">
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+						$dadosProcessados = [];
+						foreach ($dieta_produto_dc as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
+
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = $dadosProcessados[$i];
+							if($produto['categoria'] == "Colágeno ou Aminoácidos"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											".$produto['produto']."
+										</td>
+										<td class='col_azul'>
+											".$produto['medida']."
+										</td>
+										<td class='col_azul'>
+											".$produto['quantidade']."
+										</td>
+										<td  >
+											".$porcao."
+										</td>
+									</tr>
+								";
+							}
+						}
+
+						echo "</table>
+						</p>";
+					}
+
+					if($relatorio['categoria_modulo_carboidrato']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">CARBOIDRATO</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">
+										Medida
+									</th>
+									<th class="col_azul">
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+						$dadosProcessados = [];
+						foreach ($dieta_produto_dc as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
+
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = $dadosProcessados[$i];
+							if($produto['categoria'] == "Carboidrato"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											".$produto['produto']."
+										</td>
+										<td class='col_azul'>
+											".$produto['medida']."
+										</td>
+										<td class='col_azul'>
+											".$produto['quantidade']."
+										</td>
+										<td  >
+											".$porcao."
+										</td>
+									</tr>
+								";
+							}
+						}
+
+						echo "</table>
+						</p>";
+					}
+
+					if($relatorio['categoria_modulo_lipideo']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">LIPÍDEO</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">
+										Medida
+									</th>
+									<th class="col_azul">
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+						$dadosProcessados = [];
+						foreach ($dieta_produto_dc as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
+
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = $dadosProcessados[$i];
+							if($produto['categoria'] == "Lipídeo"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											".$produto['produto']."
+										</td>
+										<td class='col_azul'>
+											".$produto['medida']."
+										</td>
+										<td class='col_azul'>
+											".$produto['quantidade']."
+										</td>
+										<td  >
+											".$porcao."
+										</td>
+									</tr>
+								";
+							}
+						}
+
+						echo "</table>
+						</p>";
+					}
+
+					if($relatorio['categoria_modulo_fibras']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">FIBRAS</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">
+										Medida
+									</th>
+									<th class="col_azul">
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+						$dadosProcessados = [];
+						foreach ($dieta_produto_dc as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
+
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = $dadosProcessados[$i];
+							if($produto['categoria'] == "Fibras"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											".$produto['produto']."
+										</td>
+										<td class='col_azul'>
+											".$produto['medida']."
+										</td>
+										<td class='col_azul'>
+											".$produto['quantidade']."
+										</td>
+										<td  >
+											".$porcao."
+										</td>
+									</tr>
+								";
+							}
+						}
+
+						echo "</table>
+						</p>";
+					}
+
+					if($relatorio['categoria_modulo_probioticos']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">PROBIÓTICOS</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">
+										Medida
+									</th>
+									<th class="col_azul">
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+						$dadosProcessados = [];
+						foreach ($dieta_produto_dc as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
+
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = $dadosProcessados[$i];
+							if($produto['categoria'] == "Probióticos"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											".$produto['produto']."
+										</td>
+										<td class='col_azul'>
+											".$produto['medida']."
+										</td>
+										<td class='col_azul'>
+											".$produto['quantidade']."
+										</td>
+										<td  >
+											".$porcao."
+										</td>
+									</tr>
+								";
+							}
+						}
+
+						echo "</table>
+						</p>";
+					}
+
+					if($relatorio['categoria_modulo_simbioticos']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">SIMBIÓTICOS</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">
+										Medida
+									</th>
+									<th class="col_azul">
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+						$dadosProcessados = [];
+						foreach ($dieta_produto_dc as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
+
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = $dadosProcessados[$i];
+							if($produto['categoria'] == "Simbióticos"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											".$produto['produto']."
+										</td>
+										<td class='col_azul'>
+											".$produto['medida']."
+										</td>
+										<td class='col_azul'>
+											".$produto['quantidade']."
+										</td>
+										<td  >
+											".$porcao."
+										</td>
+									</tr>
+								";
+							}
+						}
+
+						echo "</table>
+						</p>";
+					}
+
+					if($relatorio['categoria_modulo_espessante']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">ESPESSANTE</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th class="col_azul">
+										Medida
+									</th>
+									<th class="col_azul">
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+
+						$dadosProcessados = [];
+						foreach ($dieta_produto_dc as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
+
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = $dadosProcessados[$i];
+							if($produto['categoria'] == "Espessante"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								echo "<tr height='10px'>
+										<td  >
+											".$produto['produto']."
+										</td>
+										<td class='col_azul'>
+											".$produto['medida']."
+										</td>
+										<td class='col_azul'>
+											".$produto['quantidade']."
+										</td>
+										<td  >
+											".$porcao."
+										</td>
+									</tr>
+								";
+							}
+						}
+
+						echo "</table>
+						</p>";
 					}
 					?>
-						</table>
-					</p>
 				<?php
 					$landscape = true;
 				}
