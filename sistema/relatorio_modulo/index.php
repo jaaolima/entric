@@ -308,10 +308,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									</th>
 								</tr>
 								<tr>
-									<th>
+									<th class="col_azul">
 										Medida
 									</th>
-									<th >
+									<th class="col_azul">
 										Porção(g ou ml)
 									</th>
 								</tr>
@@ -322,18 +322,18 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 						for ($i=0; $i < count($dieta_produto_dc); $i++) { 
 							$produto = explode("___", $dieta_produto_dc[$i]);
-							if($dieta_produto_dc[$i][4] == "Proteína"){
+							if($produto[4] == "Proteína"){
 
-								$porcao = floatval($dieta_produto_dc[$i][3]) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = floatval($produto[3]) * floatval($dieta_porcao_dia[$i]); 
 								echo "<tr height='10px'>
 										<td  >
-											<?php echo ".$dieta_produto_dc[$i][1].";?>
+											<?php echo ".$produto[1].";?>
 										</td>
 										<td class='col_azul'>
-											<?php echo ".$dieta_produto_dc[$i][2].";?>
+											<?php echo ".$produto[2].";?>
 										</td>
 										<td class='col_azul'>
-											<?php echo ".$dieta_produto_dc[$i][3].";?>
+											<?php echo ".$produto[3].";?>
 										</td>
 										<td  >
 											<?php echo ".$porcao.";?>
