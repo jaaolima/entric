@@ -319,22 +319,44 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						
 						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						var_dump($dieta_produto_dc);
 
-						for ($i=0; $i < count($dieta_produto_dc); $i++) { 
-							$produto = explode("___", $dieta_produto_dc[$i]);
-							if($produto[4] == "Proteína"){
+						$dadosProcessados = [];
+						foreach ($array as $chave => $valor) {
+							// Divide a string do valor em partes usando "___" como delimitador
+							$partes = explode("___", $valor);
+						
+							// Extrai as informações
+							$id = $partes[0];           // Ex.: 393
+							$produto = $partes[1];      // Ex.: Isofort Beauty
+							$medida = $partes[2];       // Ex.: 1 Colher-medida
+							$quantidade = $partes[3];   // Ex.: 25
+							$categoria = $partes[4];    // Ex.: Proteína
+						
+							// Monta um array associativo com as informações
+							array_push($dadosProcessados, [
+								'id' => $id,
+								'produto' => $produto,
+								'medida' => $medida,
+								'quantidade' => $quantidade,
+								'categoria' => $categoria
+							]);
+						}
 
-								$porcao = floatval($produto[3]) * floatval($dieta_porcao_dia[$i]); 
+						var_dump($dadosProcessados);
+
+						for ($i=0; $i < count($dadosProcessados); $i++) { 
+							$produto = explode("___", $dadosProcessados[$i]);
+							if($produto['categoria'] == "Proteína"){
+								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
 								echo "<tr height='10px'>
 										<td  >
-											<?php echo ".$produto[1].";?>
+											<?php echo ".$produto['produto'].";?>
 										</td>
 										<td class='col_azul'>
-											<?php echo ".$produto[2].";?>
+											<?php echo ".$produto['medida'].";?>
 										</td>
 										<td class='col_azul'>
-											<?php echo ".$produto[3].";?>
+											<?php echo ".$produto['quantidade'].";?>
 										</td>
 										<td  >
 											<?php echo ".$porcao.";?>
