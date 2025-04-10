@@ -322,6 +322,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 						for ($i=0; $i < count($dieta_produto_dc); $i++) { 
 							$produto = explode("___", $dieta_produto_dc[$i]);
+							var_dump($produto[4]);
+							var_dump($produto);
 							if($produto[4] == "Proteína"){
 
 								$porcao = floatval($produto[3]) * floatval($dieta_porcao_dia[$i]); 
