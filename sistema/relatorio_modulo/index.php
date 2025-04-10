@@ -291,39 +291,55 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				// 	echo "</div>";
 				// }
 				if ($relatorio['dieta_produto_dc'] <> ""){
-					?> 
-					<p style="margin:10px 0px;">
-						<strong style="justify-content: center;display: flex;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
-						<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
-							<tr>
-								<th rowspan="2" height="30px">
-									Produto
-								</th>
-								<th colspan="2" class="col_azul">
-									Dosagem
-								</th>
-								<th rowspan="2">
-									Porções/dia
-								</th>
-							</tr>
-							<tr>
-								<th>
-									Medida
-								</th>
-								<th >
-									Porção(g ou ml)
-								</th>
-							</tr>
-					<?php
-					
-					$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+					if($relatorio['categoria_modulo_proteina']){
+						?> 
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">PROTEÍNA</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+								<tr>
+									<th rowspan="2" height="30px">
+										Produto
+									</th>
+									<th colspan="2" class="col_azul">
+										Dosagem
+									</th>
+									<th rowspan="2">
+										Porções/dia
+									</th>
+								</tr>
+								<tr>
+									<th>
+										Medida
+									</th>
+									<th >
+										Porção(g ou ml)
+									</th>
+								</tr>
+						<?php
+						
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
 
-					$dados_ordem = array();
-					foreach ($dieta_produto_dc as &$value) {
-						$produto = explode("___", $value);
-						var_dump($produto);
+						for ($i=0; $i < count($dieta_produto_dc); $i++) { 
+							$produto = explode("___", $dieta_produto_dc[$i]);
+
+							if($dieta_produto_dc[$i][4] == "Proteína"){
+								echo "<td  >
+										<?php echo ".$dieta_produto_dc[$i][1].";?>
+									</td>
+									<td class='col_azul'>
+										<?php echo ".$dieta_produto_dc[$i][2].";?>
+									</td>
+									<td class='col_azul'>
+										<?php echo ".$dieta_produto_dc[$i][3].";?>
+									</td>
+									<td  >
+										<?php echo ".$dieta_produto_dc[$i][1].";?>
+									</td>";
+							}
+							var_dump($dieta_porcao_dia);
+						}
 					}
-					
 					?>
 					</p>
 				<?php
