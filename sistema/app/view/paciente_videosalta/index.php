@@ -43,7 +43,7 @@
                                                         for($i = 0; $i < count($dados['Conceitos Básicos']); $i++){
                                                             $relarorio = $dados['Conceitos Básicos'][$i];
                                                             ?>
-                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
+                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://sis.entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
                                                             <?php 
                                                         }
                                                     }
@@ -65,7 +65,7 @@
                                                         for($i = 0; $i < count($dados['Cuidados Necessários']); $i++){
                                                             $relarorio = $dados['Cuidados Necessários'][$i];
                                                             ?>
-                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
+                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://sis.entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
                                                             <?php 
                                                         }
                                                     }
@@ -90,7 +90,7 @@
                                                         for($i = 0; $i < count($dados['Preparo e Instalação da Dieta']); $i++){
                                                             $relarorio = $dados['Preparo e Instalação da Dieta'][$i];
                                                             ?>
-                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
+                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://sis.entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
                                                             <?php 
                                                         }
                                                     }
@@ -113,7 +113,7 @@
                                                         for($i = 0; $i < count($dados['Complicações']); $i++){
                                                             $relarorio = $dados['Complicações'][$i];
                                                             ?>
-                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
+                                                            <li class="list-group-item"><a href="javascript:void(0);" class="modal_video" rel="https://sis.entric.com.br/public/<?php echo $relarorio['link'];?>"><i class="fa fa-play-circle-o" aria-hidden="true"></i> <?php echo $relarorio['titulo'];?></a></li>
                                                             <?php 
                                                         }
                                                     }
