@@ -3761,21 +3761,17 @@ $app->group("", function () use ($app) {
 				}
 
 		        if ($query <> '') $query = 'WHERE (status=1) AND ('.$query.')';
-		        $produtos = $db->select_to_array("produtos p
-													CROSS JOIN JSON_TABLE(
-														p.cat_modulo,
-														'$[*]' COLUMNS (
-															categoria JSON PATH '$'
-														)
-													) AS jt",
-		                                            "p.id, p.nome, p.fabricante, p.apres_enteral, p.kcal, p.cho, p.ptn, p.lip, p.fibras, p.medida_dc, p.unidade, p.medida_g, p.medida, p.unidmedida, p.volume, p.apresentacao, p.final, p.apres_oral, p.cat_modulo, JSON_UNQUOTE(JSON_EXTRACT(categoria, '$')) AS categoria",
-		                                            $query." ORDER BY categoria,
-															CASE 
-																WHEN p.fabricante = 'PRODIET' THEN 1
-																WHEN p.fabricante = 'DANONE' THEN 2
-																ELSE 3
-															END", 
-		                                            null);
+		        $produtos = $db->select_to_array(
+												"produtos p",
+												"p.id, p.nome, p.fabricante, p.apres_enteral, p.kcal, p.cho, p.ptn, p.lip, p.fibras, p.medida_dc, p.unidade, p.medida_g, p.medida, p.unidmedida, p.volume, p.apresentacao, p.final, p.apres_oral, p.cat_modulo",
+												$query . " ORDER BY 
+													CASE 
+														WHEN p.fabricante = 'PRODIET' THEN 1
+														WHEN p.fabricante = 'DANONE' THEN 2
+														ELSE 3
+													END",
+												null
+											);
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -3791,6 +3787,41 @@ $app->group("", function () use ($app) {
 		            else{
 		                $fracionamento_dia = 1;
 		            }
+
+					// Processa os produtos para associar as categorias
+					$produtosPorCategoria = [];
+					$array_carac = isset($dados['cat_modulo']) ? $dados['cat_modulo'] : [];
+
+					foreach ($produtos as $produto) {
+						// Decodifica o campo cat_modulo (que é um JSON)
+						$categorias = json_decode($produto['cat_modulo'], true);
+						
+						// Se o produto não tiver categorias ou o JSON for inválido, pula
+						if (!is_array($categorias)) {
+							continue;
+						}
+
+						// Verifica cada categoria do produto
+						foreach ($categorias as $categoria) {
+							// Se a categoria está na lista de categorias desejadas ($array_carac)
+							if (in_array($categoria, $array_carac)) {
+								// Cria uma cópia do produto e adiciona a categoria atual
+								$produtoComCategoria = $produto;
+								$produtoComCategoria['categoria'] = $categoria;
+								
+								// Adiciona o produto ao array, agrupado por categoria
+								$produtosPorCategoria[$categoria][] = $produtoComCategoria;
+							}
+						}
+					}
+
+					// Reorganiza os produtos em uma lista única, sem duplicatas por categoria
+					$produtos = [];
+					foreach ($produtosPorCategoria as $categoria => $produtosDaCategoria) {
+						foreach ($produtosDaCategoria as $produto) {
+							$produtos[] = $produto;
+						}
+					}
 
 		            for ($i = 0; $i < count($produtos); $i++){
 		                $kcal = $produtos[$i]['kcal'];
