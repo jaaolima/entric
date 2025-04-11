@@ -347,7 +347,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Proteína"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -428,7 +428,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Colágeno ou Aminoácidos"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -509,7 +509,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Carboidrato"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -590,7 +590,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Lipídeo"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -671,7 +671,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Fibras"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -752,7 +752,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Probióticos"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -833,7 +833,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Simbióticos"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -914,7 +914,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Espessante"){
-								$porcao = floatval($produto['quantidade']) * floatval($dieta_porcao_dia[$i]); 
+								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
