@@ -1242,14 +1242,14 @@ $app->group("", function () use ($app) {
 			<text>Recebemos uma solicitação para a recuperação da sua senha no Entric.</text>
 			<br>
 			<text>Para redefinir sua senha, clique no link abaixo:</text>
-			<a href="https://entric.com.br/senha/nova_prescritor/'.$codigo.'">https://entric.com.br/senha/nova_prescritor/'.$codigo.'</a>
+			<a href="https://sis.entric.com.br/senha/nova_prescritor/'.$codigo.'">https://sis.entric.com.br/senha/nova_prescritor/'.$codigo.'</a>
 			<br>
 			<text>Se você não solicitou a recuperação, por favor, desconsidere este e-mail. Caso tenha dúvidas ou problemas, entre em contato com nossa equipe de suporte.</text>
 			<br>
 			<text>Atenciosamente,</text>
 			<text>Equipe Entric</text>
 			<br>
-			<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">
+			<img src="https://sis.entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">
 			');
 
 			$result = $mailer->send($message);
@@ -10805,12 +10805,12 @@ $app->group("", function () use ($app) {
 		<text>A partir de agora, você tem acesso a mais completa solução para prescrever e orientar pacientes em Terapia Nutricional. </text>
 		<text>Aqui, você encontra todas as dietas e suplementos para consultar as informações nutricionais ou realizar prescrições de forma intuitiva e simples. Conta ainda com diversas ferramentas práticas de apoio, além de vídeos para orientar o paciente, que podem ser assistidos novamente a qualquer hora e em qualquer lugar.</text>
 		<br>
-		<text>Acesse o sistema agora mesmo: <a href=""https://www.entric.com.br/">www.entric.com.br</a>.</text>
+		<text>Acesse o sistema agora mesmo: <a href=""https://www.sis.entric.com.br/">www.sis.entric.com.br</a>.</text>
 		<br>
 		<text>Atenciosamente,</text>
 		<text>Equipe Entric</text>
 		<br>
-		<img src="https://entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">');
+		<img src="https://sis.entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">');
 
 		$result = $mailer->send($message);
 
