@@ -3912,8 +3912,8 @@ $app->group("", function () use ($app) {
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
-								for ($m=0; $m < count($medida_dc); $m++) { 
-									$dc = str_replace(",", ".", $medida_dc[$m]);
+								// for ($m=0; $m < count($medida_dc); $m++) { 
+									$dc = str_replace(",", ".", $medida_dc[0]);
 
 		                            // se tiver no ranger, listar
 		                            if ($margem_liberadas){
@@ -3973,23 +3973,23 @@ $app->group("", function () use ($app) {
 		                                                <tbody id="tbody'.$categoria_num.'">';
 		                                }										
 
-										$medida = $medidas[$m]. " " . $unidade[$m];
+										$medida = $medidas[0]. " " . $unidade[0];
 										$retorno .= '<tr>
 														<td>
 															<div class="form-check col-sm-12">
-																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[$m].'___'.$categoria.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[$m].'___'.$categoria.'">
-																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[$m].'___'.$categoria.']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
+																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'">
+																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
 															</div>
 														</td>
 														<td>'.$medida.'</td>
-														<td name="porcao">'.$medida_g[$m].'</td>
+														<td name="porcao">'.$medida_g[0].'</td>
 														<td name="total_dose"></td>
 														<td name="porcao_dias"><input min="0.5" step="0.5" style="width:40px;text-align:center;" name="valor_porcao[]" onchange="fc_porcao_dia(this)" type="number"></td>
 													</tr>';
 										$titulo = "";
 		                            }
 		                            $cont_array = $cont_array+1;
-		                        }
+		                        // }
 
 		                        // ajustar o rowspan da listagem de produtos caso esteja errado
 		                        if (($rowspan <> $medida_dc) and ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
