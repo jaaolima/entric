@@ -1188,6 +1188,11 @@ function fc_collapsecheckbox( $apres_enteral_num){
                     inputPorcaoDias.attr("required", true);
                 }else{
                     $(this).attr( "disabled", true);
+                    const $tdPai = $(this).parent().parent();
+                    const $irmaos = $tdPai.siblings();
+                    const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+                    inputPorcaoDias = $porcaoDias.children("input");
+                    inputPorcaoDias.attr("disabled", true);
                     $(this).addClass( "check_apagado");
                 }
                 qtd++;

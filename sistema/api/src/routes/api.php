@@ -3929,18 +3929,15 @@ $app->group("", function () use ($app) {
 		                                                        <th rowspan="2" class="entric_group_destaque5">
 																	PRODUTO 
 																</th>
-		                                                        <th colspan="2" style="text-align:center;" >DOSAGEM</th>
-		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
-		                                                        <th rowspan="2" style="text-align:center;" class="entric_group_destaque5">PORÇÕES/DIA</th> 
-		                                                    </tr>
-															<tr>
-																<th style="text-align:center;" >
+																<th rowspan="2" class="entric_group_destaque5">
 																	MEDIDA
 																</th>
-																<th style="text-align:center;" >
+																<th rowspan="2" class="entric_group_destaque5">
 																	PORÇÃO(g ou ml)
 																</th>
-															</tr>
+		                                                        <th rowspan="2" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
+		                                                        <th rowspan="2" class="entric_group_destaque5">PORÇÕES/DIA</th> 
+		                                                    </tr>
 		                                                </thead>
 		                                                <tbody id="tbody'.$categoria_num.'">';
 		                                }										
