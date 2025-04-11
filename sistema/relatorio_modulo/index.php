@@ -368,8 +368,25 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
+						$horarios = [];
+						foreach ($dados as $categoria => $info) {
+							// Percorre os campos da categoria
+							foreach ($info as $chave => $valor) {
+								// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
+								if (strpos($chave, 'horario') === 0) {
+									$horarios[] = $valor;
+								}
+							}
+						}
+						if($horarios != []){
+							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
+							$horariosString = implode(', ', $horarios);
+							$textoHorarios = ', às '.$horariosString . '.';
+						}else{
+							$textoHorarios = '';
+						}
 						echo "</table>
-							<p>Utilizar por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].".".(($categoria_fracionamento['categoria_modulo_proteina']['instrucoes']) ? $categoria_fracionamento['categoria_modulo_proteina']['instrucoes'] .'.' : "")."</p>
+							<p>Utilizar por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].". ".$textoHorarios.(($categoria_fracionamento['categoria_modulo_proteina']['instrucoes']) ? $categoria_fracionamento['categoria_modulo_proteina']['instrucoes'] .'.' : "")."</p>
 						</p>";
 					}
 					$temColageno = !empty(array_filter($dadosProcessados, function($item) {
