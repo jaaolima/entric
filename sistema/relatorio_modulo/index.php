@@ -369,13 +369,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						$horarios = [];
-						foreach ($dados as $categoria => $info) {
-							// Percorre os campos da categoria
-							foreach ($info as $chave => $valor) {
-								// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-								if (strpos($chave, 'horario') === 0) {
-									$horarios[] = $valor;
-								}
+						foreach ($categoria_fracionamento['categoria_modulo_proteina'] as $chave => $valor) {
+							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
+							if (strpos($chave, 'horario') === 0) {
+								$horarios[] = $valor;
 							}
 						}
 						if($horarios != []){
