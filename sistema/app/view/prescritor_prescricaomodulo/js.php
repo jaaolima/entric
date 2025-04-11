@@ -1103,11 +1103,13 @@ function check_dieta(_this){
 
         $totalDoseElement.text(totalDose);
         inputPorcaoDias.attr("required", true);
+        inputPorcaoDias.attr("disabled", false);
     }else{
         const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
         $totalDoseElement.text('');
         inputPorcaoDias.val("");
         inputPorcaoDias.removeAttr("required");
+        inputPorcaoDias.attr("disabled", true);
     }
     if($("#tipo_login").val() == 'ibranutro'){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
