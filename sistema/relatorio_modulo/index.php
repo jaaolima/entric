@@ -292,6 +292,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				// }
 				$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 				$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
+				$categoria_fracionamento = json_decode($relatorio['categoria_fracionamento'], true);
+				
 				$dieta_porcao_dia = array_values($dieta_porcao_dia);
 
 				$dadosProcessados = [];
@@ -367,6 +369,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
+							<p>Utilizar por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].".".(($categoria_fracionamento['categoria_modulo_proteina']['instrucoes']) ? $categoria_fracionamento['categoria_modulo_proteina']['instrucoes'] .'.' : "")."</p>
 						</p>";
 					}
 					$temColageno = !empty(array_filter($dadosProcessados, function($item) {
