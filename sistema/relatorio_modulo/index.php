@@ -639,7 +639,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						
 						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-
+						$dieta_porcao_dia = array_values($dieta_porcao_dia);
 						var_dump($dieta_porcao_dia);
 
 						$dadosProcessados = [];
