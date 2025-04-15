@@ -47,18 +47,18 @@
                                                 <th><?php echo $relatorio['tipo']; ?></th>
                                                 <th><?php echo $relatorio['nome']; ?></th>
                                                 <th><?php echo $relatorio['data_nascimento']; ?></th>
-                                                <th><?php echo (($relatorio['codigo']) ?  "<span style='padding: 8px;background-color: #01c56c;color: white;border-radius: 15px;'>Finalizado</span>" : "<span style='padding: 8px;background-color: #d4d324;color: white;border-radius: 15px;'>Em andamento</span>"); ?></th>
+                                                <th><?php echo (($relatorio['codigo']) ?  "<span style='padding: 5px;font-size:11px;background-color: #01c56c;color: white;border-radius: 15px;'>Finalizado</span>" : "<span style='padding: 5px;font-size:11px;background-color: #d4d324;color: white;border-radius: 15px;'>Em andamento</span>"); ?></th>
                                                 <?php if($relatorio["tipo"] == 'Relatório de Alta') : ?>
-                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio/".$relatorio['relatorio_code']."/'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_relatorioalta'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
+                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio/".$relatorio['relatorio_code']."'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_relatorioalta'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
                                                 <?php endif; ?>
                                                 <?php if($relatorio["tipo"] == 'Dieta Enteral') : ?>
-                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_simplificada/".$relatorio['relatorio_code']."/'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_prescricaosimplificada'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
+                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_simplificada/".$relatorio['relatorio_code']."'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_prescricaosimplificada'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
                                                 <?php endif; ?>
                                                 <?php if($relatorio["tipo"] == 'Suplemento') : ?>
-                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_suplemento/".$relatorio['relatorio_code']."/'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_prescricaosuplemento'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
+                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_suplemento/".$relatorio['relatorio_code']."'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_prescricaosuplemento'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
                                                 <?php endif; ?>
                                                 <?php if($relatorio["tipo"] == 'Módulos') : ?>
-                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_modulo/".$relatorio['relatorio_code']."/'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_prescricaomodulo'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
+                                                <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_modulo/".$relatorio['relatorio_code']."'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_prescricaomodulo'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
                                                 <?php endif; ?>
                                             </tr>
                                         <?php }
