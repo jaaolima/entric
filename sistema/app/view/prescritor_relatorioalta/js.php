@@ -2608,7 +2608,7 @@ $(function(){
                 success: function( data ){
                     if (data.relatorio){
                         $("#id_relatorio").val(data.relatorio);
-                        $("#relatorio_code").val(data.relatorio_code);
+                        $("#relatorio_code").val(data.relatorio_code); 
                     }
                     if (data.success){
                         var relatorio_code = $("#relatorio_code").val();

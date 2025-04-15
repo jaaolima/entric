@@ -6003,6 +6003,10 @@ $app->group("", function () use ($app) {
 		                                            ORDER BY id ASC", 
 		                                            [':id' => $usuario['id_usuario']]);
 
+				for ($j=0; $j < count($relatorios); $j++) { 
+					$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
+				}
+
 
 		        $data = $relatorios;
 			}
