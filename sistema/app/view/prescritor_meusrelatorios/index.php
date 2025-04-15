@@ -47,7 +47,7 @@
                                                 <th><?php echo $relatorio['tipo']; ?></th>
                                                 <th><?php echo $relatorio['nome']; ?></th>
                                                 <th><?php echo $relatorio['data_nascimento']; ?></th>
-                                                <th><?php echo (($relatorio['codigo']) ?  "Finalizado" : "Em andamento"); ?></th>
+                                                <th><?php echo (($relatorio['codigo']) ?  "<span class='ms-2 badge badge-light-success fw-semibold'>Finalizado</span>" : "<span class='ms-2 badge badge-light-warning fw-semibold'>Em andamento</span>"); ?></th>
                                                 <th></th>
                                             </tr>
                                         <?php }
