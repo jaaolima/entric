@@ -27,7 +27,7 @@
                         <div class="card-title">
                             Meus Relatórios
                         </div>
-                        <div class="table-responsive pt-5" style="max-height: 400px;">
+                        <div class="table-responsive pt-5">
                             <table class="table table-bordered table-hover table-striped" id="table_lista_relatorios">
                                 <thead> 
                                     <tr>

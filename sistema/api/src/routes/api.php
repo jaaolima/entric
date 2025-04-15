@@ -4598,19 +4598,18 @@ $app->group("", function () use ($app) {
 			}
 
 			if ($usuario){
-				
-		        $distribuidores = $db->select_to_array("distribuidores",
+		        $relatorios = $db->select_to_array("relatorio_suplemento",
 		                                            "*",
 		                                            "
+													where id_prescritor_ibranutro = :id
 		                                            ORDER BY id ASC", 
-		                                            null);
+		                                            [':id' => $usuario['id_usuario']]);
 
-		        $data = $distribuidores;
+		        $data = $relatorios;
 			}
 			else{
 				$data["status"] = "Erro: Token de autenticação é inválido.";	
 			}
-
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
