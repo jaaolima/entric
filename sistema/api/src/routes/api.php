@@ -4598,18 +4598,19 @@ $app->group("", function () use ($app) {
 			}
 
 			if ($usuario){
-		        $relatorios = $db->select_to_array("relatorio_suplemento",
+				
+		        $distribuidores = $db->select_to_array("distribuidores",
 		                                            "*",
 		                                            "
-													where id_prescritor_ibranutro = :id
 		                                            ORDER BY id ASC", 
-		                                            [':id' => $usuario['id_usuario']]);
+		                                            null);
 
-		        $data = $relatorios;
+		        $data = $distribuidores;
 			}
 			else{
 				$data["status"] = "Erro: Token de autenticação é inválido.";	
 			}
+
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
@@ -5980,31 +5981,18 @@ $app->group("", function () use ($app) {
 			}
 
 			if ($usuario){
-				$sistema = $request->getParam("sistema");
-				if($sistema == 'ibranutro'){
-					$id_admissao = $request->getParam("id_admissao");
-					$paciente = $db->select_single_to_array("pacientes_modulo",
-														"*",
-														"
-														WHERE id_admissao=".$id_admissao, 
-														null);
-				}
-				if($sistema == 'EN'){
-					$id_paciente = $request->getParam("id_paciente");
-					$paciente = $db->select_single_to_array("pacientes_modulo",
-														"*",
-														"
-														WHERE id_paciente=".$id_paciente, 
-														null);
-				}
-				
+		        $relatorios = $db->select_to_array("relatorio_suplemento",
+		                                            "*",
+		                                            "
+													where id_prescritor_ibranutro = :id
+		                                            ORDER BY id ASC", 
+		                                            [':id' => $usuario['id_usuario']]);
 
-		        $data = $paciente;
+		        $data = $relatorios;
 			}
 			else{
 				$data["status"] = "Erro: Token de autenticação é inválido.";	
 			}
-
 		} else {
 			$data["status"] = "Erro: Token de autenticação é inválido.";
 		}
