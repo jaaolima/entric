@@ -21,7 +21,7 @@ class HomeController extends Controller {
                 Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');
             }else if($bruker->redirect == "suplemento"){
                 Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');
-            }else if($bruker->redirect == "modulo"){
+            }else if($bruker->redirect == "modulos"){
                 Redirect(BASE_PATH . '/prescritor_prescricaomodulo');
             }else{
                 Redirect(BASE_PATH . '/prescritor_relatorioalta');       

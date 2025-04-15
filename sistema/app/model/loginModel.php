@@ -63,7 +63,7 @@ class LoginModel extends Model {
                             "sistema" => $sistema));
                             $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_admissao' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
                         }
-                        if($tipo == 'modulo'){
+                        if($tipo == 'modulos'){
                             $paciente = httpPostAuth("paciente_getDadoModulo", array( "token" => $_SESSION['token'],
                             "id_admissao" => $id_paciente,
                             "login" => $_SESSION['login'],
@@ -112,7 +112,7 @@ class LoginModel extends Model {
                                 $_SESSION['paciente_redirect'] = ['sistema' => null,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['nome']];
                             }
                         }
-                        if($tipo == 'modulo'){
+                        if($tipo == 'modulos'){
                             $paciente = httpPostAuth("paciente_getDadoModulo", array( "token" => $_SESSION['token'],
                             "login" => $_SESSION['login'],
                             "id_paciente" => $id_paciente,
