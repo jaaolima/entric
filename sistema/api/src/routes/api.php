@@ -5981,7 +5981,7 @@ $app->group("", function () use ($app) {
 			}
 
 			if ($usuario){
-		        $relatorios = $db->select_to_array("relatorio_suplemento",
+		        $relatorios = $db->select_to_array("relatorios_suplemento",
 		                                            "*",
 		                                            "
 													where id_prescritor_ibranutro = :id
