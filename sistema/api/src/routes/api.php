@@ -5983,7 +5983,7 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 		        $relatorios = $db->select_to_array("relatorios_suplemento r
 													inner join pacientes_suplemento p on r.id_paciente = p.id",
-		                                            "r.*, 'Suplemento' as tipo, p.nome, DATE_FORMAT(p.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p.data_criacao, '%d/%m/%Y h:i') as data_criacao",
+		                                            "r.*, 'Suplemento' as tipo, p.nome, DATE_FORMAT(p.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p.data_criacao, '%d/%m/%Y %h:%i') as data_criacao",
 		                                            "where p.id_prescritor_ibranutro = :id
 		                                            ORDER BY r.id ASC", 
 		                                            [':id' => $usuario['id_usuario']]);
