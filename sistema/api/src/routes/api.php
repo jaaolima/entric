@@ -5964,6 +5964,7 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
+
 	$app->post("/paciente_getDadoSimplificada", function (Request $request, Response $response) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
