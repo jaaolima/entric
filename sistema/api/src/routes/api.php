@@ -5981,11 +5981,11 @@ $app->group("", function () use ($app) {
 			}
 
 			if ($usuario){
-		        $relatorios = $db->select_to_array("relatorios_suplemento",
-		                                            "*",
-		                                            "
-													where id_prescritor_ibranutro = :id
-		                                            ORDER BY id ASC", 
+		        $relatorios = $db->select_to_array("relatorios_suplemento r
+													inner join pacientes_suplemento p on r.id_paciente = p.id",
+		                                            "r.*, 'Suplemento' as tipo, p.nome, p.data_nascimento",
+		                                            "where r.id_prescritor_ibranutro = :id
+		                                            ORDER BY r.id ASC", 
 		                                            [':id' => $usuario['id_usuario']]);
 
 		        $data = $relatorios;

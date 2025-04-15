@@ -40,7 +40,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php var_dump($dados); ?>
+                                    <?php 
+                                        foreach ($dados as $key => $relatorio) { ?>
+                                            <tr>
+                                                <th><?php echo $relatorio['data_criacao']; ?></th>
+                                                <th><?php echo $relatorio['tipo']; ?></th>
+                                                <th><?php echo $relatorio['nome']; ?></th>
+                                                <th><?php echo $relatorio['data_nascimento']; ?></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        <?php }
+                                    
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
