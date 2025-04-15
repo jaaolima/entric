@@ -10,7 +10,7 @@ class Prescritor_meusrelatoriosController extends Controller {
     function index() {
         global $bruker;
         $this->set('breadcrumb','Bem-vindo');
-        $this->set('dados', $this->getDados->getDados() );
+        $this->set('dados', $this->Prescritor_meusrelatoriosModel->getDados());
         // $this->set('dados', null );
         $this->set('bruker', $bruker);
     }
