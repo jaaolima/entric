@@ -47,7 +47,7 @@
                                                 <th><?php echo $relatorio['tipo']; ?></th>
                                                 <th><?php echo $relatorio['nome']; ?></th>
                                                 <th><?php echo $relatorio['data_nascimento']; ?></th>
-                                                <th></th>
+                                                <th><?php echo (($relatorio['codigo']) ?  "Finalizado" : "Em andamento"); ?></th>
                                                 <th></th>
                                             </tr>
                                         <?php }
