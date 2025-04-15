@@ -5985,25 +5985,22 @@ $app->group("", function () use ($app) {
 													inner join pacientes_suplemento p on r.id_paciente = p.id",
 		                                            "r.*, 'Suplemento' as tipo, p.nome, DATE_FORMAT(p.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p.data_criacao, '%d/%m/%Y %h:%i') as data_criacao",
 		                                            "where r.id_prescritor_ibranutro = :id
-		                                            ORDER BY r.id ASC
 													UNION
 													SELECT r2.*, 'Dieta Enteral' as tipo, p2.nome, DATE_FORMAT(p2.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p2.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 													FROM relatorios_simplificada r2
 													inner join pacientes_simplificada p2 on r2.id_paciente = p2.id
 													where r2.id_prescritor_ibranutro = :id
-		                                            ORDER BY r2.id ASC
 													UNION
 													SELECT r3.*, 'Módulos' as tipo, p3.nome, DATE_FORMAT(p3.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p3.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 													FROM relatorios_modulo r3
 													inner join pacientes_modulo p3 on r3.id_paciente = p3.id
 													where r3.id_prescritor_ibranutro = :id
-		                                            ORDER BY r3.id ASC
 													UNION
 													SELECT r4.*, 'Relatório de Alta' as tipo, p4.nome, DATE_FORMAT(p4.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p4.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 													FROM relatorios r4
 													inner join pacientes p4 on r4.id_paciente = p4.id
 													where r4.id_prescritor_ibranutro = :id
-		                                            ORDER BY r4.id ASC", 
+		                                            ORDER BY id ASC", 
 		                                            [':id' => $usuario['id_usuario']]);
 
 
