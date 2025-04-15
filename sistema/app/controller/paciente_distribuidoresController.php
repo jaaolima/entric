@@ -2,7 +2,7 @@
  
 class Paciente_distribuidoresController extends Controller {
 
-    function beforeAction () {
+    function beforeAction () { 
         if (isset($bruker)){
             $util = new UtilModel();
             $util->stlog();

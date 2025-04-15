@@ -22,23 +22,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="table-responsive pt-5" style="max-height: 400px;">
-                    <table class="table table-bordered table-hover table-striped" id="table_lista_relatorios">
-                        <thead>
-                            <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Tipo de relatório</th>
-                                <th scope="col">Nome do Paciente</th>
-                                <th scope="col">Data de Nascimento</th>
-                                <th scope="col">Situação</th>
-                                <th scope="col">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            Meus Relatórios
+                        </div>
+                        <div class="table-responsive pt-5" style="max-height: 400px;">
+                            <table class="table table-bordered table-hover table-striped" id="table_lista_relatorios">
+                                <thead> 
+                                    <tr>
+                                        <th scope="col">Data</th>
+                                        <th scope="col">Tipo de relatório</th>
+                                        <th scope="col">Nome do Paciente</th>
+                                        <th scope="col">Data de Nascimento</th>
+                                        <th scope="col">Situação</th>
+                                        <th scope="col">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php var_dump($dados); ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-
+                
             </div>
         </div>
     </div>

@@ -7,5 +7,5 @@ class Paciente_distribuidoresModel extends Model {
         $retorno = httpPostAuth("paciente_distribuidores_getDados", array( "token" => $_SESSION['token'],
         "login" => $_SESSION['login'],));
         return $retorno;
-    }
+    } 
 }

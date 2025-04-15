@@ -15,7 +15,7 @@ class Prescritor_meusrelatoriosModel extends Model {
         "login" => $_SESSION['login'],
                                                                         "id" => $id));
         return $retorno;
-    }
+    } 
 
     function cadastrar($dados, $files) {
         global $bruker;
