@@ -6023,7 +6023,7 @@ $app->group("", function () use ($app) {
 								FROM relatorios r4
 								inner join pacientes p4 on r4.id_paciente = p4.id
 								where r4.id_prescritor = :id
-								ORDER BY id ASC", 
+								ORDER BY data_criacao DESC", 
 								[':id' => $usuario['id']]);
 				}
 		        
