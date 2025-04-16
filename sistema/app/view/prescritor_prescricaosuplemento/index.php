@@ -1,3 +1,6 @@
+<?php  
+    var_dump($_POST);
+?>
 <div id="main-wrapper">
 
     <?php require_once (ROOT . DS . 'app'. DS . 'view' . DS . 'header-top.php'); ?>
