@@ -12,7 +12,7 @@ class Prescritor_meusrelatoriosController extends Controller {
         $this->set('breadcrumb','Bem-vindo');
         $this->set('dados', $this->Prescritor_meusrelatoriosModel->getDados());
         // $this->set('dados', null );
-        $this->set('bruker', $bruker);
+        $this->set('bruker', $bruker); 
     }
 
     function cadastrar($categoria) {

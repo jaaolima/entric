@@ -1,6 +1,6 @@
 <?php
     
-
+    var_dump($_POST);
     $ds_nome = '';
     $ds_hospital = '';
     $dt_nascimento = '';

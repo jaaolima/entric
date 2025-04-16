@@ -32,7 +32,7 @@
                                 <i class="mdi mdi-message-draw"></i> &nbsp; Prescrição de Suplementação Via Oral
                             </h4>
                             <input type="hidden" id="tipo_login" value="<?php echo $_SESSION['login']; ?>">
-                            <div class="default-tab bordered-tab entric">
+                            <div class="default-tab bordered-tab entric"> 
                                 <!-- <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item tabcadastro">
                                         <a class="nav-link active" data-toggle="tab" href="#cadastro">Dados Gerais</a>

@@ -81,7 +81,7 @@ class Prescritor_prescricaosuplementoModel extends Model {
         }*/
     }
 
-    function buscarDados($dados) { 
+    function buscarDados($dados) {  
         global $bruker;
         $retorno = httpPostAuth("prescritor_relatorioalta_buscarDados", array(  "token" => $_SESSION['token'],
         "login" => $_SESSION['login'],

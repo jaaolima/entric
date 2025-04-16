@@ -47,7 +47,7 @@
                                                 <th><?php echo $relatorio['tipo']; ?></th>
                                                 <th><?php echo $relatorio['nome']; ?></th>
                                                 <th><?php echo $relatorio['data_nascimento']; ?></th>
-                                                <th><?php echo (($relatorio['codigo']) ?  "<span style='padding: 5px;font-size:11px;background-color: #01c56c;color: white;border-radius: 15px;'>Finalizado</span>" : "<span style='padding: 5px;font-size:11px;background-color: #E1DA34;color: white;border-radius: 15px;'>Em andamento</span>"); ?></th>
+                                                <th><?php echo (($relatorio['codigo']) ?  "<span style='padding: 5px;font-size:11px;background-color: #01c56c;color: white;border-radius: 15px;'>Finalizado</span>" : "<span style='padding: 5px;font-size:11px;background-color: #ffb822;color: white;border-radius: 15px;'>Em andamento</span>"); ?></th>
                                                 <?php if($relatorio["tipo"] == 'Relatório de Alta') : ?>
                                                 <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio/".$relatorio['relatorio_code']."'><i class='fa fa-file-text-o'></i></a>" : "<a href='/prescritor_relatorioalta'><i class='fa fa-pencil-square-o'></i></a>") ?></th>
                                                 <?php endif; ?>
