@@ -349,6 +349,7 @@ function fc_editar_relatorio(id_relatorio){
 
                 $("input[class='calorias_total']").val(relatorio.nec_calorias_peso_valor);
                 $("#formula_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
+                $("#formula_valor").val(relatorio.nec_calorias_peso_valor);
                 var _peso = $("#nec_calorias_peso_valor").val();
                 if (_peso !== ""){
                     _peso = _peso.replace(",", ".");
@@ -364,6 +365,7 @@ function fc_editar_relatorio(id_relatorio){
 
                 $("input[class='proteinas_total']").val(relatorio.nec_proteinas_peso_valor);
                 $("#proteinas_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
+                $("#proteinas_valor").val(relatorio.nec_calorias_peso_valor);
                 var _peso = $("#nec_proteinas_peso_valor").val();
                 if (_peso !== ""){
                     _peso = _peso.replace(",", ".");
@@ -379,6 +381,7 @@ function fc_editar_relatorio(id_relatorio){
                 
                 $("input[class='agua_total']").val(relatorio.nec_agua_peso_valor);
                 $("#agua_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
+                $("#agua_valor").val(relatorio.nec_calorias_peso_valor);
                 var _peso = $("#nec_agua_peso_valor").val();
                 if (_peso !== ""){
                     _peso = _peso.replace(",", ".");
