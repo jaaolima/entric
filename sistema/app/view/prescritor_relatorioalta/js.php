@@ -327,13 +327,19 @@ function fc_editar_relatorio(id_relatorio){
 
                  $("#altura option[value='"+relatorio.altura+"']").attr("selected","selected");
                  $("#altura_valor").val(relatorio.altura_valor);
-                 $("input[name='peso' value='"+relatorio.peso+"']").attr("selected","selected");
-                 $("input[name='peso_valor[]']").val(relatorio.peso_valor);
-                 $("input[name='imc[]']").val(relatorio.imc);
+                 peso = JSON.parse(relatorio.peso);
+                 $("input[name='peso' value='"+peso[0]+"']").attr("selected","selected");
+                 peso_valor = JSON.parse(relatorio.peso_valor);
+                 $("input[name='peso_valor[]']").val(peso_valor[0]);
+                 imc = JSON.parse(relatorio.imc);
+                 $("input[name='imc[]']").val(imc[0]);
 
-                 $("#circunferencias option[value='"+relatorio.circunferencias+"']").attr("selected","selected");
-                 $("input[name='circunferencias_valor[]']").val(relatorio.circunferencias_valor);
-                 $("input[name='circunferencia_lado[0]' value='"+relatorio.circunferencia_lado+"']").attr("checked","checked");
+                 circunferencias = JSON.parse(relatorio.circunferencias);
+                 $("#circunferencias option[value='"+circunferencias[0]+"']").attr("selected","selected");
+                 circunferencias_valor = JSON.parse(relatorio.circunferencias_valor);
+                 $("input[name='circunferencias_valor[]']").val(circunferencias_valor[0]);
+                 circunferencia_lado = JSON.parse(relatorio.circunferencia_lado);
+                 $("input[name='circunferencia_lado[]' value='"+circunferencia_lado+"']").attr("checked","checked");
 
 
 
