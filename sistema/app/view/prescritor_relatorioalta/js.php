@@ -404,8 +404,8 @@ function fc_editar_relatorio(id_relatorio){
                 if(relatorio.calculo_apres_aberto_liquido){
                     $("#modal_sistema_aberto").show(); 
                     $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
-                    $("#qtas_horas").val(relatorio.qtas_horas);
-                    $("#fra_fracionamento_dia").val(relatorio.fracionamento_dia);
+                    $("#qtas_horas").val(relatorio.fra_qtas_horas);
+                    $("#fracionamento_dia").val(relatorio.fra_fracionamento_dia);
 
                     fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
                     horarios = '';
@@ -427,8 +427,8 @@ function fc_editar_relatorio(id_relatorio){
                 if(relatorio.calculo_apres_aberto_po){
                     $("#modal_sistema_aberto").show();
                     $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
-                    $("#qtas_horas").val(relatorio.qtas_horas);
-                    $("#fra_fracionamento_dia").val(relatorio.fracionamento_dia);
+                    $("#qtas_horas").val(relatorio.fra_qtas_horas);
+                    $("#fracionamento_dia").val(relatorio.fra_fracionamento_dia);
 
                     fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
                     horarios = '';
