@@ -328,7 +328,7 @@ function fc_editar_relatorio(id_relatorio){
                  $("#altura option[value='"+relatorio.altura+"']").attr("selected","selected");
                  $("#altura_valor").val(relatorio.altura_valor);
                  peso = JSON.parse(relatorio.peso);
-                 $("input[name='peso' value='"+peso[0]+"']").attr("selected","selected");
+                 $("input[name='peso'] option[value='"+peso[0]+"']").attr("selected","selected");
                  peso_valor = JSON.parse(relatorio.peso_valor);
                  $("input[name='peso_valor[]']").val(peso_valor[0]);
                  imc = JSON.parse(relatorio.imc);
@@ -339,7 +339,7 @@ function fc_editar_relatorio(id_relatorio){
                  circunferencias_valor = JSON.parse(relatorio.circunferencias_valor);
                  $("input[name='circunferencias_valor[]']").val(circunferencias_valor[0]);
                  circunferencia_lado = JSON.parse(relatorio.circunferencia_lado);
-                 $("input[name='circunferencia_lado[]' value='"+circunferencia_lado+"']").attr("checked","checked");
+                 $("input[name='circunferencia_lado[]'][value='"+circunferencia_lado+"']").attr("checked","checked");
 
 
 
