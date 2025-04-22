@@ -313,88 +313,120 @@ function fc_editar_relatorio(id_relatorio){
                 $("#rel_gerar_relatorio").removeClass("none");
                 $("#rel_imprimir_relatorio").addClass("none");
 
-                 $("textarea[name='historia']").val(relatorio.historia);
-                 $("textarea[name='triagem_nutricional']").val(relatorio.triagem_nutricional); 
-                 $("textarea[name='diagnostico_nutricional']").val(relatorio.diagnostico_nutricional);
-                 $("textarea[name='exames_nutricionais_complementares']").val(relatorio.exames_nutricionais_complementares);
-                 $("textarea[name='exame_fisico']").val(relatorio.exame_fisico);
-                 $("textarea[name='exame_bioquimico']").val(relatorio.exame_bioquimico);
-                 $("textarea[name='observacao']").val(relatorio.observacao);
-                 $("textarea[name='observacoes']").val(relatorio.observacoes);
+                $("textarea[name='historia']").val(relatorio.historia);
+                $("textarea[name='triagem_nutricional']").val(relatorio.triagem_nutricional); 
+                $("textarea[name='diagnostico_nutricional']").val(relatorio.diagnostico_nutricional);
+                $("textarea[name='exames_nutricionais_complementares']").val(relatorio.exames_nutricionais_complementares);
+                $("textarea[name='exame_fisico']").val(relatorio.exame_fisico);
+                $("textarea[name='exame_bioquimico']").val(relatorio.exame_bioquimico);
+                $("textarea[name='observacao']").val(relatorio.observacao);
+                $("textarea[name='observacoes']").val(relatorio.observacoes);
 
-                 $("#data").val(relatorio.data);
+                $("#data").val(relatorio.data);
 
 
-                 $("#altura option[value='"+relatorio.altura+"']").attr("selected","selected");
-                 $("#altura_valor").val(relatorio.altura_valor);
-                 peso = JSON.parse(relatorio.peso);
-                 $("select[name='peso[0]'] option[value='"+peso[0]+"']").attr("selected","selected");
-                 peso_valor = JSON.parse(relatorio.peso_valor);
-                 $("input[name='peso_valor[]']").val(peso_valor[0]);
-                 imc = JSON.parse(relatorio.imc);
-                 $("input[name='imc[]']").val(imc[0]);
+                $("#altura option[value='"+relatorio.altura+"']").attr("selected","selected");
+                $("#altura_valor").val(relatorio.altura_valor);
+                peso = JSON.parse(relatorio.peso);
+                $("select[name='peso[0]'] option[value='"+peso[0]+"']").attr("selected","selected");
+                peso_valor = JSON.parse(relatorio.peso_valor);
+                $("input[name='peso_valor[]']").val(peso_valor[0]);
+                imc = JSON.parse(relatorio.imc);
+                $("input[name='imc[]']").val(imc[0]);
 
-                 circunferencias = JSON.parse(relatorio.circunferencias);
-                 $("select[name='circunferencias[0]'] option[value='"+circunferencias[0]+"']").attr("selected","selected");
-                 circunferencias_valor = JSON.parse(relatorio.circunferencias_valor);
-                 $("input[name='circunferencias_valor[]']").val(circunferencias_valor[0]);
-                 circunferencia_lado = JSON.parse(relatorio.circunferencia_lado);
-                 $("input[name='circunferencia_lado[0]'][value='"+circunferencia_lado+"']").attr("checked","checked");
-                 dobras = JSON.parse(relatorio.dobras);
-                 $("select[name='dobras[0]'] option[value='"+dobras[0]+"']").attr("selected","selected");
-                 dobras_valor = JSON.parse(relatorio.dobras_valor);
-                 $("input[name='dobras_valor[]']").val(dobras_valor[0]);
-                 dobras_lado = JSON.parse(relatorio.dobras_lado);
-                 $("input[name='dobras_lado[0]'][value='"+dobras_lado+"']").attr("checked","checked");
+                circunferencias = JSON.parse(relatorio.circunferencias);
+                $("select[name='circunferencias[0]'] option[value='"+circunferencias[0]+"']").attr("selected","selected");
+                circunferencias_valor = JSON.parse(relatorio.circunferencias_valor);
+                $("input[name='circunferencias_valor[]']").val(circunferencias_valor[0]);
+                circunferencia_lado = JSON.parse(relatorio.circunferencia_lado);
+                $("input[name='circunferencia_lado[0]'][value='"+circunferencia_lado+"']").attr("checked","checked");
+                dobras = JSON.parse(relatorio.dobras);
+                $("select[name='dobras[0]'] option[value='"+dobras[0]+"']").attr("selected","selected");
+                dobras_valor = JSON.parse(relatorio.dobras_valor);
+                $("input[name='dobras_valor[]']").val(dobras_valor[0]);
+                dobras_lado = JSON.parse(relatorio.dobras_lado);
+                $("input[name='dobras_lado[0]'][value='"+dobras_lado+"']").attr("checked","checked");
 
-                 $("input[class='calorias_total']").val(relatorio.nec_calorias_peso_valor);
-                 $("#formula_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
-                 necessidades_calorias_total(null, null);
-                 $("input[class='proteinas_total']").val(relatorio.nec_proteinas_peso_valor);
-                 $("#proteinas_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
-                 necessidades_proteinas_total(null, null);
-                 $("input[class='agua_total']").val(relatorio.nec_agua_peso_valor);
-                 $("#agua_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
-                 necessidades_agua_total(null, null);
+                $("input[class='calorias_total']").val(relatorio.nec_calorias_peso_valor);
+                $("#formula_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
+                var _peso = $("#nec_calorias_peso_valor").val();
+                if (_peso !== ""){
+                    _peso = _peso.replace(",", ".");
+                    _peso = parseFloat(_peso);
+                }else{
+                    _peso = 0;
+                }
+                var _formula_valor = $("#formula_valor").val();
+                $("#kcal_valor").val(numberFormatPrecision((_peso*_formula_valor), 0));
+                _formula_valor = numberFormatPrecision((_peso*_formula_valor), 0)+" ("+_formula_valor+" kcal/kg)";
+                $("#nec_calorias_total").val(_formula_valor);
+                $("#presc_kcal").html(_formula_valor);
 
-                 $("input[name='dispositivo'][value='"+relatorio.dispositivo+"']").attr("checked","checked");
+                $("input[class='proteinas_total']").val(relatorio.nec_proteinas_peso_valor);
+                $("#proteinas_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
+                var _peso = $("#nec_proteinas_peso_valor").val();
+                if (_peso !== ""){
+                    _peso = _peso.replace(",", ".");
+                    _peso = parseFloat(_peso);
+                }else{
+                    _peso = 0;
+                }
+                var _formula_valor = $("#proteinas_valor").val();
+                $("#ptn_valor").val(numberFormatPrecision((_peso*_formula_valor), 0));
+                _formula_valor = numberFormatPrecision((_peso*_formula_valor), 1)+" ("+numberFormatPrecision(_formula_valor, 1)+" g/kg)";
+                $("#nec_proteinas_total").val(_formula_valor);
+                $("#presc_ptn").html(_formula_valor);
+                
+                $("input[class='agua_total']").val(relatorio.nec_agua_peso_valor);
+                $("#agua_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
+                var _peso = $("#nec_agua_peso_valor").val();
+                if (_peso !== ""){
+                    _peso = _peso.replace(",", ".");
+                    _peso = parseFloat(_peso);
+                }else{
+                    _peso = 0;
+                }
+                var _formula_valor = $("#agua_valor").val();
+                $("#nec_agua_total").val( numberFormatPrecision((_peso*_formula_valor), 0)+" ("+numberFormatPrecision(_formula_valor, 0)+" ml/kg)" );
 
-                 if(relatorio.calculo_apres_fechado){
-                    $("input[name='calculo_apres_fechado']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_apres_aberto_liquido){
-                    $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_apres_aberto_po){
-                    $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_polimerico){
-                    $("input[name='calculo_fil_polimerico']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_oligomerico){
-                    $("input[name='calculo_fil_oligomerico']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_pololigomerico){
-                    $("input[name='calculo_fil_pololigomerico']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_comfibras){
-                    $("input[name='calculo_fil_comfibras']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_semfibras){
-                    $("input[name='calculo_fil_semfibras']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_comsemfibras){
-                    $("input[name='calculo_fil_comsemfibras']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_semlactose){
-                    $("input[name='calculo_fil_semlactose']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_100proteina){
-                    $("input[name='calculo_fil_100proteina']").attr("checked","checked");
-                 }
-                 if(relatorio.calculo_fil_semsacarose){
-                    $("input[name='calculo_fil_semsacarose']").attr("checked","checked");
-                 }
+                $("input[name='dispositivo'][value='"+relatorio.dispositivo+"']").attr("checked","checked");
+
+                if(relatorio.calculo_apres_fechado){
+                $("input[name='calculo_apres_fechado']").attr("checked","checked");
+                }
+                if(relatorio.calculo_apres_aberto_liquido){
+                $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
+                }
+                if(relatorio.calculo_apres_aberto_po){
+                $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_polimerico){
+                $("input[name='calculo_fil_polimerico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_oligomerico){
+                $("input[name='calculo_fil_oligomerico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_pololigomerico){
+                $("input[name='calculo_fil_pololigomerico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_comfibras){
+                $("input[name='calculo_fil_comfibras']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_semfibras){
+                $("input[name='calculo_fil_semfibras']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_comsemfibras){
+                $("input[name='calculo_fil_comsemfibras']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_semlactose){
+                $("input[name='calculo_fil_semlactose']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_100proteina){
+                $("input[name='calculo_fil_100proteina']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_semsacarose){
+                $("input[name='calculo_fil_semsacarose']").attr("checked","checked");
+                }
 
 
             }
