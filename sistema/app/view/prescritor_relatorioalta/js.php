@@ -435,13 +435,13 @@ function fc_editar_relatorio(id_relatorio){
                 $("#volume_horario").val(relatorio.fra_volume_horario);
                 fra_hidrahorario = JSON.parse(relatorio.fra_hidrahorario);
                 horarios = '';
-                for(i = 1; i <= Object.keys(fra_hidrahorario).length; i++) {
+                for(i = 0; i < Object.keys(fra_hidrahorario).length; i++) {
                     const chave = Object.keys(fra_hidrahorario)[i];
                     const valor = fra_hidrahorario[chave];
                     if (i<10){
-                        var numi = "0"+i;
+                        var numi = "0"+i+1;
                     }else{
-                        var numi = i;
+                        var numi = i+1;
                     }
                     
                     horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
