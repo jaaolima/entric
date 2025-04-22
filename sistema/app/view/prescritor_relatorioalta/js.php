@@ -402,7 +402,7 @@ function fc_editar_relatorio(id_relatorio){
 
                 }
                 if(relatorio.calculo_apres_aberto_liquido){
-                    $("#modal_sistema_fechado").show(); 
+                    $("#modal_sistema_aberto").show(); 
                     $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
                     $("#qtas_horas").val(relatorio.qtas_horas);
                     $("#fra_fracionamento_dia").val(relatorio.fracionamento_dia);
@@ -425,7 +425,7 @@ function fc_editar_relatorio(id_relatorio){
                     $('.hora').mask("99:99");
                 }
                 if(relatorio.calculo_apres_aberto_po){
-                    $("#modal_sistema_fechado").show();
+                    $("#modal_sistema_aberto").show();
                     $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
                     $("#qtas_horas").val(relatorio.qtas_horas);
                     $("#fra_fracionamento_dia").val(relatorio.fracionamento_dia);
