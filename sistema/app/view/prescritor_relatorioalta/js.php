@@ -340,6 +340,12 @@ function fc_editar_relatorio(id_relatorio){
                  $("input[name='circunferencias_valor[]']").val(circunferencias_valor[0]);
                  circunferencia_lado = JSON.parse(relatorio.circunferencia_lado);
                  $("input[name='circunferencia_lado[0]'][value='"+circunferencia_lado+"']").attr("checked","checked");
+                 dobras = JSON.parse(relatorio.dobras);
+                 $("select[name='dobras[0]'] option[value='"+dobras[0]+"']").attr("selected","selected");
+                 dobras_valor = JSON.parse(relatorio.dobras_valor);
+                 $("input[name='dobras_valor[]']").val(dobras_valor[0]);
+                 dobras_lado = JSON.parse(relatorio.dobras_lado);
+                 $("input[name='dobras_lado[0]'][value='"+dobras_lado+"']").attr("checked","checked");
 
 
 
