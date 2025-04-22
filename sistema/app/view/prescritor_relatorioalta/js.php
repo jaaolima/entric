@@ -479,14 +479,16 @@ function fc_editar_relatorio(id_relatorio){
                 $("#volume_horario").val(relatorio.fra_volume_horario);
                 fra_hidrahorario = JSON.parse(relatorio.fra_hidrahorario);
                 horarios = '';
-                for(i = 1; i < Object.keys(fra_hidrahorario).length; i++) {
-                    const chave = Object.keys(fra_hidrahorario)[i - 1];
+                for(i = 0; i < Object.keys(fra_hidrahorario).length; i++) {
+                    y = 1;
+                    const chave = Object.keys(fra_hidrahorario)[i];
                     const valor = fra_hidrahorario[chave];
                     if (i<10){
-                        var numi = "0"+ i;
+                        var numi = "0"+ y;
                     }else{
-                        var numi = i;
+                        var numi = y;
                     }
+                    y++;
                     
                     horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
                                         '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
