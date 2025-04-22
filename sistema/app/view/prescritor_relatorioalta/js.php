@@ -444,7 +444,7 @@ function fc_editar_relatorio(id_relatorio){
                     }
                     
                     horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
-                                        '<div class="col-sm-3"><input value="'+fra_hidrahorario[i]+'" type="text" placeholder="00:00" required="required" name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
+                                        '<div class="col-sm-3"><input value="'+fra_hidrahorario[numi]+'" type="text" placeholder="00:00" required="required" name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
                 }
                 $('.hidratacao_horarios').html(horarios);
                 $('.hora').mask("99:99");
