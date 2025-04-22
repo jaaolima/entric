@@ -437,6 +437,9 @@ function fc_editar_relatorio(id_relatorio){
                 console.log(fra_hidrahorario);
                 var horarios = '';
                 for(i = 1; i <= fra_hidrahorario.length; i++) {
+                    console.log(fra_hidrahorario[i]);
+                    console.log(fra_hidrahorario[0]);
+                    console.log(fra_hidrahorario['01']);
                     if (i<10){
                         var numi = "0"+i;
                     }else{
@@ -444,7 +447,7 @@ function fc_editar_relatorio(id_relatorio){
                     }
                     
                     horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
-                                        '<div class="col-sm-3"><input value="'+fra_hidrahorario[numi]+'" type="text" placeholder="00:00" required="required" name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
+                                        '<div class="col-sm-3"><input value="'+fra_hidrahorario[parseInt(numi)]+'" type="text" placeholder="00:00" required="required" name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
                 }
                 $('.hidratacao_horarios').html(horarios);
                 $('.hora').mask("99:99");
