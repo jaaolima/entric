@@ -9579,7 +9579,7 @@ $app->group("", function () use ($app) {
 		        $relatorio = $db->select_single_to_array("relatorios", "*", "WHERE id=".$id." AND codigo IS NULL", null);
 		        if ($relatorio){
 		            $relatorio["relatorio_code"] = endecrypt("encrypt", $relatorio['id']);
-		            $relatorio["data"] = sql2date($relatorio["data"]);
+		            $relatorio["data"] = date('d/m/Y', strtotime($relatorio["data"]));
 		            $retorno = array("relatorio" => $relatorio);
 		        }
 		        else{
