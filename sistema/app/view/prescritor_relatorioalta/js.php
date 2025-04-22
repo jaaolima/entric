@@ -499,6 +499,8 @@ function fc_editar_relatorio(id_relatorio){
 
                 $("textarea[name='info_complementares']").val(relatorio.info_complementares);
 
+                $(".state[rel='"+relatorio.distribuidores+"']").click();
+
 
             }
             else if (data.error){
