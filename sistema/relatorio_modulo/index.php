@@ -266,12 +266,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<p class="text-left subtitutlo">
 			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE SÃO OS MÓDULOS NUTRICIONAIS?</p>
 			<div style="display:flex;margin-top:15px;">
-				<div style="width:68%;">
+				<div style="width:100%;">
 					<p>Os módulos nutricionais são fórmulas que contêm <span style="color:#0092c5;">nutrientes específicos</span>, escolhidos de acordo com as necessidades de cada paciente. Eles têm o objetivo de complementar a alimentação, ajudando a atender às necessidades nutricionais de forma mais precisa e eficaz.</p>
-				</div>
-				<div style="text-align:center;width:32%;">
-					<h4 class="titulo"style="margin:0px;">SAIBA MAIS!</h4>
-					<img src="imagem/qrcode_via_oral.jpeg" style="display:inline-block;" width="80" alt="">
 				</div>
 			</div>
 			
