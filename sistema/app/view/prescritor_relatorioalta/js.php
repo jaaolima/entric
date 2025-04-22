@@ -348,10 +348,13 @@ function fc_editar_relatorio(id_relatorio){
                  $("input[name='dobras_lado[0]'][value='"+dobras_lado+"']").attr("checked","checked");
 
                  $("input[class='calorias_total']").val(relatorio.nec_calorias_peso_valor);
+                 $("#formula_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
                  necessidades_calorias_total(null, null);
                  $("input[class='proteinas_total']").val(relatorio.nec_proteinas_peso_valor);
+                 $("#proteinas_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
                  necessidades_proteinas_total(null, null);
                  $("input[class='agua_total']").val(relatorio.nec_agua_peso_valor);
+                 $("#agua_valor_MP_cBdLN29i2").val(relatorio.nec_calorias_peso_valor);
                  necessidades_agua_total(null, null);
 
                  $("input[name='dispositivo'][value='"+relatorio.dispositivo+"']").attr("checked","checked");
