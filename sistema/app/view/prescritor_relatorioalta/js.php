@@ -397,14 +397,55 @@ function fc_editar_relatorio(id_relatorio){
                 if(relatorio.calculo_apres_fechado){
                     $("#modal_sistema_fechado").show();
                     $("input[name='calculo_apres_fechado']").attr("checked","checked");
+                    $("#h_i_dieta").val(relatorio.fra_h_i_dieta);
+                    $("#h_inf_dieta").val(relatorio.fra_h_inf_dieta);
+
                 }
                 if(relatorio.calculo_apres_aberto_liquido){
                     $("#modal_sistema_fechado").show(); 
                     $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
+                    $("#qtas_horas").val(relatorio.qtas_horas);
+                    $("#fra_fracionamento_dia").val(relatorio.fracionamento_dia);
+
+                    fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
+                    horarios = '';
+                    for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
+                        const chave = Object.keys(fra_dieta_horario)[i - 1];
+                        const valor = fra_dieta_horario[chave];
+                        if (i<10){
+                            var numi = "0"+ i;
+                        }else{
+                            var numi = i;
+                        }
+                        
+                        horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
+                                            '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
+                    }
+                    $('.fracio_horario').html(horarios);
+                    $('.hora').mask("99:99");
                 }
                 if(relatorio.calculo_apres_aberto_po){
                     $("#modal_sistema_fechado").show();
                     $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
+                    $("#qtas_horas").val(relatorio.qtas_horas);
+                    $("#fra_fracionamento_dia").val(relatorio.fracionamento_dia);
+
+                    fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
+                    horarios = '';
+                    for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
+                        const chave = Object.keys(fra_dieta_horario)[i - 1];
+                        const valor = fra_dieta_horario[chave];
+                        if (i<10){
+                            var numi = "0"+ i;
+                        }else{
+                            var numi = i;
+                        }
+                        
+                        horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
+                                            '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
+                    }
+                    $('.fracio_horario').html(horarios);
+                    $('.hora').mask("99:99");
                 }
                 if(relatorio.calculo_fil_polimerico){
                 $("input[name='calculo_fil_polimerico']").attr("checked","checked");
