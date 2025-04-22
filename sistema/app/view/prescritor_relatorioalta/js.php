@@ -431,6 +431,25 @@ function fc_editar_relatorio(id_relatorio){
                 $("input[name='calculo_fil_semsacarose']").attr("checked","checked");
                 }
 
+                $("#hidratacao_dia").val(relatorio.fra_hidratacao_dia);
+                $("#volume_horario").val(relatorio.fra_volume_horario);
+                fra_hidrahorario = JSON.parse(relatorio.fra_hidrahorario);
+                for(i = 1; i <= fra_hidrahorario.length; i++) {
+                    if (i<10){
+                        var numi = "0"+i;
+                    }else{
+                        var numi = i;
+                    }
+                    
+                    horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
+                                        '<div class="col-sm-3"><input value="'+fra_hidrahorario[i]+'" type="text" placeholder="00:00" required="required" name="hidrahorario['+numi+']" id="hidrahorario_'+numi+'" class="form-control hora"></div>';
+                }
+                $('.hidratacao_horarios').html(horarios);
+                $('.hora').mask("99:99");
+                volume_total_hidratacao();
+
+                $("textarea[name='info_complementares']").val(relatorio.info_complementares);
+
 
             }
             else if (data.error){
