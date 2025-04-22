@@ -439,9 +439,9 @@ function fc_editar_relatorio(id_relatorio){
                     const chave = Object.keys(fra_hidrahorario)[i];
                     const valor = fra_hidrahorario[chave];
                     if (i<10){
-                        var numi = "0"+i+1;
+                        var numi = "0"+ (parseInt(i)+1);
                     }else{
-                        var numi = i+1;
+                        var numi = (parseInt(i)+1);
                     }
                     
                     horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
