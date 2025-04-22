@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="card">
+                <div class="card w-100">
                     <div class="card-body">
                         <div class="card-title">
                             Meus Relatórios
