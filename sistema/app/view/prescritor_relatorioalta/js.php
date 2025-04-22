@@ -434,8 +434,7 @@ function fc_editar_relatorio(id_relatorio){
                 $("#hidratacao_dia").val(relatorio.fra_hidratacao_dia);
                 $("#volume_horario").val(relatorio.fra_volume_horario);
                 fra_hidrahorario = JSON.parse(relatorio.fra_hidrahorario);
-                console.log(fra_hidrahorario.length);
-                var horarios = '';
+                console.log(fra_hidrahorario);
                 for(i = 0; i <= fra_hidrahorario.length; i++) {
                     console.log(fra_hidrahorario[i]);
                     console.log(fra_hidrahorario[0]);
