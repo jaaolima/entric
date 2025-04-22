@@ -327,11 +327,11 @@ function fc_editar_relatorio(id_relatorio){
 
                  $("#altura option[value='"+relatorio.altura+"']").attr("selected","selected");
                  $("#altura_valor").val(relatorio.altura_valor);
-                 $("#peso[0] option[value='"+relatorio.peso+"']").attr("selected","selected");
+                 $("input[name='peso' value='"+relatorio.peso+"']").attr("selected","selected");
                  $("input[name='peso_valor[]']").val(relatorio.peso_valor);
                  $("input[name='imc[]']").val(relatorio.imc);
 
-                 $("#circunferencias[0] option[value='"+relatorio.circunferencias+"']").attr("selected","selected");
+                 $("#circunferencias option[value='"+relatorio.circunferencias+"']").attr("selected","selected");
                  $("input[name='circunferencias_valor[]']").val(relatorio.circunferencias_valor);
                  $("input[name='circunferencia_lado[0]' value='"+relatorio.circunferencia_lado+"']").attr("checked","checked");
 
