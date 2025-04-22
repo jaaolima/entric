@@ -395,13 +395,16 @@ function fc_editar_relatorio(id_relatorio){
                 $("input[name='dispositivo'][value='"+relatorio.dispositivo+"']").attr("checked","checked");
 
                 if(relatorio.calculo_apres_fechado){
-                $("input[name='calculo_apres_fechado']").attr("checked","checked");
+                    $("#modal_sistema_fechado").show();
+                    $("input[name='calculo_apres_fechado']").attr("checked","checked");
                 }
                 if(relatorio.calculo_apres_aberto_liquido){
-                $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
+                    $("#modal_sistema_fechado").show(); 
+                    $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
                 }
                 if(relatorio.calculo_apres_aberto_po){
-                $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
+                    $("#modal_sistema_fechado").show();
+                    $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_polimerico){
                 $("input[name='calculo_fil_polimerico']").attr("checked","checked");
@@ -435,13 +438,13 @@ function fc_editar_relatorio(id_relatorio){
                 $("#volume_horario").val(relatorio.fra_volume_horario);
                 fra_hidrahorario = JSON.parse(relatorio.fra_hidrahorario);
                 horarios = '';
-                for(i = 0; i < Object.keys(fra_hidrahorario).length; i++) {
-                    const chave = Object.keys(fra_hidrahorario)[i];
+                for(i = 1; i < Object.keys(fra_hidrahorario).length; i++) {
+                    const chave = Object.keys(fra_hidrahorario)[i - 1];
                     const valor = fra_hidrahorario[chave];
                     if (i<10){
-                        var numi = "0"+ (parseInt(i)+1);
+                        var numi = "0"+ i;
                     }else{
-                        var numi = (parseInt(i)+1);
+                        var numi = i;
                     }
                     
                     horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
