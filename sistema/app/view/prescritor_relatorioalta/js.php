@@ -356,8 +356,8 @@ function fc_editar_relatorio(id_relatorio){
 
                  $("input[name='dispositivo'][value='"+relatorio.dispositivo+"']").attr("checked","checked");
 
-                 if(relatorio.calculo_apres_aberto_liquido){
-                    $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
+                 if(relatorio.calculo_apres_fechado){
+                    $("input[name='calculo_apres_fechado']").attr("checked","checked");
                  }
                  if(relatorio.calculo_apres_aberto_liquido){
                     $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
