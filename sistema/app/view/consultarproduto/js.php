@@ -823,6 +823,7 @@ function modalFabricantesEditar(fabricante){
         title: 'Editar Fabricante',
         content: '<div><div class="form-group"><label class="control-label">Fabricante:</label><input type="text" name="edit_fabricante" id="edit_fabricante" class="form-control" value="'+fabricante+'"></div></div> <input type="hidden" name="edit_fabricante_old" id="edit_fabricante_old"  value="'+fabricante+'">',
         onContentReady: function () {
+            console.log("chegou");
             setTimeout(() => {
                 this.$content.find('#add_fabricante').focus();
             }, 100);
