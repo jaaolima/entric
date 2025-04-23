@@ -7894,6 +7894,14 @@ $app->group("", function () use ($app) {
 
 				$id_prescritor = $request->getParam("id_prescritor");
 
+				if (!isset($dados['kcal_kg'])) $dados['kcal_kg'] = null;
+				if (!isset($dados['kcal_dia'])) $dados['kcal_dia'] = null;
+				if (!isset($dados['proteina_kg'])) $dados['proteina_kg'] = null;
+				if (!isset($dados['proteina_dia'])) $dados['proteina_dia'] = null;
+				if (!isset($dados['agua_kg'])) $dados['agua_kg'] = null;
+				if (!isset($dados['agua_dia'])) $dados['agua_dia'] = null;
+				if (!isset($dados['kcal_valor'])) $dados['kcal_valor'] = null;
+				if (!isset($dados['ptn_valor'])) $dados['ptn_valor'] = null;
 				if (!isset($dados['categoria'])) $dados['categoria'] = null;
 		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
 		        if (!isset($dados['tipo_prescricao'])) $dados['tipo_prescricao'] = null;
@@ -7939,6 +7947,14 @@ $app->group("", function () use ($app) {
 
 		        $bind = array( 
 								$campo_prescritor => $id_prescritor,
+								':kcal_kg' => $dados['kcal_kg'],
+								':kcal_dia' => $dados['kcal_dia'],
+								':proteina_kg' => $dados['proteina_kg'],
+								':proteina_dia' => $dados['proteina_dia'],
+								':agua_kg' => $dados['agua_kg'],
+								':agua_dia' => $dados['agua_dia'],
+								':kcal_valor' => $dados['kcal_valor'],
+								':ptn_valor' => $dados['ptn_valor'],
 								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
 		                        ':tipo_prescricao' => $dados["tipo_prescricao"],

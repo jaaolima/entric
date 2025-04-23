@@ -346,17 +346,106 @@ function fc_editar_relatorio(id_relatorio){
                 $("#rel_gerar_relatorio").removeClass("none");
                 $("#rel_imprimir_relatorio").addClass("none");
 
-                 $("textarea[name='historia']").val(relatorio.historia);
-                 $("textarea[name='triagem_nutricional']").val(relatorio.triagem_nutricional);
-                 $("textarea[name='diagnostico_nutricional']").val(relatorio.diagnostico_nutricional);
-                 $("textarea[name='exames_nutricionais_complementares']").val(relatorio.exames_nutricionais_complementares);
-                 $("textarea[name='exame_fisico']").val(relatorio.exame_fisico);
-                 $("textarea[name='exame_bioquimico']").val(relatorio.exame_bioquimico);
-                 $("textarea[name='observacao']").val(relatorio.observacao);
-                 $("textarea[name='observacoes']").val(relatorio.observacoes);
 
-                 $("#altura option[value='"+relatorio.altura+"']").attr("selected","selected");
-                 $("#altura_valor").val(relatorio.altura_valor);
+                $("input[name='dispositivo'][value='"+relatorio.dispositivo+"']").attr("checked","checked");
+
+                if(relatorio.calculo_apres_fechado){
+                    $("#modal_sistema_fechado").show();
+                    $("input[name='calculo_apres_fechado']").attr("checked","checked");
+                    $("#h_i_dieta").val(relatorio.fra_h_i_dieta);
+                    $("#h_inf_dieta").val(relatorio.fra_h_inf_dieta);
+
+                }
+                if(relatorio.calculo_apres_aberto_liquido){
+                    $("#modal_sistema_aberto").show(); 
+                    $("input[name='calculo_apres_aberto_liquido']").attr("checked","checked");
+                    $("#qtas_horas").val(relatorio.fra_qtas_horas);
+                    $("#fracionamento_dia").val(relatorio.fra_fracionamento_dia);
+
+                    fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
+                    horarios = '';
+                    for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
+                        const chave = Object.keys(fra_dieta_horario)[i - 1];
+                        const valor = fra_dieta_horario[chave];
+                        if (i<10){
+                            var numi = "0"+ i;
+                        }else{
+                            var numi = i;
+                        }
+                        
+                        horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
+                                            '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
+                    }
+                    $('.fracio_horario').html(horarios);
+                    $('.hora').mask("99:99");
+                }
+                if(relatorio.calculo_apres_aberto_po){
+                    $("#modal_sistema_aberto").show();
+                    $("input[name='calculo_apres_aberto_po']").attr("checked","checked");
+                    $("#qtas_horas").val(relatorio.fra_qtas_horas);
+                    $("#fracionamento_dia").val(relatorio.fra_fracionamento_dia);
+
+                    fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
+                    horarios = '';
+                    for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
+                        const chave = Object.keys(fra_dieta_horario)[i - 1];
+                        const valor = fra_dieta_horario[chave];
+                        if (i<10){
+                            var numi = "0"+ i;
+                        }else{
+                            var numi = i;
+                        }
+                        
+                        horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
+                                            '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
+                    }
+                    $('.fracio_horario').html(horarios);
+                    $('.hora').mask("99:99");
+                }
+
+                if(relatorio.calculo_fil_polimerico){
+                    $("input[name='calculo_fil_polimerico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_oligomerico){
+                    $("input[name='calculo_fil_oligomerico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_pololigomerico){
+                    $("input[name='calculo_fil_pololigomerico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_comfibras){
+                    $("input[name='calculo_fil_comfibras']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_semfibras){
+                    $("input[name='calculo_fil_semfibras']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_comsemfibras){
+                    $("input[name='calculo_fil_comsemfibras']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_semlactose){
+                    $("input[name='calculo_fil_semlactose']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_100proteina){
+                    $("input[name='calculo_fil_100proteina']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_semsacarose){
+                    $("input[name='calculo_fil_semsacarose']").attr("checked","checked");
+                }
+
+                $("#kcal_valor").val(relatorio.kcal_valor);
+                $("#ptn_valor").val(relatorio.ptn_valor);
+
+                _formula_total = relatorio.kcal_dia;
+
+                kcal_kg = _formula_total / parseFloat($("#up_peso").val());
+                _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(kcal_kg)+" kcal/kg)";
+                $("#presc_kcal").html(_formula_valor);
+
+                _formula_total_ptn = relatorio.proteina_dia;
+
+                proteina_kg = _formula_total_ptn / parseFloat($("#up_peso").val());
+                _formula_valor = numberFormatPrecision((_formula_total_ptn), 0)+" ("+numberFormatPrecision(proteina_kg)+" kcal/kg)";
+                $("#presc_ptn").html(_formula_valor);
+
             }
             else if (data.error){
                 toastr['error'](data.error.message, '', {positionClass: 'toast-top-right' });
