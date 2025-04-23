@@ -4,7 +4,8 @@ class UtilModel extends Model {
     public function stlog() {
         global $bruker;
         
-        if($_SESSION['login'] == 'entric'){
+        if($_SESSION['login'] == 'entric'){ 
+            var_dump($bruker->usuario);
             $qdata = array(':id_usuario'=> $bruker->usuario['id'], 
             ':login'=> $bruker->usuario['email'], 
             ':funcao'=> $_SERVER['QUERY_STRING'], 
