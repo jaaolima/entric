@@ -511,21 +511,41 @@ function fc_editar_relatorio(id_relatorio){
 }
 
 function fc_excluir_relatorio(id_relatorio){
-    $.ajax({
-        type: "POST",
-        url: "ajax/relatorio_excluir",
-        data: "id="+id_relatorio,
-        cache: false,
-        dataType: 'json',
-        success: function( data ){
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'green',
-                content: 'Relatório excluído com sucesso!'
-            });
+    $.confirm({
+        title: '<strong>Atenção</strong>',
+        content: 'Tem certeza que deseja excluir o relatório?',
+        buttons: {
+            Sim: {
+                text: 'Sim',
+                btnClass: 'btn btn-secondary btn-form',
+                action: function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/relatorio_excluir",
+                        data: "id="+id_relatorio,
+                        cache: false,
+                        dataType: 'json',
+                        success: function( data ){
+                            $.alert({
+                                title: 'Atenção',
+                                icon: 'fa fa-warning',
+                                type: 'green',
+                                content: 'Relatório excluído com sucesso!'
+                            });
+                        }
+                    }); 
+                }
+            },
+            Nao: {
+                text: 'Não',
+                btnClass: 'btn btn-default btn-form',
+                action: function(){
+                    
+                }
+            }
         }
-    });    
+    });
+       
 }
 
 function formatRepo (repo) {
