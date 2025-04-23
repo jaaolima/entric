@@ -346,6 +346,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Proteína"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								if($porcao == '0 ½'){
+									$porcao = '½';
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."

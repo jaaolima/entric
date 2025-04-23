@@ -201,7 +201,7 @@
                                             <input id="categoria_modulo_colageno_aminoacidos" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Colágeno ou Aminoácidos">
                                             <label for="categoria_modulo_colageno_aminoacidos" class="form-check-label check-green">Colágeno ou Aminoácidos</label>
                                         </div>
-                                        <div class="form-check col-sm-12">
+                                        <div class="form-check col-sm-12"> 
                                             <input id="categoria_modulo_carboidrato" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Carboidrato">
                                             <label for="categoria_modulo_carboidrato" class="form-check-label check-green">Carboidrato</label>
                                         </div>
