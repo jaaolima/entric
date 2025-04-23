@@ -93,7 +93,7 @@ function fc_retorno_pacientes(){
                     status = "checked='checked'";
                     var editar = "";
                 }else{
-                    var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
+                    var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
                 }
 
                 tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td class="text-center"><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input disponivel" id="disponivel'+item.id+'" onchange="disponivel('+item.id+', this)" '+status+'><label class="custom-control-label" for="disponivel'+item.id+'"></label></div></td><td> '+ editar +' </td></tr>';
@@ -510,7 +510,7 @@ function fc_editar_relatorio(id_relatorio){
     });    
 }
 
-function fc_excluir_relatorio(id_relatorio){
+function fc_excluir_relatorio(id_relatorio, _this){
     $.confirm({
         title: '<strong>Atenção</strong>',
         content: 'Tem certeza que deseja excluir o relatório?',
@@ -526,6 +526,9 @@ function fc_excluir_relatorio(id_relatorio){
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
+                            trPai = $(_this).closest('tr');
+                            console.log(trPai);
+                            trPai.hide();
                             $.alert({
                                 title: 'Atenção',
                                 icon: 'fa fa-warning',
