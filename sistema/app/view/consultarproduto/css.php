@@ -1,6 +1,10 @@
 <link href="js/jquery/select2/css/select2.min.css" rel="stylesheet">
 <link rel="stylesheet" href="js/jquery/jquery-confirm/jquery-confirm.min.css">
 <style>
+#add_fabricante {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+}
 .entric .nav-tabs .nav-link{
     font-size: 13px;
     border-radius: 5px 5px 0px 0px !important;
