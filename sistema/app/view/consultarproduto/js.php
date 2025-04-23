@@ -818,23 +818,13 @@ function modalFabricantesCadastrar(){
             },
         },
         onOpen: function () {
-            // Espera o DOM renderizar por completo antes de focar
-            setTimeout(function () {
-                const input = document.getElementById('add_fabricante');
-                if (input) {
-                    input.focus();
-                    input.select(); // opcional
-                } else {
-                    console.warn('Input não encontrado');
-                }
-            }, 200);
+            setTimeout(() => {
+                console.log("chegou");
+                $('#add_fabricante').focus().select();
+            }, 500);
         }
-    });
 
-    setTimeout(() => {
-        $('#add_fabricante').prop('readonly', false); // só pra garantir
-        $('#add_fabricante').focus();
-    }, 300);
+    });
 }
 
 function modalFabricantesEditar(fabricante){
