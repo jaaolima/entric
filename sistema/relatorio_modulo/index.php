@@ -440,6 +440,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$medida = $partes[2];       // Ex.: 1 Colher-medida
 							$quantidade = $partes[3];   // Ex.: 25
 							$categoria = $partes[4];    // Ex.: Proteína
+							$fabricante = $partes[5]; 
 						
 							// Monta um array associativo com as informações
 							array_push($dadosProcessados, [
@@ -447,7 +448,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								'produto' => $produto,
 								'medida' => $medida,
 								'quantidade' => $quantidade,
-								'categoria' => $categoria
+								'categoria' => $categoria,
+								'fabricante' => $fabricante
 							]);
 						}
 
@@ -542,6 +544,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$medida = $partes[2];       // Ex.: 1 Colher-medida
 							$quantidade = $partes[3];   // Ex.: 25
 							$categoria = $partes[4];    // Ex.: Proteína
+							$fabricante = $partes[5]; 
 						
 							// Monta um array associativo com as informações
 							array_push($dadosProcessados, [
@@ -549,7 +552,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								'produto' => $produto,
 								'medida' => $medida,
 								'quantidade' => $quantidade,
-								'categoria' => $categoria
+								'categoria' => $categoria,
+								'fabricante' => $fabricante
 							]);
 						}
 
@@ -644,6 +648,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$medida = $partes[2];       // Ex.: 1 Colher-medida
 							$quantidade = $partes[3];   // Ex.: 25
 							$categoria = $partes[4];    // Ex.: Proteína
+							$fabricante = $partes[5]; 
 						
 							// Monta um array associativo com as informações
 							array_push($dadosProcessados, [
@@ -651,7 +656,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								'produto' => $produto,
 								'medida' => $medida,
 								'quantidade' => $quantidade,
-								'categoria' => $categoria
+								'categoria' => $categoria,
+								'fabricante' => $fabricante
 							]);
 						}
 
@@ -746,6 +752,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$medida = $partes[2];       // Ex.: 1 Colher-medida
 							$quantidade = $partes[3];   // Ex.: 25
 							$categoria = $partes[4];    // Ex.: Proteína
+							$fabricante = $partes[5]; 
 						
 							// Monta um array associativo com as informações
 							array_push($dadosProcessados, [
@@ -753,7 +760,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								'produto' => $produto,
 								'medida' => $medida,
 								'quantidade' => $quantidade,
-								'categoria' => $categoria
+								'categoria' => $categoria,
+								'fabricante' => $fabricante
 							]);
 						}
 
@@ -848,6 +856,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$medida = $partes[2];       // Ex.: 1 Colher-medida
 							$quantidade = $partes[3];   // Ex.: 25
 							$categoria = $partes[4];    // Ex.: Proteína
+							$fabricante = $partes[5]; 
 						
 							// Monta um array associativo com as informações
 							array_push($dadosProcessados, [
@@ -855,7 +864,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								'produto' => $produto,
 								'medida' => $medida,
 								'quantidade' => $quantidade,
-								'categoria' => $categoria
+								'categoria' => $categoria,
+								'fabricante' => $fabricante
 							]);
 						}
 
@@ -950,6 +960,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$medida = $partes[2];       // Ex.: 1 Colher-medida
 							$quantidade = $partes[3];   // Ex.: 25
 							$categoria = $partes[4];    // Ex.: Proteína
+							$fabricante = $partes[5]; 
 						
 							// Monta um array associativo com as informações
 							array_push($dadosProcessados, [
@@ -957,7 +968,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								'produto' => $produto,
 								'medida' => $medida,
 								'quantidade' => $quantidade,
-								'categoria' => $categoria
+								'categoria' => $categoria,
+								'fabricante' => $fabricante
 							]);
 						}
 
@@ -1052,6 +1064,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$medida = $partes[2];       // Ex.: 1 Colher-medida
 							$quantidade = $partes[3];   // Ex.: 25
 							$categoria = $partes[4];    // Ex.: Proteína
+							$fabricante = $partes[5]; 
 						
 							// Monta um array associativo com as informações
 							array_push($dadosProcessados, [
@@ -1059,7 +1072,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								'produto' => $produto,
 								'medida' => $medida,
 								'quantidade' => $quantidade,
-								'categoria' => $categoria
+								'categoria' => $categoria,
+								'fabricante' => $fabricante
 							]);
 						}
 
