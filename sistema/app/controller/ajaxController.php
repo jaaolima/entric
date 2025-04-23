@@ -156,6 +156,10 @@ class AjaxController extends Controller {
             echo json_encode(array('error'=>array('message'=>'Erro ao executar função2.')));
         }
     }
+    function relatorio_excluir() {
+        $relatorio = $this->AjaxModel->rmRelatorio($_POST);
+        echo json_encode($relatorio);
+    }
 
     function relatorio_salvar_simplificada() {
         if (isset($_POST['tab'])){
