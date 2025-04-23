@@ -5,7 +5,6 @@ class UtilModel extends Model {
         global $bruker;
         
         if($_SESSION['login'] == 'entric'){ 
-            var_dump($bruker->usuario);
             $qdata = array(':id_usuario'=> $bruker->usuario['id'], 
             ':login'=> $bruker->usuario['email'], 
             ':funcao'=> $_SERVER['QUERY_STRING'], 
