@@ -765,6 +765,7 @@ function modalFabricantesCadastrar(){
     console.log("chegou"); 
     $.confirm({
         title: 'Cadastrar Fabricante',
+        focusTrap: false,
         content: '<div><div class="form-group"><label class="control-label">Fabricante:</label><input type="text" name="add_fabricante" id="add_fabricante" class="form-control" value=""></div></div>',
         buttons: {
             Cadastrar: {
@@ -815,18 +816,18 @@ function modalFabricantesCadastrar(){
             },
             Cancelar: function(){
             },
-            onOpen: function () {
-                // Espera o DOM renderizar por completo antes de focar
-                setTimeout(function () {
-                    const input = document.getElementById('add_fabricante');
-                    if (input) {
-                        input.focus();
-                        input.select(); // opcional
-                    } else {
-                        console.warn('Input não encontrado');
-                    }
-                }, 200);
-            }
+        },
+        onOpen: function () {
+            // Espera o DOM renderizar por completo antes de focar
+            setTimeout(function () {
+                const input = document.getElementById('add_fabricante');
+                if (input) {
+                    input.focus();
+                    input.select(); // opcional
+                } else {
+                    console.warn('Input não encontrado');
+                }
+            }, 200);
         }
     });
 
