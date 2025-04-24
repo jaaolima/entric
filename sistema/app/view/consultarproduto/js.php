@@ -753,7 +753,7 @@ function modalFabricantes(){
             var _table = $("#modal_fabricantes").find(".entric_table");
             _table.find("tbody").html("");
             jQuery.each(dados.rm, function(i,data) {
-                _table.append("<tr><td>" + data + "</td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
+                _table.append("<tr><td>" + data + "</td><td class='text-center'></td></tr>");
             });
             $("#modal_fabricantes").find(".entric_table_loading").hide();
             $("#modal_fabricantes").find(".entric_table").show(); 
@@ -828,111 +828,111 @@ function modalFabricantesCadastrar(){
 }
 
 function modalFabricantesEditar(fabricante){
-    // $.confirm({
-    //     title: 'Editar Fabricante',
-    //     content: '<div><div class="form-group"><label class="control-label">Fabricante:</label><input type="text" name="edit_fabricante" id="edit_fabricante" class="form-control" value="'+fabricante+'"></div></div> <input type="hidden" name="edit_fabricante_old" id="edit_fabricante_old"  value="'+fabricante+'">',
-    //     focusTrap: false,
-    //     buttons: {
-    //         Salvar: {
-    //             text: 'Salvar',
-    //             btnClass: 'btn btn-secondary btn-form',
-    //             action: function(){ 
-    //                 $.ajax({
-    //                     type: "POST",
-    //                     url: 'ajax/fabricantes_editar',                        
-    //                     data: "fabricante="+$("#edit_fabricante").val()+"&fabricante2="+$("#edit_fabricante_old").val(),
-    //                     cache: false,
-    //                     dataType: 'json',
-    //                     success: function( dados ){
-    //                         if (dados.error){
-    //                             $.alert({
-    //                                 title: 'Atenção',
-    //                                 icon: 'fa fa-warning',
-    //                                 type: 'red',
-    //                                 content: dados.error.message,
-    //                             });
-    //                         }
-    //                         else{
-    //                             var _table = $("#modal_fabricantes").find(".entric_table");
-    //                             _table.find("tbody").html("");
-    //                             jQuery.each(dados.rm, function(i,data) {
-    //                                 _table.append("<tr><td>" + data + "</td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
-    //                             });
-    //                             $("#modal_fabricantes").find(".entric_table_loading").hide();
-    //                             $("#modal_fabricantes").find(".entric_table").show();
-    //                             $('#fabricante').html('').select2({ width: '100%',
-    //                                                                 placeholder: "...",
-    //                                                                 //tags: true,
-    //                                                                 multiple: false,
-    //                                                                 allowClear: true,
-    //                                                                 language: "pt-BR",
-    //                                                                 data: dados.fabricantes});
+    $.confirm({
+        title: 'Editar Fabricante',
+        content: '<div><div class="form-group"><label class="control-label">Fabricante:</label><input type="text" name="edit_fabricante" id="edit_fabricante" class="form-control" value="'+fabricante+'"></div></div> <input type="hidden" name="edit_fabricante_old" id="edit_fabricante_old"  value="'+fabricante+'">',
+        focusTrap: false,
+        buttons: {
+            Salvar: {
+                text: 'Salvar',
+                btnClass: 'btn btn-secondary btn-form',
+                action: function(){ 
+                    $.ajax({
+                        type: "POST",
+                        url: 'ajax/fabricantes_editar',                        
+                        data: "fabricante="+$("#edit_fabricante").val()+"&fabricante2="+$("#edit_fabricante_old").val(),
+                        cache: false,
+                        dataType: 'json',
+                        success: function( dados ){
+                            if (dados.error){
+                                $.alert({
+                                    title: 'Atenção',
+                                    icon: 'fa fa-warning',
+                                    type: 'red',
+                                    content: dados.error.message,
+                                });
+                            }
+                            else{
+                                var _table = $("#modal_fabricantes").find(".entric_table");
+                                _table.find("tbody").html("");
+                                jQuery.each(dados.rm, function(i,data) {
+                                    _table.append("<tr><td>" + data + "</td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
+                                });
+                                $("#modal_fabricantes").find(".entric_table_loading").hide();
+                                $("#modal_fabricantes").find(".entric_table").show();
+                                $('#fabricante').html('').select2({ width: '100%',
+                                                                    placeholder: "...",
+                                                                    //tags: true,
+                                                                    multiple: false,
+                                                                    allowClear: true,
+                                                                    language: "pt-BR",
+                                                                    data: dados.fabricantes});
 
-    //                             $.alert({
-    //                                 title: 'Sucesso',
-    //                                 icon: 'fa fa-rocket',
-    //                                 type: 'green',
-    //                                 content: 'Dados editados com sucesso.',
-    //                             });                       
-    //                         }
-    //                     }
-    //                 });
-    //             }
-    //         },
-    //         Cancelar: function(){
-    //         }
-    //     }
-    // });
+                                $.alert({
+                                    title: 'Sucesso',
+                                    icon: 'fa fa-rocket',
+                                    type: 'green',
+                                    content: 'Dados editados com sucesso.',
+                                });                       
+                            }
+                        }
+                    });
+                }
+            },
+            Cancelar: function(){
+            }
+        }
+    });
 }
 
 function modalFabricantesDelete(fabricante){
-    // $.confirm({
-    //     title: 'Atenção',
-    //     content: 'Você tem certeza que deseja remover o fabricante: '+fabricante,
-    //     theme: 'modern',
-    //     //theme: 'material',
-    //     //theme: 'bootstrap',
-    //     //theme: 'supervan',
-    //     animation: 'scale',
-    //     buttons: {
-    //         confirmar: {
-    //             text: 'Confirmar',
-    //             action: function(){
-    //                 $.alert('Fabricante removido com sucesso.');
-    //                 $("#modal_fabricantes").find(".entric_table_loading").show();
-    //                 $("#modal_fabricantes").find(".entric_table").hide();
-    //                 $.ajax({
-    //                     type: "POST",
-    //                     url: "ajax/remover_fabricantes",
-    //                     data: "fabricante="+fabricante,
-    //                     cache: false,
-    //                     dataType: 'json',
-    //                     success: function( dados ){
-    //                         var _table = $("#modal_fabricantes").find(".entric_table");
-    //                         _table.find("tbody").html("");
-    //                         jQuery.each(dados.rm, function(i,data) {
-    //                             _table.append("<tr><td>" + data + "</td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
-    //                         });
-    //                         $("#modal_fabricantes").find(".entric_table_loading").hide();
-    //                         $("#modal_fabricantes").find(".entric_table").show();
-    //                         $('#fabricante').html('').select2({ width: '100%',
-    //                                                             placeholder: "...",
-    //                                                             //tags: true,
-    //                                                             multiple: false,
-    //                                                             allowClear: true,
-    //                                                             language: "pt-BR",
-    //                                                             data: dados.fabricantes});
-    //                     }
-    //                 });
-    //             }
-    //         },
-    //         cancelar: {
-    //             text: 'Cancelar',
-    //             action: function(){
-    //             }
-    //         }
-    //     }
-    // }); 
+    $.confirm({
+        title: 'Atenção',
+        content: 'Você tem certeza que deseja remover o fabricante: '+fabricante,
+        theme: 'modern',
+        //theme: 'material',
+        //theme: 'bootstrap',
+        //theme: 'supervan',
+        animation: 'scale',
+        buttons: {
+            confirmar: {
+                text: 'Confirmar',
+                action: function(){
+                    $.alert('Fabricante removido com sucesso.');
+                    $("#modal_fabricantes").find(".entric_table_loading").show();
+                    $("#modal_fabricantes").find(".entric_table").hide();
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/remover_fabricantes",
+                        data: "fabricante="+fabricante,
+                        cache: false,
+                        dataType: 'json',
+                        success: function( dados ){
+                            var _table = $("#modal_fabricantes").find(".entric_table");
+                            _table.find("tbody").html("");
+                            jQuery.each(dados.rm, function(i,data) {
+                                _table.append("<tr><td>" + data + "</td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
+                            });
+                            $("#modal_fabricantes").find(".entric_table_loading").hide();
+                            $("#modal_fabricantes").find(".entric_table").show();
+                            $('#fabricante').html('').select2({ width: '100%',
+                                                                placeholder: "...",
+                                                                //tags: true,
+                                                                multiple: false,
+                                                                allowClear: true,
+                                                                language: "pt-BR",
+                                                                data: dados.fabricantes});
+                        }
+                    });
+                }
+            },
+            cancelar: {
+                text: 'Cancelar',
+                action: function(){
+                }
+            }
+        }
+    }); 
 }
 
 function modalUnidades(){
