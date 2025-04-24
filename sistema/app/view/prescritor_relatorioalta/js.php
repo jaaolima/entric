@@ -392,6 +392,12 @@ function fc_editar_relatorio(id_relatorio){
                 var _formula_valor = $("#agua_valor").val();
                 $("#nec_agua_total").val( numberFormatPrecision((_peso*_formula_valor), 0)+" ("+numberFormatPrecision(_formula_valor, 0)+" ml/kg)" );
 
+                $("#up_kcal_dia").val(relatorio.kcal_dia);
+                $("#up_kcal_kg").val(relatorio.kcal_kg);
+                $("#up_proteina_kg").val(relatorio.proteina_kg);
+                $("#up_proteina_dia").val(relatorio.proteina_dia);
+                $("#up_agua_kg").val(relatorio.agua_kg);
+                $("#up_agua_dia").val(relatorio.agua_dia);
                 $("input[name='dispositivo'][value='"+relatorio.dispositivo+"']").attr("checked","checked");
 
                 if(relatorio.calculo_apres_fechado){
@@ -448,22 +454,22 @@ function fc_editar_relatorio(id_relatorio){
                     $('.hora').mask("99:99");
                 }
                 if(relatorio.calculo_fil_polimerico){
-                $("#calculo_fil_polimerico").attr("checked","checked");
+                $("input[name='calculo_fil_polimerico'][value='Polimérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_oligomerico){
-                $("#calculo_fil_oligomerico").attr("checked","checked");
+                $("input[name='calculo_fil_polimerico'][value='Oligomérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_pololigomerico){
-                $("#calculo_fil_pololigomerico").attr("checked","checked");
+                $("input[name='calculo_fil_polimerico'][value='Ambos']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comfibras){
-                $("#calculo_fil_comfibras").attr("checked","checked");
+                $("input[name='calculo_fil_comfibras'][value='Com Fibras']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semfibras){
-                $("#calculo_fil_semfibras").attr("checked","checked");
+                $("input[name='calculo_fil_comfibras'][value='Sem Fibras']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comsemfibras){
-                $("#calculo_fil_comsemfibras").attr("checked","checked");
+                $("input[name='calculo_fil_comfibras'][value='Ambos']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semlactose){
                 $("input[name='calculo_fil_semlactose']").attr("checked","checked");
