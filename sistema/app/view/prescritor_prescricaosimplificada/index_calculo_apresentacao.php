@@ -38,11 +38,11 @@
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">  
-                    <input id="calculo_fil_oligomerico" name="calculo_fil_oligomerico" value="Oligomérico" class="form-check-input filtros radio-outlined" type="radio">
+                    <input id="calculo_fil_oligomerico" name="calculo_fil_polimerico" value="Oligomérico" class="form-check-input filtros radio-outlined" type="radio">
                     <label for="calculo_fil_oligomerico" class="form-check-label radio-green">Oligomérico</label>   
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_semfibras" name="calculo_fil_semfibras" value="Sem Fibras" class="form-check-input filtros radio-outlined" type="radio">
+                    <input id="calculo_fil_semfibras" name="calculo_fil_comfibras" value="Sem Fibras" class="form-check-input filtros radio-outlined" type="radio">
                     <label for="calculo_fil_semfibras" class="form-check-label radio-green">Sem Fibras</label>
                 </div>
                 <div class="form-check col-sm-3">
@@ -52,11 +52,11 @@
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_pololigomerico" name="calculo_fil_pololigomerico" value="Ambos" class="form-check-input filtros radio-outlined" checked="checked" type="radio">
+                    <input id="calculo_fil_pololigomerico" name="calculo_fil_polimerico" value="Ambos" class="form-check-input filtros radio-outlined" checked="checked" type="radio">
                     <label for="calculo_fil_pololigomerico" class="form-check-label radio-green">Ambos</label>   
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_comsemfibras" name="calculo_fil_comsemfibras" value="Ambos" class="form-check-input filtros radio-outlined" checked="checked" type="radio">
+                    <input id="calculo_fil_comsemfibras" name="calculo_fil_comfibras" value="Ambos" class="form-check-input filtros radio-outlined" checked="checked" type="radio">
                     <label for="calculo_fil_comsemfibras" class="form-check-label radio-green">Ambos</label>
                 </div>
                 <div class="form-check col-sm-3">

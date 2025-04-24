@@ -448,22 +448,22 @@ function fc_editar_relatorio(id_relatorio){
                     $('.hora').mask("99:99");
                 }
                 if(relatorio.calculo_fil_polimerico){
-                $("input[name='calculo_fil_polimerico']").attr("checked","checked");
+                $("#calculo_fil_polimerico").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_oligomerico){
-                $("input[name='calculo_fil_oligomerico']").attr("checked","checked");
+                $("#calculo_fil_oligomerico").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_pololigomerico){
-                $("input[name='calculo_fil_pololigomerico']").attr("checked","checked");
+                $("#calculo_fil_pololigomerico").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comfibras){
-                $("input[name='calculo_fil_comfibras']").attr("checked","checked");
+                $("#calculo_fil_comfibras").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semfibras){
-                $("input[name='calculo_fil_semfibras']").attr("checked","checked");
+                $("#calculo_fil_semfibras").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comsemfibras){
-                $("input[name='calculo_fil_comsemfibras']").attr("checked","checked");
+                $("#calculo_fil_comsemfibras").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semlactose){
                 $("input[name='calculo_fil_semlactose']").attr("checked","checked");
