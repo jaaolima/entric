@@ -457,7 +457,7 @@ function fc_editar_relatorio(id_relatorio){
                     $("input[name='calculo_fil_polimerico'][value='Polimérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_oligomerico){
-                    var_dump(relatorio.calculo_fil_oligomerico);
+                    console.log(relatorio.calculo_fil_oligomerico);
                     $("input[name='calculo_fil_polimerico'][value='Oligomérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_pololigomerico){
