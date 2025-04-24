@@ -754,7 +754,9 @@ function modalFabricantes(){
             _table.find("tbody").html("");
             jQuery.each(dados.rm, function(i,data) {
                 console.log(i, data);
-                _table.append("<tr><td>" + data + "</td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
+                if(i == 'Abbott' || i == 'Abbott, Prodiet e Nestlé'){
+                    _table.append("<tr><td>" + data + "</td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
+                }
             });
             $("#modal_fabricantes").find(".entric_table_loading").hide();
             $("#modal_fabricantes").find(".entric_table").show(); 
