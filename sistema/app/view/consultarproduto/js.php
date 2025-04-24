@@ -753,7 +753,7 @@ function modalFabricantes(){
             var _table = $("#modal_fabricantes").find(".entric_table");
             _table.find("tbody").html("");
             jQuery.each(dados.rm, function(i,data) {
-                _table.append("<tr><td></td><td class='text-center'><a href='javascript:modalFabricantesEditar(\""+ data +"\");' class='btn-sm text-info'><i class='fa fa-pencil' aria-hidden='true'></i></a> <a href='javascript:modalFabricantesDelete(\""+ data +"\");' class='btn-sm text-danger'><i class='fa fa-trash-o' aria-hidden='true'></i></a></td></tr>");
+                _table.append("");
             });
             $("#modal_fabricantes").find(".entric_table_loading").hide();
             $("#modal_fabricantes").find(".entric_table").show(); 
