@@ -364,7 +364,6 @@ function fc_editar_relatorio(id_relatorio){
 
                     fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
                     horarios = '';
-                    console.log(fra_dieta_horario);
                     if(fra_dieta_horario){
                         for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
                             const chave = Object.keys(fra_dieta_horario)[i - 1];
@@ -390,7 +389,7 @@ function fc_editar_relatorio(id_relatorio){
 
                     fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
                     horarios = '';
-                    if(fra_dieta_horario != ""){
+                    if(fra_dieta_horario){
                         for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
                             const chave = Object.keys(fra_dieta_horario)[i - 1];
                             const valor = fra_dieta_horario[chave];
@@ -1329,7 +1328,8 @@ function fc_salvar(tab, notify){
             if (combinacoes!=="") combinacoes = combinacoes+"&";
             combinacoes = combinacoes + $(""+navlink+"").find('select, textarea, input').serialize();
         }
-        frm = frm + "&"+ combinacoes;
+        valores = $("#div_valores").find('input').serialize();
+        frm = frm + "&"+ combinacoes + "$" + valores;
 
     }else{
         if (tab == "gerar_relatorio"){
