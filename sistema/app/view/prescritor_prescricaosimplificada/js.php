@@ -364,20 +364,22 @@ function fc_editar_relatorio(id_relatorio){
 
                     fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
                     horarios = '';
-                    for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
-                        const chave = Object.keys(fra_dieta_horario)[i - 1];
-                        const valor = fra_dieta_horario[chave];
-                        if (i<10){
-                            var numi = "0"+ i;
-                        }else{
-                            var numi = i;
+                    if(fra_dieta_horario != ''){
+                        for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
+                            const chave = Object.keys(fra_dieta_horario)[i - 1];
+                            const valor = fra_dieta_horario[chave];
+                            if (i<10){
+                                var numi = "0"+ i;
+                            }else{
+                                var numi = i;
+                            }
+                            
+                            horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
+                                                '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
                         }
-                        
-                        horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
-                                            '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
+                        $('.fracio_horario').html(horarios);
+                        $('.hora').mask("99:99");
                     }
-                    $('.fracio_horario').html(horarios);
-                    $('.hora').mask("99:99");
                 }
                 if(relatorio.calculo_apres_aberto_po){
                     $("#modal_sistema_aberto").show();
@@ -387,20 +389,22 @@ function fc_editar_relatorio(id_relatorio){
 
                     fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
                     horarios = '';
-                    for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
-                        const chave = Object.keys(fra_dieta_horario)[i - 1];
-                        const valor = fra_dieta_horario[chave];
-                        if (i<10){
-                            var numi = "0"+ i;
-                        }else{
-                            var numi = i;
+                    if(fra_dieta_horario != ""){
+                        for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
+                            const chave = Object.keys(fra_dieta_horario)[i - 1];
+                            const valor = fra_dieta_horario[chave];
+                            if (i<10){
+                                var numi = "0"+ i;
+                            }else{
+                                var numi = i;
+                            }
+                            
+                            horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
+                                                '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
                         }
-                        
-                        horarios = horarios + '<div class="col-sm-3">Horário '+numi+':</div>'+
-                                            '<div class="col-sm-3"><input value="'+valor+'" type="text" placeholder="00:00" required="required" name="dieta_horario['+numi+']" id="dieta_horario_'+numi+'" class="form-control hora"></div>';
+                        $('.fracio_horario').html(horarios);
+                        $('.hora').mask("99:99");
                     }
-                    $('.fracio_horario').html(horarios);
-                    $('.hora').mask("99:99");
                 }
 
                 if(relatorio.calculo_fil_polimerico){
@@ -1339,7 +1343,7 @@ function fc_salvar(tab, notify){
     login_tipo = $("#login_tipo").val();
 
     $.ajax({
-        type: "POST",
+        type: "POST", 
         url: "ajax/relatorio_salvar_simplificada",
         data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo,
         cache: false,
