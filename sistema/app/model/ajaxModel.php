@@ -27,7 +27,7 @@ class AjaxModel extends Model {
 
     function getUnidades() {
         global $bruker;
-        $retorno = httpPostAuth("ajax_getUnidades", array(  "token" => $_SESSION['token']));
+        $retorno = httpPostAuth("ajax_getUnidades", array(  "token" => $_SESSION['token'], "login" => $_SESSION['login']));
         return $retorno;
     }
 
