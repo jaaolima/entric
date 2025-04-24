@@ -408,22 +408,22 @@ function fc_editar_relatorio(id_relatorio){
                 }
 
                 if(relatorio.calculo_fil_polimerico){
-                    $("input[name='calculo_fil_polimerico']").attr("checked","checked");
+                    $("input[name='calculo_fil_polimerico'][value='Polimérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_oligomerico){
-                    $("input[name='calculo_fil_oligomerico']").attr("checked","checked");
+                    $("input[name='calculo_fil_oligomerico'][value='Oligomérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_pololigomerico){
-                    $("input[name='calculo_fil_pololigomerico']").attr("checked","checked");
+                    $("input[name='calculo_fil_pololigomerico'][value='Ambos']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comfibras){
-                    $("input[name='calculo_fil_comfibras']").attr("checked","checked");
+                    $("input[name='calculo_fil_comfibras'][value='Com Fibras']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semfibras){
-                    $("input[name='calculo_fil_semfibras']").attr("checked","checked");
+                    $("input[name='calculo_fil_semfibras'][value='Sem Fibras']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comsemfibras){
-                    $("input[name='calculo_fil_comsemfibras']").attr("checked","checked");
+                    $("input[name='calculo_fil_comsemfibras'][value='Ambos']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semlactose){
                     $("input[name='calculo_fil_semlactose']").attr("checked","checked");
@@ -434,6 +434,13 @@ function fc_editar_relatorio(id_relatorio){
                 if(relatorio.calculo_fil_semsacarose){
                     $("input[name='calculo_fil_semsacarose']").attr("checked","checked");
                 }
+
+                $("#up_kcal_dia").val(relatorio.kcal_dia);
+                $("#up_kcal_kg").val(relatorio.kcal_kg);
+                $("#up_proteina_kg").val(relatorio.proteina_kg);
+                $("#up_proteina_dia").val(relatorio.proteina_dia);
+                $("#up_agua_kg").val(relatorio.agua_kg);
+                $("#up_agua_dia").val(relatorio.agua_dia);
 
                 $("#kcal_valor").val(relatorio.kcal_valor);
                 $("#ptn_valor").val(relatorio.ptn_valor);
