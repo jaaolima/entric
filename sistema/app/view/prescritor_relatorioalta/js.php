@@ -454,13 +454,14 @@ function fc_editar_relatorio(id_relatorio){
                     $('.hora').mask("99:99");
                 }
                 if(relatorio.calculo_fil_polimerico){
-                $("input[name='calculo_fil_polimerico'][value='Polimérico']").attr("checked","checked");
+                    $("input[name='calculo_fil_polimerico'][value='Polimérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_oligomerico){
-                $("input[name='calculo_fil_polimerico'][value='Oligomérico']").attr("checked","checked");
+                    var_dump(relatorio.calculo_fil_oligomerico);
+                    $("input[name='calculo_fil_polimerico'][value='Oligomérico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_pololigomerico){
-                $("input[name='calculo_fil_polimerico'][value='Ambos']").attr("checked","checked");
+                    $("input[name='calculo_fil_polimerico'][value='Ambos']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comfibras){
                 $("input[name='calculo_fil_comfibras'][value='Com Fibras']").attr("checked","checked");
