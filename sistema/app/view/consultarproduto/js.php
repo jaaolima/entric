@@ -741,6 +741,7 @@ function set_select2_tag(_id, _value){
 }
 
 function modalFabricantes(){
+    $('#modal_fabricantes').modal('hide');
     $("#modal_fabricantes").find(".entric_table_loading").show();
     $("#modal_fabricantes").find(".entric_table").hide();
     $('#modal_fabricantes').modal('toggle');
@@ -762,7 +763,6 @@ function modalFabricantes(){
 }
 
 function modalFabricantesCadastrar(){
-    console.log("chegou"); 
     $.confirm({
         title: 'Cadastrar Fabricante',
         focusTrap: false,
@@ -810,11 +810,13 @@ function modalFabricantesCadastrar(){
                                     content: 'Dados cadastrados com sucesso.',
                                 });                       
                             }
+                            $('#modal_fabricantes').modal('show');
                         }
                     });
                 }
             },
             Cancelar: function(){
+                $('#modal_fabricantes').modal('show');
             },
         },
         onOpen: function () {
