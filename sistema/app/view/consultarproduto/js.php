@@ -742,9 +742,9 @@ function set_select2_tag(_id, _value){
 
 function modalFabricantes(){
     $('#modal_fabricantes').modal('hide');
-    $("#modal_fabricantes").find(".entric_table_loading").show();
-    $("#modal_fabricantes").find(".entric_table").hide();
-    $('#modal_fabricantes').modal('toggle');
+    // $("#modal_fabricantes").find(".entric_table_loading").show();
+    // $("#modal_fabricantes").find(".entric_table").hide();
+    // $('#modal_fabricantes').modal('toggle');
     $.ajax({
         type: "GET",
         url: 'ajax/busca_fabricantes',
