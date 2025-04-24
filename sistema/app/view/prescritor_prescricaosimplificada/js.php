@@ -1329,7 +1329,7 @@ function fc_salvar(tab, notify){
             combinacoes = combinacoes + $(""+navlink+"").find('select, textarea, input').serialize();
         }
         valores = $("#div_valores").find('input').serialize();
-        frm = frm + "&"+ combinacoes + "$" + valores;
+        frm = frm + "&"+ combinacoes + valores;
 
     }else{
         if (tab == "gerar_relatorio"){
