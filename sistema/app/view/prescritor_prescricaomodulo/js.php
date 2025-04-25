@@ -399,7 +399,7 @@ function fc_excluir_relatorio(id_relatorio, _this){
                 action: function(){
                     $.ajax({
                         type: "POST",
-                        url: "ajax/relatorio_excluir_suplemento",
+                        url: "ajax/relatorio_excluir_modulo",
                         data: "id="+id_relatorio,
                         cache: false,
                         dataType: 'json',
