@@ -1359,7 +1359,17 @@ function fc_salvar(tab, notify){
             if (combinacoes!=="") combinacoes = combinacoes+"&";
             combinacoes = combinacoes + $(""+navlink+"").find('select, textarea, input').serialize();
         }
-        valores = $("#div_valores").find('input').serialize();
+        if(!$("#div_cadastrar_paciente").is(":hidden")){
+            valores = $("#div_valores").find('input').serialize();
+        }else{
+            inputs_atualizar = $("#div_valores_atualizar")
+            inputs_atualizar.find('input[name^="up_"]').each(function() {
+                let nomeOriginal = $(this).attr('name');
+                let nomeSemPrefixo = nomeOriginal.replace(/^up_/, '');
+                $(this).attr('name', nomeSemPrefixo);
+            });
+            valores = inputs_atualizar.find('input').serialize();
+        }
         frm = frm + "&"+ combinacoes + valores;
 
     }else{
