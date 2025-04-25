@@ -421,7 +421,7 @@ function fc_editar_relatorio(id_relatorio){
                     $('.fracio_horario').html(horarios);
                     $('.hora').mask("99:99");
                 }
-                $("#qto_tempo").val(relatorio.fra_qto_tempo);
+                $("#qto_tempo").val(relatorio.fra_qto_tempo); 
 
                 $(".state[rel='"+relatorio.distribuidores+"']").click();
                 busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());

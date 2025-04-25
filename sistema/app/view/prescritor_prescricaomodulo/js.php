@@ -76,7 +76,7 @@ function fc_retorno_pacientes(){
                     var editar = "";
                 }else{
                     if(item.codigo == null){
-                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
+                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
                     }else{
                         var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_modulo/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
                     }
@@ -347,24 +347,86 @@ function fc_editar_relatorio(id_relatorio){
                 $(".tabsec").removeClass("disabledTab").addClass("active");
                 $("#rel_gerar_relatorio").removeClass("none");
                 $("#rel_imprimir_relatorio").addClass("none");
+                if(relatorio.categoria_modulo_proteina){
+                    $("#categoria_modulo_proteina").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_colageno_aminoacidos){
+                    $("#categoria_modulo_colageno_aminoacidos").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_carboidrato){
+                    $("#categoria_modulo_carboidrato").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_lipideo){
+                    $("#categoria_modulo_lipideo").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_lipideo){
+                    $("#categoria_modulo_lipideo").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_fibras){
+                    $("#categoria_modulo_fibras").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_fibras){
+                    $("#categoria_modulo_fibras").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_probioticos){
+                    $("#categoria_modulo_probioticos").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_simbioticos){
+                    $("#categoria_modulo_simbioticos").attr("checked","checked");
+                }
+                if(relatorio.categoria_modulo_espessante){
+                    $("#categoria_modulo_espessante").attr("checked","checked");
+                }
 
-                 $("textarea[name='historia']").val(relatorio.historia);
-                 $("textarea[name='triagem_nutricional']").val(relatorio.triagem_nutricional);
-                 $("textarea[name='diagnostico_nutricional']").val(relatorio.diagnostico_nutricional);
-                 $("textarea[name='exames_nutricionais_complementares']").val(relatorio.exames_nutricionais_complementares);
-                 $("textarea[name='exame_fisico']").val(relatorio.exame_fisico);
-                 $("textarea[name='exame_bioquimico']").val(relatorio.exame_bioquimico);
-                 $("textarea[name='observacao']").val(relatorio.observacao);
-                 $("textarea[name='observacoes']").val(relatorio.observacoes);
-
-                 $("#altura option[value='"+relatorio.altura+"']").attr("selected","selected");
-                 $("#altura_valor").val(relatorio.altura_valor);
+                $(".state[rel='"+relatorio.distribuidores+"']").click();
+                busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
             }
             else if (data.error){
                 toastr['error'](data.error.message, '', {positionClass: 'toast-top-right' });
             }
         }
     });    
+}
+
+function fc_excluir_relatorio(id_relatorio, _this){
+    $.confirm({
+        title: '<strong>Atenção</strong>',
+        content: 'Tem certeza que deseja excluir o relatório?',
+        buttons: {
+            Sim: {
+                text: 'Sim',
+                btnClass: 'btn btn-secondary btn-form',
+                action: function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/relatorio_excluir_suplemento",
+                        data: "id="+id_relatorio,
+                        cache: false,
+                        dataType: 'json',
+                        success: function( data ){
+                            trPai = $(_this).closest('tr');
+                            console.log(trPai);
+                            trPai.hide();
+                            $.alert({
+                                title: 'Atenção',
+                                icon: 'fa fa-warning',
+                                type: 'green',
+                                content: 'Relatório excluído com sucesso!'
+                            });
+                        }
+                    }); 
+                }
+            },
+            Nao: {
+                text: 'Não',
+                btnClass: 'btn btn-default btn-form',
+                action: function(){
+                    
+                }
+            }
+        }
+    });
+       
 }
 
 function formatRepo (repo) {
@@ -2939,7 +3001,7 @@ $(function(){
             });
         }
     });
-    $("#rel_imprimir_relatorio").on("click", function(e) {        
+    $("#rel_imprimir_relatorio").on("click", function(e) {         
         var relatorio_code = $("#relatorio_code").val();
         window.open("https://sis.entric.com.br/relatorio_modulo/imprimir/?url="+relatorio_code, "_blank");
 
