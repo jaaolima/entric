@@ -392,10 +392,13 @@ function fc_editar_relatorio(id_relatorio){
                 if(relatorio.calculo_fil_100proteina){
                     $("input[name='carac_oral[]'][value='100% Proteína Vegetal']").attr("checked","checked");
                 }
-                if(relatorio.calculo_fil_cicatrização){
+                if(relatorio.calculo_fil_cicatrizacao){
                     $("input[name='carac_oral[]'][value='Cicatrização']").attr("checked","checked");
                 }
-                if(relatorio.calculo_fil_imunonutricaocirurgica){
+                if(relatorio.calculo_fil_omega3){
+                    $("input[name='carac_oral[]'][value='Com Ômega 3']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_imunonutricao){
                     $("input[name='carac_oral[]'][value='Imunonutrição cirúrgica']").attr("checked","checked");
                 }
 
