@@ -481,6 +481,8 @@ function fc_editar_relatorio(id_relatorio){
                 $('.hora').mask("99:99");
                 volume_total_hidratacao();
 
+                $(".state[rel='"+relatorio.distribuidores+"']").click();
+
             }
             else if (data.error){
                 toastr['error'](data.error.message, '', {positionClass: 'toast-top-right' });
