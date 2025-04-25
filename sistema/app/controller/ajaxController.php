@@ -166,6 +166,11 @@ class AjaxController extends Controller {
         echo json_encode($relatorio);
     }
 
+    function relatorio_excluir_suplemento() {
+        $relatorio = $this->AjaxModel->rmRelatorioSuplemento($_POST);
+        echo json_encode($relatorio);
+    }
+
     function relatorio_salvar_simplificada() {
         if (isset($_POST['tab'])){
             if ($_POST['tab'] == "gerar_relatorio") $_POST['action'] = "gerar_relatorio";
