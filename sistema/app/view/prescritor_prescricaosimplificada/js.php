@@ -74,7 +74,7 @@ function fc_retorno_pacientes(){
                     var editar = "";
                 }else{
                     if(item.codigo == null){
-                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="alert(\'' + item.id + '\');"><i class="fa fa-trash-o"></i></a>';
+                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
                     }else{
                         var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_simplificada/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
                     }
@@ -493,6 +493,47 @@ function fc_editar_relatorio(id_relatorio){
             }
         }
     });    
+}
+
+function fc_excluir_relatorio(id_relatorio, _this){
+    $.confirm({
+        title: '<strong>Atenção</strong>',
+        content: 'Tem certeza que deseja excluir o relatório?',
+        buttons: {
+            Sim: {
+                text: 'Sim',
+                btnClass: 'btn btn-secondary btn-form',
+                action: function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/relatorio_excluir_simplificada",
+                        data: "id="+id_relatorio,
+                        cache: false,
+                        dataType: 'json',
+                        success: function( data ){
+                            trPai = $(_this).closest('tr');
+                            console.log(trPai);
+                            trPai.hide();
+                            $.alert({
+                                title: 'Atenção',
+                                icon: 'fa fa-warning',
+                                type: 'green',
+                                content: 'Relatório excluído com sucesso!'
+                            });
+                        }
+                    }); 
+                }
+            },
+            Nao: {
+                text: 'Não',
+                btnClass: 'btn btn-default btn-form',
+                action: function(){
+                    
+                }
+            }
+        }
+    });
+       
 }
 
 function formatRepo (repo) {
