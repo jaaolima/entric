@@ -328,6 +328,8 @@ function fc_editar_relatorio(id_relatorio){
         cache: false,
         dataType: 'json',
         success: function( data ){
+            $("#div_botao_atualizar_valores").show();
+            $("#div_botao_cadastrar_relatorio").hide();
             if (data.relatorio){
                 var relatorio = data.relatorio;
 
@@ -1669,7 +1671,10 @@ $(function(){
     });
     $("#gerar_relatorio").on("click", function(e) {
         $("#div_botao_valores").show();
-        $("#div_botao_valores input").val('');
+        $("#div_valores_atualizar").hide();
+        $("#div_valores_atualizar input").val('');
+        $("#div_botao_cadastrar_relatorio").show();
+        $("#div_botao_atualizar_valores").hide();
     });
 
     $("#iniciar_nova_prescricao").on("click", function(){
@@ -1898,6 +1903,15 @@ $(function(){
 
     $("#atualizar_valores").on("click", function(){
         fc_salvar("calculo");
+
+        $('.tabcadastro a').removeClass('active');
+        $('#cadastro').removeClass('active').removeClass('show').attr('aria-expanded','false');
+
+        $(".tabcalculo").removeClass('disabledTab');
+        $('.tabcalculo a').addClass('active');
+        $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
+
+        $(".tabsec").removeClass('disabledTab').addClass('active');
     })
 
     $(".btn_dobras_add").on("click", function(e) {

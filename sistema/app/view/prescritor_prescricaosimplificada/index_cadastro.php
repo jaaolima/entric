@@ -322,10 +322,16 @@
                                 <input type="text" readonly placeholder="ml/dia" required="required" id="up_agua_dia" name="up_agua_dia" class="form-control" value=""> 
                             </div>
                         </div>
-                        <div class="text-center col-sm-12 mt-4">
+                        <div class="text-center col-sm-12 mt-4" id="div_botao_atualizar_valores" style="display:none;">
                             <button class="btn btn-danger" type="submit" id="atualizar_valores">
                                 <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
                                 Atualizar Valores
+                            </button>
+                        </div> 
+                        <div class="text-center col-sm-12 mt-4" id="div_botao_cadastrar_relatorio" style="display:none;">
+                            <button class="btn btn-danger" type="submit" onclick="fc_cadastrar_paciente();">
+                                <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
+                                Iniciar Prescrição
                             </button>
                         </div> 
                     </div>
