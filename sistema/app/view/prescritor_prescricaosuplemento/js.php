@@ -347,7 +347,15 @@ function fc_editar_relatorio(id_relatorio){
                 $(".tabsec").removeClass("disabledTab").addClass("active");
                 $("#rel_gerar_relatorio").removeClass("none");
                 $("#rel_imprimir_relatorio").addClass("none");
-
+                if(relatorio.calculo_fil_todos1){
+                    $("input[name='calculo_fil_todos1']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_todos2){
+                    $("input[name='calculo_fil_todos2']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_todos3){
+                    $("input[name='calculo_fil_todos3']").attr("checked","checked");
+                }
                 if(relatorio.calculo_apres_liquidocreme){
                     $("input[name='calculo_apres_liquidocreme']").attr("checked","checked");
                 }
