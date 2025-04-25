@@ -481,6 +481,8 @@ function fc_editar_relatorio(id_relatorio){
                 $('.hora').mask("99:99");
                 volume_total_hidratacao();
 
+                $("textarea[name='info_complementares']").val(relatorio.info_complementares);
+
                 $(".state[rel='"+relatorio.distribuidores+"']").click();
 
             }
@@ -1667,6 +1669,7 @@ $(function(){
     });
     $("#gerar_relatorio").on("click", function(e) {
         $("#div_botao_valores").show();
+        $("#div_botao_valores input").val('');
     });
 
     $("#iniciar_nova_prescricao").on("click", function(){
@@ -1892,6 +1895,10 @@ $(function(){
             $(this).parent().parent().find(".circunferencia_lados").css({ "opacity": "1", "pointer-events": "auto" });
         }
     });
+
+    $("#atualizar_valores").on("click", function(){
+        fc_salvar("calculo");
+    })
 
     $(".btn_dobras_add").on("click", function(e) {
         if ( ($(".dobras").find(".select_dobras").val() != "") && ($(".dobras").find(".input_dobras_valor").val() != "") && ($(".dobras").find(".input_dobras_valor").val() != "0.00") && ($('.dobras_lado').is(':checked')) ){

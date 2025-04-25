@@ -323,9 +323,9 @@
                             </div>
                         </div>
                         <div class="text-center col-sm-12 mt-4">
-                            <button class="btn btn-danger" type="submit" id="iniciar_nova_prescricao">
+                            <button class="btn btn-danger" type="submit" id="atualizar_valores">
                                 <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
-                                Iniciar Prescrição
+                                Atualizar Valores
                             </button>
                         </div> 
                     </div>
