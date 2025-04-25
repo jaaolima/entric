@@ -424,6 +424,7 @@ function fc_editar_relatorio(id_relatorio){
                 $("#qto_tempo").val(relatorio.fra_qto_tempo);
 
                 $(".state[rel='"+relatorio.distribuidores+"']").click();
+                busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
 
             }
             else if (data.error){
