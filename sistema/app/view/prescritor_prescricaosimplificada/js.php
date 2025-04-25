@@ -441,11 +441,13 @@ function fc_editar_relatorio(id_relatorio){
                 $("#up_proteina_dia").val(relatorio.proteina_dia);
                 $("#up_agua_kg").val(relatorio.agua_kg);
                 $("#up_agua_dia").val(relatorio.agua_dia);
+                $("#div_valores_atualizar").show();
+                $("#div_botao_valores").show();
 
                 $("#kcal_valor").val(relatorio.kcal_valor);
                 $("#ptn_valor").val(relatorio.ptn_valor);
 
-                _formula_total = relatorio.kcal_dia;
+                _formula_total = relatorio.kcal_dia; 
 
                 kcal_kg = _formula_total / parseFloat($("#up_peso").val());
                 _formula_valor = numberFormatPrecision((_formula_total), 0)+" ("+numberFormatPrecision(kcal_kg)+" kcal/kg)";
