@@ -329,7 +329,7 @@
                             </button>
                         </div> 
                         <div class="text-center col-sm-12 mt-4" id="div_botao_cadastrar_relatorio" style="display:none;">
-                            <button class="btn btn-danger" id="cadastrar_novo_relatorio">
+                            <button class="btn btn-danger" id="iniciar_nova_prescricao">
                                 <span class="btn-icon-right"><i class="fa fa-file-text-o"></i></span>
                                 Iniciar Prescrição
                             </button>

@@ -269,7 +269,7 @@
                                         )
                                     )
                                 );
-                        echo $item_dados;
+                        echo $item_dados; 
                     ?>
 
                     <div class="modal fade" id="modal_retorno_pacientes" tabindex="-1" role="dialog" aria-labelledby="modal_retorno_pacientes" aria-hidden="true">
