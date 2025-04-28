@@ -131,9 +131,7 @@ else{
                 <ul>
                     <li class="sub-menu"><a href="prescritor_prescricaosimplificada">Dieta Enteral</a></li>
                     <li class="sub-menu"><a href="prescritor_prescricaosuplemento">Suplemento</a></li>
-                    <?php if($_SESSION['admin_session_user']['id_usuario'] == '323' || $_SESSION['admin_session_user']['id_usuario'] == '12') : ?>
                     <li class="sub-menu"><a href="prescritor_prescricaomodulo">Módulos</a></li>
-                    <?php endif; ?>
                 </ul>
             </li>
             <li class="mega-menu mega-menu-lg">

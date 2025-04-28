@@ -3985,8 +3985,8 @@ $app->group("", function () use ($app) {
 										$retorno .= '<tr>
 														<td>
 															<div class="form-check col-sm-12">
-																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___.'.$produtos[$i]['fabricante'].']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___.'.$produtos[$i]['fabricante'].'">
-																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___.'.$produtos[$i]['fabricante'].']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
+																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].'">
+																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
 															</div>
 														</td>
 														<td>'.$produtos[$i]['fabricante'].'</td>
