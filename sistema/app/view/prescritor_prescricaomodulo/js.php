@@ -1594,6 +1594,10 @@ $(function(){
     //     }
     // });
 
+    $("#cadastrar_novo_relatorio").on("click", function(){
+        fc_cadastrar_paciente();
+    });
+
     $("#btn_realizar_calculo").on("click", function(){
         $("#div_valores").show();
         $(".div_calculo").show();
