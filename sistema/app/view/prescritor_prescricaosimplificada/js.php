@@ -1631,6 +1631,10 @@ $(function(){
         $("#up_agua_dia").attr("readonly", true);
     });
 
+    $("#cadastrar_novo_relatorio").on("click", function(){
+        fc_cadastrar_paciente();
+    });
+
     $('.numcomma').keypress(function(event) {
         var $this = $(this);
         if ((event.which != 44 || $this.val().indexOf(',') != -1) &&
