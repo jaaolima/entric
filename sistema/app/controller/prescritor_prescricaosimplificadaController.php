@@ -24,7 +24,7 @@ class Prescritor_prescricaosimplificadaController extends Controller {
                 }
                 
 
-            }else if ($_POST['action'] == "cadastrar"){
+            }else if ($_POST['action'] == "cadastrar"){ 
                 $cadastrar = $this->Prescritor_relatorioaltaModel->insertDados($_POST);
 
                 if (isset($cadastrar['error'])){
@@ -47,6 +47,23 @@ class Prescritor_prescricaosimplificadaController extends Controller {
             }
         }
 
+
+        $this->set('breadcrumb','Bem-vindo');
+        $this->set('tab1', $tab1);
+        $this->set('bruker', $bruker);
+    }
+
+    public function alterar() {
+        global $bruker;
+        $tab1 = "buscar";
+        $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($_POST);
+
+        if (isset($buscar['error'])){
+            alertretorno("toastr['error']('".$buscar['error']."', '', {positionClass: 'toast-top-right' });");
+
+        }else{
+            $this->set('dados_busca', $buscar);
+        }
 
         $this->set('breadcrumb','Bem-vindo');
         $this->set('tab1', $tab1);

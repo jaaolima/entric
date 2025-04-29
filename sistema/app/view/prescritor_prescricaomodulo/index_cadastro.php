@@ -1,13 +1,6 @@
 <?php
-    
-
-    $ds_nome = '';
-    $ds_hospital = '';
-    $dt_nascimento = '';
-    $nu_telefone = '';
-    $nu_atendimento = '';
     $sistema = '';
-    if($_SESSION['paciente_redirect']['sistema'] == 'EN'){
+    if($_SESSION['paciente_redirect']['sistema'] == 'EN'){ 
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
         $_SESSION['paciente_redirect']['id_paciente'] = null;
         $sistema = 'EN';
@@ -19,12 +12,19 @@
         $sistema = 'ibranutro';
         $_SESSION['paciente_redirect']['sistema'] = null;
     }
+
+    $ds_nome = '';
+    $ds_hospital = '';
+    $dt_nascimento = '';
+    $nu_telefone = '';
+    $nu_atendimento = '';
+
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
-    }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){
+    }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){ 
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
 

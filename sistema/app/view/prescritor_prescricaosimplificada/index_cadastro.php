@@ -9,7 +9,7 @@
         $id_admissao_redirecionado = $_SESSION['paciente_redirect']['id_admissao'];
         $_SESSION['paciente_redirect']['id_admissao'] = null;
         $sistema = 'ibranutro';
-        $_SESSION['paciente_redirect']['sistema'] = null;
+        $_SESSION['paciente_redirect']['sistema'] = null; 
     }else{
         $id_paciente_redirecionado = null;
     }
@@ -19,6 +19,7 @@
     $dt_nascimento = '';
     $nu_telefone = '';
     $nu_atendimento = ''; 
+    
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){ 
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
