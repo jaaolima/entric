@@ -53,7 +53,7 @@ class Prescritor_prescricaosimplificadaController extends Controller {
         $this->set('bruker', $bruker);
     }
 
-    public function alterar() {
+    function alterar() {
         global $bruker;
         $tab1 = "buscar";
         $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($_POST);

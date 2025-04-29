@@ -26,10 +26,6 @@
                     <span class="btn-icon-right"><i class="fa fa-save"></i></span>
                     SALVAR
                 </button>
-                <button type="button" class="btn btn-secondary btn-sm nova-combinacao" id="calculo_salvar">
-                    <span class="btn-icon-right"><i class="fa fa-plus-circle"></i></span>
-                    Nova Combinação
-                </button>
             </div>
             <div class="col-sm-6 text-right">
 
