@@ -154,12 +154,12 @@
                                         "required" => "required"
                                     ),
                                     "telefone" => array(
-                                        "col" => 5,
+                                        "col" => 4,
                                         "label" => "Telefone:",
                                         "value" => $nu_telefone
                                     ),
                                     "hospital" => array(
-                                        "col" => 6,
+                                        "col" => 4,
                                         "label" => "Hospital:",
                                         "value" => $ds_hospital
                                     ),
@@ -257,11 +257,11 @@
                                     "required" => "required"
                                 ),
                                 "up_telefone" => array(
-                                    "col" => 5,
+                                    "col" => 4,
                                     "label" => "Telefone:"
                                 ),
                                 "up_hospital" => array(
-                                    "col" => 6,
+                                    "col" => 4,
                                     "label" => "Hospital:"
                                 ),
                                 "up_atendimento" => array(
