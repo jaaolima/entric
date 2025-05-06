@@ -58,6 +58,9 @@ function fc_retorno_pacientes(){
         $('#up_id').val(dados_json.id);
         $('#up_nome').val(dados_json.nome);
         $('#up_peso').val(dados_json.peso);
+        $('#up_telefone').val(dados_json.telefone);
+        $('#up_hospital').val(dados_json.hospital);
+        $('#up_atendimento').val(dados_json.atendimento);
         $('#up_data_nascimento').val(dados_json.data_nascimento);
         //if ( dados_json.relatorios.length == 0 ) {
         if ( dados_json.relatorios === null ) {
@@ -117,7 +120,7 @@ function fc_cadastrar_paciente(){
             var formSerialize = frm.serialize();
             $.ajax({
                 type: "POST",
-                url: "ajax/cadastrar_paciente_simplificada", 
+                url: "ajax/cadastrar_paciente_simplificada",  
                 data: formSerialize,
                 cache: false,
                 dataType: 'json',
@@ -1526,7 +1529,7 @@ $(function(){
     $('#proteina_dia').mask("9?99,9");
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
-
+    $('#telefone').mask("(99)99999-9999");
 
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
@@ -1534,6 +1537,7 @@ $(function(){
     $('#up_proteina_dia').mask("9?99,9");
     $('#up_agua_kg').mask("9?9");
     $('#up_agua_dia').mask("9?999");
+    $('#up_telefone').mask("(99)99999-9999");
 
     // $("#kcal_kg").on('blur', function(){
     //     peso = $("#peso").val();
