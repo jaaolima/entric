@@ -10565,6 +10565,9 @@ $app->group("", function () use ($app) {
 
 				$bind = array(  ':nome' => $dados["up_nome"],
 				':peso' => $dados["up_peso"],
+				':hospital' => $dados["up_hospital"],
+				':atendimento' => $dados["up_atendimento"],
+				':telefone' => $dados["up_telefone"],
 				':data_nascimento' => date2sql($dados["up_data_nascimento"]));
 				$retorno = $db->update("pacientes_simplificada", "WHERE id=".$dados['up_id'], $bind);
 				$retorno = array("success" => "Cadastro atualizado com sucesso.");
@@ -10669,7 +10672,7 @@ $app->group("", function () use ($app) {
 		return $response;
 	});
 
-	$app->post("/ajax_stPacienteSimplificada", function (Request $request, Response $response) {
+	$app->post("/ajax_stPacienteSimplificada", function (Request $request, Response $response) { 
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
@@ -10728,6 +10731,9 @@ $app->group("", function () use ($app) {
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
 										':peso' => $dados["peso"],
+										':hospital' => $dados["hospital"],
+										':atendimento' => $dados["atendimento"],
+										':telefone' => $dados["telefone"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
 										':id_admissao' => $dados["id_admissao"],    
 										':sistema' => $sistema,
@@ -10747,6 +10753,9 @@ $app->group("", function () use ($app) {
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
 										':peso' => $dados["peso"],
+										':hospital' => $dados["hospital"],
+										':atendimento' => $dados["atendimento"],
+										':telefone' => $dados["telefone"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
 										':id_paciente' => $dados["id_paciente"],    
 										':sistema' => $sistema,
@@ -10764,6 +10773,9 @@ $app->group("", function () use ($app) {
 									':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 								':nome' => $dados["nome"],
 								':peso' => $dados["peso"],
+								':hospital' => $dados["hospital"],
+								':atendimento' => $dados["atendimento"],
+								':telefone' => $dados["telefone"],
 								':data_nascimento' => date2sql($dados["data_nascimento"]),  
 								':sistema' => 'cadastrado',
 								':data_criacao' => date("Y-m-d H:i:s"));

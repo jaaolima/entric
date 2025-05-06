@@ -20,7 +20,7 @@
     $nu_telefone = '';
     $nu_atendimento = ''; 
     
-    if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){ 
+    if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){  
         $tab1 = 'buscar';
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
@@ -152,7 +152,22 @@
                                         "col" => 4,
                                         "label" => "Peso:",
                                         "required" => "required"
-                                    )
+                                    ),
+                                    "telefone" => array(
+                                        "col" => 5,
+                                        "label" => "Telefone:",
+                                        "value" => $nu_telefone
+                                    ),
+                                    "hospital" => array(
+                                        "col" => 6,
+                                        "label" => "Hospital:",
+                                        "value" => $ds_hospital
+                                    ),
+                                    "atendimento" => array(
+                                        "col" => 4,
+                                        "label" => "Atendimento:",
+                                        "value" => $nu_atendimento
+                                    ), 
                                 )
                             );
                     echo $item_dados;
@@ -240,7 +255,19 @@
                                     "col" => 4,
                                     "label" => "Peso:",
                                     "required" => "required"
-                                )
+                                ),
+                                "up_telefone" => array(
+                                    "col" => 5,
+                                    "label" => "Telefone:"
+                                ),
+                                "up_hospital" => array(
+                                    "col" => 6,
+                                    "label" => "Hospital:"
+                                ),
+                                "up_atendimento" => array(
+                                    "col" => 4,
+                                    "label" => "Atendimento:"
+                                ),
                             )
                         );
                         echo $item_dados;

@@ -159,7 +159,7 @@
                                         "col" => 4,
                                         "label" => "Atendimento:",
                                         "value" => $nu_atendimento
-                                    ),
+                                    ), 
                                 )
                             );
                     echo $item_dados;
