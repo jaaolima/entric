@@ -2024,7 +2024,12 @@ $app->group("", function () use ($app) {
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final",
-		                                            $query." ORDER BY apres_enteral, apres_oral ASC,
+		                                            $query." ORDER BY CASE
+																		WHEN (apres_enteral LIKE '%Aberto (Pó)%') THEN 1													
+																		WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
+																		WHEN (apres_enteral LIKE '%Fechado%') THEN 3
+																		ELSE 4
+																	END, apres_oral ASC,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
