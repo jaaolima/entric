@@ -10103,7 +10103,7 @@ $app->group("", function () use ($app) {
 		        if ($bind_query <> ""){
 		            $bind_query = " ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_simplificada",
-		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso",
+		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso, atendimento, telefone, hospital",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC",
 		                                                null);
 		            if ($pacientes){
