@@ -5,16 +5,16 @@
             </div>
             <div class="row p-4">
                 <div class="form-check col-sm-12">
-                    <input id="calculo_apres_fechado"  name="calculo_apres_fechado" value="Fechado" class="form-check-input styled-checkbox" type="checkbox">
-                    <label for="calculo_apres_fechado" class="form-check-label check-green">Fechado</label>
+                    <input id="calculo_apres_aberto_po" class="form-check-input styled-checkbox" value="Aberto (Pó)" name="calculo_apres_aberto_po" type="checkbox">
+                    <label for="calculo_apres_aberto_po" class="form-check-label check-green">Aberto (Pó)</label>
                 </div>
                 <div class="form-check col-sm-12">
                     <input id="calculo_apres_aberto_liquido" name="calculo_apres_aberto_liquido" value="Aberto (Líquido)" class="form-check-input styled-checkbox" type="checkbox">
                     <label for="calculo_apres_aberto_liquido" class="form-check-label check-green">Aberto (Líquido)</label>
                 </div>
                 <div class="form-check col-sm-12">
-                    <input id="calculo_apres_aberto_po" class="form-check-input styled-checkbox" value="Aberto (Pó)" name="calculo_apres_aberto_po" type="checkbox">
-                    <label for="calculo_apres_aberto_po" class="form-check-label check-green">Aberto (Pó)</label>
+                    <input id="calculo_apres_fechado"  name="calculo_apres_fechado" value="Fechado" class="form-check-input styled-checkbox" type="checkbox">
+                    <label for="calculo_apres_fechado" class="form-check-label check-green">Fechado</label>
                 </div>
             </div>
         </div>

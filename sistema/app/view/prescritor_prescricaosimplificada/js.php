@@ -291,7 +291,7 @@ function fc_buscar_paciente(){
                 $('#modal_retorno_pacientes').modal('toggle');
             }else{
                 var tr = '';
-                $.each(data, function(i, item) {
+                $.each(data, function(i, item) { 
                     tr += '<tr rel="'+ item.id +'"><td><div class="retorno_pacientes_relatorios" style="display: none;">' + JSON.stringify(item) + '</div>' + item.nome + '</td><td>' + item.data_nascimento + '</td></tr>';
                 });
                 $('#table_retorno_pacientes > tbody').empty();
