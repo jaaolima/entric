@@ -3424,7 +3424,7 @@ $app->group("", function () use ($app) {
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral",
-		                                            $query." ORDER BY apres_oral, apres_enteral,
+		                                            $query." ORDER BY apres_oral desc, apres_enteral,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
