@@ -14,7 +14,7 @@
     <div class="content-body">
         <div class="container-fluid">
             <div class="row page-titles">
-                <div class="col p-md-0">
+                <div class="col p-md-0"> 
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Início</a></li>
                         <li class="breadcrumb-item active"><a href="prescritor_meusrelatorios">Meus Relatórios</a></li>
@@ -41,6 +41,10 @@
                                 </thead>
                                 <tbody>
                                     <?php 
+
+                                        usort($dados, function($a, $b) {
+                                            return strtotime($b['data_criacao_nao_formatada']) - strtotime($a['data_criacao_nao_formatada']);
+                                        });
                                         foreach ($dados as $key => $relatorio) { ?>
                                             <tr>
                                                 <th><?php echo $relatorio['data_criacao']; ?></th>

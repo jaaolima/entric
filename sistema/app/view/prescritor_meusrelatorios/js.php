@@ -11,7 +11,7 @@ function fc_Remover(video, id){
                 btnClass: 'btn btn-secondary btn-form',
                 action: function(){
                     $.ajax({
-                        type: "POST",
+                        type: "POST", 
                         url: "ajax/remover_video",
                         data: "&id="+id,
                         cache: false,
