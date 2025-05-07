@@ -6002,20 +6002,20 @@ $app->group("", function () use ($app) {
 				if($login == "ibranutro"){
 					$relatorios = $db->select_to_array("relatorios_suplemento r
 								inner join pacientes_suplemento p on r.id_paciente = p.id",
-								"r.id, r.data_criacao, r.codigo, 'Suplemento' as tipo, p.nome, DATE_FORMAT(p.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p.data_criacao, '%d/%m/%Y %h:%i') as data_criacao",
+								"r.id, r.codigo, 'Suplemento' as tipo, p.nome, DATE_FORMAT(p.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p.data_criacao, '%d/%m/%Y %h:%i') as data_criacao",
 								"where r.id_prescritor_ibranutro = :id
 								UNION
-								SELECT r2.id,  r2.data_criacao, r2.codigo, 'Dieta Enteral' as tipo, p2.nome, DATE_FORMAT(p2.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p2.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
+								SELECT r2.id,  r2.codigo, 'Dieta Enteral' as tipo, p2.nome, DATE_FORMAT(p2.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p2.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 								FROM relatorios_simplificada r2
 								inner join pacientes_simplificada p2 on r2.id_paciente = p2.id
 								where r2.id_prescritor_ibranutro = :id
 								UNION
-								SELECT r3.id, r3.data_criacao, r3.codigo, 'Módulos' as tipo, p3.nome, DATE_FORMAT(p3.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p3.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
+								SELECT r3.id, r3.codigo, 'Módulos' as tipo, p3.nome, DATE_FORMAT(p3.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p3.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 								FROM relatorios_modulo r3
 								inner join pacientes_modulo p3 on r3.id_paciente = p3.id
 								where r3.id_prescritor_ibranutro = :id
 								UNION
-								SELECT r4.id, r4.data_criacao, r4.codigo, 'Relatório de Alta' as tipo, p4.nome, DATE_FORMAT(p4.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p4.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
+								SELECT r4.id, r4.codigo, 'Relatório de Alta' as tipo, p4.nome, DATE_FORMAT(p4.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p4.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 								FROM relatorios r4
 								inner join pacientes p4 on r4.id_paciente = p4.id
 								where r4.id_prescritor_ibranutro = :id
@@ -6024,20 +6024,20 @@ $app->group("", function () use ($app) {
 				}elseif($login == 'entric'){
 					$relatorios = $db->select_to_array("relatorios_suplemento r
 								inner join pacientes_suplemento p on r.id_paciente = p.id",
-								"r.id, r.data_criacao, r.codigo, 'Suplemento' as tipo, p.nome, DATE_FORMAT(p.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p.data_criacao, '%d/%m/%Y %h:%i') as data_criacao",
+								"r.id, r.codigo, 'Suplemento' as tipo, p.nome, DATE_FORMAT(p.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p.data_criacao, '%d/%m/%Y %h:%i') as data_criacao",
 								"where r.id_prescritor = :id
 								UNION
-								SELECT r2.id,  r2.data_criacao, r2.codigo, 'Dieta Enteral' as tipo, p2.nome, DATE_FORMAT(p2.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p2.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
+								SELECT r2.id, r2.codigo, 'Dieta Enteral' as tipo, p2.nome, DATE_FORMAT(p2.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p2.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 								FROM relatorios_simplificada r2
 								inner join pacientes_simplificada p2 on r2.id_paciente = p2.id
 								where r2.id_prescritor = :id
 								UNION
-								SELECT r3.id, r3.data_criacao, r3.codigo, 'Módulos' as tipo, p3.nome, DATE_FORMAT(p3.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p3.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
+								SELECT r3.id, r3.codigo, 'Módulos' as tipo, p3.nome, DATE_FORMAT(p3.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p3.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 								FROM relatorios_modulo r3
 								inner join pacientes_modulo p3 on r3.id_paciente = p3.id
 								where r3.id_prescritor = :id
 								UNION
-								SELECT r4.id, r4.data_criacao, r4.codigo, 'Relatório de Alta' as tipo, p4.nome, DATE_FORMAT(p4.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p4.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
+								SELECT r4.id, r4.codigo, 'Relatório de Alta' as tipo, p4.nome, DATE_FORMAT(p4.data_nascimento, '%d/%m/%Y') as data_nascimento, DATE_FORMAT(p4.data_criacao, '%d/%m/%Y %h:%i') as data_criacao
 								FROM relatorios r4
 								inner join pacientes p4 on r4.id_paciente = p4.id
 								where r4.id_prescritor = :id
