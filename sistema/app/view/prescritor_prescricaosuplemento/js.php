@@ -57,7 +57,7 @@ function fc_retorno_pacientes(){
 
         $('#up_id').val(dados_json.id);
         $('#up_nome').val(dados_json.nome);
-        $('#up_telefone').val(dados_json.telefone);
+        $('#up_telefone').val(dados_json.telefone); 
         $('#up_hospital').val(dados_json.hospital);
         $('#up_atendimento').val(dados_json.atendimento);
         $('#up_data_nascimento').val(dados_json.data_nascimento);

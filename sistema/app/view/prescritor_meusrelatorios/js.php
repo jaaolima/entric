@@ -32,7 +32,7 @@ function fc_Remover(video, id){
     });
 }
 
-$(function(){
+$(function(){ 
     /*
     if($('#flupdocs').length){
         $('#flupdocs').fileupload({
@@ -48,6 +48,18 @@ $(function(){
         $.ajax({ url: $('#flupdocs').fileupload('option', 'url'), dataType: 'json', context: $('#flupdocs')[0] }).always(function () { $(this).removeClass('fileupload-processing'); }).done(function (result) { $(this).fileupload('option', 'done').call(this, $.Event('done'), {result: result});});
     }
     */
+
+    $("[name='alterar_suplemento']").on("click", function () {
+    	var nome = $(this).data('nome');
+        $.ajax({
+            type: "POST",
+            url: "prescritor_prescricaosuplemento",
+            data: "&action=buscar&nome="+nome,
+            cache: false,
+            dataType: 'json',
+            success: function( data ){}
+        });
+    });
 
 
     $(".modal_video").on("click", function () {

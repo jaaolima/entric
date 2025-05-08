@@ -10,10 +10,10 @@ class Prescritor_prescricaosuplementoController extends Controller {
         global $bruker;
         $tab1 = "cadastrar";
 
-        if (isset($_GET['action'])){
-            if ($_GET['action'] == "buscar"){
+        if (isset($_POST['action'])){
+            if ($_POST['action'] == "buscar"){
                 $tab1 = "buscar";
-                $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($_GET);
+                $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($_POST);
 
                 if (isset($buscar['error'])){
                     alertretorno("toastr['error']('".$buscar['error']."', '', {positionClass: 'toast-top-right' });");
@@ -23,8 +23,8 @@ class Prescritor_prescricaosuplementoController extends Controller {
                 }
                 
 
-            }else if ($_GET['action'] == "cadastrar"){
-                $cadastrar = $this->Prescritor_relatorioaltaModel->insertDados($_GET);
+            }else if ($_POST['action'] == "cadastrar"){
+                $cadastrar = $this->Prescritor_relatorioaltaModel->insertDados($_POST);
 
                 if (isset($cadastrar['error'])){
                     alertretorno("toastr['error']('".$cadastrar['error']."', '', {positionClass: 'toast-top-right' });");
@@ -33,8 +33,8 @@ class Prescritor_prescricaosuplementoController extends Controller {
                     alertretorno("toastr['success']('".$cadastrar['success']."', '', {positionClass: 'toast-top-right' });");
                 }
 
-            }else if ($_GET['action'] == "atualizar"){
-                $cadastrar = $this->Prescritor_relatorioaltaModel->updateDados($_GET);
+            }else if ($_POST['action'] == "atualizar"){
+                $cadastrar = $this->Prescritor_relatorioaltaModel->updateDados($_POST);
 
                 if (isset($cadastrar['error'])){
                     alertretorno("toastr['error']('".$cadastrar['error']."', '', {positionClass: 'toast-top-right' });");
@@ -54,19 +54,6 @@ class Prescritor_prescricaosuplementoController extends Controller {
 
     function afterAction() {
 
-    }
-
-    function alterarRelatorio() {
-        var_dump($request);
-        $tab1 = "buscar";
-        $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($request);
-
-        if (isset($buscar['error'])){
-            alertretorno("toastr['error']('".$buscar['error']."', '', {positionClass: 'toast-top-right' });");
-
-        }else{
-            $this->set('dados_busca', $buscar);
-        }
     }
  
 }
