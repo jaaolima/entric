@@ -96,7 +96,6 @@
         $_SESSION['paciente_redirect']['nu_atendimento'] = null;
     }
 
-    var_dump($_GET);
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
