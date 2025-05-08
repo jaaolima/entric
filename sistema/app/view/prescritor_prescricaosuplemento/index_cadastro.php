@@ -94,6 +94,11 @@
 
         $nu_atendimento = $_SESSION['paciente_redirect']['nu_atendimento'];
         $_SESSION['paciente_redirect']['nu_atendimento'] = null;
+    }else if($_SESSION['paciente_redirect']['buscar'] == 'alterar_relatorio'){
+        $tab1 = 'buscar';
+        $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
+        $_SESSION['paciente_redirect']['ds_nome'] = null;
+        $_SESSION['paciente_redirect']['buscar'] = null;
     }
 
 ?>
