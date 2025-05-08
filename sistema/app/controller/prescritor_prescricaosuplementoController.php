@@ -52,6 +52,11 @@ class Prescritor_prescricaosuplementoController extends Controller {
         $this->set('bruker', $bruker);
     }
 
+    function alterarRelatorio(){
+        $_SESSION['paciente_redirect']['buscar'] = 'alterar_relatorio';
+        $_SESSION['paciente_redirect']['ds_nome'] = $_POST['ds_nome'];
+    }
+
     function afterAction() {
 
     }

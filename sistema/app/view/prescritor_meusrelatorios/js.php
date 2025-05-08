@@ -53,11 +53,13 @@ $(function(){
     	var nome = $(this).data('nome');
         $.ajax({
             type: "POST",
-            url: "prescritor_prescricaosuplemento",
-            data: "&action=buscar&nome="+nome,
+            url: "prescritor_prescricaosuplemento/alterarRelatorio",
+            data: "&nome="+nome,
             cache: false,
             dataType: 'json',
-            success: function( data ){}
+            success: function( data ){
+                window.location.href ='prescritor_prescricaosuplemento';
+            }
         });
     });
 
