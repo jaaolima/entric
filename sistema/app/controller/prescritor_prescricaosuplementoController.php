@@ -10,6 +10,7 @@ class Prescritor_prescricaosuplementoController extends Controller {
     function index() {
         global $bruker;
         $tab1 = "cadastrar";
+        var_dump($_GET);
 
         if (isset($_GET['action'])){
             if ($_GET['action'] == "buscar"){
