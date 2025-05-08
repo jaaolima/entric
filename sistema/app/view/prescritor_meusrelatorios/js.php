@@ -56,11 +56,11 @@ $(function(){
             url: "prescritor_prescricaosuplemento/alterarRelatorio",
             data: "&nome="+nome,
             cache: false,
-            dataType: 'json',
-            success: function( data ){
-                window.location.href ='prescritor_prescricaosuplemento';
-            }
-        });
+            dataType: 'json'
+        }).always(function() {
+            // Executa sempre, independente da resposta do servidor
+            window.location.href = 'prescritor_prescricaosuplemento';
+        });;
 
     });
 
