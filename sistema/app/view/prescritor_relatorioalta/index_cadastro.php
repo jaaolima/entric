@@ -1,3 +1,15 @@
+<?php
+    
+    $ds_nome = '';
+    if($_SESSION['paciente_redirect']['buscar'] == 'alterar_relatorio'){
+        $tab1 = 'buscar';
+        $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
+        $_SESSION['paciente_redirect']['ds_nome'] = null;
+        $_SESSION['paciente_redirect']['buscar'] = null;
+    }
+
+?>
+
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
 
@@ -236,7 +248,8 @@
                                     array(
                                         "nome" => array(
                                             "col" => 12,
-                                            "label" => "Nome do Paciente:"
+                                            "label" => "Nome do Paciente:",
+                                            'value' => $ds_nome
                                         ),
                                         "data_nascimento" => array(
                                             "col" => 6,

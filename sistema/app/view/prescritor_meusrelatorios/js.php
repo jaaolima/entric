@@ -51,16 +51,56 @@ $(function(){
 
     $("[name='alterar_suplemento']").on("click", function () {
     	var nome = $(this).data('nome');
-        $.ajax({
-            type: "POST",
-            url: "prescritor_prescricaosuplemento/alterarRelatorio",
-            data: "&nome="+nome,
-            cache: false,
-            dataType: 'json'
-        }).always(function() {
-            // Executa sempre, independente da resposta do servidor
-            window.location.href = 'prescritor_prescricaosuplemento';
-        });;
+    	var relatorio = $(this).data('relatorio');
+        if(relatorio == 'suplemento'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_prescricaosuplemento/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_prescricaosuplemento';
+            });;
+        }
+        if(relatorio == 'modulo'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_prescricaomodulo/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_prescricaomodulo';
+            });;
+        }
+        if(relatorio == 'simplificada'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_prescricaosimplificada/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_prescricaosimplificada';
+            });;
+        }
+        if(relatorio == 'alta'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_relatorioalta/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_relatorioalta';
+            });;
+        }
+       
 
     });
 

@@ -17,7 +17,7 @@
     $ds_hospital = '';
     $dt_nascimento = '';
     $nu_telefone = '';
-    $nu_atendimento = '';
+    $nu_atendimento = ''; 
 
     if($_SESSION['paciente_redirect']['buscar'] == 'buscar'){
         $tab1 = 'buscar';
@@ -95,6 +95,11 @@
 
         $nu_atendimento = $_SESSION['paciente_redirect']['nu_atendimento'];
         $_SESSION['paciente_redirect']['nu_atendimento'] = null;
+    }else if($_SESSION['paciente_redirect']['buscar'] == 'alterar_relatorio'){
+        $tab1 = 'buscar';
+        $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
+        $_SESSION['paciente_redirect']['ds_nome'] = null;
+        $_SESSION['paciente_redirect']['buscar'] = null;
     }
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
