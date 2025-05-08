@@ -11,10 +11,10 @@ class Prescritor_prescricaosuplementoController extends Controller {
         global $bruker;
         $tab1 = "cadastrar";
 
-        if (isset($_POST['action'])){
-            if ($_POST['action'] == "buscar"){
+        if (isset($_GET['action'])){
+            if ($_GET['action'] == "buscar"){
                 $tab1 = "buscar";
-                $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($_POST);
+                $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($_GET);
 
                 if (isset($buscar['error'])){
                     alertretorno("toastr['error']('".$buscar['error']."', '', {positionClass: 'toast-top-right' });");
@@ -24,8 +24,8 @@ class Prescritor_prescricaosuplementoController extends Controller {
                 }
                 
 
-            }else if ($_POST['action'] == "cadastrar"){
-                $cadastrar = $this->Prescritor_relatorioaltaModel->insertDados($_POST);
+            }else if ($_GET['action'] == "cadastrar"){
+                $cadastrar = $this->Prescritor_relatorioaltaModel->insertDados($_GET);
 
                 if (isset($cadastrar['error'])){
                     alertretorno("toastr['error']('".$cadastrar['error']."', '', {positionClass: 'toast-top-right' });");
@@ -34,8 +34,8 @@ class Prescritor_prescricaosuplementoController extends Controller {
                     alertretorno("toastr['success']('".$cadastrar['success']."', '', {positionClass: 'toast-top-right' });");
                 }
 
-            }else if ($_POST['action'] == "atualizar"){
-                $cadastrar = $this->Prescritor_relatorioaltaModel->updateDados($_POST);
+            }else if ($_GET['action'] == "atualizar"){
+                $cadastrar = $this->Prescritor_relatorioaltaModel->updateDados($_GET);
 
                 if (isset($cadastrar['error'])){
                     alertretorno("toastr['error']('".$cadastrar['error']."', '', {positionClass: 'toast-top-right' });");
