@@ -49,7 +49,7 @@ $(function(){
     }
     */
 
-    $("[name='alterar_suplemento']").on("click", function () {
+    $("[name='alterar_relatorio']").on("click", function () {
     	var nome = $(this).data('nome');
     	var relatorio = $(this).data('relatorio');
         if(relatorio == 'suplemento'){
