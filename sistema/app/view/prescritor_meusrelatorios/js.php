@@ -58,10 +58,9 @@ $(function(){
             cache: false,
             dataType: 'json',
             success: function( data ){
+                window.location.href ='prescritor_prescricaosuplemento';
             }
         });
-
-        window.location.href ='prescritor_prescricaosuplemento';
 
     });
 
