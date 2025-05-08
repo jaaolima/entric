@@ -10,7 +10,6 @@ class Prescritor_prescricaosuplementoController extends Controller {
     function index() {
         global $bruker;
         $tab1 = "cadastrar";
-        var_dump($_GET);
 
         if (isset($_GET['action'])){
             if ($_GET['action'] == "buscar"){
@@ -56,6 +55,19 @@ class Prescritor_prescricaosuplementoController extends Controller {
 
     function afterAction() {
 
+    }
+
+    function alterarRelatorio($nome) {
+        var_dump($nome);
+        $tab1 = "buscar";
+        $buscar = $this->Prescritor_relatorioaltaModel->buscarDados($nome);
+
+        if (isset($buscar['error'])){
+            alertretorno("toastr['error']('".$buscar['error']."', '', {positionClass: 'toast-top-right' });");
+
+        }else{
+            $this->set('dados_busca', $buscar);
+        }
     }
  
 }

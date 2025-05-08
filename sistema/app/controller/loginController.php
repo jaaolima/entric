@@ -12,7 +12,7 @@ class LoginController extends Controller {
 
                 if ($_POST['_ac'] == "login"){
                     if (isset($_POST['email']) == FALSE ) $email = ""; else $email = $_POST['email'];
-                    if (isset($_POST['senha']) == FALSE ) $senha = ""; else $senha = $_POST['senha'];
+                    if (isset($_POST['senha']) == FALSE ) $senha = ""; else $senha = $_POST['senha']; 
 
                     if (($email<>"") and ($senha<>"")){
                         
