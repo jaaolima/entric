@@ -271,7 +271,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 class="titulo" style="margin:0px;">SAIBA MAIS!</h4>
-					<img src="imagem/QRCode_viaOral.png" style="display:inline-block;" width="80" alt="">
+					<img src="imagem/QRCode_videos_alta.png" style="display:inline-block;" width="80" alt="">
 				</div>
 			</div>
 		<?php
