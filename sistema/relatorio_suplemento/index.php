@@ -795,6 +795,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<p>Prescritor</p>
 							<p style="margin:0px;">(Assinatura e Carimbo)</p>
 						</div>
+						<div style="margin-top:15px;">
+							<p><?php echo $relatorio['data_criacao']; ?></p>
+						</div>
 						<?php if($nome_hospital != '') : ?>
 						<!-- <div>
 							<strong>IBRANUTRO</strong>
