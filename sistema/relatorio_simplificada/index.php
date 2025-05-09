@@ -19,7 +19,7 @@ error_reporting(E_ALL);
 */
 require __DIR__ . '/libs/conf6ion.php';
 require __DIR__ . '/libs/common.php';
-require __DIR__ . '/libs/database.class.php';
+require __DIR__ . '/libs/database.class.php'; 
 //echo endecrypt("encrypt", 466);
 //die();
 // var_dump($_SESSION);
@@ -863,26 +863,28 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						</table>
 						<span class="modo_uso">
 							<?php							
+							$horarios_hidra = "";
 							if ($relatorio['fra_hidrahorario'] <> ""){
 								$_horarios = json_decode($relatorio['fra_hidrahorario'], true);
+								$horarios_hidra = array();
 								foreach ($_horarios as $chave => $valor) {
-									$horarios[] = $valor;
+									$horarios_hidra[] = $valor;
 								}
 								$_horarios = "";
-								for ($i = 0; $i < count($horarios); $i++) {
+								for ($i = 0; $i < count($horarios_hidra); $i++) {
 									if ($i == 0) $_horarios .= " às ";
 									else{
-										if (($i+1) == count($horarios))
+										if (($i+1) == count($horarios_hidra))
 											$_horarios .= " e ";
 										else
 											$_horarios .= ", ";
 									}
-									$_horarios .= $horarios[$i]."h ";
+									$_horarios .= $horarios_hidra[$i];
 								}
-								$horarios = $_horarios;
+								$horarios_hidra = $_horarios;
 							}
 							?>
-							<strong>Modo de Uso:</strong> Instalar dieta às <?php echo $relatorio['fra_h_i_dieta'];?>. Após o término da primeira dieta, instalar a próxima (caso haja mais de uma dieta). Correr a dieta em <?php echo $relatorio['fra_h_inf_dieta'];?> h. Com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios;?>.
+							<strong>Modo de Uso:</strong> Instalar dieta às <?php echo $relatorio['fra_h_i_dieta'];?>. Após o término da primeira dieta, instalar a próxima (caso haja mais de uma dieta). Correr a dieta em <?php echo $relatorio['fra_h_inf_dieta'];?> h. Com oferta de água extra de <?php echo $relatorio['fra_volume_horario'];?> ml por horário, <?php echo $horarios_hidra;?>.
 							<?php 
 							if (trim($relatorio['fra_info_complementares']) <> ""){
 								echo $relatorio['fra_info_complementares'];

@@ -153,11 +153,6 @@
                                         "required" => "required",
                                         "value" => $dt_nascimento
                                     ),
-                                    "peso" => array(
-                                        "col" => 4,
-                                        "label" => "Peso:",
-                                        "required" => "required"
-                                    ),
                                     "telefone" => array(
                                         "col" => 4,
                                         "label" => "Telefone:",
@@ -173,6 +168,11 @@
                                         "label" => "Atendimento:",
                                         "value" => $nu_atendimento
                                     ), 
+                                    "peso" => array(
+                                        "col" => 4,
+                                        "label" => "Peso:",
+                                        "required" => "required"
+                                    ),
                                 )
                             );
                     echo $item_dados;
@@ -256,11 +256,6 @@
                                     "placeholder" => "dd/mm/aaaa",
                                     "required" => "required"
                                 ),
-                                "up_peso" => array(
-                                    "col" => 4,
-                                    "label" => "Peso:",
-                                    "required" => "required"
-                                ),
                                 "up_telefone" => array(
                                     "col" => 4,
                                     "label" => "Telefone:"
@@ -272,6 +267,11 @@
                                 "up_atendimento" => array(
                                     "col" => 4,
                                     "label" => "Atendimento:"
+                                ),
+                                "up_peso" => array(
+                                    "col" => 4,
+                                    "label" => "Peso:",
+                                    "required" => "required"
                                 ),
                             )
                         );
