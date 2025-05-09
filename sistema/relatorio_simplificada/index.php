@@ -67,7 +67,7 @@ else{
 
 $url = endecrypt("decrypt", $url);
 if ($url=="") Redirect(BASE_PATH);
-$relatorio = $db->select_single_to_array("relatorios_simplificada", "*", "WHERE id=:id", array(":id"=>$url));
+$relatorio = $db->select_single_to_array("relatorios_simplificada", "*, DATE_FORMAT(data_criacao, '%d/%m/%Y %H:%i') as data_criacao", "WHERE id=:id", array(":id"=>$url));
 if (!$relatorio) Redirect(BASE_PATH);
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
@@ -1092,6 +1092,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<div style="margin-bottom:15px;">
 						<p>Prescritor</p>
 						<p style="margin:0px;">(Assinatura e Carimbo)</p>
+					</div>
+					<div style="margin-top:10px;margin-bottom:5px;">
+						<p><?php echo $relatorio['data_criacao']; ?></p>
 					</div>
 					<!-- <?php if($nome_hospital != '') : ?>
 					<div>
