@@ -1220,7 +1220,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 																<h5 class='titulo'style='margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
 															</div>
 															<div>
-																<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
+																<img src='imagem/QRCode_videos_alta.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
 															</div>
 														</div>";
 										
@@ -1399,7 +1399,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<thead>
 						<tr>
 							<td style="width:20%">
-								<img src="imagem/qrcode-sistema.png" width="100%" border="0" />
+								<img src="imagem/QRCode_videos_alta.png" width="100%" border="0" />
 							</td>
 							<td style="width:5%"></td>
 							<td style="width:75%">
