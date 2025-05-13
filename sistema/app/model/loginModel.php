@@ -25,13 +25,13 @@ class LoginModel extends Model {
             $_SESSION['login'] = $dados['data']['session']['login'];
             $_SESSION['paciente_redirect'] = ['sistema' => null,'id_paciente' => null, 'buscar' => null];
 
-            // if (isset($dados["data"]["paciente_videosalta"])){ 
-            //     Redirect(BASE_PATH . '/paciente_videosalta'); 
-            //     return true;
+            if (isset($dados["data"]["paciente_videosalta"])){ 
+                Redirect(BASE_PATH . '/paciente_videosalta'); 
+                return true;
 
-            // }else{
-            //     Redirect(BASE_PATH . '');
-            // }
+            }else{
+                Redirect(BASE_PATH . '');
+            }
         }
     }
 
