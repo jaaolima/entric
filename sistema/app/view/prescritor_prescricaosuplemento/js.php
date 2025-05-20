@@ -1175,6 +1175,8 @@ function check_dieta(_this){
 
     const totalMarcados = tbody.find('input[type="checkbox"]:checked').length;
     tbody.closest("text[id^='count_']").html("("+totalMarcados+")");
+    console.log(tbody);
+    console.log(totalMarcados);
 }
 
 function fc_collapseSistema($apres_enteral_num){
@@ -1251,7 +1253,8 @@ function fc_collapsecheckbox( $apres_enteral_num){
         }
     }
 
-
+    const totalMarcados = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]:checked').length;
+    $("#count_"+$apres_enteral_num).html("("+totalMarcados+")");
 }
 
 function fc_gerarelatorio(){
