@@ -1145,12 +1145,10 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function check_dieta(_this){
-    console.log("checou");
     if($("#tipo_login").val() == 'ibranutro'){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
         let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
         let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-        console.log(tbody, checkboxes, checkedCount);
         if (checkedCount >= 3) {
             // Desabilita os não selecionados se já houver 3 selecionados
             checkboxes.not(":checked").prop("disabled", true);
@@ -1164,7 +1162,6 @@ function check_dieta(_this){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
         let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
         let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-        console.log(tbody, checkboxes, checkedCount);
         if (checkedCount >= 5) {
             // Desabilita os não selecionados se já houver 3 selecionados
             checkboxes.not(":checked").prop("disabled", true);
@@ -1176,7 +1173,8 @@ function check_dieta(_this){
         }
     }
 
-    
+    const totalMarcados = tbody.find('input[type="checkbox"]:checked').length;
+    tbody.closest("text[id^='count_']").html("("+totalMarcados+")");
 }
 
 function fc_collapseSistema($apres_enteral_num){
@@ -1253,8 +1251,7 @@ function fc_collapsecheckbox( $apres_enteral_num){
         }
     }
 
-    const totalMarcados = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]:checked').length;
-    $("#count_"+$apres_enteral_num).html("("+totalMarcados+")");
+
 }
 
 function fc_gerarelatorio(){
