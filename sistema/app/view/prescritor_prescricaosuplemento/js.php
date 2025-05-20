@@ -2159,15 +2159,12 @@ $(function(){
         // }
     });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
-        busca_produto_relatorio();
-    });
-
-    $('[name="carac_oral[]"]').on("click", function(e) {
-        if($(this).is(":checked")){
-            if($(this).val() == 'Sem Sacarose' || $(this).val() == 'Cicatrização' || $(this).val() == 'Imunonutrição cirúrgica'){
-                $("#calculo_produto_especializado").attr("checked", true);
-            }
+        if($('[name="carac_oral[]"][value="Sem Sacarose"]').is(":checked") || $('[name="carac_oral[]"][value="Cicatrização"]').is(":checked") || $('[name="carac_oral[]"][value="Imunonutrição cirúrgica"]').is(":checked")){
+            $("#calculo_produto_especializado").attr("checked", true);
+        }else{
+            $("#calculo_produto_especializado").attr("checked", false);
         }
+        busca_produto_relatorio();
     });
 
     $('input[name="produto_especializado"]').on("click", function(e) {
