@@ -89,7 +89,7 @@ function fc_retorno_pacientes(){
             $('#table_lista_pacientes').append(tr);
         }
         
-        $('#modal_retorno_pacientes').modal('toggle');
+        $('#modal_retorno_pacientes').modal('toggle'); 
         $("#listar_pacientes").show();
         $("#buscar_pacientes").hide();
     });
@@ -986,7 +986,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
             type: "POST",
             url: "ajax/busca_produto_relatorio_suplemento",
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
-            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val(),
+            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val()+"&produto_especializado="+$("#calculo_produto_especializado"),
             cache: false,
             dataType: 'html',
             success: function( dados ){
@@ -2160,6 +2160,10 @@ $(function(){
     });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
         busca_produto_relatorio();
+    });
+
+    $('input[name="produto_especializado"]').on("click", function(e) {
+        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
     });
     $("#salvar_alteracoes").on("click", function(e) {
         salvar_calculo_fracionamento($(this));
