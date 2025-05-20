@@ -120,6 +120,14 @@
                                         <input id="calculo_enteral_carac_semsacarose" name="carac_enteral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
                                         <label for="calculo_enteral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
                                     </div>
+                                    <div class="form-check col-sm-4">
+                                    </div>
+                                    <div class="form-check col-sm-4">
+                                    </div>
+                                    <div class="form-check col-sm-4">
+                                        <input id="calculo_produto_especializado" name="produto_especializado" class="form-check-input styled-checkbox" type="checkbox" value="S">
+                                        <label for="calculo_produto_especializado" class="form-check-label check-green"> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
