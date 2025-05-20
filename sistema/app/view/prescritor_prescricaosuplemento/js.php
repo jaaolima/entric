@@ -2162,6 +2162,14 @@ $(function(){
         busca_produto_relatorio();
     });
 
+    $('[name="carac_oral[]"]').on("click", function(e) {
+        if($(this).is(":checked")){
+            if($(this).val() == 'Sem Sacarose' || $(this).val() == 'Cicatrização' || $(this).val() == 'Imunonutrição cirúrgica'){
+                $("#calculo_produto_especializado").attr("checked", true);
+            }
+        }
+    });
+
     $('input[name="produto_especializado"]').on("click", function(e) {
         busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
     });
