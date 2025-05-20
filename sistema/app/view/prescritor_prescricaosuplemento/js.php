@@ -1189,8 +1189,6 @@ function fc_collapseSistema($apres_enteral_num){
 }
 
 function fc_collapsecheckbox( $apres_enteral_num){
-    const totalMarcados = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]:checked').length;
-    $("#count_"+$apres_enteral_num).html("("+totalMarcados+")");
     if ($("#tbody"+$apres_enteral_num).hasClass("checked")) {
         $("#tbody"+$apres_enteral_num).removeClass("checked");
         $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
@@ -1254,6 +1252,9 @@ function fc_collapsecheckbox( $apres_enteral_num){
             // });
         }
     }
+
+    const totalMarcados = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]:checked').length;
+    $("#count_"+$apres_enteral_num).html("("+totalMarcados+")");
 }
 
 function fc_gerarelatorio(){
