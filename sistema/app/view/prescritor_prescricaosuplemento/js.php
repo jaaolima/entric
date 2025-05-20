@@ -1175,6 +1175,7 @@ function check_dieta(_this){
     tbody = $(_this).closest("tbody[id^='tbody']");
     const totalMarcados = tbody.find('input[type="checkbox"]:checked').length;
     const thead = tbody.prevAll('thead').first();
+    console.log(thead);
     thead.find("text[id^='count_']").html("("+totalMarcados+")");
 }
 
