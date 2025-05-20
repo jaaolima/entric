@@ -3364,7 +3364,7 @@ $app->group("", function () use ($app) {
 					if($dados['produto_especializado'] == 'S'){
 						$query.= ' AND (produto_especializado = "S")';
 					}else{
-						$query.= ' AND (produto_especializado <> "S")';
+						$query.= ' AND (produto_especializado is null)';
 					}
 				}
 
@@ -3418,8 +3418,6 @@ $app->group("", function () use ($app) {
 						$query.= ' AND (carac_oral LIKE "%Imunonutrição cirúrgica%")';
 					}
 				}
-
-				var_dump($query);
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = $db->select_to_array("produtos",
