@@ -740,7 +740,7 @@ function set_select2_tag(_id, _value){
     }
 }
 
-function modalFabricantes(){
+function modalFabricantes(){ 
     $("#modal_fabricantes").find(".entric_table_loading").show();
     $("#modal_fabricantes").find(".entric_table").hide();
     $('#modal_fabricantes').modal('toggle');

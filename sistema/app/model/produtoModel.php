@@ -65,7 +65,7 @@ class ProdutoModel extends Model {
         return $retorno;
     }
 
-    function stProduto($dados) {
+    function stProduto($dados) { 
         global $bruker;
 
         if ($dados["fabricante"] == "null") $dados["fabricante"] = null;               
@@ -113,6 +113,14 @@ class ProdutoModel extends Model {
                 }
                 $bind[':carac_enteral'] = (($carac_enteral)?json_encode($carac_enteral, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
             }            
+        }
+
+        if($dados['via'] == 'Enteral'){
+            $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
+        }
+
+        if($dados['via'] == 'Suplemento'){
+            $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
         }
 
         if (isset($dados['apres_oral'])){
