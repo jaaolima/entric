@@ -125,8 +125,8 @@
                                     <div class="form-check col-sm-4">
                                     </div>
                                     <div class="form-check col-sm-4">
-                                        <input id="calculo_produto_especializado" name="produto_especializado_enteral" class="form-check-input styled-checkbox" type="checkbox" value="S">
-                                        <label for="calculo_produto_especializado" class="form-check-label check-green"> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado</label>
+                                        <input id="calculo_produto_especializado_enteral" name="produto_especializado_enteral" class="form-check-input styled-checkbox" type="checkbox" value="S">
+                                        <label for="calculo_produto_especializado_enteral" class="form-check-label check-green"> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado</label>
                                     </div>
                                 </div>
                             </div>
@@ -180,8 +180,8 @@
                                             <label for="calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
                                         </div>
                                         <div class="form-check col-sm-4">
-                                            <input id="calculo_produto_especializado" name="produto_especializado_oral" class="form-check-input styled-checkbox" type="checkbox" value="S">
-                                            <label for="calculo_produto_especializado" class="form-check-label check-green"> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado</label>
+                                            <input id="calculo_produto_especializado_oral" name="produto_especializado_oral" class="form-check-input styled-checkbox" type="checkbox" value="S">
+                                            <label for="calculo_produto_especializado_oral" class="form-check-label check-green"> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
