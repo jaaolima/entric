@@ -3562,7 +3562,7 @@ $app->group("", function () use ($app) {
 		                                    $retorno .= '<thead>
 		                                                    <tr>
 		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
-		                                                        '.$apres_oral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                        '.$apres_oral.'<p id="count_'.$apres_oral_num.'"></p> <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5">
