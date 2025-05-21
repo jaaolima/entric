@@ -267,7 +267,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE SÃO OS MÓDULOS NUTRICIONAIS?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:100%;">
-					<p>Os módulos nutricionais são fórmulas que contêm <span style="color:#0092c5;">nutrientes específicos</span>, escolhidos de acordo com as necessidades de cada paciente. Eles têm o objetivo de complementar a alimentação, ajudando a atender às necessidades nutricionais de forma mais precisa e eficaz.</p>
+					<p>Os módulos nutricionais são fórmulas que contêm <span style="color:#0092c5;">nutrientes específicos</span>, escolhidos de acordo com as necessidades de cada paciente. Eles têm o objetivo de complementar a alimentação, ajudando a atender as necessidades nutricionais de forma mais precisa e eficaz.</p>
 				</div>
 			</div>
 			
@@ -279,7 +279,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ((!$p_header) and (!$p_footer)){
 		?>
 			<p class="text-left subtitutlo" style="margin:0px;">
-			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções.</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha apenas uma das opções por categoria.</p>
 			<?php 
 				$landscape = false;
 				$_produtos_nomes = array();
@@ -343,7 +343,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										Medida
 									</th>
 									<th class="col_azul">
-										Porção(g ou ml)
+										Porção (g ou ml)
 									</th>
 								</tr>
 						<?php
