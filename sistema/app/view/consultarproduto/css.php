@@ -20,7 +20,7 @@
 .toggle-label {
     position: relative; /* Essencial para posicionar o toggle-switch absolutamente dentro dele */
     cursor: pointer;
-    padding-left: 70px; /* Espaço para o toggle visual à esquerda do texto/imagem */
+    padding-left: 50px; /* Espaço para o toggle visual à esquerda do texto/imagem */
     display: flex;
     align-items: center;
     font-size: 1rem; /* Ajuste o tamanho da fonte conforme necessário */
@@ -38,8 +38,8 @@
     left: 0; /* Alinha à esquerda do padding-left do label */
     top: 50%;
     transform: translateY(-50%); /* Centraliza verticalmente */
-    width: 60px;
-    height: 34px;
+    width: 40px;
+    height: 20px;
     background-color: #ccc; /* Cor cinza quando desligado */
     border-radius: 34px; /* Arredonda o trilho */
     transition: background-color 0.4s; /* Suaviza a transição de cor */
@@ -49,10 +49,10 @@
 .toggle-switch::before {
     content: "";
     position: absolute;
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px; /* Ajuste para alinhar verticalmente */
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 3px; /* Ajuste para alinhar verticalmente */
     background-color: white;
     border-radius: 50%; /* Faz o círculo */
     transition: transform 0.4s; /* Suaviza a transição de movimento */
@@ -65,7 +65,7 @@
 
 /* Quando o checkbox está checado: move o círculo para a direita */
 .toggle-checkbox:checked + .toggle-label .toggle-switch::before {
-    transform: translateX(26px); /* Move o círculo */
+    transform: translateX(20px); /* Move o círculo */
 }
 
 /* Opcional: Efeito de foco para acessibilidade */

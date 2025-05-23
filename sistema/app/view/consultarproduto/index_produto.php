@@ -124,11 +124,16 @@
                                     </div>
                                     <div class="form-check col-sm-4">
                                     </div>
-                                    <div class="form-check form-toggle col-sm-4">
-                                        <input id="calculo_produto_especializado_enteral" name="produto_especializado_enteral" class="form-check-input styled-checkbox toggle-checkbox" type="checkbox" value="S">
-                                        <label for="calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
-                                            <span class="toggle-switch"></span> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado
-                                        </label>
+                                    
+                                </div>
+                                <div class="row p-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-check form-toggle col-sm-4">
+                                            <input id="calculo_produto_especializado_enteral" name="produto_especializado_enteral" class="form-check-input styled-checkbox toggle-checkbox" type="checkbox" value="S">
+                                            <label for="calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
+                                                <span class="toggle-switch"></span> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -181,10 +186,6 @@
                                             <input id="calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
                                             <label for="calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
                                         </div>
-                                        <div class="form-check col-sm-4">
-                                            <input id="calculo_produto_especializado_oral" name="produto_especializado_oral" class="form-check-input styled-checkbox" type="checkbox" value="S">
-                                            <label for="calculo_produto_especializado_oral" class="form-check-label check-green"> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado</label>
-                                        </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-check">
@@ -194,6 +195,16 @@
                                         <div class="form-check">
                                             <input id="calculo_oral_carac_semfibras" name="carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Sem Fibras">
                                             <label for="calculo_oral_carac_semfibras" class="form-check-label radio-green">Sem Fibras</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row p-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-check form-toggle col-sm-4">
+                                            <input id="calculo_produto_especializado_enteral" name="produto_especializado_enteral" class="form-check-input styled-checkbox toggle-checkbox" type="checkbox" value="S">
+                                            <label for="calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
+                                                <span class="toggle-switch"></span> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
