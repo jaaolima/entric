@@ -261,7 +261,7 @@ class ProdutoModel extends Model {
             if(isset($dados['produto_especializado_enteral'])){
                 $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
             }else{
-                $bind[':produto_especializado'] = null;
+                $bind[':produto_especializado'] = 'N';
             }
         }
 
@@ -269,11 +269,9 @@ class ProdutoModel extends Model {
             if(isset($dados['produto_especializado_oral'])){
                 $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
             }else{
-                $bind[':produto_especializado'] = null;
+                $bind[':produto_especializado'] = 'N';
             }
         }
-
-        var_dump($bind[':produto_especializado']);
 
         $carac_oral = array();
         if ($dados["via"]=="Suplemento"){
