@@ -198,7 +198,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row p-2">
+                                <div class="row p-4">
                                     <div class="col-sm-6">
                                         <div class="form-check form-toggle">
                                             <input id="calculo_produto_especializado_oral" name="produto_especializado_oral" class="toggle-checkbox" type="checkbox" value="S">

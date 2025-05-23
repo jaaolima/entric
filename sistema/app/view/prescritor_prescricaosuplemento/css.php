@@ -3,6 +3,77 @@
 <link href="js/jquery/bootstrap-slider/css/bootstrap-slider.min.css" rel="stylesheet">
 <link rel="stylesheet" href="js/jquery/jquery-confirm/jquery-confirm.min.css">
 <style>
+      /* Estilos para o contêiner do form-check, se necessário */
+.form-toggle {
+    display: flex; /* Para alinhar o toggle e o label */
+    align-items: center; /* Centraliza verticalmente */
+    margin-bottom: 15px; /* Adicione algum espaçamento, se quiser */
+}
+
+/* Oculta o input checkbox original */
+.toggle-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute; /* Para tirá-lo do fluxo e permitir que o label ocupe seu espaço */
+}
+
+/* Estilo para o label que contém o toggle visual e o texto */
+.toggle-label {
+    position: relative; /* Essencial para posicionar o toggle-switch absolutamente dentro dele */
+    cursor: pointer;
+    padding-left: 50px; /* Espaço para o toggle visual à esquerda do texto/imagem */
+    display: flex;
+    align-items: center;
+    font-size: 1rem; /* Ajuste o tamanho da fonte conforme necessário */
+    color: #333; /* Cor do texto padrão */
+}
+
+.toggle-label img {
+    margin-right: 8px; /* Espaçamento entre a imagem e o texto */
+    vertical-align: middle; /* Alinha a imagem com o texto */
+}
+
+/* O elemento visual do toggle (o trilho e o círculo) */
+.toggle-switch {
+    position: absolute;
+    left: 0; /* Alinha à esquerda do padding-left do label */
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    width: 40px;
+    height: 20px;
+    background-color: #ccc; /* Cor cinza quando desligado */
+    border-radius: 34px; /* Arredonda o trilho */
+    transition: background-color 0.4s; /* Suaviza a transição de cor */
+}
+
+/* O círculo (thumb) dentro do trilho */
+.toggle-switch::before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 3px; /* Ajuste para alinhar verticalmente */
+    background-color: white;
+    border-radius: 50%; /* Faz o círculo */
+    transition: transform 0.4s; /* Suaviza a transição de movimento */
+}
+
+/* Quando o checkbox está checado: muda a cor do trilho */
+.toggle-checkbox:checked + .toggle-label .toggle-switch {
+    background-color: #2196F3; /* Cor azul quando ligado (ou sua cor desejada) */
+}
+
+/* Quando o checkbox está checado: move o círculo para a direita */
+.toggle-checkbox:checked + .toggle-label .toggle-switch::before {
+    transform: translateX(20px); /* Move o círculo */
+}
+
+/* Opcional: Efeito de foco para acessibilidade */
+.toggle-checkbox:focus + .toggle-label .toggle-switch {
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.5); /* Exemplo de foco azul */
+}
 .entric .nav-tabs .nav-link{
     font-size: 13px;
     border-radius: 5px 5px 0px 0px !important;
