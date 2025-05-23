@@ -211,6 +211,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     });
 
                     var produto_especializado = data.produto_especializado;
+                    console.log(produto_especializado);
                     if(produto_especializado == 'S'){
                         $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_oral"]').prop('checked', true);
                     }else{

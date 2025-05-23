@@ -9,7 +9,7 @@
                 <div class="form-check form-toggle">
                     <input id="calculo_produto_especializado" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
                     <label for="calculo_produto_especializado" class="form-check-label check-green toggle-label">
-                        <span class="toggle-switch"></span> Exibir produtos Especializados
+                        <span class="toggle-switch"></span> Exibir produtos especializados <img class="ml-2" src="../../../public/assets/images/bandeira.png" alt="">
                     </label>
                 </div>
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
