@@ -249,6 +249,14 @@ class ProdutoModel extends Model {
             $bind[':cat_modulo'] = ($dados["via"]=="Módulo"?json_encode($dados['cat_modulo'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
         }
 
+        if($dados['via'] == 'Enteral'){
+            $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
+        }
+
+        if($dados['via'] == 'Suplemento'){
+            $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
+        }
+
         $carac_oral = array();
         if ($dados["via"]=="Suplemento"){
             if (isset($dados['carac_oral'])){

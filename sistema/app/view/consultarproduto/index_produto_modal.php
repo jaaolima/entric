@@ -138,7 +138,7 @@
                                     <div class="row p-2">
                                         <div class="col-sm-6">
                                             <div class="form-check form-toggle">
-                                                <input id="m_calculo_produto_especializado_enteral" name="m_produto_especializado_enteral" class="toggle-checkbox" type="checkbox" value="S">
+                                                <input id="m_calculo_produto_especializado_enteral" disabled name="m_produto_especializado_enteral" class="toggle-checkbox" type="checkbox" value="S">
                                                 <label for="m_calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
                                                     <span class="toggle-switch"></span> Produto Especializado
                                                 </label>
@@ -206,7 +206,7 @@
                                     <div class="row p-4">
                                         <div class="col-sm-6">
                                             <div class="form-check form-toggle">
-                                                <input id="m_calculo_produto_especializado_oral" name="m_produto_especializado_oral" class="toggle-checkbox" type="checkbox" value="S">
+                                                <input id="m_calculo_produto_especializado_oral" disabled name="m_produto_especializado_oral" class="toggle-checkbox" type="checkbox" value="S">
                                                 <label for="m_calculo_produto_especializado_oral" class="form-check-label check-green toggle-label">
                                                     <span class="toggle-switch"></span> Produto Especializado
                                                 </label>
