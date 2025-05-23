@@ -2043,9 +2043,21 @@ $(function(){
             }
         }
     });
+    $('input[name="produto_especializado"]').on("click", function(e) {
+        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
+    });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
         busca_produto_relatorio();
     });
+
+    $('input[name="calculo_fil_semsacarose"]').on("click", function(e) {
+        $("#calculo_produto_especializado").attr("checked", true);
+    });
+
+    $('input[name="calculo_fil_semsacarose2"]').on("click", function(e) {
+        $("#calculo_produto_especializado").attr("checked", true);
+    });
+
     $("#salvar_alteracoes").on("click", function(e) {
         isValidFrac = true;
         $('.fracio_horario .hora').each(function(index) {
@@ -2874,7 +2886,7 @@ $(function(){
                 }
             });
         }
-    });
+    }); 
     $("#rel_imprimir_relatorio").on("click", function(e) {        
         var relatorio_code = $("#relatorio_code").val();
         window.open("https://homologacao.entric.com.br/relatorio/imprimir/?url="+relatorio_code, "_blank");

@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="modal_selecaoTitle" style="width:100%;text-align:center;">Seleção da dieta</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <div class="modal-body" id="modal-pdf-body">
+            <div class="modal-body" id="modal-pdf-body"> 
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
                     <div class="form-check form-toggle mb-2">
                         <input id="calculo_produto_especializado" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
