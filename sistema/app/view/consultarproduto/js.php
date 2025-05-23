@@ -176,7 +176,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     $(".m_unidademedida").removeClass("block").addClass("none");
 
                     var produto_especializado = data.produto_especializado;
-                    if(produto_especializado){
+                    if(produto_especializado == 'S'){
                         $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_enteral"]').prop('checked', true);
                     }
 
@@ -209,7 +209,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     });
 
                     var produto_especializado = data.produto_especializado;
-                    if(produto_especializado){
+                    if(produto_especializado == 'S'){
                         $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_oral"]').prop('checked', true);
                     }
 
@@ -431,7 +431,7 @@ function gtProdutoFiltro(_id){
                     });
 
                     var produto_especializado = data.produto_especializado;
-                    if(produto_especializado){
+                    if(produto_especializado == 'S'){
                         $('#frmproduto').find('input:checkbox[name="produto_especializado_enteral"]').prop('checked', true);
                     }
 
@@ -467,7 +467,7 @@ function gtProdutoFiltro(_id){
                     });
 
                     var produto_especializado = data.produto_especializado;
-                    if(produto_especializado){
+                    if(produto_especializado == 'S'){
                         $('#frmproduto').find('input:checkbox[name="produto_especializado_oral"]').prop('checked', true);
                     }
 
