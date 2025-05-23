@@ -1047,7 +1047,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     if (typeof m_proteica === "undefined") {
         m_proteica = new Array(0, 0);
     }
-    console.log(m_calorica, m_proteica);
+    console.log(m_calorica, m_proteica); 
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
@@ -2250,7 +2250,15 @@ $(function(){
             }
         }
     });
+    $('input[name="produto_especializado"]').on("click", function(e) {
+        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
+    });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
+        if($('[name="carac_oral[]"][value="Sem Sacarose"]').is(":checked") || $('[name="carac_oral[]"][value="Cicatrização"]').is(":checked") || $('[name="carac_oral[]"][value="Imunonutrição cirúrgica"]').is(":checked")){
+            $("#calculo_produto_especializado").attr("checked", true);
+        }else{
+            $("#calculo_produto_especializado").attr("checked", false);
+        }
         busca_produto_relatorio();
     });
     $("#salvar_alteracoes").on("click", function(e) {
