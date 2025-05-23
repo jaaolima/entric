@@ -250,11 +250,19 @@ class ProdutoModel extends Model {
         }
 
         if($dados['via'] == 'Enteral'){
-            $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
+            if($dados['produto_especializado_enteral']){
+                $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
+            }else{
+                $bind[':produto_especializado'] = null;
+            }
         }
 
         if($dados['via'] == 'Suplemento'){
-            $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
+            if($dados['produto_especializado_oral']){
+                $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
+            }else{
+                $bind[':produto_especializado'] = null;
+            }
         }
 
         $carac_oral = array();
