@@ -273,6 +273,8 @@ class ProdutoModel extends Model {
             }
         }
 
+        var_dump($bind[':produto_especializado']);
+
         $carac_oral = array();
         if ($dados["via"]=="Suplemento"){
             if (isset($dados['carac_oral'])){
