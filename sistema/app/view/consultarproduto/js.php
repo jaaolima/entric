@@ -178,6 +178,8 @@ function gtModalProdutoFiltro(_id, _tipo){
                     var produto_especializado = data.produto_especializado;
                     if(produto_especializado == 'S'){
                         $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_enteral"]').prop('checked', true);
+                    }else{
+                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_enteral"]').prop('checked', false);
                     }
 
                 }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Suplemento') {
@@ -211,6 +213,8 @@ function gtModalProdutoFiltro(_id, _tipo){
                     var produto_especializado = data.produto_especializado;
                     if(produto_especializado == 'S'){
                         $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_oral"]').prop('checked', true);
+                    }else{
+                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_oral"]').prop('checked', false);
                     }
 
                 }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Módulo') {
@@ -433,6 +437,8 @@ function gtProdutoFiltro(_id){
                     var produto_especializado = data.produto_especializado;
                     if(produto_especializado == 'S'){
                         $('#frmproduto').find('input:checkbox[name="produto_especializado_enteral"]').prop('checked', true);
+                    }else{
+                        $('#frmproduto').find('input:checkbox[name="produto_especializado_enteral"]').prop('checked', false);
                     }
 
                 }
@@ -469,6 +475,8 @@ function gtProdutoFiltro(_id){
                     var produto_especializado = data.produto_especializado;
                     if(produto_especializado == 'S'){
                         $('#frmproduto').find('input:checkbox[name="produto_especializado_oral"]').prop('checked', true);
+                    }else{
+                        $('#frmproduto').find('input:checkbox[name="produto_especializado_oral"]').prop('checked', false);
                     }
 
                 }else if ($('#frmproduto').find("input[name='via']:checked").val() == 'Módulo') {
