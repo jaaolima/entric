@@ -120,6 +120,21 @@
                                         <input id="calculo_enteral_carac_semsacarose" name="carac_enteral[]" class="form-check-input styled-checkbox" type="checkbox" value="Sem Sacarose">
                                         <label for="calculo_enteral_carac_semsacarose" class="form-check-label check-green">Sem Sacarose</label>
                                     </div>
+                                    <div class="form-check col-sm-4">
+                                    </div>
+                                    <div class="form-check col-sm-4">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-6">
+                                        <div class="form-check form-toggle">
+                                            <input id="calculo_produto_especializado_enteral" name="produto_especializado_enteral" class="toggle-checkbox" type="checkbox" value="S">
+                                            <label for="calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
+                                                <span class="toggle-switch"></span> Produto Especializado
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -180,6 +195,16 @@
                                         <div class="form-check">
                                             <input id="calculo_oral_carac_semfibras" name="carac_oral_fibras[]" class="form-check-input radio-outlined" type="radio" value="Sem Fibras">
                                             <label for="calculo_oral_carac_semfibras" class="form-check-label radio-green">Sem Fibras</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row p-4">
+                                    <div class="col-sm-6">
+                                        <div class="form-check form-toggle">
+                                            <input id="calculo_produto_especializado_oral" name="produto_especializado_oral" class="toggle-checkbox" type="checkbox" value="S">
+                                            <label for="calculo_produto_especializado_oral" class="form-check-label check-green toggle-label">
+                                                <span class="toggle-switch"></span> Produto Especializado
+                                            </label>
                                         </div>
                                     </div>
                                 </div>

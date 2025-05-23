@@ -65,7 +65,7 @@ class ProdutoModel extends Model {
         return $retorno;
     }
 
-    function stProduto($dados) {
+    function stProduto($dados) { 
         global $bruker;
 
         if ($dados["fabricante"] == "null") $dados["fabricante"] = null;               
@@ -113,6 +113,22 @@ class ProdutoModel extends Model {
                 }
                 $bind[':carac_enteral'] = (($carac_enteral)?json_encode($carac_enteral, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
             }            
+        }
+
+        if($dados['via'] == 'Enteral'){
+            if(isset($dados['produto_especializado_enteral'])){
+                $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
+            }else{
+                $bind[':produto_especializado'] = 'N';
+            }
+        }
+
+        if($dados['via'] == 'Suplemento'){
+            if(isset($dados['produto_especializado_oral'])){
+                $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
+            }else{
+                $bind[':produto_especializado'] = 'N';
+            }
         }
 
         if (isset($dados['apres_oral'])){
@@ -239,6 +255,22 @@ class ProdutoModel extends Model {
 
         if (isset($dados['cat_modulo'])){
             $bind[':cat_modulo'] = ($dados["via"]=="Módulo"?json_encode($dados['cat_modulo'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
+        }
+
+        if($dados['via'] == 'Enteral'){
+            if(isset($dados['produto_especializado_enteral'])){
+                $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
+            }else{
+                $bind[':produto_especializado'] = 'N';
+            }
+        }
+
+        if($dados['via'] == 'Suplemento'){
+            if(isset($dados['produto_especializado_oral'])){
+                $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
+            }else{
+                $bind[':produto_especializado'] = 'N';
+            }
         }
 
         $carac_oral = array();
