@@ -119,7 +119,7 @@ class ProdutoModel extends Model {
             if(isset($dados['produto_especializado_enteral'])){
                 $bind[':produto_especializado'] = $dados['produto_especializado_enteral'];
             }else{
-                $bind[':produto_especializado'] = '';
+                $bind[':produto_especializado'] = 'N';
             }
         }
 
@@ -127,7 +127,7 @@ class ProdutoModel extends Model {
             if(isset($dados['produto_especializado_oral'])){
                 $bind[':produto_especializado'] = $dados['produto_especializado_oral'];
             }else{
-                $bind[':produto_especializado'] = '';
+                $bind[':produto_especializado'] = 'N';
             }
         }
 
