@@ -3416,7 +3416,7 @@ $app->group("", function () use ($app) {
 					}
 				}
 		        $query = '';
-				$query .= ' AND (produto_especializado <> "S") or (produto_especializado is null)';
+				$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
 		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
 
