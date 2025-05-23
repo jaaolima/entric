@@ -179,7 +179,7 @@
 		"../scss/components/forms/form-dropzone.scss",
 		"../scss/components/forms/form-checkbox.scss",
 		"../scss/components/forms/form-radio-button.scss",
-		"../scss/components/forms/form-switch.scss",
+		"../scss/components/forms/.scss",
 		"../scss/components/forms/form-bs-customization.scss",
 		"../scss/components/forms/form-advance-taginput.scss",
 		"../scss/components/forms/form-summernote.scss",

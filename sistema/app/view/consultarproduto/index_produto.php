@@ -124,9 +124,11 @@
                                     </div>
                                     <div class="form-check col-sm-4">
                                     </div>
-                                    <div class="form-check col-sm-4">
-                                        <input id="calculo_produto_especializado_enteral" name="produto_especializado_enteral" class="form-check-input styled-checkbox" type="checkbox" value="S">
-                                        <label for="calculo_produto_especializado_enteral" class="form-check-label check-green"> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado</label>
+                                    <div class="form-check form-toggle col-sm-4">
+                                        <input id="calculo_produto_especializado_enteral" name="produto_especializado_enteral" class="form-check-input styled-checkbox toggle-checkbox" type="checkbox" value="S">
+                                        <label for="calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
+                                            <span class="toggle-switch"></span> <img src="../../../public/assets/images/bandeira.png" alt=""> Produto Especializado
+                                        </label>
                                     </div>
                                 </div>
                             </div>
