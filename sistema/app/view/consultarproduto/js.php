@@ -175,6 +175,11 @@ function gtModalProdutoFiltro(_id, _tipo){
                     });
                     $(".m_unidademedida").removeClass("block").addClass("none");
 
+                    var produto_especializado = JSON.parse(data.produto_especializado);
+                    $.each(produto_especializado, function() {
+                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_enteral[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    });
+
                 }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Suplemento') {
                     $("#m_apresentacao_modulo").addClass("none"); 
                     $("#m_apresentacao_enteral").addClass("none");
@@ -201,6 +206,11 @@ function gtModalProdutoFiltro(_id, _tipo){
                         $('#modalfrmproduto').find('input:radio[name="m_carac_oral_calorias[]"]').filter('[value="'+this+'"]').prop('checked', true);
                         $('#modalfrmproduto').find('input:radio[name="m_carac_oral_proteinas[]"]').filter('[value="'+this+'"]').prop('checked', true);
                         $('#modalfrmproduto').find('input:checkbox[name="m_carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    });
+
+                    var produto_especializado = JSON.parse(data.produto_especializado);
+                    $.each(produto_especializado, function() {
+                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
 
                 }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Módulo') {
@@ -420,6 +430,11 @@ function gtProdutoFiltro(_id){
                         $('#frmproduto').find('input:checkbox[name="carac_enteral[]"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
 
+                    var produto_especializado = JSON.parse(data.produto_especializado);
+                    $.each(produto_especializado, function() {
+                        $('#frmproduto').find('input:checkbox[name="produto_especializado_enteral"]').filter('[value="'+this+'"]').prop('checked', true);
+                    });
+
                 }
                 else if ($('#frmproduto').find("input[name='via']:checked").val() == 'Suplemento') {
                     $("#apresentacao_enteral").addClass("none");
@@ -449,6 +464,11 @@ function gtProdutoFiltro(_id){
                         $('#frmproduto').find('input:radio[name="carac_oral_proteinas[]"]').filter('[value="'+this+'"]').prop('checked', true);
                         $('#frmproduto').find('input:radio[name="carac_oral_calorias[]"]').filter('[value="'+this+'"]').prop('checked', true);
                         $('#frmproduto').find('input:checkbox[name="carac_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
+                    });
+
+                    var produto_especializado = JSON.parse(data.produto_especializado);
+                    $.each(produto_especializado, function() {
+                        $('#frmproduto').find('input:checkbox[name="produto_especializado_oral"]').filter('[value="'+this+'"]').prop('checked', true);
                     });
 
                 }else if ($('#frmproduto').find("input[name='via']:checked").val() == 'Módulo') {
