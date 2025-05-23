@@ -2090,7 +2090,7 @@ $app->group("", function () use ($app) {
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final",
+		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, produto_especializado",
 		                                            $query." ORDER BY apres_enteral, apres_oral ASC,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
