@@ -176,9 +176,9 @@ function gtModalProdutoFiltro(_id, _tipo){
                     $(".m_unidademedida").removeClass("block").addClass("none");
 
                     var produto_especializado = data.produto_especializado;
-                    $.each(produto_especializado, function() {
-                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_enteral[]"]').filter('[value="'+this+'"]').prop('checked', true);
-                    });
+                    if(produto_especializado){
+                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_enteral"]').prop('checked', true);
+                    }
 
                 }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Suplemento') {
                     $("#m_apresentacao_modulo").addClass("none"); 
@@ -209,9 +209,9 @@ function gtModalProdutoFiltro(_id, _tipo){
                     });
 
                     var produto_especializado = data.produto_especializado;
-                    $.each(produto_especializado, function() {
-                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_oral[]"]').filter('[value="'+this+'"]').prop('checked', true);
-                    });
+                    if(produto_especializado){
+                        $('#modalfrmproduto').find('input:checkbox[name="m_produto_especializado_oral"]').prop('checked', true);
+                    }
 
                 }else if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Módulo') {
                     $("#m_apresentacao_enteral").addClass("none");
@@ -431,9 +431,9 @@ function gtProdutoFiltro(_id){
                     });
 
                     var produto_especializado = data.produto_especializado;
-                    $.each(produto_especializado, function() {
-                        $('#frmproduto').find('input:checkbox[name="produto_especializado_enteral"]').filter('[value="'+this+'"]').prop('checked', true);
-                    });
+                    if(produto_especializado){
+                        $('#frmproduto').find('input:checkbox[name="produto_especializado_enteral"]').prop('checked', true);
+                    }
 
                 }
                 else if ($('#frmproduto').find("input[name='via']:checked").val() == 'Suplemento') {
@@ -467,9 +467,9 @@ function gtProdutoFiltro(_id){
                     });
 
                     var produto_especializado = data.produto_especializado;
-                    $.each(produto_especializado, function() {
-                        $('#frmproduto').find('input:checkbox[name="produto_especializado_oral"]').filter('[value="'+this+'"]').prop('checked', true);
-                    });
+                    if(produto_especializado){
+                        $('#frmproduto').find('input:checkbox[name="produto_especializado_oral"]').prop('checked', true);
+                    }
 
                 }else if ($('#frmproduto').find("input[name='via']:checked").val() == 'Módulo') {
                     $("#apresentacao_enteral").addClass("none");
