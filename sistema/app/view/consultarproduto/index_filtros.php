@@ -42,7 +42,7 @@
                                             <div class="form-radio">
                                                 <input id="filtro_calculo_pediatrico" class="radio-outlined"  name="especialidade" type="radio" value="Pediátrico" disabled>
                                                 <label for="filtro_calculo_pediatrico" class="radio-green">Pediátrico <small>(em construção)</small></label>
-                                            </div>
+                                            </div> 
                                         </div>
                                     </div>
                                 </div>
@@ -146,6 +146,16 @@
                                     <div class="form-check col-sm-3">
                                     </div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-6">
+                                        <div class="form-check form-toggle">
+                                            <input id="filtro_calculo_produto_especializado_enteral" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
+                                            <label for="filtro_calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
+                                                <span class="toggle-switch"></span> Produto Especializado
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -206,6 +216,16 @@
                                     <div class="form-check col-sm-6">
                                         <input id="filtro_calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
                                         <label for="filtro_calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-6">
+                                        <div class="form-check form-toggle">
+                                            <input id="filtro_calculo_produto_especializado_enteral" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
+                                            <label for="filtro_calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
+                                                <span class="toggle-switch"></span> Produto Especializado
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

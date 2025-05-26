@@ -1912,6 +1912,16 @@ $app->group("", function () use ($app) {
 		            $query .= $_query;
 		        }
 
+				if(isset($dados['produto_especializado'])){
+					if($dados['produto_especializado'] == 'S'){
+						$query .= ' AND produto_especializado = "S"';
+					}else{
+						$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
+					}
+				}else{
+					$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
+				}
+
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = array();
 
