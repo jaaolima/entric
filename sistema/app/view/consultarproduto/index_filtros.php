@@ -221,8 +221,8 @@
                                 <div class="row p-2">
                                     <div class="col-sm-6">
                                         <div class="form-check form-toggle">
-                                            <input id="filtro_calculo_produto_especializado_enteral" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
-                                            <label for="filtro_calculo_produto_especializado_enteral" class="form-check-label check-green toggle-label">
+                                            <input id="filtro_calculo_produto_especializado_oral" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
+                                            <label for="filtro_calculo_produto_especializado_oral" class="form-check-label check-green toggle-label">
                                                 <span class="toggle-switch"></span> Produto Especializado
                                             </label>
                                         </div>
