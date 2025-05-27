@@ -3,7 +3,7 @@
 <link href="js/jquery/bootstrap-slider/css/bootstrap-slider.min.css" rel="stylesheet">
 <link rel="stylesheet" href="js/jquery/jquery-confirm/jquery-confirm.min.css">
 <style>
-[class^="count_"] {
+[id^="count_"] {
     font-weight: 100;
 }
 /* Estilos para o contêiner do form-check, se necessário */
