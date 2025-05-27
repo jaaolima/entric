@@ -1839,84 +1839,17 @@ $app->group("", function () use ($app) {
 
 			if ($usuario){
 				$dados = $request->getParam("dados");
-				$query2 = '';
-				if(isset($dados['produto_especializado'])){
-					if($dados['produto_especializado'] == 'S'){
-						$query2 .= ' AND produto_especializado = "S"';
-						if (isset($dados['filtro_fabricante']) and ($dados['filtro_fabricante'] <> "")){
-							if ($dados['filtro_fabricante'] <> "Todos"){
-								$query2.= ' AND (fabricante LIKE "%'.$dados['filtro_fabricante'].'%")';
-							}
-						}
-						if (isset($dados['especialidade']) and ($dados['especialidade'] <> "")) $query2.= ' AND (especialidade LIKE "%'.$dados['especialidade'].'%")';
-						if (isset($dados['via']) and ($dados['via'] <> "")) $query2.= ' AND (via LIKE "%'.$dados['via'].'%")';
-						if (isset($dados['apres_enteral'][0])){
-							$c_query2 = "";
-							$query2.= " AND ";
-							foreach ($dados['apres_enteral'] as $key => $val) {
-								if ($c_query2 == ""){
-									$query2 .= '(';
-									$c_query2 = "(";
-								}
-								else{
-									$query2 .= ' OR ';
-								}
-								$query2.= '(apres_enteral LIKE "%'.$val.'%")';
-							}
-							$query2.= ')';
-						}
-						if (isset($dados['carac_enteral'][0])){
-							foreach ($dados['carac_enteral'] as $key => $val) {
-								$query2.= ' AND (carac_enteral LIKE "%'.$val.'%")';
-							}
-						}
-						if (isset($dados['apres_oral'][0])){
-							$c_query2 = "";
-							$query2.= " AND ";
-							foreach ($dados['apres_oral'] as $key => $val) {
-								if ($c_query2 == ""){
-									$query2 .= '(';
-									$c_query2 = "(";
-								}
-								else{
-									$query2 .= ' OR ';
-								}
-								$query2.= '(apres_oral LIKE "%'.$val.'%")';
-							}
-							$query2.= ')';
-						}
-						if (isset($dados['carac_oral'][0])){
-							$_query2 = "";
-							foreach ($dados['carac_oral'] as $key => $val) {
-								if ($val <> "Todos"){
-									$_query2.= ' AND (carac_oral LIKE "%'.$val.'%")';
-								}
-								else{
-									$_query2 = "";
-									break;
-								}
-							}
-							$query2 .= $_query2;
-						}
-		
-						if (isset($dados['cat_modulo'][0])){
-							$_query2 = "";
-							foreach ($dados['cat_modulo'] as $key => $val) {
-								if ($val <> "Todos"){
-									$_query2.= ' AND (cat_modulo LIKE "%'.$val.'%")';
-								}
-								else{
-									$_query2 = "";
-									break;
-								}
-							}
-							$query2 .= $_query2;
-						}
-					}
-				}
 
 		        $query = '';
-				$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
+				if(isset($dados['produto_especializado'])){
+					if($dados['produto_especializado'] == 'S'){
+						$query .= ' AND produto_especializado = "S"';
+					}else{
+						$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
+					}
+				}else{
+					$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
+				}
 		        if (isset($dados['filtro_fabricante']) and ($dados['filtro_fabricante'] <> "")){
 		            if ($dados['filtro_fabricante'] <> "Todos"){
 		                $query.= ' AND (fabricante LIKE "%'.$dados['filtro_fabricante'].'%")';
@@ -1989,7 +1922,7 @@ $app->group("", function () use ($app) {
 
 				
 
-		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
+		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = array();
 
 		        $produtos = $db->select_to_array("produtos",
