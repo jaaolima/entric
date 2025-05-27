@@ -1172,10 +1172,10 @@ function check_dieta(_this){
             checkboxes.removeClass( "check_apagado");
         }
     }
-    tbody = $(_this).closest("tbody[id^='tbody']");
-    const totalMarcados = tbody.find('input[type="checkbox"]:checked').length;
-    const thead = tbody.prevAll('thead').first();
-    thead.find("text[id^='count_']").html("("+totalMarcados+")");
+    // tbody = $(_this).closest("tbody[id^='tbody']");
+    // const totalMarcados = tbody.find('input[type="checkbox"]:checked').length;
+    // const thead = tbody.prevAll('thead').first();
+    // thead.find("text[id^='count_']").html("("+totalMarcados+")");
 }
 
 function fc_collapseSistema($apres_enteral_num){
@@ -1252,8 +1252,8 @@ function fc_collapsecheckbox( $apres_enteral_num){
         }
     }
 
-    const totalMarcados = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]:checked').length;
-    $("#count_"+$apres_enteral_num).html("("+totalMarcados+")");
+    const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]').length;
+    $("#count_"+$apres_enteral_num).html("("+total+")");
 }
 
 function fc_gerarelatorio(){

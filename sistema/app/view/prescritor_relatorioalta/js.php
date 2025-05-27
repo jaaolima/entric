@@ -1296,6 +1296,9 @@ function fc_collapsecheckbox( $apres_enteral_num){
             // });
         }
     }
+
+    const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]').length;
+    $("#count_"+$apres_enteral_num).html("("+total+")");
 }
 
 function fc_gerarelatorio(){

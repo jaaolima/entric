@@ -3,8 +3,11 @@
 <link href="js/jquery/bootstrap-slider/css/bootstrap-slider.min.css" rel="stylesheet">
 <link rel="stylesheet" href="js/jquery/jquery-confirm/jquery-confirm.min.css">
 <style> 
-      /* Estilos para o contêiner do form-check, se necessário */
-      .form-toggle {
+[class^="count_"] {
+    font-weight: 100;
+}
+/* Estilos para o contêiner do form-check, se necessário */
+.form-toggle {
     display: flex; /* Para alinhar o toggle e o label */
     align-items: center; /* Centraliza verticalmente */
     margin-bottom: 15px; /* Adicione algum espaçamento, se quiser */
