@@ -1840,8 +1840,16 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
-
 		        $query = '';
+				if(isset($dados['produto_especializado'])){
+					if($dados['produto_especializado'] == 'S'){
+						$query .= ' AND produto_especializado = "S"';
+					}else{
+						$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
+					}
+				}else{
+					$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
+				}
 		        if (isset($dados['filtro_fabricante']) and ($dados['filtro_fabricante'] <> "")){
 		            if ($dados['filtro_fabricante'] <> "Todos"){
 		                $query.= ' AND (fabricante LIKE "%'.$dados['filtro_fabricante'].'%")';
@@ -1912,11 +1920,13 @@ $app->group("", function () use ($app) {
 		            $query .= $_query;
 		        }
 
+				
+
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = array();
 
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, apres_enteral, carac_enteral, apres_oral, carac_oral, cat_modulo, fabricante",
+		                                            "id, nome, apres_enteral, carac_enteral, apres_oral, carac_oral, cat_modulo, fabricante, produto_especializado",
 		                                            $query." ORDER BY fabricante, nome ASC", 
 		                                            null);
 

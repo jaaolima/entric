@@ -1337,6 +1337,11 @@ $(function(){
                         caracteristicas = caracteristicas + cat_modulo_item +'<br>';
                     });
 
+                    produto_especializado = item.produto_especializado;
+                    if(produto_especializado == 'S'){
+                        item.nome = item.nome + '<img src="../../../public/assets/images/bandeira.png" alt="">';
+                    }
+
                     rows = rows + '<tr class="tabrow" rel="'+item.id+'">'+ 
                                 '<td>'+item.id+'</td>'+
                                 '<td>'+item.nome+'</td>'+
