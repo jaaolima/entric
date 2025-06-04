@@ -78,7 +78,7 @@ function fc_retorno_pacientes(){
                     if(item.codigo == null){
                         var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
                     }else{
-                        var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_suplemento/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                        var editar = '<a target="_blank" href="https://homologacao.entric.com.br/relatorio_suplemento/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
                     }
                 }
 
@@ -89,7 +89,7 @@ function fc_retorno_pacientes(){
             $('#table_lista_pacientes').append(tr);
         }
         
-        $('#modal_retorno_pacientes').modal('toggle');
+        $('#modal_retorno_pacientes').modal('toggle'); 
         $("#listar_pacientes").show();
         $("#buscar_pacientes").hide();
     });
@@ -986,7 +986,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
             type: "POST",
             url: "ajax/busca_produto_relatorio_suplemento",
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
-            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val(),
+            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val()+"&produto_especializado="+$("[name='produto_especializado']:checked").val(),
             cache: false,
             dataType: 'html',
             success: function( dados ){
@@ -1145,12 +1145,10 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function check_dieta(_this){
-    console.log("checou");
     if($("#tipo_login").val() == 'ibranutro'){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
         let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
         let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-        console.log(tbody, checkboxes, checkedCount);
         if (checkedCount >= 3) {
             // Desabilita os não selecionados se já houver 3 selecionados
             checkboxes.not(":checked").prop("disabled", true);
@@ -1164,7 +1162,6 @@ function check_dieta(_this){
         let tbody = $(_this).closest("tbody[id^='tbody']"); // Obtém o tbody correspondente
         let checkboxes = tbody.find(".check_dieta"); // Seleciona todos os checkboxes dentro do tbody
         let checkedCount = checkboxes.filter(":checked").length; // Conta quantos estão marcados
-        console.log(tbody, checkboxes, checkedCount);
         if (checkedCount >= 5) {
             // Desabilita os não selecionados se já houver 3 selecionados
             checkboxes.not(":checked").prop("disabled", true);
@@ -1175,8 +1172,10 @@ function check_dieta(_this){
             checkboxes.removeClass( "check_apagado");
         }
     }
-
-    
+    // tbody = $(_this).closest("tbody[id^='tbody']");
+    // const totalMarcados = tbody.find('input[type="checkbox"]:checked').length;
+    // const thead = tbody.prevAll('thead').first();
+    // thead.find("text[id^='count_']").html("("+totalMarcados+")");
 }
 
 function fc_collapseSistema($apres_enteral_num){
@@ -1252,6 +1251,9 @@ function fc_collapsecheckbox( $apres_enteral_num){
             // });
         }
     }
+
+    const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]').length;
+    $("#count_"+$apres_enteral_num).html("("+total+")");
 }
 
 function fc_gerarelatorio(){
@@ -2159,7 +2161,24 @@ $(function(){
         // }
     });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
+        if($('[name="carac_oral[]"][value="Sem Sacarose"]').is(":checked") || $('[name="carac_oral[]"][value="Cicatrização"]').is(":checked") || $('[name="carac_oral[]"][value="Imunonutrição cirúrgica"]').is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }else{
+            if($("#calculo_produto_especializado").is(":checked")){
+                $("label[for='calculo_produto_especializado']").click();
+            }else{
+                return;
+            }
+        }
         busca_produto_relatorio();
+    });
+
+    $('input[name="produto_especializado"]').on("click", function(e) {
+        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
     });
     $("#salvar_alteracoes").on("click", function(e) {
         salvar_calculo_fracionamento($(this));
@@ -2939,7 +2958,7 @@ $(function(){
     });
     $("#rel_imprimir_relatorio").on("click", function(e) {        
         var relatorio_code = $("#relatorio_code").val();
-        window.open("https://sis.entric.com.br/relatorio_suplemento/imprimir/?url="+relatorio_code, "_blank");
+        window.open("https://homologacao.entric.com.br/relatorio_suplemento/imprimir/?url="+relatorio_code, "_blank");
 
     });
     $("#enviar_email").on("click", function(e) {

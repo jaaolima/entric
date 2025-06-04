@@ -1296,6 +1296,9 @@ function fc_collapsecheckbox( $apres_enteral_num){
             // });
         }
     }
+
+    const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]').length;
+    $("#count_"+$apres_enteral_num).html("("+total+")");
 }
 
 function fc_gerarelatorio(){
@@ -2043,9 +2046,33 @@ $(function(){
             }
         }
     });
+    $('input[name="produto_especializado"]').on("click", function(e) {
+        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
+    });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
         busca_produto_relatorio();
     });
+
+    $('input[name="calculo_fil_semsacarose"]').on("click", function(e) {
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
+    });
+
+    $('input[name="calculo_fil_semsacarose2"]').on("click", function(e) {
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
+    });
+
     $("#salvar_alteracoes").on("click", function(e) {
         isValidFrac = true;
         $('.fracio_horario .hora').each(function(index) {
@@ -2874,10 +2901,10 @@ $(function(){
                 }
             });
         }
-    });
+    }); 
     $("#rel_imprimir_relatorio").on("click", function(e) {        
         var relatorio_code = $("#relatorio_code").val();
-        window.open("https://sis.entric.com.br/relatorio/imprimir/?url="+relatorio_code, "_blank");
+        window.open("https://homologacao.entric.com.br/relatorio/imprimir/?url="+relatorio_code, "_blank");
     });
     $("#enviar_email").on("click", function(e) {
         var _email_paciente = $("#email_paciente").val();

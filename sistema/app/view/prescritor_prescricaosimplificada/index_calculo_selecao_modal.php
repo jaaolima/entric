@@ -2,17 +2,19 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modal_selecaoTitle">Seleção da dieta</h5>
+                <h5 class="modal-title" id="modal_selecaoTitle" style="width:100%;text-align:center;">Seleção da dieta</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <div class="modal-body" id="modal-pdf-body">
+            <div class="modal-body" id="modal-pdf-body"> 
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
-
-
-
-
+                    <div class="form-check form-toggle mb-2">
+                        <input id="calculo_produto_especializado" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
+                        <label for="calculo_produto_especializado" class="form-check-label check-green toggle-label">
+                            <span class="toggle-switch"></span> Exibir produtos especializados <img class="ml-2" src="../../../public/assets/images/bandeira.png" alt="">
+                        </label>
+                    </div>
                     <div class="row">
-                        <div class="col-sm-6 text-center">
+                        <div class="col-sm-6 text-center"> 
                             <label class="grid_label pb-4 mb-3">Variação Calórica: ajuste se necessário.</label><br />
                             <div class="mt-3">
                                 <b>-10%</b> <input type="text" value="" id="margem_calorica" name="margem_calorica" class="margens_kptn" /> <b>10%</b>
@@ -28,8 +30,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <table class="table table-bordered" id="dietas_dc">
                         <thead>
                             <tr>

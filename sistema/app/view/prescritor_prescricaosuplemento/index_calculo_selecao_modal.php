@@ -2,10 +2,16 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modal_selecaoTitle">Seleção da dieta</h5>
+                <h5 class="modal-title" id="modal_selecaoTitle" style="width:100%;text-align:center;">Seleção da dieta</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body" id="modal-pdf-body">
+                <div class="form-check form-toggle">
+                    <input id="calculo_produto_especializado" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
+                    <label for="calculo_produto_especializado" class="form-check-label check-green toggle-label">
+                        <span class="toggle-switch"></span> Exibir produtos especializados <img class="ml-2" src="../../../public/assets/images/bandeira.png" alt="">
+                    </label>
+                </div>
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
 
                     <table class="table table-bordered" id="dietas_dc">

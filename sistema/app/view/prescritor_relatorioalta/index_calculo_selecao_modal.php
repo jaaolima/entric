@@ -7,10 +7,12 @@
             </div>
             <div class="modal-body" id="modal-pdf-body">
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
-
-
-
-
+                    <div class="form-check form-toggle mb-2">
+                        <input id="calculo_produto_especializado" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
+                        <label for="calculo_produto_especializado" class="form-check-label check-green toggle-label">
+                            <span class="toggle-switch"></span> Exibir produtos especializados <img class="ml-2" src="../../../public/assets/images/bandeira.png" alt="">
+                        </label>
+                    </div>
                     <div class="row">
                         <div class="col-sm-6 text-center">
                             <label class="grid_label pb-4 mb-3">Variação Calórica: ajuste se necessário.</label><br />

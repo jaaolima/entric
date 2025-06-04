@@ -79,7 +79,7 @@ function fc_retorno_pacientes(){
                     if(item.codigo == null){
                         var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
                     }else{
-                        var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_simplificada/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                        var editar = '<a target="_blank" href="https://homologacao.entric.com.br/relatorio_simplificada/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
                     }
                 }
 
@@ -1050,7 +1050,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     if (typeof m_proteica === "undefined") {
         m_proteica = new Array(0, 0);
     }
-    console.log(m_calorica, m_proteica);
+    console.log(m_calorica, m_proteica); 
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
@@ -1327,6 +1327,9 @@ function fc_collapsecheckbox( $apres_enteral_num){
         }
        
     }
+
+    const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]').length;
+    $("#count_"+$apres_enteral_num).html("("+total+")");
 }
 
 function fc_gerarelatorio(){
@@ -2254,6 +2257,30 @@ $(function(){
             }
         }
     });
+    $('input[name="produto_especializado"]').on("click", function(e) {
+        busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
+    });
+
+    $('input[name="calculo_fil_semsacarose"]').on("click", function(e) {
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
+    });
+
+    $('input[name="calculo_fil_semsacarose2"]').on("click", function(e) {
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
+    });
+
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
         busca_produto_relatorio();
     });
@@ -3094,7 +3121,7 @@ $(function(){
     });
     $("#rel_imprimir_relatorio").on("click", function(e) {        
         var relatorio_code = $("#relatorio_code").val();
-        window.open("https://sis.entric.com.br/relatorio_simplificada/imprimir/?url="+relatorio_code, "_blank");
+        window.open("https://homologacao.entric.com.br/relatorio_simplificada/imprimir/?url="+relatorio_code, "_blank");
     });
     $("#enviar_email").on("click", function(e) {
         var _email_paciente = $("#email_paciente").val();

@@ -1247,14 +1247,14 @@ $app->group("", function () use ($app) {
 			<text>Recebemos uma solicitação para a recuperação da sua senha no Entric.</text>
 			<br>
 			<text>Para redefinir sua senha, clique no link abaixo:</text>
-			<a href="https://sis.entric.com.br/senha/nova_prescritor/'.$codigo.'">https://sis.entric.com.br/senha/nova_prescritor/'.$codigo.'</a>
+			<a href="https://homologacao.entric.com.br/senha/nova_prescritor/'.$codigo.'">https://homologacao.entric.com.br/senha/nova_prescritor/'.$codigo.'</a>
 			<br>
 			<text>Se você não solicitou a recuperação, por favor, desconsidere este e-mail. Caso tenha dúvidas ou problemas, entre em contato com nossa equipe de suporte.</text>
 			<br>
 			<text>Atenciosamente,</text>
 			<text>Equipe Entric</text>
 			<br>
-			<img src="https://sis.entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">
+			<img src="https://homologacao.entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">
 			');
 
 			$result = $mailer->send($message);
@@ -1971,7 +1971,74 @@ $app->group("", function () use ($app) {
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        if (isset($dados['margem_calorica']) and ($dados['margem_calorica'] <> "")){ $margem_calorica = explode(",", $dados['margem_calorica']); $margem_calorica[0] = strtok($margem_calorica[0],' '); $margem_calorica[1] = strtok($margem_calorica[1],' '); }else{ $margem_calorica[0] = 0; $margem_calorica[1] = 0;}
 		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ $margem_proteica = explode(",", $dados['margem_proteica']); $margem_proteica[0] = strtok($margem_proteica[0],' '); $margem_proteica[1] = strtok($margem_proteica[1],' '); }else{ $margem_proteica[0] = 0; $margem_proteica[1] = 0;}
-		        $query = '';
+		        $query2 = '';
+
+				if(isset($dados['produto_especializado'])){
+					if($dados['produto_especializado'] == 'S'){
+						$query2 .= ' AND produto_especializado = "S"';
+						if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query2.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
+						if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query2.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
+		
+						if ($dados['tipo_produto'] == "Enteral"){
+							if (!isset($dados['calculo_apres_fechado'])) $dados['calculo_apres_fechado'] = null;
+							if (!isset($dados['calculo_apres_aberto_liquido'])) $dados['calculo_apres_aberto_liquido'] = null;
+							if (!isset($dados['calculo_apres_aberto_po'])) $dados['calculo_apres_aberto_po'] = null;
+							if (($dados['calculo_apres_fechado'] <> "") or ($dados['calculo_apres_aberto_liquido'] <> "") or ($dados['calculo_apres_aberto_po'] <> "")){
+								$query2.= ' AND (';
+									$_or = '';
+									if ($dados['calculo_apres_fechado'] <> ""){
+										$query2.= '(apres_enteral LIKE "%Fechado%")';
+										$_or = ' OR ';
+									}
+									if ($dados['calculo_apres_aberto_liquido'] <> ""){
+										$query2.= $_or.' (apres_enteral LIKE "%Aberto (Líquido)%")';
+										$_or = ' OR ';
+									}
+									if ($dados['calculo_apres_aberto_po'] <> ""){
+										$query2.= $_or.' (apres_enteral LIKE "%Aberto (Pó)%")';
+									}
+								$query2.= ' )';
+							}
+							if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Polimérico")) $query2.= ' AND (carac_enteral LIKE "%Polimérico%")';
+							if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Oligomérico")) $query2.= ' AND (carac_enteral LIKE "%Oligomérico%")';
+							if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Ambos")) $query2.= ' AND ((carac_enteral LIKE "%Polimérico%") OR (carac_enteral LIKE "%Oligomérico%"))';
+							if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Com Fibras")) $query2.= ' AND (carac_enteral LIKE "%Com Fibras%")';
+							if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Sem Fibras")) $query2.= ' AND (carac_enteral LIKE "%Sem Fibras%")';
+							if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Ambos")) $query2.= ' AND ((carac_enteral LIKE "%Com Fibras%") OR (carac_enteral LIKE "%Sem Fibras%"))';
+							if (isset($dados['calculo_fil_semlactose']) and ($dados['calculo_fil_semlactose'] <> "")) $query2.= ' AND (carac_enteral LIKE "%Sem Lactose%")';
+							if (isset($dados['calculo_fil_semsacarose']) and ($dados['calculo_fil_semsacarose'] <> "")) $query2.= ' AND (carac_enteral LIKE "%Sem Sacarose%")';
+							if (isset($dados['calculo_fil_100proteina']) and ($dados['calculo_fil_100proteina'] <> "")) $query2.= ' AND (carac_enteral LIKE "%100% Proteína Vegetal%")';
+						}
+						else{
+							if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
+							if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
+							if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
+								$query2.= ' AND (';
+									$_or = '';
+									if ($dados['calculo_apres_liquidocreme'] <> ""){
+										$query2.= '(apres_oral LIKE "%Líquido / Creme%")';
+										$_or = ' OR ';
+									}
+									if ($dados['calculo_apres_po'] <> ""){
+										$query2.= $_or.' (apres_oral LIKE "%Pó%")';
+										$_or = ' OR ';
+									}
+								$query2.= ' )';
+							}
+							if (isset($dados['calculo_fil_todos2']) and ($dados['calculo_fil_todos2'] == "Todos")){
+							}else{
+								if (isset($dados['calculo_fil_semsacarose2']) and ($dados['calculo_fil_semsacarose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+								if (isset($dados['calculo_fil_comfibras2']) and ($dados['calculo_fil_comfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Com Fibras%")';
+								if (isset($dados['calculo_fil_semlactose2']) and ($dados['calculo_fil_semlactose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+								if (isset($dados['calculo_fil_100proteina2']) and ($dados['calculo_fil_100proteina2'] <> "")) $query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+								if (isset($dados['calculo_fil_semfibras2']) and ($dados['calculo_fil_semfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Fibras%")';
+							}
+						}
+					}
+				}
+				
+				$query = '';
+				$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
 		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
 
@@ -2031,9 +2098,9 @@ $app->group("", function () use ($app) {
 		            }
 		        }
 
-		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
+		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final",
+		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, produto_especializado",
 		                                            $query." ORDER BY CASE
 																		WHEN (apres_enteral LIKE '%Aberto (Pó)%') THEN 1													
 																		WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
@@ -2321,7 +2388,7 @@ $app->group("", function () use ($app) {
 		                        $grama = json_decode($produtos[$i]['medida_g'], true);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
-		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].' </td>';
+		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].(($produtos[$i]['produto_especializado'] == 'S') ? '<img src="../../../public/assets/images/bandeira.png" alt="">' : "").' </td>';
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
@@ -2638,8 +2705,73 @@ $app->group("", function () use ($app) {
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				if (isset($dados['margem_calorica']) and ($dados['margem_calorica'] <> "")){ $margem_calorica = explode(",", $dados['margem_calorica']); $margem_calorica[0] = strtok($margem_calorica[0],' '); $margem_calorica[1] = strtok($margem_calorica[1],' '); }else{ $margem_calorica[0] = 0; $margem_calorica[1] = 0;}
 		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ $margem_proteica = explode(",", $dados['margem_proteica']); $margem_proteica[0] = strtok($margem_proteica[0],' '); $margem_proteica[1] = strtok($margem_proteica[1],' '); }else{ $margem_proteica[0] = 0; $margem_proteica[1] = 0;}
+				$query2 = '';
+
+				if(isset($dados['produto_especializado'])){
+					if($dados['produto_especializado'] == 'S'){
+						$query2 .= ' AND produto_especializado = "S"';
+						if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query2.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
+		        		if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query2.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
+						if ($dados['tipo_produto'] == "Enteral"){
+							if (!isset($dados['calculo_apres_fechado'])) $dados['calculo_apres_fechado'] = null;
+							if (!isset($dados['calculo_apres_aberto_liquido'])) $dados['calculo_apres_aberto_liquido'] = null;
+							if (!isset($dados['calculo_apres_aberto_po'])) $dados['calculo_apres_aberto_po'] = null;
+							if (($dados['calculo_apres_fechado'] <> "") or ($dados['calculo_apres_aberto_liquido'] <> "") or ($dados['calculo_apres_aberto_po'] <> "")){
+								$query2.= ' AND (';
+									$_or = '';
+									if ($dados['calculo_apres_fechado'] <> ""){
+										$query2.= '(apres_enteral LIKE "%Fechado%")';
+										$_or = ' OR ';
+									}
+									if ($dados['calculo_apres_aberto_liquido'] <> ""){
+										$query2.= $_or.' (apres_enteral LIKE "%Aberto (Líquido)%")';
+										$_or = ' OR ';
+									}
+									if ($dados['calculo_apres_aberto_po'] <> ""){
+										$query2.= $_or.' (apres_enteral LIKE "%Aberto (Pó)%")';
+									}
+								$query2.= ' )';
+							}
+							if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Polimérico")) $query2.= ' AND (carac_enteral LIKE "%Polimérico%")';
+							if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Oligomérico")) $query2.= ' AND (carac_enteral LIKE "%Oligomérico%")';
+							if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Ambos")) $query2.= ' AND ((carac_enteral LIKE "%Polimérico%") OR (carac_enteral LIKE "%Oligomérico%"))';
+							if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Com Fibras")) $query2.= ' AND (carac_enteral LIKE "%Com Fibras%")';
+							if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Sem Fibras")) $query2.= ' AND (carac_enteral LIKE "%Sem Fibras%")';
+							if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Ambos")) $query2.= ' AND ((carac_enteral LIKE "%Com Fibras%") OR (carac_enteral LIKE "%Sem Fibras%"))';
+							if (isset($dados['calculo_fil_semlactose']) and ($dados['calculo_fil_semlactose'] <> "")) $query2.= ' AND (carac_enteral LIKE "%Sem Lactose%")';
+							if (isset($dados['calculo_fil_semsacarose']) and ($dados['calculo_fil_semsacarose'] <> "")) $query2.= ' AND (carac_enteral LIKE "%Sem Sacarose%")';
+							if (isset($dados['calculo_fil_100proteina']) and ($dados['calculo_fil_100proteina'] <> "")) $query2.= ' AND (carac_enteral LIKE "%100% Proteína Vegetal%")';
+						}
+						else{
+							if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
+							if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
+							if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
+								$query2.= ' AND (';
+									$_or = '';
+									if ($dados['calculo_apres_liquidocreme'] <> ""){
+										$query2.= '(apres_oral LIKE "%Líquido / Creme%")';
+										$_or = ' OR ';
+									}
+									if ($dados['calculo_apres_po'] <> ""){
+										$query2.= $_or.' (apres_oral LIKE "%Pó%")';
+										$_or = ' OR ';
+									}
+								$query2.= ' )';
+							}
+							if (isset($dados['calculo_fil_todos2']) and ($dados['calculo_fil_todos2'] == "Todos")){
+							}else{
+								if (isset($dados['calculo_fil_semsacarose2']) and ($dados['calculo_fil_semsacarose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+								if (isset($dados['calculo_fil_comfibras2']) and ($dados['calculo_fil_comfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Com Fibras%")';
+								if (isset($dados['calculo_fil_semlactose2']) and ($dados['calculo_fil_semlactose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+								if (isset($dados['calculo_fil_100proteina2']) and ($dados['calculo_fil_100proteina2'] <> "")) $query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+								if (isset($dados['calculo_fil_semfibras2']) and ($dados['calculo_fil_semfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Fibras%")';
+							}
+						}
+					}
+				}
 
 		        $query = '';
+				$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
 		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
 
@@ -2699,9 +2831,9 @@ $app->group("", function () use ($app) {
 		            }
 		        }
 
-		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
+		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final",
+		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, produto_especializado",
 		                                            $query." ORDER BY CASE
 																		WHEN (apres_enteral LIKE '%Aberto (Pó)%') THEN 1													
 																		WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
@@ -3056,7 +3188,7 @@ $app->group("", function () use ($app) {
 								$medida_dc = array_unique($medida_dc);
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
-		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome']."  ".$_nome.'</td>';
+		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome']."  ".$_nome.(($produtos[$i]['produto_especializado'] == 'S') ? '<img src="../../../public/assets/images/bandeira.png" alt="">' : "").'</td>';
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
@@ -3375,8 +3507,68 @@ $app->group("", function () use ($app) {
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				if (isset($dados['margem_calorica']) and ($dados['margem_calorica'] <> "")){ $margem_calorica = explode(",", $dados['margem_calorica']); $margem_calorica[0] = strtok($margem_calorica[0],' '); $margem_calorica[1] = strtok($margem_calorica[1],' '); }else{ $margem_calorica[0] = 0; $margem_calorica[1] = 0;}
 		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ $margem_proteica = explode(",", $dados['margem_proteica']); $margem_proteica[0] = strtok($margem_proteica[0],' '); $margem_proteica[1] = strtok($margem_proteica[1],' '); }else{ $margem_proteica[0] = 0; $margem_proteica[1] = 0;}
+		        $query2 = '';
 
+				if(isset($dados['produto_especializado'])){
+					if($dados['produto_especializado'] == 'S'){
+						$query2 .= ' AND produto_especializado = "S"';
+						if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query2.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
+						if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query2.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
+		
+						if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
+						if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
+						if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
+							$query2.= ' AND (';
+								$_or = '';
+								if ($dados['calculo_apres_liquidocreme'] <> ""){
+									$query2.= '(apres_oral LIKE "%Líquido / Creme%")';
+									$_or = ' OR ';
+								}
+								if ($dados['calculo_apres_po'] <> ""){
+									$query2.= $_or.' (apres_oral LIKE "%Pó%")';
+									$_or = ' OR ';
+								}
+							$query2.= ' )';
+						}
+						if(isset($dados['carac_oral'])){
+							$array_carac = $dados['carac_oral'];
+		
+							if(in_array('Sem Sacarose', $array_carac)){
+								$query2.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+							}
+							if(in_array('Sem Lactose', $array_carac)){
+								$query2.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+							}
+							if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac)){
+								$query2.= ' AND (';
+									$_or = '';
+									if (in_array('Com Fibras', $array_carac)){
+										$query2.= '(carac_oral LIKE "%Com Fibras%")';
+										$_or = ' OR ';
+									}
+									if (in_array('Sem Fibras', $array_carac)){
+										$query2.= $_or.' (carac_oral LIKE "%Sem Fibras%")';
+										$_or = ' OR ';
+									}
+								$query2.= ' )';
+							}
+							if(in_array('100% Proteína Vegetal', $array_carac)){
+								$query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+							}
+							if(in_array('Cicatrização', $array_carac)){
+								$query2.= ' AND (carac_oral LIKE "%Cicatrização%")';
+							}
+							if(in_array('Com Ômega 3', $array_carac)){
+								$query2.= ' AND (carac_oral LIKE "%Com Ômega 3%")';
+							}
+							if(in_array('Imunonutrição cirúrgica', $array_carac)){
+								$query2.= ' AND (carac_oral LIKE "%Imunonutrição cirúrgica%")';
+							}
+						}
+					}
+				}
 		        $query = '';
+				$query .= ' AND ((produto_especializado <> "S") or (produto_especializado is null))';
 		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 		        if (isset($dados['tipo_produto']) and ($dados['tipo_produto'] <> "")) $query.= ' AND (via LIKE "%'.$dados['tipo_produto'].'%")';
 
@@ -3431,9 +3623,9 @@ $app->group("", function () use ($app) {
 					}
 				}
 
-		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
+		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral",
+		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral, produto_especializado",
 		                                            $query." ORDER BY apres_oral desc, apres_enteral,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
@@ -3574,7 +3766,7 @@ $app->group("", function () use ($app) {
 		                                    $retorno .= '<thead>
 		                                                    <tr>
 		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
-		                                                        '.$apres_oral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                        '.$apres_oral.'<text class="ml-2" id="count_'.$apres_oral_num.'"></text> <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_oral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5">
@@ -3685,7 +3877,7 @@ $app->group("", function () use ($app) {
 															<td>
 																<div class="form-check col-sm-12">
 																	<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida_dc[$m].']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.'___'.$sistema.'___'.$calorias_dia.'___'.$proteina_dia.'___'.(isset($medida[$m])?$medida[$m]:0).'___'.(isset($final[$m])?$final[$m]:0).'___'.(isset($grama[$m])?$grama[$m]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
-																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-label check-green">'.$produtos[$i]['nome']."  ".$_nome.'</label>
+																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-label check-green">'.$produtos[$i]['nome']."  ".$_nome.(($produtos[$i]['produto_especializado'] == 'S') ? '<img src="../../../public/assets/images/bandeira.png" alt="">' : "").'</label>
 																</div>
 		                                                	</td>
 															<td>'.$medida_dc[$m].'</td>
