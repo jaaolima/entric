@@ -2165,11 +2165,11 @@ $(function(){
             if($("#calculo_produto_especializado").is(":checked")){
                 return;
             }else{
-                $("span[for='calculo_produto_especializado']").click();
+                $("label[for='calculo_produto_especializado']").click();
             }
         }else{
             if($("#calculo_produto_especializado").is(":checked")){
-                $("span[for='calculo_produto_especializado']").click();
+                $("label[for='calculo_produto_especializado']").click();
             }else{
                 return;
             }
