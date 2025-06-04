@@ -2904,7 +2904,7 @@ $(function(){
     }); 
     $("#rel_imprimir_relatorio").on("click", function(e) {        
         var relatorio_code = $("#relatorio_code").val();
-        window.open("https://homologacao.entric.com.br/relatorio/imprimir/?url="+relatorio_code, "_blank");
+        window.open("https://sis.entric.com.br/relatorio/imprimir/?url="+relatorio_code, "_blank");
     });
     $("#enviar_email").on("click", function(e) {
         var _email_paciente = $("#email_paciente").val();

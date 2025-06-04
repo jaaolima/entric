@@ -1247,14 +1247,14 @@ $app->group("", function () use ($app) {
 			<text>Recebemos uma solicitação para a recuperação da sua senha no Entric.</text>
 			<br>
 			<text>Para redefinir sua senha, clique no link abaixo:</text>
-			<a href="https://homologacao.entric.com.br/senha/nova_prescritor/'.$codigo.'">https://homologacao.entric.com.br/senha/nova_prescritor/'.$codigo.'</a>
+			<a href="https://sis.entric.com.br/senha/nova_prescritor/'.$codigo.'">https://sis.entric.com.br/senha/nova_prescritor/'.$codigo.'</a>
 			<br>
 			<text>Se você não solicitou a recuperação, por favor, desconsidere este e-mail. Caso tenha dúvidas ou problemas, entre em contato com nossa equipe de suporte.</text>
 			<br>
 			<text>Atenciosamente,</text>
 			<text>Equipe Entric</text>
 			<br>
-			<img src="https://homologacao.entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">
+			<img src="https://sis.entric.com.br/relatorio_simplificada/imagem/rodape_email.jpg" style="width:400px;" alt="Logo">
 			');
 
 			$result = $mailer->send($message);
