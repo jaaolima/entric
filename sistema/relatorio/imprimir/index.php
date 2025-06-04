@@ -5,9 +5,9 @@ set_time_limit(0);
 
 function Redirect($url, $permanent = false){
     if (headers_sent() === false){
-        header('Location: https://homologacao.entric.com.br/', true, ($permanent === true) ? 301 : 302);
+        header('Location: https://sis.entric.com.br/', true, ($permanent === true) ? 301 : 302);
     }else{
-        echo '<script type="text/javascript">window.location.href = "https://homologacao.entric.com.br/";</script>';
+        echo '<script type="text/javascript">window.location.href = "https://sis.entric.com.br/";</script>';
     }
     exit();
 }
@@ -24,7 +24,7 @@ $url = $_GET['url'];
         padding: 0px;
     }
 </style>
-<iframe src="https://homologacao.entric.com.br/relatorio/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
+<iframe src="https://sis.entric.com.br/relatorio/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
 
 <script>
 function printIframe(id) {
