@@ -2054,11 +2054,23 @@ $(function(){
     });
 
     $('input[name="calculo_fil_semsacarose"]').on("click", function(e) {
-        $("#calculo_produto_especializado").attr("checked", true);
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
     });
 
     $('input[name="calculo_fil_semsacarose2"]').on("click", function(e) {
-        $("#calculo_produto_especializado").attr("checked", true);
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
     });
 
     $("#salvar_alteracoes").on("click", function(e) {

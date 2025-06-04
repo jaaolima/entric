@@ -2258,11 +2258,23 @@ $(function(){
     });
 
     $('input[name="calculo_fil_semsacarose"]').on("click", function(e) {
-        $("#calculo_produto_especializado").attr("checked", true);
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
     });
 
     $('input[name="calculo_fil_semsacarose2"]').on("click", function(e) {
-        $("#calculo_produto_especializado").attr("checked", true);
+        if($(this).is(":checked")){
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("label[for='calculo_produto_especializado']").click();
+            }
+        }
     });
 
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
