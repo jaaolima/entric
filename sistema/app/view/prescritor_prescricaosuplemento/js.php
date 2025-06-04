@@ -2162,9 +2162,17 @@ $(function(){
     });
     $('.entric_query input[type=radio], #apresentacao input[type=checkbox], #fracionamento_dia').on("keyup change", function(e) {
         if($('[name="carac_oral[]"][value="Sem Sacarose"]').is(":checked") || $('[name="carac_oral[]"][value="Cicatrização"]').is(":checked") || $('[name="carac_oral[]"][value="Imunonutrição cirúrgica"]').is(":checked")){
-            $("#calculo_produto_especializado").attr("checked", true);
+            if($("#calculo_produto_especializado").is(":checked")){
+                return;
+            }else{
+                $("span[for='calculo_produto_especializado']").click();
+            }
         }else{
-            $("#calculo_produto_especializado").attr("checked", false);
+            if($("#calculo_produto_especializado").is(":checked")){
+                $("span[for='calculo_produto_especializado']").click();
+            }else{
+                return;
+            }
         }
         busca_produto_relatorio();
     });
