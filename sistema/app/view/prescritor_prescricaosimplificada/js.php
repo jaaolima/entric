@@ -1328,7 +1328,7 @@ function fc_collapsecheckbox( $apres_enteral_num){
        
     }
 
-    const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"][class="check_dieta"]').length;
+    const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"].check_dieta').length;
     $("#count_"+$apres_enteral_num).html("("+total+")");
 }
 
