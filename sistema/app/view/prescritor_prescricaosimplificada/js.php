@@ -1262,7 +1262,7 @@ function fc_collapseSistema($apres_enteral_num){
     }
 }
 
-function fc_collapsecheckbox( $apres_enteral_num){
+function fc_collapsecheckbox( $apres_enteral_num){ 
     if ($("#tbody"+$apres_enteral_num).hasClass("checked")) {
         $("#tbody"+$apres_enteral_num).removeClass("checked");
         $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {

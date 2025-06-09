@@ -2614,7 +2614,7 @@ $app->group("", function () use ($app) {
 		                                    $retorno .= '<thead>
 		                                                    <tr>
 		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
-		                                                        '.$apres_enteral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                        '.$apres_enteral.' <text class="ml-2" id="count_'.$apres_oral_num.'"></text><a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_enteral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_enteral_num.')"> </th>
@@ -3416,7 +3416,7 @@ $app->group("", function () use ($app) {
 		                                    $retorno .= '<thead>
 		                                                    <tr>
 		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
-		                                                        '.$apres_enteral.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                        '.$apres_enteral.' <text class="ml-2" id="count_'.$apres_oral_num.'"></text><a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_enteral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_enteral_num.')"> </th>
