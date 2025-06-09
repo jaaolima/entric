@@ -1056,7 +1056,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
             type: "POST",
             url: "ajax/busca_produto_relatorio_simplificada",
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
-            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val(),
+            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica+"&fracionamento_dia="+$("#fracionamento_dia").val()+"&produto_especializado="+$("[name='produto_especializado']:checked").val(),
             cache: false,
             dataType: 'html',
             success: function( dados ){
@@ -3120,7 +3120,7 @@ $(function(){
         }
     });
     $("#rel_imprimir_relatorio").on("click", function(e) {        
-        var relatorio_code = $("#relatorio_code").val();
+        var relatorio_code = $("#relatorio_code").val(); 
         window.open("https://sis.entric.com.br/relatorio_simplificada/imprimir/?url="+relatorio_code, "_blank");
     });
     $("#enviar_email").on("click", function(e) {
