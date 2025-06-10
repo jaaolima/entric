@@ -63,6 +63,7 @@ function frmreset(){
     $('#modalfrmproduto').find('.select-tag').val(null).trigger('change');
     $('#modalfrmproduto').find("#m_anexar_foto").css("background-image", "url(assets/images/image-upload.png)");
     $('#modalfrmproduto').find("#m_anexar_foto").css("background-size", "cover");
+    $('#modalfrmproduto').find("foto").val("");
     $('#m_tipopesquisa').val('');
     var tabs = $("#m_tab-densidades .nav-item").length;
     if (tabs>2){
@@ -94,6 +95,7 @@ function frmreset(){
     $('#frmproduto').find('.select-tag').val(null).trigger('change');
     $('#frmproduto').find("#anexar_foto").css("background-image", "url(assets/images/image-upload.png)");
     $('#frmproduto').find("#anexar_foto").css("background-size", "cover");
+    $('#frmproduto').find("foto").val("");
     var tabs = $("#tab-densidades .nav-item").length;
     if (tabs>2){
         for (let i = 2; i < tabs; i++) {
@@ -1844,7 +1846,7 @@ function readURL(input) {
             $("#anexar_foto").css("background-image", "url(" + reader.result + ")");
             $("#anexar_foto").css("background-size", "contain");
         }
-        reader.readAsDataURL(input);
+        reader.readAsDataURL(input); 
     }
 }
 

@@ -125,7 +125,7 @@
                                     <div class="form-check col-sm-4">
                                     </div>
                                     
-                                </div>
+                                </div> 
                                 <div class="row p-2">
                                     <div class="col-sm-6">
                                         <div class="form-check form-toggle">
