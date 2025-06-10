@@ -3449,11 +3449,11 @@ $app->group("", function () use ($app) {
 		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1)).'</td>
 		                                                <td>'.$valor_fibra.'</td>
 		                                            </tr>';
-		                                $titulo = "";
 		                            }
 
 		                            $cont_array = $cont_array+1;
 		                        }
+								$titulo = "";
 
 		                        // ajustar o rowspan da listagem de produtos caso esteja errado
 		                        if (($rowspan <> count($medida_dc)) && ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
