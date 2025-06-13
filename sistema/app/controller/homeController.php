@@ -24,7 +24,7 @@ class HomeController extends Controller {
             }else if($bruker->redirect == "modulos"){
                 Redirect(BASE_PATH . '/prescritor_prescricaomodulo');
             }else{
-                Redirect(BASE_PATH . '/prescritor_relatorioalta');       
+                Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');       
             }
         }
         else if (isset($bruker->type) and ($bruker->type == "administrador")){
@@ -50,7 +50,7 @@ class HomeController extends Controller {
         //$this->set('breadcrumb','Bem-vindo');
         //$this->set('dados', $this->HomeModel->getDados() );
         $this->set('bruker', $bruker);
-        Redirect(BASE_PATH . '/prescritor_relatorioalta');   
+        Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');   
     }
 
     function administrador() {
