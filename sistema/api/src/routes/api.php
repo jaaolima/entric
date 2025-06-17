@@ -10962,25 +10962,30 @@ $app->group("", function () use ($app) {
 						if($dados['id_paciente'] == ''){
 							$dados['id_paciente'] = null;
 						}
-		
-						$bind = array(	':id_prescritor' => $id_prescritor,
-										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
-										':nome' => $dados["nome"],
-										':peso' => $dados["peso"],
-										':hospital' => $dados["hospital"],
-										':atendimento' => $dados["atendimento"],
-										':telefone' => $dados["telefone"],
-										':data_nascimento' => date2sql($dados["data_nascimento"]),  
-										':id_paciente' => $dados["id_paciente"],    
-										':sistema' => $sistema,
-										':data_criacao' => date("Y-m-d H:i:s"));
-						$retorno = $db->insert("pacientes_simplificada", $bind);
-						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
 
-		
-						//retornar para null
-						$_SESSION['paciente_redirect']['id_paciente'] = null;
-		
+						$buscarPaciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_paciente=:id", [':id' => $dados['id_paciente']]);
+
+						if($buscarPaciente){
+							$bind = array(	':id_prescritor' => $id_prescritor,
+								':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
+								':nome' => $dados["nome"],
+								':peso' => $dados["peso"],
+								':hospital' => $dados["hospital"],
+								':atendimento' => $dados["atendimento"],
+								':telefone' => $dados["telefone"],
+								':data_nascimento' => date2sql($dados["data_nascimento"]),  
+								':id_paciente' => $dados["id_paciente"],    
+								':sistema' => $sistema,
+								':data_criacao' => date("Y-m-d H:i:s"));
+							$retorno = $db->insert("pacientes_simplificada", $bind);
+							$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+
+
+							//retornar para null
+							$_SESSION['paciente_redirect']['id_paciente'] = null;
+						}else{
+							$data["status"] = "Paciente já cadastrado.";	
+						}
 					}
 				}else{
 					$bind = array(	':id_prescritor' => $id_prescritor,
