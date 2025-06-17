@@ -10965,7 +10965,7 @@ $app->group("", function () use ($app) {
 
 						$buscarPaciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id_paciente=:id", [':id' => $dados['id_paciente']]);
 
-						if($buscarPaciente){
+						if(!$buscarPaciente){
 							$bind = array(	':id_prescritor' => $id_prescritor,
 								':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 								':nome' => $dados["nome"],
