@@ -2637,9 +2637,9 @@ $(function(){
     $(".btn_suplemento_total_rm").on("click", function(e) {
         $(this).closest(".div_volume_total").remove();
     });
-    select2_ajax_formula($(".select2_ajax_formula"));
+    // select2_ajax_formula($(".select2_ajax_formula"));
     select2_ajax_produto($(".select2_ajax_produto"));
-    select2_ajax_produto_modulo($(".select2_ajax_produto_modulo"));
+    select2_ajax_produto_modulo($(".select2_ajax_formula"));
     select2_ajax_produto_enteral($(".select2_ajax_produto_enteral"));
     select2_ajax_produto_suplemento($(".select2_ajax_produto_suplemento"));
     $("#tab-combinacoes").on("click", "a", function(e) {
