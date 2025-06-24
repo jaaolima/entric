@@ -10263,7 +10263,7 @@ $app->group("", function () use ($app) {
 				$retorno = null;
 		        
 		       	$produto = $db->select_to_array("produtos",
-												"id, nome, apresentacao, fabricante",
+												"id, nome, fabricante",
 												"WHERE via = 'Enteral' and nome LIKE '%".$dados."%' OR apresentacao LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%'",
 												null);
 

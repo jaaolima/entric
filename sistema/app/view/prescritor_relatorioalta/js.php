@@ -590,10 +590,7 @@ function select2_ajax_formula(_this){
                         return {
                             id: item.id,
                             text: item.nome,
-                            apresentacao: item.apresentacao,
                             fabricante: item.fabricante,
-                            // detalhes: item.detalhes,
-                            // especificacao: item.especificacao
                         }
                     })
                 };
