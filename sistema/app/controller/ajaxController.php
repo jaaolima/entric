@@ -387,8 +387,16 @@ class AjaxController extends Controller {
     } 
 
     function busca_formula() {
-        $formula = $this->AjaxModel->gtProdutoFormula($_POST);            
-        echo json_encode($formula);
+        $retorno = array();
+        $parameters = explode('?', $_SERVER['REQUEST_URI'], 2);
+        if (isset($parameters[1])){
+            parse_str($parameters[1], $parameters);
+            if (isset($parameters['q'])){
+                $formula = $this->AjaxModel->gtProdutoFormula(chktext($parameters['q'])); 
+                $retorno = $formula;
+            }
+        }
+        echo json_encode($retorno);                  
         // @header('Content-Type: application/json');
         // echo '[{"id":"1","descricao":"Formula 01","detalhes":"111ml","especificacao":"999"}, {"id":"3","descricao":"Formula 02","detalhes":"111ml","especificacao":"999"}]';
     }
@@ -453,6 +461,36 @@ class AjaxController extends Controller {
 
                 $produto = new ProdutoModel();
                 $produtos = $produto->gtProdutos(chktext($parameters['q']));
+                $retorno = $produtos;
+            }
+        }
+        echo json_encode($retorno);
+    }
+
+    function busca_produto_modulo() {
+        $retorno = array();
+        $parameters = explode('?', $_SERVER['REQUEST_URI'], 2);
+        if (isset($parameters[1])){
+            parse_str($parameters[1], $parameters);
+            if (isset($parameters['q'])){
+
+                $produto = new ProdutoModel();
+                $produtos = $produto->gtProdutosModulo(chktext($parameters['q']));
+                $retorno = $produtos;
+            }
+        }
+        echo json_encode($retorno);
+    }
+
+    function busca_produto_suplemento() {
+        $retorno = array();
+        $parameters = explode('?', $_SERVER['REQUEST_URI'], 2);
+        if (isset($parameters[1])){
+            parse_str($parameters[1], $parameters);
+            if (isset($parameters['q'])){
+
+                $produto = new ProdutoModel();
+                $produtos = $produto->gtProdutosSuplemento(chktext($parameters['q']));
                 $retorno = $produtos;
             }
         }

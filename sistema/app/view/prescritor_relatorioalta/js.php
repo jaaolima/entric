@@ -590,6 +590,8 @@ function select2_ajax_formula(_this){
                         return {
                             id: item.id,
                             text: item.nome,
+                            apresentacao: item.apresentacao,
+                            fabricante: item.fabricante,
                             // detalhes: item.detalhes,
                             // especificacao: item.especificacao
                         }
@@ -667,6 +669,121 @@ function select2_ajax_produto(_this){
         language: "pt-BR"
     });
 }
+
+function select2_ajax_produto_enteral(_this){
+    _this.select2({
+        ajax: {
+            url: "ajax/busca_produto_enteral/",
+            dataType: "json",
+            delay: 250,
+            type: "GET",
+            data: function (params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            id: item.id,
+                            text: item.nome,
+                            fabricante: item.fabricante
+                        }
+                    })
+                };
+            },
+            cache: false
+        },
+        dropdownCssClass : 'bigdrop',
+        multiple: false,
+        allowClear: true,
+        //width: '100%',
+        minimumInputLength: 3,
+        placeholder: '...',
+        escapeMarkup: function (markup) { return markup; },
+        templateResult: formatRepoProd,
+        templateSelection: formatRepoProdSelection,
+        language: "pt-BR"
+    });
+}
+
+function select2_ajax_produto_modulo(_this){
+    _this.select2({
+        ajax: {
+            url: "ajax/busca_produto_modulo/",
+            dataType: "json",
+            delay: 250,
+            type: "GET",
+            data: function (params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            id: item.id,
+                            text: item.nome,
+                            fabricante: item.fabricante
+                        }
+                    })
+                };
+            },
+            cache: false
+        },
+        dropdownCssClass : 'bigdrop',
+        multiple: false,
+        allowClear: true,
+        //width: '100%',
+        minimumInputLength: 3,
+        placeholder: '...',
+        escapeMarkup: function (markup) { return markup; },
+        templateResult: formatRepoProd,
+        templateSelection: formatRepoProdSelection,
+        language: "pt-BR"
+    });
+}
+
+function select2_ajax_produto_suplemento(_this){
+    _this.select2({
+        ajax: {
+            url: "ajax/busca_produto_suplemento/",
+            dataType: "json",
+            delay: 250,
+            type: "GET",
+            data: function (params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            id: item.id,
+                            text: item.nome,
+                            fabricante: item.fabricante
+                        }
+                    })
+                };
+            },
+            cache: false
+        },
+        dropdownCssClass : 'bigdrop',
+        multiple: false,
+        allowClear: true,
+        //width: '100%',
+        minimumInputLength: 3,
+        placeholder: '...',
+        escapeMarkup: function (markup) { return markup; },
+        templateResult: formatRepoProd,
+        templateSelection: formatRepoProdSelection,
+        language: "pt-BR"
+    });
+}
+
 
 function stickyTop_after1sec(div){
     var _this = $('#'+div).find('.sticky');    
@@ -2443,7 +2560,7 @@ $(function(){
         selector.find('option[value]').remove();
         selector.empty();
         selector.removeData();
-        select2_ajax_produto(selector);
+        select2_ajax_produto_modulo(selector);
     });
     $(".btn_produto_rm").on("click", function(e) {
         $(this).closest(".div_modulo").remove();
@@ -2498,7 +2615,7 @@ $(function(){
         selector.find('option[value]').remove();
         selector.empty();
         selector.removeData();
-        select2_ajax_produto(selector);
+        select2_ajax_produto_suplemento(selector);
     });
     $(".btn_suplemento_rm").on("click", function(e) {
         $(this).closest(".div_suplemento").remove();
@@ -2525,6 +2642,8 @@ $(function(){
     });
     select2_ajax_formula($(".select2_ajax_formula"));
     select2_ajax_produto($(".select2_ajax_produto"));
+    select2_ajax_produto_modulo($(".select2_ajax_produto_modulo"));
+    select2_ajax_produto_suplemento($(".select2_ajax_produto_suplemento"));
     $("#tab-combinacoes").on("click", "a", function(e) {
         e.preventDefault();
         $(this).tab('show');
@@ -2642,7 +2761,7 @@ $(function(){
         selector.find('option[value]').remove();
         selector.empty();
         selector.removeData();
-        select2_ajax_produto(selector);
+        select2_ajax_produto_modulo(selector);
         var selector = $("#combinacao"+id).find("select[name='suplemento_produto[" + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
@@ -2652,7 +2771,7 @@ $(function(){
         selector.find('option[value]').remove();
         selector.empty();
         selector.removeData();
-        select2_ajax_produto(selector);
+        select2_ajax_produto_suplemento(selector);
 
         $('.radio_infusao').on("change", function(e) {
             if ($(this).filter(':checked').val() == 'Fracionada') {
