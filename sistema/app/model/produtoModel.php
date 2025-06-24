@@ -57,6 +57,14 @@ class ProdutoModel extends Model {
         return $retorno;
     }
 
+    function gtProdutosEnteral($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("produto_gtProdutosEnteral", array(    "token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
+                                                                "dados" => $dados));
+        return $retorno;
+    }
+
     function gtProdutosModulo($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutosModulo", array(    "token" => $_SESSION['token'],

@@ -2511,7 +2511,7 @@ $(function(){
         selector.find('option[value]').remove();
         selector.empty();
         selector.removeData();
-        select2_ajax_formula(selector);
+        select2_ajax_produto_enteral(selector);
     });
     $(".btn_formula_rm").on("click", function(e) {
         $(this).closest(".div_nova_dieta").remove();
@@ -2640,6 +2640,7 @@ $(function(){
     select2_ajax_formula($(".select2_ajax_formula"));
     select2_ajax_produto($(".select2_ajax_produto"));
     select2_ajax_produto_modulo($(".select2_ajax_produto_modulo"));
+    select2_ajax_produto_enteral($(".select2_ajax_produto_enteral"));
     select2_ajax_produto_suplemento($(".select2_ajax_produto_suplemento"));
     $("#tab-combinacoes").on("click", "a", function(e) {
         e.preventDefault();
@@ -2748,7 +2749,7 @@ $(function(){
         selector.find('option[value]').remove();
         selector.empty();
         selector.removeData();
-        select2_ajax_formula(selector);
+        select2_ajax_produto_enteral(selector);
         var selector = $("#combinacao"+id).find("select[name='modulo_produto[" + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')

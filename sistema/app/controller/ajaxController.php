@@ -467,6 +467,21 @@ class AjaxController extends Controller {
         echo json_encode($retorno);
     }
 
+    function busca_produto_enteral() {
+        $retorno = array();
+        $parameters = explode('?', $_SERVER['REQUEST_URI'], 2);
+        if (isset($parameters[1])){
+            parse_str($parameters[1], $parameters);
+            if (isset($parameters['q'])){
+
+                $produto = new ProdutoModel();
+                $produtos = $produto->gtProdutosEnteral(chktext($parameters['q']));
+                $retorno = $produtos;
+            }
+        }
+        echo json_encode($retorno);
+    }
+
     function busca_produto_modulo() {
         $retorno = array();
         $parameters = explode('?', $_SERVER['REQUEST_URI'], 2);
