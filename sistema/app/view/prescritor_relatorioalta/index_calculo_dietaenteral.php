@@ -123,7 +123,7 @@
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label for="volume">Volume de Água (ml):</label>
-                                                                        <input type="number" min='0' max='9999' class="form-control numeros campos_limpar" data-precision="2" required="required" name="modulo_volume[]">
+                                                                        <input type="text" class="form-control numeros campos_limpar" data-precision="2" required="required" name="modulo_volume[]">
                                                                     </div>
 
                                                                     <div class="col-sm-5 mb-1 div_volume_total_col">
