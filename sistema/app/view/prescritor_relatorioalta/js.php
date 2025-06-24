@@ -589,9 +589,9 @@ function select2_ajax_formula(_this){
                     results: $.map(data, function (item) {
                         return {
                             id: item.id,
-                            text: item.descricao,
-                            detalhes: item.detalhes,
-                            especificacao: item.especificacao
+                            text: item.nome,
+                            // detalhes: item.detalhes,
+                            // especificacao: item.especificacao
                         }
                     })
                 };
@@ -1284,7 +1284,7 @@ function fc_collapsecheckbox( $apres_enteral_num){
                 }
                 qtd++;
             });
-            // $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
+            // $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() { 
             //     $(this).prop( "checked", true);
             //     let diluicao_id = $(this).attr('rel');
 

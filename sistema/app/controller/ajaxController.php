@@ -387,8 +387,10 @@ class AjaxController extends Controller {
     } 
 
     function busca_formula() {
-        @header('Content-Type: application/json');
-        echo '[{"id":"1","descricao":"Formula 01","detalhes":"111ml","especificacao":"999"}, {"id":"3","descricao":"Formula 02","detalhes":"111ml","especificacao":"999"}]';
+        $formula = $this->AjaxModel->gtProdutoFormula($_POST);            
+        echo json_encode($formula);
+        // @header('Content-Type: application/json');
+        // echo '[{"id":"1","descricao":"Formula 01","detalhes":"111ml","especificacao":"999"}, {"id":"3","descricao":"Formula 02","detalhes":"111ml","especificacao":"999"}]';
     }
 
     function busca_produto_filtros() {

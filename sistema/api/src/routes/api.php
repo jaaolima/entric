@@ -73,6 +73,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_gtRelatorioSuplemento",
 				"/ajax_gtRelatorioModulo",
 				"/ajax_EnviarEmailPaciente",
+				"/ajax_gtProdutoFormula",
 				"/ajax_getPacientes",
 				"/ajax_getPacientesSimplificada",
 				"/ajax_getPacientesSuplemento",
@@ -10151,6 +10152,47 @@ $app->group("", function () use ($app) {
 		                            ':data_criacao'=> date("Y-m-d H:i:s"));
 		            $retorno = $db->insert('interacoes', $bind);
 		        }
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_gtProdutoFormula", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+				$id_prescritor = $request->getParam("id_prescritor"); 
+				$retorno = null;
+		        
+		       	$produto = $db->select_to_array("produtos",
+												"id, nome",
+												"WHERE via = 'Enteral' ORDER BY id ASC",
+												null);
+
+				$retorno = $produto;
 
 		        $data = $retorno;
 			}

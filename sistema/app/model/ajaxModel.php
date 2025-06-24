@@ -558,4 +558,13 @@ class AjaxModel extends Model {
                                                                 "id" => $id));
         return $retorno;
     }
+
+    function gtProdutoFormula($dados = null) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_gtProdutoFormula", array( "token" => $_SESSION['token'],
+                                                            "login" => $_SESSION['login'],
+                                                            "dados" => $dados,
+                                                            "id_prescritor" => $bruker->usuario['id_usuario']));       
+        return $retorno;               
+    }   
 }
