@@ -118,12 +118,12 @@
                                                             <div class="col-sm-8 mb-1">
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
-                                                                        <label for="quantidade">Quantidade:</label>
-                                                                        <input type="text" class="form-control numeros campos_limpar" required="required" name="modulo_quantidade[]">
+                                                                        <label for="quantidade">Quantidade (g ou ml):</label>
+                                                                        <input type="number" min='0' max='999' class="form-control numeros campos_limpar" required="required" name="modulo_quantidade[]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
-                                                                        <label for="volume">Volume de Água:</label>
-                                                                        <input type="text" class="form-control numeros campos_limpar" data-precision="2" required="required" name="modulo_volume[]">
+                                                                        <label for="volume">Volume de Água (ml):</label>
+                                                                        <input type="number" min='0' max='9999' class="form-control numeros campos_limpar" data-precision="2" required="required" name="modulo_volume[]">
                                                                     </div>
 
                                                                     <div class="col-sm-5 mb-1 div_volume_total_col">
@@ -186,8 +186,8 @@
                                                             <div class="col-sm-8 mb-1">
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2">
-                                                                        <label for="suplemento_quantidade">Quantidade:</label>
-                                                                        <input type="text" class="form-control numeros campos_limpar" required="required" name="suplemento_quantidade[]">
+                                                                        <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
+                                                                        <input type="number" min='0' max='9999' class="form-control numeros campos_limpar" required="required" name="suplemento_quantidade[]">
                                                                     </div>
                                                                     <div class="form-group col-sm-5 div_volume_total_col">
                                                                         <div class="row div_volume_total">
@@ -237,7 +237,15 @@
                                                         <div class="col-sm-4">
                                                             <input type="text" class="form-control numeros campos_limpa hidratacao_agua_livre" required="required" name="hidratacao_agua_livre[]">
                                                         </div>
-                                                        <div class="col-sm-8">
+                                                        <div class="form-group col-sm-3 mb-1">
+                                                            <label for="hidratacao_fracionamento_dia[]">Fracionamento/dia:</label>
+                                                            <input type="number" max="99" min='0' class="form-control numeros campos_limpar" required="required" name="hidratacao_fracionamento_dia[]">
+                                                        </div>
+                                                        <div class="form-group col-sm-3 mb-1">
+                                                            <label for="dieta_horario[0]" class="label_horario">Horário:</label>
+                                                            <input type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario[0]">
+                                                        </div>
+                                                        <div class="col-sm-12">
                                                             <p class="mt-0"><small>Atenção:  este  valor  é referente à oferta de água livre (que será ofertada em frasco gravitacional), sem considerar o volume da dieta enteral ou do(s) suplemento(s)</small></p>
                                                         </div>
                                                     </div>
