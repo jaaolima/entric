@@ -1641,32 +1641,42 @@ function isNumeric(evt) {
 }
 
 function calculateValue(){
-    totalKcal = 0;
-    totalPtn = 0;
-    totalFibra = 0;
-    $("#dietaenteral").find('option:selected').each(function(e) {
-        var selectedOption = $("#dietaenteral").find('option[value="' + value + '"]');
+    var $containerDietaEntral = $("#dietaenteral");
+    var $selectsDentroDaDiv = $containerDietaEntral.find('select');
+    var totalKcalGlobal = 0;
+    var totalPtnGlobal = 0;
+    var totalFibraGlobal = 0;
 
-        var kcalProduto = parseFloat(selectedOption.data('kcal'));
-        var ptnProduto = parseFloat(selectedOption.data('ptn'));
-        var fibrasProduto = parseFloat(selectedOption.data('fibras'));
-        var data = e.params.data;
-        var kcalProduto = parseFloat(data.kcal);
-        var ptnProduto = parseFloat(data.ptn);
-        var fibrasProduto = parseFloat(data.fibras);
 
-        console.log(kcalProduto);
-        console.log(ptnProduto);
-        console.log(fibrasProduto);
+    $selectsDentroDaDiv.each(function(index) {
+        var $currentSelect = $(this);
 
-        totalKcal = totalKcal + kcalProduto;
-        totalPtn = totalPtn + ptnProduto;
-        totalFibra = totalFibra + fibrasProduto;
+        $currentSelect.find('option').each(function() {
+            var $option = $(this); 
+
+            var kcalProduto = parseFloat($option.data('kcal'));
+            var ptnProduto = parseFloat($option.data('ptn'));
+            var fibrasProduto = parseFloat($option.data('fibras'));
+
+            kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
+            ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
+            fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
+
+            if ($option.is(':selected')) {
+                console.log("    Kcal: " + kcalProduto);
+                console.log("    Ptn: " + ptnProduto);
+                console.log("    Fibras: " + fibrasProduto);
+                totalKcalGlobal += kcalProduto;
+                totalPtnGlobal += ptnProduto;
+                totalFibraGlobal += fibrasProduto;
+                console.log("    (Adicionado aos totais globais pois está selecionado)");
+            }
+        });
     });
 
-    $("#div_valortotal_kcal").html(totalKcal);
-    $("#div_valortotal_ptn").html(totalPtn);
-    $("#div_valortotal_fibra").html(totalFibra);
+    console.log("Total Kcal: " + totalKcalGlobal.toFixed(2));
+    console.log("Total Ptn: " + totalPtnGlobal.toFixed(2));
+    console.log("Total Fibras: " + totalFibraGlobal.toFixed(2));
 }
 
 $(function(){
