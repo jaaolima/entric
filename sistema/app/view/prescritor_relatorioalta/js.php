@@ -1678,6 +1678,9 @@ $(function(){
         totalPtn = parseFloat(totalPtn) + ptnProduto;
         totalFibra = parseFloat(totalFibra) + fibrasProduto;
 
+        console.log(totalKcal);
+        console.log(kcalProduto);
+
         $("#div_valortotal_kcal").html(totalKcal);
         $("#div_valortotal_ptn").html(totalPtn);
         $("#div_valortotal_fibra").html(totalFibra);
