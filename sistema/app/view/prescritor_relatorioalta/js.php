@@ -1668,10 +1668,10 @@ $(function(){
         totalKcal = $("#div_valortotal_kcal").html();
         totalPtn = $("#div_valortotal_ptn").html();
         totalFibra = $("#div_valortotal_fibra").html();
-        
-        totalKcal = isNaN(totalKcal) ? 0 : totalKcal;
-        totalPtn = isNaN(totalPtn) ? 0 : totalPtn;
-        totalFibra = isNaN(totalFibra) ? 0 : totalFibra;
+
+        totalKcal = (totalKcal == '') ? 0 : totalKcal;
+        totalPtn = (totalPtn == '') ? 0 : totalPtn;
+        totalFibra = (totalFibra == '') ? 0 : totalFibra;
 
         var data = e.params.data;
         var kcalProduto = parseFloat(data.kcal);
