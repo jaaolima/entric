@@ -237,11 +237,11 @@
                                                         <div class="col-sm-4">
                                                             <input type="text" class="form-control numeros campos_limpa hidratacao_agua_livre" required="required" name="hidratacao_agua_livre[]">
                                                         </div>
-                                                        <div class="form-group col-sm-3 mb-1">
+                                                        <div class="form-group col-sm-3 mb-1" style="margin-top: -24px;">
                                                             <label for="hidratacao_fracionamento_dia[]">Fracionamento/dia:</label>
                                                             <input type="number" max="99" min='0' class="form-control numeros campos_limpar" required="required" name="hidratacao_fracionamento_dia[]">
                                                         </div>
-                                                        <div class="form-group col-sm-3 mb-1">
+                                                        <div class="form-group col-sm-3 mb-1" style="margin-top: -24px;">
                                                             <label for="dieta_horario[0]" class="label_horario">Horário:</label>
                                                             <input type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario[0]">
                                                         </div>

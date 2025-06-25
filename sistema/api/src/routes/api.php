@@ -1804,7 +1804,7 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante",
+		                                            "id, nome, fabricante, kcal, ptn, fibras",
 		                                            "WHERE via = 'Enteral' and (nome LIKE '%".$dados."%' OR apresentacao LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
 		                                            null);
 
@@ -1841,7 +1841,7 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante",
+		                                            "id, nome, fabricante, kcal, ptn, fibras",
 		                                            "WHERE via = 'Módulo' and (nome LIKE '%".$dados."%' OR apresentacao LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
 		                                            null);
 
@@ -1878,7 +1878,7 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante",
+		                                            "id, nome, fabricante, kcal, ptn, fibras",
 		                                            "WHERE via = 'Suplemento' and (nome LIKE '%".$dados."%' OR apresentacao LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
 		                                            null);
 

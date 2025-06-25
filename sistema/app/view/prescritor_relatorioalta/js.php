@@ -685,7 +685,10 @@ function select2_ajax_produto_enteral(_this){
                         return {
                             id: item.id,
                             text: item.nome,
-                            fabricante: item.fabricante
+                            fabricante: item.fabricante,
+                            kcal: item.kcal,
+                            ptn: item.ptn,
+                            fibras: item.fibras
                         }
                     })
                 };
@@ -723,7 +726,10 @@ function select2_ajax_produto_modulo(_this){
                         return {
                             id: item.id,
                             text: item.nome,
-                            fabricante: item.fabricante
+                            fabricante: item.fabricante,
+                            kcal: item.kcal,
+                            ptn: item.ptn,
+                            fibras: item.fibras
                         }
                     })
                 };
@@ -761,7 +767,10 @@ function select2_ajax_produto_suplemento(_this){
                         return {
                             id: item.id,
                             text: item.nome,
-                            fabricante: item.fabricante
+                            fabricante: item.fabricante,
+                            kcal: item.kcal,
+                            ptn: item.ptn,
+                            fibras: item.fibras
                         }
                     })
                 };
@@ -1633,6 +1642,19 @@ function isNumeric(evt) {
 
 $(function(){
     //$(document).on("keydown", disableF5);
+
+    $(".select2_ajax_formula").on('select2:select', function (e) {
+        var data = e.params.data; // Pega o objeto de dados do item selecionado
+
+        var kcalProduto = data.kcal;
+        var ptnProduto = data.ptn;
+        var fibrasProduto = data.fibras;
+
+        console.log(kcalProduto);
+        console.log(ptnProduto);
+        console.log(fibrasProduto);
+
+    });
 
     $('#avaliacao .data').datepicker({
         format: "dd/mm/yyyy",
