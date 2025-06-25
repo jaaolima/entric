@@ -1640,6 +1640,27 @@ function isNumeric(evt) {
     }
 }
 
+function calculateValue(){
+    totalKcal = 0;
+    totalPtn = 0;
+    totalFibra = 0;
+    $("#dietaenteral").find('option:selected').each(function(e) {
+        var data = e.params.data;
+        var kcalProduto = parseFloat(data.kcal);
+        var ptnProduto = parseFloat(data.ptn);
+        var fibrasProduto = parseFloat(data.fibras);
+        
+
+        totalKcal = totalKcal + kcalProduto;
+        totalPtn = totalPtn + ptnProduto;
+        totalFibra = totalFibra + fibrasProduto;
+    });
+
+    $("#div_valortotal_kcal").html(totalKcal);
+    $("#div_valortotal_ptn").html(totalPtn);
+    $("#div_valortotal_fibra").html(totalFibra);
+}
+
 $(function(){
     //$(document).on("keydown", disableF5);
 
@@ -1656,6 +1677,10 @@ $(function(){
         totalKcal = parseFloat(totalKcal) + kcalProduto;
         totalPtn = parseFloat(totalPtn) + ptnProduto;
         totalFibra = parseFloat(totalFibra) + fibrasProduto;
+
+        $("#div_valortotal_kcal").html(totalKcal);
+        $("#div_valortotal_ptn").html(totalPtn);
+        $("#div_valortotal_fibra").html(totalFibra);
     });
 
     $(".select2_produto").on('select2:select', function (e) {
@@ -1671,6 +1696,10 @@ $(function(){
         totalKcal = parseFloat(totalKcal) + kcalProduto;
         totalPtn = parseFloat(totalPtn) + ptnProduto;
         totalFibra = parseFloat(totalFibra) + fibrasProduto;
+
+        $("#div_valortotal_kcal").html(totalKcal);
+        $("#div_valortotal_ptn").html(totalPtn);
+        $("#div_valortotal_fibra").html(totalFibra);
     });
 
     $(".select2_suplemento_produto").on('select2:select', function (e) {
@@ -1686,6 +1715,10 @@ $(function(){
         totalKcal = parseFloat(totalKcal) + kcalProduto;
         totalPtn = parseFloat(totalPtn) + ptnProduto;
         totalFibra = parseFloat(totalFibra) + fibrasProduto;
+
+        $("#div_valortotal_kcal").html(totalKcal);
+        $("#div_valortotal_ptn").html(totalPtn);
+        $("#div_valortotal_fibra").html(totalFibra);
     });
 
     $('#avaliacao .data').datepicker({
