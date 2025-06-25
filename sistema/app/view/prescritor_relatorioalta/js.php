@@ -1640,20 +1640,43 @@ function isNumeric(evt) {
     }
 }
 
-$(function(){
-    //$(document).on("keydown", disableF5);
-
-    $(".select2_ajax_formula").on('select2:select', function (e) {
-        var data = e.params.data; // Pega o objeto de dados do item selecionado
-
-        var kcalProduto = data.kcal;
-        var ptnProduto = data.ptn;
-        var fibrasProduto = data.fibras;
+function calculateValue(){
+    totalKcal = 0;
+    totalPtn = 0;
+    totalFibra = 0;
+    $("#dietaenteral").find('option:selected').each(function(e) {
+        var data = e.params.data;
+        var kcalProduto = parseFloat(data.kcal);
+        var ptnProduto = parseFloat(data.ptn);
+        var fibrasProduto = parseFloat(data.fibras);
 
         console.log(kcalProduto);
         console.log(ptnProduto);
         console.log(fibrasProduto);
 
+        totalKcal = totalKcal + kcalProduto;
+        totalPtn = totalPtn + ptnProduto;
+        totalFibra = totalFibra + fibrasProduto;
+    });
+
+    $("#div_valortotal_kcal").html(totalKcal);
+    $("#div_valortotal_ptn").html(totalPtn);
+    $("#div_valortotal_fibra").html(totalFibra);
+}
+
+$(function(){
+    //$(document).on("keydown", disableF5);
+
+    $(".select2_ajax_formula").on('select2:select', function (e) {
+        calculateValue();
+    });
+
+    $(".select2_produto").on('select2:select', function (e) {
+        calculateValue();
+    });
+
+    $(".select2_suplemento_produto").on('select2:select', function (e) {
+        calculateValue();
     });
 
     $('#avaliacao .data').datepicker({
