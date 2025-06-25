@@ -1645,6 +1645,11 @@ function calculateValue(){
     totalPtn = 0;
     totalFibra = 0;
     $("#dietaenteral").find('option:selected').each(function(e) {
+        var selectedOption = $("#dietaenteral").find('option[value="' + value + '"]');
+
+        var kcalProduto = parseFloat(selectedOption.data('kcal'));
+        var ptnProduto = parseFloat(selectedOption.data('ptn'));
+        var fibrasProduto = parseFloat(selectedOption.data('fibras'));
         var data = e.params.data;
         var kcalProduto = parseFloat(data.kcal);
         var ptnProduto = parseFloat(data.ptn);
