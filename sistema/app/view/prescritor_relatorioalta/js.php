@@ -626,15 +626,6 @@ function formatRepoProd (repo) {
 }
 
 function formatRepoProdSelection(repo) {
-    if (repo && typeof repo.kcal === 'string') {
-        repo.kcal = parseFloat(repo.kcal.replace(',', '.'));
-    }
-    if (repo && typeof repo.ptn === 'string') {
-        repo.ptn = parseFloat(repo.ptn.replace(',', '.'));
-    }
-    if (repo && typeof repo.fibras === 'string') {
-        repo.fibras = parseFloat(repo.fibras.replace(',', '.'));
-    }
     return repo.text;
 }
 
@@ -1649,56 +1640,52 @@ function isNumeric(evt) {
     }
 }
 
-function calculateValue(){
-    var $containerDietaEntral = $("#dietaenteral");
-    var $selectsDentroDaDiv = $containerDietaEntral.find('select');
-    var totalKcalGlobal = 0;
-    var totalPtnGlobal = 0;
-    var totalFibraGlobal = 0;
-
-
-    $selectsDentroDaDiv.each(function(index) {
-        var $currentSelect = $(this);
-
-        $currentSelect.find('option').each(function() {
-            var $option = $(this); 
-            console.log($option);
-            var kcalProduto = parseFloat(($option.data('kcal') || '0').toString().replace(',', '.'));
-            var ptnProduto = parseFloat(($option.data('ptn') || '0').toString().replace(',', '.'));
-            var fibrasProduto = parseFloat(($option.data('fibras') || '0').toString().replace(',', '.'));
-
-            kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
-            ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
-            fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
-
-            if ($option.is(':selected')) {
-                
-                totalKcalGlobal += kcalProduto;
-                totalPtnGlobal += ptnProduto;
-                totalFibraGlobal += fibrasProduto;
-                console.log("    (Adicionado aos totais globais pois está selecionado)");
-            }
-        });
-    });
-
-    console.log("Total Kcal: " + totalKcalGlobal.toFixed(2));
-    console.log("Total Ptn: " + totalPtnGlobal.toFixed(2));
-    console.log("Total Fibras: " + totalFibraGlobal.toFixed(2));
-}
-
 $(function(){
     //$(document).on("keydown", disableF5);
 
     $(".select2_ajax_formula").on('select2:select', function (e) {
-        calculateValue();
+        totalKcal = $("#div_valortotal_kcal").html();
+        totalPtn = $("#div_valortotal_ptn").html();
+        totalFibra = $("#div_valortotal_fibra").html();
+        var data = e.params.data;
+        var kcalProduto = parseFloat(data.kcal);
+        var ptnProduto = parseFloat(data.ptn);
+        var fibrasProduto = parseFloat(data.fibras);
+        
+
+        totalKcal = parseFloat(totalKcal) + kcalProduto;
+        totalPtn = parseFloat(totalPtn) + ptnProduto;
+        totalFibra = parseFloat(totalFibra) + fibrasProduto;
     });
 
     $(".select2_produto").on('select2:select', function (e) {
-        calculateValue();
+        totalKcal = $("#div_valortotal_kcal").html();
+        totalPtn = $("#div_valortotal_ptn").html();
+        totalFibra = $("#div_valortotal_fibra").html();
+        var data = e.params.data;
+        var kcalProduto = parseFloat(data.kcal);
+        var ptnProduto = parseFloat(data.ptn);
+        var fibrasProduto = parseFloat(data.fibras);
+        
+
+        totalKcal = parseFloat(totalKcal) + kcalProduto;
+        totalPtn = parseFloat(totalPtn) + ptnProduto;
+        totalFibra = parseFloat(totalFibra) + fibrasProduto;
     });
 
     $(".select2_suplemento_produto").on('select2:select', function (e) {
-        calculateValue();
+        totalKcal = $("#div_valortotal_kcal").html();
+        totalPtn = $("#div_valortotal_ptn").html();
+        totalFibra = $("#div_valortotal_fibra").html();
+        var data = e.params.data;
+        var kcalProduto = parseFloat(data.kcal);
+        var ptnProduto = parseFloat(data.ptn);
+        var fibrasProduto = parseFloat(data.fibras);
+        
+
+        totalKcal = parseFloat(totalKcal) + kcalProduto;
+        totalPtn = parseFloat(totalPtn) + ptnProduto;
+        totalFibra = parseFloat(totalFibra) + fibrasProduto;
     });
 
     $('#avaliacao .data').datepicker({
