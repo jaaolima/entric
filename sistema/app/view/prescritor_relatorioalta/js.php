@@ -1653,19 +1653,20 @@ function calculateValue(){
 
         $currentSelect.find('option').each(function() {
             var $option = $(this); 
-
+            console.log($option);
             var kcalProduto = parseFloat($option.data('kcal'));
             var ptnProduto = parseFloat($option.data('ptn'));
             var fibrasProduto = parseFloat($option.data('fibras'));
+            console.log("    Kcal: " + kcalProduto);
+            console.log("    Ptn: " + ptnProduto);
+            console.log("    Fibras: " + fibrasProduto);
 
             kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
             if ($option.is(':selected')) {
-                console.log("    Kcal: " + kcalProduto);
-                console.log("    Ptn: " + ptnProduto);
-                console.log("    Fibras: " + fibrasProduto);
+                
                 totalKcalGlobal += kcalProduto;
                 totalPtnGlobal += ptnProduto;
                 totalFibraGlobal += fibrasProduto;
