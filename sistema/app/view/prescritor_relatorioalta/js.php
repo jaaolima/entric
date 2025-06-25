@@ -626,6 +626,15 @@ function formatRepoProd (repo) {
 }
 
 function formatRepoProdSelection(repo) {
+    if (repo && typeof repo.kcal === 'string') {
+        repo.kcal = parseFloat(repo.kcal.replace(',', '.'));
+    }
+    if (repo && typeof repo.ptn === 'string') {
+        repo.ptn = parseFloat(repo.ptn.replace(',', '.'));
+    }
+    if (repo && typeof repo.fibras === 'string') {
+        repo.fibras = parseFloat(repo.fibras.replace(',', '.'));
+    }
     return repo.text;
 }
 
@@ -1654,12 +1663,9 @@ function calculateValue(){
         $currentSelect.find('option').each(function() {
             var $option = $(this); 
             console.log($option);
-            var kcalProduto = parseFloat($option.data('kcal'));
-            var ptnProduto = parseFloat($option.data('ptn'));
-            var fibrasProduto = parseFloat($option.data('fibras'));
-            console.log("    Kcal: " + kcalProduto);
-            console.log("    Ptn: " + ptnProduto);
-            console.log("    Fibras: " + fibrasProduto);
+            var kcalProduto = parseFloat(($option.data('kcal') || '0').toString().replace(',', '.'));
+            var ptnProduto = parseFloat(($option.data('ptn') || '0').toString().replace(',', '.'));
+            var fibrasProduto = parseFloat(($option.data('fibras') || '0').toString().replace(',', '.'));
 
             kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
