@@ -1670,7 +1670,7 @@ $(function(){
         input.val("");
     });
 
-    $("input[name='dieta_volume[]").on('select2:select', function (e) {
+    $("input[name='dieta_volume[]").on('change', function (e) {
         // let totalKcal = parseFloat($("#div_valortotal_kcal").html()) || 0;
         // let totalPtn = parseFloat($("#div_valortotal_ptn").html()) || 0;
         // let totalFibra = parseFloat($("#div_valortotal_fibra").html()) || 0;
