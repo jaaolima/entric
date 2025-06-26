@@ -1670,7 +1670,7 @@ $(function(){
         input.val("");
     });
 
-    $("input[name='dieta_volume[]").on('input', function (e) {
+    $("input[name='dieta_volume[]").blur(function (e) {
         div_select = $(this).closest(".div_nova_dieta");
         select = div_select.find(".select2_ajax_formula");
         valorSelect = select.val();
@@ -1723,7 +1723,7 @@ $(function(){
         input.val("");
     });
 
-    $("input[name='modulo_quantidade[]").on('input', function (e) {
+    $("input[name='modulo_quantidade[]").blur(function (e) {
         div_select = $(this).closest(".div_modulo");
         select = div_select.find(".select2_produto");
         valorSelect = select.val();
@@ -1766,7 +1766,7 @@ $(function(){
         input.val("");
     });
 
-     $("input[name='suplemento_quantidade[]").on('input', function (e) {
+    $("input[name='suplemento_quantidade[]").blur(function (e) {
         div_select = $(this).closest(".div_suplemento");
         select = div_select.find(".select2_suplemento_produto");
         valorSelect = select.val();
