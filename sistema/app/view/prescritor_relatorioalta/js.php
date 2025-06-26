@@ -1672,9 +1672,6 @@ $(function(){
         let totalPtn = parseFloat($("#div_valortotal_ptn").html()) || 0;
         let totalFibra = parseFloat($("#div_valortotal_fibra").html()) || 0;
 
-        console.log(totalKcal);
-
-
         // totalKcal = (totalKcal == '') ? 0 : totalKcal;
         // totalPtn = (totalPtn == '') ? 0 : totalPtn;
         // totalFibra = (totalFibra == '') ? 0 : totalFibra;
@@ -1700,18 +1697,31 @@ $(function(){
     });
 
     $(".select2_produto").on('select2:select', function (e) {
-        totalKcal = $("#div_valortotal_kcal").html();
-        totalPtn = $("#div_valortotal_ptn").html();
-        totalFibra = $("#div_valortotal_fibra").html();
+        // totalKcal = $("#div_valortotal_kcal").html();
+        // totalPtn = $("#div_valortotal_ptn").html();
+        // totalFibra = $("#div_valortotal_fibra").html();
+        let totalKcal = parseFloat($("#div_valortotal_kcal").html()) || 0;
+        let totalPtn = parseFloat($("#div_valortotal_ptn").html()) || 0;
+        let totalFibra = parseFloat($("#div_valortotal_fibra").html()) || 0;
+
+        // totalKcal = (totalKcal == '') ? 0 : totalKcal;
+        // totalPtn = (totalPtn == '') ? 0 : totalPtn;
+        // totalFibra = (totalFibra == '') ? 0 : totalFibra;
+
         var data = e.params.data;
         var kcalProduto = parseFloat(data.kcal);
         var ptnProduto = parseFloat(data.ptn);
         var fibrasProduto = parseFloat(data.fibras);
         
 
-        totalKcal = parseFloat(totalKcal) + kcalProduto;
-        totalPtn = parseFloat(totalPtn) + ptnProduto;
-        totalFibra = parseFloat(totalFibra) + fibrasProduto;
+        totalKcal = totalKcal + kcalProduto;
+        totalPtn = totalPtn + ptnProduto;
+        totalFibra = totalFibra + fibrasProduto;
+
+        console.log(totalKcal);
+        console.log(kcalProduto);
+        console.log(ptnProduto);
+        console.log(fibrasProduto);
 
         $("#div_valortotal_kcal").html(totalKcal);
         $("#div_valortotal_ptn").html(totalPtn);
@@ -1719,18 +1729,31 @@ $(function(){
     });
 
     $(".select2_suplemento_produto").on('select2:select', function (e) {
-        totalKcal = $("#div_valortotal_kcal").html();
-        totalPtn = $("#div_valortotal_ptn").html();
-        totalFibra = $("#div_valortotal_fibra").html();
+        // totalKcal = $("#div_valortotal_kcal").html();
+        // totalPtn = $("#div_valortotal_ptn").html();
+        // totalFibra = $("#div_valortotal_fibra").html();
+        let totalKcal = parseFloat($("#div_valortotal_kcal").html()) || 0;
+        let totalPtn = parseFloat($("#div_valortotal_ptn").html()) || 0;
+        let totalFibra = parseFloat($("#div_valortotal_fibra").html()) || 0;
+
+        // totalKcal = (totalKcal == '') ? 0 : totalKcal;
+        // totalPtn = (totalPtn == '') ? 0 : totalPtn;
+        // totalFibra = (totalFibra == '') ? 0 : totalFibra;
+
         var data = e.params.data;
         var kcalProduto = parseFloat(data.kcal);
         var ptnProduto = parseFloat(data.ptn);
         var fibrasProduto = parseFloat(data.fibras);
         
 
-        totalKcal = parseFloat(totalKcal) + kcalProduto;
-        totalPtn = parseFloat(totalPtn) + ptnProduto;
-        totalFibra = parseFloat(totalFibra) + fibrasProduto;
+        totalKcal = totalKcal + kcalProduto;
+        totalPtn = totalPtn + ptnProduto;
+        totalFibra = totalFibra + fibrasProduto;
+
+        console.log(totalKcal);
+        console.log(kcalProduto);
+        console.log(ptnProduto);
+        console.log(fibrasProduto);
 
         $("#div_valortotal_kcal").html(totalKcal);
         $("#div_valortotal_ptn").html(totalPtn);
