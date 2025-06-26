@@ -1692,7 +1692,7 @@ $(function(){
         console.log(div_select);
         input = $(div_select).children("input[name='dieta_volume[]']");
         console.log(input);
-        $(input).value("");
+        $(input).val("");
     });
 
     $(".select2_produto").on('select2:select', function (e) {
