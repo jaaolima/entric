@@ -1690,9 +1690,9 @@ $(function(){
 
         div_select = $(this).closest(".div_nova_dieta");
         console.log(div_select);
-        input = $(div_select).children("input[name='dieta_volume[]']");
+        input = div_select.find("input[name='dieta_volume[]']");
         console.log(input);
-        $(input).val("");
+        input.val("");
     });
 
     $(".select2_produto").on('select2:select', function (e) {
