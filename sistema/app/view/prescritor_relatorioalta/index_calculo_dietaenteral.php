@@ -268,19 +268,19 @@
                                         <div class="col-lg-6 b_r d-flex ln-40 bgwhite justify-content-center align-middle">
                                             KCAL
                                         </div>
-                                        <div class="col-lg-6 justify-content-center align-middle" id="div_valortotal_kcal">
+                                        <div class="col-lg-6 ln-40 justify-content-center align-middle" id="div_valortotal_kcal">
                                         </div>
 
                                         <div class="col-lg-6 b_r d-flex b_t ln-40 bgwhite justify-content-center align-middle">
                                             PTN
                                         </div>
-                                        <div class="col-lg-6 b_t justify-content-center align-middle" id="div_valortotal_ptn">
+                                        <div class="col-lg-6 b_t ln-40 justify-content-center align-middle" id="div_valortotal_ptn">
                                         </div>
 
                                         <div class="col-lg-6 b_r d-flex b_t ln-40 bgwhite justify-content-center align-middle">
                                             FIBRA
                                         </div>
-                                        <div class="col-lg-6 b_t justify-content-center align-middle" id="div_valortotal_fibra">
+                                        <div class="col-lg-6 b_t ln-40 justify-content-center align-middle" id="div_valortotal_fibra">
                                         </div>
                                     </div>
                                 </div>
