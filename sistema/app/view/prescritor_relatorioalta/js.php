@@ -1670,30 +1670,7 @@ $(function(){
         input.val("");
     });
 
-    $("input[name='dieta_volume[]").on('change', function (e) {
-        // let totalKcal = parseFloat($("#div_valortotal_kcal").html()) || 0;
-        // let totalPtn = parseFloat($("#div_valortotal_ptn").html()) || 0;
-        // let totalFibra = parseFloat($("#div_valortotal_fibra").html()) || 0;
-
-        // var data = e.params.data;
-        // var kcalProduto = parseFloat(data.kcal);
-        // var ptnProduto = parseFloat(data.ptn);
-        // var fibrasProduto = parseFloat(data.fibras);
-        
-
-        // totalKcal = totalKcal + kcalProduto;
-        // totalPtn = totalPtn + ptnProduto;
-        // totalFibra = totalFibra + fibrasProduto;
-
-        // console.log(totalKcal);
-        // console.log(kcalProduto);
-        // console.log(ptnProduto);
-        // console.log(fibrasProduto);
-
-        // $("#div_valortotal_kcal").html(totalKcal);
-        // $("#div_valortotal_ptn").html(totalPtn);
-        // $("#div_valortotal_fibra").html(totalFibra);
-
+    $("input[name='dieta_volume[]").on('blur', function (e) {
         div_select = $(this).closest(".div_nova_dieta");
         console.log(div_select);
         select = div_select.find(".select2_ajax_formula");
@@ -1707,7 +1684,23 @@ $(function(){
             cache: false,
             dataType: 'json',
             success: function( data ){
-                console.log(data);
+                let totalKcal = parseFloat($("#div_valortotal_kcal").html()) || 0;
+                let totalPtn = parseFloat($("#div_valortotal_ptn").html()) || 0;
+                let totalFibra = parseFloat($("#div_valortotal_fibra").html()) || 0;
+
+                var kcalProduto = parseFloat(data.kcal);
+                var ptnProduto = parseFloat(data.ptn);
+                var fibrasProduto = parseFloat(data.fibras);
+                totalKcal = totalKcal + kcalProduto;
+                totalPtn = totalPtn + ptnProduto;
+                totalFibra = totalFibra + fibrasProduto;
+                console.log(totalKcal);
+                console.log(kcalProduto);
+                console.log(ptnProduto);
+                console.log(fibrasProduto);
+                $("#div_valortotal_kcal").html(totalKcal);
+                $("#div_valortotal_ptn").html(totalPtn);
+                $("#div_valortotal_fibra").html(totalFibra);
             }
         });
 
