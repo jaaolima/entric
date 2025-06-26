@@ -1725,7 +1725,7 @@ $(function(){
 
     $("input[name='modulo_quantidade[]").on('blur', function (e) {
         div_select = $(this).closest(".div_modulo");
-        select = div_select.find(".select2_ajax_formula");
+        select = div_select.find(".select2_produto");
         valorSelect = select.val();
         valorVolume = $(this).val();
 
@@ -1768,7 +1768,7 @@ $(function(){
 
      $("input[name='suplemento_quantidade[]").on('blur', function (e) {
         div_select = $(this).closest(".div_suplemento");
-        select = div_select.find(".select2_ajax_formula");
+        select = div_select.find(".select2_suplemento_produto");
         valorSelect = select.val();
         valorVolume = $(this).val();
 
