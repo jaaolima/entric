@@ -48,7 +48,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="volume">Volume (ml/dia):</label>
-                                                                        <input type="number" max='9999' min='0' class="form-control numeros campos_limpar" data-precision="0" required="required" name="dieta_volume[]">
+                                                                        <input type="text" maxlength='4'  class="form-control numeros campos_limpar" data-precision="0" required="required" name="dieta_volume[]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label>Infusão:</label>
@@ -63,7 +63,7 @@
 
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
                                                                         <label for="dieta_vazao_h">Vazão (ml/h):</label>
-                                                                        <input type="number" max="99" min ='0' class="form-control numeros campos_limpar" required="required" name="dieta_vazao_h[]">
+                                                                        <input type="text" maxlength='2' class="form-control numeros campos_limpar" required="required" name="dieta_vazao_h[]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
                                                                         <label for="dieta_horario_inicio[0]" class="label_horario_inicio">Horário de Início</label>
@@ -72,7 +72,7 @@
 
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_fracionada none">
                                                                         <label for="dieta_fracionamento_dia[]">Fracionamento/dia:</label>
-                                                                        <input type="number" max="99" min='0' class="form-control numeros campos_limpar" required="required" name="dieta_fracionamento_dia[]">
+                                                                        <input type="text"  maxlength='2'  class="form-control numeros campos_limpar" required="required" name="dieta_fracionamento_dia[]">
                                                                     </div>
                                                                     <div class="form-group col-sm-4 mb-1 div_infusao_fracionada none">
                                                                         <label for="dieta_horario_administracao[0]" class="label_horario_administracao">Horário de Administração:</label>
@@ -119,7 +119,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="number" min='0' max='999' class="form-control numeros campos_limpar" required="required" name="modulo_quantidade[]">
+                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar" required="required" name="modulo_quantidade[]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label for="volume">Volume de Água (ml):</label>
@@ -187,7 +187,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2">
                                                                         <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="number" min='0' max='9999' class="form-control numeros campos_limpar" required="required" name="suplemento_quantidade[]">
+                                                                        <input type="text" maxlength='4' class="form-control numeros campos_limpar" required="required" name="suplemento_quantidade[]">
                                                                     </div>
                                                                     <div class="form-group col-sm-5 div_volume_total_col">
                                                                         <div class="row div_volume_total">
@@ -239,7 +239,7 @@
                                                         </div>
                                                         <div class="form-group col-sm-3 mb-1" style="margin-top: -24px;">
                                                             <label for="hidratacao_fracionamento_dia[]">Fracionamento/dia:</label>
-                                                            <input type="number" max="99" min='0' class="form-control numeros campos_limpar" required="required" name="hidratacao_fracionamento_dia[]">
+                                                            <input type="text"  maxlength='2' class="form-control numeros campos_limpar" required="required" name="hidratacao_fracionamento_dia[]">
                                                         </div>
                                                         <div class="form-group col-sm-3 mb-1" style="margin-top: -24px;">
                                                             <label for="dieta_horario[0]" class="label_horario">Horário:</label>

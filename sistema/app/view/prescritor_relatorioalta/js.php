@@ -1670,7 +1670,7 @@ $(function(){
         input.val("");
     });
 
-    $("input[name='dieta_volume[]").on('blur', function (e) {
+    $("input[name='dieta_volume[]").on('input', function (e) {
         div_select = $(this).closest(".div_nova_dieta");
         select = div_select.find(".select2_ajax_formula");
         valorSelect = select.val();
@@ -1709,9 +1709,9 @@ $(function(){
                 console.log(PtnFinal);
                 console.log(FibrasFinal);
 
-                $("#div_valortotal_kcal").html(totalKcal);
-                $("#div_valortotal_ptn").html(totalPtn);
-                $("#div_valortotal_fibra").html(totalFibra);
+                $("#div_valortotal_kcal").html(totalKcal.toFixed(2));
+                $("#div_valortotal_ptn").html(totalPtn.toFixed(2));
+                $("#div_valortotal_fibra").html(totalFibra.toFixed(2));
             }
         });
 
@@ -1723,7 +1723,7 @@ $(function(){
         input.val("");
     });
 
-    $("input[name='modulo_quantidade[]").on('blur', function (e) {
+    $("input[name='modulo_quantidade[]").on('input', function (e) {
         div_select = $(this).closest(".div_modulo");
         select = div_select.find(".select2_produto");
         valorSelect = select.val();
@@ -1752,9 +1752,9 @@ $(function(){
                 totalPtn = totalPtn + PtnFinal;
                 totalFibra = totalFibra + FibrasFinal;
 
-                $("#div_valortotal_kcal").html(totalKcal);
-                $("#div_valortotal_ptn").html(totalPtn);
-                $("#div_valortotal_fibra").html(totalFibra);
+                $("#div_valortotal_kcal").html(totalKcal.toFixed(2));
+                $("#div_valortotal_ptn").html(totalPtn.toFixed(2));
+                $("#div_valortotal_fibra").html(totalFibra.toFixed(2));
             }
         });
 
@@ -1766,7 +1766,7 @@ $(function(){
         input.val("");
     });
 
-     $("input[name='suplemento_quantidade[]").on('blur', function (e) {
+     $("input[name='suplemento_quantidade[]").on('input', function (e) {
         div_select = $(this).closest(".div_suplemento");
         select = div_select.find(".select2_suplemento_produto");
         valorSelect = select.val();
@@ -1795,9 +1795,9 @@ $(function(){
                 totalPtn = totalPtn + PtnFinal;
                 totalFibra = totalFibra + FibrasFinal;
 
-                $("#div_valortotal_kcal").html(totalKcal);
-                $("#div_valortotal_ptn").html(totalPtn);
-                $("#div_valortotal_fibra").html(totalFibra);
+                $("#div_valortotal_kcal").html(totalKcal.toFixed(2));
+                $("#div_valortotal_ptn").html(totalPtn.toFixed(2));
+                $("#div_valortotal_fibra").html(totalFibra.toFixed(2));
             }
         });
 
