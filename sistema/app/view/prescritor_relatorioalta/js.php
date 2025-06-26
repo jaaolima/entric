@@ -1665,6 +1665,12 @@ $(function(){
     //$(document).on("keydown", disableF5);
 
     $(".select2_ajax_formula").on('select2:select', function (e) {
+        div_select = $(this).closest(".div_nova_dieta");
+        input = div_select.find("input[name='dieta_volume[]']");
+        input.val("");
+    });
+
+    $("input[name='dieta_volume[]").on('select2:select', function (e) {
         // let totalKcal = parseFloat($("#div_valortotal_kcal").html()) || 0;
         // let totalPtn = parseFloat($("#div_valortotal_ptn").html()) || 0;
         // let totalFibra = parseFloat($("#div_valortotal_fibra").html()) || 0;
@@ -1690,9 +1696,21 @@ $(function(){
 
         div_select = $(this).closest(".div_nova_dieta");
         console.log(div_select);
-        input = div_select.find("input[name='dieta_volume[]']");
-        console.log(input);
-        input.val("");
+        select = div_select.find(".select2_ajax_formula");
+        valorSelect = select.val();
+        console.log(valorSelect);
+
+        $.ajax({
+            type: "POST",
+            url: "ajax/produto_abrir",
+            data: "id="+valorSelect,
+            cache: false,
+            dataType: 'json',
+            success: function( data ){
+                console.log(data);
+            }
+        });
+
     });
 
     $(".select2_produto").on('select2:select', function (e) {
