@@ -1672,10 +1672,10 @@ $(function(){
 
     $("input[name='dieta_volume[]").on('blur', function (e) {
         div_select = $(this).closest(".div_nova_dieta");
-        console.log(div_select);
         select = div_select.find(".select2_ajax_formula");
         valorSelect = select.val();
-        console.log(valorSelect);
+        valorVolume = $(this).val();
+        console.log("valor volume" + valorVolume);
 
         $.ajax({
             type: "POST",
@@ -1691,13 +1691,20 @@ $(function(){
                 var kcalProduto = parseFloat(data.kcal);
                 var ptnProduto = parseFloat(data.ptn);
                 var fibrasProduto = parseFloat(data.fibras);
-                totalKcal = totalKcal + kcalProduto;
-                totalPtn = totalPtn + ptnProduto;
-                totalFibra = totalFibra + fibrasProduto;
+
+                KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+                PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+                FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+
+                totalKcal = totalKcal + KcalFinal;
+                totalPtn = totalPtn + PtnFinal;
+                totalFibra = totalFibra + FibrasFinal;
+
                 console.log(totalKcal);
-                console.log(kcalProduto);
-                console.log(ptnProduto);
-                console.log(fibrasProduto);
+                console.log(KcalFinal);
+                console.log(PtnFinal);
+                console.log(FibrasFinal);
+
                 $("#div_valortotal_kcal").html(totalKcal);
                 $("#div_valortotal_ptn").html(totalPtn);
                 $("#div_valortotal_fibra").html(totalFibra);
