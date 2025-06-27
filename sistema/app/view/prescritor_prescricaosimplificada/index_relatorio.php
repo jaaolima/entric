@@ -28,7 +28,7 @@
 
                     <div class="form-group col-sm-2 mb-3">
                         <div class="form-check entric_radio pl-0 text-center">
-                            <input id="rel_identificacao" name="rel_identificacao" value="Identificação do Paciente" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
+                            <input id="rel_identificacao" readonly name="rel_identificacao" value="Identificação do Paciente" class="form-check-input styled-checkbox" type="checkbox" checked="checked">
                             <label for="rel_identificacao" class="form-check-label check-green"></label>
                         </div>
                     </div>

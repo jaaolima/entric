@@ -270,7 +270,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> É uma maneira de fornecer nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
-					<h4 class="titulo" style="margin:0px;">SAIBA MAIS!</h4>
+					<h4 class="titulo" style="margin:0px;">SAIBA MAIS!</h4> 
 					<img src="imagem/QRCode_videos_alta.png" style="display:inline-block;" width="80" alt="">
 				</div>
 			</div>
@@ -901,7 +901,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
-
+		<?php 
+			if ($relatorio['rel_distribuidores']<>""){
+		?>
 		<?php if($usuario['login'] == "ibranutro" && $relatorio['distribuidores'] == 'df') : ?>
 		<div style="display:flex;">
 			<div style="width:50%;padding-left: 10px;padding-right: 10px;">
@@ -1085,6 +1087,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 		</div>
 		<?php endif;?>
+		<?php } ?>
 		
 		
 		<div style="margin-bottom:30px;">
@@ -1221,9 +1224,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
+				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;padding-bottom:10px;">
 					<img src="imagem/logo.png" height="30px" alt="">
 				</div>
+				<?php endif; ?>
 				<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
 					<div>
 						<p>www.ibranutro.com.br</p>

@@ -1380,9 +1380,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<div style="display:flex;justify-content: end;">
 						<p style="color: #0092c5;font-size:9px;">powered by</p>
 					</div>
+					<?php if($relatorio['rel_logo'] <> "") : ?>
 					<div style="display:flex;justify-content: end;padding-bottom:10px;">
 						<img src="imagem/logo.png" height="30px" alt="">
 					</div>
+					<?php endif; ?>
 					<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
 						<div>
 							<p>www.ibranutro.com.br</p>
