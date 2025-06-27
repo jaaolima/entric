@@ -2298,36 +2298,52 @@ $(function(){
         $('#necessidades').addClass('active').addClass('show').attr('aria-expanded','true');
     });
     $('#calculo_avancar').on('click', function() {
-        if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
-            $.alert({
-                    title: 'Atenção',
-                    icon: 'fa fa-warning',
-                    type: 'red',
-                    content: 'Por favor, é necessário selecionar o dispositivo.'
-                });
-            return false;
-        }
-        else{
-            if ($( "input[name*='calculo_apres_']" ).is(':checked') ){
-                fc_salvar('calculo', false);
-
-                if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
-                    salvar_calculo_fracionamento(null);
-                }
-                else{
-                    $('#modal_fracionamento').modal('toggle');
-                }                
-            }
-            else{
+        if($('input[nmae="tipo_prescricao"]:checked').val() == "Prescrição Automática"){
+            if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
                 $.alert({
                         title: 'Atenção',
                         icon: 'fa fa-warning',
                         type: 'red',
-                        content: 'Por favor, é necessário selecionar uma apresentação.'
+                        content: 'Por favor, é necessário selecionar o dispositivo.'
                     });
                 return false;
             }
+            else{
+                if ($( "input[name*='calculo_apres_']" ).is(':checked') ){
+                    fc_salvar('calculo', false);
+
+                    if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
+                        salvar_calculo_fracionamento(null);
+                    }
+                    else{
+                        $('#modal_fracionamento').modal('toggle');
+                    }                
+                }
+                else{
+                    $.alert({
+                            title: 'Atenção',
+                            icon: 'fa fa-warning',
+                            type: 'red',
+                            content: 'Por favor, é necessário selecionar uma apresentação.'
+                        });
+                    return false;
+                }
+            }
+        }else if($('input[nmae="tipo_prescricao"]:checked').val() == "Prescração Manual"){
+            if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
+                $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'Por favor, é necessário selecionar o dispositivo.'
+                    });
+                return false;
+            }
+            else{
+                fc_salvar('calculo', false);
+            }
         }
+        
     });
     $('input[name="produto_especializado"]').on("click", function(e) {
         busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());

@@ -1,4 +1,4 @@
-<div id="dietaenteral" class=" none">
+<div id="dietaenteral" class=" none inputs1">
     <div class="row">
         <div class="col-md-12">
 
