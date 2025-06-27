@@ -277,7 +277,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
-
+		<?php if ($relatorio['rel_calculo']<>""){ ?>
 		<?php 
 		if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
 		?>
@@ -319,6 +319,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div><p><strong>Proteína:</strong> <?php echo $margem_proteica_a;?> a <?php echo $margem_proteica_b;?> g/dia</p></div>
 				<div><p><strong>Água:</strong> <?php echo $relatorio["fra_volume_ml"];?> ml/dia</p></div>
 			</div>
+		<?php } ?>	
 		<?php } ?>	
 		<p class="text-left subtitutlo">
 		<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções</p>
