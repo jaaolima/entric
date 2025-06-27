@@ -2298,7 +2298,7 @@ $(function(){
         $('#necessidades').addClass('active').addClass('show').attr('aria-expanded','true');
     });
     $('#calculo_avancar').on('click', function() {
-        if($('input[nmae="tipo_prescricao"]:checked').val() == "Prescrição Automática"){
+        if($('input[name="tipo_prescricao"]:checked').val() == "Prescrição Automática"){
             if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
                 $.alert({
                         title: 'Atenção',
@@ -2329,7 +2329,7 @@ $(function(){
                     return false;
                 }
             }
-        }else if($('input[nmae="tipo_prescricao"]:checked').val() == "Prescrição Manual"){
+        }else if($('input[name="tipo_prescricao"]:checked').val() == "Prescrição Manual"){
             if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
                 $.alert({
                         title: 'Atenção',
