@@ -553,9 +553,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 
-		<?php 
-			if ($relatorio['rel_distribuidores']<>""){
-		?>
+		
 		<!-- <?php 
 		if ($p_footer) {
 		?>	
@@ -568,6 +566,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
+			<?php 
+				if ($relatorio['rel_distribuidores']<>""){
+			?>
 			<?php if($usuario['login'] == "ibranutro" && $relatorio['distribuidores'] == 'df') : ?>
 			<div style="display:flex;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
@@ -752,6 +753,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 			</div>
 			<?php endif; ?>
+			<?php
+				}
+			?>
 			<?php 
 				$nome_hospital = '';
 				$telefone = '';
@@ -828,9 +832,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php endif; ?>
 
-		<?php
-		}
-		?>
+		
 		<?php
 		}
 		?>
