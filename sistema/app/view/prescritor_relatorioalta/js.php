@@ -1480,36 +1480,169 @@ function fc_resetar_relatorio(){
 
 function validacao_manual(){
     let todosPreenchidos = true;
-    const $container = $("#dietaenteral");
+    if($("[name='dieta_formula[0]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário selecionar a fórmula.'
+        });
+        return false;
+    }
 
-    // Encontra todos os inputs e selects com o atributo 'required' dentro do contêiner
-    $container.find('input[required]:visible, select[required]:visible').each(function() {
-        const $campo = $(this);
-        let valorCampo = $campo.val();
+    if($("input[name='dieta_volume[]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher o volume.'
+        });
+        return false;
+    }
 
-        // Lógica de verificação de preenchimento
-        // Para Select2, .val() pode retornar null ou uma string vazia se nada for selecionado
-        // Para inputs de texto, .trim() remove espaços em branco
-        if (!valorCampo || (typeof valorCampo === 'string' && valorCampo.trim() === '')) {
-            // Campo vazio encontrado
-            todosPreenchidos = false;
-            $campo.focus(); // Dá foco ao campo vazio
-            // Se for um Select2, é bom focar no contêiner visual dele
-            if ($campo.hasClass('select2-hidden-accessible')) {
-                $campo.next('.select2-container').focus();
-            }
+    if($("[name='dieta_infusao[0]']:checked").val() == "Contínua"){
+        if($("input[name='dieta_vazao_h[]']").val() == ""){
             $.alert({
                 title: 'Atenção',
                 icon: 'fa fa-warning',
                 type: 'red',
-                content: 'é necessário preencher todos os campos.'
+                content: 'é necessário preencher a Vazão.'
             });
-
-            return false; // Sai do loop .each()
+            return false;
         }
-        // Opcional: Remover indicação visual de erro se o campo foi preenchido
-        // $campo.removeClass('campo-erro-borda');
-    });
+
+        if($("input[name='dieta_horario_inicio[0]']").val() == ""){
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher o horário de início.'
+            });
+            return false;
+        }
+    }
+
+    if($("[name='dieta_infusao[0]']:checked").val() == "Contínua"){
+        if($("input[name='dieta_fracionamento_dia[]']").val() == ""){
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher o fracionamento/dia.'
+            });
+            return false;
+        }
+
+        if($("input[name='dieta_horario_administracao[0]']").val() == ""){
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher o horário de administração.'
+            });
+            return false;
+        }
+    }
+
+    if($("input[name='modulo_produto[0]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário selecionar o produto do módulo.'
+        });
+        return false;
+    }
+
+    if($("input[name='modulo_quantidade[]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher a quantidade.'
+        });
+        return false;
+    }
+
+    if($("input[name='modulo_volume[]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher o volume.'
+        });
+        return false;
+    }
+
+    if($("input[name='modulo_horario[0]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher o horário.'
+        });
+        return false;
+    }
+
+    if($("input[name='suplemento_produto[0]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário selecionar o produto do suplemento.'
+        });
+        return false;
+    }
+
+    if($("input[name='suplemento_quantidade[]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher a quantidade.'
+        });
+        return false;
+    }
+
+    if($("input[name='suplemento_horario[0]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher o horário.'
+        });
+        return false;
+    }
+
+    if($("input[name='hidratacao_agua_livre[]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher a hidratação.'
+        });
+        return false;
+    }
+
+    if($("input[name='hidratacao_fracionamento_dia[]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher o fracionamento/dia.'
+        });
+        return false;
+    }
+
+    if($("input[name='hidratacao_horario[0]']").val() == ""){
+        $.alert({
+            title: 'Atenção',
+            icon: 'fa fa-warning',
+            type: 'red',
+            content: 'é necessário preencher o horário.'
+        });
+        return false;
+    }
 
     return todosPreenchidos;
 }
