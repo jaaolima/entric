@@ -1480,8 +1480,7 @@ function fc_resetar_relatorio(){
 
 function validacao_manual(){
     let todosPreenchidos = true;
-    console.log($("[name='dieta_formula[0]']").val());
-    if($("[name='dieta_formula']").val() == ""){
+    if($("[name='dieta_formula[0]']").val() == null){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
@@ -1545,7 +1544,7 @@ function validacao_manual(){
         }
     }
 
-    if($("input[name='modulo_produto[0]  option:selected']").val() == ""){
+    if($("input[name='modulo_produto[0]']").val() == null){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
@@ -1585,7 +1584,7 @@ function validacao_manual(){
         return false;
     }
 
-    if($("input[name='suplemento_produto[0]  option:selected']").val() == ""){
+    if($("input[name='suplemento_produto[0]]").val() == null){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
