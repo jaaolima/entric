@@ -1544,7 +1544,7 @@ function validacao_manual(){
         }
     }
 
-    if($("input[name='modulo_produto[0]']").val() == null){
+    if($("[name='modulo_produto[0]']").val() == null){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
@@ -1584,7 +1584,7 @@ function validacao_manual(){
         return false;
     }
 
-    if($("input[name='suplemento_produto[0]]").val() == null){
+    if($("[name='suplemento_produto[0]]").val() == null){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
