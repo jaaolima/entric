@@ -1480,7 +1480,7 @@ function fc_resetar_relatorio(){
 
 function validacao_manual(){
     let todosPreenchidos = true;
-    if($("[name='dieta_formula[0]']").val() == ""){
+    if($("[name='dieta_formula[0]'] option:selected").val() == ""){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
@@ -1522,7 +1522,7 @@ function validacao_manual(){
         }
     }
 
-    if($("[name='dieta_infusao[0]']:checked").val() == "Contínua"){
+    if($("[name='dieta_infusao[0]']:checked").val() == "Fracionada"){
         if($("input[name='dieta_fracionamento_dia[]']").val() == ""){
             $.alert({
                 title: 'Atenção',
@@ -1544,7 +1544,7 @@ function validacao_manual(){
         }
     }
 
-    if($("input[name='modulo_produto[0]']").val() == ""){
+    if($("input[name='modulo_produto[0]  option:selected']").val() == ""){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
@@ -1584,7 +1584,7 @@ function validacao_manual(){
         return false;
     }
 
-    if($("input[name='suplemento_produto[0]']").val() == ""){
+    if($("input[name='suplemento_produto[0]  option:selected']").val() == ""){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
