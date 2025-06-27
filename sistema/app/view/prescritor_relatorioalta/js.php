@@ -1584,7 +1584,7 @@ function validacao_manual(){
         return false;
     }
 
-    if($("[name='suplemento_produto[0]]").val() == null){
+    if($("[name='suplemento_produto[0]']").val() == null){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
