@@ -1478,6 +1478,40 @@ function fc_resetar_relatorio(){
     $('.entric .tab-content .tab-pane').find('.form-check-input').prop('checked', false);
 }
 
+function validacao_manual(){
+    let todosPreenchidos = true;
+    const $container = $("#dietaenteral");
+
+    // Encontra todos os inputs e selects com o atributo 'required' dentro do contêiner
+    $container.find('input[required], select[required]').each(function() {
+        const $campo = $(this);
+        let valorCampo = $campo.val();
+
+        // Lógica de verificação de preenchimento
+        // Para Select2, .val() pode retornar null ou uma string vazia se nada for selecionado
+        // Para inputs de texto, .trim() remove espaços em branco
+        if (!valorCampo || (typeof valorCampo === 'string' && valorCampo.trim() === '')) {
+            // Campo vazio encontrado
+            todosPreenchidos = false;
+            $campo.focus(); // Dá foco ao campo vazio
+            // Se for um Select2, é bom focar no contêiner visual dele
+            if ($campo.hasClass('select2-hidden-accessible')) {
+                $campo.next('.select2-container').focus();
+            }
+            
+            // Opcional: Adicionar alguma indicação visual de erro
+            // $campo.addClass('campo-erro-borda');
+
+            console.warn(`Campo obrigatório vazio: ${$campo.attr('id') || $campo.attr('name')}`);
+            return false; // Sai do loop .each()
+        }
+        // Opcional: Remover indicação visual de erro se o campo foi preenchido
+        // $campo.removeClass('campo-erro-borda');
+    });
+
+    return todosPreenchidos;
+}
+
 function fc_tab_formfilled(){
     $(".tabambos").hide();
     var taboknook = "tabok";
@@ -2340,7 +2374,9 @@ $(function(){
                 return false;
             }
             else{
-                fc_salvar('calculo', false);
+                if(validacao_manual()){
+                    fc_salvar('calculo', false);
+                }
             }
         }
         
