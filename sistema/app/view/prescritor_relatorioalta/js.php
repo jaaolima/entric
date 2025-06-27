@@ -1483,7 +1483,7 @@ function validacao_manual(){
     const $container = $("#dietaenteral");
 
     // Encontra todos os inputs e selects com o atributo 'required' dentro do contêiner
-    $container.find('input[required], select[required]').each(function() {
+    $container.find('input[required]:visible, select[required]:visible').each(function() {
         const $campo = $(this);
         let valorCampo = $campo.val();
 
@@ -1498,11 +1498,13 @@ function validacao_manual(){
             if ($campo.hasClass('select2-hidden-accessible')) {
                 $campo.next('.select2-container').focus();
             }
-            
-            // Opcional: Adicionar alguma indicação visual de erro
-            // $campo.addClass('campo-erro-borda');
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher todos os campos.'
+            });
 
-            console.warn(`Campo obrigatório vazio: ${$campo.attr('id') || $campo.attr('name')}`);
             return false; // Sai do loop .each()
         }
         // Opcional: Remover indicação visual de erro se o campo foi preenchido
@@ -2366,11 +2368,11 @@ $(function(){
         }else if($('input[name="tipo_prescricao"]:checked').val() == "Prescrição Manual"){
             if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
                 $.alert({
-                        title: 'Atenção',
-                        icon: 'fa fa-warning',
-                        type: 'red',
-                        content: 'Por favor, é necessário selecionar o dispositivo.'
-                    });
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'Por favor, é necessário selecionar o dispositivo.'
+                });
                 return false;
             }
             else{
