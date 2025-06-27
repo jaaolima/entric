@@ -1480,7 +1480,7 @@ function fc_resetar_relatorio(){
 
 function validacao_manual(){
     let todosPreenchidos = true;
-    if($("[name='dieta_formula[0]'] option:selected").val() == ""){
+    if($("[name='dieta_formula']").val() == ""){
         $.alert({
             title: 'Atenção',
             icon: 'fa fa-warning',
