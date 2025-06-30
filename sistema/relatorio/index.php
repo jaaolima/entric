@@ -440,7 +440,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php } ?>	
 
 			<?php if ($relatorio['rel_prescricao']<>""){ ?>
-				<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções</p>]
+				<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções</p>
 					<?php if($relatorio['tipo_prescricao'] == 'Prescrição Automática') : ?>
 						<?php 
 						// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -1030,13 +1030,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$infusao = $dieta_fracionamento_dia[$i] . " vezes ao dia às " . $dieta_horario_administracao[$i] . ".";
 								}
 								?>
-								<b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> <br><br>
+								<p><b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> </p>
 
-								<b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.
+								<p><b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.</p>
 
-								<b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;
+								<p><b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;</p>
 
-								<b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracioado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.
+								<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracioado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p>
 							<?php } ?>
 					<?php endif;?>
 
