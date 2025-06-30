@@ -2511,7 +2511,7 @@ $(function(){
             else{
                 if(validacao_manual()){
                     fc_salvar('calculo', false);
-                    $('#modal_selecao').modal('toggle');
+                    // $('#modal_selecao').modal('toggle');
                     $('.tabcalculo a').removeClass('active');
                     $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
             
