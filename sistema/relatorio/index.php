@@ -1008,21 +1008,36 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						?>
 					<?php elseif($relatorio['tipo_prescricao'] == "Prescrição Manual") : ?>
 						<?php 
-						$infusao = "";
-						if($relatorio['dieta_infusao'] == "Contínua"){
-							$infusao = "a " . $relatorio['dieta_vazao_h'] . " ml/h às " . $relatorio['dieta_horario_inicio'] . ".";
-						}	
-						if($relatorio['dieta_infusao'] == "Fracionada"){
-							$infusao = $relatorio['dieta_fracionamento_dia'] . " vezes ao dia às " . $relatorio['dieta_horario_administracao'] . ".";
-						}	
-						?>
-						<b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $relatorio['dieta_infusao'] ." " .$infusao;?> 
+						$dieta_infusao = json_decode($relatorio['dieta_infusao']);
+						$dieta_vazao_h = json_decode($relatorio['dieta_vazao_h']);
+						$dieta_horario_inicio = json_decode($relatorio['dieta_horario_inicio']);
+						$dieta_fracionamento_dia = json_decode($relatorio['dieta_fracionamento_dia']);
+						$dieta_horario_administracao = json_decode($relatorio['dieta_horario_administracao']);
+						$modulo_volume = json_decode($relatorio['modulo_volume']);
+						$modulo_horario = json_decode($relatorio['modulo_horario']);
+						$suplemento_quantidade = json_decode($relatorio['suplemento_quantidade']);
+						$suplemento_horario = json_decode($relatorio['suplemento_horario']);
+						$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
+						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
+						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
+						
+							for ($i=0; $i < count($dieta_infusao); $i++) {
+								$infusao = "";
+								if($dieta_infusao[$i] == "Contínua"){
+									$infusao = "a " . $dieta_vazao_h[$i] . " ml/h às " . $dieta_horario_inicio[$i] . ".";
+								}	
+								if($dieta_infusao[$i] == "Fracionada"){
+									$infusao = $dieta_fracionamento_dia[$i] . " vezes ao dia às " . $dieta_horario_administracao[$i] . ".";
+								}
+								?>
+								<b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> <br><br>
 
-						<b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $relatorio['modulo_volume'] ?> ml de água e administrar às <?php echo $relatorio['modulo_horario']; ?>.
+								<b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.
 
-						<b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $relatorio['suplemento_quantidade'] ?> às <?php echo $relatorio['suplemento_horario']; ?>;
+								<b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;
 
-						<b>ÁGUA LIVRE</b> - Administrar <?php echo $relatorio['hidratacao_agua_livre'] ?> ml por dia, fracioado em <?php echo $relatorio['hidratacao_fracionamento_dia'] ?> às <?php echo $relatorio['hidratacao_horario']; ?>.
+								<b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracioado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.
+							<?php } ?>
 					<?php endif;?>
 
 			<?php } ?>
