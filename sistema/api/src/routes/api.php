@@ -8130,6 +8130,8 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['suplemento_horario'])) $dados['suplemento_horario'] = null;
 		        if (!isset($dados['suplemento_volume_total'])) $dados['suplemento_volume_total'] = null;
 		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
+		        if (!isset($dados['hidratacao_fracionamento_dia'])) $dados['hidratacao_fracionamento_dia'] = null;
+		        if (!isset($dados['hidratacao_horario'])) $dados['hidratacao_horario'] = null;
 
 		        $bind = array(  $campo_prescritor => $id_prescritor,
 								':categoria' => $dados['categoria'],
@@ -8165,7 +8167,10 @@ $app->group("", function () use ($app) {
 		                        ':suplemento_quantidade' => array_json($dados["suplemento_quantidade"], false) ,
 		                        ':suplemento_horario' => array_json($dados["suplemento_horario"], false) ,
 		                        ':suplemento_volume_total' => array_json($dados["suplemento_volume_total"], false) ,
-		                        ':hidratacao_agua_livre' => array_json($dados["hidratacao_agua_livre"], false) );
+		                        ':hidratacao_agua_livre' => array_json($dados["hidratacao_agua_livre"], false),
+		                        ':hidratacao_fracionamento_dia' => array_json($dados["hidratacao_fracionamento_dia"], false),
+		                        ':hidratacao_horario' => array_json($dados["hidratacao_horario"], false)
+							 );
 
 		        if ($dados['id_relatorio'] == ""){
 		            $retorno = $db->insert("relatorios", $bind);
