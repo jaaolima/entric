@@ -3066,7 +3066,7 @@ $(function(){
     $('.nova-combinacao').click(function(e) {
         var tabs = $("#tab-combinacoes .nav-item").length-1;
         console.log(tabs);
-        var navlink = $("#tab-combinacoes .nav-item:nth-child("+(tabs-1)+") .nav-link").attr("href");
+        var navlink = $("#tab-combinacoes .nav-item:nth-child("+(tabs)+") .nav-link").attr("href");
         console.log(navlink);
         navlink = navlink.replace('#combinacao','');
         var id = parseInt(navlink)+1;
