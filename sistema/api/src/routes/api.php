@@ -1841,8 +1841,8 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, kcal, ptn, fibras, categoria",
-		                                            "WHERE via = 'Módulo' and (nome LIKE '%".$dados."%' OR categoria LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
+		                                            "id, nome, fabricante, kcal, ptn, fibras, cat_modulo",
+		                                            "WHERE via = 'Módulo' and (nome LIKE '%".$dados."%' OR cat_modulo LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
 		                                            null);
 
 		        $data = $produtos;

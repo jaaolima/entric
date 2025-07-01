@@ -615,10 +615,22 @@ function formatRepoProd (repo) {
     return repo.text;
   }
 
+  apresentacaoArray = json_decode(repo.apresentacao);
+  apresentacao = '';
+
+  for (let i = 0; i < apresentacaoArray.length; i++) {
+    if(i == 0){
+        apresentacao = apresentacaoArray;
+    }else{
+        apresentacao = apresentacao + ", " + apresentacaoArray;
+    }
+    
+  }
+
   var $container = $(
     "<div class='row'>" +
         "<div class='col-md-6'>" + repo.text + "</div>" +  
-        "<div class='col-md-6'>" + repo.apresentacao + "</div>" +        
+        "<div class='col-md-6'>" + apresentacao + "</div>" +        
         "<div class='col-md-6'>" + repo.fabricante + "</div>" +        
     "</div>"
   );
@@ -631,10 +643,23 @@ function formatRepoProdModulo (repo) {
     return repo.text;
   }
 
+  cat_moduloArray = json_decode(repo.cat_modulo);
+  cat_modulo = '';
+
+for (let i = 0; i < cat_moduloArray.length; i++) {
+    if(i == 0){
+        cat_modulo = cat_moduloArray;
+    }else{
+        cat_modulo = cat_modulo + ", " + cat_moduloArray;
+    }
+    
+  }
+
+
   var $container = $(
     "<div class='row'>" +
         "<div class='col-md-6'>" + repo.text + "</div>" +  
-        "<div class='col-md-6'>" + repo.categoria + "</div>" +        
+        "<div class='col-md-6'>" + cat_modulo + "</div>" +        
         "<div class='col-md-6'>" + repo.fabricante + "</div>" +        
     "</div>"
   );
