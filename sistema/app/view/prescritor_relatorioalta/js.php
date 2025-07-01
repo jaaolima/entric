@@ -616,17 +616,16 @@ function formatRepoProd (repo) {
   }
 
   apresentacaoArray = JSON.parse(repo.apresentacao);
-  console.log(apresentacaoArray);
-  apresentacao = '';
+  apresentacao = apresentacaoArray[0];
 
-  for (let i = 0; i < apresentacaoArray.length; i++) {
-    if(i == 0){
-        apresentacao = apresentacaoArray;
-    }else{
-        apresentacao = apresentacao + ", " + apresentacaoArray;
-    }
+//   for (let i = 0; i < apresentacaoArray.length; i++) {
+//     if(i == 0){
+//         apresentacao = apresentacaoArray;
+//     }else{
+//         apresentacao = apresentacao + ", " + apresentacaoArray;
+//     }
     
-  }
+//   }
 
   var $container = $(
     "<div class='row'>" +
@@ -645,16 +644,16 @@ function formatRepoProdModulo (repo) {
   }
 
   cat_moduloArray = JSON.parse(repo.cat_modulo);
-  cat_modulo = '';
+  cat_modulo = cat_moduloArray[0];
 
-for (let i = 0; i < cat_moduloArray.length; i++) {
-    if(i == 0){
-        cat_modulo = cat_moduloArray;
-    }else{
-        cat_modulo = cat_modulo + ", " + cat_moduloArray;
-    }
+// for (let i = 0; i < cat_moduloArray.length; i++) {
+//     if(i == 0){
+//         cat_modulo = cat_moduloArray;
+//     }else{
+//         cat_modulo = cat_modulo + ", " + cat_moduloArray;
+//     }
     
-  }
+//   }
 
 
   var $container = $(
@@ -1886,6 +1885,7 @@ $(function(){
     });
 
     $("input[name='dieta_volume[]").blur(function (e) {
+        console.log("chegou");
         div_select = $(this).closest(".div_nova_dieta");
         select = div_select.find(".select2_ajax_formula");
         valorSelect = select.val();
