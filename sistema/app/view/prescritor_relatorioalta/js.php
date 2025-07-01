@@ -3001,10 +3001,10 @@ $(function(){
         $(this).closest(".div_volume_total").remove();
     });
     // select2_ajax_formula($(".select2_ajax_formula"));
-    select2_ajax_produto($(".select2_ajax_produto"));
-    select2_ajax_produto_modulo($(".select2_ajax_formula"));
-    select2_ajax_produto_enteral($(".select2_ajax_produto_enteral"));
-    select2_ajax_produto_suplemento($(".select2_ajax_produto_suplemento"));
+    // select2_ajax_produto($(".select2_ajax_produto"));
+    select2_ajax_produto_modulo($(".select2_produto"));
+    select2_ajax_produto_enteral($(".select2_formula"));
+    select2_ajax_produto_suplemento($(".select2_suplemento_produto"));
     $("#tab-combinacoes").on("click", "a", function(e) {
         e.preventDefault();
         $(this).tab('show');

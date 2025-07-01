@@ -1036,7 +1036,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 								<p><b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;</p>
 
-								<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracioado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p>
+								<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracionado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p>
 							<?php } ?>
 					<?php endif;?>
 
