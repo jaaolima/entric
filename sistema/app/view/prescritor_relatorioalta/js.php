@@ -1884,7 +1884,7 @@ $(function(){
         input.val("");
     });
 
-    $("input[name='dieta_volume[]").blur(function (e) {
+    $('body').on('blur', "input[name='dieta_volume[]']", function (e) {
         console.log("chegou");
         div_select = $(this).closest(".div_nova_dieta");
         select = div_select.find(".select2_ajax_formula");
