@@ -615,7 +615,8 @@ function formatRepoProd (repo) {
     return repo.text;
   }
 
-  apresentacaoArray = json_decode(repo.apresentacao);
+  apresentacaoArray = JSON.parse(repo.apresentacao);
+  console.log(apresentacaoArray);
   apresentacao = '';
 
   for (let i = 0; i < apresentacaoArray.length; i++) {
@@ -643,7 +644,7 @@ function formatRepoProdModulo (repo) {
     return repo.text;
   }
 
-  cat_moduloArray = json_decode(repo.cat_modulo);
+  cat_moduloArray = JSON.parse(repo.cat_modulo);
   cat_modulo = '';
 
 for (let i = 0; i < cat_moduloArray.length; i++) {
