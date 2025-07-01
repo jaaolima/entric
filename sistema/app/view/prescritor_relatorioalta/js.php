@@ -3065,7 +3065,9 @@ $(function(){
     });
     $('.nova-combinacao').click(function(e) {
         var tabs = $("#tab-combinacoes .nav-item").length-1;
+        console.log(tabs);
         var navlink = $("#tab-combinacoes .nav-item:nth-child("+(tabs-1)+") .nav-link").attr("href");
+        console.log(navlink);
         navlink = navlink.replace('#combinacao','');
         var id = parseInt(navlink)+1;
 
@@ -3161,26 +3163,26 @@ $(function(){
         selector.empty();
         selector.removeData();
         select2_ajax_produto_enteral(selector);
-        var selector = $("#combinacao"+id).find("select[name='modulo_produto[" + p +"]']");
-        selector.removeAttr('data-live-search')
+        var selectorModulo = $("#combinacao"+id).find("select[name='modulo_produto[" + p +"]']");
+        selectorModulo.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
                 .removeAttr('tabindex')
                 .removeClass('select2-hidden-accessible');
-        selector.find('option[value]').remove();
-        selector.empty();
-        selector.removeData();
-        select2_ajax_produto_modulo(selector);
-        var selector = $("#combinacao"+id).find("select[name='suplemento_produto[" + p +"]']");
-        selector.removeAttr('data-live-search')
+        selectorModulo.find('option[value]').remove();
+        selectorModulo.empty();
+        selectorModulo.removeData();
+        select2_ajax_produto_modulo(selectorModulo);
+        var selectorSuplemento = $("#combinacao"+id).find("select[name='suplemento_produto[" + p +"]']");
+        selectorSuplemento.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
                 .removeAttr('tabindex')
                 .removeClass('select2-hidden-accessible');
-        selector.find('option[value]').remove();
-        selector.empty();
-        selector.removeData();
-        select2_ajax_produto_suplemento(selector);
+        selectorSuplemento.find('option[value]').remove();
+        selectorSuplemento.empty();
+        selectorSuplemento.removeData();
+        select2_ajax_produto_suplemento(selectorSuplemento);
 
         $('.radio_infusao').on("change", function(e) {
             if ($(this).filter(':checked').val() == 'Fracionada') {
