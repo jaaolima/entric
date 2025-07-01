@@ -618,6 +618,23 @@ function formatRepoProd (repo) {
   var $container = $(
     "<div class='row'>" +
         "<div class='col-md-6'>" + repo.text + "</div>" +  
+        "<div class='col-md-6'>" + repo.apresentacao + "</div>" +        
+        "<div class='col-md-6'>" + repo.fabricante + "</div>" +        
+    "</div>"
+  );
+
+  return $container;
+}
+
+function formatRepoProdModulo (repo) {
+  if (repo.loading) {
+    return repo.text;
+  }
+
+  var $container = $(
+    "<div class='row'>" +
+        "<div class='col-md-6'>" + repo.text + "</div>" +  
+        "<div class='col-md-6'>" + repo.categoria + "</div>" +        
         "<div class='col-md-6'>" + repo.fabricante + "</div>" +        
     "</div>"
   );
@@ -685,6 +702,7 @@ function select2_ajax_produto_enteral(_this){
                         return {
                             id: item.id,
                             text: item.nome,
+                            apresentacao: item.apresentacao,
                             fabricante: item.fabricante,
                             kcal: item.kcal,
                             ptn: item.ptn,
@@ -727,6 +745,7 @@ function select2_ajax_produto_modulo(_this){
                             id: item.id,
                             text: item.nome,
                             fabricante: item.fabricante,
+                            categoria: item.categoria,
                             kcal: item.kcal,
                             ptn: item.ptn,
                             fibras: item.fibras
@@ -743,7 +762,7 @@ function select2_ajax_produto_modulo(_this){
         minimumInputLength: 3,
         placeholder: '...',
         escapeMarkup: function (markup) { return markup; },
-        templateResult: formatRepoProd,
+        templateResult: formatRepoProdModulo,
         templateSelection: formatRepoProdSelection,
         language: "pt-BR"
     });
@@ -768,6 +787,7 @@ function select2_ajax_produto_suplemento(_this){
                             id: item.id,
                             text: item.nome,
                             fabricante: item.fabricante,
+                            apresentacao: item.apresentacao,
                             kcal: item.kcal,
                             ptn: item.ptn,
                             fibras: item.fibras

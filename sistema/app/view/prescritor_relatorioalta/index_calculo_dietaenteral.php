@@ -3,7 +3,7 @@
         <div class="col-md-12">
 
             <div class="default-tab bordered-tab combinacoes">
-                <!-- <ul id="tab-combinacoes" class="nav nav-tabs" role="tablist">
+                <ul id="tab-combinacoes" class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#combinacao1">Combinação 1</a>
                     </li>
@@ -12,11 +12,7 @@
                         <?php /* <li class="nav-item ml-auto">*/ ?>
                         <button type="button" class="btn btn-secondary ml-2 nova-combinacao"><i class="fa fa-plus-circle" aria-hidden="true"></i> Nova Combinação</button>
                     </li>
-                    
-                    <li class="nav-item ml-auto">
-                        <button type="button" class="btn btn-secondary ml-2 nova-combinacao"><i class="fa fa-plus-circle" aria-hidden="true"></i> Nova Combinação</button>
-                    </li>
-                </ul> -->
+                </ul>
 
                 <div class="tab-content tab-content-default">
  
