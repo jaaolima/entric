@@ -630,9 +630,9 @@ function formatRepoProd (repo) {
 
   var $container = $(
     "<div class='row'>" +
-        "<div class='col-md-6'>" + repo.text + "</div>" +  
-        "<div class='col-md-6'>" + apresentacao + "</div>" +        
-        "<div class='col-md-6'>" + repo.fabricante + "</div>" +        
+        "<div class='col-md-4'>" + repo.text + "</div>" +  
+        "<div class='col-md-4'>" + apresentacao + "</div>" +        
+        "<div class='col-md-4'>" + repo.fabricante + "</div>" +        
     "</div>"
   );
 
@@ -659,9 +659,9 @@ for (let i = 0; i < cat_moduloArray.length; i++) {
 
   var $container = $(
     "<div class='row'>" +
-        "<div class='col-md-6'>" + repo.text + "</div>" +  
-        "<div class='col-md-6'>" + cat_modulo + "</div>" +        
-        "<div class='col-md-6'>" + repo.fabricante + "</div>" +        
+        "<div class='col-md-4'>" + repo.text + "</div>" +  
+        "<div class='col-md-4'>" + cat_modulo + "</div>" +        
+        "<div class='col-md-4'>" + repo.fabricante + "</div>" +        
     "</div>"
   );
 
@@ -771,7 +771,7 @@ function select2_ajax_produto_modulo(_this){
                             id: item.id,
                             text: item.nome,
                             fabricante: item.fabricante,
-                            categoria: item.categoria,
+                            cat_modulo: item.cat_modulo,
                             kcal: item.kcal,
                             ptn: item.ptn,
                             fibras: item.fibras
