@@ -3200,7 +3200,7 @@ $(function(){
     });
 
     $('[name="dieta_fracionamento_dia[]"]').on('keyup', function() {
-        div_horario_fracionado = $(this).parent().parent().find(".div_infusao_fracionada");
+        div_horario_fracionado = $(this).parent().parent().find(".div_horario_administracao");
         div_horario_fracionado.empty();
         var horarios = '';
         for(i = 1; i <= parseInt($(this).val()); i++) {
@@ -3209,7 +3209,7 @@ $(function(){
             }else{
                 var numi = i;
             }            
-            horarios = horarios + '<div class="col-sm-3"><label for="dieta_horario_administracao[0]" class="label_horario_administracao">Horário de Administração'+numi+':</label></div>'+
+            horarios = horarios + '<div class="col-sm-3"><label for="dieta_horario_administracao['+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label></div>'+
                                   '<div class="col-sm-3"><input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
                                                                         
         }

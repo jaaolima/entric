@@ -70,7 +70,7 @@
                                                                         <label for="dieta_fracionamento_dia[]">Fracionamento/dia:</label>
                                                                         <input type="text"  maxlength='2'  class="form-control numeros campos_limpar" required="required" name="dieta_fracionamento_dia[]">
                                                                     </div>
-                                                                    <div class="form-group col-sm-4 mb-1 div_infusao_fracionada none">
+                                                                    <div class="form-group col-sm-4 mb-1 div_infusao_fracionada div_horario_administracao none">
                                                                         <label for="dieta_horario_administracao[0]" class="label_horario_administracao">Horário de Administração:</label>
                                                                         <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[0]">
                                                                     </div>
