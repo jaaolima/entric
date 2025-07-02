@@ -3209,8 +3209,26 @@ $(function(){
             }else{
                 var numi = i;
             }            
-            horarios = horarios + '<div class="col-sm-3"><label for="dieta_horario_administracao['+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label>'+
-                                  '<input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
+            horarios = horarios + '<div class="col-sm-8"><label for="dieta_horario_administracao['+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label>'+
+                                  '<input width="60px" type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
+                                                                        
+        }
+        div_horario_fracionado.html(horarios);
+        $('.hora').mask("99:99");
+    });
+
+     $('[name="hidratacao_fracionamento_dia[]"]').on('keyup', function() {
+        div_horario_fracionado = $(this).parent().parent().find(".div_fracionamento_hidratacao");
+        div_horario_fracionado.empty();
+        var horarios = '';
+        for(i = 1; i <= parseInt($(this).val()); i++) {
+            if (i<10){
+                var numi = "0"+i;
+            }else{
+                var numi = i;
+            }            
+            horarios = horarios + '<div class="col-sm-4"><label for="hidratacao_horario['+numi+']" class="label_horario_administracao">Horário '+numi+':</label>'+
+                                  '<input width="60px" type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario['+numi+']"></div>';
                                                                         
         }
         div_horario_fracionado.html(horarios);
