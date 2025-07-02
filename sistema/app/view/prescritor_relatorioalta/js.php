@@ -2871,13 +2871,10 @@ $(function(){
     $('input:radio[name=tipo_prescricao]').change(function () {
         if ($("input[name='tipo_prescricao']:checked").val() == 'Prescrição Manual') {
             $("#apresentacao").hide();
-            $("#prescricao_nutricional").hide();
             $("#dietaenteral").show();
             stickyTop('combinacao1');
-
         }else{
             $("#apresentacao").show();
-            $("#prescricao_nutricional").show();
             $("#dietaenteral").hide();
         }
     });
