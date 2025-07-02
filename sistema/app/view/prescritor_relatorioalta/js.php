@@ -3198,6 +3198,24 @@ $(function(){
 
         stickyTop('combinacao'+id);
     });
+
+    $('[name="dieta_fracionamento_dia[]"]').on('keyup', function() {
+        div_horario_fracionado = $(this).parent().parent().find(".div_infusao_fracionada");
+        div_horario_fracionado.empty();
+        var horarios = '';
+        for(i = 1; i <= parseInt($(this).val()); i++) {
+            if (i<10){
+                var numi = "0"+i;
+            }else{
+                var numi = i;
+            }            
+            horarios = horarios + '<div class="col-sm-3"><label for="dieta_horario_administracao[0]" class="label_horario_administracao">Horário de Administração'+numi+':</label></div>'+
+                                  '<div class="col-sm-3"><input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
+                                                                        
+        }
+        div_horario_fracionado.html(horarios);
+        $('.hora').mask("99:99");
+    });
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     $('#fracionamento_dia').on('click', function() {
         $(this).select();
