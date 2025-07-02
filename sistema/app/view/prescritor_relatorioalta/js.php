@@ -3209,8 +3209,8 @@ $(function(){
             }else{
                 var numi = i;
             }            
-            horarios = horarios + '<div class="col-sm-3"><label for="dieta_horario_administracao['+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label></div>'+
-                                  '<div class="col-sm-3"><input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
+            horarios = horarios + '<div class="col-sm-3"><label for="dieta_horario_administracao['+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label>'+
+                                  '<input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
                                                                         
         }
         div_horario_fracionado.html(horarios);
