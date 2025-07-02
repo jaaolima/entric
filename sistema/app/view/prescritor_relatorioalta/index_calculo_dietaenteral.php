@@ -237,7 +237,7 @@
                                                             <label for="hidratacao_fracionamento_dia[]">Fracionamento/dia:</label>
                                                             <input type="text"  maxlength='2' class="form-control numeros campos_limpar" required="required" name="hidratacao_fracionamento_dia[]">
                                                         </div>
-                                                        <div class="form-group col-sm-3 mb-1 div_fracionamento_hidratacao" style="margin-top: -24px;">
+                                                        <div class="form-group col-sm-3 mb-1 div_fracionamento_hidratacao d-flex row" style="margin-top: -24px;">
                                                             <label for="dieta_horario[0]" class="label_horario">Horário:</label>
                                                             <input type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario[0]">
                                                         </div>

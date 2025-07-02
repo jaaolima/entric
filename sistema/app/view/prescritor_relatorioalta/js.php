@@ -3199,7 +3199,7 @@ $(function(){
         stickyTop('combinacao'+id);
     });
 
-    $('[name="dieta_fracionamento_dia[]"]').on('keyup', function() {
+    $('body').on('keyup', "[name='dieta_fracionamento_dia[]']", function (e) {
         div_horario_fracionado = $(this).parent().parent().find(".div_horario_administracao");
         div_horario_fracionado.empty();
         var horarios = '';
@@ -3217,7 +3217,7 @@ $(function(){
         $('.hora').mask("99:99");
     });
 
-     $('[name="hidratacao_fracionamento_dia[]"]').on('keyup', function() {
+    $('body').on('keyup', "[name='hidratacao_fracionamento_dia[]']", function (e) {
         div_horario_fracionado = $(this).parent().parent().find(".div_fracionamento_hidratacao");
         div_horario_fracionado.empty();
         var horarios = '';
