@@ -3153,6 +3153,9 @@ $(function(){
         divClone.find('.entric_ofertotal').removeAttr("style");
         divClone.find('.div_horario_administracao').html("");
         divClone.find('.div_fracionamento_hidratacao').html("");
+        divClone.find('[name="div_valortotal_kcal"]').html("");
+        divClone.find('[name="div_valortotal_ptn"]').html("");
+        divClone.find('[name="div_valortotal_fibra"]').html("");
 
         $('.combinacoes .tab-content').append(divClone);
         $('.combinacoes .nav-tabs a[href="#combinacao'+id+'"]').tab('show');
