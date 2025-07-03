@@ -3045,8 +3045,8 @@ $(function(){
         divClone.removeAttr("id");
         divClone.find(".div_formula_rm").removeClass("none");
         divClone.find("input:radio").attr('name', 'dieta_infusao[' + idCombinacao + '__' + p +']').end();
-        divClone.find("input[type='radio'][name='dieta_infusao[" + p +"]'][value='Contínua']").attr('id', 'infusao_continua[' + idCombinacao + '__' + p +']').end();
-        divClone.find("input[type='radio'][name='dieta_infusao[" + p +"]'][value='Fracionada']").attr('id', 'infusao_fracionada[' + idCombinacao + '__' + p +']').end();
+        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao + '__' + p +"]'][value='Contínua']").attr('id', 'infusao_continua[' + idCombinacao + '__' + p +']').end();
+        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao + '__' + p +"]'][value='Fracionada']").attr('id', 'infusao_fracionada[' + idCombinacao + '__' + p +']').end();
         divClone.find(".radio_continua").attr('for', 'infusao_continua[' + idCombinacao + '__' + p +']').end();
         divClone.find(".radio_fracionada").attr('for', 'infusao_fracionada[' + idCombinacao + '__' + p +']').end();
         divClone.find(".horario_inicio").attr('name', 'dieta_horario_inicio[' + idCombinacao + '__' + p +']').end();
