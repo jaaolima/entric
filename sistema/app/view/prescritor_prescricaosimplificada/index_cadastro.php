@@ -80,6 +80,14 @@
             case '17':
                 $ds_hospital = 'TERCEIROS VILA NOVA STAR';
                 break;
+
+            case '18':
+                $ds_hospital = 'HOSPITAL SÃO LUIZ JABAQUARA';
+                break;
+
+            case '19':
+                $ds_hospital = 'HOSPITAL DA CRIANÇA';
+                break;
             default:
                 $ds_hospital = '';
                 break;
