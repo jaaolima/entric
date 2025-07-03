@@ -1927,6 +1927,10 @@ $(function(){
                 $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
                 $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
                 $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+                $(divCombinacao).find("[name='valortotal_kcal']").val(totalKcal.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_ptn']").val(totalPtn.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_fibra']").val(totalFibra.toFixed(2));
             }
         });
 
@@ -1972,6 +1976,10 @@ $(function(){
                 $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
                 $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
                 $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+                $(divCombinacao).find("[name='valortotal_kcal']").val(totalKcal.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_ptn']").val(totalPtn.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_fibra']").val(totalFibra.toFixed(2));
             }
         });
 
@@ -2018,6 +2026,10 @@ $(function(){
                 $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
                 $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
                 $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+                $(divCombinacao).find("[name='valortotal_kcal']").val(totalKcal.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_ptn']").val(totalPtn.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_fibra']").val(totalFibra.toFixed(2));
             }
         });
 

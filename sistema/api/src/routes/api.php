@@ -8132,6 +8132,9 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;
 		        if (!isset($dados['hidratacao_fracionamento_dia'])) $dados['hidratacao_fracionamento_dia'] = null;
 		        if (!isset($dados['hidratacao_horario'])) $dados['hidratacao_horario'] = null;
+		        if (!isset($dados['valortotal_kcal'])) $dados['valortotal_kcal'] = null;
+		        if (!isset($dados['valortotal_ptn'])) $dados['valortotal_ptn'] = null;
+		        if (!isset($dados['valortotal_fibra'])) $dados['valortotal_fibra'] = null;
 
 		        $bind = array(  $campo_prescritor => $id_prescritor,
 								':categoria' => $dados['categoria'],
@@ -8169,7 +8172,10 @@ $app->group("", function () use ($app) {
 		                        ':suplemento_volume_total' => array_json($dados["suplemento_volume_total"], false) ,
 		                        ':hidratacao_agua_livre' => array_json($dados["hidratacao_agua_livre"], false),
 		                        ':hidratacao_fracionamento_dia' => array_json($dados["hidratacao_fracionamento_dia"], false),
-		                        ':hidratacao_horario' => array_json($dados["hidratacao_horario"], false)
+		                        ':hidratacao_horario' => array_json($dados["hidratacao_horario"], false),
+		                        ':valortotal_kcal' => array_json($dados["valortotal_kcal"], false),
+		                        ':valortotal_ptn' => array_json($dados["valortotal_ptn"], false),
+		                        ':valortotal_fibra' => array_json($dados["valortotal_fibra"], false),
 							 );
 
 		        if ($dados['id_relatorio'] == ""){

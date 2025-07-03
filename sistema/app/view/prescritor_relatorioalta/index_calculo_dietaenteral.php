@@ -265,18 +265,21 @@
                                             KCAL
                                         </div>
                                         <div class="col-lg-6 ln-40 justify-content-center align-middle" name="div_valortotal_kcal">
+                                            <input type="hidden" name='valortotal_kcal[]' value="">
                                         </div>
 
                                         <div class="col-lg-6 b_r d-flex b_t ln-40 bgwhite justify-content-center align-middle">
                                             PTN
                                         </div>
                                         <div class="col-lg-6 b_t ln-40 justify-content-center align-middle" name="div_valortotal_ptn">
+                                            <input type="hidden" name='valortotal_ptn[]' value="">
                                         </div>
 
                                         <div class="col-lg-6 b_r d-flex b_t ln-40 bgwhite justify-content-center align-middle">
                                             FIBRA
                                         </div>
                                         <div class="col-lg-6 b_t ln-40 justify-content-center align-middle" name="div_valortotal_fibra">
+                                            <input type="hidden" name='valortotal_fibra[]' value="">
                                         </div>
                                     </div>
                                 </div>
