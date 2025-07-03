@@ -2017,11 +2017,11 @@ $(function(){
 
     $('body').on('select2:select', ".select2_ajax_formula", function (e) {
         div_select = $(this).closest(".div_nova_dieta");
-        input = div_select.find("input[name='dieta_volume[]']");
+        input = div_select.find("input[name^='dieta_volume']");
         input.val("");
     });
 
-    $('body').on('blur', "input[name='dieta_volume[]']", function (e) {
+    $('body').on('blur', "input[name^='dieta_volume']", function (e) {
         console.log("chegou");
         div_select = $(this).closest(".div_nova_dieta");
         select = div_select.find(".select2_ajax_formula");
@@ -2076,11 +2076,11 @@ $(function(){
 
     $('body').on('select2:select', ".select2_produto", function (e) {
         div_select = $(this).closest(".div_modulo");
-        input = div_select.find("input[name='modulo_quantidade[]']");
+        input = div_select.find("input[name^='modulo_quantidade']");
         input.val("");
     });
 
-    $('body').on('blur', "input[name='modulo_quantidade[]']", function (e) {
+    $('body').on('blur', "input[name^='modulo_quantidade']", function (e) {
         div_select = $(this).closest(".div_modulo");
         select = div_select.find(".select2_produto");
         valorSelect = select.val();
@@ -2124,12 +2124,12 @@ $(function(){
 
     $('body').on('select2:select', ".select2_suplemento_produto", function (e) {
         div_select = $(this).closest(".div_suplemento");
-        input = div_select.find("input[name='suplemento_quantidade[]']");
+        input = div_select.find("input[name^='suplemento_quantidade']");
         input.val("");
     });
 
 
-    $('body').on('blur', "input[name='suplemento_quantidade[]']", function (e) {
+    $('body').on('blur', "input[name^='suplemento_quantidade']", function (e) {
         div_select = $(this).closest(".div_suplemento");
         select = div_select.find(".select2_suplemento_produto");
         valorSelect = select.val();
@@ -3363,7 +3363,7 @@ $(function(){
         stickyTop('combinacao'+id);
     });
 
-    $('body').on('keyup', "[name='dieta_fracionamento_dia[]']", function (e) {
+    $('body').on('keyup', "[name^='dieta_fracionamento_dia']", function (e) {
         div_horario_fracionado = $(this).parent().parent().find(".div_horario_administracao");
         div_horario_fracionado.empty();
         var horarios = '';
