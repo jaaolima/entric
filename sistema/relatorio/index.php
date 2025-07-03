@@ -384,7 +384,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<?php 
 			// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-			if ($relatorio['tipo_produto']=="Oral"){ 
+			if( $relatorio['tipo_prescricao']=="Prescrição Automática"){
+				if ($relatorio['tipo_produto']=="Oral"){ 
 			?>
 				fracionada em <?php echo $relatorio['fra_hidratacao_dia']; if ($relatorio['fra_hidratacao_dia']>1) echo " vezes"; else echo  " vez";?> 
 				às 
@@ -402,41 +403,54 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				, com volume total de <?php echo $relatorio['fra_volume_horario']." ml";?>
 
 				perfazendo um total de: <?php echo ($relatorio['fra_hidratacao_dia']*$relatorio['fra_volume_horario'])." ml por dia.";?>
-			<?php } ?>	
+			<?php } 
+			}
+			?>	
 
 			<?php
-			/*  Tipo de prescrição  MANUAL - acredito */
-			$margem_calorica_a = "-";
-			$margem_calorica_b = "-";
-			$margem_calorica = $relatorio["margem_calorica"];
-			$margem_calorica = explode(",", $margem_calorica);
-			if (count($margem_calorica)>1){
-				$margem_calorica_a = $margem_calorica[0];
-				$margem_calorica_a = explode(" ", $margem_calorica_a);
-				$margem_calorica_a = $margem_calorica_a[0];
 
-				$margem_calorica_b = $margem_calorica[1];
-				$margem_calorica_b = explode(" ", $margem_calorica_b);
-				$margem_calorica_b = $margem_calorica_b[0];
-			}
+			if($relatorio['tipo_prescricao']=="Prescrição Manual"){
+				/*  Tipo de prescrição  MANUAL - acredito */
+				// $margem_calorica_a = "-";
+				// $margem_calorica_b = "-";
+				// $margem_calorica = $relatorio["margem_calorica"];
+				// $margem_calorica = explode(",", $margem_calorica);
+				// if (count($margem_calorica)>1){
+				// 	$margem_calorica_a = $margem_calorica[0];
+				// 	$margem_calorica_a = explode(" ", $margem_calorica_a);
+				// 	$margem_calorica_a = $margem_calorica_a[0];
+
+				// 	$margem_calorica_b = $margem_calorica[1];
+				// 	$margem_calorica_b = explode(" ", $margem_calorica_b);
+				// 	$margem_calorica_b = $margem_calorica_b[0];
+				// }
 
 
-			$margem_proteica_a = "-";
-			$margem_proteica_b = "-";
-			$margem_proteica = $relatorio["margem_proteica"];
-			$margem_proteica = explode(",", $margem_proteica);
-			if (count($margem_proteica)>1){
-				$margem_proteica_a = $margem_proteica[0];
-				$margem_proteica_a = explode(" ", $margem_proteica_a);
-				$margem_proteica_a = $margem_proteica_a[0];
+				// $margem_proteica_a = "-";
+				// $margem_proteica_b = "-";
+				// $margem_proteica = $relatorio["margem_proteica"];
+				// $margem_proteica = explode(",", $margem_proteica);
+				// if (count($margem_proteica)>1){
+				// 	$margem_proteica_a = $margem_proteica[0];
+				// 	$margem_proteica_a = explode(" ", $margem_proteica_a);
+				// 	$margem_proteica_a = $margem_proteica_a[0];
 
-				$margem_proteica_b = $margem_proteica[1];
-				$margem_proteica_b = explode(" ", $margem_proteica_b);
-				$margem_proteica_b = $margem_proteica_b[0];
-			}
+				// 	$margem_proteica_b = $margem_proteica[1];
+				// 	$margem_proteica_b = explode(" ", $margem_proteica_b);
+				// 	$margem_proteica_b = $margem_proteica_b[0];
+				// }
+				$valortotal_kcal = json_decode($relatorio['valortotal_kcal']);
+				$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
+				$valortotal_fibra = json_decode($relatorio['valortotal_fibra']);
+				$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
+				for ($i=0; $i < count($valortotal_kcal); $i++) {
 			?>
-			<span>fornecendo de <?php echo $margem_calorica_a;?> a <?php echo $margem_calorica_b;?> calorias/dia, <?php echo $margem_proteica_a;?> a <?php echo $margem_proteica_b;?> gramas de proteína/dia, conforme sugestões de produtos abaixo.</span></p>
-			<p>- Água livre <?php echo $relatorio["fra_volume_ml"];?> ml/dia;</p>
+			<h3>Opção <?php echo ($i + 1); ?></h3>
+			<span>fornecendo <?php echo $valortotal_kcal[$i];?> calorias/dia, <?php echo $valortotal_ptn[$i];?> gramas de proteína/dia, conforme sugestões de produtos abaixo.</span></p>
+			<p>- Água livre <?php echo $hidratacao_agua_livre[$i];?> ml/dia;</p>
+			<br>
+			<?php } ?>	
+			<?php } ?>	
 			<?php } ?>	
 
 			<?php if ($relatorio['rel_prescricao']<>""){ ?>
@@ -1017,11 +1031,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$modulo_horario = json_decode($relatorio['modulo_horario']);
 						$suplemento_quantidade = json_decode($relatorio['suplemento_quantidade']);
 						$suplemento_horario = json_decode($relatorio['suplemento_horario']);
-						$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						
-							for ($i=0; $i < count($dieta_infusao); $i++) {
+							for ($i=0; $i < count($valortotal_kcal); $i++) {
 								$infusao = "";
 								if($dieta_infusao[$i] == "Contínua"){
 									$infusao = "a " . $dieta_vazao_h[$i] . " ml/h às " . $dieta_horario_inicio[$i] . ".";
