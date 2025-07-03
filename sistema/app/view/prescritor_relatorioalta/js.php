@@ -3036,7 +3036,7 @@ $(function(){
         $('#necessidades').addClass('active').addClass('show').attr('aria-expanded','true');
     });
     // -------------------------------------------------------------------------------------------------
-    $(".btn_outra_dieta_add").on("click", function(e) {
+    $('body').on('click', ".btn_outra_dieta_add", function (e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_nova_dieta:first").clone(true);
@@ -3090,7 +3090,7 @@ $(function(){
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
     });
     // -------------------------------------------------------------------------------------------------
-    $(".btn_modulo_add").on("click", function(e) {
+    $('body').on('click', ".btn_modulo_add", function (e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_modulo:first").clone(true);
@@ -3149,7 +3149,7 @@ $(function(){
         $(this).closest(".div_volume_total").remove();
     });
     // -------------------------------------------------------------------------------------------------
-    $(".btn_suplemento_add").on("click", function(e) {
+    $('body').on('click', ".btn_suplemento_add", function (e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_suplemento:first").clone(true);
@@ -3171,7 +3171,7 @@ $(function(){
 
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
-        var selector = $("select[name='suplemento_produto[" + p +"]']");
+        var selector = $("select[name='suplemento_produto[" + idCombinacao + '__' + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
@@ -3381,7 +3381,7 @@ $(function(){
         $('.hora').mask("99:99");
     });
 
-    $('body').on('keyup', "[name='hidratacao_fracionamento_dia[]']", function (e) {
+    $('body').on('keyup', "[name^='hidratacao_fracionamento_dia']", function (e) {
         div_horario_fracionado = $(this).parent().parent().find(".div_fracionamento_hidratacao");
         div_horario_fracionado.empty();
         var horarios = '';
