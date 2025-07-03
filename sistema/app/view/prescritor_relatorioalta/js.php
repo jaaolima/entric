@@ -1711,14 +1711,14 @@ function fc_salvar(tab, notify){
         var frm = $("#"+tab+" .inputs1").find('select, textarea, input').serialize();
         frm = frm + "&action="+tab;
 
-        var tabs = $(".combinacoes .nav-item").length;      
-        var combinacoes = "";
-        for(i = 1; i < tabs; i++) {
-            var navlink = $(".combinacoes .nav-item:nth-child("+i+") .nav-link").attr("href");
-            if (combinacoes!=="") combinacoes = combinacoes+"&";
-            combinacoes = combinacoes + $(""+navlink+"").find('select, textarea, input').serialize();
-        }
-        frm = frm + "&"+ combinacoes;
+        // var tabs = $(".combinacoes .nav-item").length;      
+        // var combinacoes = "";
+        // for(i = 1; i < tabs; i++) {
+        //     var navlink = $(".combinacoes .nav-item:nth-child("+i+") .nav-link").attr("href");
+        //     if (combinacoes!=="") combinacoes = combinacoes+"&";
+        //     combinacoes = combinacoes + $(""+navlink+"").find('select, textarea, input').serialize();
+        // }
+        // frm = frm + "&"+ combinacoes;
 
     }else{
         if (tab == "gerar_relatorio"){
