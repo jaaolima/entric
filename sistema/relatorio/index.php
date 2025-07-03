@@ -1037,7 +1037,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						
-							for ($i=0; $i < count($valortotal_kcal); $i++) {
+							for ($i=1; $i = count($valortotal_kcal); $i++) {
 								$infusao = "";
 								if($dieta_infusao[$i] == "Contínua"){
 									$infusao = "a " . $dieta_vazao_h[$i] . " ml/h às " . $dieta_horario_inicio[$i] . ".";
@@ -1045,7 +1045,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if($dieta_infusao[$i] == "Fracionada"){
 									$infusao = $dieta_fracionamento_dia[$i] . " vezes ao dia às " . $dieta_horario_administracao[$i] . ".";
 								}
-								?>
+							?>
 								<p><b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> </p>
 
 								<p><b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.</p>
