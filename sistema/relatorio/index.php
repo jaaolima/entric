@@ -443,6 +443,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
 				$valortotal_fibra = json_decode($relatorio['valortotal_fibra']);
 				$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
+				var_dump($hidratacao_agua_livre);
 				for ($i=0; $i < count($valortotal_kcal); $i++) {
 			?>
 			<h3>Opção <?php echo ($i + 1); ?></h3>
