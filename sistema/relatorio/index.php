@@ -449,10 +449,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					$keyHidratacao = $keysHidratacao[$i];
     				$agua_livre = $arrHidratacao[$keyHidratacao];
 			?>
-			<h3>Opção <?php echo ($i + 1); ?></h3>
+			<h3>Opção <?php echo ($i + 1); ?>:</h3>
 			<span>fornecendo <?php echo $valortotal_kcal[$i];?> calorias/dia, <?php echo $valortotal_ptn[$i];?> gramas de proteína/dia, conforme sugestões de produtos abaixo.</span></p>
 			<p>- Água livre <?php echo $agua_livre;?> ml/dia;</p>
-			<br>
 			<?php } ?>	
 			<?php } ?>	
 			<?php } ?>	

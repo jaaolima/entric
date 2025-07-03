@@ -37,42 +37,42 @@
                                                                     <div class="input-group-prepend div_formula_rm none">
                                                                         <button class="btn btn-danger btn_formula_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
-                                                                    <select class="form-control select2_ajax_formula select2_formula" required="required" name="dieta_formula[0]"></select>
+                                                                    <select class="form-control select2_ajax_formula select2_formula" required="required" name="dieta_formula[1__0]"></select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-sm-8 mb-1">
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="volume">Volume (ml/dia):</label>
-                                                                        <input type="text" maxlength='4'  class="form-control numeros campos_limpar" data-precision="0" required="required" name="dieta_volume[]">
+                                                                        <input type="text" maxlength='4'  class="form-control numeros campos_limpar" data-precision="0" required="required" name="dieta_volume[1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label>Infusão:</label>
                                                                         <div class="form-radio">
-                                                                            <input type="radio" id="infusao_continua[0]" class="radio-outlined radio_infusao infusao_continua" name="dieta_infusao[0]" value="Contínua" checked="checked">  
-                                                                            <label for="infusao_continua[0]" class="radio-green radio_continua infusao_continua">Contínua</label> 
+                                                                            <input type="radio" id="infusao_continua[1__0]" class="radio-outlined radio_infusao infusao_continua" name="dieta_infusao[1__0]" value="Contínua" checked="checked">  
+                                                                            <label for="infusao_continua[1__0]" class="radio-green radio_continua infusao_continua">Contínua</label> 
                                                                             <br>
-                                                                            <input type="radio" id="infusao_fracionada[0]" class="radio-outlined radio_infusao infusao_fracionada" name="dieta_infusao[0]" value="Fracionada">  
-                                                                            <label for="infusao_fracionada[0]" class="radio-green radio_fracionada infusao_fracionada">Fracionada</label> 
+                                                                            <input type="radio" id="infusao_fracionada[1__0]" class="radio-outlined radio_infusao infusao_fracionada" name="dieta_infusao[1__0]" value="Fracionada">  
+                                                                            <label for="infusao_fracionada[1__0]" class="radio-green radio_fracionada infusao_fracionada">Fracionada</label> 
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
                                                                         <label for="dieta_vazao_h">Vazão (ml/h):</label>
-                                                                        <input type="text" maxlength='2' class="form-control numeros campos_limpar" required="required" name="dieta_vazao_h[]">
+                                                                        <input type="text" maxlength='2' class="form-control numeros campos_limpar" required="required" name="dieta_vazao_h[1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
-                                                                        <label for="dieta_horario_inicio[0]" class="label_horario_inicio">Horário de Início</label>
-                                                                        <input type="text" class="form-control hora horario_inicio campos_limpar" required="required" name="dieta_horario_inicio[0]">
+                                                                        <label for="dieta_horario_inicio[1__0]" class="label_horario_inicio">Horário de Início</label>
+                                                                        <input type="text" class="form-control hora horario_inicio campos_limpar" required="required" name="dieta_horario_inicio[1__0]">
                                                                     </div>
 
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_fracionada none">
-                                                                        <label for="dieta_fracionamento_dia[]">Fracionamento/dia:</label>
-                                                                        <input type="text"  maxlength='2'  class="form-control numeros campos_limpar" required="required" name="dieta_fracionamento_dia[]">
+                                                                        <label for="dieta_fracionamento_dia[1__0]">Fracionamento/dia:</label>
+                                                                        <input type="text"  maxlength='2'  class="form-control numeros campos_limpar" required="required" name="dieta_fracionamento_dia[1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-4 mb-1 div_infusao_fracionada div_horario_administracao none">
-                                                                        <label for="dieta_horario_administracao[0]" class="label_horario_administracao">Horário de Administração:</label>
-                                                                        <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[0]">
+                                                                        <label for="dieta_horario_administracao[1__0]" class="label_horario_administracao">Horário de Administração:</label>
+                                                                        <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[1__0]">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -108,25 +108,25 @@
                                                                     <div class="input-group-prepend div_produto_rm none">
                                                                         <button class="btn btn-danger btn_produto_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
-                                                                    <select class="form-control select2_ajax_produto select2_produto" required="required" name="modulo_produto[0]"></select>
+                                                                    <select class="form-control select2_ajax_produto select2_produto" required="required" name="modulo_produto[1__0]"></select>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-8 mb-1">
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar" required="required" name="modulo_quantidade[]">
+                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar" required="required" name="modulo_quantidade[1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label for="volume">Volume de Água (ml):</label>
-                                                                        <input type="text" class="form-control numeros campos_limpar" data-precision="2" required="required" name="modulo_volume[]">
+                                                                        <input type="text" class="form-control numeros campos_limpar" data-precision="2" required="required" name="modulo_volume[1__0]">
                                                                     </div>
 
                                                                     <div class="col-sm-5 mb-1 div_volume_total_col">
                                                                         <div class="row div_volume_total">
                                                                             <div class="form-group col-sm-5 mb-1">
                                                                                 <label for="horario">Horário:</label>
-                                                                                <input type="text" class="form-control hora modulo_horario campos_limpar" required="required" name="modulo_horario[0]">
+                                                                                <input type="text" class="form-control hora modulo_horario campos_limpar" required="required" name="modulo_horario[1__0]">
                                                                             </div>
                                                                             <!-- <div class="form-group input-group col-sm-7 mb-1">
                                                                                 <label for="volume_total">Volume Total:</label>
@@ -175,7 +175,7 @@
                                                                     <div class="input-group-prepend div_suplemento_rm none">
                                                                         <button class="btn btn-danger btn_suplemento_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
-                                                                    <select class="form-control select2_ajax_produto select2_suplemento_produto" required="required" name="suplemento_produto[0]"></select>
+                                                                    <select class="form-control select2_ajax_produto select2_suplemento_produto" required="required" name="suplemento_produto[1__0]"></select>
                                                                 </div>
                                                             </div>
 
@@ -183,13 +183,13 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2">
                                                                         <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="text" maxlength='4' class="form-control numeros campos_limpar" required="required" name="suplemento_quantidade[]">
+                                                                        <input type="text" maxlength='4' class="form-control numeros campos_limpar" required="required" name="suplemento_quantidade[1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-5 div_volume_total_col">
                                                                         <div class="row div_volume_total">
                                                                             <div class="form-group col-sm-5 mb-1">
                                                                                 <label for="suplemento_horario">Horário:</label>
-                                                                                <input type="text" class="form-control hora suplemento_horario campos_limpar" required="required" name="suplemento_horario[0]">
+                                                                                <input type="text" class="form-control hora suplemento_horario campos_limpar" required="required" name="suplemento_horario[1__0]">
                                                                             </div>
                                                                             <!-- <div class="form-group input-group col-sm-7 mb-1">
                                                                                 <label for="suplemento_volume_total">Volume Total:</label>
@@ -231,15 +231,15 @@
                                                 <div class="card-body pt-0">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control numeros campos_limpa hidratacao_agua_livre" required="required" name="hidratacao_agua_livre[]">
+                                                            <input type="text" class="form-control numeros campos_limpa hidratacao_agua_livre" required="required" name="hidratacao_agua_livre[1__0]">
                                                         </div>
                                                         <div class="form-group col-sm-3 mb-1" style="margin-top: -24px;">
-                                                            <label for="hidratacao_fracionamento_dia[]">Fracionamento/dia:</label>
-                                                            <input type="text"  maxlength='2' class="form-control numeros campos_limpar" required="required" name="hidratacao_fracionamento_dia[]">
+                                                            <label for="hidratacao_fracionamento_dia[1__0]">Fracionamento/dia:</label>
+                                                            <input type="text"  maxlength='2' class="form-control numeros campos_limpar" required="required" name="hidratacao_fracionamento_dia[1__0]">
                                                         </div>
                                                         <div class="form-group col-sm-3 mb-1 div_fracionamento_hidratacao d-flex row" style="margin-top: -24px;">
-                                                            <label for="dieta_horario[0]" class="label_horario">Horário:</label>
-                                                            <input type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario[0]">
+                                                            <label for="dieta_horario[1__0]" class="label_horario">Horário:</label>
+                                                            <input type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario[1__0]">
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <p class="mt-0"><small>Atenção:  este  valor  é referente à oferta de água livre (que será ofertada em frasco gravitacional), sem considerar o volume da dieta enteral ou do(s) suplemento(s)</small></p>

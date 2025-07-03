@@ -1525,169 +1525,306 @@ function fc_resetar_relatorio(){
 
 function validacao_manual(){
     let todosPreenchidos = true;
-    if($("[name='dieta_formula[0]']").val() == null){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário selecionar a fórmula.'
-        });
-        return false;
-    }
 
-    if($("input[name='dieta_volume[]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher o volume.'
-        });
-        return false;
-    }
+    $("[name^='dieta_formula']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
 
-    if($("[name='dieta_infusao[0]']:checked").val() == "Contínua"){
-        if($("input[name='dieta_vazao_h[]']").val() == ""){
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
             $.alert({
                 title: 'Atenção',
                 icon: 'fa fa-warning',
                 type: 'red',
-                content: 'é necessário preencher a Vazão.'
+                content: 'é necessário selecionar a fórmula.'
             });
-            return false;
-        }
 
-        if($("input[name='dieta_horario_inicio[0]']").val() == ""){
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    $("input[name^='dieta_volume']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
             $.alert({
                 title: 'Atenção',
                 icon: 'fa fa-warning',
                 type: 'red',
-                content: 'é necessário preencher o horário de início.'
+                content: 'é necessário preencher o volume.'
             });
-            return false;
-        }
-    }
 
-    if($("[name='dieta_infusao[0]']:checked").val() == "Fracionada"){
-        if($("input[name='dieta_fracionamento_dia[]']").val() == ""){
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    // if($("[name='dieta_infusao[0]']:checked").val() == "Contínua"){
+    //     if($("input[name='dieta_vazao_h[]']").val() == ""){
+    //         $.alert({
+    //             title: 'Atenção',
+    //             icon: 'fa fa-warning',
+    //             type: 'red',
+    //             content: 'é necessário preencher a Vazão.'
+    //         });
+    //         return false;
+    //     }
+
+    //     if($("input[name='dieta_horario_inicio[0]']").val() == ""){
+    //         $.alert({
+    //             title: 'Atenção',
+    //             icon: 'fa fa-warning',
+    //             type: 'red',
+    //             content: 'é necessário preencher o horário de início.'
+    //         });
+    //         return false;
+    //     }
+    // }
+
+    // if($("[name='dieta_infusao[0]']:checked").val() == "Fracionada"){
+    //     if($("input[name='dieta_fracionamento_dia[]']").val() == ""){
+    //         $.alert({
+    //             title: 'Atenção',
+    //             icon: 'fa fa-warning',
+    //             type: 'red',
+    //             content: 'é necessário preencher o fracionamento/dia.'
+    //         });
+    //         return false;
+    //     }
+
+    //     if($("input[name='dieta_horario_administracao[0]']").val() == ""){
+    //         $.alert({
+    //             title: 'Atenção',
+    //             icon: 'fa fa-warning',
+    //             type: 'red',
+    //             content: 'é necessário preencher o horário de administração.'
+    //         });
+    //         return false;
+    //     }
+    // }
+
+   $("[name^='modulo_produto']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário selecionar o produto do módulo.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    $("input[name^='modulo_quantidade']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher a quantidade.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+
+    $("input[name^='modulo_volume']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher o volume.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    $("input[name^='modulo_horario']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher o horário.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    $("[name^='suplemento_produto']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário selecionar o produto do suplemento.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+
+    $("input[name^='suplemento_quantidade']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher a quantidade.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+
+
+    $("input[name^='suplemento_horario']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher o horário.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    $("input[name^='hidratacao_agua_livre']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'é necessário preencher a hidratação.'
+            });
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    $("input[name^='hidratacao_fracionamento_dia']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
             $.alert({
                 title: 'Atenção',
                 icon: 'fa fa-warning',
                 type: 'red',
                 content: 'é necessário preencher o fracionamento/dia.'
             });
-            return false;
-        }
 
-        if($("input[name='dieta_horario_administracao[0]']").val() == ""){
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
+        }
+    });
+
+    $("input[name^='hidratacao_horario']").each(function() {
+        var $input = $(this); // O input atual no loop
+        var valorInput = $input.val();
+
+        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+        if (!valorInput || valorInput.trim() === "") {
+            todosPreenchidos = false; // Encontrou um campo vazio
+            
+            // Exibe o alerta
             $.alert({
                 title: 'Atenção',
                 icon: 'fa fa-warning',
                 type: 'red',
-                content: 'é necessário preencher o horário de administração.'
+                content: 'É necessário preencher todos os horários de hidratação.'
             });
-            return false;
+
+            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
+            return false; // Sai do loop .each() imediatamente
         }
-    }
-
-    if($("[name='modulo_produto[0]']").val() == null){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário selecionar o produto do módulo.'
-        });
-        return false;
-    }
-
-    if($("input[name='modulo_quantidade[]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher a quantidade.'
-        });
-        return false;
-    }
-
-    if($("input[name='modulo_volume[]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher o volume.'
-        });
-        return false;
-    }
-
-    if($("input[name='modulo_horario[0]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher o horário.'
-        });
-        return false;
-    }
-
-    if($("[name='suplemento_produto[0]']").val() == null){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário selecionar o produto do suplemento.'
-        });
-        return false;
-    }
-
-    if($("input[name='suplemento_quantidade[]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher a quantidade.'
-        });
-        return false;
-    }
-
-    if($("input[name='suplemento_horario[0]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher o horário.'
-        });
-        return false;
-    }
-
-    if($("input[name='hidratacao_agua_livre[]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher a hidratação.'
-        });
-        return false;
-    }
-
-    if($("input[name='hidratacao_fracionamento_dia[]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher o fracionamento/dia.'
-        });
-        return false;
-    }
-
-    if($("input[name='hidratacao_horario[0]']").val() == ""){
-        $.alert({
-            title: 'Atenção',
-            icon: 'fa fa-warning',
-            type: 'red',
-            content: 'é necessário preencher o horário.'
-        });
-        return false;
-    }
+    });
 
     return todosPreenchidos;
 }
@@ -3143,22 +3280,22 @@ $(function(){
         divClone.find('.div_suplemento').not(':first').remove();
         divClone.find('.div_suplemento').find('.div_volume_total').not(':first').remove();
         divClone.find(".campos_limpar").val('');
-        divClone.find(".select2_formula").attr('name', 'dieta_formula[' + p +']').end();
+        divClone.find(".select2_formula").attr('name', 'dieta_formula['+ id+"__" + p +']').end();
         divClone.find(".select2_formula").parent().find(".select2-container--below").remove();  
         divClone.find(".select2_formula").parent().find(".select2-container--default").remove(); 
-        divClone.find(".select2_produto").attr('name', 'modulo_produto[' + p +']').end();
+        divClone.find(".select2_produto").attr('name', 'modulo_produto['+ id+"__" + p +']').end();
         divClone.find(".select2_produto").parent().find(".select2-container--below").remove();  
         divClone.find(".select2_produto").parent().find(".select2-container--default").remove();       
-        divClone.find(".select2_suplemento_produto").attr('name', 'suplemento_produto[' + p +']').end();
+        divClone.find(".select2_suplemento_produto").attr('name', 'suplemento_produto['+ id+"__" + p +']').end();
         divClone.find(".select2_suplemento_produto").parent().find(".select2-container--below").remove();  
         divClone.find(".select2_suplemento_produto").parent().find(".select2-container--default").remove();
-        divClone.find(".hidratacao_agua_livre").attr('name', 'hidratacao_agua_livre[' + p +']').end();
+        divClone.find(".hidratacao_agua_livre").attr('name', 'hidratacao_agua_livre['+ id+"__" + p +']').end();
 
-        divClone.find("input.radio_infusao").attr('name', 'dieta_infusao[' + p +']').end();
-        divClone.find('input.infusao_continua').removeAttr("id").attr("id","infusao_continua[" + p +"]");
-        divClone.find('label.infusao_continua').removeAttr("for").attr("for","infusao_continua[" + p +"]");
-        divClone.find('input.infusao_fracionada').removeAttr("id").attr("id","infusao_fracionada[" + p +"]");
-        divClone.find('label.infusao_fracionada').removeAttr("for").attr("for","infusao_fracionada[" + p +"]");
+        divClone.find("input.radio_infusao").attr('name', 'dieta_infusao['+ id+"__" + p +']').end();
+        divClone.find('input.infusao_continua').removeAttr("id").attr("id","infusao_continua["+ id+"__" + p +"]");
+        divClone.find('label.infusao_continua').removeAttr("for").attr("for","infusao_continua["+ id+"__" + p +"]");
+        divClone.find('input.infusao_fracionada').removeAttr("id").attr("id","infusao_fracionada["+ id+"__" + p +"]");
+        divClone.find('label.infusao_fracionada').removeAttr("for").attr("for","infusao_fracionada["+ id+"__" + p +"]");
         divClone.find('.entric_ofertotal').removeAttr("style");
         divClone.find('.div_horario_administracao').html("");
         divClone.find('.div_fracionamento_hidratacao').html("");
@@ -3170,7 +3307,7 @@ $(function(){
         $('.combinacoes .nav-tabs a[href="#combinacao'+id+'"]').tab('show');
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
-        var selector = $("#combinacao"+id).find("select[name='dieta_formula[" + p +"]']");
+        var selector = $("#combinacao"+id).find("select[name='dieta_formula["+ id+"__" + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
@@ -3180,7 +3317,7 @@ $(function(){
         selector.empty();
         selector.removeData();
         select2_ajax_produto_enteral(selector);
-        var selectorModulo = $("#combinacao"+id).find("select[name='modulo_produto[" + p +"]']");
+        var selectorModulo = $("#combinacao"+id).find("select[name='modulo_produto["+ id+"__" + p +"]']");
         selectorModulo.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
@@ -3190,7 +3327,7 @@ $(function(){
         selectorModulo.empty();
         selectorModulo.removeData();
         select2_ajax_produto_modulo(selectorModulo);
-        var selectorSuplemento = $("#combinacao"+id).find("select[name='suplemento_produto[" + p +"]']");
+        var selectorSuplemento = $("#combinacao"+id).find("select[name='suplemento_produto["+ id+"__" + p +"]']");
         selectorSuplemento.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
