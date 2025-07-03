@@ -443,12 +443,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
 				$valortotal_fibra = json_decode($relatorio['valortotal_fibra']);
 				$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
-				var_dump($hidratacao_agua_livre);
+				$arrHidratacao = (array) $hidratacao_agua_livre;
+				$keysHidratacao = array_keys($arrHidratacao);
 				for ($i=0; $i < count($valortotal_kcal); $i++) {
+					$keyHidratacao = $keysHidratacao[$i];
+    				$agua_livre = $arrHidratacao[$keyHidratacao];
 			?>
 			<h3>Opção <?php echo ($i + 1); ?></h3>
 			<span>fornecendo <?php echo $valortotal_kcal[$i];?> calorias/dia, <?php echo $valortotal_ptn[$i];?> gramas de proteína/dia, conforme sugestões de produtos abaixo.</span></p>
-			<p>- Água livre <?php echo $hidratacao_agua_livre[$i];?> ml/dia;</p>
+			<p>- Água livre <?php echo $agua_livre;?> ml/dia;</p>
 			<br>
 			<?php } ?>	
 			<?php } ?>	
