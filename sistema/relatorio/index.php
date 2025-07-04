@@ -1025,6 +1025,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						?>
 					<?php elseif($relatorio['tipo_prescricao'] == "Prescrição Manual") : ?>
 						<?php 
+						$dieta_formula = json_decode($relatorio['dieta_formula']);
 						$dieta_infusao = json_decode($relatorio['dieta_infusao']);
 						$dieta_vazao_h = json_decode($relatorio['dieta_vazao_h']);
 						$dieta_horario_inicio = json_decode($relatorio['dieta_horario_inicio']);
@@ -1036,6 +1037,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$suplemento_horario = json_decode($relatorio['suplemento_horario']);
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
+
+						var_dump($dieta_formula);
 						
 							for ($i=1; $i = count($valortotal_kcal); $i++) {
 								$infusao = "";
