@@ -1040,10 +1040,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						
 						for ($i=1; $i <= count($valortotal_kcal); $i++) {
+							var_dump($i);
 							echo "<h3>Opção ".$i."</h3>";
 							foreach ($dieta_formula as $key => $value) {
+								var_dump(substr($key, 0, 1));
 								if (substr($key, 0, 1) == $i) {
-									echo "chegou 1";
 									$infusao = "";
 									$volumeProduto = $dieta_volume->$key;
 									$dieta_infusaoProduto = $dieta_infusao->$key;
