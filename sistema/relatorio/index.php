@@ -1026,6 +1026,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					<?php elseif($relatorio['tipo_prescricao'] == "Prescrição Manual") : ?>
 						<?php 
 						$dieta_formula = json_decode($relatorio['dieta_formula']);
+						$dieta_volume = json_decode($relatorio['dieta_volume']);
 						$dieta_infusao = json_decode($relatorio['dieta_infusao']);
 						$dieta_vazao_h = json_decode($relatorio['dieta_vazao_h']);
 						$dieta_horario_inicio = json_decode($relatorio['dieta_horario_inicio']);
@@ -1041,28 +1042,45 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						var_dump($dieta_formula);
 						
 							for ($i=1; $i = count($valortotal_kcal); $i++) {
+								echo "<h3>Opção ".$i."</h3>";
 								$infusao = "";
 								foreach ($obj as $key => $value) {
 									// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
 									if (substr($key, 0, 1) === $i) {
-										
-										echo "<p><b>".$value."</b> - Volume - Administrar de forma " . $dieta_formula[$i] . ".</p>";
+										$volumeProduto = $dieta_volume->$key;
+										$dieta_infusaoProduto = $dieta_infusao->$key;
+										if($dieta_infusaoProduto == "Contínua"){
+											$dieta_vazao_hProduto = $dieta_vazao_h->$key;
+											$dieta_horario_inicioProduto = $dieta_horario_inicio->$key;
+											$infusao = "a " . $dieta_vazao_hProduto . " ml/h às " . $dieta_horario_inicioProduto . ".";
+										}	
+										if($dieta_infusaoProduto == "Fracionada"){
+											$dieta_fracionamento_diaProduto = $dieta_fracionamento_dia->$key;
+											$StringHoraAdministracao = '';
+											foreach ($dieta_horario_administracao as $keyHoraAdministracao => $valueHoraAdministracao) {
+												// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
+												if (substr($keyHoraAdministracao, 0, strlen($key)) === $key) {
+													if ($StringHoraAdministracao != '') {
+														$StringHoraAdministracao .= $StringHoraAdministracao .', ' . $valueHoraAdministracao;
+													} else {
+														$StringHoraAdministracao .= $valueHoraAdministracao;
+													}
+												}
+											}
+											$infusao = $dieta_fracionamento_diaProduto . " vezes ao dia às " . $StringHoraAdministracao . ".";
+										}
+										echo "<p><b>".$value."</b> - ".$volumeProduto." - Administrar de forma " . $dieta_formula[$i] . ".</p>";
 									}
 								}
-								if($dieta_infusao[$i] == "Contínua"){
-									$infusao = "a " . $dieta_vazao_h[$i] . " ml/h às " . $dieta_horario_inicio[$i] . ".";
-								}	
-								if($dieta_infusao[$i] == "Fracionada"){
-									$infusao = $dieta_fracionamento_dia[$i] . " vezes ao dia às " . $dieta_horario_administracao[$i] . ".";
-								}
+								
 							?>
-								<p><b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> </p>
+								<!-- <p><b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> </p>
 
 								<p><b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.</p>
 
 								<p><b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;</p>
 
-								<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracionado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p>
+								<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracionado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p> -->
 							<?php } ?>
 					<?php endif;?>
 
