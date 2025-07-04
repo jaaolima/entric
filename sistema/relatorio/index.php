@@ -1086,13 +1086,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if (substr($key, 0, 1) == $i) {
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$suplementoHorario = $suplemento_horario->$key;
-									echo "<p><b>".$value."</b> - Utilizar ".$suplementoQuantidade." às ".$suplementoHorario."</p>";
+									echo "<p><b>".$value."</b> - Utilizar ".$suplementoQuantidade."g ou ml às ".$suplementoHorario."</p>";
 								}
 							}
 
 							foreach ($hidratacao_agua_livre as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
 									$hidratacaoFracionamento = $hidratacao_fracionamento_dia->$key;
+									$StringHorario = '';
 									foreach ($hidratacao_horario as $keyHorario => $valueHorario) {
 										if (substr($keyHorario, 0, strlen($key)) === $key) {
 											if ($StringHorario != '') {
@@ -1102,7 +1103,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									echo "<p><b>ÁGUA LIVRE</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento." às ".$StringHorario."</p>";
+									echo "<p><b>ÁGUA LIVRE</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
 								}
 							}
 							
