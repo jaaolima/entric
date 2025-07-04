@@ -1032,18 +1032,19 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$dieta_horario_inicio = json_decode($relatorio['dieta_horario_inicio']);
 						$dieta_fracionamento_dia = json_decode($relatorio['dieta_fracionamento_dia']);
 						$dieta_horario_administracao = json_decode($relatorio['dieta_horario_administracao']);
+						$modulo_produto = json_decode($relatorio['modulo_produto']);
+						$modulo_quantidade = json_decode($relatorio['modulo_quantidade']);
 						$modulo_volume = json_decode($relatorio['modulo_volume']);
 						$modulo_horario = json_decode($relatorio['modulo_horario']);
+						$suplemento_produto = json_decode($relatorio['suplemento_produto']);
 						$suplemento_quantidade = json_decode($relatorio['suplemento_quantidade']);
 						$suplemento_horario = json_decode($relatorio['suplemento_horario']);
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						
 						for ($i=1; $i <= count($valortotal_kcal); $i++) {
-							var_dump($i);
 							echo "<h3>Opção ".$i."</h3>";
 							foreach ($dieta_formula as $key => $value) {
-								var_dump(substr($key, 0, 1));
 								if (substr($key, 0, 1) == $i) {
 									$infusao = "";
 									$volumeProduto = $dieta_volume->$key;
@@ -1066,9 +1067,42 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 										}
-										$infusao = $dieta_fracionamento_diaProduto . " vezes ao dia às " . $StringHoraAdministracao . ".";
+										$infusao = $dieta_fracionamento_diaProduto . (($dieta_fracionamento_dia == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ".";
 									}
 									echo "<p><b>".$value."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
+								}
+							}
+
+							foreach ($modulo_produto as $key => $value) {
+								if (substr($key, 0, 1) == $i) {
+									$moduloQuantidade = $modulo_quantidade->$key;
+									$moduloVolume = $modulo_volume->$key;
+									$moduloHorario = $modulo_horario->$key;
+									echo "<p><b>".$value."</b> - ".$moduloQuantidade."g ou ml - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
+								}
+							}
+
+							foreach ($suplemento_produto as $key => $value) {
+								if (substr($key, 0, 1) == $i) {
+									$suplementoQuantidade = $suplemento_quantidade->$key;
+									$suplementoHorario = $suplemento_horario->$key;
+									echo "<p><b>".$value."</b> - Utilizar ".$suplementoQuantidade." às ".$suplementoHorario."</p>";
+								}
+							}
+
+							foreach ($hidratacao_agua_livre as $key => $value) {
+								if (substr($key, 0, 1) == $i) {
+									$hidratacaoFracionamento = $hidratacao_fracionamento_dia->$key;
+									foreach ($hidratacao_horario as $keyHorario => $valueHorario) {
+										if (substr($keyHorario, 0, strlen($key)) === $key) {
+											if ($StringHorario != '') {
+												$StringHorario .= ', ' . $valueHorario;
+											} else {
+												$StringHorario .= $valueHorario;
+											}
+										}
+									}
+									echo "<p><b>ÁGUA LIVRE</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento." às ".$StringHorario."</p>";
 								}
 							}
 							
