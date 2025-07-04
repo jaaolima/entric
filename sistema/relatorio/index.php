@@ -1059,7 +1059,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
 											if (substr($keyHoraAdministracao, 0, strlen($key)) === $key) {
 												if ($StringHoraAdministracao != '') {
-													$StringHoraAdministracao .= $StringHoraAdministracao .', ' . $valueHoraAdministracao;
+													$StringHoraAdministracao .= ', ' . $valueHoraAdministracao;
 												} else {
 													$StringHoraAdministracao .= $valueHoraAdministracao;
 												}
@@ -1067,7 +1067,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										}
 										$infusao = $dieta_fracionamento_diaProduto . " vezes ao dia às " . $StringHoraAdministracao . ".";
 									}
-									echo "<p><b>".$value."</b> - ".$volumeProduto." - Administrar de forma " . $infusao . ".</p>";
+									echo "<p><b>".$value."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
 								}
 							}
 							
