@@ -1042,6 +1042,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						
 							for ($i=1; $i = count($valortotal_kcal); $i++) {
 								$infusao = "";
+								foreach ($obj as $key => $value) {
+									// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
+									if (substr($key, 0, 1) === $i) {
+										
+										echo "<p><b>".$value."</b> - Volume - Administrar de forma " . $dieta_formula[$i] . ".</p>";
+									}
+								}
 								if($dieta_infusao[$i] == "Contínua"){
 									$infusao = "a " . $dieta_vazao_h[$i] . " ml/h às " . $dieta_horario_inicio[$i] . ".";
 								}	

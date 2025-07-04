@@ -588,7 +588,7 @@ function select2_ajax_formula(_this){
                 return {
                     results: $.map(data, function (item) {
                         return {
-                            id: item.id,
+                            id: item.nome,
                             text: item.nome,
                             fabricante: item.fabricante,
                         }
@@ -687,7 +687,7 @@ function select2_ajax_produto(_this){
                 return {
                     results: $.map(data, function (item) {
                         return {
-                            id: item.id,
+                            id: item.nome,
                             text: item.nome,
                             fabricante: item.fabricante
                         }
@@ -725,7 +725,7 @@ function select2_ajax_produto_enteral(_this){
                 return {
                     results: $.map(data, function (item) {
                         return {
-                            id: item.id,
+                            id: item.nome,
                             text: item.nome,
                             apresentacao: item.apresentacao,
                             fabricante: item.fabricante,
@@ -767,7 +767,7 @@ function select2_ajax_produto_modulo(_this){
                 return {
                     results: $.map(data, function (item) {
                         return {
-                            id: item.id,
+                            id: item.nome,
                             text: item.nome,
                             fabricante: item.fabricante,
                             cat_modulo: item.cat_modulo,
@@ -809,7 +809,7 @@ function select2_ajax_produto_suplemento(_this){
                 return {
                     results: $.map(data, function (item) {
                         return {
-                            id: item.id,
+                            id: item.nome,
                             text: item.nome,
                             fabricante: item.fabricante,
                             apresentacao: item.apresentacao,
