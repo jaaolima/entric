@@ -3398,7 +3398,7 @@ $(function(){
                 var numi = i;
             }            
             horarios = horarios + '<div class="col-sm-8"><label for="dieta_horario_administracao['+nameStringmatch[1]+'__'+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label>'+
-                                  '<input width="60px" type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
+                                  '<input width="60px" type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+nameStringmatch[1]+'__'+numi+']"></div>';
                                                                         
         }
         div_horario_fracionado.html(horarios);
@@ -3420,7 +3420,7 @@ $(function(){
                 var numi = i;
             }            
             horarios = horarios + '<div class="col-sm-4"><label for="hidratacao_horario['+nameStringmatch[1]+'__'+numi+']" class="label_horario_administracao">Horário '+numi+':</label>'+
-                                  '<input width="60px" type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario['+numi+']"></div>';
+                                  '<input width="60px" type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario['+nameStringmatch[1]+'__'+numi+']"></div>';
                                                                         
         }
         div_horario_fracionado.html(horarios);
