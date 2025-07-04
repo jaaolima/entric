@@ -1046,6 +1046,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							echo "<h3>Opção ".$i."</h3>";
 							foreach ($dieta_formula as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
+									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
 									$infusao = "";
 									$volumeProduto = $dieta_volume->$key;
 									$dieta_infusaoProduto = $dieta_infusao->$key;
@@ -1069,24 +1070,26 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										}
 										$infusao = $dieta_fracionamento_diaProduto . (($dieta_fracionamento_dia == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ".";
 									}
-									echo "<p><b>".$value."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
+									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
 								}
 							}
 
 							foreach ($modulo_produto as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
+									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
 									$moduloQuantidade = $modulo_quantidade->$key;
 									$moduloVolume = $modulo_volume->$key;
 									$moduloHorario = $modulo_horario->$key;
-									echo "<p><b>".$value."</b> - ".$moduloQuantidade."g ou ml - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
+									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade."g ou ml - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
 								}
 							}
 
 							foreach ($suplemento_produto as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
+									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$suplementoHorario = $suplemento_horario->$key;
-									echo "<p><b>".$value."</b> - Utilizar ".$suplementoQuantidade."g ou ml às ".$suplementoHorario."</p>";
+									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade."g ou ml às ".$suplementoHorario."</p>";
 								}
 							}
 
