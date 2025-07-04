@@ -44,7 +44,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="volume">Volume (ml/dia):</label>
-                                                                        <input type="text" maxlength='4'  class="form-control numeros campos_limpar" data-precision="0" required="required" name="dieta_volume[1__1__0]">
+                                                                        <input type="text" maxlength='4'  class="form-control numeros campos_limpar volume_dia" data-precision="0" required="required" name="dieta_volume[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label>Infusão:</label>
@@ -59,7 +59,7 @@
 
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
                                                                         <label for="dieta_vazao_h">Vazão (ml/h):</label>
-                                                                        <input type="text" maxlength='2' class="form-control numeros campos_limpar" required="required" name="dieta_vazao_h[1__1__0]">
+                                                                        <input type="text" maxlength='2' class="form-control numeros campos_limpar vazao_ml" required="required" name="dieta_vazao_h[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
                                                                         <label for="dieta_horario_inicio[1__1__0]" class="label_horario_inicio">Horário de Início</label>
@@ -68,7 +68,7 @@
 
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_fracionada none">
                                                                         <label for="dieta_fracionamento_dia[1__1__0]">Fracionamento/dia:</label>
-                                                                        <input type="text"  maxlength='2'  class="form-control numeros campos_limpar" required="required" name="dieta_fracionamento_dia[1__1__0]">
+                                                                        <input type="text"  maxlength='2'  class="form-control numeros campos_limpar fracionamento_dia" required="required" name="dieta_fracionamento_dia[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-4 mb-1 div_infusao_fracionada div_horario_administracao none">
                                                                         <label for="dieta_horario_administracao[1__1__0]" class="label_horario_administracao">Horário de Administração:</label>
@@ -115,11 +115,11 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar" required="required" name="modulo_quantidade[1__1__0]">
+                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar modulo_quantidade" required="required" name="modulo_quantidade[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label for="volume">Volume de Água (ml):</label>
-                                                                        <input type="text" class="form-control numeros campos_limpar" data-precision="2" required="required" name="modulo_volume[1__1__0]">
+                                                                        <input type="text" class="form-control numeros campos_limpar modulo_volume_agua" data-precision="2" required="required" name="modulo_volume[1__1__0]">
                                                                     </div>
 
                                                                     <div class="col-sm-5 mb-1 div_volume_total_col">
@@ -183,7 +183,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2">
                                                                         <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="text" maxlength='4' class="form-control numeros campos_limpar" required="required" name="suplemento_quantidade[1__1__0]">
+                                                                        <input type="text" maxlength='4' class="form-control numeros campos_limpar suplemento_quantidade" required="required" name="suplemento_quantidade[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-5 div_volume_total_col">
                                                                         <div class="row div_volume_total">
