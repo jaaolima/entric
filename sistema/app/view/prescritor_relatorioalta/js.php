@@ -3065,7 +3065,7 @@ $(function(){
 
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
-        var selector = $("select[name='dieta_formula[" + idCombinacao + '__' + p +"]']");
+        var selector = $("select[name='dieta_formula[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
@@ -3175,7 +3175,7 @@ $(function(){
 
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
-        var selector = $("select[name='suplemento_produto[" + idCombinacao + '__' + p +"]']");
+        var selector = $("select[name='suplemento_produto[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
