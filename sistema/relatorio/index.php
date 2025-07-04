@@ -1039,12 +1039,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						
-						for ($i=1; $i = count($valortotal_kcal); $i++) {
+						for ($i=1; $i <= count($valortotal_kcal); $i++) {
 							echo "<h3>Opção ".$i."</h3>";
-							$infusao = "";
-							foreach ($obj as $key => $value) {
+							foreach ($dieta_formula as $key => $value) {
 								// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
 								if (substr($key, 0, 1) === $i) {
+									$infusao = "";
 									$volumeProduto = $dieta_volume->$key;
 									$dieta_infusaoProduto = $dieta_infusao->$key;
 									if($dieta_infusaoProduto == "Contínua"){
@@ -1067,7 +1067,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										}
 										$infusao = $dieta_fracionamento_diaProduto . " vezes ao dia às " . $StringHoraAdministracao . ".";
 									}
-									echo "<p><b>".$value."</b> - ".$volumeProduto." - Administrar de forma " . $dieta_formula[$i] . ".</p>";
+									echo "<p><b>".$value."</b> - ".$volumeProduto." - Administrar de forma " . $infusao . ".</p>";
 								}
 							}
 							
