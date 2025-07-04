@@ -3316,6 +3316,16 @@ $(function(){
         divClone.find('label.infusao_continua').removeAttr("for").attr("for","infusao_continua["+ id+"__1__" + p +"]");
         divClone.find('input.infusao_fracionada').removeAttr("id").attr("id","infusao_fracionada["+ id+"__1__" + p +"]");
         divClone.find('label.infusao_fracionada').removeAttr("for").attr("for","infusao_fracionada["+ id+"__1__" + p +"]");
+        divClone.find(".volume_dia").attr('name', 'dieta_volume[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".vazao_ml").attr('name', 'dieta_vazao_h[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".fracionamento_dia").attr('name', 'dieta_fracionamento_dia[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".modulo_quantidade").attr('name', 'modulo_quantidade[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".modulo_volume_agua").attr('name', 'modulo_volume[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".modulo_horario").attr('name', 'horario[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao +"__1__" + p +']').end();
+        divClone.find(".hidratacao_fracionamento").attr('name', 'hidratacao_fracionamento_dia[' + idCombinacao +"__1__" + p +']').end();
+
         divClone.find('.entric_ofertotal').removeAttr("style");
         divClone.find('.div_horario_administracao').html("");
         divClone.find('.div_fracionamento_hidratacao').html("");
