@@ -3037,6 +3037,7 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_outra_dieta_add", function (e) {
+        idCampo = $(".div_nova_dieta").length + 1;
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_nova_dieta:first").clone(true);
@@ -3044,16 +3045,16 @@ $(function(){
 
         divClone.removeAttr("id");
         divClone.find(".div_formula_rm").removeClass("none");
-        divClone.find("input:radio").attr('name', 'dieta_infusao[' + idCombinacao + '__' + p +']').end();
-        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao + '__' + p +"]'][value='Contínua']").attr('id', 'infusao_continua[' + idCombinacao + '__' + p +']').end();
-        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao + '__' + p +"]'][value='Fracionada']").attr('id', 'infusao_fracionada[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".radio_continua").attr('for', 'infusao_continua[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".radio_fracionada").attr('for', 'infusao_fracionada[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".horario_inicio").attr('name', 'dieta_horario_inicio[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".label_horario_inicio").attr('for', 'dieta_horario_inicio[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".horario_administracao").attr('name', 'dieta_horario_administracao[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".label_horario_administracao").attr('for', 'dieta_horario_administracao[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".select2_ajax_formula").attr('name', 'dieta_formula[' + idCombinacao + '__' + p +']').end();
+        divClone.find("input:radio").attr('name', 'dieta_infusao[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao + '__' + p +"]'][value='Contínua']").attr('id', 'infusao_continua[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao + '__' + p +"]'][value='Fracionada']").attr('id', 'infusao_fracionada[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".radio_continua").attr('for', 'infusao_continua[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".radio_fracionada").attr('for', 'infusao_fracionada[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".horario_inicio").attr('name', 'dieta_horario_inicio[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".label_horario_inicio").attr('for', 'dieta_horario_inicio[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".horario_administracao").attr('name', 'dieta_horario_administracao[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".label_horario_administracao").attr('for', 'dieta_horario_administracao[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".select2_ajax_formula").attr('name', 'dieta_formula[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_formula").parent().find(".select2-container--below").remove();
         divClone.find(".select2_ajax_formula").parent().find(".select2-container--default").remove();  
 
@@ -3091,6 +3092,8 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_modulo_add", function (e) {
+        idCampo = $(".div_modulo").length + 1;
+
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_modulo:first").clone(true);
@@ -3098,9 +3101,9 @@ $(function(){
 
         divClone.removeAttr("id").attr("id","modulo"+p);
         divClone.find(".div_produto_rm").removeClass("none");
-        divClone.find(".modulo_horario").attr('name', 'horario[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".modulo_volume_total").attr('name', 'modulo_volume_total[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".select2_ajax_produto").attr('name', 'modulo_produto[' + idCombinacao + '__' + p +']').end();
+        divClone.find(".modulo_horario").attr('name', 'horario[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".modulo_volume_total").attr('name', 'modulo_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".select2_ajax_produto").attr('name', 'modulo_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--below").remove();  
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();        
         
@@ -3112,7 +3115,7 @@ $(function(){
 
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
-        var selector = $("#modulo"+p).find("select[name='modulo_produto[" + idCombinacao + '__' + p +"]']");
+        var selector = $("#modulo"+p).find("select[name='modulo_produto[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
@@ -3150,6 +3153,7 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_suplemento_add", function (e) {
+        idCampo = $(".div_suplemento").length + 1;
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_suplemento:first").clone(true);
@@ -3157,9 +3161,9 @@ $(function(){
 
         divClone.removeAttr("id");
         divClone.find(".div_suplemento_rm").removeClass("none");
-        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".select2_ajax_produto").attr('name', 'suplemento_produto[' + idCombinacao + '__' + p +']').end();
+        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".select2_ajax_produto").attr('name', 'suplemento_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--below").remove();
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();    
         
