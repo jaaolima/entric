@@ -59,7 +59,7 @@
 
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
                                                                         <label for="dieta_vazao_h">Vazão (ml/h):</label>
-                                                                        <input type="text" maxlength='2' class="form-control numeros campos_limpar vazao_ml" required="required" name="dieta_vazao_h[1__1__0]">
+                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar vazao_ml" required="required" name="dieta_vazao_h[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_continua">
                                                                         <label for="dieta_horario_inicio[1__1__0]" class="label_horario_inicio">Horário de Início</label>

@@ -2040,9 +2040,9 @@ $(function(){
                 let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
                 let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
 
-                var kcalProduto = parseFloat(data.kcal);
-                var ptnProduto = parseFloat(data.ptn);
-                var fibrasProduto = parseFloat(data.fibras);
+                var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
                 console.log(kcalProduto);
                 console.log(ptnProduto);
@@ -2098,9 +2098,9 @@ $(function(){
                 let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
                 let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
 
-                var kcalProduto = parseFloat(data.kcal);
-                var ptnProduto = parseFloat(data.ptn);
-                var fibrasProduto = parseFloat(data.fibras);
+                var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
                 KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
                 PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
@@ -2148,9 +2148,9 @@ $(function(){
                 let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
                 let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
 
-                var kcalProduto = parseFloat(data.kcal);
-                var ptnProduto = parseFloat(data.ptn);
-                var fibrasProduto = parseFloat(data.fibras);
+                var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
                 KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
                 PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
@@ -3081,6 +3081,8 @@ $(function(){
     });
     $(".btn_formula_rm").on("click", function(e) {
         $(this).closest(".div_nova_dieta").remove();
+
+
     });
     $('.radio_infusao').on("change", function(e) {
         if ($(this).filter(':checked').val() == 'Fracionada') {
@@ -3132,7 +3134,47 @@ $(function(){
         select2_ajax_produto_modulo(selector);
     });
     $(".btn_produto_rm").on("click", function(e) {
+
+    div_select = $(this).closest(".div_nova_dieta");
+        select = div_select.find(".select2_ajax_formula");
+        valorSelect = select.val();
+        valorVolume = $(this).val();
+        divCombinacao =  $(this).closest("div[id^='combinacao']");
+
+        $.ajax({
+            type: "POST",
+            url: "ajax/produto_abrir",
+            data: "id="+valorSelect,
+            cache: false,
+            dataType: 'json',
+            success: function( data ){
+                let totalKcal = parseFloat($(divCombinacao).find("[name='div_valortotal_kcal']").html()) || 0;
+                let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
+                let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
+
+                var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+
+                KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+                PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+                FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+
+                totalKcal = totalKcal - KcalFinal;
+                totalPtn = totalPtn - PtnFinal;
+                totalFibra = totalFibra - FibrasFinal;
+
+                $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
+                $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
+                $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+                $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
+                $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
+            }
+        });
         $(this).closest(".div_modulo").remove();
+
     });
     $(".btn_volume_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
