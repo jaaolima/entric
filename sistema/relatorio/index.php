@@ -1073,13 +1073,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 							
 						?>
-							<!-- <p><b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> </p>
-
-							<p><b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.</p>
-
-							<p><b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;</p>
-
-							<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracionado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p> -->
 						<?php } ?>
 					<?php endif;?>
 
