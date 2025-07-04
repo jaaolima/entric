@@ -3384,6 +3384,10 @@ $(function(){
     });
 
     $('body').on('keyup', "[name^='dieta_fracionamento_dia']", function (e) {
+        var nameString = $(this).attr('name');
+        var regex = /\[(.*?)\]/;
+        nameStringmatch = nameString.match(regex);
+
         div_horario_fracionado = $(this).parent().parent().find(".div_horario_administracao");
         div_horario_fracionado.empty();
         var horarios = '';
@@ -3393,7 +3397,7 @@ $(function(){
             }else{
                 var numi = i;
             }            
-            horarios = horarios + '<div class="col-sm-8"><label for="dieta_horario_administracao['+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label>'+
+            horarios = horarios + '<div class="col-sm-8"><label for="dieta_horario_administracao['+nameStringmatch[1]+'__'+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label>'+
                                   '<input width="60px" type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+numi+']"></div>';
                                                                         
         }
@@ -3402,6 +3406,10 @@ $(function(){
     });
 
     $('body').on('keyup', "[name^='hidratacao_fracionamento_dia']", function (e) {
+        var nameString = $(this).attr('name');
+        var regex = /\[(.*?)\]/;
+        nameStringmatch = nameString.match(regex);
+
         div_horario_fracionado = $(this).parent().parent().find(".div_fracionamento_hidratacao");
         div_horario_fracionado.empty();
         var horarios = '';
@@ -3411,7 +3419,7 @@ $(function(){
             }else{
                 var numi = i;
             }            
-            horarios = horarios + '<div class="col-sm-4"><label for="hidratacao_horario['+numi+']" class="label_horario_administracao">Horário '+numi+':</label>'+
+            horarios = horarios + '<div class="col-sm-4"><label for="hidratacao_horario['+nameStringmatch[1]+'__'+numi+']" class="label_horario_administracao">Horário '+numi+':</label>'+
                                   '<input width="60px" type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario['+numi+']"></div>';
                                                                         
         }
