@@ -1044,6 +1044,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							foreach ($dieta_formula as $key => $value) {
 								echo "chegou";
 								// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
+								var_dump(substr($key, 0, 1));
 								if (substr($key, 0, 1) === $i) {
 									echo "chegou 1";
 									$infusao = "";
