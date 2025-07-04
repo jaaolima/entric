@@ -3037,7 +3037,7 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_outra_dieta_add", function (e) {
-        idCampo = $(".div_nova_dieta").length + 1;
+        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_suplemento").length + 1;
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_nova_dieta:first").clone(true);
@@ -3095,7 +3095,7 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_modulo_add", function (e) {
-        idCampo = $(".div_modulo").length + 1;
+        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_suplemento").length + 1;
 
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
@@ -3158,8 +3158,8 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_suplemento_add", function (e) {
-        idCampo = $(".div_suplemento").length + 1;
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
+        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_suplemento").length + 1;
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_suplemento:first").clone(true);
         var p = $.now();
