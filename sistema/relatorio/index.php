@@ -1038,50 +1038,48 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$suplemento_horario = json_decode($relatorio['suplemento_horario']);
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
-
-						var_dump($dieta_formula);
 						
-							for ($i=1; $i = count($valortotal_kcal); $i++) {
-								echo "<h3>Opção ".$i."</h3>";
-								$infusao = "";
-								foreach ($obj as $key => $value) {
-									// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
-									if (substr($key, 0, 1) === $i) {
-										$volumeProduto = $dieta_volume->$key;
-										$dieta_infusaoProduto = $dieta_infusao->$key;
-										if($dieta_infusaoProduto == "Contínua"){
-											$dieta_vazao_hProduto = $dieta_vazao_h->$key;
-											$dieta_horario_inicioProduto = $dieta_horario_inicio->$key;
-											$infusao = "a " . $dieta_vazao_hProduto . " ml/h às " . $dieta_horario_inicioProduto . ".";
-										}	
-										if($dieta_infusaoProduto == "Fracionada"){
-											$dieta_fracionamento_diaProduto = $dieta_fracionamento_dia->$key;
-											$StringHoraAdministracao = '';
-											foreach ($dieta_horario_administracao as $keyHoraAdministracao => $valueHoraAdministracao) {
-												// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
-												if (substr($keyHoraAdministracao, 0, strlen($key)) === $key) {
-													if ($StringHoraAdministracao != '') {
-														$StringHoraAdministracao .= $StringHoraAdministracao .', ' . $valueHoraAdministracao;
-													} else {
-														$StringHoraAdministracao .= $valueHoraAdministracao;
-													}
+						for ($i=1; $i = count($valortotal_kcal); $i++) {
+							echo "<h3>Opção ".$i."</h3>";
+							$infusao = "";
+							foreach ($obj as $key => $value) {
+								// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
+								if (substr($key, 0, 1) === $i) {
+									$volumeProduto = $dieta_volume->$key;
+									$dieta_infusaoProduto = $dieta_infusao->$key;
+									if($dieta_infusaoProduto == "Contínua"){
+										$dieta_vazao_hProduto = $dieta_vazao_h->$key;
+										$dieta_horario_inicioProduto = $dieta_horario_inicio->$key;
+										$infusao = "a " . $dieta_vazao_hProduto . " ml/h às " . $dieta_horario_inicioProduto . ".";
+									}	
+									if($dieta_infusaoProduto == "Fracionada"){
+										$dieta_fracionamento_diaProduto = $dieta_fracionamento_dia->$key;
+										$StringHoraAdministracao = '';
+										foreach ($dieta_horario_administracao as $keyHoraAdministracao => $valueHoraAdministracao) {
+											// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
+											if (substr($keyHoraAdministracao, 0, strlen($key)) === $key) {
+												if ($StringHoraAdministracao != '') {
+													$StringHoraAdministracao .= $StringHoraAdministracao .', ' . $valueHoraAdministracao;
+												} else {
+													$StringHoraAdministracao .= $valueHoraAdministracao;
 												}
 											}
-											$infusao = $dieta_fracionamento_diaProduto . " vezes ao dia às " . $StringHoraAdministracao . ".";
 										}
-										echo "<p><b>".$value."</b> - ".$volumeProduto." - Administrar de forma " . $dieta_formula[$i] . ".</p>";
+										$infusao = $dieta_fracionamento_diaProduto . " vezes ao dia às " . $StringHoraAdministracao . ".";
 									}
+									echo "<p><b>".$value."</b> - ".$volumeProduto." - Administrar de forma " . $dieta_formula[$i] . ".</p>";
 								}
-								
-							?>
-								<!-- <p><b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> </p>
+							}
+							
+						?>
+							<!-- <p><b>FORMULAS DIETA ENTERAL</b> - Volume - Administrar de forma <?php echo $dieta_infusao[$i] ." " .$infusao;?> </p>
 
-								<p><b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.</p>
+							<p><b>MÓDULOS</b> - Quantidade - Diluir em <?php echo $modulo_volume[$i] ?> ml de água e administrar às <?php echo $modulo_horario[$i]; ?>.</p>
 
-								<p><b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;</p>
+							<p><b>SUPLEMENTO(ORAL)</b> - Utilizar <?php echo $suplemento_quantidade[$i] ?> às <?php echo $suplemento_horario[$i]; ?>;</p>
 
-								<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracionado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p> -->
-							<?php } ?>
+							<p><b>ÁGUA LIVRE</b> - Administrar <?php echo $hidratacao_agua_livre[$i] ?> ml por dia, fracionado em <?php echo $hidratacao_fracionamento_dia[$i] ?> às <?php echo $hidratacao_horario[$i]; ?>.</p> -->
+						<?php } ?>
 					<?php endif;?>
 
 			<?php } ?>
