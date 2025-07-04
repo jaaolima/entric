@@ -3300,22 +3300,22 @@ $(function(){
         divClone.find('.div_suplemento').not(':first').remove();
         divClone.find('.div_suplemento').find('.div_volume_total').not(':first').remove();
         divClone.find(".campos_limpar").val('');
-        divClone.find(".select2_formula").attr('name', 'dieta_formula['+ id+"__" + p +']').end();
+        divClone.find(".select2_formula").attr('name', 'dieta_formula['+ id+"__1__" + p +']').end();
         divClone.find(".select2_formula").parent().find(".select2-container--below").remove();  
         divClone.find(".select2_formula").parent().find(".select2-container--default").remove(); 
-        divClone.find(".select2_produto").attr('name', 'modulo_produto['+ id+"__" + p +']').end();
+        divClone.find(".select2_produto").attr('name', 'modulo_produto['+ id+"__1__" + p +']').end();
         divClone.find(".select2_produto").parent().find(".select2-container--below").remove();  
         divClone.find(".select2_produto").parent().find(".select2-container--default").remove();       
-        divClone.find(".select2_suplemento_produto").attr('name', 'suplemento_produto['+ id+"__" + p +']').end();
+        divClone.find(".select2_suplemento_produto").attr('name', 'suplemento_produto['+ id+"__1__" + p +']').end();
         divClone.find(".select2_suplemento_produto").parent().find(".select2-container--below").remove();  
         divClone.find(".select2_suplemento_produto").parent().find(".select2-container--default").remove();
-        divClone.find(".hidratacao_agua_livre").attr('name', 'hidratacao_agua_livre['+ id+"__" + p +']').end();
+        divClone.find(".hidratacao_agua_livre").attr('name', 'hidratacao_agua_livre['+ id+"__1__" + p +']').end();
 
-        divClone.find("input.radio_infusao").attr('name', 'dieta_infusao['+ id+"__" + p +']').end();
-        divClone.find('input.infusao_continua').removeAttr("id").attr("id","infusao_continua["+ id+"__" + p +"]");
-        divClone.find('label.infusao_continua').removeAttr("for").attr("for","infusao_continua["+ id+"__" + p +"]");
-        divClone.find('input.infusao_fracionada').removeAttr("id").attr("id","infusao_fracionada["+ id+"__" + p +"]");
-        divClone.find('label.infusao_fracionada').removeAttr("for").attr("for","infusao_fracionada["+ id+"__" + p +"]");
+        divClone.find("input.radio_infusao").attr('name', 'dieta_infusao['+ id+"__1__" + p +']').end();
+        divClone.find('input.infusao_continua').removeAttr("id").attr("id","infusao_continua["+ id+"__1__" + p +"]");
+        divClone.find('label.infusao_continua').removeAttr("for").attr("for","infusao_continua["+ id+"__1__" + p +"]");
+        divClone.find('input.infusao_fracionada').removeAttr("id").attr("id","infusao_fracionada["+ id+"__1__" + p +"]");
+        divClone.find('label.infusao_fracionada').removeAttr("for").attr("for","infusao_fracionada["+ id+"__1__" + p +"]");
         divClone.find('.entric_ofertotal').removeAttr("style");
         divClone.find('.div_horario_administracao').html("");
         divClone.find('.div_fracionamento_hidratacao').html("");
@@ -3327,7 +3327,7 @@ $(function(){
         $('.combinacoes .nav-tabs a[href="#combinacao'+id+'"]').tab('show');
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
-        var selector = $("#combinacao"+id).find("select[name='dieta_formula["+ id+"__" + p +"]']");
+        var selector = $("#combinacao"+id).find("select[name='dieta_formula["+ id+"__1__" + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
@@ -3337,7 +3337,7 @@ $(function(){
         selector.empty();
         selector.removeData();
         select2_ajax_produto_enteral(selector);
-        var selectorModulo = $("#combinacao"+id).find("select[name='modulo_produto["+ id+"__" + p +"]']");
+        var selectorModulo = $("#combinacao"+id).find("select[name='modulo_produto["+ id+"__1__" + p +"]']");
         selectorModulo.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
@@ -3347,7 +3347,7 @@ $(function(){
         selectorModulo.empty();
         selectorModulo.removeData();
         select2_ajax_produto_modulo(selectorModulo);
-        var selectorSuplemento = $("#combinacao"+id).find("select[name='suplemento_produto["+ id+"__" + p +"]']");
+        var selectorSuplemento = $("#combinacao"+id).find("select[name='suplemento_produto["+ id+"__1__" + p +"]']");
         selectorSuplemento.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
                 .removeAttr('aria-hidden')
