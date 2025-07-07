@@ -2083,7 +2083,6 @@ $(function(){
             if($(this).hasClass("select2_formula")){
                 div_select = $(this).closest(".div_nova_dieta");
                 valorVolume = div_select.find("input[name^='dieta_volume']").val();
-                console.log(valorVolume);
                 valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
@@ -2101,7 +2100,7 @@ $(function(){
                             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            let volume = parseFloat(valorVolume) || 0;
+                            let volume = intval(valorVolume) || 0;
 
                             console.log(kcalProduto);
                             console.log(ptnProduto);
