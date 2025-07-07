@@ -2106,25 +2106,17 @@ $(function(){
                             let PtnFinal = (volume * ptnProduto) / 100;
                             let FibrasFinal = (volume * fibrasProduto) / 100;
 
-                            console.log("kcal: " +KcalFinal);
-                            console.log("ptn: " +PtnFinal);
-                            console.log("fibra: " +FibrasFinal);
-
                             totalKcal += KcalFinal;
                             totalPtn += PtnFinal;
                             totalFibra += FibrasFinal;
-
-                            console.log("Total kcal: " +totalKcal);
-                            console.log("total ptn: " +totalPtn);
-                            console.log("total fibra: " +totalFibra);
                         }
                     });
                 }
                 
             }else if($(this).hasClass("select2_produto")){
-                div_select = $(this).closest(".div_modulo");
-                valorVolume = div_select.find("input[name^='modulo_quantidade']").val();
-                valorSelect = $(this).val();
+                let div_select = $(this).closest(".div_nova_dieta");
+                let valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
+                let valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
                         type: "POST",
@@ -2137,20 +2129,26 @@ $(function(){
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                            KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
-                            PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
-                            FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+                            kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
+                            ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
+                            fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            totalKcal = totalKcal + KcalFinal;
-                            totalPtn = totalPtn + PtnFinal;
-                            totalFibra = totalFibra + FibrasFinal;
+                            let volume = parseInt(valorVolume) || 0;
+
+                            let KcalFinal = (volume * kcalProduto) / 100;
+                            let PtnFinal = (volume * ptnProduto) / 100;
+                            let FibrasFinal = (volume * fibrasProduto) / 100;
+
+                            totalKcal += KcalFinal;
+                            totalPtn += PtnFinal;
+                            totalFibra += FibrasFinal;
                         }
                     });
                 }
             }else if($(this).hasClass("select2_suplemento_produto")){
-                div_select = $(this).closest(".div_suplemento");
-                valorVolume = div_select.find("input[name^='suplemento_quantidade']").val();
-                valorSelect = $(this).val();
+                let div_select = $(this).closest(".div_nova_dieta");
+                let valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
+                let valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
                         type: "POST",
@@ -2163,13 +2161,19 @@ $(function(){
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                            KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
-                            PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
-                            FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+                            kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
+                            ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
+                            fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            totalKcal = totalKcal + KcalFinal;
-                            totalPtn = totalPtn + PtnFinal;
-                            totalFibra = totalFibra + FibrasFinal;
+                            let volume = parseInt(valorVolume) || 0;
+
+                            let KcalFinal = (volume * kcalProduto) / 100;
+                            let PtnFinal = (volume * ptnProduto) / 100;
+                            let FibrasFinal = (volume * fibrasProduto) / 100;
+
+                            totalKcal += KcalFinal;
+                            totalPtn += PtnFinal;
+                            totalFibra += FibrasFinal;
                         }
                     });
                 }
