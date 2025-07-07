@@ -3432,7 +3432,7 @@ $(function(){
 
         div_horario_fracionado = $(this).parent().parent().find(".div_horario_administracao");
         div_horario_fracionado.empty();
-        var horarios = '';div_infusao_fracionada 
+        var horarios = ''; 
         for(i = 1; i <= parseInt($(this).val()); i++) {
             if (i<10){
                 var numi = "0"+i;
