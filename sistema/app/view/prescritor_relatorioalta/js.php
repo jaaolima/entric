@@ -2092,7 +2092,6 @@ $(function(){
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
-                            console.log("Volume 2: "+valorVolume);
                             var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
@@ -2102,15 +2101,22 @@ $(function(){
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
                             let volume = parseInt(valorVolume) || 0;
-                            console.log("volume: " +volume);
 
                             let KcalFinal = (volume * kcalProduto) / 100;
                             let PtnFinal = (volume * ptnProduto) / 100;
                             let FibrasFinal = (volume * fibrasProduto) / 100;
 
+                            console.log("kcal: " +KcalFinal);
+                            console.log("ptn: " +PtnFinal);
+                            console.log("fibra: " +FibrasFinal);
+
                             totalKcal += KcalFinal;
                             totalPtn += PtnFinal;
                             totalFibra += FibrasFinal;
+
+                            console.log("Total kcal: " +totalKcal);
+                            console.log("total ptn: " +totalPtn);
+                            console.log("total fibra: " +totalFibra);
                         }
                     });
                 }
