@@ -2112,6 +2112,7 @@ $(function(){
                 valorVolume = div_select.find("input[name^='modulo_quantidade']").val();
                 valorSelect = $(this).val();
                 if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                    console.log("chegou no modulo");
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
@@ -2133,7 +2134,7 @@ $(function(){
                         }
                     });
                 }
-            }else if($(this).hasClass("select2_produto")){
+            }else if($(this).hasClass("select2_suplemento_produto ")){
                 div_select = $(this).closest(".div_suplemento");
                 valorVolume = div_select.find("input[name^='suplemento_quantidade']").val();
                 valorSelect = $(this).val();
