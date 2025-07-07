@@ -2082,7 +2082,8 @@ $(function(){
         $(divCombinacao).find(".select_calculo").each(function(){
             if($(this).hasClass("select2_formula")){
                 div_select = $(this).closest(".div_nova_dieta");
-                valorVolume = div_select.find("input[name^='dieta_volume']").val();
+                valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
+                console.log("Volume: "+valorVolume);
                 valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
