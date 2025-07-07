@@ -2083,7 +2083,7 @@ $(function(){
             if($(this).hasClass("select2_formula")){
                 let div_select = $(this).closest(".div_nova_dieta");
                 let valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
-                let valorSelect = $(this).val();
+                letvalorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
                         type: "POST",
@@ -2104,9 +2104,9 @@ $(function(){
                             let volume = parseInt(valorVolume) || 0;
                             console.log("volume: " +volume);
 
-                            let = KcalFinal = (volume * kcalProduto) / 100;
-                            let = PtnFinal = (volume * ptnProduto) / 100;
-                            let = FibrasFinal = (volume * fibrasProduto) / 100;
+                            let KcalFinal = (volume * kcalProduto) / 100;
+                            let PtnFinal = (volume * ptnProduto) / 100;
+                            let FibrasFinal = (volume * fibrasProduto) / 100;
 
                             totalKcal += KcalFinal;
                             totalPtn += PtnFinal;
