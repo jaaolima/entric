@@ -2103,6 +2103,10 @@ $(function(){
                             totalKcal = totalKcal + KcalFinal;
                             totalPtn = totalPtn + PtnFinal;
                             totalFibra = totalFibra + FibrasFinal;
+
+                            console.log(totalKcal);
+                            console.log(totalPtn);
+                            console.log(totalFibra);
                         }
                     });
                 }
@@ -2112,7 +2116,6 @@ $(function(){
                 valorVolume = div_select.find("input[name^='modulo_quantidade']").val();
                 valorSelect = $(this).val();
                 if(valorVolume != "" && valorSelect != null && valorSelect != ""){
-                    console.log("chegou no modulo");
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
@@ -2134,12 +2137,11 @@ $(function(){
                         }
                     });
                 }
-            }else if($(this).hasClass("select2_suplemento_produto ")){
+            }else if($(this).hasClass("select2_suplemento_produto")){
                 div_select = $(this).closest(".div_suplemento");
                 valorVolume = div_select.find("input[name^='suplemento_quantidade']").val();
                 valorSelect = $(this).val();
                 if(valorVolume != "" && valorSelect != null && valorSelect != ""){
-                    console.log("chegou no suplemento");
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
@@ -2162,13 +2164,7 @@ $(function(){
                     });
                 }
             }
-
-            console.log(totalKcal);
-            console.log(totalPtn);
-            console.log(totalFibra);
-
         })
-
 
 
         $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
