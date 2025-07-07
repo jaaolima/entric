@@ -2080,7 +2080,7 @@ $(function(){
         totalFibra = 0;
 
         $(div_select).find(".select_calculo").each(function(){
-            if(hasClass($(this), "select2_formula")){
+            if($(this).hasClass("select2_formula")){
                 div_select = $(this).closest(".div_nova_dieta");
                 valorVolume = div_select.find("input[name^='dieta_volume']").val();
                 valorSelect = $(this).val();
@@ -2116,7 +2116,7 @@ $(function(){
                     });
                 }
                 
-            }else if(hasClass($(this), "select2_produto")){
+            }else if($(this).hasClass("select2_produto")){
                 div_select = $(this).closest(".div_modulo");
                 valorVolume = div_select.find("input[name^='modulo_quantidade']").val();
                 valorSelect = $(this).val();
@@ -2151,7 +2151,7 @@ $(function(){
                         }
                     });
                 }
-            }else if(hasClass($(this), "select2_suplemento_produto")){
+            }else if($(this).hasClass("select2_produto")){
                 div_select = $(this).closest(".div_suplemento");
                 valorVolume = div_select.find("input[name^='suplemento_quantidade']").val();
                 valorSelect = $(this).val();
