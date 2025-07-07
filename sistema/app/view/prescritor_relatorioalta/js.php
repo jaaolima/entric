@@ -2138,6 +2138,7 @@ $(function(){
                 valorVolume = div_select.find("input[name^='suplemento_quantidade']").val();
                 valorSelect = $(this).val();
                 if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                    console.log("chegou no suplemento");
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
