@@ -37,14 +37,14 @@
                                                                     <div class="input-group-prepend div_formula_rm none">
                                                                         <button class="btn btn-danger btn_formula_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
-                                                                    <select class="form-control select2_ajax_formula select2_formula" required="required" name="dieta_formula[1__1__0]"></select>
+                                                                    <select class="form-control select2_ajax_formula select2_formula select_calculo" required="required" name="dieta_formula[1__1__0]"></select>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-sm-8 mb-1">
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="volume">Volume (ml/dia):</label>
-                                                                        <input type="text" maxlength='4'  class="form-control numeros campos_limpar volume_dia" data-precision="0" required="required" name="dieta_volume[1__1__0]">
+                                                                        <input type="text" maxlength='4'  class="form-control numeros campos_limpar volume_dia disparar_calculo" data-precision="0" required="required" name="dieta_volume[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label>Infusão:</label>
@@ -108,14 +108,14 @@
                                                                     <div class="input-group-prepend div_produto_rm none">
                                                                         <button class="btn btn-danger btn_produto_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
-                                                                    <select class="form-control select2_ajax_produto select2_produto" required="required" name="modulo_produto[1__1__0]"></select>
+                                                                    <select class="form-control select2_ajax_produto select2_produto select_calculo" required="required" name="modulo_produto[1__1__0]"></select>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-8 mb-1">
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar modulo_quantidade" required="required" name="modulo_quantidade[1__1__0]">
+                                                                        <input type="text" maxlength='3' class="form-control numeros campos_limpar modulo_quantidade disparar_calculo" required="required" name="modulo_quantidade[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label for="volume">Volume de Água (ml):</label>
@@ -175,7 +175,7 @@
                                                                     <div class="input-group-prepend div_suplemento_rm none">
                                                                         <button class="btn btn-danger btn_suplemento_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
-                                                                    <select class="form-control select2_ajax_produto select2_suplemento_produto" required="required" name="suplemento_produto[1__1__0]"></select>
+                                                                    <select class="form-control select2_ajax_produto select2_suplemento_produto select_calculo" required="required" name="suplemento_produto[1__1__0]"></select>
                                                                 </div>
                                                             </div>
 
@@ -183,7 +183,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-2">
                                                                         <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
-                                                                        <input type="text" maxlength='4' class="form-control numeros campos_limpar suplemento_quantidade" required="required" name="suplemento_quantidade[1__1__0]">
+                                                                        <input type="text" maxlength='4' class="form-control numeros campos_limpar suplemento_quantidade disparar_calculo" required="required" name="suplemento_quantidade[1__1__0]">
                                                                     </div>
                                                                     <div class="form-group col-sm-5 div_volume_total_col">
                                                                         <div class="row div_volume_total">

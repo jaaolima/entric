@@ -2021,56 +2021,182 @@ $(function(){
         input.val("");
     });
 
-    $('body').on('blur', "input[name^='dieta_volume']", function (e) {
-        console.log("chegou");
-        div_select = $(this).closest(".div_nova_dieta");
-        select = div_select.find(".select2_ajax_formula");
-        valorSelect = select.val();
-        valorVolume = $(this).val();
+    // $('body').on('blur', "input[name^='dieta_volume']", function (e) {
+    //     console.log("chegou");
+    //     div_select = $(this).closest(".div_nova_dieta");
+    //     select = div_select.find(".select2_ajax_formula");
+    //     valorSelect = select.val();
+    //     valorVolume = $(this).val();
+    //     divCombinacao =  $(this).closest("div[id^='combinacao']");
+
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "ajax/produto_abrir",
+    //         data: "id="+valorSelect,
+    //         cache: false,
+    //         dataType: 'json',
+    //         success: function( data ){
+    //             let totalKcal = parseFloat($(divCombinacao).find("[name='div_valortotal_kcal']").html()) || 0;
+    //             let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
+    //             let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
+
+    //             var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+    //             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+    //             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+
+    //             console.log(kcalProduto);
+    //             console.log(ptnProduto);
+    //             console.log(fibrasProduto);
+
+    //             KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+    //             PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+    //             FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+
+    //             totalKcal = totalKcal + KcalFinal;
+    //             totalPtn = totalPtn + PtnFinal;
+    //             totalFibra = totalFibra + FibrasFinal;
+
+    //             console.log(totalKcal);
+    //             console.log(KcalFinal);
+    //             console.log(PtnFinal);
+    //             console.log(FibrasFinal);
+
+    //             $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+    //             $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
+    //             $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
+    //             $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
+    //         }
+    //     });
+
+    // });
+
+    $('body').on('blur', ".disparar_calculo", function (e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']");
+        totalKcal = 0;
+        totalPtn = 0;
+        totalFibra = 0;
 
-        $.ajax({
-            type: "POST",
-            url: "ajax/produto_abrir",
-            data: "id="+valorSelect,
-            cache: false,
-            dataType: 'json',
-            success: function( data ){
-                let totalKcal = parseFloat($(divCombinacao).find("[name='div_valortotal_kcal']").html()) || 0;
-                let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
-                let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
+        $(div_select).find(".select_calculo").each(function(){
+            if(hasClass($(this), "select2_formula")){
+                div_select = $(this).closest(".div_nova_dieta");
+                valorVolume = div_select.find("input[name^='dieta_volume']").val();
+                valorSelect = $(this).val();
+                if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/produto_abrir",
+                        data: "id="+valorSelect,
+                        cache: false,
+                        dataType: 'json',
+                        success: function( data ){
+                            var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                            var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                            var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
-                var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
-                var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+                            console.log(kcalProduto);
+                            console.log(ptnProduto);
+                            console.log(fibrasProduto);
 
-                console.log(kcalProduto);
-                console.log(ptnProduto);
-                console.log(fibrasProduto);
+                            KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+                            PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+                            FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
 
-                KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
-                PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
-                FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+                            totalKcal = totalKcal + KcalFinal;
+                            totalPtn = totalPtn + PtnFinal;
+                            totalFibra = totalFibra + FibrasFinal;
 
-                totalKcal = totalKcal + KcalFinal;
-                totalPtn = totalPtn + PtnFinal;
-                totalFibra = totalFibra + FibrasFinal;
+                            console.log(totalKcal);
+                            console.log(KcalFinal);
+                            console.log(PtnFinal);
+                            console.log(FibrasFinal);
+                        }
+                    });
+                }
+                
+            }else if(hasClass($(this), "select2_produto")){
+                div_select = $(this).closest(".div_modulo");
+                valorVolume = div_select.find("input[name^='modulo_quantidade']").val();
+                valorSelect = $(this).val();
+                if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/produto_abrir",
+                        data: "id="+valorSelect,
+                        cache: false,
+                        dataType: 'json',
+                        success: function( data ){
+                            var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                            var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                            var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                console.log(totalKcal);
-                console.log(KcalFinal);
-                console.log(PtnFinal);
-                console.log(FibrasFinal);
+                            console.log(kcalProduto);
+                            console.log(ptnProduto);
+                            console.log(fibrasProduto);
 
-                $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
-                $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
-                $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+                            KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+                            PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+                            FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
 
-                $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
-                $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
-                $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
+                            totalKcal = totalKcal + KcalFinal;
+                            totalPtn = totalPtn + PtnFinal;
+                            totalFibra = totalFibra + FibrasFinal;
+
+                            console.log(totalKcal);
+                            console.log(KcalFinal);
+                            console.log(PtnFinal);
+                            console.log(FibrasFinal);
+                        }
+                    });
+                }
+            }else if(hasClass($(this), "select2_suplemento_produto")){
+                div_select = $(this).closest(".div_suplemento");
+                valorVolume = div_select.find("input[name^='suplemento_quantidade']").val();
+                valorSelect = $(this).val();
+                if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/produto_abrir",
+                        data: "id="+valorSelect,
+                        cache: false,
+                        dataType: 'json',
+                        success: function( data ){
+                            var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                            var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                            var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+
+                            console.log(kcalProduto);
+                            console.log(ptnProduto);
+                            console.log(fibrasProduto);
+
+                            KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+                            PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+                            FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+
+                            totalKcal = totalKcal + KcalFinal;
+                            totalPtn = totalPtn + PtnFinal;
+                            totalFibra = totalFibra + FibrasFinal;
+
+                            console.log(totalKcal);
+                            console.log(KcalFinal);
+                            console.log(PtnFinal);
+                            console.log(FibrasFinal);
+                        }
+                    });
+                }
             }
-        });
 
+        })
+
+        $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
+        $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
+        $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+        $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
+        $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
+        $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
     });
 
 
@@ -2080,47 +2206,47 @@ $(function(){
         input.val("");
     });
 
-    $('body').on('blur', "input[name^='modulo_quantidade']", function (e) {
-        div_select = $(this).closest(".div_modulo");
-        select = div_select.find(".select2_produto");
-        valorSelect = select.val();
-        valorVolume = $(this).val();
-        divCombinacao =  $(this).closest("div[id^='combinacao']");
+    // $('body').on('blur', "input[name^='modulo_quantidade']", function (e) {
+    //     div_select = $(this).closest(".div_modulo");
+    //     select = div_select.find(".select2_produto");
+    //     valorSelect = select.val();
+    //     valorVolume = $(this).val();
+    //     divCombinacao =  $(this).closest("div[id^='combinacao']");
 
-        $.ajax({
-            type: "POST",
-            url: "ajax/produto_abrir",
-            data: "id="+valorSelect,
-            cache: false,
-            dataType: 'json',
-            success: function( data ){
-                let totalKcal = parseFloat($(divCombinacao).find("[name='div_valortotal_kcal']").html()) || 0;
-                let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
-                let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "ajax/produto_abrir",
+    //         data: "id="+valorSelect,
+    //         cache: false,
+    //         dataType: 'json',
+    //         success: function( data ){
+    //             let totalKcal = parseFloat($(divCombinacao).find("[name='div_valortotal_kcal']").html()) || 0;
+    //             let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
+    //             let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
 
-                var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
-                var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
-                var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+    //             var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+    //             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+    //             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
-                PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
-                FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+    //             KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+    //             PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+    //             FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
 
-                totalKcal = totalKcal + KcalFinal;
-                totalPtn = totalPtn + PtnFinal;
-                totalFibra = totalFibra + FibrasFinal;
+    //             totalKcal = totalKcal + KcalFinal;
+    //             totalPtn = totalPtn + PtnFinal;
+    //             totalFibra = totalFibra + FibrasFinal;
 
-                $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
-                $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
-                $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
 
-                $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
-                $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
-                $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
-            }
-        });
+    //             $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
+    //             $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
+    //             $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
+    //         }
+    //     });
 
-    });
+    // });
 
     $('body').on('select2:select', ".select2_suplemento_produto", function (e) {
         div_select = $(this).closest(".div_suplemento");
@@ -2129,48 +2255,48 @@ $(function(){
     });
 
 
-    $('body').on('blur', "input[name^='suplemento_quantidade']", function (e) {
-        div_select = $(this).closest(".div_suplemento");
-        select = div_select.find(".select2_suplemento_produto");
-        valorSelect = select.val();
-        valorVolume = $(this).val();
-        divCombinacao =  $(this).closest("div[id^='combinacao']");
+    // $('body').on('blur', "input[name^='suplemento_quantidade']", function (e) {
+    //     div_select = $(this).closest(".div_suplemento");
+    //     select = div_select.find(".select2_suplemento_produto");
+    //     valorSelect = select.val();
+    //     valorVolume = $(this).val();
+    //     divCombinacao =  $(this).closest("div[id^='combinacao']");
 
 
-        $.ajax({
-            type: "POST",
-            url: "ajax/produto_abrir",
-            data: "id="+valorSelect,
-            cache: false,
-            dataType: 'json',
-            success: function( data ){
-                let totalKcal = parseFloat($(divCombinacao).find("[name='div_valortotal_kcal']").html()) || 0;
-                let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
-                let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "ajax/produto_abrir",
+    //         data: "id="+valorSelect,
+    //         cache: false,
+    //         dataType: 'json',
+    //         success: function( data ){
+    //             let totalKcal = parseFloat($(divCombinacao).find("[name='div_valortotal_kcal']").html()) || 0;
+    //             let totalPtn = parseFloat($(divCombinacao).find("[name='div_valortotal_ptn']").html()) || 0;
+    //             let totalFibra = parseFloat($(divCombinacao).find("[name='div_valortotal_fibra']").html()) || 0;
 
-                var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
-                var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
-                var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+    //             var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+    //             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+    //             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
-                PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
-                FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+    //             KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
+    //             PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
+    //             FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
 
-                totalKcal = totalKcal + KcalFinal;
-                totalPtn = totalPtn + PtnFinal;
-                totalFibra = totalFibra + FibrasFinal;
+    //             totalKcal = totalKcal + KcalFinal;
+    //             totalPtn = totalPtn + PtnFinal;
+    //             totalFibra = totalFibra + FibrasFinal;
 
-                $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
-                $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
-                $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
+    //             $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
 
-                $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
-                $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
-                $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
-            }
-        });
+    //             $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
+    //             $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
+    //             $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
+    //         }
+    //     });
 
-    });
+    // });
 
     $('#avaliacao .data').datepicker({
         format: "dd/mm/yyyy",
@@ -3136,7 +3262,7 @@ $(function(){
     });
     $(".btn_produto_rm").on("click", function(e) {
 
-    div_select = $(this).closest(".div_nova_dieta");
+        div_select = $(this).closest(".div_nova_dieta");
         select = div_select.find(".select2_ajax_formula");
         valorSelect = select.val();
         valorVolume = $(this).val();
