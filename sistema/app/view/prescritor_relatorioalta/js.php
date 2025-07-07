@@ -2109,6 +2109,8 @@ $(function(){
                             totalKcal += KcalFinal;
                             totalPtn += PtnFinal;
                             totalFibra += FibrasFinal;
+
+                            console.log("KcalFinal: " + totalKcal);
                         }
                     });
                 }
@@ -2142,6 +2144,9 @@ $(function(){
                             totalKcal += KcalFinal;
                             totalPtn += PtnFinal;
                             totalFibra += FibrasFinal;
+
+                            console.log("KcalFinal: " + totalKcal);
+
                         }
                     });
                 }
@@ -2174,11 +2179,17 @@ $(function(){
                             totalKcal += KcalFinal;
                             totalPtn += PtnFinal;
                             totalFibra += FibrasFinal;
+
+                            console.log("KcalFinal: " + totalKcal);
+
                         }
                     });
                 }
             }
         })
+
+        console.log("KcalFinal: " + totalKcal);
+
 
 
         $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
