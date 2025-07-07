@@ -3011,6 +3011,7 @@ $(function(){
     $(".btn_formula_rm").on("click", function(e) {
         var $this = $(this);
         $(this).closest(".div_nova_dieta").remove();
+        console.log($this);
         recalcular_oferta($this);
     });
     $('.radio_infusao').on("change", function(e) {
