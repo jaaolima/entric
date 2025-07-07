@@ -2085,7 +2085,7 @@ $(function(){
                 valorVolume = div_select.find("input[name^='dieta_volume']").val();
                 console.log(valorVolume);
                 valorSelect = $(this).val();
-                if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
@@ -2097,13 +2097,19 @@ $(function(){
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
+                            kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
+                            ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
+                            fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
+
+                            let volume = parseFloat(valorVolume) || 0;
+
                             console.log(kcalProduto);
                             console.log(ptnProduto);
                             console.log(fibrasProduto);
 
-                            KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
-                            PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
-                            FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
+                            let = KcalFinal = (volume * kcalProduto) / 100;
+                            let = PtnFinal = (volume * ptnProduto) / 100;
+                            let = FibrasFinal = (volume * fibrasProduto) / 100;
 
                             console.log(KcalFinal);
                             console.log(PtnFinal);
@@ -2124,7 +2130,7 @@ $(function(){
                 div_select = $(this).closest(".div_modulo");
                 valorVolume = div_select.find("input[name^='modulo_quantidade']").val();
                 valorSelect = $(this).val();
-                if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
@@ -2150,7 +2156,7 @@ $(function(){
                 div_select = $(this).closest(".div_suplemento");
                 valorVolume = div_select.find("input[name^='suplemento_quantidade']").val();
                 valorSelect = $(this).val();
-                if(valorVolume != "" && valorSelect != null && valorSelect != ""){
+                if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
