@@ -3141,10 +3141,89 @@ $(function(){
         selector.removeData();
         select2_ajax_produto_modulo(selector);
     });
-    $(".btn_produto_rm").on("click", function(e) {
+    $(".btn_produto_rm").on("click", async function(e) {
         var $this = $(this);
+        let divCombinacao = $($_this).closest("div[id^='combinacao']");
         $(this).closest(".div_modulo").remove();
-        recalcular_oferta($($this));
+        let totalKcal = 0;
+        let totalPtn = 0;
+        let totalFibra = 0;
+
+        // Create an array to hold all the AJAX promises
+        const ajaxPromises = [];
+
+        $(divCombinacao).find(".select_calculo").each(function () {
+            const $this = $(this); // Cache $(this) for use inside the promise
+            let id, volumeInputName;
+
+            if ($this.hasClass("select2_formula")) {
+                let div_selectEnteral = $this.closest(".div_nova_dieta");
+                id = $this.val();
+                volumeInputName = div_selectEnteral.find("input[name^='dieta_volume']").val();
+            } else if ($this.hasClass("select2_produto")) {
+                let div_select_modulo = $this.closest(".div_modulo");
+                id = $this.val();
+                volumeInputName = div_select_modulo.find("input[name^='modulo_quantidade']").val();
+            } else if ($this.hasClass("select2_suplemento_produto")) {
+                let div_selectSuplemento = $this.closest(".div_suplemento");
+                id = $this.val();
+                volumeInputName = div_selectSuplemento.find("input[name^='suplemento_quantidade']").val();
+            }
+
+            if (id && id.trim() !== '' && volumeInputName && volumeInputName.trim() !== '') {
+                // Push the promise for each AJAX call into the array
+                ajaxPromises.push(
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/produto_abrir",
+                        data: "id=" + id,
+                        cache: false,
+                        dataType: 'json'
+                    }).then(function (data) { // Use .then() to process the successful response
+                        let kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                        let ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                        let fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+
+                        kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
+                        ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
+                        fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
+
+                        let volume = parseInt(volumeInputName) || 0;
+
+                        let KcalFinal = (volume * kcalProduto) / 100;
+                        let PtnFinal = (volume * ptnProduto) / 100;
+                        let FibrasFinal = (volume * fibrasProduto) / 100;
+
+                        // Return an object with the calculated values
+                        return { KcalFinal, PtnFinal, FibrasFinal };
+                    }).catch(function(jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX Error:", textStatus, errorThrown);
+                        // Return default values in case of an error to prevent breaking the sum
+                        return { KcalFinal: 0, PtnFinal: 0, FibrasFinal: 0 };
+                    })
+                );
+            }
+        });
+
+        // Wait for all AJAX promises to resolve
+        const results = await Promise.all(ajaxPromises);
+
+        // Sum up the results from all successful AJAX calls
+        results.forEach(result => {
+            totalKcal += result.KcalFinal;
+            totalPtn += result.PtnFinal;
+            totalFibra += result.FibrasFinal;
+        });
+
+        console.log("Final totalKcal: " + totalKcal);
+
+        $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
+        $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
+        $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+        $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
+        $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
+        $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
     });
     $(".btn_volume_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
@@ -3204,10 +3283,89 @@ $(function(){
         selector.removeData();
         select2_ajax_produto_suplemento(selector);
     });
-    $(".btn_suplemento_rm").on("click", function(e) {
+    $(".btn_suplemento_rm").on("click", async function(e) {
         var $this = $(this);
+        let divCombinacao = $($_this).closest("div[id^='combinacao']");
         $(this).closest(".div_suplemento").remove();
-        recalcular_oferta($this);
+        let totalKcal = 0;
+        let totalPtn = 0;
+        let totalFibra = 0;
+
+        // Create an array to hold all the AJAX promises
+        const ajaxPromises = [];
+
+        $(divCombinacao).find(".select_calculo").each(function () {
+            const $this = $(this); // Cache $(this) for use inside the promise
+            let id, volumeInputName;
+
+            if ($this.hasClass("select2_formula")) {
+                let div_selectEnteral = $this.closest(".div_nova_dieta");
+                id = $this.val();
+                volumeInputName = div_selectEnteral.find("input[name^='dieta_volume']").val();
+            } else if ($this.hasClass("select2_produto")) {
+                let div_select_modulo = $this.closest(".div_modulo");
+                id = $this.val();
+                volumeInputName = div_select_modulo.find("input[name^='modulo_quantidade']").val();
+            } else if ($this.hasClass("select2_suplemento_produto")) {
+                let div_selectSuplemento = $this.closest(".div_suplemento");
+                id = $this.val();
+                volumeInputName = div_selectSuplemento.find("input[name^='suplemento_quantidade']").val();
+            }
+
+            if (id && id.trim() !== '' && volumeInputName && volumeInputName.trim() !== '') {
+                // Push the promise for each AJAX call into the array
+                ajaxPromises.push(
+                    $.ajax({
+                        type: "POST",
+                        url: "ajax/produto_abrir",
+                        data: "id=" + id,
+                        cache: false,
+                        dataType: 'json'
+                    }).then(function (data) { // Use .then() to process the successful response
+                        let kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
+                        let ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
+                        let fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
+
+                        kcalProduto = isNaN(kcalProduto) ? 0 : kcalProduto;
+                        ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
+                        fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
+
+                        let volume = parseInt(volumeInputName) || 0;
+
+                        let KcalFinal = (volume * kcalProduto) / 100;
+                        let PtnFinal = (volume * ptnProduto) / 100;
+                        let FibrasFinal = (volume * fibrasProduto) / 100;
+
+                        // Return an object with the calculated values
+                        return { KcalFinal, PtnFinal, FibrasFinal };
+                    }).catch(function(jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX Error:", textStatus, errorThrown);
+                        // Return default values in case of an error to prevent breaking the sum
+                        return { KcalFinal: 0, PtnFinal: 0, FibrasFinal: 0 };
+                    })
+                );
+            }
+        });
+
+        // Wait for all AJAX promises to resolve
+        const results = await Promise.all(ajaxPromises);
+
+        // Sum up the results from all successful AJAX calls
+        results.forEach(result => {
+            totalKcal += result.KcalFinal;
+            totalPtn += result.PtnFinal;
+            totalFibra += result.FibrasFinal;
+        });
+
+        console.log("Final totalKcal: " + totalKcal);
+
+        $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
+        $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
+        $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
+
+        $(divCombinacao).find("[name='valortotal_kcal[]']").val(totalKcal.toFixed(2));
+        $(divCombinacao).find("[name='valortotal_ptn[]']").val(totalPtn.toFixed(2));
+        $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
     });
     $(".btn_suplemento_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
