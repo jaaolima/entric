@@ -2100,7 +2100,10 @@ $(function(){
                             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            let volume = intval(valorVolume) || 0;
+                            let volume = parseInt(valorVolume) || 0;
+
+                            console.log("volume: " +volume);
+                            console.log("Volume antes: "+valorVolume);
 
                             console.log(kcalProduto);
                             console.log(ptnProduto);
