@@ -3008,7 +3008,7 @@ $(function(){
         selector.removeData();
         select2_ajax_produto_enteral(selector);
     });
-    $(".btn_formula_rm").on("click", async function(e) {
+    $('body').on('click', ".btn_formula_rm", async function (e) {
         var $_this = $(this);
         let divCombinacao = $($_this).closest("div[id^='combinacao']");
         $(this).closest(".div_nova_dieta").remove();
@@ -3141,7 +3141,7 @@ $(function(){
         selector.removeData();
         select2_ajax_produto_modulo(selector);
     });
-    $(".btn_produto_rm").on("click", async function(e) {
+    $('body').on('click', ".btn_produto_rm", async function (e) {
         var $_this = $(this);
         let divCombinacao = $($_this).closest("div[id^='combinacao']");
         $(this).closest(".div_modulo").remove();
@@ -3283,7 +3283,8 @@ $(function(){
         selector.removeData();
         select2_ajax_produto_suplemento(selector);
     });
-    $(".btn_suplemento_rm").on("click", async function(e) {
+    $('body').on('click', ".btn_suplemento_rm", async function (e) {
+
         var $_this = $(this);
         let divCombinacao = $($_this).closest("div[id^='combinacao']");
         $(this).closest(".div_suplemento").remove();
