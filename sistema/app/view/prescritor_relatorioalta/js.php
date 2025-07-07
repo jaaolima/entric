@@ -2083,7 +2083,7 @@ $(function(){
             if($(this).hasClass("select2_formula")){
                 div_select = $(this).closest(".div_nova_dieta");
                 valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
-                console.log("Volume: "+valorVolume);
+                console.log("Volume 1: "+valorVolume);
                 valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
@@ -2101,30 +2101,17 @@ $(function(){
                             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            let volume = parseInt(valorVolume) || 0;
-
-                            console.log("volume: " +volume);
                             console.log("Volume antes: "+valorVolume);
-
-                            console.log(kcalProduto);
-                            console.log(ptnProduto);
-                            console.log(fibrasProduto);
+                            let volume = parseInt(valorVolume);
+                            console.log("volume: " +volume);
 
                             let = KcalFinal = (volume * kcalProduto) / 100;
                             let = PtnFinal = (volume * ptnProduto) / 100;
                             let = FibrasFinal = (volume * fibrasProduto) / 100;
 
-                            console.log(KcalFinal);
-                            console.log(PtnFinal);
-                            console.log(FibrasFinal);
-
                             totalKcal += KcalFinal;
                             totalPtn += PtnFinal;
                             totalFibra += FibrasFinal;
-
-                            console.log(totalKcal);
-                            console.log(totalPtn);
-                            console.log(totalFibra);
                         }
                     });
                 }
