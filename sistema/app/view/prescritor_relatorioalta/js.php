@@ -2083,7 +2083,7 @@ $(function(){
             if($(this).hasClass("select2_formula")){
                 let div_select = $(this).closest(".div_nova_dieta");
                 let valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
-                letvalorSelect = $(this).val();
+                let valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
                     $.ajax({
                         type: "POST",
