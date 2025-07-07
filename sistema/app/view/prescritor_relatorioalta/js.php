@@ -2081,14 +2081,14 @@ $(function(){
 
         $(divCombinacao).find(".select_calculo").each(function(){
             if($(this).hasClass("select2_formula")){
-                let div_select = $(this).closest(".div_nova_dieta");
-                let valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
-                let valorSelect = $(this).val();
-                if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
+                let div_selectEnteral = $(this).closest(".div_nova_dieta");
+                let valorVolumeEnteral = $(div_selectEnteral).find("input[name^='dieta_volume']").val();
+                let valorSelectEnteral = $(this).val();
+                if (valorSelectEnteral && valorSelectEnteral.trim() !== '' && valorVolumeEnteral && valorVolumeEnteral.trim() !== '') {
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
-                        data: "id="+valorSelect,
+                        data: "id="+valorSelectEnteral,
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
@@ -2100,7 +2100,7 @@ $(function(){
                             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            let volume = parseInt(valorVolume) || 0;
+                            let volume = parseInt(valorVolumeEnteral) || 0;
 
                             let KcalFinal = (volume * kcalProduto) / 100;
                             let PtnFinal = (volume * ptnProduto) / 100;
@@ -2114,14 +2114,14 @@ $(function(){
                 }
                 
             }else if($(this).hasClass("select2_produto")){
-                let div_select = $(this).closest(".div_nova_dieta");
-                let valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
-                let valorSelect = $(this).val();
-                if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
+                let div_select_modulo = $(this).closest(".div_modulo");
+                let valorVolumeModulo = $(div_select_modulo).find("input[name^='modulo_produto']").val();
+                let valorSelectModulo = $(this).val();
+                if (valorSelectModulo && valorSelectModulo.trim() !== '' && valorVolumeModulo && valorVolumeModulo.trim() !== '') {
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
-                        data: "id="+valorSelect,
+                        data: "id="+valorSelectModulo,
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
@@ -2133,7 +2133,7 @@ $(function(){
                             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            let volume = parseInt(valorVolume) || 0;
+                            let volume = parseInt(valorVolumeModulo) || 0;
 
                             let KcalFinal = (volume * kcalProduto) / 100;
                             let PtnFinal = (volume * ptnProduto) / 100;
@@ -2146,14 +2146,14 @@ $(function(){
                     });
                 }
             }else if($(this).hasClass("select2_suplemento_produto")){
-                let div_select = $(this).closest(".div_nova_dieta");
-                let valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
-                let valorSelect = $(this).val();
-                if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
+                let div_selectSuplemento = $(this).closest(".div_suplemento");
+                let valorVolumeSuplemento = $(div_selectSuplemento).find("input[name^='suplemento_quantidade']").val();
+                let valorSelectSuplemento = $(this).val();
+                if (valorSelectSuplemento && valorSelectSuplemento.trim() !== '' && valorVolumeSuplemento && valorVolumeSuplemento.trim() !== '') {
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
-                        data: "id="+valorSelect,
+                        data: "id="+valorSelectSuplemento,
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
@@ -2165,7 +2165,7 @@ $(function(){
                             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            let volume = parseInt(valorVolume) || 0;
+                            let volume = parseInt(valorVolumeSuplemento) || 0;
 
                             let KcalFinal = (volume * kcalProduto) / 100;
                             let PtnFinal = (volume * ptnProduto) / 100;
