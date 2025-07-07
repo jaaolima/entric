@@ -2093,7 +2093,7 @@ $(function(){
             } else if ($this.hasClass("select2_produto")) {
                 let div_select_modulo = $this.closest(".div_modulo");
                 id = $this.val();
-                volumeInputName = div_select_modulo.find("input[name^='modulo_produto']").val();
+                volumeInputName = div_select_modulo.find("input[name^='modulo_quantidade']").val();
             } else if ($this.hasClass("select2_suplemento_produto")) {
                 let div_selectSuplemento = $this.closest(".div_suplemento");
                 id = $this.val();
