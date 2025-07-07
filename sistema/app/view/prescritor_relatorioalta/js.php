@@ -2086,6 +2086,7 @@ $(function(){
                 console.log("Volume 1: "+valorVolume);
                 valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
+                    console.log("Volume 2: "+valorVolume);
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
@@ -2093,6 +2094,7 @@ $(function(){
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
+                            console.log("Volume 3: "+valorVolume);
                             var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
@@ -2101,8 +2103,7 @@ $(function(){
                             ptnProduto = isNaN(ptnProduto) ? 0 : ptnProduto;
                             fibrasProduto = isNaN(fibrasProduto) ? 0 : fibrasProduto;
 
-                            console.log("Volume antes: "+valorVolume);
-                            let volume = parseInt(valorVolume);
+                            let volume = parseInt(valorVolume) || 0;
                             console.log("volume: " +volume);
 
                             let = KcalFinal = (volume * kcalProduto) / 100;
