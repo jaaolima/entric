@@ -3439,7 +3439,7 @@ $(function(){
             }else{
                 var numi = i;
             }            
-            horarios = horarios + '<div class="col-sm-8"><label for="dieta_horario_administracao['+nameStringmatch[1]+'__'+numi+']" class="label_horario_administracao">Horário de Administração '+numi+':</label>'+
+            horarios = horarios + '<div class="col-sm-6"><label for="dieta_horario_administracao['+nameStringmatch[1]+'__'+numi+']" class="label_horario_administracao">Horário '+numi+':</label>'+
                                   '<input width="60px" type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao['+nameStringmatch[1]+'__'+numi+']"></div>';
                                                                         
         }
