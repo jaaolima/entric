@@ -2083,10 +2083,8 @@ $(function(){
             if($(this).hasClass("select2_formula")){
                 div_select = $(this).closest(".div_nova_dieta");
                 valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
-                console.log("Volume 1: "+valorVolume);
                 valorSelect = $(this).val();
                 if (valorSelect && valorSelect.trim() !== '' && valorVolume && valorVolume.trim() !== '') {
-                    console.log("Volume 2: "+valorVolume);
                     $.ajax({
                         type: "POST",
                         url: "ajax/produto_abrir",
@@ -2094,7 +2092,9 @@ $(function(){
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
+                            console.log("div: "+div_select);
                             valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
+                            console.log("Volume 2: "+valorVolume);
                             var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
