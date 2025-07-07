@@ -2123,10 +2123,6 @@ $(function(){
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                            console.log(kcalProduto);
-                            console.log(ptnProduto);
-                            console.log(fibrasProduto);
-
                             KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
                             PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
                             FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
