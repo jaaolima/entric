@@ -2190,6 +2190,10 @@ $(function(){
 
         })
 
+        console.log(totalKcal);
+        console.log(totalPtn);
+        console.log(totalFibra);
+
         $(divCombinacao).find("[name='div_valortotal_kcal']").html(totalKcal.toFixed(2));
         $(divCombinacao).find("[name='div_valortotal_ptn']").html(totalPtn.toFixed(2));
         $(divCombinacao).find("[name='div_valortotal_fibra']").html(totalFibra.toFixed(2));
