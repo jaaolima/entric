@@ -1992,7 +1992,9 @@ function isNumeric(evt) {
 }
 
 async function recalcular_oferta($_this){
+    console.log($_this);
     let divCombinacao = $($_this).closest("div[id^='combinacao']");
+    console.log(divCombinacao);
     let totalKcal = 0;
     let totalPtn = 0;
     let totalFibra = 0;
