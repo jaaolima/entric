@@ -3009,9 +3009,8 @@ $(function(){
         select2_ajax_produto_enteral(selector);
     });
     $(".btn_formula_rm").on("click", function(e) {
-        recalcular_oferta($(this));
         $(this).closest(".div_nova_dieta").remove();
-
+        recalcular_oferta($(this));
     });
     $('.radio_infusao').on("change", function(e) {
         if ($(this).filter(':checked').val() == 'Fracionada') {
@@ -3063,8 +3062,8 @@ $(function(){
         select2_ajax_produto_modulo(selector);
     });
     $(".btn_produto_rm").on("click", function(e) {
-        recalcular_oferta($(this));
         $(this).closest(".div_modulo").remove();
+        recalcular_oferta($(this));
     });
     $(".btn_volume_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
@@ -3125,8 +3124,8 @@ $(function(){
         select2_ajax_produto_suplemento(selector);
     });
     $(".btn_suplemento_rm").on("click", function(e) {
-        recalcular_oferta($(this));
         $(this).closest(".div_suplemento").remove();
+        recalcular_oferta($(this));
     });
     $(".btn_suplemento_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
