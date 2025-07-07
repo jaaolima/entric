@@ -3060,8 +3060,9 @@ $(function(){
         divClone.find(".select2_ajax_formula").attr('name', 'dieta_formula[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_formula").parent().find(".select2-container--below").remove();
         divClone.find(".select2_ajax_formula").parent().find(".select2-container--default").remove();  
-
-        divClone.find(".campos_limpar").val('');
+        divClone.find(".div_horario_administracao").html("");
+        
+        divClone.find(".campos_limpar").val('');    
         divClone.find(".hora").unbind();
         divClone.find(".numeros").unbind();
         $(this).parent().parent().parent().find(".nova_dieta").append(divClone);
