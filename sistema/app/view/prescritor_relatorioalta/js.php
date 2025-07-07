@@ -3142,7 +3142,7 @@ $(function(){
         select2_ajax_produto_modulo(selector);
     });
     $(".btn_produto_rm").on("click", async function(e) {
-        var $this = $(this);
+        var $_this = $(this);
         let divCombinacao = $($_this).closest("div[id^='combinacao']");
         $(this).closest(".div_modulo").remove();
         let totalKcal = 0;
@@ -3284,7 +3284,7 @@ $(function(){
         select2_ajax_produto_suplemento(selector);
     });
     $(".btn_suplemento_rm").on("click", async function(e) {
-        var $this = $(this);
+        var $_this = $(this);
         let divCombinacao = $($_this).closest("div[id^='combinacao']");
         $(this).closest(".div_suplemento").remove();
         let totalKcal = 0;
