@@ -2094,7 +2094,7 @@ $(function(){
                         cache: false,
                         dataType: 'json',
                         success: function( data ){
-                            console.log("Volume 3: "+valorVolume);
+                            valorVolume = $(div_select).find("input[name^='dieta_volume']").val();
                             var kcalProduto = data.kcal ? parseFloat(String(data.kcal).replace(',', '.')) : 0;
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
