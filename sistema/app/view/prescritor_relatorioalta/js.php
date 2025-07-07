@@ -2079,7 +2079,7 @@ $(function(){
         totalPtn = 0;
         totalFibra = 0;
 
-        $(div_select).find(".select_calculo").each(function(){
+        $(divCombinacao).find(".select_calculo").each(function(){
             if($(this).hasClass("select2_formula")){
                 div_select = $(this).closest(".div_nova_dieta");
                 valorVolume = div_select.find("input[name^='dieta_volume']").val();
@@ -2096,10 +2096,6 @@ $(function(){
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                            console.log(kcalProduto);
-                            console.log(ptnProduto);
-                            console.log(fibrasProduto);
-
                             KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
                             PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
                             FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
@@ -2107,11 +2103,6 @@ $(function(){
                             totalKcal = totalKcal + KcalFinal;
                             totalPtn = totalPtn + PtnFinal;
                             totalFibra = totalFibra + FibrasFinal;
-
-                            console.log(totalKcal);
-                            console.log(KcalFinal);
-                            console.log(PtnFinal);
-                            console.log(FibrasFinal);
                         }
                     });
                 }
@@ -2143,11 +2134,6 @@ $(function(){
                             totalKcal = totalKcal + KcalFinal;
                             totalPtn = totalPtn + PtnFinal;
                             totalFibra = totalFibra + FibrasFinal;
-
-                            console.log(totalKcal);
-                            console.log(KcalFinal);
-                            console.log(PtnFinal);
-                            console.log(FibrasFinal);
                         }
                     });
                 }
@@ -2167,10 +2153,6 @@ $(function(){
                             var ptnProduto = data.ptn ? parseFloat(String(data.ptn).replace(',', '.')) : 0;
                             var fibrasProduto = data.fibras ? parseFloat(String(data.fibras).replace(',', '.')) : 0;
 
-                            console.log(kcalProduto);
-                            console.log(ptnProduto);
-                            console.log(fibrasProduto);
-
                             KcalFinal = (parseFloat(valorVolume) * kcalProduto) / 100;
                             PtnFinal = (parseFloat(valorVolume) * ptnProduto) / 100;
                             FibrasFinal = (parseFloat(valorVolume) * fibrasProduto) / 100;
@@ -2178,11 +2160,6 @@ $(function(){
                             totalKcal = totalKcal + KcalFinal;
                             totalPtn = totalPtn + PtnFinal;
                             totalFibra = totalFibra + FibrasFinal;
-
-                            console.log(totalKcal);
-                            console.log(KcalFinal);
-                            console.log(PtnFinal);
-                            console.log(FibrasFinal);
                         }
                     });
                 }
