@@ -1145,86 +1145,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
 
-			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
-			
-			<?php 
-			if ($relatorio['calculo_apres_fechado'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA FECHADO</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-			<?php 
-			if ($relatorio['calculo_apres_aberto_liquido'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-			<?php 
-			if ($relatorio['calculo_apres_aberto_po'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA ABERTO (PÓ)</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto_po'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
 			<?php if($usuario['login'] != 'ibranutro') : ?>
 			<img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONTATOS DO PRESCRITOR</p>
 			<p>
@@ -2071,7 +1991,108 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php
 			}
 			?>
+			
+		<?php
+		}
+		$p_footer = true;
+		?>
+		<?php 
+		if ($p_footer) {
+		?>	
+			</div>
+			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>" style="position:relative;">
+			<?php if($usuario['login'] == 'ibranutro') : ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
+			<?php else: ?>
+			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
+			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php endif; ?>
+		<?php
+		}
+		?>
+		<?php 
+		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
+		?>	
 
+			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
+			
+			<?php 
+			if ($relatorio['tipo_prescricao'] == "Prescrição Manual" || $relatorio['calculo_apres_fechado'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong>SISTEMA FECHADO</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['cuidados'] = $config['cuidados'];
+				$relatorio['preparo'] = $config['preparo'];
+				?>
+				<p><strong>Higienização para Manipulação</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['cuidados']);?></p>
+
+
+				<p><strong>Preparo e Instalação da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<?php
+			}
+			?>
+
+			<?php 
+			if ($relatorio['tipo_prescricao'] == "Prescrição Manual" || $relatorio['calculo_apres_aberto_liquido'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['cuidados'] = $config['cuidados'];
+				$relatorio['preparo'] = $config['preparo'];
+				?>
+				<p><strong>Higienização para Manipulação</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['cuidados']);?></p>
+
+
+				<p><strong>Preparo e Instalação da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<?php
+			}
+			?>
+
+			<?php 
+			if ($relatorio['tipo_prescricao'] == "Prescrição Manual" || $relatorio['calculo_apres_aberto_po'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong>SISTEMA ABERTO (PÓ)</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto_po'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['cuidados'] = $config['cuidados'];
+				$relatorio['preparo'] = $config['preparo'];
+				?>
+				<p><strong>Higienização para Manipulação</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['cuidados']);?></p>
+
+
+				<p><strong>Preparo e Instalação da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<?php
+			}
+			?>
 		<?php
 		}
 		?>
