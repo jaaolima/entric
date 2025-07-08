@@ -457,7 +457,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php } ?>	
 
 			<?php if ($relatorio['rel_prescricao']<>""){ ?>
-				<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções</p>
+				<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA <?php if($relatorio['tipo_prescricao'] == "Prescrição Automática") : ?> - Escolha uma das opções <?php endif; ?></p>
 					<?php if($relatorio['tipo_prescricao'] == 'Prescrição Automática') : ?>
 						<?php 
 						// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -1053,7 +1053,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									if($dieta_infusaoProduto == "Contínua"){
 										$dieta_vazao_hProduto = $dieta_vazao_h->$key;
 										$dieta_horario_inicioProduto = $dieta_horario_inicio->$key;
-										$infusao = "a " . $dieta_vazao_hProduto . " ml/h às " . $dieta_horario_inicioProduto . ".";
+										$infusao = "contínua a " . $dieta_vazao_hProduto . " ml/h às " . $dieta_horario_inicioProduto . ".";
 									}	
 									if($dieta_infusaoProduto == "Fracionada"){
 										$dieta_fracionamento_diaProduto = $dieta_fracionamento_dia->$key;
@@ -1068,7 +1068,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 										}
-										$infusao = $dieta_fracionamento_diaProduto . (($dieta_fracionamento_dia == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ".";
+										$infusao = "fracionada " .$dieta_fracionamento_diaProduto . (($dieta_fracionamento_dia == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ".";
 									}
 									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
 								}
@@ -1076,20 +1076,20 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 							foreach ($modulo_produto as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
-									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
+									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$moduloQuantidade = $modulo_quantidade->$key;
 									$moduloVolume = $modulo_volume->$key;
 									$moduloHorario = $modulo_horario->$key;
-									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade."g ou ml - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
+									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
 								}
 							}
 
 							foreach ($suplemento_produto as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
-									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
+									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$suplementoHorario = $suplemento_horario->$key;
-									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade."g ou ml às ".$suplementoHorario."</p>";
+									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$suplementoHorario."</p>";
 								}
 							}
 
