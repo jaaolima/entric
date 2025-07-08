@@ -1168,7 +1168,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</p>
 			<?php endif; ?>
 
-			<?php if($usuario['login'] == 'ibranutro' && $relatorio['distribuidores'] == 'df'): ?>
+			<?php 
+				if ($relatorio['rel_distribuidores']<>""){
+			?>
+			<?php if($usuario['login'] == "ibranutro" && $relatorio['distribuidores'] == 'df') : ?>
 			<div style="display:flex;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
 					<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
@@ -1216,7 +1219,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 																<h5 class='titulo'style='margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
 															</div>
 															<div>
-																<img src='imagem/QRCode_videos_alta.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
+																<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
 															</div>
 														</div>";
 										
@@ -1282,9 +1285,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			<?php else: ?>
+			<?php else :?>
 			<div style="display:flex;">
 				<div style="width:100%;padding-left: 10px;padding-right: 10px;">
 					<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
@@ -1351,7 +1353,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					</p>
 				</div>
 			</div>
-			<?php endif; ?>
+			<?php endif;?>
+			<?php } ?>
 			<div style="margin-bottom:30px;">
 				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 					<div style="width: 250px;border-top: 1px solid;">
