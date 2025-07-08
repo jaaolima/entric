@@ -1174,7 +1174,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php if($usuario['login'] == "ibranutro" && $relatorio['distribuidores'] == 'df') : ?>
 			<div style="display:flex;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
-					<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
+					<p style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
 					<p>
 						<table width="100%" cellspacing="0" cellpadding="0">
 							<tbody>
@@ -1289,7 +1289,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php else :?>
 			<div style="display:flex;">
 				<div style="width:100%;padding-left: 10px;padding-right: 10px;">
-					<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
+					<p style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
 					<p>
 						<table width="100%" cellspacing="0" cellpadding="0">
 							<tbody>
