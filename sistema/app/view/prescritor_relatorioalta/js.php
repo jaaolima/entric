@@ -1531,7 +1531,7 @@ function validacao_manual(){
         var valorInput = $input.val();
         console.log(valorInput);
         
-        if(valorInput != ''){
+        if(valorInput != '' && valorInput != null){
             let divEnteral = $($input).closest(".div_nova_dieta");
 
             $(divEnteral).find("input[name^='dieta_volume']").each(function() {
@@ -1609,7 +1609,7 @@ function validacao_manual(){
         var valorInput = $input.val();
         console.log(valorInput);
 
-        if(valorInput != ''){
+        if(valorInput != ''  && valorInput != null){
             let divModulo = $($input).closest(".div_modulo");
             $(divModulo).find("input[name^='modulo_quantidade']").each(function() {
                 var $inputQuantidade = $(this); // O input atual no loop
@@ -1680,7 +1680,7 @@ function validacao_manual(){
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
 
-        if(valorInput != ''){
+        if(valorInput != ''  && valorInput != null){
             let divSuplemento = $($input).closest(".div_suplemento");
             $(divSuplemento).find("input[name^='suplemento_quantidade']").each(function() {
                 var $inputQuantidade = $(this); // O input atual no loop
@@ -1754,7 +1754,7 @@ function validacao_manual(){
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
 
-        if(valorInput != ''){
+        if(valorInput != ''  && valorInput != null){
             let divHidratacao = $($input).closest(".accor_hidratacao");
             $(divHidratacao).find("input[name^='hidratacao_fracionamento_dia']").each(function() {
                 var $inputFracionamento = $(this); // O input atual no loop
