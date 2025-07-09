@@ -1529,6 +1529,7 @@ function validacao_manual(){
     $("[name^='dieta_formula']").each(function() {
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
+        console.log(valorInput);
         
         if(valorInput != ''){
             let divEnteral = $($input).closest(".div_nova_dieta");
@@ -1606,6 +1607,7 @@ function validacao_manual(){
    $("[name^='modulo_produto']").each(function() {
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
+        console.log(valorInput);
 
         if(valorInput != ''){
             let divModulo = $($input).closest(".div_modulo");
