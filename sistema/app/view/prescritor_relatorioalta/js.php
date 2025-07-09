@@ -1529,171 +1529,148 @@ function validacao_manual(){
     $("[name^='dieta_formula']").each(function() {
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
+        
+        if(valorInput != ''){
+            let divEnteral = $($input).closest(".div_nova_dieta");
 
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário selecionar a fórmula.'
+            $(divEnteral).find("input[name^='dieta_volume']").each(function() {
+                var $inputVolume = $(this); // O input atual no loop
+                var valorInputVolume = $inputVolume.val();
+
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputVolume || valorInputVolume.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o volume.'
+                    });
+
+                    $inputVolume.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
             });
 
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
+            if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Contínua"){
+                if($(divEnteral).find("input[name^='dieta_vazao_h']").val() == ""){
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher a Vazão.'
+                    });
+                    return false;
+                }
+
+                if($(divEnteral).find("input[name^='dieta_horario_inicio']").val() == ""){
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o horário de início.'
+                    });
+                    return false;
+                }
+            }
+
+            if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Fracionada"){
+                if($(divEnteral).find("input[name^='dieta_fracionamento_dia']").val() == ""){
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o fracionamento/dia.'
+                    });
+                    return false;
+                }
+
+                if($(divEnteral).find("input[name^='dieta_horario_administracao']").val() == ""){
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o horário de administração.'
+                    });
+                    return false;
+                }
+            }
+            
         }
     });
 
-    $("input[name^='dieta_volume']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
-
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher o volume.'
-            });
-
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
-
-    // if($("[name='dieta_infusao[0]']:checked").val() == "Contínua"){
-    //     if($("input[name='dieta_vazao_h[]']").val() == ""){
-    //         $.alert({
-    //             title: 'Atenção',
-    //             icon: 'fa fa-warning',
-    //             type: 'red',
-    //             content: 'é necessário preencher a Vazão.'
-    //         });
-    //         return false;
-    //     }
-
-    //     if($("input[name='dieta_horario_inicio[0]']").val() == ""){
-    //         $.alert({
-    //             title: 'Atenção',
-    //             icon: 'fa fa-warning',
-    //             type: 'red',
-    //             content: 'é necessário preencher o horário de início.'
-    //         });
-    //         return false;
-    //     }
-    // }
-
-    // if($("[name='dieta_infusao[0]']:checked").val() == "Fracionada"){
-    //     if($("input[name='dieta_fracionamento_dia[]']").val() == ""){
-    //         $.alert({
-    //             title: 'Atenção',
-    //             icon: 'fa fa-warning',
-    //             type: 'red',
-    //             content: 'é necessário preencher o fracionamento/dia.'
-    //         });
-    //         return false;
-    //     }
-
-    //     if($("input[name='dieta_horario_administracao[0]']").val() == ""){
-    //         $.alert({
-    //             title: 'Atenção',
-    //             icon: 'fa fa-warning',
-    //             type: 'red',
-    //             content: 'é necessário preencher o horário de administração.'
-    //         });
-    //         return false;
-    //     }
-    // }
+    
 
    $("[name^='modulo_produto']").each(function() {
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
 
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário selecionar o produto do módulo.'
+        if(valorInput != ''){
+            let divModulo = $($input).closest(".div_modulo");
+            $(divModulo).find("input[name^='modulo_quantidade']").each(function() {
+                var $inputQuantidade = $(this); // O input atual no loop
+                var valorInputQuantidade = $inputQuantidade.val();
+
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputQuantidade || valorInputQuantidade.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher a quantidade.'
+                    });
+
+                    $inputQuantidade.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
             });
 
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
+            $(divModulo).find("input[name^='modulo_volume']").each(function() {
+                var $inputVolume = $(this); // O input atual no loop
+                var valorInputVolume = $inputVolume.val();
 
-    $("input[name^='modulo_quantidade']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputVolume || valorInputVolume.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o volume.'
+                    });
 
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher a quantidade.'
+                    $inputVolume.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
             });
 
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
+            $(divModulo).find("input[name^='modulo_horario']").each(function() {
+                var $inputHorario = $(this); // O input atual no loop
+                var valorInputHorario = $inputHorario.val();
 
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputHorario || valorInputHorario.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o horário.'
+                    });
 
-    $("input[name^='modulo_volume']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
-
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher o volume.'
+                    $inputHorario.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
             });
-
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
-
-    $("input[name^='modulo_horario']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
-
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher o horário.'
-            });
-
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
         }
     });
 
@@ -1701,128 +1678,123 @@ function validacao_manual(){
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
 
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário selecionar o produto do suplemento.'
+        if(valorInput != ''){
+            let divSuplemento = $($input).closest(".div_suplemento");
+            $(divSuplemento).find("input[name^='suplemento_quantidade']").each(function() {
+                var $inputQuantidade = $(this); // O input atual no loop
+                var valorInputQuantidade = $inputQuantidade.val();
+
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputQuantidade || valorInputQuantidade.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher a quantidade.'
+                    });
+
+                    $inputQuantidade.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
             });
 
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
+            $(divSuplemento).find("input[name^='suplemento_quantidade']").each(function() {
+                var $inputQuantidade = $(this); // O input atual no loop
+                var valorInputQuantidade = $inputQuantidade.val();
+
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputQuantidade || valorInputQuantidade.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher a quantidade.'
+                    });
+
+                    $inputQuantidade.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
+            });
+
+            $(divSuplemento).find("input[name^='suplemento_horario']").each(function() {
+                var $inputHorario = $(this); // O input atual no loop
+                var valorInputHorario = $inputHorario.val();
+
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputHorario || valorInputHorario.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o horário.'
+                    });
+
+                    $inputHorario.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
+            });
         }
     });
 
 
-    $("input[name^='suplemento_quantidade']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
 
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher a quantidade.'
-            });
-
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
-
-
-
-    $("input[name^='suplemento_horario']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
-
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher o horário.'
-            });
-
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
 
     $("input[name^='hidratacao_agua_livre']").each(function() {
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
 
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher a hidratação.'
+        if(valorInput != ''){
+            let divHidratacao = $($input).closest(".accor_hidratacao");
+            $(divHidratacao).find("input[name^='hidratacao_fracionamento_dia']").each(function() {
+                var $inputFracionamento = $(this); // O input atual no loop
+                var valorInputFracionamento = $inputFracionamento.val();
+
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputFracionamento || valorInputFracionamento.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher o fracionamento/dia.'
+                    });
+
+                    $inputFracionamento.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
             });
 
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
+            $(divHidratacao).find("input[name^='hidratacao_horario']").each(function() {
+                var $inputHorario = $(this); // O input atual no loop
+                var valorInputHorario = $inputHorario.val();
 
-    $("input[name^='hidratacao_fracionamento_dia']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
+                // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                if (!valorInputHorario || valorInputHorario.trim() === "") {
+                    todosPreenchidos = false; // Encontrou um campo vazio
+                    
+                    // Exibe o alerta
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'É necessário preencher todos os horários de hidratação.'
+                    });
 
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'é necessário preencher o fracionamento/dia.'
+                    $inputHorario.focus(); // Dá foco ao primeiro campo vazio encontrado
+                    return false; // Sai do loop .each() imediatamente
+                }
             });
-
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
-        }
-    });
-
-    $("input[name^='hidratacao_horario']").each(function() {
-        var $input = $(this); // O input atual no loop
-        var valorInput = $input.val();
-
-        // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-        if (!valorInput || valorInput.trim() === "") {
-            todosPreenchidos = false; // Encontrou um campo vazio
-            
-            // Exibe o alerta
-            $.alert({
-                title: 'Atenção',
-                icon: 'fa fa-warning',
-                type: 'red',
-                content: 'É necessário preencher todos os horários de hidratação.'
-            });
-
-            $input.focus(); // Dá foco ao primeiro campo vazio encontrado
-            return false; // Sai do loop .each() imediatamente
         }
     });
 

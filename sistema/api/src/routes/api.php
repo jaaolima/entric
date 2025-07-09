@@ -1842,7 +1842,7 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, kcal, ptn, fibras, cat_modulo",
-		                                            "WHERE via = 'Módulo' and especialidade LIKE '%Adulto% and (nome LIKE '%".$dados."%' OR cat_modulo LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
+		                                            "WHERE via = 'Módulo' and especialidade LIKE '%Adulto%' and (nome LIKE '%".$dados."%' OR cat_modulo LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
 		                                            null);
 
 		        $data = $produtos;
@@ -1879,7 +1879,7 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, kcal, ptn, fibras, apresentacao",
-		                                            "WHERE via = 'Suplemento' and especialidade LIKE '%Adulto% and (nome LIKE '%".$dados."%' OR apresentacao LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
+		                                            "WHERE via = 'Suplemento' and especialidade LIKE '%Adulto%' and (nome LIKE '%".$dados."%' OR apresentacao LIKE '%".$dados."%' OR fabricante LIKE '%".$dados."%' OR indicacao LIKE '%".$dados."%')", 
 		                                            null);
 
 		        $data = $produtos;
