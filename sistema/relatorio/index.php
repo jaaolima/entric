@@ -371,6 +371,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<?php 
 			if (((!$p_produtos) and (!$p_footer)) or ($p_header)){
+				if( $relatorio['tipo_prescricao']=="Prescrição Automática"){
 			?>
 			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA</p>
 			<p>
@@ -384,7 +385,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<?php 
 			// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-			if( $relatorio['tipo_prescricao']=="Prescrição Automática"){
+			
 				if ($relatorio['tipo_produto']=="Oral"){ 
 			?>
 				fracionada em <?php echo $relatorio['fra_hidratacao_dia']; if ($relatorio['fra_hidratacao_dia']>1) echo " vezes"; else echo  " vez";?> 
@@ -406,56 +407,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php } 
 			}
 			?>	
-
-			<?php
-
-			if($relatorio['tipo_prescricao']=="Prescrição Manual"){
-				/*  Tipo de prescrição  MANUAL - acredito */
-				// $margem_calorica_a = "-";
-				// $margem_calorica_b = "-";
-				// $margem_calorica = $relatorio["margem_calorica"];
-				// $margem_calorica = explode(",", $margem_calorica);
-				// if (count($margem_calorica)>1){
-				// 	$margem_calorica_a = $margem_calorica[0];
-				// 	$margem_calorica_a = explode(" ", $margem_calorica_a);
-				// 	$margem_calorica_a = $margem_calorica_a[0];
-
-				// 	$margem_calorica_b = $margem_calorica[1];
-				// 	$margem_calorica_b = explode(" ", $margem_calorica_b);
-				// 	$margem_calorica_b = $margem_calorica_b[0];
-				// }
-
-
-				// $margem_proteica_a = "-";
-				// $margem_proteica_b = "-";
-				// $margem_proteica = $relatorio["margem_proteica"];
-				// $margem_proteica = explode(",", $margem_proteica);
-				// if (count($margem_proteica)>1){
-				// 	$margem_proteica_a = $margem_proteica[0];
-				// 	$margem_proteica_a = explode(" ", $margem_proteica_a);
-				// 	$margem_proteica_a = $margem_proteica_a[0];
-
-				// 	$margem_proteica_b = $margem_proteica[1];
-				// 	$margem_proteica_b = explode(" ", $margem_proteica_b);
-				// 	$margem_proteica_b = $margem_proteica_b[0];
-				// }
-				$valortotal_kcal = json_decode($relatorio['valortotal_kcal']);
-				$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
-				$valortotal_fibra = json_decode($relatorio['valortotal_fibra']);
-				$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
-				$arrHidratacao = (array) $hidratacao_agua_livre;
-				$keysHidratacao = array_keys($arrHidratacao);
-				for ($i=0; $i < count($valortotal_kcal); $i++) {
-					$keyHidratacao = $keysHidratacao[$i];
-    				$agua_livre = $arrHidratacao[$keyHidratacao];
-			?>
-			<h3>Opção <?php echo ($i + 1); ?>:</h3>
-			<span>fornecendo <?php echo $valortotal_kcal[$i];?> calorias/dia, <?php echo $valortotal_ptn[$i];?> gramas de proteína/dia, conforme sugestões de produtos abaixo.</span></p>
-			<p>- Água livre <?php echo $agua_livre;?> ml/dia;</p>
 			<?php } ?>	
-			<?php } ?>	
-			<?php } ?>	
-
 			<?php if ($relatorio['rel_prescricao']<>""){ ?>
 				<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA <?php if($relatorio['tipo_prescricao'] == "Prescrição Automática") : ?> - Escolha uma das opções <?php endif; ?></p>
 					<?php if($relatorio['tipo_prescricao'] == 'Prescrição Automática') : ?>
@@ -1041,9 +993,17 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$suplemento_horario = json_decode($relatorio['suplemento_horario']);
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
+
+						$valortotal_kcal = json_decode($relatorio['valortotal_kcal']);
+						$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
+						$valortotal_fibra = json_decode($relatorio['valortotal_fibra']);
 						
 						for ($i=1; $i <= count($valortotal_kcal); $i++) {
-							echo "<h3>Opção ".$i."</h3>";
+							$j = $i - 1;
+							$kcal = $valortotal_kcal[$j];
+							$ptn = $valortotal_ptn[$j];
+							$fibra = $valortotal_fibra[$j];
+							echo "<h3>Opção ".$i.":</h3> ".$kcal." kcal, ".$ptn."g de proteína e ".$fibra."g de fibras ao dia";
 							foreach ($dieta_formula as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
