@@ -231,7 +231,7 @@
                                                 <div class="card-body pt-0">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control numeros campos_limpa hidratacao_agua_livre" required="required" name="hidratacao_agua_livre[1__0]">
+                                                            <input type="text" class="form-control numeros campos_limpar hidratacao_agua_livre" required="required" name="hidratacao_agua_livre[1__0]">
                                                         </div>
                                                         <div class="form-group col-sm-3 mb-1" style="margin-top: -24px;">
                                                             <label for="hidratacao_fracionamento_dia[1__0]">Fracionamento/dia:</label>

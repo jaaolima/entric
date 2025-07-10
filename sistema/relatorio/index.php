@@ -120,7 +120,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				color: #0092c5;
 				border-bottom: 1px solid #8fcfe5;
 				border-width: 0px 0px 1px 1px !important;
-				padding: 60px 10px 10px 0px;
+				padding: 10px 10px 10px 0px;
 				margin-top:30px;
 			}
 			p{
@@ -194,7 +194,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
-			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo">RELATÓRIO NUTRICIONAL DE ALTA</p>
+			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo" style="padding-bottom: 50px;">RELATÓRIO NUTRICIONAL DE ALTA</p>
 			
 
 			<?php if ($relatorio['rel_identificacao']<>""){ ?>
@@ -235,9 +235,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				}
 				?>
+				<?php if ($array_pesos){ ?>
 				<table width="100%" margin="0" padding="0" border="0" cellspacing="0" cellpadding="0" style="margin-top: 0.5cm;">
 				<?php 
-				if ($array_pesos){
 					for ($i = 0; $i < count($array_pesos); $i++){
 					?>
 					<tr>
@@ -262,10 +262,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						</td>
 					</tr>
 					<?php 
-					}
-				}
-				?>
+					} ?>
 				</table>
+				<?php } ?>
+				
 
 
 				<?php 
@@ -1000,10 +1000,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						
 						for ($i=1; $i <= count($valortotal_kcal); $i++) {
 							$j = $i - 1;
-							$kcal = $valortotal_kcal[$j];
-							$ptn = $valortotal_ptn[$j];
-							$fibra = $valortotal_fibra[$j];
-							echo "<div style='display:flex;'><h3>Opção ".$i.":</h3> <p style='margin-top:22px;margin-left:10px;'>".$kcal." kcal, ".$ptn."g de proteína e ".$fibra."g de fibras ao dia</p></div>";
+							$kcal = str_replace(".00", "", $valortotal_kcal[$j]);
+							$ptn = str_replace(".00", "", $valortotal_ptn[$j]);
+							$fibra = str_replace(".00", "", $valortotal_fibra[$j]);
+
+							echo "<div style='display:flex; padding-bottom:15px;'><h3 style='font-size:11pt;'>OPÇÃO ".$i.":</h3> <b style='margin-top:22px;margin-left:10px;'>".$kcal." kcal, ".$ptn."g de proteína e ".$fibra."g de fibras ao dia</b></div>";
 							foreach ($dieta_formula as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
@@ -1038,7 +1039,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$moduloQuantidade = $modulo_quantidade->$key;
-									$moduloVolume = $modulo_volume->$key;
+									$moduloVolume = str_replace(".00", "", $modulo_volume->$key);
 									$moduloHorario = $modulo_horario->$key;
 									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
 								}
@@ -1974,7 +1975,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
 
-			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
+			<p class="text-left subtitutlo" style="padding-top:50px;"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
 			<?php 
 			if ($relatorio['tipo_prescricao'] == "Prescrição Manual" || $relatorio['calculo_apres_fechado'] == 1){
