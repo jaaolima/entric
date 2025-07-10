@@ -1004,7 +1004,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$ptn = str_replace(".00", "", $valortotal_ptn[$j]);
 							$fibra = str_replace(".00", "", $valortotal_fibra[$j]);
 
-							echo "<div style='display:flex; padding-bottom:15px;'><h3 style='font-size:11pt;'>OPÇÃO ".$i.":</h3> <b style='margin-top:22px;margin-left:10px;'>".$kcal." kcal, ".$ptn."g de proteína e ".$fibra."g de fibras ao dia</b></div>";
+							echo "<div style='display:flex;".(($i != 1) ? "padding-top:15px;" : "")."'><h3 style='font-size:11pt;'>OPÇÃO ".$i.":</h3> <b style='margin-top:13px;margin-left:10px;'>".$kcal." kcal, ".$ptn."g de proteína e ".$fibra."g de fibras ao dia</b></div>";
 							foreach ($dieta_formula as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome", "WHERE id=:id", array(":id"=>$value));
@@ -1364,7 +1364,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<div>
 							<p>www.ibranutro.com.br</p>
 						</div>
-						<div style="margin-left:200px;">
+						<div style="margin-left:100px;">
 							<p>SHCS CR 515 BI C Entrada 42 salas: 104, 107 e 109 - ENTRADA PELA Via W2 Sul - Asa Sul, Brasília - DF, 70381-530</p>
 						</div>
 					</div>
