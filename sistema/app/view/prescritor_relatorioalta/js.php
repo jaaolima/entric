@@ -1527,6 +1527,9 @@ function validacao_manual(){
     let todosPreenchidos = true;
 
     $("[name^='dieta_formula']").each(function() {
+        if (!todosPreenchidos) {
+            return false; 
+        }
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
         console.log(valorInput);
@@ -1564,6 +1567,7 @@ function validacao_manual(){
                         type: 'red',
                         content: 'é necessário preencher a Vazão.'
                     });
+                    todosPreenchidos = false;
                     return false;
                 }
 
@@ -1574,6 +1578,7 @@ function validacao_manual(){
                         type: 'red',
                         content: 'é necessário preencher o horário de início.'
                     });
+                    todosPreenchidos = false;
                     return false;
                 }
             }
@@ -1581,15 +1586,26 @@ function validacao_manual(){
 
             if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Fracionada"){
                 console.log("Fracionada");
-                if($(divEnteral).find("input[name^='dieta_fracionamento_dia']").val() == ""){
-                    $.alert({
-                        title: 'Atenção',
-                        icon: 'fa fa-warning',
-                        type: 'red',
-                        content: 'é necessário preencher o fracionamento/dia.'
-                    });
-                    return false;
-                }
+                $(divEnteral).find("input[name^='dieta_fracionamento_dia']").each(function() {
+                    var $inputFracionamento = $(this); // O input atual no loop
+                    var valorFracionamento = $inputFracionamento.val();
+
+                    // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
+                    if (!valorFracionamento || valorFracionamento.trim() === "") {
+                        todosPreenchidos = false; // Encontrou um campo vazio
+                        
+                        // Exibe o alerta
+                        $.alert({
+                            title: 'Atenção',
+                            icon: 'fa fa-warning',
+                            type: 'red',
+                            content: 'é necessário preencher o fracionamento/dia.'
+                        });
+
+                        $inputFracionamento.focus(); // Dá foco ao primeiro campo vazio encontrado
+                        return false; // Sai do loop .each() imediatamente
+                    }
+                });
 
                 if($(divEnteral).find("input[name^='dieta_horario_administracao']").val() == ""){
                     $.alert({
@@ -1598,6 +1614,7 @@ function validacao_manual(){
                         type: 'red',
                         content: 'é necessário preencher o horário de administração.'
                     });
+                    todosPreenchidos = false;
                     return false;
                 }
             }
@@ -1608,6 +1625,9 @@ function validacao_manual(){
     
 
    $("[name^='modulo_produto']").each(function() {
+        if (!todosPreenchidos) {
+            return false; 
+        }
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
         console.log(valorInput);
@@ -1680,6 +1700,9 @@ function validacao_manual(){
     });
 
     $("[name^='suplemento_produto']").each(function() {
+        if (!todosPreenchidos) {
+            return false; 
+        }
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
 
@@ -1754,6 +1777,9 @@ function validacao_manual(){
 
 
     $("input[name^='hidratacao_agua_livre']").each(function() {
+        if (!todosPreenchidos) {
+            return false; 
+        }
         var $input = $(this); // O input atual no loop
         var valorInput = $input.val();
 
