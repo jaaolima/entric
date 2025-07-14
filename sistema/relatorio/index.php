@@ -1005,6 +1005,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$kcal = str_replace(".00", "", $valortotal_kcal[$j]);
 							$ptn = str_replace(".00", "", $valortotal_ptn[$j]);
 							$fibra = str_replace(".00", "", $valortotal_fibra[$j]);
+							echo "<div>";
 
 							echo "<div style='display:flex;".(($i != 1) ? "padding-top:15px;" : "")."'><h3 style='font-size:11pt;'>OPÇÃO ".$i.":</h3> <b style='margin-top:13px;margin-left:10px;'>".$kcal." kcal, ".$ptn."g de proteína e ".$fibra."g de fibras ao dia</b></div>";
 							foreach ($dieta_formula as $key => $value) {
@@ -1072,7 +1073,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									echo "<p><b>ÁGUA LIVRE</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
 								}
 							}
-							
+							echo "</div>";
 						?>
 						<?php } ?>
 					<?php endif;?>

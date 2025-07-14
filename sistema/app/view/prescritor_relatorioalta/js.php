@@ -3496,6 +3496,8 @@ $(function(){
         divClone.find(".volume_dia").attr('name', 'dieta_volume[' + id +"__1__" + p +']').end();
         divClone.find(".vazao_ml").attr('name', 'dieta_vazao_h[' + id +"__1__" + p +']').end();
         divClone.find(".fracionamento_dia").attr('name', 'dieta_fracionamento_dia[' + id +"__1__" + p +']').end();
+        divClone.find(".horario_inicio").attr('name', 'dieta_horario_inicio[' + id +"__1__" + p +']').end();
+        divClone.find(".horario_administracao").attr('name', 'dieta_horario_administracao[' + id +"__1__" + p +']').end();
         divClone.find(".modulo_quantidade").attr('name', 'modulo_quantidade[' + id +"__1__" + p +']').end();
         divClone.find(".modulo_volume_agua").attr('name', 'modulo_volume[' + id +"__1__" + p +']').end();
         divClone.find(".modulo_horario").attr('name', 'horario[' + id +"__1__" + p +']').end();
