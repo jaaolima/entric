@@ -1586,7 +1586,18 @@ function validacao_manual(){
 
             if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Fracionada"){
                 console.log("Fracionada");
-                $(divEnteral).find("input[name^='dieta_fracionamento_dia']").each(function() {
+                if($(divEnteral).find("input[name^='dieta_fracionamento_dia']").val() == ""){
+                    $.alert({
+                        title: 'Atenção',
+                        icon: 'fa fa-warning',
+                        type: 'red',
+                        content: 'é necessário preencher  o fracionamento/dia.'
+                    });
+                    todosPreenchidos = false;
+                    return false;
+                }
+
+                $(divEnteral).find("input[name^='dieta_horario_administracao']").each(function() {
                     var $inputFracionamento = $(this); // O input atual no loop
                     var valorFracionamento = $inputFracionamento.val();
 
@@ -1599,25 +1610,15 @@ function validacao_manual(){
                             title: 'Atenção',
                             icon: 'fa fa-warning',
                             type: 'red',
-                            content: 'é necessário preencher o fracionamento/dia.'
+                            content: 'é necessário preencher o horário da administração.'
                         });
 
                         $inputFracionamento.focus(); // Dá foco ao primeiro campo vazio encontrado
                         return false; // Sai do loop .each() imediatamente
                     }
                 });
-
-                if($(divEnteral).find("input[name^='dieta_horario_administracao']").val() == ""){
-                    $.alert({
-                        title: 'Atenção',
-                        icon: 'fa fa-warning',
-                        type: 'red',
-                        content: 'é necessário preencher o horário de administração.'
-                    });
-                    todosPreenchidos = false;
-                    return false;
-                }
             }
+            
             
         }
     });

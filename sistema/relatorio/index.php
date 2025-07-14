@@ -1014,6 +1014,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									if($dieta_infusaoProduto == "Contínua"){
 										$dieta_vazao_hProduto = $dieta_vazao_h->$key;
 										$dieta_horario_inicioProduto = $dieta_horario_inicio->$key;
+										var_dump($dieta_horario_inicioProduto);
 										$infusao = "contínua a " . $dieta_vazao_hProduto . " ml/h às " . $dieta_horario_inicioProduto . ".";
 									}	
 									if($dieta_infusaoProduto == "Fracionada"){
@@ -1055,6 +1056,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 
 							foreach ($hidratacao_agua_livre as $key => $value) {
+								var_dump($key);
+								var_dump($i);
+								var_dump(substr($key, 0, 1));
 								if (substr($key, 0, 1) == $i) {
 									$hidratacaoFracionamento = $hidratacao_fracionamento_dia->$key;
 									$StringHorario = '';
