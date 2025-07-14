@@ -998,7 +998,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$valortotal_kcal = json_decode($relatorio['valortotal_kcal']);
 						$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
 						$valortotal_fibra = json_decode($relatorio['valortotal_fibra']);
-						var_dump($dieta_horario_inicio);
 						
 						for ($i=1; $i <= count($valortotal_kcal); $i++) {
 							$j = $i - 1;
