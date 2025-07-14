@@ -1556,6 +1556,7 @@ function validacao_manual(){
             });
 
             if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Contínua"){
+                console.log("Contínua");
                 if($(divEnteral).find("input[name^='dieta_vazao_h']").val() == ""){
                     $.alert({
                         title: 'Atenção',
@@ -1577,7 +1578,9 @@ function validacao_manual(){
                 }
             }
 
+
             if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Fracionada"){
+                console.log("Fracionada");
                 if($(divEnteral).find("input[name^='dieta_fracionamento_dia']").val() == ""){
                     $.alert({
                         title: 'Atenção',
