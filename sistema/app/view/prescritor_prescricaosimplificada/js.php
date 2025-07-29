@@ -1730,6 +1730,8 @@ $(function(){
     });
 
     $("#iniciar_nova_prescricao").on("click", function(){
+        $("#div_botao_atualizar_valores").show();
+        $("#div_botao_cadastrar_relatorio").hide();
         $('#id_relatorio').val('');
         $('#relatorio_code').val('');
 
