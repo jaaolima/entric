@@ -2813,13 +2813,29 @@ $(function(){
     });
 
     $("#distribuidores_avancar").on("click", function(e) {
-        fc_salvar('distribuidores', false);
-        $('.tabdistribuidores a').removeClass('active');
-        $('#distribuidores').removeClass('active').removeClass('show').attr('aria-expanded','false');
- 
-        $(".tabrelatorio").removeClass('disabledTab');
-        $('.tabrelatorio a').addClass('active');
-        $('#relatorio').addClass('active').addClass('show').attr('aria-expanded','true');
+        if($("#cad_distribuidores").val() == ""){
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'Por favor, selecione um estado.',
+                buttons: {
+                    Ok: {
+                        text: 'Ok',
+                        btnClass: 'btn btn-secondary btn-form'
+                    }
+                }
+            });
+            return false;
+        }else{
+            fc_salvar('distribuidores', false);
+            $('.tabdistribuidores a').removeClass('active');
+            $('#distribuidores').removeClass('active').removeClass('show').attr('aria-expanded','false');
+    
+            $(".tabrelatorio").removeClass('disabledTab');
+            $('.tabrelatorio a').addClass('active');
+            $('#relatorio').addClass('active').addClass('show').attr('aria-expanded','true');
+        }
     });
     $('.state').on("click", function(e) {
         $(".state").removeClass("state_selected");
