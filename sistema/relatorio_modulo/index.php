@@ -328,9 +328,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2" height="30px">
 										Produto
 									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
-									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
 									</th>
@@ -357,9 +354,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
-										</td>
-										<td  >
-											".$produto['fabricante']."
 										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
@@ -404,9 +398,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<th rowspan="2" height="30px">
 										Produto
-									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
 									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
@@ -462,9 +453,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										<td  >
 											".$produto['produto']."
 										</td>
-										<td  >
-											".$produto['fabricante']."
-										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
 										</td>
@@ -508,9 +496,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<th rowspan="2" height="30px">
 										Produto
-									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
 									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
@@ -566,9 +551,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										<td  >
 											".$produto['produto']."
 										</td>
-										<td  >
-											".$produto['fabricante']."
-										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
 										</td>
@@ -612,9 +594,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<th rowspan="2" height="30px">
 										Produto
-									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
 									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
@@ -670,9 +649,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										<td  >
 											".$produto['produto']."
 										</td>
-										<td  >
-											".$produto['fabricante']."
-										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
 										</td>
@@ -716,9 +692,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<th rowspan="2" height="30px">
 										Produto
-									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
 									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
@@ -774,9 +747,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										<td  >
 											".$produto['produto']."
 										</td>
-										<td  >
-											".$produto['fabricante']."
-										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
 										</td>
@@ -820,9 +790,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<th rowspan="2" height="30px">
 										Produto
-									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
 									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
@@ -878,9 +845,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										<td  >
 											".$produto['produto']."
 										</td>
-										<td  >
-											".$produto['fabricante']."
-										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
 										</td>
@@ -924,9 +888,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<th rowspan="2" height="30px">
 										Produto
-									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
 									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
@@ -982,9 +943,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										<td  >
 											".$produto['produto']."
 										</td>
-										<td  >
-											".$produto['fabricante']."
-										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
 										</td>
@@ -1028,9 +986,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<th rowspan="2" height="30px">
 										Produto
-									</th>
-									<th rowspan="2" height="30px">
-										Fabricante
 									</th>
 									<th colspan="2" class="col_azul">
 										Dosagem
@@ -1085,9 +1040,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
-										</td>
-										<td  >
-											".$produto['fabricante']."
 										</td>
 										<td class='col_azul'>
 											".$produto['medida']."
