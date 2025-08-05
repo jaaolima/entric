@@ -1533,7 +1533,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
-    $('#peso').mask('000.000.000,00', {reverse: true});
+    $('#peso').mask("000.000.000,00", {reverse: true});
 
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
@@ -1542,7 +1542,7 @@ $(function(){
     $('#up_agua_kg').mask("9?9");
     $('#up_agua_dia').mask("9?999");
     $('#up_telefone').mask("(99)99999-9999");
-    $('#up_peso').mask('000.000.000,00', {reverse: true});
+    $('#up_peso').mask("000.000.000,00", {reverse: true});
 
 
     // $("#kcal_kg").on('blur', function(){
