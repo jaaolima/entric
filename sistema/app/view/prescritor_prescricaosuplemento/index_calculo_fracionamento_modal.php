@@ -24,14 +24,14 @@
                                     Por quanto tempo?
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control">
+                                    <input placeholder="X dias" type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control">
                                 </div>
                             </div>
                             <div class="row mt-4">
                                 <div class="col-sm-3">
                                     Instruções de uso (Opcional)
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-8">
                                     <input type="text" name="instrucao_uso" id="instrucao_uso" class="form-control">
                                 </div>
                             </div>
