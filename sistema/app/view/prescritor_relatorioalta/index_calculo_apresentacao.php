@@ -24,7 +24,7 @@
             </div>
             <div class="row p-4">
                 <div class="form-check col-sm-3 ">
-                    <input id="calculo_fil_polimerico" name="calculo_fil_polimerico" value="Polimérico" class="form-check-input filtros radio-outlined" type="radio">
+                    <input id="calculo_fil_polimerico" name="calculo_fil_polimerico" value="Polimérico" class="form-check-input filtros radio-outlined" type="radio" checked="checked">
                     <label for="calculo_fil_polimerico" class="form-check-label radio-green">Polimérico</label>
                 </div>
                 <div class="form-check col-sm-3">
@@ -52,8 +52,6 @@
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_pololigomerico" name="calculo_fil_polimerico" value="Ambos" class="form-check-input filtros radio-outlined" checked="checked" type="radio">
-                    <label for="calculo_fil_pololigomerico" class="form-check-label radio-green">Ambos</label>   
                 </div>
                 <div class="form-check col-sm-3">
                     <input id="calculo_fil_comsemfibras" name="calculo_fil_comfibras" value="Ambos" class="form-check-input filtros radio-outlined" checked="checked" type="radio">
