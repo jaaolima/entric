@@ -282,7 +282,10 @@
                                 "up_peso" => array(
                                     "col" => 4,
                                     "label" => "Peso (Kg):",
-                                    "required" => "required"
+                                    "required" => "required",
+                                    "class" => "floatcomma",
+                                    'placeholder' => "0,00",
+                                    "maxlength" => "5",
                                 ),
                             )
                         );
