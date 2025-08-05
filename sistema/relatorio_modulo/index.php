@@ -81,7 +81,7 @@ if($paciente['id_prescritor_ibranutro'] != ""){
 }
 if (trim($relatorio['higienizacao'])=="") $relatorio['higienizacao'] = $config['higienizacao'];
 if (trim($relatorio['cuidados'])=="") $relatorio['cuidados'] = $config['cuidados'];
-if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
+if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo']; 
 ?>
 <html>
 	<head>
@@ -275,6 +275,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 				
+		<?php if ($relatorio['rel_prescricao']<>""){ ?>
 		<?php 
 		if ((!$p_header) and (!$p_footer)){ 
 		?>
@@ -1081,10 +1082,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
-
-		<?php 
-			if ($relatorio['rel_distribuidores']<>""){
+		<?php
+		}
 		?>
+
+		
 		<!-- <?php 
 		if ($p_footer) {
 		?>	
@@ -1097,6 +1099,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
+			<?php 
+				if ($relatorio['rel_distribuidores']<>""){
+			?>
 			<?php if($usuario['login'] == "ibranutro" && $relatorio['distribuidores'] == 'df') : ?>
 			<div style="display:flex;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
@@ -1317,6 +1322,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					$telefone = '(11) 3093-2222';
 				}
 			?>
+			<?php
+			}
+			?>
 			<div style="margin-bottom:30px;">
 				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 					<div style="width: 250px;border-top: 1px solid;">
@@ -1338,10 +1346,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
+				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
-				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;padding-bottom:10px;">
 					<img src="imagem/logo.png" height="30px" alt="">
 				</div>
@@ -1357,9 +1365,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php endif; ?>
 
-		<?php
-		}
-		?>
+		
 		<?php
 		}
 		?>
