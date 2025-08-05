@@ -16,7 +16,7 @@
 
     $ds_nome = '';
     $ds_hospital = '';
-    $dt_nascimento = '';
+    $dt_nascimento = ''; 
     $nu_telefone = '';
     $nu_atendimento = ''; 
     
@@ -178,7 +178,7 @@
                                     ), 
                                     "peso" => array(
                                         "col" => 4,
-                                        "label" => "Peso:",
+                                        "label" => "Peso (Kg):",
                                         "required" => "required"
                                     ),
                                 )
@@ -278,7 +278,7 @@
                                 ),
                                 "up_peso" => array(
                                     "col" => 4,
-                                    "label" => "Peso:",
+                                    "label" => "Peso (Kg):",
                                     "required" => "required"
                                 ),
                             )

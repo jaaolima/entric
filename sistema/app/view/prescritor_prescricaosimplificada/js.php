@@ -1533,6 +1533,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
+    $('#peso').mask("9?9,99");
 
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
@@ -1541,6 +1542,8 @@ $(function(){
     $('#up_agua_kg').mask("9?9");
     $('#up_agua_dia').mask("9?999");
     $('#up_telefone').mask("(99)99999-9999");
+    $('#up_peso').mask("9?9,99");
+
 
     // $("#kcal_kg").on('blur', function(){
     //     peso = $("#peso").val();
@@ -2974,7 +2977,7 @@ $(function(){
         $('#observacoes').addClass('active').addClass('show').attr('aria-expanded','true');
     });
 
-    $("#distribuidores_avancar").on("click", function(e) {
+    $("#distribuidores_avancar").on("click", function(e) { 
         if($("#cad_distribuidores").val() == ""){
             $.alert({
                 title: 'Atenção',
