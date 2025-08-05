@@ -302,7 +302,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if($i == count($horarios) - 1){
 								$_horarios .= $horarios[$i];
 							}else{
-								$_horarios .= $horarios[$i] . ', ';
+								$_horarios .= $horarios[$i] . ', '; 
 							}
 						}
 					}
@@ -317,7 +317,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php } ?>	
 
 
-				
+		<?php if ($relatorio['rel_prescricao']<>""){ ?>		
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
@@ -555,6 +555,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
+		<?php } ?>
 
 		
 		<!-- <?php 
@@ -816,10 +817,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
+				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
-				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;padding-bottom:10px;">
 					<img src="imagem/logo.png" height="30px" alt="">
 				</div>

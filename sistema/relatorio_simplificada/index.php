@@ -321,6 +321,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 		<?php } ?>	
 		<?php } ?>	
+		<?php if ($relatorio['rel_prescricao']<>""){ ?>
 		<p class="text-left subtitutlo">
 		<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções</p>
 		<?php 
@@ -901,6 +902,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
+		<?php } ?>	
+
 		<?php 
 			if ($relatorio['rel_distribuidores']<>""){
 		?>
@@ -1111,10 +1114,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		</div>
 		<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
+				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
-				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;padding-bottom:10px;">
 					<img src="imagem/logo.png" height="30px" alt="">
 				</div>
@@ -1216,17 +1219,17 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 
 				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<p><?php echo nl2br($relatorio['preparo']);?></p> 
 				<?php
 			}
 			?>
 			
 			<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
+				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
-				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;padding-bottom:10px;">
 					<img src="imagem/logo.png" height="30px" alt="">
 				</div>
