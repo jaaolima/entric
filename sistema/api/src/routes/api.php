@@ -8719,6 +8719,7 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['fracionamento_dia'])) $dados['fracionamento_dia'] = null;
 		        if (!isset($dados['qto_tempo'])) $dados['qto_tempo'] = null;
 		        if (!isset($dados['qtas_horas'])) $dados['qtas_horas'] = null;
+		        if (!isset($dados['instrucao_uso'])) $dados['instrucao_uso'] = null;
 		        if (!isset($dados['dieta_horario'])) $dados['dieta_horario'] = null;
 		        if (!isset($dados['hidratacao_dia'])) $dados['hidratacao_dia'] = null;
 		        if (!isset($dados['volume_horario'])) $dados['volume_horario'] = null;
@@ -8731,6 +8732,7 @@ $app->group("", function () use ($app) {
 		                        ':fra_fracionamento_dia' => $dados["fracionamento_dia"],
 		                        ':fra_qto_tempo' => $dados["qto_tempo"],
 		                        ':fra_qtas_horas' => $dados["qtas_horas"],
+		                        ':fra_instrucao_uso' => $dados["instrucao_uso"],
 		                        ':fra_dieta_horario' => array_json($dados["dieta_horario"]),
 		                        ':fra_hidratacao_dia' => $dados["hidratacao_dia"],
 		                        ':fra_volume_horario' => $dados["volume_horario"],

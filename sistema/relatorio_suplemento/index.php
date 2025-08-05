@@ -311,6 +311,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				} 
 			?>	
+			<?php if($relatorio['fra_instrucao_uso'] != "") : ?>
+			<p>Instruções de Uso: <?php echo $relatorio['fra_instrucao_uso']; ?></p>
+			<?php endif; ?>
 		<?php } ?>	
 
 
@@ -444,7 +447,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php 
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
-				$_produtos_nomes = array();
+				$_produtos_nomes = array(); 
 				// if ($relatorio['dieta_produto_dc'] <> ""){
 				// 	$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 
