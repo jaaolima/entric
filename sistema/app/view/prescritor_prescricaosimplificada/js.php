@@ -1526,15 +1526,6 @@ $(function(){
         autoclose: true
     });
 
-    var SPMaskBehavior = function (val) {
-        return val.replace(/\D/g, '').length === 3 ? '999,99' : '99,99';
-    },
-    spOptions = {
-        onKeyPress: function(val, e, field, options) {
-            field.mask(SPMaskBehavior.apply({}, arguments), options);
-        }
-    };
-
     $('#kcal_kg').mask("9?9");
     $('#kcal_dia').mask("9?999");
     $('#proteina_kg').mask("9?,99");
@@ -1542,7 +1533,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
-    $('#peso').mask(SPMaskBehavior, spOptions);
+    $('#peso').mask('9?99,99', {reverse: true});
 
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
@@ -1551,7 +1542,7 @@ $(function(){
     $('#up_agua_kg').mask("9?9");
     $('#up_agua_dia').mask("9?999");
     $('#up_telefone').mask("(99)99999-9999");
-    $('#up_peso').mask(SPMaskBehavior, spOptions);
+    $('#up_peso').mask('9?99,99', {reverse: true});
 
 
     // $("#kcal_kg").on('blur', function(){
