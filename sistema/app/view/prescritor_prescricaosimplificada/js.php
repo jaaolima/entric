@@ -1523,7 +1523,7 @@ $(function(){
     //$(document).on("keydown", disableF5);
     $('#avaliacao .data').datepicker({
         format: "dd/mm/yyyy",
-        language: "pt-BR",
+        language: "pt-BR", 
         autoclose: true
     });
 
@@ -1534,7 +1534,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
-    // $('#peso').mask('999,99');
+    $('#peso').attr('maxlength', '6');
 
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
@@ -1543,6 +1543,7 @@ $(function(){
     $('#up_agua_kg').mask("9?9");
     $('#up_agua_dia').mask("9?999");
     $('#up_telefone').mask("(99)99999-9999");
+    $('#up_peso').attr('maxlength', '6');
     // $('#up_peso').mask("999.999.999,99", {reverse: true});
 
 

@@ -182,7 +182,6 @@
                                         "required" => "required",
                                         "class" => "floatcomma",
                                         'placeholder' => "0,00",
-                                        "maxlength" => "6",
                                     ), 
                                 )
                             );
