@@ -7,6 +7,7 @@
 <script src="js/jquery/bootstrap-slider/bootstrap-slider.min.js"></script>
 <script src="js/jquery/jquery-confirm/jquery-confirm.min.js" type="text/javascript"></script>
 <script src="js/jquery/jquery-validation/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/jquery/jquerymaskinput/jquery.maskinput.min.js" type="text/javascript"></script> 
 
 <script>
 (function (original) {
@@ -1533,7 +1534,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
-    // $('#peso').mask('000.000.000,00', {reverse: true});
+    $('#peso').mask('000.000.000,00', {reverse: true});
 
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
