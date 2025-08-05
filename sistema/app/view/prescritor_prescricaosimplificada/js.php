@@ -1534,7 +1534,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
-    $('#peso').mask('9?99,99');
+    $('#peso').mask('?99,99');
 
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
