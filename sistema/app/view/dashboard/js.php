@@ -13,7 +13,7 @@ let container_acesso = Highcharts.chart('container_acesso', {
     xAxis: {
         categories: [
             <?php 
-            echo "'".implode("', '", $dados_site['categories'])."'";
+            echo "'".implode("', '", $dados_site['categories'])."'"; 
             ?>
         ],
         crosshair: true
@@ -154,7 +154,7 @@ $(".data_relatorios").on("change", function(e) {
     $.ajax({
         type: "POST",
         url: "ajax/gt_dash_relatorios",
-        data: "&data_inicio_relatorios="+$("#data_inicio_relatorios").val()+"&data_fim_relatorios="+$("#data_fim_relatorios").val()+"&uf="+$("#ufs_relatorios").val(),
+        data: "&data_inicio_relatorios="+$("#data_inicio_relatorios").val()+"&data_fim_relatorios="+$("#data_fim_relatorios").val()+"&uf="+$("#ufs_relatorios").val()+"&tipo="+$("#tipos_relatorios").val(),
         cache: false,
         dataType: 'json',
         success: function( data ){

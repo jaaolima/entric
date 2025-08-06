@@ -378,6 +378,13 @@ function fc_editar_relatorio(id_relatorio){
                     $("#categoria_modulo_espessante").attr("checked","checked");
                 }
 
+                $("input[name='cat_modulo[]']:checked").each(function() {
+                    categoria = $(this).attr('id');
+                    nome = $(this).val();
+                    html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-5">Por quanto tempo:</div><div class="col-sm-7"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div><div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" onclick="novoHorario(this)" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
+                    $("#div_modal_fracionamento").append(html);
+                })
+
                 $(".state[rel='"+relatorio.distribuidores+"']").click();
                 busca_produto_relatorio($("#margem_calorica").val(), $("#margem_proteica").val());
             }
@@ -2863,7 +2870,7 @@ $(function(){
                 title: 'Atenção',
                 icon: 'fa fa-warning',
                 type: 'red',
-                content: 'Por favor, selecione um estado.',
+                content: 'Por favor, selecione um estado.', 
                 buttons: {
                     Ok: {
                         text: 'Ok',

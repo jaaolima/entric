@@ -5215,12 +5215,19 @@ $app->group("", function () use ($app) {
 
 			if ($usuario){	
 				$uf = $request->getParam("uf");
+				$tipo = $request->getParam("tipo");
 				$data1 = $request->getParam("data1");
 				$data2 = $request->getParam("data2");
 
 		    	$retorno = array();
 		        $retorno_categories = array();
 		        $retorno_series = array();
+
+				// if($tipo == ""){
+				// 	$tipo = "is not null";
+				// }else{
+				// 	$tipo = ;	
+				// }
 		        
 		        if (!$uf){
 		            $logs = $db->select_to_array(	"relatorios",
@@ -9833,6 +9840,7 @@ $app->group("", function () use ($app) {
 		                            ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
 		                            ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                            ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
+		                            ':rel_prescricao' => (isset($dados['rel_prescricao'])?true:null),
 		                            ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
 
 					$bind[':id_paciente'] = $dados['id_paciente'];
@@ -9859,6 +9867,7 @@ $app->group("", function () use ($app) {
 		                                ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
 		                                ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                                ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
+		                                ':rel_prescricao' => (isset($dados['rel_prescricao'])?true:null),
 		                                ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
 		                $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio'], $bind);
 		                $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
@@ -9881,6 +9890,7 @@ $app->group("", function () use ($app) {
 		                                    ':rel_necessidades' => (isset($dados['rel_necessidades'])?true:null),
 		                                    ':rel_calculo' => (isset($dados['rel_calculo'])?true:null),
 		                                    ':rel_observacoes' => (isset($dados['rel_observacoes'])?true:null),
+		                                    ':rel_prescricao' => (isset($dados['rel_prescricao'])?true:null),
 		                                    ':rel_distribuidores' => (isset($dados['rel_distribuidores'])?true:null) );
 		                    $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio']." AND codigo IS NULL", $bind);
 

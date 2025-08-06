@@ -6,7 +6,7 @@
                     <div class="row" id="div_modal_fracionamento">
                         
                     </div>
-                </form>
+                </form> 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

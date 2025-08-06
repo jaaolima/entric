@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row"> 
                 
                 <div class="col-lg-12">
                     <div class="card">
@@ -115,6 +115,19 @@
                                                     "select" => array(
                                                                     "" => "Todos"
                                                                 )+_ufs_()
+                                                ),
+                                                "tipos_relatorios" => array(
+                                                    "col" => 2,
+                                                    "label" => "Tipo:",
+                                                    "class" => "data_relatorios",
+                                                    "required" => "required",
+                                                    "select" => array(
+                                                                    "" => "Todos",
+                                                                    "SE" => "Simplificado Enteral",
+                                                                    "SS" => "Simplificado Suplemento",
+                                                                    "SM" => "Simplificado Módulo",
+                                                                    "RA" => "Relatório de Alta",
+                                                                )
                                                 ),
                                                 "data_inicio_relatorios" => array(
                                                     "col" => 2,
