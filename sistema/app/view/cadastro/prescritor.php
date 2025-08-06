@@ -1,3 +1,4 @@
+<?php setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf8', 'pt_BR.UTF-8', 'portuguese'); ?>
 <body class="h-100">
     <div id="preloader">
         <div class="loader">
@@ -725,7 +726,7 @@ Estando as partes de livre e comum acordo, firmam o presente Adendo, a fim de pr
 
 
 <br><br>
-<div style="text-align: right;">Brasília, <?php echo strftime('%A, %d de %B de %Y', strtotime('today')); ?>. </div>
+<div style="text-align: right;">Brasília, <?php echo strftime('%d de %B de %Y', strtotime('today')); ?>. </div>
 
             </div>
             <div class="modal-footer">
