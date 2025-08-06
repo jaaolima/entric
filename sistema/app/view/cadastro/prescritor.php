@@ -309,7 +309,7 @@
 PRIVACIDADE E PROTEÇÃO DE DADOS </strong></center>
 
 <br><br>
-O presente instrumento visa estabelecer os termos e condições referentes à Privacidade e Proteção de Dados Pessoais, entre _____________________________ (dados do profissional de saúde/estabelecimento de saúde), ora denominado como PRESTADOR, e ________________________________ (dados da empresa responsável pelo programa), ora denominado FORNECEDOR. 
+O presente instrumento visa estabelecer os termos e condições referentes à Privacidade e Proteção de Dados Pessoais, entre o Profissional de Saúde, ora denominado como PRESTADOR, e o Sistema ENTRIC, ora denominado FORNECEDOR. 
 
 <br><br>
 1.  <strong>Definições </strong>
@@ -725,7 +725,7 @@ Estando as partes de livre e comum acordo, firmam o presente Adendo, a fim de pr
 
 
 <br><br>
-<div style="text-align: right;">Brasília, 28 de julho de 2022. </div>
+<div style="text-align: right;">Brasília, <?php echo strftime('%A, %d de %B de %Y', strtotime('today')); ?>. </div>
 
             </div>
             <div class="modal-footer">
