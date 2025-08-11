@@ -10243,7 +10243,7 @@ $app->group("", function () use ($app) {
 		            $bind_query = " ".$bind_query;
 					
 		            $pacientes = $db->select_to_array("pacientes",
-		                                                "id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui",
+		                                                "max(id) as id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC, id DESC",
 		                                                null);
 		            if ($pacientes){
@@ -10331,7 +10331,7 @@ $app->group("", function () use ($app) {
 		        if ($bind_query <> ""){
 		            $bind_query = " ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_simplificada",
-		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso, atendimento, telefone, hospital",
+		                                                "max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso, atendimento, telefone, hospital",
 		                                                "WHERE ".$bind_query." GROUP BY nome, id_paciente ORDER BY nome ASC, id desc",
 		                                                null);
 		            if ($pacientes){
@@ -10423,7 +10423,7 @@ $app->group("", function () use ($app) {
 		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $bind_query = " ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_suplemento",
-		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
+		                                                "max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
 		                                                "WHERE ".$bind_query." GROUP BY nome, id_paciente ORDER BY nome ASC, id desc",
 		                                                null);
 		            if ($pacientes){
@@ -10516,7 +10516,7 @@ $app->group("", function () use ($app) {
 		            // $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 		            $bind_query = " ".$bind_query;
 		            $pacientes = $db->select_to_array("pacientes_modulo",
-		                                                "id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
+		                                                "max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone",
 		                                                "WHERE ".$bind_query." GROUP BY nome, id_paciente ORDER BY nome ASC, id desc",
 		                                                null);
 		            if ($pacientes){
