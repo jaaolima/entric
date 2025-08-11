@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-radio">
-                            <input id="radioOral" class="radio-outlined"  name="tipo_produto" type="radio" value="Suplemento">
+                            <input id="radioOral" class="radio-outlined"  name="tipo_produto" type="radio" value="Suplemento" disabled>
                             <label for="radioOral" class="radio-green">Suplemento</label>
                         </div>
                     </div>
