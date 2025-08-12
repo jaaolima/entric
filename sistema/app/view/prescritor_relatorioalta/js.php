@@ -1585,7 +1585,7 @@ function validacao_manual(){
                 }
             });
 
-            if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Contínua"){
+            if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Bomba de Infusão"){
                 console.log("Contínua");
                 if($(divEnteral).find("input[name^='dieta_vazao_h']").val() == ""){
                     $.alert({
@@ -1611,7 +1611,7 @@ function validacao_manual(){
             }
 
 
-            if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Fracionada"){
+            if($(divEnteral).find("[name^='dieta_infusao']:checked").val() == "Gravitacional"){
                 console.log("Fracionada");
                 if($(divEnteral).find("input[name^='dieta_fracionamento_dia']").val() == ""){
                     $.alert({
@@ -3052,14 +3052,15 @@ $(function(){
         divClone.removeAttr("id");
         divClone.find(".div_formula_rm").removeClass("none");
         divClone.find("input:radio").attr('name', 'dieta_infusao[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
-        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao +'__'+idCampo+ '__' + p +"]'][value='Contínua']").attr('id', 'infusao_continua[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
-        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao +'__'+idCampo+ '__' + p +"]'][value='Fracionada']").attr('id', 'infusao_fracionada[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
-        divClone.find(".radio_continua").attr('for', 'infusao_continua[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
-        divClone.find(".radio_fracionada").attr('for', 'infusao_fracionada[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao +'__'+idCampo+ '__' + p +"]'][value='Contínua']").attr('id', 'infusao_bomba[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find("input[type='radio'][name='dieta_infusao[" + idCombinacao +'__'+idCampo+ '__' + p +"]'][value='Fracionada']").attr('id', 'infusao_gravitacional[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".radio_continua").attr('for', 'infusao_bomba[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".radio_fracionada").attr('for', 'infusao_gravitacional[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".volume_dia").attr('name', 'dieta_volume[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".vazao_ml").attr('name', 'dieta_vazao_h[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".horario_inicio").attr('name', 'dieta_horario_inicio[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".fracionamento_dia").attr('name', 'dieta_fracionamento_dia[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".dieta_quantas_horas_ocorrer").attr('name', 'dieta_quantas_horas_ocorrer[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".label_horario_inicio").attr('for', 'dieta_horario_inicio[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".horario_administracao").attr('name', 'dieta_horario_administracao[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".label_horario_administracao").attr('for', 'dieta_horario_administracao[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
@@ -3172,11 +3173,11 @@ $(function(){
     });
     $('.radio_infusao').on("change", function(e) {
         if ($(this).filter(':checked').val() == 'Fracionada') {
-            $(this).parent().parent().parent().find(".div_infusao_continua").hide();
-            $(this).parent().parent().parent().find(".div_infusao_fracionada").show();
+            $(this).parent().parent().parent().find(".div_infusao_bomba").hide();
+            $(this).parent().parent().parent().find(".div_infusao_gravitacional").show();
         }else{
-            $(this).parent().parent().parent().find(".div_infusao_continua").show();
-            $(this).parent().parent().parent().find(".div_infusao_fracionada").hide();
+            $(this).parent().parent().parent().find(".div_infusao_bomba").show();
+            $(this).parent().parent().parent().find(".div_infusao_gravitacional").hide();
         }
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
@@ -3563,19 +3564,21 @@ $(function(){
         divClone.find(".hidratacao_agua_livre").attr('name', 'hidratacao_agua_livre['+ id+"__1__" + p +']').end();
 
         divClone.find("input.radio_infusao").attr('name', 'dieta_infusao['+ id+"__1__" + p +']').end();
-        divClone.find('input.infusao_continua').removeAttr("id").attr("id","infusao_continua["+ id+"__1__" + p +"]");
-        divClone.find('label.infusao_continua').removeAttr("for").attr("for","infusao_continua["+ id+"__1__" + p +"]");
-        divClone.find('input.infusao_fracionada').removeAttr("id").attr("id","infusao_fracionada["+ id+"__1__" + p +"]");
-        divClone.find('label.infusao_fracionada').removeAttr("for").attr("for","infusao_fracionada["+ id+"__1__" + p +"]");
+        divClone.find('input.infusao_bomba').removeAttr("id").attr("id","infusao_bomba["+ id+"__1__" + p +"]");
+        divClone.find('label.infusao_bomba').removeAttr("for").attr("for","infusao_bomba["+ id+"__1__" + p +"]");
+        divClone.find('input.infusao_gravitacional').removeAttr("id").attr("id","infusao_gravitacional["+ id+"__1__" + p +"]");
+        divClone.find('label.infusao_gravitacional').removeAttr("for").attr("for","infusao_gravitacional["+ id+"__1__" + p +"]");
         divClone.find(".volume_dia").attr('name', 'dieta_volume[' + id +"__1__" + p +']').end();
         divClone.find(".vazao_ml").attr('name', 'dieta_vazao_h[' + id +"__1__" + p +']').end();
         divClone.find(".fracionamento_dia").attr('name', 'dieta_fracionamento_dia[' + id +"__1__" + p +']').end();
+        divClone.find(".dieta_quantas_horas_ocorrer").attr('name', 'dieta_quantas_horas_ocorrer[' + id +"__1__" + p +']').end();
         divClone.find(".horario_inicio").attr('name', 'dieta_horario_inicio[' + id +"__1__" + p +']').end();
         divClone.find(".horario_administracao").attr('name', 'dieta_horario_administracao[' + id +"__1__" + p +']').end();
         divClone.find(".modulo_quantidade").attr('name', 'modulo_quantidade[' + id +"__1__" + p +']').end();
         divClone.find(".modulo_volume_agua").attr('name', 'modulo_volume[' + id +"__1__" + p +']').end();
         divClone.find(".modulo_horario").attr('name', 'horario[' + id +"__1__" + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + id +"__1__" + p +']').end();
+        divClone.find(".hora_correr").attr('name', 'hora_correr[' + id +"__1__" + p +']').end();
         divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + id +"__1__" + p +']').end();
         divClone.find(".hidratacao_fracionamento").attr('name', 'hidratacao_fracionamento_dia[' + id +"__1__" + p +']').end();
 
@@ -3623,11 +3626,11 @@ $(function(){
 
         $('.radio_infusao').on("change", function(e) {
             if ($(this).filter(':checked').val() == 'Fracionada') {
-                $(this).parent().parent().parent().find(".div_infusao_continua").hide();
-                $(this).parent().parent().parent().find(".div_infusao_fracionada").show();
+                $(this).parent().parent().parent().find(".div_infusao_bomba").hide();
+                $(this).parent().parent().parent().find(".div_infusao_gravitacional").show();
             }else{
-                $(this).parent().parent().parent().find(".div_infusao_continua").show();
-                $(this).parent().parent().parent().find(".div_infusao_fracionada").hide();
+                $(this).parent().parent().parent().find(".div_infusao_bomba").show();
+                $(this).parent().parent().parent().find(".div_infusao_gravitacional").hide();
             }
             $('.hora').mask("99:99");
             $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});

@@ -120,8 +120,8 @@
                     <label for="calculo_oral_carac_comfibras" class="form-check-label check-green">Com Fibras</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_semlactose" name="carac_oral[]" value="Sem Lactose" class="form-check-input filtro_4 styled-checkbox" type="checkbox">
-                    <label for="calculo_fil_semlactose" class="form-check-label check-green">Sem Lactose</label>                 
+                    <input id="calculo_fil_semlactose_suplemento" name="carac_oral[]" value="Sem Lactose" class="form-check-input filtro_4 styled-checkbox" type="checkbox">
+                    <label for="calculo_fil_semlactose_suplemento" class="form-check-label check-green">Sem Lactose</label>                 
                 </div>
 
                 
