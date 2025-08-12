@@ -447,32 +447,59 @@ function fc_editar_relatorio(id_relatorio){
                     $('.fracio_horario').html(horarios);
                     $('.hora').mask("99:99");
                 }
-                if(relatorio.calculo_fil_polimerico){
-                $("input[name='calculo_fil_polimerico']").attr("checked","checked");
+                if(relatorio.calculo_fil_todos1){
+                    $("input[name='calculo_fil_todos1']").attr("checked","checked");
                 }
-                if(relatorio.calculo_fil_oligomerico){
-                $("input[name='calculo_fil_oligomerico']").attr("checked","checked");
+                if(relatorio.calculo_fil_todos2){
+                    $("input[name='calculo_fil_todos2']").attr("checked","checked");
                 }
-                if(relatorio.calculo_fil_pololigomerico){
-                $("input[name='calculo_fil_pololigomerico']").attr("checked","checked");
+                if(relatorio.calculo_fil_todos3){
+                    $("input[name='calculo_fil_todos3']").attr("checked","checked");
+                }
+                if(relatorio.calculo_apres_liquidocreme){
+                    $("input[name='calculo_apres_liquidocreme']").attr("checked","checked");
+                }
+                if(relatorio.calculo_apres_po){
+                    $("input[name='calculo_apres_po']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_hipocalorico){
+                    $("input[name='carac_oral[]'][value='Hipocalórico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_hipercalorico){
+                    $("input[name='carac_oral[]'][value='Hipercalórico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_hipoproteico){
+                    $("input[name='carac_oral[]'][value='Hipoproteico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_normoproteico){
+                    $("input[name='carac_oral[]'][value='Normoproteico']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_hiperproteico){
+                    $("input[name='carac_oral[]'][value='Hiperproteico']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_comfibras){
-                $("input[name='calculo_fil_comfibras']").attr("checked","checked");
+                    $("input[name='carac_oral[]'][value='Com Fibras']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semfibras){
-                $("input[name='calculo_fil_semfibras']").attr("checked","checked");
-                }
-                if(relatorio.calculo_fil_comsemfibras){
-                $("input[name='calculo_fil_comsemfibras']").attr("checked","checked");
-                }
-                if(relatorio.calculo_fil_semlactose){
-                $("input[name='calculo_fil_semlactose']").attr("checked","checked");
-                }
-                if(relatorio.calculo_fil_100proteina){
-                $("input[name='calculo_fil_100proteina']").attr("checked","checked");
+                    $("input[name='carac_oral[]'][value='Sem Fibras']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_semsacarose){
-                $("input[name='calculo_fil_semsacarose']").attr("checked","checked");
+                    $("input[name='carac_oral[]'][value='Sem Sacarose']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_semlactose){
+                    $("input[name='carac_oral[]'][value='Sem Lactose']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_100proteina){
+                    $("input[name='carac_oral[]'][value='100% Proteína Vegetal']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_cicatrizacao){
+                    $("input[name='carac_oral[]'][value='Cicatrização']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_omega3){
+                    $("input[name='carac_oral[]'][value='Com Ômega 3']").attr("checked","checked");
+                }
+                if(relatorio.calculo_fil_imunonutricao){
+                    $("input[name='carac_oral[]'][value='Imunonutrição cirúrgica']").attr("checked","checked");
                 }
 
                 $("#hidratacao_dia").val(relatorio.fra_hidratacao_dia);
@@ -2911,25 +2938,65 @@ $(function(){
             }
         }
     });
-    $('.calculo_fil_todos').change(function () {
+     $('#calculo_fil_todos1').change(function () {
         var calculo_fil_todos = null;
         if ($(this).is(':checked')){
             calculo_fil_todos = $(this).val();
         }
-        if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
-            if (calculo_fil_todos == 'Todos') {
-                $('#apresentacao .filtros_oral .filtros').not(this).prop('checked', true);
-
-            }else{
-                $('#apresentacao .filtros_oral .filtros').not(this).prop('checked', false);
-            }
+        if (calculo_fil_todos == 'Todos') {
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', true);
         }else{
-            if (calculo_fil_todos == 'Todos') {
-                $('#apresentacao .filtros_nooral .filtros').not(this).prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', false);
+        }
+    });
 
-            }else{
-                $('#apresentacao .filtros_nooral .filtros').not(this).prop('checked', false);
-            }
+    $(".filtro_1").on("click", function(){
+        if(!$(this).is(":checked")){
+            $('#calculo_fil_todos1').prop('checked', false);
+        }
+    })
+    $(".filtro_2").on("click", function(){
+        if(!$(this).is(":checked")){
+            $('#calculo_fil_todos2').prop('checked', false);
+        }
+    })
+    $(".filtro_3").on("click", function(){
+        if(!$(this).is(":checked")){
+            $('#calculo_fil_todos3').prop('checked', false);
+        }
+    })
+
+    $('#calculo_fil_todos2').change(function () {
+        var calculo_fil_todos = null;
+        if ($(this).is(':checked')){
+            calculo_fil_todos = $(this).val();
+        }
+        if (calculo_fil_todos == 'Todos') {
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hiperproteico').prop('checked', true);
+        }else{
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipoproteico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normoproteico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hiperproteico').prop('checked', false);
+        }
+    });
+
+    $('#calculo_fil_todos3').change(function () {
+        var calculo_fil_todos = null;
+        if ($(this).is(':checked')){
+            calculo_fil_todos = $(this).val();
+        }
+        if (calculo_fil_todos == 'Todos') {
+            $('#apresentacao .filtros_oral #calculo_fil_todos3').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').prop('checked', true);
+        }else{
+            $('#apresentacao .filtros_oral #calculo_fil_todos3').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_comfibras').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_semfibras').prop('checked', false);
         }
     });
     $('.filtros').change(function () {
@@ -2939,14 +3006,21 @@ $(function(){
         }
     });
     $('input:radio[name=tipo_produto]').change(function () {
-        if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') {
+        if ($("input[name='tipo_produto']:checked").val() == 'Suplemento') { 
             $("#dispositivos").hide();
+            $("#accor_dietal").hide();
+            $("#accor_hidratacao").hide();
             $(".apres_oral").show();
             $(".apres_nooral").hide();
+            $("#title_suplemento").html("Suplemento (Oral)");
         }else{
             $("#dispositivos").show();
             $(".apres_nooral").show();
             $(".apres_oral").hide();
+            $("#accor_dietal").show();
+            $("#accor_hidratacao").show();
+            $("#title_suplemento").html("Suplemento (Enteral)");
+
         }
     });
     $('input:radio[name=tipo_prescricao]').change(function () {

@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-check col-sm-12">
                     <input id="calculo_apres_po" name="calculo_apres_po" value="Pó" class="form-check-input styled-checkbox" type="checkbox">
-                    <label for="calculo_apres_po" class="form-check-label check-green">Pó</label>
+                    <label for="calculo_apres_po" class="form-check-label check-green">Pó</label> 
                 </div>
             </div>
         </div>

@@ -2138,14 +2138,49 @@ $app->group("", function () use ($app) {
 									}
 								$query2.= ' )';
 							}
-							if (isset($dados['calculo_fil_todos2']) and ($dados['calculo_fil_todos2'] == "Todos")){
-							}else{
-								if (isset($dados['calculo_fil_semsacarose2']) and ($dados['calculo_fil_semsacarose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
-								if (isset($dados['calculo_fil_comfibras2']) and ($dados['calculo_fil_comfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Com Fibras%")';
-								if (isset($dados['calculo_fil_semlactose2']) and ($dados['calculo_fil_semlactose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Lactose%")';
-								if (isset($dados['calculo_fil_100proteina2']) and ($dados['calculo_fil_100proteina2'] <> "")) $query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
-								if (isset($dados['calculo_fil_semfibras2']) and ($dados['calculo_fil_semfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Fibras%")';
+							if(isset($dados['carac_oral'])){
+								$array_carac = $dados['carac_oral'];
+			
+								if(in_array('Sem Sacarose', $array_carac)){
+									$query2.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+								}
+								if(in_array('Sem Lactose', $array_carac)){
+									$query2.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+								}
+								if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac)){
+									$query2.= ' AND (';
+										$_or = '';
+										if (in_array('Com Fibras', $array_carac)){
+											$query2.= '(carac_oral LIKE "%Com Fibras%")';
+											$_or = ' OR ';
+										}
+										if (in_array('Sem Fibras', $array_carac)){
+											$query2.= $_or.' (carac_oral LIKE "%Sem Fibras%")';
+											$_or = ' OR ';
+										}
+									$query2.= ' )';
+								}
+								if(in_array('100% Proteína Vegetal', $array_carac)){
+									$query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+								}
+								if(in_array('Cicatrização', $array_carac)){
+									$query2.= ' AND (carac_oral LIKE "%Cicatrização%")';
+								}
+								if(in_array('Com Ômega 3', $array_carac)){
+									$query2.= ' AND (carac_oral LIKE "%Com Ômega 3%")';
+								}
+								if(in_array('Imunonutrição cirúrgica', $array_carac)){
+									$query2.= ' AND (carac_oral LIKE "%Imunonutrição cirúrgica%")';
+								}
 							}
+							// if (isset($dados['calculo_fil_todos2']) and ($dados['calculo_fil_todos2'] == "Todos")){
+							// }else{
+							// 	if (isset($dados['calculo_fil_semsacarose2']) and ($dados['calculo_fil_semsacarose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+							// 	if (isset($dados['calculo_fil_comfibras2']) and ($dados['calculo_fil_comfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Com Fibras%")';
+							// 	if (isset($dados['calculo_fil_semlactose2']) and ($dados['calculo_fil_semlactose2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+							// 	if (isset($dados['calculo_fil_100proteina2']) and ($dados['calculo_fil_100proteina2'] <> "")) $query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+							// 	if (isset($dados['calculo_fil_semfibras2']) and ($dados['calculo_fil_semfibras2'] <> "")) $query2.= ' AND (carac_oral LIKE "%Sem Fibras%")';
+							// }
 						}
 					}
 				}
@@ -2201,14 +2236,49 @@ $app->group("", function () use ($app) {
 		                    }
 		                $query.= ' )';
 		            }
-		            if (isset($dados['calculo_fil_todos2']) and ($dados['calculo_fil_todos2'] == "Todos")){
-		            }else{
-		                if (isset($dados['calculo_fil_semsacarose2']) and ($dados['calculo_fil_semsacarose2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
-		                if (isset($dados['calculo_fil_comfibras2']) and ($dados['calculo_fil_comfibras2'] <> "")) $query.= ' AND (carac_oral LIKE "%Com Fibras%")';
-		                if (isset($dados['calculo_fil_semlactose2']) and ($dados['calculo_fil_semlactose2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
-		                if (isset($dados['calculo_fil_100proteina2']) and ($dados['calculo_fil_100proteina2'] <> "")) $query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
-		                if (isset($dados['calculo_fil_semfibras2']) and ($dados['calculo_fil_semfibras2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Fibras%")';
-		            }
+					if(isset($dados['carac_oral'])){
+						$array_carac = $dados['carac_oral'];
+	
+						if(in_array('Sem Sacarose', $array_carac)){
+							$query.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+						}
+						if(in_array('Sem Lactose', $array_carac)){
+							$query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+						}
+						if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac)){
+							$query.= ' AND (';
+								$_or = '';
+								if (in_array('Com Fibras', $array_carac)){
+									$query.= '(carac_oral LIKE "%Com Fibras%")';
+									$_or = ' OR ';
+								}
+								if (in_array('Sem Fibras', $array_carac)){
+									$query.= $_or.' (carac_oral LIKE "%Sem Fibras%")';
+									$_or = ' OR ';
+								}
+							$query.= ' )';
+						}
+						if(in_array('100% Proteína Vegetal', $array_carac)){
+							$query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+						}
+						if(in_array('Cicatrização', $array_carac)){
+							$query.= ' AND (carac_oral LIKE "%Cicatrização%")';
+						}
+						if(in_array('Com Ômega 3', $array_carac)){
+							$query.= ' AND (carac_oral LIKE "%Com Ômega 3%")';
+						}
+						if(in_array('Imunonutrição cirúrgica', $array_carac)){
+							$query.= ' AND (carac_oral LIKE "%Imunonutrição cirúrgica%")';
+						}
+					}
+		            // if (isset($dados['calculo_fil_todos2']) and ($dados['calculo_fil_todos2'] == "Todos")){
+		            // }else{
+		            //     if (isset($dados['calculo_fil_semsacarose2']) and ($dados['calculo_fil_semsacarose2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Sacarose%")';
+		            //     if (isset($dados['calculo_fil_comfibras2']) and ($dados['calculo_fil_comfibras2'] <> "")) $query.= ' AND (carac_oral LIKE "%Com Fibras%")';
+		            //     if (isset($dados['calculo_fil_semlactose2']) and ($dados['calculo_fil_semlactose2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
+		            //     if (isset($dados['calculo_fil_100proteina2']) and ($dados['calculo_fil_100proteina2'] <> "")) $query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
+		            //     if (isset($dados['calculo_fil_semfibras2']) and ($dados['calculo_fil_semfibras2'] <> "")) $query.= ' AND (carac_oral LIKE "%Sem Fibras%")';
+		            // }
 		        }
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
