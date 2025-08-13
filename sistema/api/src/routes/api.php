@@ -1227,8 +1227,8 @@ $app->group("", function () use ($app) {
 			$retorno = true;
 
 			$transport = (new Swift_SmtpTransport('smtp-relay.brevo.com', 587))
-			->setUsername('812da6002@smtp-brevo.com')
-			->setPassword('QZKMzTv0s5Dc2kC7')
+			->setUsername('812da6003@smtp-brevo.com')
+			->setPassword('z4cvkjryIbETa0AB')
 			;
 
 			// Create the Mailer using your created Transport
@@ -11271,8 +11271,8 @@ $app->group("", function () use ($app) {
 		$nome = $request->getParam("nome");
 
 		$transport = (new Swift_SmtpTransport('smtp-relay.brevo.com', 587))
-		->setUsername('812da6002@smtp-brevo.com')
-		->setPassword('QZKMzTv0s5Dc2kC7')
+		->setUsername('812da6003@smtp-brevo.com')
+		->setPassword('z4cvkjryIbETa0AB')
 		;
 
 		// Create the Mailer using your created Transport
