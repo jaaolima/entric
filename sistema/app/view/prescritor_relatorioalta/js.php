@@ -3172,7 +3172,7 @@ $(function(){
         $(divCombinacao).find("[name='valortotal_fibra[]']").val(totalFibra.toFixed(2));
     });
     $('.radio_infusao').on("change", function(e) {
-        if ($(this).filter(':checked').val() == 'Fracionada') {
+        if ($(this).filter(':checked').val() == 'Gravitacional') {
             $(this).parent().parent().parent().find(".div_infusao_bomba").hide();
             $(this).parent().parent().parent().find(".div_infusao_gravitacional").show();
         }else{
@@ -3625,7 +3625,7 @@ $(function(){
         select2_ajax_produto_suplemento(selectorSuplemento);
 
         $('.radio_infusao').on("change", function(e) {
-            if ($(this).filter(':checked').val() == 'Fracionada') {
+            if ($(this).filter(':checked').val() == 'Gravitacional') {
                 $(this).parent().parent().parent().find(".div_infusao_bomba").hide();
                 $(this).parent().parent().parent().find(".div_infusao_gravitacional").show();
             }else{

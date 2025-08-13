@@ -128,7 +128,7 @@
 
                                                                     <div class="col-sm-5 mb-1 div_volume_total_col">
                                                                         <div class="row div_volume_total">
-                                                                            <div class="form-group col-sm-5 mb-1">
+                                                                            <div class="form-group col-sm-6 mb-1">
                                                                                 <label for="horario">Horário:</label>
                                                                                 <div class="input-group">
                                                                                     <input type="text" class="form-control hora modulo_horario campos_limpar" required="required" name="modulo_horario[1__1__0]">
@@ -197,7 +197,7 @@
                                                                     </div>
                                                                     <div class="form-group col-sm-5 div_volume_total_col">
                                                                         <div class="row div_volume_total">
-                                                                            <div class="form-group col-sm-5 mb-1">
+                                                                            <div class="form-group col-sm-6 mb-1">
                                                                                 <label for="suplemento_horario">Horário:</label>
                                                                                 <div class="input-group">
                                                                                     <input type="text" class="form-control hora suplemento_horario campos_limpar" required="required" name="suplemento_horario[1__1__0]">
