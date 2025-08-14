@@ -3204,30 +3204,54 @@ $app->group("", function () use ($app) {
 		                                        20 * 4,4 (PTN) = 88
 		                                        */
 
-											$_medida_dc = 1;
-											if (isset($medida_dc[0])){
-												$_medida_dc = $medida_dc[0];
+											// Inicializa _medida_dc
+											$_medida_dc = 1.0; // Usar float para evitar problemas de tipo
+											if (isset($medida_dc[0])) {
+												$_medida_dc = (float) $medida_dc[0];
+												if ($_medida_dc == 0) { // Evita divisão por zero
+													$_medida_dc = 1.0;
+													// Opcional: Logar um aviso ou lançar uma exceção se medida_dc for zero e isso for um erro
+												}
 											}
-		                                    $_kcal = $dados['kcal_valor'];
-		                                    $_ptn = ($_kcal / $_medida_dc);
-		                                    $_ptn = ($_ptn / 100);
-		                                    $ptn = 1;
-		                                    if (trim($produtos[$i]['ptn']) <> ""){
-		                                        $ptn = trim($produtos[$i]['ptn']);
-		                                        $ptn = str_replace(",",".", $ptn);
-		                                    }                                
-		                                    $_ptn_total = $_ptn * $ptn;
 
-		                                    $calorias_dia = $_kcal;
-		                                    $proteina_dia = $_ptn_total;
+											// Inicializa $ptn_multiplicador
+											$ptn_multiplicador = 1.0; // Usar float
+											if (isset($produtos[$i]['ptn']) && trim($produtos[$i]['ptn']) !== "") {
+												$ptn_multiplicador = (float) str_replace(",", ".", trim($produtos[$i]['ptn']));
+											}
 
-		                                    $valor_calorio = $_kcal;
-		                                    $valor_proteico = $_ptn_total;
+											// --- Cálculo para o Range Mínimo e Máximo de Calorias ---
 
-		                                    if (($margem_proteica[0] <= $_ptn_total) and ($margem_proteica[1] >= $_ptn_total)){
-		                                        $margem_liberadas = true;
-		                                        $_nome = "";
-		                                    }
+											$kcal_min_range = (float) $margem_calorica[0];
+											$kcal_max_range = (float) $margem_calorica[1];
+
+											// 2. Calcular Proteína Base por Medida DC para o MÍNIMO e MÁXIMO
+											// Fórmula: $_ptn_base = (Kcal / Medida_DC) / 100;
+											$_ptn_base_min = ($kcal_min_range / $_medida_dc) / 100;
+											$_ptn_base_max = ($kcal_max_range / $_medida_dc) / 100;
+
+											// 3. Calcular Proteína Total (aplicando o multiplicador $ptn) para o MÍNIMO e MÁXIMO
+											$_ptn_total_min = $_ptn_base_min * $ptn_multiplicador;
+											$_ptn_total_max = $_ptn_base_max * $ptn_multiplicador;
+
+											// --- Variáveis resultantes do Cálculo do Range ---
+											$calorias_dia_min = $kcal_min_range;
+											$calorias_dia_max = $kcal_max_range;
+
+											$proteina_dia_min = $_ptn_total_min;
+											$proteina_dia_max = $_ptn_total_max;
+
+											// --- Verificação da Margem Proteica: Cenário 2 (Sobreposição) ---
+
+											$margem_liberadas = false;
+											$_nome = ""; // Variável _nome parece ser um flag adicional que você usa.
+
+											// A condição para sobreposição é:
+											// (Início do Range_A <= Fim do Range_B) AND (Início do Range_B <= Fim do Range_A)
+											if (($_ptn_total_min <= $margem_proteica[1]) && ($margem_proteica[0] <= $_ptn_total_max)) {
+												$margem_liberadas = true;
+												// O que $_nome deve ser neste caso? Se for apenas para indicar sucesso, pode ser vazio ou uma mensagem.
+											}
 		                                }
 		                                else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
 											$_medida_dc = 1;
@@ -3295,7 +3319,6 @@ $app->group("", function () use ($app) {
 		                                        (($margem_calorica[0] <= $range_kcal) and ($margem_calorica[1] >= $range_kcal)) and
 		                                        (($margem_proteica[0] <= $range_ptn) and ($margem_proteica[1] >= $range_ptn))
 		                                        ){
-		                                        $_nome = "";
 		                                        $margem_liberadas = true;
 		                                    }
 		                                    else{
