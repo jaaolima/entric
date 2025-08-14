@@ -3241,16 +3241,10 @@ $app->group("", function () use ($app) {
 											$proteina_dia_min = $_ptn_total_min;
 											$proteina_dia_max = $_ptn_total_max;
 
-											// --- Verificação da Margem Proteica: Cenário 2 (Sobreposição) ---
-
-											$margem_liberadas = false;
-											$_nome = ""; // Variável _nome parece ser um flag adicional que você usa.
-
 											// A condição para sobreposição é:
 											// (Início do Range_A <= Fim do Range_B) AND (Início do Range_B <= Fim do Range_A)
 											if (($_ptn_total_min <= $margem_proteica[1]) && ($margem_proteica[0] <= $_ptn_total_max)) {
 												$margem_liberadas = true;
-												// O que $_nome deve ser neste caso? Se for apenas para indicar sucesso, pode ser vazio ou uma mensagem.
 											}
 		                                }
 		                                else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
