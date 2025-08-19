@@ -1074,6 +1074,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$moduloQuantidade = $modulo_quantidade->$key;
 									$moduloVolume = str_replace(".00", "", $modulo_volume->$key);
 									$moduloHorario = $modulo_horario->$key;
+									var_dump($moduloHorario);
 									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
 								}
 							}
@@ -1084,6 +1085,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$suplementoHorario = $suplemento_horario->$key;
 									$HorasCorrer = $hora_correr->$key;
+									var_dump($suplementoHorario);
 									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$suplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
 								}
 							}
