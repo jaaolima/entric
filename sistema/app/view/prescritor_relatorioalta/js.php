@@ -3043,7 +3043,7 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_outra_dieta_add", function (e) {
-        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_suplemento").length + 1;
+        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_nova_dieta").length + 1;
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).parent().parent().parent().find(".div_nova_dieta:first").clone(true);
@@ -3184,7 +3184,7 @@ $(function(){
     });
     // -------------------------------------------------------------------------------------------------
     $('body').on('click', ".btn_modulo_add", function (e) {
-        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_suplemento").length + 1;
+        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_modulo").length + 1;
 
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
@@ -3339,6 +3339,7 @@ $(function(){
         divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__'+idCampo+ '__' + p +'__1]').end();
         divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").attr('name', 'suplemento_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".hora_correr").attr('name', 'hora_correr[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--below").remove();
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();    
