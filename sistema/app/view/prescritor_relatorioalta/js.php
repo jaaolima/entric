@@ -3193,7 +3193,7 @@ $(function(){
 
         divClone.removeAttr("id").attr("id","modulo"+p);
         divClone.find(".div_produto_rm").removeClass("none");
-        divClone.find(".modulo_horario").attr('name', 'horario[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' + idCombinacao + '__'+idCampo+ '__' + p +'__1]').end();
         divClone.find(".modulo_volume_total").attr('name', 'modulo_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".modulo_quantidade").attr('name', 'modulo_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".modulo_volume_agua").attr('name', 'modulo_volume[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
@@ -3336,7 +3336,7 @@ $(function(){
 
         divClone.removeAttr("id");
         divClone.find(".div_suplemento_rm").removeClass("none");
-        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__'+idCampo+ '__' + p +'__1]').end();
         divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").attr('name', 'suplemento_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
@@ -3452,7 +3452,7 @@ $(function(){
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
         var divSuplemento = $(this).closest(".div_suplemento");
-        i = divSuplemento.find('[name^="modulo_horario"]').length + 1;
+        i = divSuplemento.find('[name^="suplemento_horario"]').length + 1;
         var nameString = divClone.find('[name^="suplemento_horario"]').first().attr('name');
         var regex = /\[(.*?)\]/;
         nameStringmatch = nameString.match(regex);
