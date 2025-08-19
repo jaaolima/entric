@@ -385,7 +385,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$textoHorarios = '';
 						}
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.". ".(($categoria_fracionamento['categoria_modulo_proteina']['instrucoes']) ? $categoria_fracionamento['categoria_modulo_proteina']['instrucoes'] .'.' : "")."</p>
+							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo']." dias".$textoHorarios.". ".(($categoria_fracionamento['categoria_modulo_proteina']['instrucoes']) ? $categoria_fracionamento['categoria_modulo_proteina']['instrucoes'] .'.' : "")."</p>
 						</p>";
 					}
 					$temColageno = !empty(array_filter($dadosProcessados, function($item) {

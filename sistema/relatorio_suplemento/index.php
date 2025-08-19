@@ -364,12 +364,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 								$medida_dc = json_decode($produto_cad['medida_dc'], true);
 								$unidade = json_decode($produto_cad['unidade'], true);
-
+								var_dump($produto[8]);
 								for ($i=0; $i < count($medida_dc); $i++) { 
+									var_dump($medida_dc[$i]);
 									if($medida_dc[$i] == $produto[8]){
 										$unidade_prod = $unidade[$i];
 									}
 								}
+								var_dump($medida_dc);
+								var_dump($unidade_prod);
 
 
 								$medida = chkstring2float($produto[8]); // 0.5 arrendodar
