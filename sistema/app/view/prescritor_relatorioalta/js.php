@@ -3455,13 +3455,14 @@ $(function(){
         var nameString = divClone.find('[name^="suplemento_horario"]').first().attr('name');
         var regex = /\[(.*?)\]/;
         nameStringmatch = nameString.match(regex);
+        nameStringmatchNew = nameStringmatch[1].substring(0, nameStringmatch[1].length - 3); 
 
         var p = $.now();
 
         divClone.find(".btn_suplemento_total_add").remove();
         divClone.find(".btn_suplemento_total_rm").removeClass("none");
-        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + nameStringmatch + "__" + i +']').end();
-        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + nameStringmatch + "__" +  i +']').end();
+        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + nameStringmatchNew + "__" + i +']').end();
+        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + nameStringmatchNew + "__" +  i +']').end();
 
         divClone.find(".campos_limpar").val('');
         divClone.find(".hora").unbind();
@@ -3480,12 +3481,13 @@ $(function(){
         var nameString = divClone.find('[name^="modulo_horario"]').first().attr('name');
         var regex = /\[(.*?)\]/;
         nameStringmatch = nameString.match(regex);
+        nameStringmatchNew = nameStringmatch[1].substring(0, nameStringmatch[1].length - 3); 
 
         var p = $.now();
 
         divClone.find(".btn_modulo_total_add").remove();
         divClone.find(".btn_modulo_total_rm").removeClass("none");
-        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' + nameStringmatch + "__" + i +']').end();
+        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' +nameStringmatchNew + "__" + i +']').end();
 
         divClone.find(".campos_limpar").val('');
         divClone.find(".hora").unbind();
