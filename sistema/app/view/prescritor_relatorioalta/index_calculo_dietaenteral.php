@@ -76,7 +76,7 @@
                                                                     </div>
                                                                     <div class="form-group col-sm-6 mb-1 div_infusao_gravitacional" style="display:none;">
                                                                         <label for="dieta_quantas_horas_ocorrer[1__1__0]">Em quantas horas cada dieta deve ocorrer?</label>
-                                                                        <input type="text"  maxlength='2'  class="form-control hora campos_limpar dieta_quantas_horas_ocorrer" required="required" name="dieta_quantas_horas_ocorrer[1__1__0]">
+                                                                        <input type="text" class="form-control hora campos_limpar dieta_quantas_horas_ocorrer" required="required" name="dieta_quantas_horas_ocorrer[1__1__0]">
                                                                     </div>
                                                                 </div>
                                                             </div>
