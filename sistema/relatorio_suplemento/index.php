@@ -273,7 +273,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div style="width:68%;">
 					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
 				</div>
-				<div style="text-align:center;width:32%;">
+				<div style="text-align:center;width:32%;"> 
 					<h4 class="titulo"style="margin:0px;">SAIBA MAIS!</h4>
 					<img src="imagem/QRCode_viaOral.png" style="display:inline-block;" width="80" alt="">
 				</div> 
@@ -362,6 +362,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
+								$medida_dc = json_decode($produto_cad['medida_dc'], true);
+								$unidade = json_decode($produto_cad['unidade'], true);
+
+								for ($i=0; $i < count($medida_dc); $i++) { 
+									if($medida_dc[$i] == $produto[8]){
+										$unidade_prod = $unidade[$i];
+									}
+								}
+
+
 								$medida = chkstring2float($produto[8]); // 0.5 arrendodar
 
 								$grama = chkstring2float($produto[10]);
@@ -377,6 +387,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $grama;
 								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
 								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $unidade_prod;
 							} 
 						}
 						if($dados_ordem != []){
@@ -413,7 +424,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 													<?php echo $valor[0];?>
 												</td>
 												<td class="col_azul"><?php echo $valor[3];?></td>
-												<td class="col_azul"><?php echo $valor[4];?></td>
+												<td class="col_azul"><?php echo $valor[4] . " " . $valor[6];?></td>
 												<td><?php echo $valor[5];?></td>
 											</tr>
 											<?php
