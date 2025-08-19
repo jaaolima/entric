@@ -70,13 +70,13 @@
                                                                         <label for="dieta_fracionamento_dia[1__1__0]">Fracionamento/dia:</label>
                                                                         <input type="text"  maxlength='2'  class="form-control numeros campos_limpar fracionamento_dia" required="required" name="dieta_fracionamento_dia[1__1__0]">
                                                                     </div>
-                                                                    <div class="form-group col-sm-6 mb-1 div_infusao_gravitacional" style="display:none;">
-                                                                        <label for="dieta_quantas_horas_ocorrer[1__1__0]">Em quantas horas cada dieta deve ocorrer?</label>
-                                                                        <input type="text"  maxlength='2'  class="form-control numeros campos_limpar dieta_quantas_horas_ocorrer" required="required" name="dieta_quantas_horas_ocorrer[1__1__0]">
-                                                                    </div>
                                                                     <div class="form-group row col-sm-4 mb-1 div_infusao_gravitacional div_horario_administracao" style="display:none;">
                                                                         <label for="dieta_horario_administracao[1__1__0]" class="label_horario_administracao">Horário de Administração:</label>
                                                                         <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[1__1__0]">
+                                                                    </div>
+                                                                    <div class="form-group col-sm-6 mb-1 div_infusao_gravitacional" style="display:none;">
+                                                                        <label for="dieta_quantas_horas_ocorrer[1__1__0]">Em quantas horas cada dieta deve ocorrer?</label>
+                                                                        <input type="text"  maxlength='2'  class="form-control numeros campos_limpar dieta_quantas_horas_ocorrer" required="required" name="dieta_quantas_horas_ocorrer[1__1__0]">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -131,10 +131,10 @@
                                                                             <div class="form-group col-sm-6 mb-1">
                                                                                 <label for="horario">Horário:</label>
                                                                                 <div class="input-group">
-                                                                                    <input type="text" class="form-control hora modulo_horario campos_limpar" required="required" name="modulo_horario[1__1__0]">
+                                                                                    <input type="text" class="form-control hora modulo_horario campos_limpar" required="required" name="modulo_horario[1__1__0__1]">
                                                                                     <div class="input-group-append"> 
-                                                                                        <button class="btn btn-secondary btn_suplemento_total_add" type="button"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                                                                                        <button class="btn btn-danger btn_suplemento_total_rm none" type="button"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
+                                                                                        <button class="btn btn-secondary btn_modulo_total_add" type="button"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                                                                                        <button class="btn btn-danger btn_modulo_total_rm none" type="button"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -191,16 +191,16 @@
 
                                                             <div class="col-sm-8 mb-1">
                                                                 <div class="row">
-                                                                    <div class="form-group col-sm-2">
+                                                                    <div class="form-group col-sm-4">
                                                                         <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
                                                                         <input type="text" maxlength='4' class="form-control numeros campos_limpar suplemento_quantidade disparar_calculo" required="required" name="suplemento_quantidade[1__1__0]">
                                                                     </div>
-                                                                    <div class="form-group col-sm-5 div_volume_total_col">
+                                                                    <div class="form-group col-sm-2 div_volume_total_col">
                                                                         <div class="row div_volume_total">
-                                                                            <div class="form-group col-sm-6 mb-1">
+                                                                            <div class="form-group mb-1">
                                                                                 <label for="suplemento_horario">Horário:</label>
                                                                                 <div class="input-group">
-                                                                                    <input type="text" class="form-control hora suplemento_horario campos_limpar" required="required" name="suplemento_horario[1__1__0]">
+                                                                                    <input type="text" class="form-control hora suplemento_horario campos_limpar" required="required" name="suplemento_horario[1__1__0__1]">
                                                                                     <div class="input-group-append"> 
                                                                                         <button class="btn btn-secondary btn_suplemento_total_add" type="button"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                                                                                         <button class="btn btn-danger btn_suplemento_total_rm none" type="button"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
@@ -209,11 +209,11 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-sm-5">
+                                                                    <div class="form-group col-sm-5 pl-5">
                                                                         <div class="row">
-                                                                            <div class="form-group col-sm-5 mb-1">
+                                                                            <div class="form-group mb-1">
                                                                                 <label for="hora_correr">Em quantas horas deve correr?</label>
-                                                                                <input type="text" class="form-control hora hora_correr campos_limpar" required="required" name="hora_correr[1__1__0]">
+                                                                                <input type="text" class="form-control hora hora_correr campos_limpar w-50" required="required" name="hora_correr[1__1__0]">
                                                                             </div>
                                                                         </div>
                                                                     </div>

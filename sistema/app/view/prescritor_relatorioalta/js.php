@@ -3449,14 +3449,35 @@ $(function(){
     });
     $(".btn_suplemento_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
+        i = divCombinacao.find('[name^="suplemento_horario"]').length + 1;
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
         var p = $.now();
 
         divClone.find(".btn_suplemento_total_add").remove();
         divClone.find(".btn_suplemento_total_rm").removeClass("none");
-        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__' + p +']').end();
-        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__' + p +']').end();
+        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__' + p +'__'+ i +']').end();
+        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__' + p +'__'+ i +']').end();
+
+        divClone.find(".campos_limpar").val('');
+        divClone.find(".hora").unbind();
+        divClone.find(".numeros").unbind();
+        $(this).closest(".div_volume_total_col").append(divClone);
+
+        $('.hora').mask("99:99");
+        $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
+    });
+
+    $(".btn_modulo_total_add").on("click", function(e) {
+        divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
+        i = divCombinacao.find('[name^="modulo_horario"]').length + 1;
+        idCombinacao = divCombinacao.replace('combinacao','');
+        var divClone = $(this).closest(".div_volume_total").clone(true);
+        var p = $.now();
+
+        divClone.find(".btn_modulo_total_add").remove();
+        divClone.find(".btn_modulo_total_rm").removeClass("none");
+        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' + idCombinacao + '__' + p +'__'+ i +']').end();
 
         divClone.find(".campos_limpar").val('');
         divClone.find(".hora").unbind();
