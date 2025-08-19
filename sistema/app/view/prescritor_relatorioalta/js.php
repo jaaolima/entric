@@ -3452,7 +3452,7 @@ $(function(){
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
         i = divClone.find('[name^="suplemento_horario"]').length + 1;
-        var nameString = divClone.find('[name^="suplemento_quantidade"]').attr('name');
+        var nameString = divClone.find('[name^="suplemento_horario"]').first().attr('name');
         var regex = /\[(.*?)\]/;
         nameStringmatch = nameString.match(regex);
 
@@ -3477,7 +3477,7 @@ $(function(){
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
         i = divClone.find('[name^="modulo_horario"]').length + 1;
-        var nameString = divClone.find('[name^="modulo_quantidade"]').attr('name');
+        var nameString = divClone.find('[name^="modulo_horario"]').first().attr('name');
         var regex = /\[(.*?)\]/;
         nameStringmatch = nameString.match(regex);
 
