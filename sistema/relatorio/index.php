@@ -1073,9 +1073,18 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$moduloQuantidade = $modulo_quantidade->$key;
 									$moduloVolume = str_replace(".00", "", $modulo_volume->$key);
-									$moduloHorario = $modulo_horario->$key;
-									var_dump($moduloHorario);
-									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir em ".$moduloVolume." ml de água e administrar às ".$moduloHorario."</p>";
+									foreach ($modulo_horario as $keyHorario => $valueHorario) {
+										var_dump($valueHorario);
+										if (substr($keyHorario, 0, strlen($key)) === $key) {
+											if ($StringHorario != '') {
+												$StringHorario .= ', ' . $valueHorario;
+											} else {
+												$StringHorario .= $valueHorario;
+											}
+										}
+									}
+									var_dump($StringHorario);
+									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir em ".$moduloVolume." ml de água e administrar às ".$StringHorario."</p>";
 								}
 							}
 
@@ -1083,10 +1092,19 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
-									$suplementoHorario = $suplemento_horario->$key;
 									$HorasCorrer = $hora_correr->$key;
-									var_dump($suplementoHorario);
-									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$suplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
+									foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
+										var_dump($valueSuplementoHorario);
+										if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
+											if ($StringSuplementoHorario != '') {
+												$StringSuplementoHorario .= ', ' . $valueSuplementoHorario;
+											} else {
+												$StringSuplementoHorario .= $valueSuplementoHorario;
+											}
+										}
+									}
+									var_dump($StringSuplementoHorario);
+									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
 								}
 							}
 
