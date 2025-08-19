@@ -1004,7 +1004,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							$kcal = str_replace(".00", "", $valortotal_kcal[$j]);
 							$ptn = str_replace(".00", "", $valortotal_ptn[$j]);
 							$fibra = str_replace(".00", "", $valortotal_fibra[$j]);
-							echo "<div style='border-left: 1px solid;margin-top: 30px;padding-left: 21px;'>";
+							echo "<div style='border-left: 1px solid;margin-top: 30px;padding-left: 21px;'>"; 
 
 							echo "<div style='display:flex;'><h3 style='font-size:11pt;margin-top:1.5px;'>OPÇÃO ".$i.":</h3> <b style='margin-left:10px;'>".$kcal." kcal, ".$ptn."g de proteína e ".$fibra."g de fibras ao dia</b></div>";
 							foreach ($dieta_formula as $key => $value) {
