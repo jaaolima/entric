@@ -3452,13 +3452,16 @@ $(function(){
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
         i = divClone.find('[name^="suplemento_horario"]').length + 1;
+        var nameString = divClone.find('[name^="suplemento_quantidade"]').attr('name');
+        var regex = /\[(.*?)\]/;
+        nameStringmatch = nameString.match(regex);
 
         var p = $.now();
 
         divClone.find(".btn_suplemento_total_add").remove();
         divClone.find(".btn_suplemento_total_rm").removeClass("none");
-        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__' + p +'__'+ i +']').end();
-        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__' + p +'__'+ i +']').end();
+        divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + nameStringmatch + "__" + i +']').end();
+        divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + nameStringmatch + "__" +  i +']').end();
 
         divClone.find(".campos_limpar").val('');
         divClone.find(".hora").unbind();
@@ -3474,12 +3477,15 @@ $(function(){
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
         i = divClone.find('[name^="modulo_horario"]').length + 1;
+        var nameString = divClone.find('[name^="modulo_quantidade"]').attr('name');
+        var regex = /\[(.*?)\]/;
+        nameStringmatch = nameString.match(regex);
 
         var p = $.now();
 
         divClone.find(".btn_modulo_total_add").remove();
         divClone.find(".btn_modulo_total_rm").removeClass("none");
-        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' + idCombinacao + '__' + p +'__'+ i +']').end();
+        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' + nameStringmatch + "__" + i +']').end();
 
         divClone.find(".campos_limpar").val('');
         divClone.find(".hora").unbind();
@@ -3490,6 +3496,9 @@ $(function(){
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
     });
     $(".btn_suplemento_total_rm").on("click", function(e) {
+        $(this).closest(".div_volume_total").remove();
+    });
+    $(".btn_modulo_total_rm").on("click", function(e) {
         $(this).closest(".div_volume_total").remove();
     });
     // select2_ajax_formula($(".select2_ajax_formula"));
