@@ -1090,7 +1090,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$HorasCorrer = $hora_correr->$key;
+									var_dump($key);
 									foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
+										var_dump($keySuplementoHorario);
+										var_dump(substr($keySuplementoHorario, 0, strlen($key)));
 										if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
 											if ($StringSuplementoHorario != '') {
 												$StringSuplementoHorario .= ', ' . $valueSuplementoHorario;
@@ -1107,11 +1110,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if (substr($key, 0, 1) == $i) {
 									$hidratacaoFracionamento = $hidratacao_fracionamento_dia->$key;
 									$StringHorario = '';
-									var_dump($key);
 									foreach ($hidratacao_horario as $keyHorario => $valueHorario) {
-										var_dump($keyHorario);
-										var_dump(substr($keyHorario, 0, strlen($key)));
-
 										if (substr($keyHorario, 0, strlen($key)) === $key) {
 											if ($StringHorario != '') {
 												$StringHorario .= ', ' . $valueHorario;
