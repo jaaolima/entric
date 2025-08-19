@@ -3449,9 +3449,10 @@ $(function(){
     });
     $(".btn_suplemento_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
-        i = divCombinacao.find('[name^="suplemento_horario"]').length + 1;
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
+        i = divClone.find('[name^="suplemento_horario"]').length + 1;
+
         var p = $.now();
 
         divClone.find(".btn_suplemento_total_add").remove();
@@ -3470,9 +3471,10 @@ $(function(){
 
     $(".btn_modulo_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
-        i = divCombinacao.find('[name^="modulo_horario"]').length + 1;
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest(".div_volume_total").clone(true);
+        i = divClone.find('[name^="modulo_horario"]').length + 1;
+
         var p = $.now();
 
         divClone.find(".btn_modulo_total_add").remove();
