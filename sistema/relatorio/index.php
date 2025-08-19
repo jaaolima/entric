@@ -1018,6 +1018,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
+						$hora_correr = json_decode($relatorio['hora_correr']);
 
 						$valortotal_kcal = json_decode($relatorio['valortotal_kcal']);
 						$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
@@ -1056,14 +1057,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 										}
-										var_dump($dieta_quantas_horas_ocorrerProduto);
 										$valorHorasOcorrer = str_replace(":", ".", $dieta_quantas_horas_ocorrerProduto);
-										var_dump($valorHorasOcorrer);
 										$indexX = (floatval($volumeProduto) / floatval($dieta_fracionamento_diaProduto) / floatval($valorHorasOcorrer));
-										var_dump($indexX);
 
 										$indexY = (floatval($volumeProduto) / floatval($dieta_fracionamento_diaProduto) / (floatval($valorHorasOcorrer) * 3));
-										var_dump($indexY);
 
 										$infusao = "gravitacional " .$dieta_fracionamento_diaProduto . (($dieta_fracionamento_diaProduto == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ". Correr cada dieta em " . $dieta_quantas_horas_ocorrerProduto . " horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.";
 									}
@@ -1086,7 +1083,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$suplementoHorario = $suplemento_horario->$key;
-									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$suplementoHorario."</p>";
+									$HorasCorrer = $hora_correr->$key;
+									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$suplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
 								}
 							}
 
