@@ -408,6 +408,29 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			}
 			?>	
 			<?php } ?>	
+			<?php if($relatorio['tipo_produto'] == "Enteral") :  ?>
+			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL?</p>
+			<div style="display:flex;margin-top:15px;">
+				<div style="width:68%;">
+					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> É uma maneira de fornecer nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
+				</div>
+				<div style="text-align:center;width:32%;">
+					<h4 class="titulo" style="margin:0px;">SAIBA MAIS!</h4>
+					<img src="imagem/qrcode_video.jpeg" style="display:inline-block;" width="80" alt="">
+				</div>
+			</div>
+			<?php elseif($relatorio['tipo_produto'] == "Suplemento") : ?>
+			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
+			<div style="display:flex;margin-top:15px;">
+				<div style="width:68%;">
+					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
+				</div>
+				<div style="text-align:center;width:32%;">
+					<h4 class="titulo"style="margin:0px;">SAIBA MAIS!</h4>
+					<img src="imagem/qrcode_via_oral.jpeg" style="display:inline-block;" width="80" alt="">
+				</div> 
+			</div>
+			<?php endif; ?>
 			<?php if ($relatorio['rel_prescricao']<>""){ ?>
 				<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA <?php if($relatorio['tipo_prescricao'] == "Prescrição Automática") : ?> - Escolha uma das opções <?php endif; ?></p>
 					<?php if($relatorio['tipo_prescricao'] == 'Prescrição Automática') : ?>
@@ -984,6 +1007,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$dieta_horario_inicio = json_decode($relatorio['dieta_horario_inicio']);
 						$dieta_fracionamento_dia = json_decode($relatorio['dieta_fracionamento_dia']);
 						$dieta_horario_administracao = json_decode($relatorio['dieta_horario_administracao']);
+						$dieta_quantas_horas_ocorrer = json_decode($relatorio['dieta_quantas_horas_ocorrer']);
 						$modulo_produto = json_decode($relatorio['modulo_produto']);
 						$modulo_quantidade = json_decode($relatorio['modulo_quantidade']);
 						$modulo_volume = json_decode($relatorio['modulo_volume']);
@@ -1013,13 +1037,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$infusao = "";
 									$volumeProduto = $dieta_volume->$key;
 									$dieta_infusaoProduto = $dieta_infusao->$key;
-									if($dieta_infusaoProduto == "Contínua"){
+									if($dieta_infusaoProduto == "Bomba de Infusão"){
 										$dieta_vazao_hProduto = $dieta_vazao_h->$key;
 										$dieta_horario_inicioProduto = $dieta_horario_inicio->$key;
 										$infusao = "contínua a " . $dieta_vazao_hProduto . " ml/h às " . $dieta_horario_inicioProduto . ".";
 									}	
-									if($dieta_infusaoProduto == "Fracionada"){
+									if($dieta_infusaoProduto == "Gravitacional"){
 										$dieta_fracionamento_diaProduto = $dieta_fracionamento_dia->$key;
+										$dieta_quantas_horas_ocorrerProduto = $dieta_quantas_horas_ocorrer->$key;
 										$StringHoraAdministracao = '';
 										foreach ($dieta_horario_administracao as $keyHoraAdministracao => $valueHoraAdministracao) {
 											// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
@@ -1031,7 +1056,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 										}
-										$infusao = "fracionada " .$dieta_fracionamento_diaProduto . (($dieta_fracionamento_dia == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ".";
+										var_dump($dieta_quantas_horas_ocorrerProduto);
+										$valorHorasOcorrer = str_replace(":", ".", $dieta_quantas_horas_ocorrerProduto);
+										var_dump($valorHorasOcorrer);
+										$indexX = (floatval($volumeProduto) / floatval($dieta_fracionamento_diaProduto) / floatval($valorHorasOcorrer));
+										var_dump($indexX);
+
+										$indexY = (floatval($volumeProduto) / floatval($dieta_fracionamento_diaProduto) / (floatval($valorHorasOcorrer) * 3));
+										var_dump($indexY);
+
+										$infusao = "gravitacional " .$dieta_fracionamento_diaProduto . (($dieta_fracionamento_diaProduto == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ". Correr cada dieta em " . $dieta_quantas_horas_ocorrerProduto . " horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.";
 									}
 									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
 								}

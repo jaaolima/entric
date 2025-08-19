@@ -263,8 +263,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php } ?>
 
-			<p class="text-left subtitutlo">
-			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL?</p>
+			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
 					<p>A terapia nutricional enteral é um método simples, seguro e eficaz que tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional.</span> É uma maneira de fornecer nutrição diretamente no estômago ou intestino, quando a alimentação oral não é possível ou suficiente.</p>
