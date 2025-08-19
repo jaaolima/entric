@@ -1107,7 +1107,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if (substr($key, 0, 1) == $i) {
 									$hidratacaoFracionamento = $hidratacao_fracionamento_dia->$key;
 									$StringHorario = '';
+									var_dump($key);
 									foreach ($hidratacao_horario as $keyHorario => $valueHorario) {
+										var_dump($keyHorario);
+										var_dump(substr($keyHorario, 0, strlen($key)));
+
 										if (substr($keyHorario, 0, strlen($key)) === $key) {
 											if ($StringHorario != '') {
 												$StringHorario .= ', ' . $valueHorario;
