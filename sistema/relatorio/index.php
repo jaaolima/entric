@@ -1048,7 +1048,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										$dieta_quantas_horas_ocorrerProduto = $dieta_quantas_horas_ocorrer->$key;
 										$StringHoraAdministracao = '';
 										foreach ($dieta_horario_administracao as $keyHoraAdministracao => $valueHoraAdministracao) {
-											// Opção 2: Usando substr() (Compatível com PHP 7.x e anteriores)
 											if (substr($keyHoraAdministracao, 0, strlen($key)) === $key) {
 												if ($StringHoraAdministracao != '') {
 													$StringHoraAdministracao .= ', ' . $valueHoraAdministracao;
@@ -1074,7 +1073,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$moduloQuantidade = $modulo_quantidade->$key;
 									$moduloVolume = str_replace(".00", "", $modulo_volume->$key);
 									foreach ($modulo_horario as $keyHorario => $valueHorario) {
-										var_dump($valueHorario);
 										if (substr($keyHorario, 0, strlen($key)) === $key) {
 											if ($StringHorario != '') {
 												$StringHorario .= ', ' . $valueHorario;
@@ -1083,7 +1081,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									var_dump($StringHorario);
 									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir em ".$moduloVolume." ml de água e administrar às ".$StringHorario."</p>";
 								}
 							}
@@ -1094,7 +1091,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$HorasCorrer = $hora_correr->$key;
 									foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
-										var_dump($valueSuplementoHorario);
 										if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
 											if ($StringSuplementoHorario != '') {
 												$StringSuplementoHorario .= ', ' . $valueSuplementoHorario;
@@ -1103,7 +1099,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									var_dump($StringSuplementoHorario);
 									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
 								}
 							}
