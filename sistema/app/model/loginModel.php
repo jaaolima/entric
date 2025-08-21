@@ -39,7 +39,7 @@ class LoginModel extends Model {
         $dados = httpPost("login_ibranutro", array(   "id_usuario" => $id_usuario));
 
         if (isset($dados["status"])){
-            Redirect(BASE_PATH . '/logout'); 
+            Redirect(BASE_PATH . '/logout');  
             return true;
 
         }else{
@@ -147,24 +147,68 @@ class LoginModel extends Model {
                         
                     }else{
                         if($id_paciente != null){
-                            $paciente = httpPostAuth("paciente_getDadoSuplemento", array( "token" => $_SESSION['token'],
-                                "login" => $_SESSION['login'],
-                                "id_paciente" => $id_paciente,
-                                "sistema" => $sistema));
-                            if($paciente){
-                                $buscar = 'buscar';
-                                $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                            if($tipo == 'suplemento'){
+                                $paciente = httpPostAuth("paciente_getDadoSuplemento", array( "token" => $_SESSION['token'],
                                     "login" => $_SESSION['login'],
                                     "id_paciente" => $id_paciente,
                                     "sistema" => $sistema));
-                                $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];
-                            }else{
-                                $buscar = 'cadastrar';
-                                $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                                if($paciente){
+                                    $buscar = 'buscar';
+                                    $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                                        "login" => $_SESSION['login'],
+                                        "id_paciente" => $id_paciente,
+                                        "sistema" => $sistema));
+                                    $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];
+                                }else{
+                                    $buscar = 'cadastrar';
+                                    $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                                        "login" => $_SESSION['login'],
+                                        "id_paciente" => $id_paciente,
+                                        "sistema" => $sistema));
+                                    $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];        
+                                }
+                            }
+                            if($tipo == 'modulos'){
+                                $paciente = httpPostAuth("paciente_getDadoModulo", array( "token" => $_SESSION['token'],
                                     "login" => $_SESSION['login'],
                                     "id_paciente" => $id_paciente,
                                     "sistema" => $sistema));
-                                $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];        
+                                if($paciente){
+                                    $buscar = 'buscar';
+                                    $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                                        "login" => $_SESSION['login'],
+                                        "id_paciente" => $id_paciente,
+                                        "sistema" => $sistema));
+                                    $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];
+                                }else{
+                                    $buscar = 'cadastrar';
+                                    $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                                        "login" => $_SESSION['login'],
+                                        "id_paciente" => $id_paciente,
+                                        "sistema" => $sistema));
+                                    $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];
+                                }
+                            }
+                            if($tipo == 'simplificada'){
+                                $paciente = httpPostAuth("paciente_getDadoSimplificada", array( "token" => $_SESSION['token'],
+                                    "login" => $_SESSION['login'],
+                                    "id_paciente" => $id_paciente,
+                                    "sistema" => $sistema));
+                                if($paciente){
+                                    $buscar = 'buscar';
+                                    $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                                        "login" => $_SESSION['login'],
+                                        "id_paciente" => $id_paciente,
+                                        "sistema" => $sistema));
+                                    $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];
+                                }else{
+                                    $buscar = 'cadastrar';
+                                    $paciente = httpPostAuth("paciente_getDadoIbranutro", array( "token" => $_SESSION['token'],
+                                        "login" => $_SESSION['login'],
+                                        "id_paciente" => $id_paciente,
+                                        "sistema" => $sistema));
+                                    $_SESSION['paciente_redirect'] = ['sistema' => $sistema,'id_paciente' => $id_paciente, 'buscar' => $buscar, 'ds_nome' => $paciente['ds_nome'], 'id_hospital' => $paciente['id_hospital'], 'dt_nascimento' => $paciente['dt_nascimento'], 'nu_telefone' => $paciente['nu_telefone'], 'nu_atendimento' => $paciente['nu_atendimento']];
+                                }
                             }
                         }else{
                             $_SESSION['paciente_redirect'] = ['sistema' => null,'id_paciente' => null, 'buscar' => null];
