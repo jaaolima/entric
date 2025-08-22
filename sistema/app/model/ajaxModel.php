@@ -550,19 +550,50 @@ class AjaxModel extends Model {
 
     function stPacienteSuplemento($dados) { 
         global $bruker;
-        $retorno = httpPostAuth("ajax_stPacienteSuplemento", array("token" => $_SESSION['token'],
-                                                                        "login" => $_SESSION['login'],
-                                                            "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
+        if($dados['sistema'] == 'EN'){
+            $paciente = httpPostAuth("paciente_getDadoSuplemento", array( "token" => $_SESSION['token'],
+                                                                            "login" => $_SESSION['login'],
+                                                                            "id_paciente" => $dados['id_paciente'],
+                                                                            "sistema" => $dados['sistema']));
+            if(!$paciente){
+                $retorno = httpPostAuth("ajax_stPacienteSuplemento", array("token" => $_SESSION['token'],
+                                                                            "login" => $_SESSION['login'],
+                                                                            "dados" => $dados,
+                                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));  
+            } else {
+                $retorno = array('status' => 'error', 'error' => 'Paciente já cadastrado no sistema.');
+            }  
+        }else{
+            $retorno = httpPostAuth("ajax_stPacienteSuplemento", array("token" => $_SESSION['token'],
+                                                                    "login" => $_SESSION['login'],
+                                                                    "dados" => $dados,
+                                                                    "id_prescritor" => $bruker->usuario['id_usuario'] )); 
+        }
         return $retorno;
+
     } 
 
     function stPacienteModulo($dados) { 
         global $bruker;
-        $retorno = httpPostAuth("ajax_stPacienteModulo", array("token" => $_SESSION['token'],
-                                                                        "login" => $_SESSION['login'],
-                                                            "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
+        if($dados['sistema'] == 'EN'){
+            $paciente = httpPostAuth("paciente_getDadoModulo", array( "token" => $_SESSION['token'],
+                                                                            "login" => $_SESSION['login'],
+                                                                            "id_paciente" => $dados['id_paciente'],
+                                                                            "sistema" => $dados['sistema']));
+            if(!$paciente){
+                $retorno = httpPostAuth("ajax_stPacienteModulo", array("token" => $_SESSION['token'],
+                                                                            "login" => $_SESSION['login'],
+                                                                            "dados" => $dados,
+                                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));  
+            } else {
+                $retorno = array('status' => 'error', 'error' => 'Paciente já cadastrado no sistema.');
+            }  
+        }else{
+            $retorno = httpPostAuth("ajax_stPacienteModulo", array("token" => $_SESSION['token'],
+                                                                    "login" => $_SESSION['login'],
+                                                                    "dados" => $dados,
+                                                                    "id_prescritor" => $bruker->usuario['id_usuario'] )); 
+        }
         return $retorno;
     } 
 
