@@ -426,9 +426,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 					}
 				}
-				?>
-
-				<?php
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA PO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$_produtos_nomes = array();
 				// if ($relatorio['dieta_produto_dc'] <> ""){
@@ -526,6 +523,96 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tbody>
 								</table>
 							</p>
+					<?php
+						$landscape = true;
+						}
+					}
+				}
+
+				if (($relatorio['calculo_apres_espesso'] == 1)) {
+					// if (!$landscape){
+					// 	echo "</div>";
+					// }
+					if ($relatorio['dieta_produto_dc'] <> ""){
+
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+
+						$dados_ordem = array();
+						foreach ($dieta_produto_dc as &$value) {
+							$produto = explode("___", $value);
+							if ($produto[5] == "Espesso"){
+								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
+
+								if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
+									$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
+								else
+									$cont_dados = 0;
+
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[3];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
+								
+								$volume_final = chkfloat($produto[3]);
+								$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
+								if (($qtd_horas>0) and ($volume_final>0)) $velocidade = ($volume_final / ($qtd_horas/60));
+								else $velocidade = 0;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
+
+								$volume_final = chkfloat($produto[3]);
+								$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
+								if (($qtd_horas>0) and ($volume_final>0)) $gotejamento = (($volume_final*20) / ($qtd_horas));
+								else $gotejamento = 0;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
+
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[7]." kcal";
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[8]." g";
+
+								$volume_final = chkfloat($produto[3]);											
+								if ($produto_cad){ $fibra = moeda2float($produto_cad['fibras']); } else{ $fibra = 0;	 }
+								$fibra_dia = ($volume_final * $fibra)/100;
+
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $fibra_dia." g";
+							}
+						}
+						if($dados_ordem != []){
+						?>
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">Espesso - PRONTO PARA CONSUMO</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+							<?php
+							if ($relatorio['dieta_produto_dc'] <> ""){
+								?>
+								<tr>
+									<th width="24%" height="30px">
+										Produto
+									</th>
+									<th width="12%" class="col_azul">
+										Volume (unidade)
+									</th>
+								</tr>
+								<?php
+								// ksort($dados_ordem);
+								foreach ($dados_ordem as $chave => $valores) {
+									for ($i = 0; $i < count($valores); $i++) {
+										$valor = $valores[$i];
+
+										?>
+										<tr height="10px">
+											<td width="12%" >
+												<?php echo $valor[0];?>
+											</td>
+											<td width="12%" class="col_azul">
+												<?php echo $valor[3];?>
+											</td>
+										</tr>
+										<?php
+									}
+								}
+							}
+							?>
+							</table>
+						</p>
 					<?php
 						$landscape = true;
 						}
