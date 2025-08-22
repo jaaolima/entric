@@ -11098,22 +11098,31 @@ $app->group("", function () use ($app) {
 						if($dados['id_paciente'] == ''){
 							$dados['id_paciente'] = null;
 						}
-		
-						$bind = array(	$campo_prescritor => $id_prescritor,
-										':nome' => $dados["nome"],
-										':telefone' => $dados["telefone"],
-										':hospital' => $dados["hospital"],
-										':atendimento' => $dados["atendimento"],
-										':data_nascimento' => date2sql($dados["data_nascimento"]),    
-										':id_paciente' => $dados["id_paciente"],
-										':sistema' => $sistema,
-										':data_criacao' => date("Y-m-d H:i:s"));
-						$retorno = $db->insert("pacientes_suplemento", $bind);
-						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
-		
-						//retornar para null
-						$_SESSION['paciente_redirect']['id_paciente'] = null;
-		
+
+						$paciente = $db->select_single_to_array("pacientes_suplemento",
+																"*",
+																"
+																WHERE id_paciente=".$dados['id_paciente'], 
+																null);
+
+						if($paciente){
+							$data["status"] = "Erro: Paciente já cadastrado.";
+						}else{
+							$bind = array(	$campo_prescritor => $id_prescritor,
+											':nome' => $dados["nome"],
+											':telefone' => $dados["telefone"],
+											':hospital' => $dados["hospital"],
+											':atendimento' => $dados["atendimento"],
+											':data_nascimento' => date2sql($dados["data_nascimento"]),    
+											':id_paciente' => $dados["id_paciente"],
+											':sistema' => $sistema,
+											':data_criacao' => date("Y-m-d H:i:s"));
+							$retorno = $db->insert("pacientes_suplemento", $bind);
+							$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+			
+							//retornar para null
+							$_SESSION['paciente_redirect']['id_paciente'] = null;
+						}
 					}
 				}else{
 					$bind = array(	$campo_prescritor => $id_prescritor,
