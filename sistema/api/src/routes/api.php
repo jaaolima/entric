@@ -8588,9 +8588,11 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['calculo_apres_fechado'])) $dados['calculo_apres_fechado'] = null; else $dados['calculo_apres_fechado'] = true;
 		        if (!isset($dados['calculo_apres_aberto_liquido'])) $dados['calculo_apres_aberto_liquido'] = null; else $dados['calculo_apres_aberto_liquido'] = true;
 		        if (!isset($dados['calculo_apres_aberto_po'])) $dados['calculo_apres_aberto_po'] = null; else $dados['calculo_apres_aberto_po'] = true;
+		        if (!isset($dados['calculo_apres_aberto_po'])) $dados['calculo_apres_aberto_po'] = null; else $dados['calculo_apres_aberto_po'] = true;
 		        if (!isset($dados['calculo_fil_todos'])) $dados['calculo_fil_todos'] = null; else $dados['calculo_fil_todos'] = true;
 		        if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null; else $dados['calculo_apres_liquidocreme'] = true;
 		        if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null; else $dados['calculo_apres_po'] = true;
+		        if (!isset($dados['calculo_apres_espesso'])) $dados['calculo_apres_espesso'] = null; else $dados['calculo_apres_espesso'] = true;
 
 				if(isset($dados['carac_oral'])){
 					$array_carac = $dados['carac_oral'];
@@ -8710,6 +8712,7 @@ $app->group("", function () use ($app) {
 		                        ':calculo_apres_aberto_po' => $dados["calculo_apres_aberto_po"],
 		                        ':calculo_apres_liquidocreme' => $dados["calculo_apres_liquidocreme"],
 		                        ':calculo_apres_po' => $dados["calculo_apres_po"],
+		                        ':calculo_apres_espesso' => $dados["calculo_apres_espesso"],
 		                        ':calculo_fil_semsacarose' => $dados["calculo_fil_semsacarose"],
 		                        ':calculo_fil_semlactose' => $dados["calculo_fil_semlactose"],
 		                        ':calculo_fil_hipocalorico' => $dados["calculo_fil_hipocalorico"],
