@@ -3707,7 +3707,8 @@ $app->group("", function () use ($app) {
 		
 						if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
 						if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
-						if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
+						if (!isset($dados['calculo_apres_espesso'])) $dados['calculo_apres_espesso'] = null;
+						if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")  or ($dados['calculo_apres_espesso'] <> "")){
 							$query2.= ' AND (';
 								$_or = '';
 								if ($dados['calculo_apres_liquidocreme'] <> ""){
@@ -3716,6 +3717,10 @@ $app->group("", function () use ($app) {
 								}
 								if ($dados['calculo_apres_po'] <> ""){
 									$query2.= $_or.' (apres_oral LIKE "%Pó%")';
+									$_or = ' OR ';
+								}
+								if ($dados['calculo_apres_espesso'] <> ""){
+									$query2.= $_or.' (apres_oral LIKE "%Espesso%")';
 									$_or = ' OR ';
 								}
 							$query2.= ' )';
@@ -3764,6 +3769,7 @@ $app->group("", function () use ($app) {
 
 				if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
 				if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
+				if (!isset($dados['calculo_apres_espesso'])) $dados['calculo_apres_espesso'] = null;
 				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
 					$query.= ' AND (';
 						$_or = '';
@@ -3773,6 +3779,10 @@ $app->group("", function () use ($app) {
 						}
 						if ($dados['calculo_apres_po'] <> ""){
 							$query.= $_or.' (apres_oral LIKE "%Pó%")';
+							$_or = ' OR ';
+						}
+						if ($dados['calculo_apres_espesso'] <> ""){
+							$query.= $_or.' (apres_oral LIKE "%Espesso%")';
 							$_or = ' OR ';
 						}
 					$query.= ' )';
@@ -3949,6 +3959,9 @@ $app->group("", function () use ($app) {
 		                                }else if ($apres_oral == '["Líquido / Creme"]'){
 											$apres_oral = 'Líquido / Creme';
 											$apres_oral_num = '2';
+		                                }else if ($apres_oral == '["Espesso"]'){
+											$apres_oral = 'Espesso';
+											$apres_oral_num = '3';
 		                                }
 
 		                                if ($retorno_thead <> $apres_oral){
@@ -4062,6 +4075,12 @@ $app->group("", function () use ($app) {
 												$caloria_dia = ($volume_dia *  floatval(str_replace(',', '.', $valor_energetico[0]['valor']))) / 100;
 												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn_100ml[0]['valor']))) / 100;
 												$sistema = 'Pó';
+											}else if($produtos[$i]['apres_oral'] == '["Espesso"]'){
+												$volume_und = $volume[$m] . ' ' . $unidmedida;
+												$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
+												$caloria_dia = ($volume_dia * $kcal) / 100;
+												$proteina_dia = ($volume_dia * $ptn) / 100;
+												$sistema = 'Espesso';
 											}
 											$retorno .= '<tr>
 															<td>

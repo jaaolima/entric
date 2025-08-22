@@ -153,6 +153,10 @@
                                         <input id="calculo_enteral_apres_po" name="apres_oral[]" class="form-check-input radio-outlined" type="radio" value="Pó">
                                         <label for="calculo_enteral_apres_po" class="form-check-label radio-green">Pó</label>
                                     </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="calculo_enteral_apres_espesso" name="apres_oral[]" class="form-check-input radio-outlined" type="radio" value="Espesso">
+                                        <label for="calculo_enteral_apres_espesso" class="form-check-label radio-green">Espesso</label>
+                                    </div>
                                 </div>
                             </div>
 

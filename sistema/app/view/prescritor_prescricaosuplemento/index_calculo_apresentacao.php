@@ -8,13 +8,17 @@
             <div class="row p-4">
                 <div class="form-check col-sm-12">
                     <input id="calculo_apres_liquidocreme"  name="calculo_apres_liquidocreme" value="Líquido / Creme" class="form-check-input styled-checkbox" type="checkbox">
-                    <label for="calculo_apres_liquidocreme" class="form-check-label check-green">Líquido / Creme</label>
+                    <label for="calculo_apres_liquidocreme" class="form-check-label check-green">Líquido</label>
                 </div>
                 <div class="form-check col-sm-12">
                     <input id="calculo_apres_po" name="calculo_apres_po" value="Pó" class="form-check-input styled-checkbox" type="checkbox">
                     <label for="calculo_apres_po" class="form-check-label check-green">Pó</label> 
                 </div>
-            </div>
+                <div class="form-check col-sm-12">
+                    <input id="calculo_apres_espesso" name="calculo_apres_espesso" value="Espesso" class="form-check-input styled-checkbox" type="checkbox">
+                    <label for="calculo_apres_espesso" class="form-check-label check-green">Espesso</label> 
+                </div>
+            </div> 
         </div>
         <div class="form-group col-sm-8 btrbl apres_oral filtros_oral">
             <div class="form-check">
