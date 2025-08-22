@@ -537,7 +537,7 @@ class AjaxModel extends Model {
                                                                             "dados" => $dados,
                                                                             "id_prescritor" => $bruker->usuario['id_usuario'] ));  
             } else {
-                $retorno = array('status' => 'error', 'message' => 'Paciente já cadastrado no sistema.');
+                $retorno = array('status' => 'error', 'error' => 'Paciente já cadastrado no sistema.');
             }  
         }else{
             $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
