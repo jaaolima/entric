@@ -526,10 +526,25 @@ class AjaxModel extends Model {
 
     function stPacienteSimplificada($dados) {
         global $bruker;
-        $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
-                                                                        "login" => $_SESSION['login'],
-                                                            "dados" => $dados,
-                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));       
+        if($dados['sistema'] == 'EN'){
+            $paciente = httpPostAuth("paciente_getDadoSimplificada", array( "token" => $_SESSION['token'],
+                                                                            "login" => $_SESSION['login'],
+                                                                            "id_paciente" => $dados['id_paciente'],
+                                                                            "sistema" => $dados['sistema']));
+            if($paciente){
+                $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
+                                                                            "login" => $_SESSION['login'],
+                                                                            "dados" => $dados,
+                                                                            "id_prescritor" => $bruker->usuario['id_usuario'] ));  
+            } else {
+                $retorno = array('status' => 'error', 'message' => 'Paciente já cadastrado no sistema.');
+            }  
+        }else{
+            $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
+                                                                    "login" => $_SESSION['login'],
+                                                                    "dados" => $dados,
+                                                                    "id_prescritor" => $bruker->usuario['id_usuario'] )); 
+        }
         return $retorno;
     } 
 
