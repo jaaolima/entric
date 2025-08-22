@@ -96,6 +96,31 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				text-justify: inter-word;
 				font-size: 13px !important;
 			}
+			.background{
+				content: "NÃO CONCLUÍDA"; /* Texto da marca d'água */
+				/* Posição e aparência */
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				
+				/* Rotação e posicionamento */
+				transform: translate(-50%, -50%) rotate(-45deg); 
+				
+				/* Estilo do texto */
+				font-size: 5em; /* Tamanho do texto */
+				font-weight: bold;
+				color: rgba(0, 0, 0, 0.1); /* Cor semi-transparente (RGBA é ótimo para isso) */
+				
+				/* Para garantir que a marca d'água fica no fundo */
+				z-index: 1; 
+				
+				/* Impede que a marca d'água receba eventos de clique do mouse */
+				pointer-events: none;
+				
+				/* Outros estilos */
+				white-space: nowrap; /* Impede quebras de linha */
+				text-transform: uppercase;
+			}
 			/* .logo_efeito{
 				background-image: url("imagem/logo.png"), url("imagem/efeito.png");
 				background-repeat: no-repeat;
