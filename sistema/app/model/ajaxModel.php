@@ -531,7 +531,7 @@ class AjaxModel extends Model {
                                                                             "login" => $_SESSION['login'],
                                                                             "id_paciente" => $dados['id_paciente'],
                                                                             "sistema" => $dados['sistema']));
-            if($paciente){
+            if(!$paciente){
                 $retorno = httpPostAuth("ajax_stPacienteSimplificada", array("token" => $_SESSION['token'],
                                                                             "login" => $_SESSION['login'],
                                                                             "dados" => $dados,
