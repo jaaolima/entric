@@ -15,7 +15,7 @@ function get_extensao_file($nome){
     $verifica = explode('.', $nome);
     return $verifica[count($verifica) - 1];
 }
-if (!isset($_GET['url'])) Redirect(BASE_PATH);
+if (!isset($_GET['url'])) Redirect(BASE_PATH); 
 $url = $_GET['url'];
 ?>
 <style>
@@ -24,7 +24,7 @@ $url = $_GET['url'];
         padding: 0px;
     }
 </style>
-<iframe src="https://sis.entric.com.br/relatorio_modulo/<?php echo $url;?>" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
+<iframe src="https://sis.entric.com.br/relatorio_modulo/<?php echo $url;?>?imprimir=1" id="relatorio" style="margin: 0px; padding: 0px; border: 0px; width: 100%; height: 100%;"></iframe>
 
 <script>
 function printIframe(id) {

@@ -272,7 +272,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
 			<?php if(!isset($_GET['imprimir'])) : ?>
-			<div class="marca-dagua">NÃO CONCLUÍDA</div>
+			<div class="marca-dagua">RASCUNHO</div>
 			<?php endif; ?>
 			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			

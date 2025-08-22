@@ -98,6 +98,31 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				background-position: 2cm 1cm, right bottom;
 				visibility: visible;
 			} */
+			.marca-dagua{
+				content: "NÃO CONCLUÍDA"; /* Texto da marca d'água */
+				/* Posição e aparência */
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				
+				/* Rotação e posicionamento */
+				transform: translate(-50%, -50%) rotate(-45deg); 
+				
+				/* Estilo do texto */
+				font-size: 5em; /* Tamanho do texto */
+				font-weight: bold;
+				color: rgba(0, 0, 0, 0.1); /* Cor semi-transparente (RGBA é ótimo para isso) */
+				
+				/* Para garantir que a marca d'água fica no fundo */
+				z-index: 1; 
+				
+				/* Impede que a marca d'água receba eventos de clique do mouse */
+				pointer-events: none;
+				
+				/* Outros estilos */
+				white-space: nowrap; /* Impede quebras de linha */
+				text-transform: uppercase;
+			}
 			.titulo {
 				font-weight: bold;
 				color: #45cfb3;
@@ -193,6 +218,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php else: ?>
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+			<?php endif; ?>
+			<?php if(!isset($_GET['imprimir'])) : ?>
+			<div class="marca-dagua">RASCUNHO</div>
 			<?php endif; ?>
 			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo">RELATÓRIO NUTRICIONAL DE ALTA</p>
 			
@@ -1033,6 +1061,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
+			<?php if(!isset($_GET['imprimir'])) : ?>
+			<div class="marca-dagua">RASCUNHO</div>
+			<?php endif; ?>
 		<?php
 		}
 		?>
@@ -1460,6 +1491,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 						<?php endif; ?>
+						<?php if(!isset($_GET['imprimir'])) : ?>
+						<div class="marca-dagua">RASCUNHO</div>
+						<?php endif; ?>
 						<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 
 						<p>
@@ -1639,6 +1673,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<?php else: ?>
 						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+						<?php endif; ?>
+						<?php if(!isset($_GET['imprimir'])) : ?>
+						<div class="marca-dagua">RASCUNHO</div>
 						<?php endif; ?>
 						<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 					
@@ -1825,6 +1862,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<?php else: ?>
 						<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 						<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
+						<?php endif; ?>
+						<?php if(!isset($_GET['imprimir'])) : ?>
+						<div class="marca-dagua">RASCUNHO</div>
 						<?php endif; ?>
 						<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?>  INFORMAÇÕES NUTRICIONAIS COMPLEMENTARES</p>
 
