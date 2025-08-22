@@ -96,7 +96,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				text-justify: inter-word;
 				font-size: 13px !important;
 			}
-			.background{
+			.marca-dagua{
 				content: "NÃO CONCLUÍDA"; /* Texto da marca d'água */
 				/* Posição e aparência */
 				position: absolute;
@@ -271,7 +271,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
-			
+			<div class="marca-dagua"></div>
 			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
