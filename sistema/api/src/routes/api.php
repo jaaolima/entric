@@ -10976,8 +10976,17 @@ $app->group("", function () use ($app) {
 						if($dados['id_paciente'] == ''){
 							$dados['id_paciente'] = null;
 						}
-		
-						$bind = array(	':id_prescritor' => $id_prescritor,
+
+						$paciente = $db->select_single_to_array("pacientes_simplificada",
+																"*",
+																"
+																WHERE id_paciente=".$dados['id_paciente'], 
+																null);
+
+						if($paciente){
+							$data["status"] = "Erro: Paciente já cadastrado.";
+						}else{
+							$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
 										':peso' => $dados["peso"],
@@ -10988,13 +10997,12 @@ $app->group("", function () use ($app) {
 										':id_paciente' => $dados["id_paciente"],    
 										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
-						$retorno = $db->insert("pacientes_simplificada", $bind);
-						$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
+							$retorno = $db->insert("pacientes_simplificada", $bind);
+							$retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
 
-		
-						//retornar para null
-						$_SESSION['paciente_redirect']['id_paciente'] = null;
-		
+							//retornar para null
+							
+						}
 					}
 				}else{
 					$bind = array(	':id_prescritor' => $id_prescritor,
