@@ -3770,7 +3770,7 @@ $app->group("", function () use ($app) {
 				if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
 				if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
 				if (!isset($dados['calculo_apres_espesso'])) $dados['calculo_apres_espesso'] = null;
-				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")){
+				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "") or ($dados['calculo_apres_espesso'] <> "")){
 					$query.= ' AND (';
 						$_or = '';
 						if ($dados['calculo_apres_liquidocreme'] <> ""){
