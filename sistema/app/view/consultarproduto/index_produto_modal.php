@@ -163,8 +163,8 @@
                                             <label for="m_calculo_enteral_apres_po" class="form-check-label radio-green">Pó</label>
                                         </div>
                                         <div class="form-check col-sm-12">
-                                            <input id="m_calculo_enteral_apres_espesso" disabled name="m_apres_oral[]" class="form-check-input radio-outlined" type="radio" value="Espesso">
-                                            <label for="m_calculo_enteral_apres_espesso" class="form-check-label radio-green">Espesso</label>
+                                            <input id="m_calculo_enteral_apres_cremoso" disabled name="m_apres_oral[]" class="form-check-input radio-outlined" type="radio" value="Cremoso">
+                                            <label for="m_calculo_enteral_apres_cremoso" class="form-check-label radio-green">Cremoso</label>
                                         </div>
                                     </div>
                                 </div>

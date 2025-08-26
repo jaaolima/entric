@@ -7,16 +7,16 @@
             </div>
             <div class="row p-4">
                 <div class="form-check col-sm-12">
-                    <input id="calculo_apres_liquidocreme"  name="calculo_apres_liquidocreme" value="Líquido / Creme" class="form-check-input styled-checkbox" type="checkbox">
-                    <label for="calculo_apres_liquidocreme" class="form-check-label check-green">Líquido</label>
-                </div>
-                <div class="form-check col-sm-12">
                     <input id="calculo_apres_po" name="calculo_apres_po" value="Pó" class="form-check-input styled-checkbox" type="checkbox">
                     <label for="calculo_apres_po" class="form-check-label check-green">Pó</label> 
                 </div>
                 <div class="form-check col-sm-12">
-                    <input id="calculo_apres_espesso" name="calculo_apres_espesso" value="Espesso" class="form-check-input styled-checkbox" type="checkbox">
-                    <label for="calculo_apres_espesso" class="form-check-label check-green">Espesso</label> 
+                    <input id="calculo_apres_liquidocreme"  name="calculo_apres_liquidocreme" value="Líquido / Creme" class="form-check-input styled-checkbox" type="checkbox">
+                    <label for="calculo_apres_liquidocreme" class="form-check-label check-green">Líquido (pronto para consumo)</label>
+                </div>
+                <div class="form-check col-sm-12">
+                    <input id="calculo_apres_cremomo" name="calculo_apres_cremomo" value="Cremosso" class="form-check-input styled-checkbox" type="checkbox">
+                    <label for="calculo_apres_cremomo" class="form-check-label check-green">Cremosso</label> 
                 </div>
             </div> 
         </div>

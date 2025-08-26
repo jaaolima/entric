@@ -362,8 +362,8 @@ function fc_editar_relatorio(id_relatorio){
                 if(relatorio.calculo_apres_po){
                     $("input[name='calculo_apres_po']").attr("checked","checked");
                 }
-                if(relatorio.calculo_apres_espesso){
-                    $("input[name='calculo_apres_espesso']").attr("checked","checked");
+                if(relatorio.calculo_apres_cremoso){
+                    $("input[name='calculo_apres_cremoso']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_hipocalorico){
                     $("input[name='carac_oral[]'][value='Hipocalórico']").attr("checked","checked");
@@ -2131,7 +2131,7 @@ $(function(){
         if ($("input[name='carac_oral[]'].filtro_1:checked").length > 0 && 
             $("input[name='carac_oral[]'].filtro_2:checked").length > 0 && 
             $("input[name='carac_oral[]'].filtro_3:checked").length > 0 &&
-            ($("input[name='calculo_apres_liquidocreme']:checked").length > 0 || $("input[name='calculo_apres_po']:checked").length > 0 || $("input[name='calculo_apres_espesso']:checked").length > 0)) {
+            ($("input[name='calculo_apres_liquidocreme']:checked").length > 0 || $("input[name='calculo_apres_po']:checked").length > 0 || $("input[name='calculo_apres_cremoso']:checked").length > 0)) {
                 $('#modal_fracionamento').modal('toggle');
         }
         else{

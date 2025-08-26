@@ -3707,8 +3707,8 @@ $app->group("", function () use ($app) {
 		
 						if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
 						if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
-						if (!isset($dados['calculo_apres_espesso'])) $dados['calculo_apres_espesso'] = null;
-						if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")  or ($dados['calculo_apres_espesso'] <> "")){
+						if (!isset($dados['calculo_apres_cremoso'])) $dados['calculo_apres_cremoso'] = null;
+						if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "")  or ($dados['calculo_apres_cremoso'] <> "")){
 							$query2.= ' AND (';
 								$_or = '';
 								if ($dados['calculo_apres_liquidocreme'] <> ""){
@@ -3719,8 +3719,8 @@ $app->group("", function () use ($app) {
 									$query2.= $_or.' (apres_oral LIKE "%Pó%")';
 									$_or = ' OR ';
 								}
-								if ($dados['calculo_apres_espesso'] <> ""){
-									$query2.= $_or.' (apres_oral LIKE "%Espesso%")';
+								if ($dados['calculo_apres_cremoso'] <> ""){
+									$query2.= $_or.' (apres_oral LIKE "%Cremoso%")';
 									$_or = ' OR ';
 								}
 							$query2.= ' )';
@@ -3769,8 +3769,8 @@ $app->group("", function () use ($app) {
 
 				if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null;
 				if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null;
-				if (!isset($dados['calculo_apres_espesso'])) $dados['calculo_apres_espesso'] = null;
-				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "") or ($dados['calculo_apres_espesso'] <> "")){
+				if (!isset($dados['calculo_apres_cremoso'])) $dados['calculo_apres_cremoso'] = null;
+				if (($dados['calculo_apres_liquidocreme'] <> "") or ($dados['calculo_apres_po'] <> "") or ($dados['calculo_apres_cremoso'] <> "")){
 					$query.= ' AND (';
 						$_or = '';
 						if ($dados['calculo_apres_liquidocreme'] <> ""){
@@ -3781,8 +3781,8 @@ $app->group("", function () use ($app) {
 							$query.= $_or.' (apres_oral LIKE "%Pó%")';
 							$_or = ' OR ';
 						}
-						if ($dados['calculo_apres_espesso'] <> ""){
-							$query.= $_or.' (apres_oral LIKE "%Espesso%")';
+						if ($dados['calculo_apres_cremoso'] <> ""){
+							$query.= $_or.' (apres_oral LIKE "%Cremoso%")';
 							$_or = ' OR ';
 						}
 					$query.= ' )';
@@ -3959,8 +3959,8 @@ $app->group("", function () use ($app) {
 		                                }else if ($apres_oral == '["Líquido / Creme"]'){
 											$apres_oral = 'Líquido / Creme';
 											$apres_oral_num = '2';
-		                                }else if ($apres_oral == '["Espesso"]'){
-											$apres_oral = 'Espesso';
+		                                }else if ($apres_oral == '["Cremoso"]'){
+											$apres_oral = 'Cremoso';
 											$apres_oral_num = '3';
 		                                }
 
@@ -4075,12 +4075,12 @@ $app->group("", function () use ($app) {
 												$caloria_dia = ($volume_dia *  floatval(str_replace(',', '.', $valor_energetico[0]['valor']))) / 100;
 												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn_100ml[0]['valor']))) / 100;
 												$sistema = 'Pó';
-											}else if($produtos[$i]['apres_oral'] == '["Espesso"]'){
+											}else if($produtos[$i]['apres_oral'] == '["Cremoso"]'){
 												$volume_und = $volume[$m] . ' ' . $unidmedida;
 												$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
 												$caloria_dia = ($volume_dia * $kcal) / 100;
 												$proteina_dia = ($volume_dia * $ptn) / 100;
-												$sistema = 'Espesso';
+												$sistema = 'Cremoso';
 											}
 											$retorno .= '<tr>
 															<td>
@@ -8592,7 +8592,7 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['calculo_fil_todos'])) $dados['calculo_fil_todos'] = null; else $dados['calculo_fil_todos'] = true;
 		        if (!isset($dados['calculo_apres_liquidocreme'])) $dados['calculo_apres_liquidocreme'] = null; else $dados['calculo_apres_liquidocreme'] = true;
 		        if (!isset($dados['calculo_apres_po'])) $dados['calculo_apres_po'] = null; else $dados['calculo_apres_po'] = true;
-		        if (!isset($dados['calculo_apres_espesso'])) $dados['calculo_apres_espesso'] = null; else $dados['calculo_apres_espesso'] = true;
+		        if (!isset($dados['calculo_apres_cremoso'])) $dados['calculo_apres_cremoso'] = null; else $dados['calculo_apres_cremoso'] = true;
 
 				if(isset($dados['carac_oral'])){
 					$array_carac = $dados['carac_oral'];
@@ -8712,7 +8712,7 @@ $app->group("", function () use ($app) {
 		                        ':calculo_apres_aberto_po' => $dados["calculo_apres_aberto_po"],
 		                        ':calculo_apres_liquidocreme' => $dados["calculo_apres_liquidocreme"],
 		                        ':calculo_apres_po' => $dados["calculo_apres_po"],
-		                        ':calculo_apres_espesso' => $dados["calculo_apres_espesso"],
+		                        ':calculo_apres_cremoso' => $dados["calculo_apres_cremoso"],
 		                        ':calculo_fil_semsacarose' => $dados["calculo_fil_semsacarose"],
 		                        ':calculo_fil_semlactose' => $dados["calculo_fil_semlactose"],
 		                        ':calculo_fil_hipocalorico' => $dados["calculo_fil_hipocalorico"],
