@@ -2387,6 +2387,7 @@ $app->group("", function () use ($app) {
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
 		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].(($produtos[$i]['produto_especializado'] == 'S') ? '<img src="../../../public/assets/images/bandeira.png" alt="">' : "").' </td>';
+								$titulo .= '<td>'.$produtos[$i]['fabricante'].'</td>';
 
 		                        $cont_array = 0;
 		                        $rowspan = 0;
@@ -2617,8 +2618,8 @@ $app->group("", function () use ($app) {
 		                                                    <tr>
 		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_enteral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_enteral_num.')"> </th>
 		                                                        <th class="entric_group_destaque5">DIETA</th>
-		                                                        <th class="entric_group_destaque5">DILUIÇÃO (KCAL/ML)</th>
 		                                                        <th class="entric_group_destaque5">FABRICANTE</th>
+		                                                        <th class="entric_group_destaque5">DILUIÇÃO (KCAL/ML)</th>
 		                                                        <th class="entric_group_destaque5">VOLUME FINAL</th>
 		                                                        <th class="entric_group_destaque5">VOLUME POR HORÁRIO</th>
 		                                                        <th class="entric_group_destaque5">CALORIA</th>
@@ -2640,7 +2641,6 @@ $app->group("", function () use ($app) {
 		                                                        <label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" class="form-check-label check-green">'.$value.'</label>
 		                                                    </div>
 		                                                </td>
-														<td>'.$produtos[$i]['fabricante'].'</td>
 		                                                <td>'.$volume_final.'</td>
 		                                                <td>'.$volume_horario.'</td>
 		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
@@ -3187,7 +3187,8 @@ $app->group("", function () use ($app) {
 
 		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
 		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome']."  ".$_nome.(($produtos[$i]['produto_especializado'] == 'S') ? '<img src="../../../public/assets/images/bandeira.png" alt="">' : "").'</td>';
-
+								$titulo .= '<td>'.$produtos[$i]['fabricante'].'</td>';
+								
 		                        $cont_array = 0;
 		                        $rowspan = 0;
 		                        foreach ($medida_dc as $key => &$value) {
@@ -3436,7 +3437,6 @@ $app->group("", function () use ($app) {
 		                                if (trim($produtos[$i]['fibras'])<>"") $_fibras = str_replace(",",".", $produtos[$i]['fibras']); else $_fibras = 1;
 		    
 		                                $retorno .= '<tr>'. $titulo.'
-														<td>'.$produtos[$i]['fabricante'].'</td>
 		                                                <td>
 		                                                    <div class="form-check col-sm-12">
 		                                                        <input id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" disabled class="form-check-input styled-checkbox check_apagado diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$value.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.'___'.$sistema.'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : $calorias_dia).'___'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : $proteina_dia).'___'.(isset($medida[$key])?$medida[$key]:0).'___'.(isset($final[$key])?$final[$key]:0).'___'.(isset($grama[$key])?$grama[$key]:0).'___'.$_kcal.'___'.$_ptn.'___'.$_fibras.'">
