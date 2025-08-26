@@ -15,8 +15,8 @@
                     <label for="calculo_apres_liquidocreme" class="form-check-label check-green">Líquido (pronto para consumo)</label>
                 </div>
                 <div class="form-check col-sm-12">
-                    <input id="calculo_apres_cremomo" name="calculo_apres_cremomo" value="Cremosso" class="form-check-input styled-checkbox" type="checkbox">
-                    <label for="calculo_apres_cremomo" class="form-check-label check-green">Cremosso</label> 
+                    <input id="calculo_apres_cremoso" name="calculo_apres_cremoso" value="Cremoso" class="form-check-input styled-checkbox" type="checkbox">
+                    <label for="calculo_apres_cremoso" class="form-check-label check-green">Cremoso</label> 
                 </div>
             </div> 
         </div>

@@ -529,7 +529,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				}
 
-				if (($relatorio['calculo_apres_espesso'] == 1)) {
+				if (($relatorio['calculo_apres_cremoso'] == 1)) {
 					// if (!$landscape){
 					// 	echo "</div>";
 					// }
@@ -540,7 +540,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$dados_ordem = array();
 						foreach ($dieta_produto_dc as &$value) {
 							$produto = explode("___", $value);
-							if ($produto[5] == "Espesso"){
+							if ($produto[5] == "Cremoso"){
 								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
 								if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
@@ -578,7 +578,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 						<p style="margin:10px 0px;">
-							<strong style="justify-content: center;display: flex;">Espesso - PRONTO PARA CONSUMO</strong>
+							<strong style="justify-content: center;display: flex;">Cremoso - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
