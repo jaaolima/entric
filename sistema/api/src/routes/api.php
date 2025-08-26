@@ -3418,6 +3418,7 @@ $app->group("", function () use ($app) {
 		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_enteral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_enteral_num.')"> </th>
 		                                                        <th class="entric_group_destaque5">DIETA</th>
 		                                                        <th class="entric_group_destaque5">DILUIÇÃO (KCAL/ML)</th>
+		                                                        <th class="entric_group_destaque5">FABRICANTE</th>
 		                                                        <th class="entric_group_destaque5">VOLUME FINAL</th>
 		                                                        <th class="entric_group_destaque5">VOLUME POR HORÁRIO</th>
 		                                                        <th class="entric_group_destaque5">CALORIA</th>
@@ -3439,6 +3440,7 @@ $app->group("", function () use ($app) {
 		                                                        <label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" class="form-check-label check-green">'.$value.'</label>
 		                                                    </div>
 		                                                </td>
+														<td>'.$produtos[$i]['fabricante'].'</td>
 		                                                <td>'.$volume_final.'</td>
 		                                                <td>'.$volume_horario.'</td>
 		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
