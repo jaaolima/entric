@@ -526,7 +526,7 @@ class AjaxModel extends Model {
 
     function stPacienteSimplificada($dados) {
         global $bruker;
-        if($dados['sistema'] == 'EN'){
+        if(isset($dados['sistema']) && $dados['sistema'] == 'EN'){
             $paciente = httpPostAuth("paciente_getDadoSimplificada", array( "token" => $_SESSION['token'],
                                                                             "login" => $_SESSION['login'],
                                                                             "id_paciente" => $dados['id_paciente'],
@@ -550,7 +550,7 @@ class AjaxModel extends Model {
 
     function stPacienteSuplemento($dados) { 
         global $bruker;
-        if($dados['sistema'] == 'EN'){
+        if(isset($dados['sistema']) && $dados['sistema'] == 'EN'){
             $paciente = httpPostAuth("paciente_getDadoSuplemento", array( "token" => $_SESSION['token'],
                                                                             "login" => $_SESSION['login'],
                                                                             "id_paciente" => $dados['id_paciente'],
@@ -575,7 +575,7 @@ class AjaxModel extends Model {
 
     function stPacienteModulo($dados) { 
         global $bruker;
-        if($dados['sistema'] == 'EN'){
+        if(isset($dados['sistema']) && $dados['sistema'] == 'EN'){
             $paciente = httpPostAuth("paciente_getDadoModulo", array( "token" => $_SESSION['token'],
                                                                             "login" => $_SESSION['login'],
                                                                             "id_paciente" => $dados['id_paciente'],
