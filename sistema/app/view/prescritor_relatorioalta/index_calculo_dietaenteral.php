@@ -34,7 +34,7 @@
                                                             <div class="form-group col-sm-4 mb-1">
                                                                 <label for="formula">Fórmula</label>
                                                                 <div class="input-group">
-                                                                    <div class="input-group-prepend div_formula_rm none">
+                                                                    <div class="input-group-prepend div_formula_rm">
                                                                         <button class="btn btn-danger btn_formula_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
                                                                     <select class="form-control select2_ajax_formula select2_formula select_calculo" required="required" name="dieta_formula[1__1__0]"></select>
@@ -109,7 +109,7 @@
                                                             <div class="col-sm-4 mb-1">
                                                                 <label for="produto">Produto:</label>
                                                                 <div class="input-group">
-                                                                    <div class="input-group-prepend div_produto_rm none">
+                                                                    <div class="input-group-prepend div_produto_rm">
                                                                         <button class="btn btn-danger btn_produto_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
                                                                     <select class="form-control select2_ajax_produto select2_produto select_calculo" required="required" name="modulo_produto[1__1__0]"></select>
@@ -182,7 +182,7 @@
                                                             <div class="col-sm-4 mb-1">
                                                                 <label for="suplemento_produto">Produto:</label>
                                                                 <div class="input-group">
-                                                                    <div class="input-group-prepend div_suplemento_rm none">
+                                                                    <div class="input-group-prepend div_suplemento_rm">
                                                                         <button class="btn btn-danger btn_suplemento_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
                                                                     <select class="form-control select2_ajax_produto select2_suplemento_produto select_calculo" required="required" name="suplemento_produto[1__1__0]"></select>
