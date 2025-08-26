@@ -2618,6 +2618,7 @@ $app->group("", function () use ($app) {
 		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_enteral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_enteral_num.')"> </th>
 		                                                        <th class="entric_group_destaque5">DIETA</th>
 		                                                        <th class="entric_group_destaque5">DILUIÇÃO (KCAL/ML)</th>
+		                                                        <th class="entric_group_destaque5">FABRICANTE</th>
 		                                                        <th class="entric_group_destaque5">VOLUME FINAL</th>
 		                                                        <th class="entric_group_destaque5">VOLUME POR HORÁRIO</th>
 		                                                        <th class="entric_group_destaque5">CALORIA</th>
@@ -2639,6 +2640,7 @@ $app->group("", function () use ($app) {
 		                                                        <label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$value.'___'.$volume_final.'___'.$volume_horario.'___'.$medidas_horario.']" class="form-check-label check-green">'.$value.'</label>
 		                                                    </div>
 		                                                </td>
+														<td>'.$produtos[$i]['fabricante'].'</td>
 		                                                <td>'.$volume_final.'</td>
 		                                                <td>'.$volume_horario.'</td>
 		                                                <td>'.(($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0)).'</td>
@@ -3411,7 +3413,7 @@ $app->group("", function () use ($app) {
 		                                    $retorno_thead = $apres_enteral;
 		                                    $retorno .= '<thead>
 		                                                    <tr>
-		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
+		                                                        <th colspan="9" class="entric_group_destaque4 text-center">
 		                                                        '.$apres_enteral.' <text class="ml-2" id="count_'.$apres_enteral_num.'"></text><a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
