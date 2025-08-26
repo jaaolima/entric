@@ -68,6 +68,7 @@ $url = endecrypt("decrypt", $url);
 if ($url=="") Redirect(BASE_PATH);
 $relatorio = $db->select_single_to_array("relatorios_modulo", "*, DATE_FORMAT(data_criacao, '%d/%m/%Y %H:%i') as data_criacao", "WHERE id=:id", array(":id"=>$url));
 if (!$relatorio) Redirect(BASE_PATH);
+if($relatorio['codigo'] != "") $_GET['imprimir'] = true;
 if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
 
 $paciente = $db->select_single_to_array("pacientes_modulo", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
