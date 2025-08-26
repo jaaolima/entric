@@ -3769,6 +3769,7 @@ $app->group("", function () use ($app) {
 																	<input class="form-check-input collapseSistema" id="collapseSistema'.$apres_oral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_oral_num.')">
 																	PRODUTO 
 																</th>
+		                                                        <th class="entric_group_destaque5">FABRICANTE</th>
 		                                                        <th class="entric_group_destaque5">DENSIDADE CALÓRICA</th>
 		                                                        <th class="entric_group_destaque5">VOLUME '.(($apres_oral_num == 2) ? '(und.)' : '(porção)').'</th>
 		                                                        <th class="entric_group_destaque5">VOLUME (dia)</th>
@@ -3876,6 +3877,7 @@ $app->group("", function () use ($app) {
 																	<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida_dc[$m].'___'.$volume_dia.'___'.$volume_und.']" class="form-check-label check-green">'.$produtos[$i]['nome']."  ".$_nome.(($produtos[$i]['produto_especializado'] == 'S') ? '<img src="../../../public/assets/images/bandeira.png" alt="">' : "").'</label>
 																</div>
 		                                                	</td>
+															<td>'.$produtos[$i]['fabricante'].'</td>
 															<td>'.$medida_dc[$m].'</td>
 															<td>'.$volume_und.'</td>
 															<td>'.$volume_dia. ' mL'.'</td>
