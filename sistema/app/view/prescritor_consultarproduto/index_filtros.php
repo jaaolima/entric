@@ -159,11 +159,15 @@
                                 <div class="row p-4">
                                     <div class="form-check col-sm-12">
                                         <input id="filtro_calculo_enteral_apres_liquido" name="apres_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Líquido / Creme">
-                                        <label for="filtro_calculo_enteral_apres_liquido" class="form-check-label check-green">Líquido / Creme</label>
+                                        <label for="filtro_calculo_enteral_apres_liquido" class="form-check-label check-green">Líquido</label>
                                     </div>
                                     <div class="form-check col-sm-12">
                                         <input id="filtro_calculo_enteral_apres_po" name="apres_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Pó">
                                         <label for="filtro_calculo_enteral_apres_po" class="form-check-label check-green">Pó</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="filtro_calculo_enteral_apres_cremoso" name="apres_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Cremoso">
+                                        <label for="filtro_calculo_enteral_apres_cremoso" class="form-check-label check-green">Cremoso</label>
                                     </div>
                                 </div>
                             </div>
