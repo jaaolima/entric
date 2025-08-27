@@ -78,7 +78,7 @@ function fc_retorno_pacientes(){
                     if(item.codigo == null){
                         var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
                     }else{
-                        var editar = '<a target="_blank" href="https://homologacao.entric.com.br/relatorio_suplemento/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                        var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_suplemento/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
                     }
                 }
 
@@ -2814,13 +2814,29 @@ $(function(){
     });
 
     $("#distribuidores_avancar").on("click", function(e) {
-        fc_salvar('distribuidores', false);
-        $('.tabdistribuidores a').removeClass('active');
-        $('#distribuidores').removeClass('active').removeClass('show').attr('aria-expanded','false');
- 
-        $(".tabrelatorio").removeClass('disabledTab');
-        $('.tabrelatorio a').addClass('active');
-        $('#relatorio').addClass('active').addClass('show').attr('aria-expanded','true');
+        if($("#cad_distribuidores").val() == ""){
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'Por favor, selecione um estado.',
+                buttons: {
+                    Ok: {
+                        text: 'Ok',
+                        btnClass: 'btn btn-secondary btn-form'
+                    }
+                }
+            });
+            return false;
+        }else{
+            fc_salvar('distribuidores', false);
+            $('.tabdistribuidores a').removeClass('active');
+            $('#distribuidores').removeClass('active').removeClass('show').attr('aria-expanded','false');
+    
+            $(".tabrelatorio").removeClass('disabledTab');
+            $('.tabrelatorio a').addClass('active');
+            $('#relatorio').addClass('active').addClass('show').attr('aria-expanded','true');
+        }
     });
     $('.state').on("click", function(e) {
         $(".state").removeClass("state_selected");
@@ -2961,7 +2977,7 @@ $(function(){
     });
     $("#rel_imprimir_relatorio").on("click", function(e) {        
         var relatorio_code = $("#relatorio_code").val();
-        window.open("https://homologacao.entric.com.br/relatorio_suplemento/imprimir/?url="+relatorio_code, "_blank");
+        window.open("https://sis.entric.com.br/relatorio_suplemento/imprimir/?url="+relatorio_code, "_blank");
 
     });
     $("#enviar_email").on("click", function(e) {

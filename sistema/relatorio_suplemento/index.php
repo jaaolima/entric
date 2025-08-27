@@ -66,9 +66,10 @@ else{
 
 $url = endecrypt("decrypt", $url);
 if ($url=="") Redirect(BASE_PATH);
-$relatorio = $db->select_single_to_array("relatorios_suplemento", "*", "WHERE id=:id", array(":id"=>$url));
+$relatorio = $db->select_single_to_array("relatorios_suplemento", "*, DATE_FORMAT(data_criacao, '%d/%m/%Y %H:%i') as data_criacao", "WHERE id=:id", array(":id"=>$url));
 if (!$relatorio) Redirect(BASE_PATH);
-if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }}
+if($relatorio['codigo'] != "") $_GET['imprimir'] = true;
+if (($p_header) or ($p_produtos) or ($p_footer)){ if ($relatorio['codigo']==""){ die(); }} 
 
 $paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id_paciente", array(":id_paciente"=>$relatorio['id_paciente']));
 $paciente_ibranutro = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional", "*", "WHERE id_paciente=:id_paciente", array(":id_paciente"=>$paciente['id_paciente']));
@@ -95,6 +96,31 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				text-align: justify;
 				text-justify: inter-word;
 				font-size: 13px !important;
+			}
+			.marca-dagua{
+				content: "NÃO CONCLUÍDA"; /* Texto da marca d'água */
+				/* Posição e aparência */
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				
+				/* Rotação e posicionamento */
+				transform: translate(-50%, -50%) rotate(-45deg); 
+				
+				/* Estilo do texto */
+				font-size: 5em; /* Tamanho do texto */
+				font-weight: bold;
+				color: rgba(0, 0, 0, 0.1); /* Cor semi-transparente (RGBA é ótimo para isso) */
+				
+				/* Para garantir que a marca d'água fica no fundo */
+				z-index: 1; 
+				
+				/* Impede que a marca d'água receba eventos de clique do mouse */
+				pointer-events: none;
+				
+				/* Outros estilos */
+				white-space: nowrap; /* Impede quebras de linha */
+				text-transform: uppercase;
 			}
 			/* .logo_efeito{
 				background-image: url("imagem/logo.png"), url("imagem/efeito.png");
@@ -246,7 +272,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo.png" alt="">
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
-			
+			<?php if(!isset($_GET['imprimir'])) : ?>
+			<div class="marca-dagua">RASCUNHO</div>
+			<?php endif; ?>
 			<p class="text-center <?php if($usuario['login'] != 'ibranutro') : ?>linha<?php endif; ?> titulo" style="margin-top:30px;font-size:14px;">PRESCRIÇÃO NUTRICIONAL</p>
 			
 
@@ -267,14 +295,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php } ?>
 
-			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
+			<p class="text-left subtitutlo">
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> O QUE É A TERAPIA NUTRICIONAL POR VIA ORAL?</p>
 			<div style="display:flex;margin-top:15px;">
 				<div style="width:68%;">
 					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
 				</div>
 				<div style="text-align:center;width:32%;">
 					<h4 class="titulo"style="margin:0px;">SAIBA MAIS!</h4>
-					<img src="imagem/qrcode_via_oral.jpeg" style="display:inline-block;" width="80" alt="">
+					<img src="imagem/QRCode_viaOral.png" style="display:inline-block;" width="80" alt="">
 				</div> 
 			</div>
 			
@@ -287,7 +316,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 			<p class="text-left subtitutlo">
 			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA</p>
-			<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?>.</p>
+			<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?> dias.</p>
 			<?php 
 				if ($relatorio['fra_dieta_horario'] <> ""){
 					$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
@@ -310,10 +339,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				} 
 			?>	
+			<?php if($relatorio['fra_instrucao_uso'] != "") : ?>
+			<p style="margin:0px;">Instruções de Uso: <?php echo $relatorio['fra_instrucao_uso']; ?></p>
+			<?php endif; ?>
 		<?php } ?>	
 
 
-				
+		<?php if ($relatorio['rel_prescricao']<>""){ ?>		
 		<?php 
 		if ((!$p_header) and (!$p_footer)){
 		?>
@@ -462,6 +494,15 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
+								$medida_dc = json_decode($produto_cad['medida_dc'], true);
+								$unidade = json_decode($produto_cad['unidade'], true);
+								for ($i=0; $i < count($medida_dc); $i++) { 
+									if($medida_dc[$i] == $produto[2]){
+										$unidade_prod = $unidade[$i];
+									}
+								}
+
+
 								$medida = chkstring2float($produto[8]); // 0.5 arrendodar
 
 								$grama = chkstring2float($produto[10]);
@@ -477,6 +518,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $grama;
 								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $medida;
 								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $unidade_prod;
 							} 
 						}
 						if($dados_ordem != []){
@@ -513,7 +555,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 													<?php echo $valor[0];?>
 												</td>
 												<td class="col_azul"><?php echo $valor[3];?></td>
-												<td class="col_azul"><?php echo $valor[4];?></td>
+												<td class="col_azul"><?php echo $valor[4] . " " . $valor[6];?></td>
 												<td><?php echo $valor[5];?></td>
 											</tr>
 											<?php
@@ -528,6 +570,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 					}
 				}
+
 
 				if (($relatorio['calculo_apres_cremoso'] == 1)) {
 					// if (!$landscape){
@@ -578,7 +621,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 						<p style="margin:10px 0px;">
-							<strong style="justify-content: center;display: flex;">Cremoso - PRONTO PARA CONSUMO</strong>
+							<strong style="justify-content: center;display: flex;">CREMOSO - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
@@ -620,10 +663,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				}
 				?>
 
-
-
-
-
 				<?php
 				// if ($relatorio['rel_distribuidores']<>""){
 				// 	if ((!$p_produtos) and (!$p_header)){
@@ -636,6 +675,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php
 		}
 		?>
+		<?php } ?>
 
 		<?php 
 			if ($relatorio['rel_distribuidores']<>""){
@@ -652,6 +692,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
 		?>	
+			<?php 
+				if ($relatorio['rel_distribuidores']<>""){
+			?>
 			<?php if($usuario['login'] == "ibranutro" && $relatorio['distribuidores'] == 'df') : ?>
 			<div style="display:flex;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
@@ -836,6 +879,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 			</div>
 			<?php endif; ?>
+			<?php
+				}
+			?>
 			<?php 
 				$nome_hospital = '';
 				$telefone = '';
@@ -879,6 +925,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<p>Prescritor</p>
 							<p style="margin:0px;">(Assinatura e Carimbo)</p>
 						</div>
+						<div style="margin-top:10px;margin-bottom:5px;">
+							<p><?php echo $relatorio['data_criacao']; ?></p>
+						</div>
 						<?php if($nome_hospital != '') : ?>
 						<!-- <div>
 							<strong>IBRANUTRO</strong>
@@ -890,12 +939,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php if($usuario['login'] == "ibranutro") : ?>
 			<div class="print-footer">
+				<?php if($relatorio['rel_logo'] <> "") : ?>
 				<div style="display:flex;justify-content: end;">
 					<p style="color: #0092c5;font-size:9px;">powered by</p>
 				</div>
 				<div style="display:flex;justify-content: end;padding-bottom:10px;">
 					<img src="imagem/logo.png" height="30px" alt="">
 				</div>
+				<?php endif; ?>
 				<div style="display:flex;background-color:darkgray;padding:12px;justify-content:space-between;color:white;">
 					<div>
 						<p>www.ibranutro.com.br</p>
