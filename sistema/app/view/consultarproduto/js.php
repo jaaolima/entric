@@ -1846,7 +1846,7 @@ function readURL(input) {
             $("#anexar_foto").css("background-image", "url(" + reader.result + ")");
             $("#anexar_foto").css("background-size", "contain");
         }
-        reader.readAsDataURL(input); 
+        reader.readAsDataURL(input);
     }
 }
 

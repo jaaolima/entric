@@ -100,7 +100,6 @@
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
     }
-
 ?>
 <div class="tab-pane fade show active" id="cadastro" role="tabpanel">
     <div class="pt-3">
@@ -165,7 +164,7 @@
                                         "col" => 4,
                                         "label" => "Atendimento:",
                                         "value" => $nu_atendimento
-                                    ), 
+                                    ),
                                 )
                             );
                     echo $item_dados;

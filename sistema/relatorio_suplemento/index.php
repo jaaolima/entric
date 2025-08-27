@@ -301,7 +301,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div style="width:68%;">
 					<p>A Terapia Nutricional Enteral por Via Oral, também conhecida como <span style="color:#0092c5;">suplemento nutricional</span>, completa as calorias, proteínas e nutrientes que não estão sendo supridos com a dieta convencional, e tem como objetivo a <span style="color:#0092c5;">recuperação ou manutenção da saúde e do estado nutricional</span>.</p>
 				</div>
-				<div style="text-align:center;width:32%;"> 
+				<div style="text-align:center;width:32%;">
 					<h4 class="titulo"style="margin:0px;">SAIBA MAIS!</h4>
 					<img src="imagem/QRCode_viaOral.png" style="display:inline-block;" width="80" alt="">
 				</div> 
@@ -330,7 +330,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							if($i == count($horarios) - 1){
 								$_horarios .= $horarios[$i];
 							}else{
-								$_horarios .= $horarios[$i] . ', '; 
+								$_horarios .= $horarios[$i] . ', ';
 							}
 						}
 					}
@@ -351,9 +351,113 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 				<p class="text-left subtitutlo" style="margin:0px;">
 				<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções.</p>
+				<?php 
+				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+				$landscape = false;
+				$_produtos_nomes = array();
+				// if ($relatorio['dieta_produto_dc'] <> ""){
+				// 	$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
 
+				// 	// para fazer o merge no nome do produto e fabricante;
+				// 	$_produtos_nomes_usados = array();
+				// 	foreach ($dieta_produto_dc as &$value) {
+				// 		$produto = explode("___", $value);
+				// 		$produto[1] = trim($produto[1]);
+				// 		if ($produto[5] == "fechado"){
+				// 			if (isset($_produtos_nomes[ $produto[1] ])) $_produtos_nomes[ $produto[1] ] = $_produtos_nomes[ $produto[1] ] + 1;
+				// 			else $_produtos_nomes[ $produto[1] ] = 1;
+				// 		}
+				// 	}
+				// }
+				if (($relatorio['calculo_apres_liquidocreme'] == 1)) {
+					// if (!$landscape){
+					// 	echo "</div>";
+					// }
+					if ($relatorio['dieta_produto_dc'] <> ""){
 
-				<?php
+						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
+
+						$dados_ordem = array();
+						foreach ($dieta_produto_dc as &$value) {
+							$produto = explode("___", $value);
+							if ($produto[5] == "Líquido/Creme"){
+								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
+
+								if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
+									$cont_dados = count( $dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]] );
+								else
+									$cont_dados = 0;
+
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[1];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto_cad['fabricante'];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[3];
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[4];
+								
+								$volume_final = chkfloat($produto[3]);
+								$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
+								if (($qtd_horas>0) and ($volume_final>0)) $velocidade = ($volume_final / ($qtd_horas/60));
+								else $velocidade = 0;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($velocidade)." ml/hora";
+
+								$volume_final = chkfloat($produto[3]);
+								$qtd_horas = hoursToMinutes($relatorio['fra_h_inf_dieta']);
+								if (($qtd_horas>0) and ($volume_final>0)) $gotejamento = (($volume_final*20) / ($qtd_horas));
+								else $gotejamento = 0;
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = round_up($gotejamento);
+
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[7]." kcal";
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $produto[8]." g";
+
+								$volume_final = chkfloat($produto[3]);											
+								if ($produto_cad){ $fibra = moeda2float($produto_cad['fibras']); } else{ $fibra = 0;	 }
+								$fibra_dia = ($volume_final * $fibra)/100;
+
+								$dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]][ $cont_dados ][] = $fibra_dia." g";
+							}
+						}
+						if($dados_ordem != []){
+						?>
+						<p style="margin:10px 0px;">
+							<strong style="justify-content: center;display: flex;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
+							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
+							<?php
+							if ($relatorio['dieta_produto_dc'] <> ""){
+								?>
+								<tr>
+									<th width="24%" height="30px">
+										Produto
+									</th>
+									<th width="12%" class="col_azul">
+										Volume (unidade)
+									</th>
+								</tr>
+								<?php
+								// ksort($dados_ordem);
+								foreach ($dados_ordem as $chave => $valores) {
+									for ($i = 0; $i < count($valores); $i++) {
+										$valor = $valores[$i];
+
+										?>
+										<tr height="10px">
+											<td width="12%" >
+												<?php echo $valor[0];?>
+											</td>
+											<td width="12%" class="col_azul">
+												<?php echo $valor[3];?>
+											</td>
+										</tr>
+										<?php
+									}
+								}
+							}
+							?>
+							</table>
+						</p>
+					<?php
+						$landscape = true;
+						}
+					}
+				}
 				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SISTEMA PO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$_produtos_nomes = array();
 				// if ($relatorio['dieta_produto_dc'] <> ""){
@@ -466,41 +570,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 					}
 				}
-				?>
 
 
-
-
-
-				<?php
-				// if ($relatorio['rel_distribuidores']<>""){
-				// 	if ((!$p_produtos) and (!$p_header)){
-				// 		if ($landscape){
-				// 			echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
-				// 		}
-				// 	}
-				// }
-				?>
-
-				<?php 
-				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-				$landscape = false;
-				$_produtos_nomes = array(); 
-				// if ($relatorio['dieta_produto_dc'] <> ""){
-				// 	$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-
-				// 	// para fazer o merge no nome do produto e fabricante;
-				// 	$_produtos_nomes_usados = array();
-				// 	foreach ($dieta_produto_dc as &$value) {
-				// 		$produto = explode("___", $value);
-				// 		$produto[1] = trim($produto[1]);
-				// 		if ($produto[5] == "fechado"){
-				// 			if (isset($_produtos_nomes[ $produto[1] ])) $_produtos_nomes[ $produto[1] ] = $_produtos_nomes[ $produto[1] ] + 1;
-				// 			else $_produtos_nomes[ $produto[1] ] = 1;
-				// 		}
-				// 	}
-				// }
-				if (($relatorio['calculo_apres_liquidocreme'] == 1)) {
+				if (($relatorio['calculo_apres_cremoso'] == 1)) {
 					// if (!$landscape){
 					// 	echo "</div>";
 					// }
@@ -511,7 +583,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$dados_ordem = array();
 						foreach ($dieta_produto_dc as &$value) {
 							$produto = explode("___", $value);
-							if ($produto[5] == "Líquido/Creme"){
+							if ($produto[5] == "Cremoso"){
 								$produto_cad = $db->select_single_to_array("produtos", "*", "WHERE id=:id", array(":id"=>$produto[0]));
 
 								if (isset($dados_ordem[$produto_cad['fabricante']."___".$produto[1]."___".$produto[0]]))
@@ -549,7 +621,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 						<p style="margin:10px 0px;">
-							<strong style="justify-content: center;display: flex;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
+							<strong style="justify-content: center;display: flex;">CREMOSO - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
@@ -590,12 +662,24 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					}
 				}
 				?>
+
+				<?php
+				// if ($relatorio['rel_distribuidores']<>""){
+				// 	if ((!$p_produtos) and (!$p_header)){
+				// 		if ($landscape){
+				// 			echo '<div class="page '.($relatorio['rel_logo']<>""?"logo_efeito":"").'">';	
+				// 		}
+				// 	}
+				// }
+				?>
 		<?php
 		}
 		?>
 		<?php } ?>
 
-		
+		<?php 
+			if ($relatorio['rel_distribuidores']<>""){
+		?>
 		<!-- <?php 
 		if ($p_footer) {
 		?>	
@@ -874,7 +958,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			</div>
 			<?php endif; ?>
 
-		
+		<?php
+		}
+		?>
 		<?php
 		}
 		?>

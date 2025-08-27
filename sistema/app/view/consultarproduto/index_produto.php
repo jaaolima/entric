@@ -125,7 +125,7 @@
                                     <div class="form-check col-sm-4">
                                     </div>
                                     
-                                </div> 
+                                </div>
                                 <div class="row p-2">
                                     <div class="col-sm-6">
                                         <div class="form-check form-toggle">
@@ -147,11 +147,15 @@
                                 <div class="row p-4">
                                     <div class="form-check col-sm-12">
                                         <input id="calculo_enteral_apres_liquido" required name="apres_oral[]" class="form-check-input radio-outlined" type="radio" value="Líquido / Creme">
-                                        <label for="calculo_enteral_apres_liquido" class="form-check-label radio-green">Líquido / Creme</label>
+                                        <label for="calculo_enteral_apres_liquido" class="form-check-label radio-green">Líquido</label>
                                     </div>
                                     <div class="form-check col-sm-12">
                                         <input id="calculo_enteral_apres_po" name="apres_oral[]" class="form-check-input radio-outlined" type="radio" value="Pó">
                                         <label for="calculo_enteral_apres_po" class="form-check-label radio-green">Pó</label>
+                                    </div>
+                                    <div class="form-check col-sm-12">
+                                        <input id="calculo_enteral_apres_cremoso" name="apres_oral[]" class="form-check-input radio-outlined" type="radio" value="Cremoso">
+                                        <label for="calculo_enteral_apres_cremoso" class="form-check-label radio-green">Cremoso</label>
                                     </div>
                                 </div>
                             </div>
