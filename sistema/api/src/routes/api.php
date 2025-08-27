@@ -3780,6 +3780,10 @@ $app->group("", function () use ($app) {
 											$apres_oral = 'Líquido / Creme';
 											$apres_oral_num = '2';
 		                                }
+										else if ($apres_oral == '["Cremoso"]'){
+											$apres_oral = 'Cremoso';
+											$apres_oral_num = '3';
+		                                }
 
 		                                if ($retorno_thead <> $apres_oral){
 		                                    $retorno_thead = $apres_oral;
@@ -3893,6 +3897,12 @@ $app->group("", function () use ($app) {
 												$caloria_dia = ($volume_dia *  floatval(str_replace(',', '.', $valor_energetico[0]['valor']))) / 100;
 												$proteina_dia = ($volume_dia * floatval(str_replace(',', '.', $valor_ptn_100ml[0]['valor']))) / 100;
 												$sistema = 'Pó';
+											}else if($produtos[$i]['apres_oral'] == '["Cremoso"]'){
+												$volume_und = $volume[$m] . ' ' . $unidmedida;
+												$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
+												$caloria_dia = ($volume_dia * $kcal) / 100;
+												$proteina_dia = ($volume_dia * $ptn) / 100;
+												$sistema = 'Cremoso';
 											}
 											$retorno .= '<tr>
 															<td>
