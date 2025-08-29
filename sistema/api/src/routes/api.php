@@ -1802,10 +1802,19 @@ $app->group("", function () use ($app) {
 			if ($usuario){
 				$dados = $request->getParam("dados");
 
-		        $verifica = $db->select_single_to_array("produtos",
+				if($dados['tipo_produto'] == "Enteral"){
+					$apres_enteral = (isset($dados["apres_enteral"])?json_encode($dados["apres_enteral"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
+					$verifica = $db->select_single_to_array("produtos",
+		                                            "*",
+		                                            "WHERE nome='".$dados['nome']."' and apres_enteral = ".$apres_enteral."  and via='".$dados['via']."'", 
+		                                            null);
+				}else{
+					$verifica = $db->select_single_to_array("produtos",
 		                                            "*",
 		                                            "WHERE nome='".$dados['nome']."' and via='".$dados['via']."'", 
 		                                            null);
+				}
+		        
 
 		        $data = $verifica;
 			}
