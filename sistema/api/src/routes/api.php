@@ -2493,22 +2493,57 @@ $app->group("", function () use ($app) {
 		                            // calculo reverco de produtos ABERTO LÍQUIDO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		                            }
 		                            else if ($produtos[$i]['apres_enteral'] == '["Aberto (Líquido)"]'){
-		                                $_valor_calorico = ($_volume_final / 100) * $_kcal;
-		                                $_valor_proteico = ($_volume_horario / 100) * $_ptn;
-		                                $sistema = "aberto_liquido";
-		                                $_volume_final = chkfloat($volume_final);
+										/*
+										- variacao calorica nao precisa condicao
+										- PROTEINA
+											2400 / 1,2 (Densidade Calórica) = 2000
+											2000 / 100 = 20
+											20 * 4,4 (PTN) = 88
+											*/
 
-										$nf_kcal_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['kcal'])) / 100;
-		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
+										// Inicializa _medida_dc
+										$_medida_dc = 1.0; // Usar float para evitar problemas de tipo
+										if (isset($medida_dc[0])) {
+											$_medida_dc = (float) $medida_dc[0];
+											if ($_medida_dc == 0) { // Evita divisão por zero
+												$_medida_dc = 1.0;
+												// Opcional: Logar um aviso ou lançar uma exceção se medida_dc for zero e isso for um erro
+											}
+										}
 
-										$nf_ptn_dia = ($_volume_final * str_replace(",", ".", $produtos[$i]['ptn'])) / 100;
-		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
+										// Inicializa $ptn_multiplicador
+										$ptn_multiplicador = 1.0; // Usar float
+										if (isset($produtos[$i]['ptn']) && trim($produtos[$i]['ptn']) !== "") {
+											$ptn_multiplicador = (float) str_replace(",", ".", trim($produtos[$i]['ptn']));
+										}
 
-		                                $_fibra = chkstring2float($produtos[$i]['fibras']);                      
-		                                $valor_fibra = ($_volume_final * $_fibra);                                
-		                                if ($valor_fibra>0) $valor_fibra = $valor_fibra /100; else $valor_fibra = 0;
-		                            // calculo reverco de produtos ABERTO PÓ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		                            }
+										// --- Cálculo para o Range Mínimo e Máximo de Calorias ---
+
+										$kcal_min_range = (float) $margem_calorica[0];
+										$kcal_max_range = (float) $margem_calorica[1];
+
+										// 2. Calcular Proteína Base por Medida DC para o MÍNIMO e MÁXIMO
+										// Fórmula: $_ptn_base = (Kcal / Medida_DC) / 100;
+										$_ptn_base_min = ($kcal_min_range / $_medida_dc) / 100;
+										$_ptn_base_max = ($kcal_max_range / $_medida_dc) / 100;
+
+										// 3. Calcular Proteína Total (aplicando o multiplicador $ptn) para o MÍNIMO e MÁXIMO
+										$_ptn_total_min = $_ptn_base_min * $ptn_multiplicador;
+										$_ptn_total_max = $_ptn_base_max * $ptn_multiplicador;
+
+										// --- Variáveis resultantes do Cálculo do Range ---
+										$calorias_dia_min = $kcal_min_range;
+										$calorias_dia_max = $kcal_max_range;
+
+										$proteina_dia_min = $_ptn_total_min;
+										$proteina_dia_max = $_ptn_total_max;
+
+										// A condição para sobreposição é:
+										// (Início do Range_A <= Fim do Range_B) AND (Início do Range_B <= Fim do Range_A)
+										if (($_ptn_total_min <= $margem_proteica[1]) && ($margem_proteica[0] <= $_ptn_total_max)) {
+											$margem_liberadas = true;
+										}
+									}
 		                            else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
 
 		                                
@@ -3048,30 +3083,48 @@ $app->group("", function () use ($app) {
 		                                        20 * 4,4 (PTN) = 88
 		                                        */
 
-											$_medida_dc = 1;
-											if (isset($medida_dc[0])){
-												$_medida_dc = $medida_dc[0];
+											// Inicializa _medida_dc
+											$_medida_dc = 1.0; // Usar float para evitar problemas de tipo
+											if (isset($medida_dc[0])) {
+												$_medida_dc = (float) $medida_dc[0];
+												if ($_medida_dc == 0) { // Evita divisão por zero
+													$_medida_dc = 1.0;
+													// Opcional: Logar um aviso ou lançar uma exceção se medida_dc for zero e isso for um erro
+												}
 											}
-		                                    $_kcal = $dados['kcal_valor'];
-		                                    $_ptn = ($_kcal / $_medida_dc);
-		                                    $_ptn = ($_ptn / 100);
-		                                    $ptn = 1;
-		                                    if (trim($produtos[$i]['ptn']) <> ""){
-		                                        $ptn = trim($produtos[$i]['ptn']);
-		                                        $ptn = str_replace(",",".", $ptn);
-		                                    }                                
-		                                    $_ptn_total = $_ptn * $ptn;
 
-		                                    $calorias_dia = $_kcal;
-		                                    $proteina_dia = $_ptn_total;
+											// Inicializa $ptn_multiplicador
+											$ptn_multiplicador = 1.0; // Usar float
+											if (isset($produtos[$i]['ptn']) && trim($produtos[$i]['ptn']) !== "") {
+												$ptn_multiplicador = (float) str_replace(",", ".", trim($produtos[$i]['ptn']));
+											}
 
-		                                    $valor_calorio = $_kcal;
-		                                    $valor_proteico = $_ptn_total;
+											// --- Cálculo para o Range Mínimo e Máximo de Calorias ---
 
-		                                    if (($margem_proteica[0] <= $_ptn_total) and ($margem_proteica[1] >= $_ptn_total)){
-		                                        $margem_liberadas = true;
-		                                        $_nome = "";
-		                                    }
+											$kcal_min_range = (float) $margem_calorica[0];
+											$kcal_max_range = (float) $margem_calorica[1];
+
+											// 2. Calcular Proteína Base por Medida DC para o MÍNIMO e MÁXIMO
+											// Fórmula: $_ptn_base = (Kcal / Medida_DC) / 100;
+											$_ptn_base_min = ($kcal_min_range / $_medida_dc) / 100;
+											$_ptn_base_max = ($kcal_max_range / $_medida_dc) / 100;
+
+											// 3. Calcular Proteína Total (aplicando o multiplicador $ptn) para o MÍNIMO e MÁXIMO
+											$_ptn_total_min = $_ptn_base_min * $ptn_multiplicador;
+											$_ptn_total_max = $_ptn_base_max * $ptn_multiplicador;
+
+											// --- Variáveis resultantes do Cálculo do Range ---
+											$calorias_dia_min = $kcal_min_range;
+											$calorias_dia_max = $kcal_max_range;
+
+											$proteina_dia_min = $_ptn_total_min;
+											$proteina_dia_max = $_ptn_total_max;
+
+											// A condição para sobreposição é:
+											// (Início do Range_A <= Fim do Range_B) AND (Início do Range_B <= Fim do Range_A)
+											if (($_ptn_total_min <= $margem_proteica[1]) && ($margem_proteica[0] <= $_ptn_total_max)) {
+												$margem_liberadas = true;
+											}
 		                                }
 		                                else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
 											$_medida_dc = 1;
