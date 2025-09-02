@@ -148,6 +148,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     $('#modalfrmproduto').find('input:checkbox[name="m_especialidade[]"]').filter('[value='+this+']').prop('checked', true);
                 });
                 $('#modalfrmproduto').find('input:radio[name=m_via]').filter('[value='+data.via+']').prop('checked', true);
+                $('#modalfrmproduto').find('input:radio[name=m_prioridade]').prop('checked', false);
                 $('#modalfrmproduto').find('input:radio[name=m_prioridade]').filter('[value="'+data.prioridade+'"]').prop('checked', true);
                 $('#modalfrmproduto').find('input[name=m__idproduto]').val(_id);
 
@@ -402,6 +403,7 @@ function gtProdutoFiltro(_id){
                     $('#frmproduto').find('input:checkbox[name="especialidade[]"]').filter('[value='+this+']').prop('checked', true);
                 });
                 $('#frmproduto').find('input:radio[name=via]').filter('[value='+data.via+']').prop('checked', true);
+                $('#frmproduto').find('input:radio[name=prioridade]').prop('checked', false);
                 $('#frmproduto').find('input:radio[name=prioridade]').filter('[value="'+data.prioridade+'"]').prop('checked', true);
                 $('#frmproduto').find('input[name=_idproduto]').val(_id);
                 $('#frmproduto').find('input:radio[name="unidmedida"]').prop('checked', false);
