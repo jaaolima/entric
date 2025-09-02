@@ -148,6 +148,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     $('#modalfrmproduto').find('input:checkbox[name="m_especialidade[]"]').filter('[value='+this+']').prop('checked', true);
                 });
                 $('#modalfrmproduto').find('input:radio[name=m_via]').filter('[value='+data.via+']').prop('checked', true);
+                $('#modalfrmproduto').find('input:radio[name=m_prioridade]').filter('[value='+data.prioridade+']').prop('checked', true);
                 $('#modalfrmproduto').find('input[name=m__idproduto]').val(_id);
 
                 if ($('#modalfrmproduto').find("input[name='m_via']:checked").val() == 'Enteral') {
@@ -401,6 +402,7 @@ function gtProdutoFiltro(_id){
                     $('#frmproduto').find('input:checkbox[name="especialidade[]"]').filter('[value='+this+']').prop('checked', true);
                 });
                 $('#frmproduto').find('input:radio[name=via]').filter('[value='+data.via+']').prop('checked', true);
+                $('#frmproduto').find('input:radio[name=prioridade]').filter('[value='+data.prioridade+']').prop('checked', true);
                 $('#frmproduto').find('input[name=_idproduto]').val(_id);
                 $('#frmproduto').find('input:radio[name="unidmedida"]').prop('checked', false);
                 $("#frmproduto .dosagem_quantidade").html("Quantidade por 100g");
@@ -1839,7 +1841,7 @@ $(function(){
     });
 });
 
-function readURL(input) {
+function readURL(input) { 
     if(input){
         var reader = new FileReader();
         reader.onload = function(){

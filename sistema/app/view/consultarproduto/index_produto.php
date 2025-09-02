@@ -35,6 +35,34 @@
                             <div class="form-group col-sm-12">
                                 <div class="entric_group p-3">
                                     <div class="form-check">
+                                        <label class="grid_label">Nível de Prioridade</label>
+                                    </div>
+                                    <div class="row p-4">
+                                        <div class="col-sm-4">
+                                            <div class="form-radio">
+                                                <input id="prioridade_alta" checked class="radio-outlined" name="prioridade" type="radio" value="Alta Rentabilidade PDV">
+                                                <label for="prioridade_alta" class="radio-green">Alta Rentabilidade PDV</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-radio">
+                                                <input id="prioridade_baixa" class="radio-outlined" name="prioridade" type="radio" value="Baixa Rentabilidade PDV">
+                                                <label for="prioridade_baixa" class="radio-green">Baixa Rentabilidade PDV"></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-radio">
+                                                <input id="prioridade_nao_disponivel" class="radio-outlined" checked name="prioridade" type="radio" value="Não Disponível PDV">
+                                                <label for="prioridade_nao_disponivel" class="radio-green">Não Disponível PDV</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-12">
+                                <div class="entric_group p-3">
+                                    <div class="form-check">
                                         <label class="grid_label">Tipo de produto</label>
                                     </div>
                                     <div class="row p-4">

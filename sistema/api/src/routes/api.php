@@ -2125,6 +2125,12 @@ $app->group("", function () use ($app) {
 																		ELSE 4
 																	END, apres_oral ASC,
 															CASE 
+																WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
+																WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
+																WHEN prioridade = 'Não Disponível PDV' THEN 3
+																ELSE 4
+															END,
+															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
 																WHEN fabricante = ' Danone e Nutrimed' THEN 3
@@ -2892,6 +2898,12 @@ $app->group("", function () use ($app) {
 																		WHEN (apres_enteral LIKE '%Fechado%') THEN 3
 																		ELSE 4
 																	END, apres_oral ASC,
+															CASE 
+																WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
+																WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
+																WHEN prioridade = 'Não Disponível PDV' THEN 3
+																ELSE 4
+															END,
 															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
@@ -3710,6 +3722,12 @@ $app->group("", function () use ($app) {
 		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, apres_oral, produto_especializado",
 		                                            $query." ORDER BY apres_oral desc, apres_enteral,
 															CASE 
+																WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
+																WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
+																WHEN prioridade = 'Não Disponível PDV' THEN 3
+																ELSE 4
+															END,
+															CASE 
 																WHEN fabricante = 'PRODIET' THEN 1
 																WHEN fabricante = 'DANONE' THEN 2
 																WHEN fabricante = ' Danone e Nutrimed' THEN 3
@@ -4076,6 +4094,12 @@ $app->group("", function () use ($app) {
 												"produtos p",
 												"p.id, p.nome, p.fabricante, p.apres_enteral, p.kcal, p.cho, p.ptn, p.lip, p.fibras, p.medida_dc, p.unidade, p.medida_g, p.medida, p.unidmedida, p.volume, p.apresentacao, p.final, p.apres_oral, p.cat_modulo",
 												$query . " ORDER BY 
+													CASE 
+														WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
+														WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
+														WHEN prioridade = 'Não Disponível PDV' THEN 3
+														ELSE 4
+													END,
 													CASE 
 														WHEN p.fabricante = 'PRODIET' THEN 1
 														WHEN p.fabricante = 'DANONE' THEN 2
