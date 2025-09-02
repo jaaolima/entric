@@ -54,7 +54,7 @@
                                         <div class="row p-4">
                                             <div class="col-sm-4">
                                                 <div class="form-radio">
-                                                    <input id="m_prioridade_alta" checked class="radio-outlined" disabled name="m_prioridade" type="radio" value="Alta Rentabilidade PDV">
+                                                    <input id="m_prioridade_alta" class="radio-outlined" disabled name="m_prioridade" type="radio" value="Alta Rentabilidade PDV">
                                                     <label for="m_prioridade_alta" class="radio-green">Alta Rentabilidade PDV</label>
                                                 </div>
                                             </div>
@@ -82,7 +82,7 @@
                                         <div class="row p-4">
                                             <div class="col-sm-4">
                                                 <div class="form-radio">
-                                                    <input id="m_calculo_via_enteral" checked class="radio-outlined" disabled name="m_via" type="radio" value="Enteral">
+                                                    <input id="m_calculo_via_enteral" class="radio-outlined" disabled name="m_via" type="radio" value="Enteral">
                                                     <label for="m_calculo_via_enteral" class="radio-green">Enteral</label>
                                                 </div>
                                             </div>
