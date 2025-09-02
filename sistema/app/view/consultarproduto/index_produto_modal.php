@@ -61,7 +61,7 @@
                                             <div class="col-sm-4">
                                                 <div class="form-radio">
                                                     <input id="m_prioridade_baixa" class="radio-outlined" disabled name="m_prioridade" type="radio" value="Baixa Rentabilidade PDV">
-                                                    <label for="m_prioridade_baixa" class="radio-green">Baixa Rentabilidade PDV"></label>
+                                                    <label for="m_prioridade_baixa" class="radio-green">Baixa Rentabilidade PDV</label>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
