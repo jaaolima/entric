@@ -157,7 +157,7 @@ class ProdutoModel extends Model {
             $bind[':foto'] = "/fotos_produtos/".$upfoto;
         }
 
-        $produto = httpPostAuth("produto_stProduto", array( "token" => $_SESSION['token'],
+        $produto = httpPostAuth("produto_stProduto", array( "token" => $_SESSION['token'], 
         "login" => $_SESSION['login'],
                                                             "dados" => $bind));
 
@@ -207,6 +207,7 @@ class ProdutoModel extends Model {
         $bind = array(  ':especialidade' => (isset($dados["especialidade"])?json_encode($dados["especialidade"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null),
                         ':id_usuario' => $bruker->usuario['id_usuario'],
                         ':via' => $dados["via"],
+                        ':prioridade' => $dados["prioridade"],
                         ':nome' => $dados["nome"],
                         ':unidmedida' => ($dados["via"]=="Enteral"?null:$dados["unidmedida"]),
                         ':apresentacao' => (isset($dados["apresentacao"])?json_encode($dados["apresentacao"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null),

@@ -40,7 +40,7 @@
                                     <div class="row p-4">
                                         <div class="col-sm-4">
                                             <div class="form-radio">
-                                                <input id="prioridade_alta" checked class="radio-outlined" name="prioridade" type="radio" value="Alta Rentabilidade PDV">
+                                                <input id="prioridade_alta" class="radio-outlined" name="prioridade" type="radio" value="Alta Rentabilidade PDV">
                                                 <label for="prioridade_alta" class="radio-green">Alta Rentabilidade PDV</label>
                                             </div>
                                         </div>
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-radio">
-                                                <input id="prioridade_nao_disponivel" class="radio-outlined" checked name="prioridade" type="radio" value="Não Disponível PDV">
+                                                <input id="prioridade_nao_disponivel" class="radio-outlined" name="prioridade" type="radio" value="Não Disponível PDV">
                                                 <label for="prioridade_nao_disponivel" class="radio-green">Não Disponível PDV</label>
                                             </div>
                                         </div>
