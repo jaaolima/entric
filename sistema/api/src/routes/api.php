@@ -3848,10 +3848,6 @@ $app->group("", function () use ($app) {
 											} else{
 												$kcal_valor_minimo = $margem_calorica[0] / $_volume / $_medida_dc;
 
-												if($produtos[$i]['id'] == 421 || $produtos[$i]['id'] == 422 || $produtos[$i]['id'] == 423 || $produtos[$i]['id'] == 424 ){ // frebini original
-													echo $_volume." - ".$_medida_dc." - ".$margem_calorica[0]."<br>";
-												}
-
 												$kcal_valor_minimo1 = $kcal_valor_minimo;
 												$kcal_valor_minimo = ceil($kcal_valor_minimo);
 
