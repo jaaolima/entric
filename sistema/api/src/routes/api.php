@@ -3820,7 +3820,7 @@ $app->group("", function () use ($app) {
 
 											$_medida_dc = 1;
 											if (isset($medida_dc[0])){
-												$_medida_dc = intval($medida_dc[0]);
+												$_medida_dc = floatval($medida_dc[0]);
 											}
 		                                    /*
 		                                    - valor caloria =====================================================================================================
