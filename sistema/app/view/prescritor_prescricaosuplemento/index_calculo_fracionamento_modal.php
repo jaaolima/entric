@@ -24,7 +24,7 @@
                                     Por quanto tempo?
                                 </div>
                                 <div class="col-sm-3">
-                                    <input placeholder="X dias" type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control">
+                                    <input placeholder="X dias" type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control numeros">
                                 </div>
                             </div>
                             <div class="row mt-4">

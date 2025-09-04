@@ -316,7 +316,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 			<p class="text-left subtitutlo">
 			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA</p>
-			<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo']; ?> dias.</p>
+			<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?> <?php if($relatorio['fra_fracionamento_dia'] == '1') echo "vez"; else echo "vezes"; ?> ao dia<?php if($relatorio['fra_qto_tempo'] != "") echo " por ". $relatorio['fra_qto_tempo'] . ' dias.'; ?></p>
 			<?php 
 				if ($relatorio['fra_dieta_horario'] <> ""){
 					$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
