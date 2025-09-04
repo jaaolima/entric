@@ -3746,6 +3746,7 @@ $app->group("", function () use ($app) {
 					$qtd_aberto_po = 0;
 
 		            for ($i = 0; $i < count($produtos); $i++){
+						echo $produtos[$i]['nome'];
 		                $kcal = $produtos[$i]['kcal'];
 		                $ptn = $produtos[$i]['ptn'];
 		                if ($kcal<>"") $kcal = str_replace(",", ".", $kcal); else $kcal = 0;
@@ -4298,6 +4299,7 @@ $app->group("", function () use ($app) {
 
 		                            // se tiver no ranger, listar
 		                            if ($margem_liberadas){
+										echo "passou: " . $produtos[$i]['nome'];
 		                                if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
 		                                    $volume_horario = " - ";
 		                                }
