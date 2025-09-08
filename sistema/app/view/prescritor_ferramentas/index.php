@@ -1437,7 +1437,7 @@
                                                                                     ),
                                                                                     "f13_glasgow" => array(
                                                                                         "col" => 6,
-                                                                                        "label" => "<strong>12) Glasgow</strong> NÃO ENTENDI",
+                                                                                        "label" => "<strong>12) Glasgow</strong>",
                                                                                         "radiobuttons" => array(
                                                                                             "i. 15" => "i. 15",
                                                                                             "ii. 13 - 14" => "ii. 13 - 14",
