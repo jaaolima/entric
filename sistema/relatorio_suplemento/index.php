@@ -352,7 +352,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<p class="text-left subtitutlo" style="margin:0px;">
 				<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções.</p>
 				<?php 
-				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO / CREME =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+				// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- LÍQUIDO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 				$landscape = false;
 				$_produtos_nomes = array();
 				// if ($relatorio['dieta_produto_dc'] <> ""){
@@ -418,7 +418,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						if($dados_ordem != []){
 						?>
 						<p style="margin:10px 0px;">
-							<strong style="justify-content: center;display: flex;">LÍQUIDO / CREME - PRONTO PARA CONSUMO</strong>
+							<strong style="justify-content: center;display: flex;">LÍQUIDO - PRONTO PARA CONSUMO</strong>
 							<table width="100%" margin="0" padding="1" border="1" style="margin-top: 8px;" class="tabela_produtos">
 							<?php
 							if ($relatorio['dieta_produto_dc'] <> ""){
