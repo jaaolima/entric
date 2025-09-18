@@ -60,7 +60,13 @@
                                     <li class="nav-item tabsec tabcalculo">
                                         <a class="nav-link" data-toggle="tab" href="#calculo">Prescrição<br>Nutricional
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
-                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
+                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span> 
+                                        </a>                                                       
+                                    </li> 
+                                    <li class="nav-item tabsec tabmodulos">
+                                        <a class="nav-link" data-toggle="tab" href="#modulos">Prescrição<br>Módulos
+                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
+                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span> 
                                         </a>                                                       
                                     </li> 
                                     <li class="nav-item tabsec tabdistribuidores">

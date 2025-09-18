@@ -315,7 +315,9 @@ function fc_iniciar_relatorio(id_paciente){
     $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
     $(".tabsec").removeClass('disabledTab').addClass('active');
-
+    $(".tabrelatorio").addClass("disabledTab");
+    $(".tabrelatorio a").removeClass("active");
+    
     $("#rel_gerar_relatorio").removeClass("none");
     $("#rel_imprimir_relatorio").addClass("none");
 }
@@ -344,7 +346,10 @@ function fc_editar_relatorio(id_relatorio){
                 $(".tabcalculo a").addClass("active");
                 $("#calculo").addClass("active").addClass("show").attr("aria-expanded","true");
                 
-                $(".tabsec").removeClass("disabledTab").addClass("active");
+                $(".tabsec").removeClass("disabledTab").addClass("active")
+                $(".tabrelatorio").addClass("disabledTab");
+                $(".tabrelatorio a").removeClass("active");
+
                 $("#rel_gerar_relatorio").removeClass("none");
                 $("#rel_imprimir_relatorio").addClass("none");
 
@@ -1452,6 +1457,7 @@ function fc_salvar(tab, notify){
                     $(".tabavaliacao").addClass('disabledTab');
                     $(".tabnecessidades").addClass('disabledTab');
                     $(".tabcalculo").addClass('disabledTab');
+                    $(".tabmodulos").addClass('disabledTab');
                     $(".tabobservacoes").addClass('disabledTab');
                     $(".tabdistribuidores").addClass('disabledTab');
                 }
@@ -1684,7 +1690,6 @@ $(function(){
             $("#mae").prop('required', true);
         }
     });
-    $(".tabsec").removeClass('active').addClass('disabledTab');  //tirar 2023-05-11 ---------------------------------------------------------------
     $("#cadastrar_paciente").on("click", function(e) {
         $(this).removeClass( "btn-secondary" ).addClass( "btn-warning" );
         $("#buscar_paciente").removeClass( "btn-warning" ).addClass( "btn-secondary" );
@@ -1739,7 +1744,8 @@ $(function(){
         $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
         $(".tabsec").removeClass('disabledTab').addClass('active');
-
+        $(".tabrelatorio").addClass("disabledTab");
+        $(".tabrelatorio a").removeClass("active");
         $("#rel_gerar_relatorio").removeClass("none");
         $("#rel_imprimir_relatorio").addClass("none");
     })
@@ -1960,6 +1966,8 @@ $(function(){
         $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
         $(".tabsec").removeClass('disabledTab').addClass('active');
+        $(".tabrelatorio").addClass("disabledTab");
+        $(".tabrelatorio a").removeClass("active");
     })
 
     $(".btn_dobras_add").on("click", function(e) {
@@ -2086,7 +2094,7 @@ $(function(){
         $('#necessidades').removeClass('active').removeClass('show').attr('aria-expanded','false');
  
         $('.tabavaliacao a').addClass('active');
-        $('#avaliacao').addClass('active').addClass('show').attr('aria-expanded','true');
+        $('#avaliacao').addClass('active').addClass('show').attr('aria-expanded','true'); 
     });
     $("#necessidades_avancar").on("click", function(e) {
         fc_salvar('necessidades', false);
@@ -2411,8 +2419,8 @@ $(function(){
                     $('.tabcalculo a').removeClass('active');
                     $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
             
-                    $(".tabdistribuidores").removeClass('disabledTab');
-                    $('.tabdistribuidores a').addClass('active');
+                    $(".tabmodulos").removeClass('disabledTab');
+                    $('.tabmodulos a').addClass('active');
                     $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
                 }
             });
