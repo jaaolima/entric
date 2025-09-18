@@ -319,6 +319,8 @@ function fc_iniciar_relatorio(id_paciente){
     $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
     $(".tabsec").removeClass('disabledTab').addClass('active');
+    $(".tabrelatorio").addClass("disabledTab");
+    $(".tabrelatorio a").removeClass("active");
 
     $("#rel_gerar_relatorio").removeClass("none");
     $("#rel_imprimir_relatorio").addClass("none");
@@ -349,6 +351,8 @@ function fc_editar_relatorio(id_relatorio){
                 $("#calculo").addClass("active").addClass("show").attr("aria-expanded","true");
                 
                 $(".tabsec").removeClass("disabledTab").addClass("active");
+                $(".tabrelatorio").addClass("disabledTab");
+                $(".tabrelatorio a").removeClass("active");
                 $("#rel_gerar_relatorio").removeClass("none");
                 $("#rel_imprimir_relatorio").addClass("none");
 
@@ -1693,7 +1697,7 @@ $(function(){
             $("#mae").prop('required', true);
         }
     });
-    $(".tabsec").removeClass('active').addClass('disabledTab');  //tirar 2023-05-11 ---------------------------------------------------------------
+
     $("#cadastrar_paciente").on("click", function(e) {
         $(this).removeClass( "btn-secondary" ).addClass( "btn-warning" );
         $("#buscar_paciente").removeClass( "btn-warning" ).addClass( "btn-secondary" );
@@ -1750,6 +1754,8 @@ $(function(){
         $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
         $(".tabsec").removeClass('disabledTab').addClass('active');
+        $(".tabrelatorio").addClass("disabledTab");
+        $(".tabrelatorio a").removeClass("active");
 
         $("#rel_gerar_relatorio").removeClass("none");
         $("#rel_imprimir_relatorio").addClass("none");
@@ -1971,6 +1977,8 @@ $(function(){
         $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
 
         $(".tabsec").removeClass('disabledTab').addClass('active');
+        $(".tabrelatorio").addClass("disabledTab");
+        $(".tabrelatorio a").removeClass("active");
     })
 
     $(".btn_dobras_add").on("click", function(e) {
