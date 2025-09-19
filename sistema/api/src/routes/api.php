@@ -2769,8 +2769,6 @@ $app->group("", function () use ($app) {
 										if($dados['tipo_produto'] == "Suplemento"){
 											$apres_oral = $produtos[$i]['apres_oral'];
 											$apres_num = '0';
-											$caloria_dia = '';
-											$proteina_dia = '';
 											if ($apres_oral == '["Pó"]'){
 												$apres = 'Pó'; 
 												$apres_num = '1';
@@ -2788,8 +2786,6 @@ $app->group("", function () use ($app) {
 											if ($apres_enteral == '["Fechado"]'){ $apres = 'Fechado'; $apres_num = '1';
 											}else if ($apres_enteral == '["Aberto (Líquido)"]'){ $apres = 'Aberto (Líquido)';  $apres_num = '2';
 											}else if ($apres_enteral == '["Aberto (Pó)"]'){ $apres = 'Aberto (Pó)'; $apres_num = '3'; }
-											$caloria_dia = (($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0));
-											$proteina_dia = (($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1));
 										}
 
 		                                if ($retorno_thead <> $apres){
@@ -2895,6 +2891,9 @@ $app->group("", function () use ($app) {
 													$proteina_dia = ($volume_dia * $ptn) / 100;
 													$sistema = 'Cremoso';
 												}
+											}else{
+												$caloria_dia = (($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? str_replace('.', '', $nf_kcal_dia) : numberFormatPrecision($valor_calorio, 0));
+												$proteina_dia = (($sistema == 'aberto_po' || $sistema == 'aberto_liquido') ? $nf_ptn_dia : numberFormatPrecision($valor_proteico, 1));
 											}
 
 											$retorno .= '<tr>'. $titulo.'
