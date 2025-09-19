@@ -1661,7 +1661,7 @@ $(function(){
 
         $(".tabsec").removeClass('disabledTab').addClass('active');
         $(".tabrelatorio").addClass("disabledTab");
-        $(".tabrelatorio a").removeClass("active");
+        $(".tabrelatorio a").removeClass("active"); 
         
         $("#rel_gerar_relatorio").removeClass("none");
         $("#rel_imprimir_relatorio").addClass("none");

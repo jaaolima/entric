@@ -17,7 +17,7 @@
                 <label>
                     <span style="color: #42bdbd;">PTN:</span> &nbsp;&nbsp; <div id="presc_ptn" style="display: inherit;">(g/kg)</div>
                     <input type="hidden" name="ptn_valor" id="ptn_valor" value="0" />
-                </label>
+                </label> 
             </div>
         </div>
         <div class="form-group col-sm-2 col-lg-4 col-xl">

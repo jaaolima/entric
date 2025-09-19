@@ -18,7 +18,7 @@
                     <input id="calculo_apres_cremoso" name="calculo_apres_cremoso" value="Cremoso" class="form-check-input styled-checkbox" type="checkbox">
                     <label for="calculo_apres_cremoso" class="form-check-label check-green">Cremoso</label> 
                 </div>
-            </div> 
+            </div>  
         </div>
         <div class="form-group col-sm-8 btrbl apres_oral filtros_oral">
             <div class="form-check">
