@@ -2846,7 +2846,6 @@ $app->group("", function () use ($app) {
 											}
 										}
 
-										var_dump($verificar_carac);
 										
 										if($verificar_carac){
 											if($dados['tipo_produto'] == "Suplemento"){
