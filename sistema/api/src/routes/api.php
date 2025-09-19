@@ -2177,7 +2177,7 @@ $app->group("", function () use ($app) {
 																		WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
 																		WHEN (apres_enteral LIKE '%Fechado%') THEN 3
 																		ELSE 4
-																	END, apres_oral ASC,
+																	END, apres_oral desc,
 															CASE 
 																WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
 																WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
