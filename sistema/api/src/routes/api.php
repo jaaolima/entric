@@ -2171,7 +2171,7 @@ $app->group("", function () use ($app) {
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
 		        $produtos = $db->select_to_array("produtos",
-		                                            "id, nome, fabricante, apres_enteral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, produto_especializado",
+		                                            "id, nome, fabricante, apres_enteral, apres_oral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, produto_especializado",
 		                                            $query." ORDER BY CASE
 																		WHEN (apres_enteral LIKE '%Aberto (Pó)%') THEN 1													
 																		WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
