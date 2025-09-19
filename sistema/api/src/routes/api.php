@@ -2456,7 +2456,8 @@ $app->group("", function () use ($app) {
 		                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                // se for liberada: se passou pelo ranger acima
 		                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                if ($margem_liberadas){
+		                var_dump($margem_liberadas);
+						if ($margem_liberadas){
 		                    $medida_dc = 0;
 		                    if ($produtos[$i]['medida_dc'] <> ""){
 		                        $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
@@ -2711,7 +2712,6 @@ $app->group("", function () use ($app) {
 
 
 		                            // se tiver no ranger, listar
-									var_dump($margem_liberadas);
 		                            if ($margem_liberadas){
 		                                if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
 		                                    $volume_horario = " - ";
