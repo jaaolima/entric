@@ -2329,7 +2329,7 @@ $(function(){
     $('#calculo_fil_todos1').change(function () {
         var calculo_fil_todos = null;
         if ($(this).is(':checked')){
-            calculo_fil_todos = $(this).val();
+            calculo_fil_todos = $(this).val(); 
         }
         if (calculo_fil_todos == 'Todos') {
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', true);
