@@ -2728,7 +2728,7 @@ $app->group("", function () use ($app) {
 		                                    $retorno_thead = $apres_enteral;
 		                                    $retorno .= '<thead>
 		                                                    <tr>
-		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
+		                                                        <th colspan="9" class="entric_group_destaque4 text-center">
 		                                                        '.$apres_enteral.' <text class="ml-2" id="count_'.$apres_enteral_num.'"></text><a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
