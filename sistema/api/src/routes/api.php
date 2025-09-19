@@ -2511,203 +2511,214 @@ $app->group("", function () use ($app) {
 		                            // calculo reverco de produtos FECHADO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		                            $sistema = "";
-		                            if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
+									if($dados['tipo_produto'] == 'Suplemento'){
+										if($produtos[$i]['apres_oral'] == '["Pó"]'){
+											$sistema = "Pó";
+										}elseif($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
+											$sistema = "Líquido";
+										}elseif($produtos[$i]['apres_oral'] == '["Cremoso"]'){
+											$sistema = "Cremoso";
+										}
+									}else{
+										if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
 
-		                                if (isset($volume_produto[0])){
-		                                    $_volume_produto = str_replace(",",".", trim($volume_produto[0]));
-		                                    $_volume_produto = chkfloat($_volume_produto);
-		                                    $_volume_final_arredondado = round_up($_volume_final, $_volume_produto);
-		                                }else{
-		                                    $$_volume_final_arredondado = $_volume_final;
-		                                }
+											if (isset($volume_produto[0])){
+												$_volume_produto = str_replace(",",".", trim($volume_produto[0]));
+												$_volume_produto = chkfloat($_volume_produto);
+												$_volume_final_arredondado = round_up($_volume_final, $_volume_produto);
+											}else{
+												$$_volume_final_arredondado = $_volume_final;
+											}
 
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                $_kcal = $dados['kcal_valor'];
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											$_kcal = $dados['kcal_valor'];
 
-		                                if ($_volume > 0) $_kcal = (($_kcal / $_medida_dc) / $_volume); else $_kcal = ($_kcal / $_medida_dc);
-		                                $_kcal = floor($_kcal);
-		                                $_volume_final_arredondado = $_kcal * $_volume_produto;
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											if ($_volume > 0) $_kcal = (($_kcal / $_medida_dc) / $_volume); else $_kcal = ($_kcal / $_medida_dc);
+											$_kcal = floor($_kcal);
+											$_volume_final_arredondado = $_kcal * $_volume_produto;
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-		                                $_valor_calorico = ($_volume_final_arredondado / 100) * $_kcal; // (500 / 100) * 1   = 5 
-		                                $_valor_proteico = ($_volume_final_arredondado / 100) * $_ptn;  // (500 / 100) * 4.5 = 22.5
-		                                $volume_final = numberFormatPrecision($_volume_final_arredondado, 2)." ml";   
+											$_valor_calorico = ($_volume_final_arredondado / 100) * $_kcal; // (500 / 100) * 1   = 5 
+											$_valor_proteico = ($_volume_final_arredondado / 100) * $_ptn;  // (500 / 100) * 4.5 = 22.5
+											$volume_final = numberFormatPrecision($_volume_final_arredondado, 2)." ml";   
 
-		                                // 2023-03-06 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // formula para ajustar volume final
-		                                if (!is_numeric($valor_calorio)) $valor_calorio = 1;
-		                                if (!is_numeric($_medida_dc)) $_medida_dc = 1;
-		                                $volume_final = $valor_calorio / $_medida_dc;
-		                                $volume_final = numberFormatPrecision($volume_final, 2)." ml";
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											// 2023-03-06 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											// formula para ajustar volume final
+											if (!is_numeric($valor_calorio)) $valor_calorio = 1;
+											if (!is_numeric($_medida_dc)) $_medida_dc = 1;
+											$volume_final = $valor_calorio / $_medida_dc;
+											$volume_final = numberFormatPrecision($volume_final, 2)." ml";
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-		                                $sistema = "fechado";
-
-
-		                                $_volume_final = chkfloat($volume_final);
-		                                $_fibra = chkstring2float($produtos[$i]['fibras']);
-		                                if ($_fibra > 0)
-		                                    $valor_fibra = ($_volume_final * $_fibra)/100;
-		                                else
-		                                    $valor_fibra = 0;
+											$sistema = "fechado";
 
 
-		                            // calculo reverco de produtos ABERTO LÍQUIDO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		                            }
-		                            else if ($produtos[$i]['apres_enteral'] == '["Aberto (Líquido)"]'){
-										/*
-										- variacao calorica nao precisa condicao
-										- PROTEINA
-											2400 / 1,2 (Densidade Calórica) = 2000
-											2000 / 100 = 20
-											20 * 4,4 (PTN) = 88
-											*/
+											$_volume_final = chkfloat($volume_final);
+											$_fibra = chkstring2float($produtos[$i]['fibras']);
+											if ($_fibra > 0)
+												$valor_fibra = ($_volume_final * $_fibra)/100;
+											else
+												$valor_fibra = 0;
 
-										// Inicializa _medida_dc
-										$_medida_dc = 1.0; // Usar float para evitar problemas de tipo
-										if (isset($medida_dc[0])) {
-											$_medida_dc = (float) $medida_dc[0];
-											if ($_medida_dc == 0) { // Evita divisão por zero
-												$_medida_dc = 1.0;
-												// Opcional: Logar um aviso ou lançar uma exceção se medida_dc for zero e isso for um erro
+
+										// calculo reverco de produtos ABERTO LÍQUIDO =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+										}
+										else if ($produtos[$i]['apres_enteral'] == '["Aberto (Líquido)"]'){
+											/*
+											- variacao calorica nao precisa condicao
+											- PROTEINA
+												2400 / 1,2 (Densidade Calórica) = 2000
+												2000 / 100 = 20
+												20 * 4,4 (PTN) = 88
+												*/
+
+											// Inicializa _medida_dc
+											$_medida_dc = 1.0; // Usar float para evitar problemas de tipo
+											if (isset($medida_dc[0])) {
+												$_medida_dc = (float) $medida_dc[0];
+												if ($_medida_dc == 0) { // Evita divisão por zero
+													$_medida_dc = 1.0;
+													// Opcional: Logar um aviso ou lançar uma exceção se medida_dc for zero e isso for um erro
+												}
+											}
+
+											// Inicializa $ptn_multiplicador
+											$ptn_multiplicador = 1.0; // Usar float
+											if (isset($produtos[$i]['ptn']) && trim($produtos[$i]['ptn']) !== "") {
+												$ptn_multiplicador = (float) str_replace(",", ".", trim($produtos[$i]['ptn']));
+											}
+
+											// --- Cálculo para o Range Mínimo e Máximo de Calorias ---
+
+											$kcal_min_range = (float) $margem_calorica[0];
+											$kcal_max_range = (float) $margem_calorica[1];
+
+											// 2. Calcular Proteína Base por Medida DC para o MÍNIMO e MÁXIMO
+											// Fórmula: $_ptn_base = (Kcal / Medida_DC) / 100;
+											$_ptn_base_min = ($kcal_min_range / $_medida_dc) / 100;
+											$_ptn_base_max = ($kcal_max_range / $_medida_dc) / 100;
+
+											// 3. Calcular Proteína Total (aplicando o multiplicador $ptn) para o MÍNIMO e MÁXIMO
+											$_ptn_total_min = $_ptn_base_min * $ptn_multiplicador;
+											$_ptn_total_max = $_ptn_base_max * $ptn_multiplicador;
+
+											// --- Variáveis resultantes do Cálculo do Range ---
+											$calorias_dia_min = $kcal_min_range;
+											$calorias_dia_max = $kcal_max_range;
+
+											$proteina_dia_min = $_ptn_total_min;
+											$proteina_dia_max = $_ptn_total_max;
+
+											// A condição para sobreposição é:
+											// (Início do Range_A <= Fim do Range_B) AND (Início do Range_B <= Fim do Range_A)
+											if (($_ptn_total_min <= $margem_proteica[1]) && ($margem_proteica[0] <= $_ptn_total_max)) {
+												$margem_liberadas = true;
 											}
 										}
+										else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
 
-										// Inicializa $ptn_multiplicador
-										$ptn_multiplicador = 1.0; // Usar float
-										if (isset($produtos[$i]['ptn']) && trim($produtos[$i]['ptn']) !== "") {
-											$ptn_multiplicador = (float) str_replace(",", ".", trim($produtos[$i]['ptn']));
+											
+											$_kcal = $dados['kcal_valor'];
+											$volume_final_dieta = $_kcal / $_medida_dc;                        
+											$volume_horario = $volume_final_dieta / $fracionamento_dia;
+											$volume_horario = (round($volume_horario / 10) * 10);
+
+
+											$volume_final_dieta = $volume_horario * $fracionamento_dia;
+											$_valor_calorico = ($volume_horario * $_medida_dc) * $fracionamento_dia;
+
+											$medida_g = json_decode($produtos[$i]['medida_g'], true);
+											if (!isset($medida_g[0])) $medida_g = 1; else $medida_g = $medida_g[0];
+											$medida_g = str_replace(",", ".", $medida_g);
+											
+											$_medida = (isset($medida[$key])?$medida[$key]:0);
+
+											$_volume_final = json_decode($produtos[$i]['final'], true);
+											if (!isset($_volume_final[0])) $_volume_final = 1; else $_volume_final = $_volume_final[0];
+											if (strpos($_volume_final, 'mL') !== false) {
+												$_volume_final = str_replace("mL","", $_volume_final);
+												$_volume_final = str_replace(",",".", $_volume_final);
+												$_volume_final = chkfloat($_volume_final);
+											}
+											else if ($_volume_final == "1L"){
+												$_volume_final = 1000;
+											}
+											else if (strpos($_volume_final, 'g cada') !== false) {
+												$_volume_final = str_replace("g cada","", $_volume_final);
+												$_volume_final = str_replace(",",".", $_volume_final);
+												$_volume_final = chkfloat($_volume_final);
+											}
+											else if (strpos($_volume_final, 'g/cada') !== false) {
+												$_volume_final = str_replace("g/cada","", $_volume_final);
+												$_volume_final = str_replace(",",".", $_volume_final);
+												$_volume_final = chkfloat($_volume_final);
+											}
+											else if (strpos($_volume_final, 'g') !== false) {
+												$_volume_final = str_replace("g","", $_volume_final);
+												$_volume_final = str_replace(",",".", $_volume_final);
+												$_volume_final = chkfloat($_volume_final);
+											}
+											else{
+												$_volume_final = chkfloat($_volume_final);
+											}
+											$medida_grama = ($_medida * $volume_final_dieta) / $_volume_final;
+
+											$_valor_proteico = ($medida_grama * $medida_g) / $_medida;
+											$_valor_proteico = ($_valor_proteico * $produtos[$i]['ptn']) / 100;
+
+											$medidas_horario = ($medida_grama / $fracionamento_dia);
+											$medidas_horario = floor($medidas_horario * 2) / 2;                
+											$volume_horario = (chknumber($volume_final) / $fracionamento_dia)." ml";
+
+
+											$nf_medida = ((chkstring2float($medida[$key]) * chkstring2float($volume_horario)) / chkfloat($final[$key]));
+											$nf_medida = round($nf_medida * 2) / 2;
+
+											$nf_grama = chkstring2float($grama[$key]);
+											$nf_grama = (($nf_grama * $nf_medida) / chkstring2float($medida[$key]));
+
+											$nf_dias_grama = ($nf_grama * $fracionamento_dia);
+
+											$nf_kcal_dia = ($nf_dias_grama * $produtos[$i]['kcal']) / 100;
+											$nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
+
+											$nf_ptn_dia = ($nf_dias_grama * $produtos[$i]['ptn']) / 100;
+											$nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
+
+											$_valor_calorico = $nf_kcal_dia;
+											$_valor_proteico = $nf_ptn_dia;
+
+
+											// fibra/dia = calculo  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											$fibras_dia = $nf_dias_grama * chkstring2float($produtos[$i]['fibras']);
+											if ($fibras_dia<>0) $fibras_dia = $fibras_dia / 100;
+											$valor_fibra = numberFormatPrecision($fibras_dia, 1);
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											// 3ª validacao revalida o range das KCAL e PTN -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											//$margem_liberadas = false;
+											if (
+												(($margem_calorica[0] <= $_valor_calorico) and ($margem_calorica[1] >= $_valor_calorico)) and
+												(($margem_proteica[0] <= $_valor_proteico) and ($margem_proteica[1] >= $_valor_proteico))
+												){
+												$margem_liberadas = true;
+												$rowspan = $rowspan+1;
+											}
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+											// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+											
+											$sistema = "aberto_po";
 										}
-
-										// --- Cálculo para o Range Mínimo e Máximo de Calorias ---
-
-										$kcal_min_range = (float) $margem_calorica[0];
-										$kcal_max_range = (float) $margem_calorica[1];
-
-										// 2. Calcular Proteína Base por Medida DC para o MÍNIMO e MÁXIMO
-										// Fórmula: $_ptn_base = (Kcal / Medida_DC) / 100;
-										$_ptn_base_min = ($kcal_min_range / $_medida_dc) / 100;
-										$_ptn_base_max = ($kcal_max_range / $_medida_dc) / 100;
-
-										// 3. Calcular Proteína Total (aplicando o multiplicador $ptn) para o MÍNIMO e MÁXIMO
-										$_ptn_total_min = $_ptn_base_min * $ptn_multiplicador;
-										$_ptn_total_max = $_ptn_base_max * $ptn_multiplicador;
-
-										// --- Variáveis resultantes do Cálculo do Range ---
-										$calorias_dia_min = $kcal_min_range;
-										$calorias_dia_max = $kcal_max_range;
-
-										$proteina_dia_min = $_ptn_total_min;
-										$proteina_dia_max = $_ptn_total_max;
-
-										// A condição para sobreposição é:
-										// (Início do Range_A <= Fim do Range_B) AND (Início do Range_B <= Fim do Range_A)
-										if (($_ptn_total_min <= $margem_proteica[1]) && ($margem_proteica[0] <= $_ptn_total_max)) {
-											$margem_liberadas = true;
-										}
+										// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+										// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+										// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+										
 									}
-		                            else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
 
-		                                
-		                                $_kcal = $dados['kcal_valor'];
-		                                $volume_final_dieta = $_kcal / $_medida_dc;                        
-		                                $volume_horario = $volume_final_dieta / $fracionamento_dia;
-		                                $volume_horario = (round($volume_horario / 10) * 10);
-
-
-		                                $volume_final_dieta = $volume_horario * $fracionamento_dia;
-		                                $_valor_calorico = ($volume_horario * $_medida_dc) * $fracionamento_dia;
-
-		                                $medida_g = json_decode($produtos[$i]['medida_g'], true);
-		                                if (!isset($medida_g[0])) $medida_g = 1; else $medida_g = $medida_g[0];
-		                                $medida_g = str_replace(",", ".", $medida_g);
-		                                
-		                                $_medida = (isset($medida[$key])?$medida[$key]:0);
-
-		                                $_volume_final = json_decode($produtos[$i]['final'], true);
-		                                if (!isset($_volume_final[0])) $_volume_final = 1; else $_volume_final = $_volume_final[0];
-		                                if (strpos($_volume_final, 'mL') !== false) {
-		                                    $_volume_final = str_replace("mL","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else if ($_volume_final == "1L"){
-		                                    $_volume_final = 1000;
-		                                }
-		                                else if (strpos($_volume_final, 'g cada') !== false) {
-		                                    $_volume_final = str_replace("g cada","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else if (strpos($_volume_final, 'g/cada') !== false) {
-		                                    $_volume_final = str_replace("g/cada","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else if (strpos($_volume_final, 'g') !== false) {
-		                                    $_volume_final = str_replace("g","", $_volume_final);
-		                                    $_volume_final = str_replace(",",".", $_volume_final);
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                else{
-		                                    $_volume_final = chkfloat($_volume_final);
-		                                }
-		                                $medida_grama = ($_medida * $volume_final_dieta) / $_volume_final;
-
-		                                $_valor_proteico = ($medida_grama * $medida_g) / $_medida;
-		                                $_valor_proteico = ($_valor_proteico * $produtos[$i]['ptn']) / 100;
-
-		                                $medidas_horario = ($medida_grama / $fracionamento_dia);
-		                                $medidas_horario = floor($medidas_horario * 2) / 2;                
-		                                $volume_horario = (chknumber($volume_final) / $fracionamento_dia)." ml";
-
-
-		                                $nf_medida = ((chkstring2float($medida[$key]) * chkstring2float($volume_horario)) / chkfloat($final[$key]));
-		                                $nf_medida = round($nf_medida * 2) / 2;
-
-		                                $nf_grama = chkstring2float($grama[$key]);
-		                                $nf_grama = (($nf_grama * $nf_medida) / chkstring2float($medida[$key]));
-
-		                                $nf_dias_grama = ($nf_grama * $fracionamento_dia);
-
-		                                $nf_kcal_dia = ($nf_dias_grama * $produtos[$i]['kcal']) / 100;
-		                                $nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
-
-		                                $nf_ptn_dia = ($nf_dias_grama * $produtos[$i]['ptn']) / 100;
-		                                $nf_ptn_dia = numberFormatPrecision($nf_ptn_dia, 1);
-
-		                                $_valor_calorico = $nf_kcal_dia;
-		                                $_valor_proteico = $nf_ptn_dia;
-
-
-		                                // fibra/dia = calculo  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                $fibras_dia = $nf_dias_grama * chkstring2float($produtos[$i]['fibras']);
-		                                if ($fibras_dia<>0) $fibras_dia = $fibras_dia / 100;
-		                                $valor_fibra = numberFormatPrecision($fibras_dia, 1);
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // 3ª validacao revalida o range das KCAL e PTN -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                //$margem_liberadas = false;
-		                                if (
-		                                    (($margem_calorica[0] <= $_valor_calorico) and ($margem_calorica[1] >= $_valor_calorico)) and
-		                                    (($margem_proteica[0] <= $_valor_proteico) and ($margem_proteica[1] >= $_valor_proteico))
-		                                    ){
-		                                    $margem_liberadas = true;
-		                                    $rowspan = $rowspan+1;
-		                                }
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-		                                
-		                                $sistema = "aberto_po";
-		                            }
-		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                            // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-		                            
 		                            if (!isset($nf_kcal_dia)) $nf_kcal_dia = null;
 		                            if (!isset($nf_ptn_dia)) $nf_ptn_dia = null;
 
