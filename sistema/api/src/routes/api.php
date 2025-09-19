@@ -2728,8 +2728,8 @@ $app->group("", function () use ($app) {
 												$apres = 'Líquido / Creme';
 												$apres_num = '2';
 											}
-											else if ($apres == '["Cremoso"]'){
-												$apres_oral = 'Cremoso';
+											else if ($apres_oral == '["Cremoso"]'){
+												$apres = 'Cremoso';
 												$apres_num = '3';
 											}
 										}else{
