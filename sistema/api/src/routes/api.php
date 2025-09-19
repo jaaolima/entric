@@ -2197,7 +2197,6 @@ $app->group("", function () use ($app) {
 
 		        $retorno = '';
 		        $retorno_thead = '';
-				var_dump($produtos);
 		        if ($produtos){
 		            if (isset($dados['fracionamento_dia']) and ($dados['fracionamento_dia'] <> "")){
 		                $fracionamento_dia = $dados['fracionamento_dia'];
@@ -2712,6 +2711,7 @@ $app->group("", function () use ($app) {
 
 
 		                            // se tiver no ranger, listar
+									var_dump($margem_liberadas);
 		                            if ($margem_liberadas){
 		                                if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
 		                                    $volume_horario = " - ";
