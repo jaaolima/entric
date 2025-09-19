@@ -2842,6 +2842,19 @@ $app->group("", function () use ($app) {
 		    
 										$verificar_carac = true;
 										if($dados['tipo_produto'] == "Suplemento"){
+											//verificar caracteristicas tnevo
+											$valor_ptn = $db->select_to_array("produtos_composicao",
+												"valor",
+												'WHERE descricao = "Proteínas" and id_produto = '.$produtos[$i]['id'], 
+												null);
+
+											if(!isset($valor_ptn[0]['valor'])){
+												$valor_ptn[0]['valor'] = 0;
+											}else{
+												if($valor_ptn[0]['valor'] == null){
+													$valor_ptn[0]['valor'] = 0;
+												}
+											}
 											if(isset($dados['carac_oral'])){
 												$array_carac = $dados['carac_oral'];
 
