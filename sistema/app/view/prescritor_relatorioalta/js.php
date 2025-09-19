@@ -2089,7 +2089,7 @@ $(function(){
                         ($("input[name='calculo_apres_liquidocreme']:checked").length > 0 || $("input[name='calculo_apres_po']:checked").length > 0 || $("input[name='calculo_apres_cremoso']:checked").length > 0)) {
                             fc_salvar('calculo', false);
                             salvar_calculo_fracionamento(null);
-                            $('#modal_fracionamento').modal('toggle');
+                            // $('#modal_fracionamento').modal('toggle');
                     }
                     else{
                         $.alert({
