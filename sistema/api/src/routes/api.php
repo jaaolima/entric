@@ -2718,21 +2718,38 @@ $app->group("", function () use ($app) {
 		                                    $volume_horario = " - ";
 		                                }
 
-		                                $apres_enteral = $produtos[$i]['apres_enteral'];
-		                                $apres_enteral_num = '0';
-		                                if ($apres_enteral == '["Fechado"]'){ $apres_enteral = 'Fechado'; $apres_enteral_num = '1';
-		                                }else if ($apres_enteral == '["Aberto (Líquido)"]'){ $apres_enteral = 'Aberto (Líquido)';  $apres_enteral_num = '2';
-		                                }else if ($apres_enteral == '["Aberto (Pó)"]'){ $apres_enteral = 'Aberto (Pó)'; $apres_enteral_num = '3'; }
+										if($dados['tipo_produto'] == "Suplemento"){
+											$apres_oral = $produtos[$i]['apres_oral'];
+											$apres_num = '0';
+											if ($apres_oral == '["Pó"]'){
+												$apres = 'Pó'; 
+												$apres_num = '1';
+											}else if ($apres_oral == '["Líquido / Creme"]'){
+												$apres = 'Líquido / Creme';
+												$apres_num = '2';
+											}
+											else if ($apres == '["Cremoso"]'){
+												$apres_oral = 'Cremoso';
+												$apres_num = '3';
+											}
+										}else{
+											$apres_enteral = $produtos[$i]['apres_enteral'];
+											$apres_num = '0';
+											if ($apres_enteral == '["Fechado"]'){ $apres = 'Fechado'; $apres_num = '1';
+											}else if ($apres_enteral == '["Aberto (Líquido)"]'){ $apres = 'Aberto (Líquido)';  $apres_num = '2';
+											}else if ($apres_enteral == '["Aberto (Pó)"]'){ $apres = 'Aberto (Pó)'; $apres_num = '3'; }
 
-		                                if ($retorno_thead <> $apres_enteral){
-		                                    $retorno_thead = $apres_enteral;
+										}
+
+		                                if ($retorno_thead <> $apres){
+		                                    $retorno_thead = $apres;
 		                                    $retorno .= '<thead>
 		                                                    <tr>
 		                                                        <th colspan="9" class="entric_group_destaque4 text-center">
-		                                                        '.$apres_enteral.' <text class="ml-2" id="count_'.$apres_enteral_num.'"></text><a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_enteral_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                        '.$apres.' <text class="ml-2" id="count_'.$apres_num.'"></text><a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$apres_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
 		                                                    </tr>
 		                                                    <tr>
-		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_enteral_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_enteral_num.')"> </th>
+		                                                        <th class="entric_group_destaque5"> <input class="form-check-input collapseSistema" id="collapseSistema'.$apres_num.'" type="checkbox" value="" onclick="fc_collapsecheckbox('.$apres_num.')"> </th>
 		                                                        <th class="entric_group_destaque5">DIETA</th>
 		                                                        <th class="entric_group_destaque5">FABRICANTE</th>
 		                                                        <th class="entric_group_destaque5">DILUIÇÃO (KCAL/ML)</th>
@@ -2743,7 +2760,7 @@ $app->group("", function () use ($app) {
 		                                                        <th class="entric_group_destaque5">FIBRA</th>
 		                                                    </tr>
 		                                                </thead>
-		                                                <tbody id="tbody'.$apres_enteral_num.'">';
+		                                                <tbody id="tbody'.$apres_num.'">';
 		                                }
 
 		                                if (trim($produtos[$i]['kcal'])<>"") $_kcal = str_replace(",",".", $produtos[$i]['kcal']); else $_kcal = 1;
