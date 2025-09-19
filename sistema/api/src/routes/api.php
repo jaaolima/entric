@@ -2170,26 +2170,48 @@ $app->group("", function () use ($app) {
 		        }
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')' . (($query2 != "") ? " OR (status=1 ".$query2.")" : "");
+				if($dados['tipo_produto'] == "Suplemento"){
+					$order = "ORDER BY apres_oral desc, CASE
+								WHEN (apres_enteral LIKE '%Aberto (Pó)%') THEN 1													
+								WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
+								WHEN (apres_enteral LIKE '%Fechado%') THEN 3
+								ELSE 4
+							END,
+					CASE 
+						WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
+						WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
+						WHEN prioridade = 'Não Disponível PDV' THEN 3
+						ELSE 4
+					END,
+					CASE 
+						WHEN fabricante = 'PRODIET' THEN 1
+						WHEN fabricante = 'DANONE' THEN 2
+						WHEN fabricante = ' Danone e Nutrimed' THEN 3
+						ELSE 4
+					END";
+				}else{
+					$order = "ORDER BY CASE
+								WHEN (apres_enteral LIKE '%Aberto (Pó)%') THEN 1													
+								WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
+								WHEN (apres_enteral LIKE '%Fechado%') THEN 3
+								ELSE 4
+							END, apres_oral desc,
+					CASE 
+						WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
+						WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
+						WHEN prioridade = 'Não Disponível PDV' THEN 3
+						ELSE 4
+					END,
+					CASE 
+						WHEN fabricante = 'PRODIET' THEN 1
+						WHEN fabricante = 'DANONE' THEN 2
+						WHEN fabricante = ' Danone e Nutrimed' THEN 3
+						ELSE 4
+					END";
+				}
 		        $produtos = $db->select_to_array("produtos",
 		                                            "id, nome, fabricante, apres_enteral, apres_oral, kcal, cho, ptn, lip, fibras, medida_dc, medida_g, medida, unidmedida, volume, apresentacao, final, produto_especializado",
-		                                            $query." ORDER BY CASE
-																		WHEN (apres_enteral LIKE '%Aberto (Pó)%') THEN 1													
-																		WHEN (apres_enteral LIKE '%Aberto (Líquido)%') THEN 2													
-																		WHEN (apres_enteral LIKE '%Fechado%') THEN 3
-																		ELSE 4
-																	END, apres_oral desc,
-															CASE 
-																WHEN prioridade = 'Alta Rentabilidade PDV' THEN 1
-																WHEN prioridade = 'Baixa Rentabilidade PDV' THEN 2
-																WHEN prioridade = 'Não Disponível PDV' THEN 3
-																ELSE 4
-															END,
-															CASE 
-																WHEN fabricante = 'PRODIET' THEN 1
-																WHEN fabricante = 'DANONE' THEN 2
-																WHEN fabricante = ' Danone e Nutrimed' THEN 3
-																ELSE 4
-															END", 
+		                                            $query." ".$order, 
 		                                            null);
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -2514,6 +2536,9 @@ $app->group("", function () use ($app) {
 		                            $sistema = "";
 									if($dados['tipo_produto'] == 'Suplemento'){
 										$margem_liberadas = true;
+										if (isset($medida_dc[$j]) && $medida_dc[$j] != ''){
+		                                    $_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
+		                                }
 										if($produtos[$i]['apres_oral'] == '["Líquido / Creme"]'){
 											$volume_und = $volume[$m] . ' ' . $unidmedida;
 											$volume_dia = intval($volume[$m]) * intval($fracionamento_dia);
