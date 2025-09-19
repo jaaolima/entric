@@ -2197,7 +2197,7 @@ $app->group("", function () use ($app) {
 
 		        $retorno = '';
 		        $retorno_thead = '';
-				var_dump($produto);
+				var_dump($produtos);
 		        if ($produtos){
 		            if (isset($dados['fracionamento_dia']) and ($dados['fracionamento_dia'] <> "")){
 		                $fracionamento_dia = $dados['fracionamento_dia'];
