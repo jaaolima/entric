@@ -482,6 +482,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						foreach ($dieta_produto_dc as &$value) {
 							$produto = explode("___", $value);
 							$produto[1] = trim($produto[1]);
+							var_dump($produto[6]);
 							if ($produto[6] == "aberto_po"){
 								if (isset($_produtos_nomes[ $produto[1] ])){
 									$_produtos_nomes[ $produto[1] ] = $_produtos_nomes[ $produto[1] ] + 1;
