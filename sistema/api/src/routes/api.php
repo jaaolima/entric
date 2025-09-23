@@ -2683,6 +2683,7 @@ $app->group("", function () use ($app) {
 											if (($_ptn_total_min <= $margem_proteica[1]) && ($margem_proteica[0] <= $_ptn_total_max)) {
 												$margem_liberadas = true;
 											}
+											$sistema = 'aberto_liquido';
 										}
 										else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
 
