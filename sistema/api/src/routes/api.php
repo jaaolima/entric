@@ -16,6 +16,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 		new \Slim\Middleware\JwtAuthentication\RequestPathRule([  
 			"path" => "",
 			"passthrough" => [
+				"/api",
 				"/ping",
 				"/login",
 				"/senha",			
