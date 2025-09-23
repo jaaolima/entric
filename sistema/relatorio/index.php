@@ -482,7 +482,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						foreach ($dieta_produto_dc as &$value) {
 							$produto = explode("___", $value);
 							$produto[1] = trim($produto[1]);
-							var_dump($produto[6]);
 							if ($produto[6] == "aberto_po"){
 								if (isset($_produtos_nomes[ $produto[1] ])){
 									$_produtos_nomes[ $produto[1] ] = $_produtos_nomes[ $produto[1] ] + 1;
@@ -493,8 +492,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 					}
-					var_dump($relatorio['calculo_apres_aberto_po']);
-					var_dump($relatorio['dieta_produto_dc']);
 					if (($relatorio['calculo_apres_aberto_po'] == 1) and (count($_produtos_nomes) > 0)) {
 						// if (!$landscape){
 						// 	echo "</div>";
