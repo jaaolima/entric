@@ -1,6 +1,7 @@
 <?php
-
-echo "chegou";
+error_reporting(E_ALL);
+ini_set('display_errors','On');
+date_default_timezone_set('America/Sao_Paulo');
 
 require_once '../src/config/config.php';
 require_once '../src/config/database.class.php';
