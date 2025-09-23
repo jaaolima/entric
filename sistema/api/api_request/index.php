@@ -2,8 +2,8 @@
 
 echo "chegou";
 
-require_once '../api/src/config/config.php';
-require_once '../api/src/config/database.class.php';
+require_once '../src/config/config.php';
+require_once '../src/config/database.class.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
