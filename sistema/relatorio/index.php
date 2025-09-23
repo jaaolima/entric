@@ -492,7 +492,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 					}
-
+					var_dump($relatorio['calculo_apres_aberto_po']);
+					var_dump($_produtos_nomes);
 					if (($relatorio['calculo_apres_aberto_po'] == 1) and (count($_produtos_nomes) > 0)) {
 						// if (!$landscape){
 						// 	echo "</div>";
@@ -1063,7 +1064,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<img class="background" style="position:absolute;bottom:1cm;right:2px;" src="imagem/efeito.png" alt="">
 			<?php endif; ?>
 			<?php if(!isset($_GET['imprimir'])) : ?>
-			<div class="marca-dagua">RASCUNHO</div>
+			<div class="marca-dagua">RASCUNHO</div> 
 			<?php endif; ?>
 		<?php
 		}
