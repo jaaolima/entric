@@ -493,7 +493,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 					}
 					var_dump($relatorio['calculo_apres_aberto_po']);
-					var_dump($_produtos_nomes);
+					var_dump($relatorio['dieta_produto_dc']);
 					if (($relatorio['calculo_apres_aberto_po'] == 1) and (count($_produtos_nomes) > 0)) {
 						// if (!$landscape){
 						// 	echo "</div>";
