@@ -90,6 +90,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/cadastro_cadastrarPaciente",
 				"/cadastro_chkCodigo",
 				"/cadastros_cadastrarAdministrador",
+				"/api_entric",
 				"/cadastros_cadastrarPatrocinador",
 				"/cadastros_cadastrarPrescritor",
 				"/cadastros_editarAdministrador",
@@ -182,6 +183,10 @@ $app->add(function (Request $request, Response $response, $next) {
 				->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
 				->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
 	return $response;
+});
+
+$app->post("/paciente_entric", function (Request $request, Response $response) {
+    require __DIR__ . '/../../paciente_entric.php';
 });
 
 function round_up($valor, $rounded = 1){
