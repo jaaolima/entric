@@ -30,10 +30,9 @@ require_once '../src/libs/connection.php';
 
         // Busca em todas as tabelas de pacientes
         foreach ($tabelas_pacientes as $tabela) {
-            $paciente = $db->select_to_array($tabela, "*", "WHERE id_paciente=:id", [':id' => $id_paciente]);
+            $paciente = $db->select_single_to_array($tabela, "*", "WHERE id_paciente=:id", [':id' => $id_paciente]);
             if ($paciente) {
                 $pacientes_encontrados = array_merge($pacientes_encontrados, $paciente);
-                var_dump($paciente);
                 // if($tabelas_pacientes == "pacientes"){
                 //     $relatorio = $db->select_to_array("relatorios", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
                 // }
