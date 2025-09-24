@@ -33,6 +33,7 @@ require_once '../src/libs/connection.php';
             $paciente = $db->select_to_array($tabela, "*", "WHERE id_paciente=:id", [':id' => $id_paciente]);
             if ($paciente) {
                 $pacientes_encontrados = array_merge($pacientes_encontrados, $paciente);
+                var_dump($paciente);
                 // if($tabelas_pacientes == "pacientes"){
                 //     $relatorio = $db->select_to_array("relatorios", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
                 // }
