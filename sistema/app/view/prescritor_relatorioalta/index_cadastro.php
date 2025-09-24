@@ -21,7 +21,7 @@
             </button>
             &nbsp;
             <button type="button" class="btn <?php echo ($tab1=="buscar"?"btn-warning":"btn-secondary"); ?> btn-sm" id="buscar_paciente">
-                <span class="btn-icon-right"><i class="fa fa-search"></i></span>
+                <span class="btn-icon-right"><i class="fa fa-search"></i></span> 
                 BUSCAR PACIENTE CADASTRADO
             </button>
         </div>

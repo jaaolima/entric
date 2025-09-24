@@ -92,8 +92,12 @@ function fc_retorno_pacientes(){
                 if (item.status == 1){
                     status = "checked='checked'";
                     var editar = "";
-                }else{
-                    var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
+                }else{ 
+                    if(item.codigo == null){
+                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
+                    }else{
+                        var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                    }
                 }
 
                 tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td class="text-center"><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input disponivel" id="disponivel'+item.id+'" onchange="disponivel('+item.id+', this)" '+status+'><label class="custom-control-label" for="disponivel'+item.id+'"></label></div></td><td> '+ editar +' </td></tr>';
@@ -2922,7 +2926,7 @@ $(function(){
             error_alert = 'Por favor, informe o valor do peso em calorias e proteínas na aba "Necessidades Nutricionais".';
         }
 
-        if ($("input[name='calculo_apres_fechado']:checked").val() == 'Fechado') {
+        if ($("input[name='calculo_apres_fechado']:checked").val() == 'Fechado') { 
             if ($("#hidratacao_dia").val() != ""){
             }
             else if (error_alert == ""){
