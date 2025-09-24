@@ -6,10 +6,10 @@ date_default_timezone_set('America/Sao_Paulo');
 require_once '../src/config/config.php';
 require_once '../src/libs/connection.php';
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // parse_str(file_get_contents('php://input'), $data);
-    $data = $_GET;
+    parse_str(file_get_contents('php://input'), $data);
+    // $data = $_GET;
     $db = null;
 
     try {
@@ -73,12 +73,12 @@ require_once '../src/libs/connection.php';
             $db = null;
         }
     }
-// } else {
-//     json_response([
-//         'message' => 'Método não permitido. Apenas POST é aceito.',
-//         'data' => []
-//     ], 405);
-// }
+} else {
+    json_response([
+        'message' => 'Método não permitido. Apenas POST é aceito.',
+        'data' => []
+    ], 405);
+}
 
 function json_response($data, $status = 200) {
     http_response_code($status);
