@@ -1101,6 +1101,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
 function rangeCaloria(calorias){
     var selecao_dieta = $("#selecao_dieta").val();
     if (selecao_dieta.length == 0){
+        console.log("chegou");
         var perc1 = -4;
         var perc2 = 4;
         $("#var_calorica").html(calorias);
