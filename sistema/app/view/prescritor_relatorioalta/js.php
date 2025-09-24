@@ -1668,6 +1668,9 @@ $(function(){
             $("#up_mae").prop('required', true);
         }
     });
+    $(".input_peso_valor").on("change", function(){
+        $("#selecao_dieta").val('');
+    });
     $("#gerar_relatorio").on("click", function(e) {
         $('#id_relatorio').val('');
         $('#relatorio_code').val('');
