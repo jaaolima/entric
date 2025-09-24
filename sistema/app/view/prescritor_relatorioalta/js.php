@@ -1214,6 +1214,7 @@ function salvar_calculo_fracionamento(_this){
             if (_this != null){
                 $('#modal_fracionamento').modal('toggle');
                 $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+                    console.log(selecao_dieta);
                     if (selecao_dieta.length == 0){
                         rangeCaloria($("#kcal_valor").val());
                         rangeProteina($("#ptn_valor").val());
@@ -1221,6 +1222,7 @@ function salvar_calculo_fracionamento(_this){
                     $("#modal_selecao").modal("toggle");
                 });
             }else{
+                console.log(selecao_dieta);
                 if (selecao_dieta.length == 0){
                     rangeCaloria($("#kcal_valor").val());
                     rangeProteina($("#ptn_valor").val());
