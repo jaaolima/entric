@@ -8,7 +8,8 @@ require_once '../src/libs/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    parse_str(file_get_contents('php://input'), $data);
+    // parse_str(file_get_contents('php://input'), $data);
+    $data = $_GET;
     $db = null;
 
     try {
@@ -37,12 +38,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // }
                 if($tabela == "pacientes_simplificada"){
                     $relatorio = $db->select_to_array("relatorios_simplificada", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
+                    $relatorio['tipo'] = "Prescrição Simplificada Dieta Enteral";
                 }
                 else if($tabela == "pacientes_suplemento"){
                     $relatorio = $db->select_to_array("relatorios_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
+                    $relatorio['tipo'] = "Prescrição Simplificada Suplemento";
                 }
                 else if($tabela == "pacientes_modulo"){
                     $relatorio = $db->select_to_array("relatorios_modulo", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
+                    $relatorio['tipo'] = "Prescrição Simplificada Módulos";
                 }
                 if ($relatorio) {
                     $relatorios_encontrados = array_merge($relatorios_encontrados, $relatorio);
