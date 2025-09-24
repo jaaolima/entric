@@ -1668,8 +1668,13 @@ $(function(){
             $("#up_mae").prop('required', true);
         }
     });
-    $(".input_peso_valor").on("change", function(){
-        $("#selecao_dieta").val('');
+    $("#kcal_valor").on("change", function(){
+        $("#selecao_dieta").val(''); 
+        busca_produto_relatorio();
+    });
+    $("#ptn_valor").on("change", function(){
+        $("#selecao_dieta").val(''); 
+        busca_produto_relatorio();
     });
     $("#gerar_relatorio").on("click", function(e) {
         $('#id_relatorio').val('');
