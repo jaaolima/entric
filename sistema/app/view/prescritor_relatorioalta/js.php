@@ -1668,11 +1668,15 @@ $(function(){
             $("#up_mae").prop('required', true);
         }
     });
-    $("#kcal_valor").on("change", function(){
+    $(".input_peso_valor").on("change", function(){
         $("#selecao_dieta").val(''); 
         busca_produto_relatorio();
     });
-    $("#ptn_valor").on("change", function(){
+    $(".proteinas_total").on("change", function(){
+        $("#selecao_dieta").val(''); 
+        busca_produto_relatorio();
+    });
+    $(".calorias_total").on("change", function(){
         $("#selecao_dieta").val(''); 
         busca_produto_relatorio();
     });
