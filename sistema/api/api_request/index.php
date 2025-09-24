@@ -35,13 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // if($tabelas_pacientes == "pacientes"){
                 //     $relatorio = $db->select_to_array("relatorios", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
                 // }
-                if($tabelas_pacientes == "pacientes_simplificada"){
+                if($tabela == "pacientes_simplificada"){
                     $relatorio = $db->select_to_array("relatorios_simplificada", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
                 }
-                else if($tabelas_pacientes == "pacientes_suplemento"){
+                else if($tabela == "pacientes_suplemento"){
                     $relatorio = $db->select_to_array("relatorios_suplemento", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
                 }
-                else if($tabelas_pacientes == "pacientes_modulo"){
+                else if($tabela == "pacientes_modulo"){
                     $relatorio = $db->select_to_array("relatorios_modulo", "*", "WHERE id_paciente=:id_paciente", [':id_paciente' => $paciente['id']]);
                 }
                 if ($relatorio) {
