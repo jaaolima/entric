@@ -2351,10 +2351,26 @@ $(function(){
         }
     })
     $(".filtro_3").on("click", function(){
-        if(!$(this).is(":checked")){
-            $('#calculo_fil_todos3').prop('checked', false);
-        }
+        $('#calculo_fil_todos3').prop('checked', false);
+        $(this).prop("checked", true);
     })
+
+    $(".filtro_2").on("click", function(){
+        var hipo = $("#calculo_oral_carac_hipoproteico").is(":checked");
+        var normo = $("#calculo_oral_carac_normoproteico").is(":checked");
+        var hiper = $("#calculo_oral_carac_hiperproteico").is(":checked");
+
+        // Regra: Impede a seleção de Hipo e Hiper ao mesmo tempo
+        if (hipo && hiper) {
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'A combinação de "Hipoproteico" e "Hiperproteico" não é permitida. Por favor, selecione apenas uma, ou uma combinação válida (Hipo+Normo ou Normo+Hiper).',
+            });
+            $(this).prop('checked', false); // Desmarca a última seleção inválida
+        }
+    });
 
     $('#calculo_fil_todos2').change(function () {
         var calculo_fil_todos = null;

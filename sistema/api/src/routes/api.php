@@ -4659,6 +4659,10 @@ $app->group("", function () use ($app) {
 									}
 								$query2.= ' )';
 							}
+							if (in_array('Ambos', $array_carac)){
+								$query2.= '(carac_oral LIKE "%Com Fibras%") OR (carac_oral LIKE "%Sem Fibras%")';
+								$_or = ' OR ';
+							}
 							if(in_array('100% Proteína Vegetal', $array_carac)){
 								$query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
 							}
@@ -4929,9 +4933,11 @@ $app->group("", function () use ($app) {
 											$array_carac = $dados['carac_oral'];
 
 											
-											if(in_array('Hipocalórico', $array_carac) && $_medida_dc <= 1.2) {
+											if(in_array('Hipocalórico', $array_carac) && $_medida_dc < 0.9) {
 												$verificar_carac = true;
-											} elseif (in_array('Hipercalórico', $array_carac) && $_medida_dc > 1.2) {
+											} elseif (in_array('Normocalórico', $array_carac) && ($_medida_dc >= 0.9 && $_medida_dc <= 1.2)) {
+												$verificar_carac = true;
+											}  elseif (in_array('Hipercalórico', $array_carac) && $_medida_dc > 1.2) {
 												$verificar_carac = true;
 											} else {
 												$verificar_carac = false;
