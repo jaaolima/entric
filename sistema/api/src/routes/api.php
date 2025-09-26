@@ -2053,22 +2053,18 @@ $app->group("", function () use ($app) {
 								if(in_array('Sem Lactose', $array_carac)){
 									$query2.= ' AND (carac_oral LIKE "%Sem Lactose%")';
 								}
-								if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac)){
+								if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac) or in_array('Ambos', $array_carac)){
 									$query2.= ' AND (';
 										$_or = '';
-										if (in_array('Com Fibras', $array_carac)){
+										if (in_array('Com Fibras', $array_carac) or in_array('Ambos', $array_carac)){
 											$query2.= '(carac_oral LIKE "%Com Fibras%")';
 											$_or = ' OR ';
 										}
-										if (in_array('Sem Fibras', $array_carac)){
+										if (in_array('Sem Fibras', $array_carac) or in_array('Ambos', $array_carac)){
 											$query2.= $_or.' (carac_oral LIKE "%Sem Fibras%")';
 											$_or = ' OR ';
 										}
 									$query2.= ' )';
-								}
-								if (in_array('Ambos', $array_carac)){
-									$query2.= '(carac_oral LIKE "%Com Fibras%") OR (carac_oral LIKE "%Sem Fibras%")';
-									$_or = ' OR ';
 								}
 								if(in_array('100% Proteína Vegetal', $array_carac)){
 									$query2.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
@@ -2151,22 +2147,18 @@ $app->group("", function () use ($app) {
 						if(in_array('Sem Lactose', $array_carac)){
 							$query.= ' AND (carac_oral LIKE "%Sem Lactose%")';
 						}
-						if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac)){
+						if (in_array('Com Fibras', $array_carac) or in_array('Sem Fibras', $array_carac) or in_array('Ambos', $array_carac)){
 							$query.= ' AND (';
 								$_or = '';
-								if (in_array('Com Fibras', $array_carac)){
+								if (in_array('Com Fibras', $array_carac) or in_array('Ambos', $array_carac)){
 									$query.= '(carac_oral LIKE "%Com Fibras%")';
 									$_or = ' OR ';
 								}
-								if (in_array('Sem Fibras', $array_carac)){
+								if (in_array('Sem Fibras', $array_carac) or in_array('Ambos', $array_carac)){
 									$query.= $_or.' (carac_oral LIKE "%Sem Fibras%")';
 									$_or = ' OR ';
 								}
 							$query.= ' )';
-						}
-						if (in_array('Ambos', $array_carac)){
-							$query.= '(carac_oral LIKE "%Com Fibras%") OR (carac_oral LIKE "%Sem Fibras%")';
-							$_or = ' OR ';
 						}
 						if(in_array('100% Proteína Vegetal', $array_carac)){
 							$query.= ' AND (carac_oral LIKE "%100% Proteína Vegetal%")';
