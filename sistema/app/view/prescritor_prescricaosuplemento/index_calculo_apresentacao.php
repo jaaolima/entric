@@ -38,7 +38,7 @@
                     <label for="calculo_oral_carac_hipoproteico" class="form-check-label check-green">Hipoproteico</label>
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_fil_ambos3" name="calculo_fil_ambos3" value="Ambos" class="form-check-input styled-checkbox filtro_3" type="checkbox">
+                    <input id="calculo_fil_ambos3" name="carac_oral[]" class="form-check-input styled-checkbox filtro_3" type="checkbox" value="Ambos">
                     <label for="calculo_fil_ambos3" class="form-check-label check-green">Ambos</label>
                 </div>
                 <div class="form-check col-sm-3">
