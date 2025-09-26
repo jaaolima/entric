@@ -48,8 +48,8 @@
 
 
                 <div class="form-check col-sm-3">
-                    <input id="calculo_oral_carac_hipercalórico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_1" type="checkbox" value="Normocalórico">
-                    <label for="calculo_oral_carac_hipercalórico" class="form-check-label check-green">Normocalórico(0,9 a 1,2 kcal/ml)</label>
+                    <input id="calculo_oral_carac_normocalórico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_1" type="checkbox" value="Normocalórico">
+                    <label for="calculo_oral_carac_normocalórico" class="form-check-label check-green">Normocalórico(0,9 a 1,2 kcal/ml)</label>
                 </div>
                 <div class="form-check col-sm-3">
                     <input id="calculo_oral_carac_normoproteico" name="carac_oral[]" class="form-check-input styled-checkbox filtro_2" type="checkbox" value="Normoproteico">

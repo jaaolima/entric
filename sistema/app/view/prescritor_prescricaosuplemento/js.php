@@ -2333,9 +2333,11 @@ $(function(){
         }
         if (calculo_fil_todos == 'Todos') {
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normocalórico').prop('checked', true);
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', true);
         }else{
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normocalórico').prop('checked', false);
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', false);
         }
     });
