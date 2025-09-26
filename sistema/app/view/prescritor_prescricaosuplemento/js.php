@@ -2351,7 +2351,7 @@ $(function(){
         }
     })
     $(".filtro_3").on("click", function(){
-        $('#calculo_fil_todos3').prop('checked', false);
+        $('.filtro_3').prop('checked', false);
         $(this).prop("checked", true);
     })
 
