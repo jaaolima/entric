@@ -2138,7 +2138,7 @@ $(function(){
         // }
         if ($("input[name='carac_oral[]'].filtro_1:checked").length > 0 && 
             $("input[name='carac_oral[]'].filtro_2:checked").length > 0 && 
-            $("input[name='carac_oral[]'].filtro_3:checked").length > 0 &&
+            $("input[name='carac_oral[]'].filtro_3:checked").length > 0 && 
             ($("input[name='calculo_apres_liquidocreme']:checked").length > 0 || $("input[name='calculo_apres_po']:checked").length > 0 || $("input[name='calculo_apres_cremoso']:checked").length > 0)) {
                 $('#modal_fracionamento').modal('toggle');
         }
