@@ -3092,6 +3092,23 @@ $(function(){
         }
     });
 
+    $(".filtro_1").on("click", function(){
+        var hipo = $("#calculo_oral_carac_hipocalorico").is(":checked");
+        var normo = $("#calculo_oral_carac_normocalorico").is(":checked");
+        var hiper = $("#calculo_oral_carac_hipercalorico").is(":checked");
+
+        // Regra: Impede a seleção de Hipo e Hiper ao mesmo tempo
+        if (hipo && hiper) {
+            $.alert({
+                title: 'Atenção',
+                icon: 'fa fa-warning',
+                type: 'red',
+                content: 'A combinação de "Hipocalórico" e "Hipercalórico" não é permitida. Por favor, selecione apenas uma, ou uma combinação válida (Hipo+Normo ou Normo+Hiper).',
+            });
+            $(this).prop('checked', false); // Desmarca a última seleção inválida
+        }
+    });
+
     $('#calculo_fil_todos2').change(function () {
         var calculo_fil_todos = null;
         if ($(this).is(':checked')){
