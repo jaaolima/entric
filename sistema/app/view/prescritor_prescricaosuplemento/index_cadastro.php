@@ -294,6 +294,6 @@
 </div>
 <script>
     $(document).ready(function(){
-        $("#hospital").val("<?php echo $ds_hospital; ?>");
+        $("#hospital option[value='<?php echo $ds_hospital; ?>']").prop("selected", true);
     })
 </script>
