@@ -1441,6 +1441,9 @@ function isNumeric(evt) {
 
 $(function(){
     //$(document).on("keydown", disableF5);
+    hospital = $("#valor_hospital").val();
+    console.log("chegou");
+    $("#hospital option[value='"+hospital+"']").prop("selected", true);
 
     $('#avaliacao .data').datepicker({
         format: "dd/mm/yyyy",

@@ -292,9 +292,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        console.log("chegou");
-        $("#hospital option[value='<?php echo $ds_hospital; ?>']").prop("selected", true);
-    })
-</script>
+<input type="hidden" id="valor_hospital" value="<?php echo $ds_hospital; ?>">
