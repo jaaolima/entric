@@ -10767,7 +10767,7 @@ $app->group("", function () use ($app) {
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
 									$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
-									$ds_usuario = $db_ibranutro->select_single_to_array("ds_usuario", "ds_usuario", "where id_usuario = ".$relatorios[$j]["id_prescritor_ibranutro"]);
+									$ds_usuario = $db_ibranutro->select_single_to_array("tb_usuario", "ds_usuario", "where id_usuario = ".$relatorios[$j]["id_prescritor_ibranutro"]);
 									$relatorios[$j]['ds_usuario'] = $ds_usuario['ds_usuario'];
 
 								}
