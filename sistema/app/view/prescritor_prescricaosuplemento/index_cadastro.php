@@ -292,3 +292,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#hospital").val("<?php echo $ds_hospital; ?>");
+    })
+</script>
