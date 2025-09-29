@@ -1,5 +1,25 @@
 <?php
     $sistema = '';
+    $hospitais_map = array(
+        '1' => 'HOSPITAL SANTA HELENA',
+        '3' => 'HOSPITAL SANTA LÚCIA GAMA',
+        '4' => 'HOSPITAL SANTA LUCIA SUL',
+        '5' => 'HOSPITAL SÃO FRANCISCO',
+        '6' => 'HOSPITAL DO CORAÇÃO',
+        '7' => 'HOSPITAL SANTA LUZIA',
+        '8' => 'HOSPITAL DF STAR',
+        '9' => 'HOSPITAL DE TESTES',
+        '10' => 'HOSPITAL SANTA LÚCIA NORTE',
+        '11' => 'HOSPITAL ANCHIETA',
+        '12' => 'HOSPITAL VILA NOVA STAR',
+        '13' => 'HOSPITAL SANTA ISABEL',
+        '14' => 'HOSPITAL DAHER',
+        '15' => 'HOSPITAL SÃO LUIZ ITAIM',
+        '16' => 'HOSPITAL SÃO LUIZ MORUMBI',
+        '17' => 'TERCEIROS VILA NOVA STAR',
+        '18' => 'HOSPITAL SÃO LUIZ JABAQUARA',
+        '19' => 'HOSPITAL DA CRIANÇA',
+    );
     if($_SESSION['paciente_redirect']['sistema'] == 'EN'){ 
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
         $_SESSION['paciente_redirect']['id_paciente'] = null;
@@ -28,26 +48,6 @@
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
 
-        $hospitais_map = array(
-            '1' => 'HOSPITAL SANTA HELENA',
-            '3' => 'HOSPITAL SANTA LÚCIA GAMA',
-            '4' => 'HOSPITAL SANTA LUCIA SUL',
-            '5' => 'HOSPITAL SÃO FRANCISCO',
-            '6' => 'HOSPITAL DO CORAÇÃO',
-            '7' => 'HOSPITAL SANTA LUZIA',
-            '8' => 'HOSPITAL DF STAR',
-            '9' => 'HOSPITAL DE TESTES',
-            '10' => 'HOSPITAL SANTA LÚCIA NORTE',
-            '11' => 'HOSPITAL ANCHIETA',
-            '12' => 'HOSPITAL VILA NOVA STAR',
-            '13' => 'HOSPITAL SANTA ISABEL',
-            '14' => 'HOSPITAL DAHER',
-            '15' => 'HOSPITAL SÃO LUIZ ITAIM',
-            '16' => 'HOSPITAL SÃO LUIZ MORUMBI',
-            '17' => 'TERCEIROS VILA NOVA STAR',
-            '18' => 'HOSPITAL SÃO LUIZ JABAQUARA',
-            '19' => 'HOSPITAL DA CRIANÇA',
-        );
         $id_hospital = $_SESSION['paciente_redirect']['id_hospital'];
         $ds_hospital = isset($hospitais_map[$id_hospital]) ? $hospitais_map[$id_hospital] : '';
         $_SESSION['paciente_redirect']['id_hospital'] = null;
@@ -103,11 +103,13 @@
                 <input type="hidden" name='sistema' value="<?php echo $sistema; ?>"> 
                 <?php endif; ?>
                 <?php
-                $hospitais_select = array("" => "Selecione") + (isset($hospitais_map) ? $hospitais_map : []);
 
                 if ($sistema == 'EN' || $sistema == 'ibranutro') {
                     // Usar nomes dos hospitais como chaves e valores para o select
-                    $hospitais_select_por_nome = array_combine(array_values($hospitais_map), array_values($hospitais_map));
+                    $hospitais_select_por_nome = [];
+                    foreach ($hospitais_map as $id => $nome) {
+                        $hospitais_select_por_nome[$nome] = $nome;
+                    }
                     $hospitais_select_por_nome = array("" => "Selecione") + $hospitais_select_por_nome;
                     $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome);
                 } else {
