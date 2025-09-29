@@ -142,6 +142,30 @@
                 <input type="hidden" name='sistema' value="<?php echo $sistema; ?>"> 
                 <?php endif; ?>
                 <?php
+                $hospitais = array(
+                    "" => "Selecione",
+                    'HOSPITAL SANTA HELENA' => 'HOSPITAL SANTA HELENA',
+                    'HOSPITAL SANTA LÚCIA GAMA' => 'HOSPITAL SANTA LÚCIA GAMA',
+                    'HOSPITAL SANTA LUCIA SUL' => 'HOSPITAL SANTA LUCIA SUL',
+                    'HOSPITAL SÃO FRANCISCO' => 'HOSPITAL SÃO FRANCISCO',
+                    'HOSPITAL DO CORAÇÃO' => 'HOSPITAL DO CORAÇÃO',
+                    'HOSPITAL SANTA LUZIA' => 'HOSPITAL SANTA LUZIA',
+                    'HOSPITAL DF STAR' => 'HOSPITAL DF STAR',
+                    'HOSPITAL DE TESTES' => 'HOSPITAL DE TESTES',
+                    'HOSPITAL SANTA LÚCIA NORTE' => 'HOSPITAL SANTA LÚCIA NORTE',
+                    'HOSPITAL ANCHIETA' => 'HOSPITAL ANCHIETA',
+                    'HOSPITAL VILA NOVA STAR' => 'HOSPITAL VILA NOVA STAR',
+                    'HOSPITAL SANTA ISABEL' => 'HOSPITAL SANTA ISABEL',
+                    'HOSPITAL DAHER' => 'HOSPITAL DAHER',
+                    'HOSPITAL SÃO LUIZ ITAIM' => 'HOSPITAL SÃO LUIZ ITAIM',
+                    'HOSPITAL SÃO LUIZ MORUMBI' => 'HOSPITAL SÃO LUIZ MORUMBI',
+                    'TERCEIROS VILA NOVA STAR' => 'TERCEIROS VILA NOVA STAR',
+                    'HOSPITAL SÃO LUIZ JABAQUARA' => 'HOSPITAL SÃO LUIZ JABAQUARA',
+                    'HOSPITAL DA CRIANÇA' => 'HOSPITAL DA CRIANÇA',
+                );
+
+                $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital);
+                if ($sistema == 'EN') $campo_hospital['select'] = $hospitais;
                 $item_dados =  $html->addRow(
                                 array(
                                     "nome" => array(
@@ -163,11 +187,7 @@
                                         "label" => "Telefone:",
                                         "value" => $nu_telefone
                                     ),
-                                    "hospital" => array(
-                                        "col" => 6,
-                                        "label" => "Hospital:",
-                                        "value" => $ds_hospital
-                                    ),
+                                    "hospital" => $campo_hospital,
                                     "atendimento" => array(
                                         "col" => 4,
                                         "label" => "Atendimento:",
