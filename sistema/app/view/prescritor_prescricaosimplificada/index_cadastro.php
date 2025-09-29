@@ -105,7 +105,7 @@
                 <?php endif; ?>
                 <?php
 
-                if ($sistema == 'EN' || $sistema == 'ibranutro') {
+                if ($sistema == 'EN' || $sistema == 'ibranutro') { 
                     // Usar nomes dos hospitais como chaves e valores para o select
                     $hospitais_select_por_nome = [];
                     foreach ($hospitais_map as $id => $nome) {
@@ -417,3 +417,4 @@
         </div>
     </div>
 </div>
+<input type="hidden" id="valor_hospital" value="<?php echo $ds_hospital; ?>">

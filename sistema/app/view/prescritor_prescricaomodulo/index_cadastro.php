@@ -292,3 +292,4 @@
         </div>
     </div>
 </div>
+<input type="hidden" id="valor_hospital" value="<?php echo $ds_hospital; ?>">
