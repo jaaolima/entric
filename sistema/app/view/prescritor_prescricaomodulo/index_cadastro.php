@@ -105,8 +105,11 @@
                 <?php
                 $hospitais_select = array("" => "Selecione") + (isset($hospitais_map) ? $hospitais_map : []);
 
-                if ($sistema == 'EN') {
-                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $id_hospital, "select" => $hospitais_select);
+                if ($sistema == 'EN' || $sistema == 'ibranutro') {
+                    // Usar nomes dos hospitais como chaves e valores para o select
+                    $hospitais_select_por_nome = array_combine(array_values($hospitais_map), array_values($hospitais_map));
+                    $hospitais_select_por_nome = array("" => "Selecione") + $hospitais_select_por_nome;
+                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome);
                 } else {
                     $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital);
                 }
