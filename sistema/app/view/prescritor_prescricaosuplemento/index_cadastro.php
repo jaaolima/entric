@@ -223,7 +223,7 @@
                         </div>
                         <div class="col-sm-6 text-left">
                             <button type="submit" onclick="fc_atualizar_paciente();" class="btn btn-warning btn-form">Atualizar</button>
-                        </div>
+                        </div> 
                     </div>
                 </form>
 
@@ -233,6 +233,7 @@
                             <tr>
                                 <th scope="col">Relatório</th>
                                 <th scope="col">Data</th>
+                                <th scope="col">Usuário</th>
                                 <th scope="col">Editar/Desativar/Visualizar</th>
                             </tr>
                         </thead>
