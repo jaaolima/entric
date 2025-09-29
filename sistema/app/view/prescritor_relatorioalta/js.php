@@ -100,7 +100,7 @@ function fc_retorno_pacientes(){
                     }
                 }
 
-                tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td class="text-center"><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input disponivel" id="disponivel'+item.id+'" onchange="disponivel('+item.id+', this)" '+status+'><label class="custom-control-label" for="disponivel'+item.id+'"></label></div></td><td> '+ editar +' </td></tr>';
+                tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td>' + item.ds_nome_usuario + '</td><td class="text-center"><div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input disponivel" id="disponivel'+item.id+'" onchange="disponivel('+item.id+', this)" '+status+'><label class="custom-control-label" for="disponivel'+item.id+'"></label></div></td><td> '+ editar +' </td></tr>';
             });
 
             $('#table_lista_pacientes > tbody').empty();

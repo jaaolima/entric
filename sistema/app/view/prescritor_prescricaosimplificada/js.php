@@ -84,7 +84,7 @@ function fc_retorno_pacientes(){
                     }
                 }
 
-                tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td><td> '+ editar +' </td></tr>';
+                tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td>><td>' + item.ds_nome_usuaro + '</td><td> '+ editar +' </td></tr>';
             });
 
             $('#table_lista_pacientes > tbody').empty();

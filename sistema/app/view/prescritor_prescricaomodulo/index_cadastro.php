@@ -10,7 +10,7 @@
         $id_admissao_redirecionado = $_SESSION['paciente_redirect']['id_admissao'];
         $_SESSION['paciente_redirect']['id_admissao'] = null;
         $sistema = 'ibranutro';
-        $_SESSION['paciente_redirect']['sistema'] = null;
+        $_SESSION['paciente_redirect']['sistema'] = null; 
     }
 
     $ds_nome = '';
@@ -241,6 +241,7 @@
                             <tr>
                                 <th scope="col">Relatório</th>
                                 <th scope="col">Data</th>
+                                <th scope="col">Usuário</th>
                                 <th scope="col">Editar/Desativar/Visualizar</th>
                             </tr>
                         </thead>
