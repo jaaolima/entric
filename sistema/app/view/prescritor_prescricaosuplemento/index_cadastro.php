@@ -104,13 +104,14 @@
                 <?php
 
                 if ($sistema == 'EN' || $sistema == 'ibranutro') {
-                    // Usar o ID do hospital como chave e o nome como valor para o select
-                    $hospitais_select = array("" => "Selecione") + $hospitais_map;
-                    $id_hospital_selecionado = null;
-                    if (!empty($ds_hospital)) {
-                        $id_hospital_selecionado = array_search($ds_hospital, $hospitais_map);
+                    // Usar nomes dos hospitais como chaves e valores para o select
+                    $hospitais_select_por_nome = [];
+                    foreach ($hospitais_map as $id => $nome) {
+                        // A chave e o valor da opção serão o NOME do hospital
+                        $hospitais_select_por_nome[$nome] = $nome;
                     }
-                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $id_hospital_selecionado, "select" => $hospitais_select);
+                    $hospitais_select_por_nome = array("" => "Selecione") + $hospitais_select_por_nome;
+                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome);
                 } else {
                     $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital);
                 }
