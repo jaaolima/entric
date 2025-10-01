@@ -10020,8 +10020,8 @@ $app->group("", function () use ($app) {
 							$dados_paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
 							if($dados_paciente['sistema'] == 'EN'){
 								if($dados_paciente['id_paciente'] != ''){
-									$bind = array(':st_orientado' => '1');
-									$paciente = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=".$dados_paciente['id_paciente'], $bind);
+									$bind = array(':st_orientado' => 'S');
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10159,8 +10159,8 @@ $app->group("", function () use ($app) {
 							$dados_paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
 							if($dados_paciente['sistema'] == 'EN'){
 								if($dados_paciente['id_paciente'] != ''){
-									$bind = array(':st_orientado' => '1');
-									$paciente = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=".$dados_paciente['id_paciente'], $bind);
+									$bind = array(':st_orientado' => 'S');
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10300,8 +10300,8 @@ $app->group("", function () use ($app) {
 								$dados_paciente = $db->select_single_to_array("pacientes_modulo", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
 								if($dados_paciente['sistema'] == 'EN'){
 									if($dados_paciente['id_paciente'] != ''){
-										$bind = array(':st_orientado' => '1');
-										$paciente = $db_ibranutro->update("tb_paciente_estado_nutricional", "WHERE id_paciente=".$dados_paciente['id_paciente'], $bind);
+										$bind = array(':st_orientado' => 'S');
+										$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
 									}
 								}
 								if($dados_paciente['sistema'] == 'ibranutro'){
@@ -11372,7 +11372,7 @@ $app->group("", function () use ($app) {
 						//retornar para null
 						$_SESSION['paciente_redirect']['id_admissao'] = null;
 					}
-					if($sistema == 'EN'){
+					if($sistema == 'EN2'){
 						if($dados['id_paciente'] == ''){
 							$dados['id_paciente'] = null;
 						}
@@ -11394,7 +11394,6 @@ $app->group("", function () use ($app) {
 		
 						//retornar para null
 						$_SESSION['paciente_redirect']['id_paciente'] = null;
-		
 					}
 				}else{
 					$bind = array(	':id_prescritor' => $id_prescritor,
@@ -11494,7 +11493,7 @@ $app->group("", function () use ($app) {
 						$_SESSION['paciente_redirect']['id_admissao'] = null;
 		
 					}
-					if($sistema == 'EN'){
+					if($sistema == 'EN2'){
 						if($dados['id_paciente'] == ''){
 							$dados['id_paciente'] = null;
 						}
@@ -11614,7 +11613,7 @@ $app->group("", function () use ($app) {
 						$_SESSION['paciente_redirect']['id_admissao'] = null;
 		
 					}
-					if($sistema == 'EN'){
+					if($sistema == 'EN2'){
 						if($dados['id_paciente'] == ''){
 							$dados['id_paciente'] = null;
 						}
