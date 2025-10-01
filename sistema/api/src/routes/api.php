@@ -6448,6 +6448,22 @@ $app->group("", function () use ($app) {
 														WHERE id_paciente=".$id_paciente, 
 														null);
 				}
+				if($sistema == 'EN2'){
+					$id_paciente = $request->getParam("id_paciente");
+					$paciente = $db->select_single_to_array("pacientes_suplemento",
+														"*",
+														"
+														WHERE id_admissao_en=".$id_paciente, 
+														null);
+					if(!$paciente){
+						$nu_atendimento = $request->getParam("nu_atendimento");
+						$paciente = $db->select_single_to_array("pacientes_suplemento",
+														"*",
+														"
+														WHERE nu_atendimento=".$nu_atendimento, 
+														null);
+					}
+				}
 				
 
 		        $data = $paciente;
@@ -6498,6 +6514,23 @@ $app->group("", function () use ($app) {
 														WHERE id_paciente=".$id_paciente, 
 														null);
 				}
+				if($sistema == 'EN2'){
+					$id_paciente = $request->getParam("id_paciente");
+					$paciente = $db->select_single_to_array("pacientes_modulo",
+														"*",
+														"
+														WHERE id_admissao_en=".$id_paciente, 
+														null);
+					if(!$paciente){
+						$nu_atendimento = $request->getParam("nu_atendimento");
+						$paciente = $db->select_single_to_array("pacientes_modulo",
+														"*",
+														"
+														WHERE nu_atendimento=".$nu_atendimento, 
+														null);
+					}
+				}
+				
 				
 
 		        $data = $paciente;
@@ -6631,6 +6664,22 @@ $app->group("", function () use ($app) {
 														WHERE id_paciente=".$id_paciente, 
 														null);
 				}
+				if($sistema == 'EN2'){
+					$id_paciente = $request->getParam("id_paciente");
+					$paciente = $db->select_single_to_array("pacientes_simplificada",
+														"*",
+														"
+														WHERE id_admissao_en=".$id_paciente, 
+														null);
+					if(!$paciente){
+						$nu_atendimento = $request->getParam("nu_atendimento");
+						$paciente = $db->select_single_to_array("pacientes_simplificada",
+														"*",
+														"
+														WHERE nu_atendimento=".$nu_atendimento, 
+														null);
+					}
+				}
 
 		        $data = $paciente;
 			}
@@ -6666,11 +6715,20 @@ $app->group("", function () use ($app) {
 				$sistema = $request->getParam("sistema");
 				if($sistema == 'EN'){
 					$id_paciente = $request->getParam("id_paciente");
-		        	$paciente = $db_ibranutro->select_single_to_array("tb_paciente_estado_nutricional",
+		        	$paciente_admissao = $db_ibranutro->select_single_to_array("en.tb_admissao_en",
 		                                            "*",
 		                                            "
-		                                            WHERE id_paciente=".$id_paciente, 
+		                                            WHERE id_admissao_en=".$id_paciente, 
 		                                            null);
+
+					$paciente = $db_ibranutro->select_single_to_array("tb_paciente",
+									"*",
+									"
+									WHERE id_paciente=".$paciente_admissao['id_paciente'], 
+									null);
+
+					$paciente['nu_atendimento'] = $paciente_admissao['nu_atendimento'];
+					$paciente['id_hospital'] = $paciente_admissao['id_hospital'];
 				}
 				if($sistema == 'ibranutro'){
 					$id_admissao = $request->getParam("id_admissao");
