@@ -17,15 +17,15 @@ class HomeController extends Controller {
         }
         else if (isset($bruker->type) and ($bruker->type == "prescritor")){
             //Redirect(BASE_PATH . '/home/prescritor');
-            if($bruker->redirect == 'simplificada'){
-                Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');
-            }else if($bruker->redirect == "suplemento"){
-                Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');
-            }else if($bruker->redirect == "modulos"){
-                Redirect(BASE_PATH . '/prescritor_prescricaomodulo');
-            }else{
-                Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');       
-            }
+            // if($bruker->redirect == 'simplificada'){
+            //     Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');
+            // }else if($bruker->redirect == "suplemento"){
+            //     Redirect(BASE_PATH . '/prescritor_prescricaosuplemento');
+            // }else if($bruker->redirect == "modulos"){
+            //     Redirect(BASE_PATH . '/prescritor_prescricaomodulo');
+            // }else{
+            //     Redirect(BASE_PATH . '/prescritor_prescricaosimplificada');       
+            // }
         }
         else if (isset($bruker->type) and ($bruker->type == "administrador")){
             Redirect(BASE_PATH . '/home/administrador');   
