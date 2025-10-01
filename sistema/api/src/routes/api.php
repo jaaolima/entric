@@ -6460,7 +6460,7 @@ $app->group("", function () use ($app) {
 						$paciente = $db->select_single_to_array("pacientes_suplemento",
 														"*",
 														"
-														WHERE nu_atendimento=".$nu_atendimento, 
+														WHERE atendimento=".$nu_atendimento, 
 														null);
 					}
 				}
@@ -6526,7 +6526,7 @@ $app->group("", function () use ($app) {
 						$paciente = $db->select_single_to_array("pacientes_modulo",
 														"*",
 														"
-														WHERE nu_atendimento=".$nu_atendimento, 
+														WHERE atendimento=".$nu_atendimento, 
 														null);
 					}
 				}
@@ -6676,7 +6676,7 @@ $app->group("", function () use ($app) {
 						$paciente = $db->select_single_to_array("pacientes_simplificada",
 														"*",
 														"
-														WHERE nu_atendimento=".$nu_atendimento, 
+														WHERE atendimento=".$nu_atendimento, 
 														null);
 					}
 				}
