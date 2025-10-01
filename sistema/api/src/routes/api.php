@@ -11385,7 +11385,7 @@ $app->group("", function () use ($app) {
 										':atendimento' => $dados["atendimento"],
 										':telefone' => $dados["telefone"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
-										':id_paciente' => $dados["id_paciente"],    
+										':id_admissao_en' => $dados["id_paciente"],    
 										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_simplificada", $bind);
@@ -11504,7 +11504,7 @@ $app->group("", function () use ($app) {
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),    
-										':id_paciente' => $dados["id_paciente"],
+										':id_admissao_en' => $dados["id_paciente"],
 										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_suplemento", $bind);
@@ -11624,7 +11624,7 @@ $app->group("", function () use ($app) {
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),    
-										':id_paciente' => $dados["id_paciente"],
+										':id_admissao_en' => $dados["id_paciente"],
 										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_modulo", $bind);
