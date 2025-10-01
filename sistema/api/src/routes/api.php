@@ -6713,7 +6713,7 @@ $app->group("", function () use ($app) {
 
 			if ($usuario){
 				$sistema = $request->getParam("sistema");
-				if($sistema == 'EN'){
+				if($sistema == 'EN2'){
 					$id_paciente = $request->getParam("id_paciente");
 		        	$paciente_admissao = $db_ibranutro->select_single_to_array("en.tb_admissao_en",
 		                                            "*",
