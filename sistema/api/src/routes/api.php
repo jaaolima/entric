@@ -10018,7 +10018,7 @@ $app->group("", function () use ($app) {
 		                    */
 							//salvar orientado EN
 							$dados_paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
-							if($dados_paciente['sistema'] == 'EN'){
+							if($dados_paciente['sistema'] == 'EN2'){
 								if($dados_paciente['id_paciente'] != ''){
 									$bind = array(':st_orientado' => 'S');
 									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
@@ -10157,7 +10157,7 @@ $app->group("", function () use ($app) {
 		                    */
 							//salvar orientado EN
 							$dados_paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
-							if($dados_paciente['sistema'] == 'EN'){
+							if($dados_paciente['sistema'] == 'EN2'){
 								if($dados_paciente['id_paciente'] != ''){
 									$bind = array(':st_orientado' => 'S');
 									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
@@ -10298,7 +10298,7 @@ $app->group("", function () use ($app) {
 							$dados_relatorio = $db->select_single_to_array("relatorios_modulo", "*", "WHERE id=:id", [':id' => $dados['id_relatorio']]);
 							if($dados_relatorio['categoria_modulo_proteina']){
 								$dados_paciente = $db->select_single_to_array("pacientes_modulo", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
-								if($dados_paciente['sistema'] == 'EN'){
+								if($dados_paciente['sistema'] == 'EN2'){
 									if($dados_paciente['id_paciente'] != ''){
 										$bind = array(':st_orientado' => 'S');
 										$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
