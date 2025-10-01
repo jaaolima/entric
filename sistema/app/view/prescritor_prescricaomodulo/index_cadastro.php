@@ -20,10 +20,10 @@
         '18' => 'HOSPITAL SÃO LUIZ JABAQUARA',
         '19' => 'HOSPITAL DA CRIANÇA',
     );
-    if($_SESSION['paciente_redirect']['sistema'] == 'EN'){ 
+    if($_SESSION['paciente_redirect']['sistema'] == 'EN2'){ 
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
         $_SESSION['paciente_redirect']['id_paciente'] = null;
-        $sistema = 'EN';
+        $sistema = 'EN2';
         $_SESSION['paciente_redirect']['sistema'] = null;
     }
     if($_SESSION['paciente_redirect']['sistema'] == 'ibranutro'){
@@ -94,7 +94,7 @@
             <form action="prescritor_relatorioalta" id="form_cadastrar_paciente" method="post" autocomplete="off" onsubmit="return false">
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
                 <input type="hidden" name="login_tipo" id="login_tipo" value="<?php echo $_SESSION['login']; ?>">
-                <?php if($sistema == 'EN') : ?>
+                <?php if($sistema == 'EN2') : ?>
                 <input type="hidden" name='id_paciente' value="<?php echo $id_paciente_redirecionado; ?>">
                 <input type="hidden" name='sistema' value="<?php echo $sistema; ?>">
                 <?php endif; ?>
@@ -104,7 +104,7 @@
                 <?php endif; ?>
                 <?php
 
-                if ($sistema == 'EN' || $sistema == 'ibranutro') {
+                if ($sistema == 'EN2' || $sistema == 'ibranutro') {
                     // Usar nomes dos hospitais como chaves e valores para o select
                     $hospitais_select_por_nome = [];
                     foreach ($hospitais_map as $id => $nome) {
