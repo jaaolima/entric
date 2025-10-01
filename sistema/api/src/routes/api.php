@@ -6727,6 +6727,7 @@ $app->group("", function () use ($app) {
 									WHERE id_paciente=".$paciente_admissao['id_paciente'], 
 									null);
 
+					$paciente['dt_nascimento'] = $paciente['dt_nasc'];
 					$paciente['nu_atendimento'] = $paciente_admissao['nu_atendimento'];
 					$paciente['id_hospital'] = $paciente_admissao['id_hospital'];
 				}
