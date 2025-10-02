@@ -1441,7 +1441,7 @@ function isNumeric(evt) {
 
 $(function(){
     //$(document).on("keydown", disableF5);
-    hospital = $("#valor_hospital").val();
+    hospital = $("#valor_hospital").val(); 
     $("#hospital option[value='"+hospital+"']").prop("selected", true);
 
     $('#avaliacao .data').datepicker({
@@ -2335,12 +2335,12 @@ $(function(){
         }
         if (calculo_fil_todos == 'Todos') {
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', true);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_normocalórico').prop('checked', true);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normocalorico').prop('checked', true);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalorico').prop('checked', true);
         }else{
             $('#apresentacao .filtros_oral #calculo_oral_carac_hipocalorico').prop('checked', false);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_normocalórico').prop('checked', false);
-            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalórico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_normocalorico').prop('checked', false);
+            $('#apresentacao .filtros_oral #calculo_oral_carac_hipercalorico').prop('checked', false);
         }
     });
 
