@@ -253,7 +253,7 @@ $app->group("", function () use ($app) {
 	        }else if ($tipo == 2){
 	            $tipo_login = "prescritor";
 	            $bind = array(':email' => ($login));
-	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
+	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email and st_ativo <> 'D'", $bind);
 				$usuario = $retorno;
 				$usuario_login = 'ibranutro';
 				if(!$retorno){
@@ -281,7 +281,7 @@ $app->group("", function () use ($app) {
 	        }else if (($tipo == 3) or ($tipo == -1)){
 	            $tipo_login = "administrador";
 	            $bind = array(':email' => ($login));
-	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email", $bind);
+	            $retorno = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE ds_usuario=:email and st_ativo <> 'D'", $bind);
 				$usuario_login = 'ibranutro';
 				$usuario = $retorno;
 				if(!$retorno){
