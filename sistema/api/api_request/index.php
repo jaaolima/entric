@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_paciente = $data['id_admissao_en'];
         }
 
+        var_dump($data);
+
         $dados = [];
         $pacientes_encontrados = [];
         $relatorios_encontrados = [];
