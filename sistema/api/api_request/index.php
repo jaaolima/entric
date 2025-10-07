@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Busca em todas as tabelas de pacientes
         foreach ($tabelas_pacientes as $tabela) {
-            $paciente = $db->select_single_to_array($tabela, "*", "WHERE id_paciente=:id", [':id' => $id_paciente]);
+            $paciente = $db->select_single_to_array($tabela, "*", "WHERE id_admissao_en=:id", [':id' => $id_paciente]);
             if ($paciente) {
                 $pacientes_encontrados = array_merge($pacientes_encontrados, $paciente);
                 // if($tabelas_pacientes == "pacientes"){
