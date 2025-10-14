@@ -11316,7 +11316,7 @@ $app->group("", function () use ($app) {
 			}
 			if ($usuario){
 				$dados = $request->getParam("dados");
-				$id_prescritor = $request->getParam("id_prescritor");
+				$id_prescritor = $request->getParam("id_prescritor"); 
 				$retorno = null;
 
 				// if (isset($dados['cpf']) and ($dados['cpf'] == "") and ($dados['cpf_possui'] == "0")){
@@ -11358,6 +11358,7 @@ $app->group("", function () use ($app) {
 						$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
+										':cpf' => $dados["cpf"],
 										':peso' => $dados["peso"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11380,6 +11381,7 @@ $app->group("", function () use ($app) {
 						$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
+										':cpf' => $dados["cpf"],
 										':peso' => $dados["peso"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11399,6 +11401,7 @@ $app->group("", function () use ($app) {
 					$bind = array(	':id_prescritor' => $id_prescritor,
 									':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 								':nome' => $dados["nome"],
+								':cpf' => $dados["cpf"],
 								':peso' => $dados["peso"],
 								':hospital' => $dados["hospital"],
 								':atendimento' => $dados["atendimento"],
