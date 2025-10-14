@@ -491,7 +491,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								}
 							}
 						}
-					}
+					} 
 					if (($relatorio['calculo_apres_aberto_po'] == 1) and (count($_produtos_nomes) > 0)) {
 						// if (!$landscape){
 						// 	echo "</div>";
