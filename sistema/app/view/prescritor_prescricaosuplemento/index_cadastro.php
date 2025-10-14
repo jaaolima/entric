@@ -187,7 +187,7 @@
                                     "required" => "required",
                                 ),
                                 "up_cpf" => array(
-                                    "col" => 12,
+                                    "col" => 4,
                                     "label" => "CPF:",
                                     "required" => "required",
                                 ),
