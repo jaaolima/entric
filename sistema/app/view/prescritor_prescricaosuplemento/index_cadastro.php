@@ -15,7 +15,7 @@
         '13' => 'HOSPITAL SANTA ISABEL',
         '14' => 'HOSPITAL DAHER',
         '15' => 'HOSPITAL SÃO LUIZ ITAIM',
-        '16' => 'HOSPITAL SÃO LUIZ MORUMBI',
+        '16' => 'HOSPITAL SÃO LUIZ MORUMBI', 
         '17' => 'TERCEIROS VILA NOVA STAR',
         '18' => 'HOSPITAL SÃO LUIZ JABAQUARA',
         '19' => 'HOSPITAL DA CRIANÇA',
@@ -133,6 +133,11 @@
                                         "required" => "required",
                                         "value" => $nu_cpf
                                     ),
+                                    "cpf_possui" => array(
+                                        "col" => 3,
+                                        "label" => "Desconhece / Não possui",
+                                        "checkbox" => true
+                                    ),
                                     "data_nascimento" => array(
                                         "col" => 5,
                                         "label" => "Data de Nascimento:",
@@ -185,6 +190,11 @@
                                     "col" => 12,
                                     "label" => "CPF:",
                                     "required" => "required",
+                                ),
+                                "up_cpf_possui" => array(
+                                    "col" => 3,
+                                    "label" => "Desconhece / Não possui",
+                                    "checkbox" => true
                                 ),
                                 "up_data_nascimento" => array(
                                     "col" => 5,

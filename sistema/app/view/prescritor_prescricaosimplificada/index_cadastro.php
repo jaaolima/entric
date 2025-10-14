@@ -134,6 +134,11 @@
                                         "required" => "required",
                                         "value" => $nu_cpf
                                     ),
+                                    "cpf_possui" => array(
+                                        "col" => 3,
+                                        "label" => "Desconhece / Não possui",
+                                        "checkbox" => true
+                                    ),
                                     "data_nascimento" => array(
                                         "col" => 4,
                                         "label" => "Data de Nascimento:",
@@ -237,9 +242,14 @@
                                     "required" => "required",
                                 ),
                                 "up_cpf" => array(
-                                    "col" => 12,
-                                    "label" => "CPF:",
+                                    "col" => 4,
                                     "required" => "required",
+                                    "label" => "CPF:",
+                                ),
+                                "up_cpf_possui" => array(
+                                    "col" => 3,
+                                    "label" => "Desconhece / Não possui",
+                                    "checkbox" => true
                                 ),
                                 "up_data_nascimento" => array(
                                     "col" => 4,

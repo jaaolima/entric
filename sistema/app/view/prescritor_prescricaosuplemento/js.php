@@ -21,7 +21,7 @@
     for (var i = 0, l = my_selects.length;   i < l; ++i) {
       for (var j = 0, m = my_selects[i].options.length; j < m; ++j) {
         if (my_selects[i].options[j].selected === true) { 
-          result_selects[i].options[j].selected = true;
+          result_selects[i].options[j].selected = true; 
         }
       }
     }

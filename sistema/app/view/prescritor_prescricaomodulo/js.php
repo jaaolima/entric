@@ -1673,7 +1673,7 @@ $(function(){
     $(".plusminus").inputSpinner();  
 
     // cadastro   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-    $("input[name=cpf_possui]").change(function() {
+    $("input[name=cpf_possui]").change(function() { 
         if(this.checked) {
             $("#cpf").removeClass("error");
             $("#cpf").prop('required', false);

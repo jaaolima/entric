@@ -133,6 +133,11 @@
                                             "label" => "Nome do Paciente:",
                                             "required" => "required",
                                         ),
+                                        "up_cpf_possui" => array(
+                                            "col" => 3,
+                                            "label" => "Desconhece / Não possui",
+                                            "checkbox" => true
+                                        ),
                                         "up_celular" => array(
                                             "col" => 4,
                                             "label" => "Celular:",
