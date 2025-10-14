@@ -53,7 +53,7 @@
         $_SESSION['paciente_redirect']['nu_cpf'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
         $id_hospital = $_SESSION['paciente_redirect']['id_hospital'];
-        $ds_hospital = isset($hospitais_map[$id_hospital]) ? $hospitais_map[$id_hospital] : '';
+        $ds_hospital = isset($hospitais_map[$id_hospital]) ? $hospitais_map[$id_hospital] : ''; 
         $_SESSION['paciente_redirect']['id_hospital'] = null;
 
         $dt_nascimento = $_SESSION['paciente_redirect']['dt_nascimento'];
