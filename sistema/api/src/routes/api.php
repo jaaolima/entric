@@ -11345,7 +11345,11 @@ $app->group("", function () use ($app) {
 				}elseif($dados['login_tipo'] == 'entric'){
 					$id_prescritor_ibranutro = null;
 				}
-
+				if(isset($dados['cpf'])){
+					$cpf = chknumber($dados["cpf"]);
+				}else{
+					$cpf = null;
+				}
 				// $campo_prescritor = ':id_prescritor';
 
 				if(isset($dados['sistema'])){
@@ -11358,7 +11362,7 @@ $app->group("", function () use ($app) {
 						$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
-										':cpf' => chknumber($dados["cpf"]),
+										':cpf' => $cpf,
 										':peso' => $dados["peso"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11381,7 +11385,7 @@ $app->group("", function () use ($app) {
 						$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
-										':cpf' => chknumber($dados["cpf"]),
+										':cpf' => $cpf,
 										':peso' => $dados["peso"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11401,7 +11405,7 @@ $app->group("", function () use ($app) {
 					$bind = array(	':id_prescritor' => $id_prescritor,
 									':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 								':nome' => $dados["nome"],
-								':cpf' => chknumber($dados["cpf"]),
+								':cpf' => $cpf,
 								':peso' => $dados["peso"],
 								':hospital' => $dados["hospital"],
 								':atendimento' => $dados["atendimento"],
@@ -11472,6 +11476,12 @@ $app->group("", function () use ($app) {
 				}elseif($dados['login_tipo'] == 'entric'){
 					$campo_prescritor = ':id_prescritor';
 				}
+
+				if(isset($dados['cpf'])){
+					$cpf = chknumber($dados["cpf"]);
+				}else{
+					$cpf = null;
+				}
 				// $campo_prescritor = ':id_prescritor';
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
@@ -11482,7 +11492,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
-										':cpf' => chknumber($dados["cpf"]),
+										':cpf' => $cpf,
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11504,7 +11514,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
-										':cpf' => chknumber($dados["cpf"]),
+										':cpf' => $cpf,
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11522,7 +11532,7 @@ $app->group("", function () use ($app) {
 				}else{
 					$bind = array(	$campo_prescritor => $id_prescritor,
 									':nome' => $dados["nome"],
-									':cpf' => chknumber($dados["cpf"]),
+									':cpf' => $cpf,
 									':telefone' => $dados["telefone"],
 									':hospital' => $dados["hospital"],
 									':atendimento' => $dados["atendimento"],
@@ -11595,6 +11605,11 @@ $app->group("", function () use ($app) {
 				}elseif($dados['login_tipo'] == 'entric'){
 					$campo_prescritor = ':id_prescritor';
 				}
+				if(isset($dados['cpf'])){
+					$cpf = chknumber($dados["cpf"]);
+				}else{
+					$cpf = null;
+				}
 				// $campo_prescritor = ':id_prescritor';
 				if(isset($dados['sistema'])){
 					$sistema = $dados['sistema'];
@@ -11605,7 +11620,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
-										':cpf' => chknumber($dados["cpf"]),
+										':cpf' => $cpf,
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11627,7 +11642,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
-										':cpf' => chknumber($dados["cpf"]),
+										':cpf' => $cpf,
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11645,7 +11660,7 @@ $app->group("", function () use ($app) {
 				}else{
 					$bind = array(	$campo_prescritor => $id_prescritor,
 									':nome' => $dados["nome"],
-									':cpf' => chknumber($dados["cpf"]),
+									':cpf' => $cpf,
 									':telefone' => $dados["telefone"],
 									':hospital' => $dados["hospital"],
 									':atendimento' => $dados["atendimento"],
