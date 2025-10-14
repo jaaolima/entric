@@ -21,6 +21,7 @@
         '19' => 'HOSPITAL DA CRIANÇA',
     );
     $ds_nome = '';
+    $nu_cpf = '';
     $ds_hospital = '';
     $dt_nascimento = '';
     $nu_telefone = '';
@@ -28,7 +29,7 @@
     $sistema = '';
     if($_SESSION['paciente_redirect']['sistema'] == 'EN2'){
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
-        $_SESSION['paciente_redirect']['id_paciente'] = null;
+        $_SESSION['paciente_redirect']['id_paciente'] = null; 
         $sistema = 'EN2';
         $_SESSION['paciente_redirect']['sistema'] = null;
     }
@@ -46,6 +47,8 @@
     }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
+        $nu_cpf = $_SESSION['paciente_redirect']['nu_cpf'];
+        $_SESSION['paciente_redirect']['nu_cpf'] = null;
 
         $id_hospital = $_SESSION['paciente_redirect']['id_hospital'];
         $ds_hospital = isset($hospitais_map[$id_hospital]) ? $hospitais_map[$id_hospital] : '';
@@ -124,6 +127,12 @@
                                         "required" => "required",
                                         "value" => $ds_nome
                                     ),
+                                    "cpf" => array(
+                                        "col" => 4,
+                                        "label" => "CPF:",
+                                        "required" => "required",
+                                        "value" => $nu_cpf
+                                    ),
                                     "data_nascimento" => array(
                                         "col" => 5,
                                         "label" => "Data de Nascimento:",
@@ -170,6 +179,11 @@
                                 "up_nome" => array(
                                     "col" => 12,
                                     "label" => "Nome do Paciente:",
+                                    "required" => "required",
+                                ),
+                                "up_cpf" => array(
+                                    "col" => 12,
+                                    "label" => "CPF:",
                                     "required" => "required",
                                 ),
                                 "up_data_nascimento" => array(

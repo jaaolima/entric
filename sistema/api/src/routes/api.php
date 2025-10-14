@@ -11358,7 +11358,7 @@ $app->group("", function () use ($app) {
 						$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
-										':cpf' => $dados["cpf"],
+										':cpf' => chknumber($dados["cpf"]),
 										':peso' => $dados["peso"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11381,7 +11381,7 @@ $app->group("", function () use ($app) {
 						$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 										':nome' => $dados["nome"],
-										':cpf' => $dados["cpf"],
+										':cpf' => chknumber($dados["cpf"]),
 										':peso' => $dados["peso"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11401,7 +11401,7 @@ $app->group("", function () use ($app) {
 					$bind = array(	':id_prescritor' => $id_prescritor,
 									':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 								':nome' => $dados["nome"],
-								':cpf' => $dados["cpf"],
+								':cpf' => chknumber($dados["cpf"]),
 								':peso' => $dados["peso"],
 								':hospital' => $dados["hospital"],
 								':atendimento' => $dados["atendimento"],
@@ -11482,6 +11482,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
+										':cpf' => chknumber($dados["cpf"]),
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11503,6 +11504,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
+										':cpf' => chknumber($dados["cpf"]),
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11520,6 +11522,7 @@ $app->group("", function () use ($app) {
 				}else{
 					$bind = array(	$campo_prescritor => $id_prescritor,
 									':nome' => $dados["nome"],
+									':cpf' => chknumber($dados["cpf"]),
 									':telefone' => $dados["telefone"],
 									':hospital' => $dados["hospital"],
 									':atendimento' => $dados["atendimento"],
@@ -11602,6 +11605,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
+										':cpf' => chknumber($dados["cpf"]),
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11623,6 +11627,7 @@ $app->group("", function () use ($app) {
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
+										':cpf' => chknumber($dados["cpf"]),
 										':telefone' => $dados["telefone"],
 										':hospital' => $dados["hospital"],
 										':atendimento' => $dados["atendimento"],
@@ -11640,6 +11645,7 @@ $app->group("", function () use ($app) {
 				}else{
 					$bind = array(	$campo_prescritor => $id_prescritor,
 									':nome' => $dados["nome"],
+									':cpf' => chknumber($dados["cpf"]),
 									':telefone' => $dados["telefone"],
 									':hospital' => $dados["hospital"],
 									':atendimento' => $dados["atendimento"],

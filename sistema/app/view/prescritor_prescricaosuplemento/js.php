@@ -1450,6 +1450,7 @@ $(function(){
         autoclose: true
     });
 
+    $('#cpf').mask("999.999.999-99");
     $('#kcal_kg').mask("9?9");
     $('#kcal_dia').mask("9?999");
     $('#proteina_kg').mask("9?,99");
@@ -1459,7 +1460,7 @@ $(function(){
     $('#telefone').mask("(99)99999-9999");
     $('#up_telefone').mask("(99)99999-9999");
 
-
+    $('#up_cpf').mask("999.999.999-99");
     $('#up_kcal_kg').mask("9?9");
     $('#up_kcal_dia').mask("9?999");
     $('#up_proteina_kg').mask("9?,99");
