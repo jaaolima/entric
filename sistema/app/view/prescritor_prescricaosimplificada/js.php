@@ -3096,13 +3096,14 @@ $(function(){
             var frm = _this.serialize();   
             var _id_paciente = $("#id_paciente").val();
             var _id_relatorio = $("#id_relatorio").val();
-            login_tipo = $("#login_tipo").val();
+            login_tipo = $("#login_tipo").val(); 
+            atendimento = $("#atendimento").val();
 
 
             $.ajax({
                 type: "POST",
                 url: "ajax/relatorio_salvar_simplificada",
-                data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&login_tipo="+login_tipo,
+                data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&login_tipo="+login_tipo+"&atendimento="+atendimento,
                 cache: false,
                 dataType: 'json',
                 success: function( data ){

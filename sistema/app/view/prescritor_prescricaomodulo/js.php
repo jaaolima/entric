@@ -1541,7 +1541,7 @@ $(function(){
     $('#agua_kg').mask("9?9");
     $('#agua_dia').mask("9?999");
     $('#telefone').mask("(99)99999-9999");
-    $('#up_telefone').mask("(99)99999-9999");
+    $('#up_telefone').mask("(99)99999-9999"); 
 
     $('#up_cpf').mask("999.999.999-99");
     $('#up_kcal_kg').mask("9?9");
@@ -2975,11 +2975,12 @@ $(function(){
             var _id_paciente = $("#id_paciente").val();
             var _id_relatorio = $("#id_relatorio").val();
             login_tipo = $("#login_tipo").val();
+            atendimento = $("#atendimento").val();
 
             $.ajax({
                 type: "POST",
                 url: "ajax/relatorio_salvar_modulo",
-                data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&login_tipo="+login_tipo,
+                data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&login_tipo="+login_tipo+"&atendimento="+atendimento,
                 cache: false,
                 dataType: 'json',
                 success: function( data ){

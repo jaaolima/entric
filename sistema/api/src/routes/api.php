@@ -8768,6 +8768,7 @@ $app->group("", function () use ($app) {
 
 				$id_prescritor = $request->getParam("id_prescritor");
 
+				if (!isset($dados['atendimento'])) $dados['atendimento'] = null;
 				if (!isset($dados['kcal_kg'])) $dados['kcal_kg'] = null;
 				if (!isset($dados['kcal_dia'])) $dados['kcal_dia'] = null;
 				if (!isset($dados['proteina_kg'])) $dados['proteina_kg'] = null;
@@ -8821,6 +8822,7 @@ $app->group("", function () use ($app) {
 
 		        $bind = array( 
 								$campo_prescritor => $id_prescritor,
+								':atendimento' => $dados['atendimento'],
 								':kcal_kg' => $dados['kcal_kg'],
 								':kcal_dia' => $dados['kcal_dia'],
 								':proteina_kg' => $dados['proteina_kg'],
@@ -8915,6 +8917,7 @@ $app->group("", function () use ($app) {
 
 				$id_prescritor = $request->getParam("id_prescritor");
 
+				if (!isset($dados['atendimento'])) $dados['atendimento'] = null;
 				if (!isset($dados['categoria'])) $dados['categoria'] = null;
 		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
 		        if (!isset($dados['tipo_prescricao'])) $dados['tipo_prescricao'] = null;
@@ -9018,7 +9021,7 @@ $app->group("", function () use ($app) {
 				}
 		        if (!isset($dados['dieta_formula'])) $dados['dieta_formula'] = null;
 		        if (!isset($dados['dieta_volume'])) $dados['dieta_volume'] = null;
-		        if (!isset($dados['dieta_infusao'])) $dados['dieta_infusao'] = null;
+		        if (!isset($dados['dieta_infusao'])) $dados['dieta_infusao'] = null; 
 		        if (!isset($dados['dieta_fracionamento_dia'])) $dados['dieta_fracionamento_dia'] = null;
 		        if (!isset($dados['dieta_horario_administracao'])) $dados['dieta_horario_administracao'] = null;
 		        if (!isset($dados['dieta_vazao_h'])) $dados['dieta_vazao_h'] = null;
@@ -9036,6 +9039,7 @@ $app->group("", function () use ($app) {
 
 		        $bind = array( 
 								$campo_prescritor => $id_prescritor,
+								':atendimento' => $dados['atendimento'],
 								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
 		                        ':tipo_prescricao' => $dados["tipo_prescricao"],
@@ -9130,6 +9134,7 @@ $app->group("", function () use ($app) {
 
 				$id_prescritor = $request->getParam("id_prescritor");
 
+				if (!isset($dados['atendimento'])) $dados['atendimento'] = null;
 				if (!isset($dados['categoria'])) $dados['categoria'] = null;
 		        if (!isset($dados['tipo_produto'])) $dados['tipo_produto'] = null;
 
@@ -9190,6 +9195,7 @@ $app->group("", function () use ($app) {
 
 		        $bind = array( 
 								$campo_prescritor => $id_prescritor,
+								':atendimento' => $dados['atendimento'],
 								':categoria' => $dados['categoria'],
 		                        ':tipo_produto' => $dados["tipo_produto"],
 		                        ':categoria_modulo_proteina' => $dados["categoria_modulo_proteina"],
@@ -10293,7 +10299,7 @@ $app->group("", function () use ($app) {
 							if($dados_paciente['sistema'] == 'cadastrado'){
 								if($dados_paciente['cpf'] != ''){
 									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."'", $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and atendimento ='".$relatorio['atendimento']."'", $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10438,7 +10444,7 @@ $app->group("", function () use ($app) {
 							if($dados_paciente['sistema'] == 'cadastrado'){
 								if($dados_paciente['cpf'] != ''){
 									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."'", $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and atendimento ='".$relatorio['atendimento']."'", $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10585,7 +10591,7 @@ $app->group("", function () use ($app) {
 								if($dados_paciente['sistema'] == 'cadastrado'){
 									if($dados_paciente['cpf'] != ''){
 										$bind = array(':st_orientado' => 'S');
-										$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."'", $bind);
+										$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and atendimento ='".$relatorio['atendimento']."'", $bind);
 									}
 								}
 								if($dados_paciente['sistema'] == 'ibranutro'){
