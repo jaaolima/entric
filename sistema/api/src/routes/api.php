@@ -10554,7 +10554,7 @@ $app->group("", function () use ($app) {
 							if($dados_paciente['sistema'] == 'EN2'){
 								if($dados_paciente['id_admissao_en'] != ''){
 									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en']." OR nu_cpf=".$dados_paciente['cpf'], $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10693,7 +10693,7 @@ $app->group("", function () use ($app) {
 							if($dados_paciente['sistema'] == 'EN2'){
 								if($dados_paciente['id_admissao_en'] != ''){
 									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en']." OR nu_cpf=".$dados_paciente['cpf'], $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10834,7 +10834,7 @@ $app->group("", function () use ($app) {
 								if($dados_paciente['sistema'] == 'EN2'){
 									if($dados_paciente['id_admissao_en'] != ''){
 										$bind = array(':st_orientado' => 'S');
-										$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+										$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE a.id_admissao_en=".$dados_paciente['id_admissao_en']." OR p.nu_cpf=".$dados_paciente['cpf'], $bind);
 									}
 								}
 								if($dados_paciente['sistema'] == 'ibranutro'){
