@@ -10553,8 +10553,9 @@ $app->group("", function () use ($app) {
 							$dados_paciente = $db->select_single_to_array("pacientes_simplificada", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
 							if($dados_paciente['sistema'] == 'EN2'){
 								if($dados_paciente['id_admissao_en'] != ''){
-									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en']." OR nu_cpf=".$dados_paciente['cpf'], $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+								}else{
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf=".$dados_paciente['cpf'], $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10692,8 +10693,9 @@ $app->group("", function () use ($app) {
 							$dados_paciente = $db->select_single_to_array("pacientes_suplemento", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
 							if($dados_paciente['sistema'] == 'EN2'){
 								if($dados_paciente['id_admissao_en'] != ''){
-									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en']." OR nu_cpf=".$dados_paciente['cpf'], $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+								}else{
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf=".$dados_paciente['cpf'], $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10832,9 +10834,11 @@ $app->group("", function () use ($app) {
 							if($dados_relatorio['categoria_modulo_proteina']){
 								$dados_paciente = $db->select_single_to_array("pacientes_modulo", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
 								if($dados_paciente['sistema'] == 'EN2'){
+									$bind = array(':st_orientado' => 'S');
 									if($dados_paciente['id_admissao_en'] != ''){
-										$bind = array(':st_orientado' => 'S');
-										$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE a.id_admissao_en=".$dados_paciente['id_admissao_en']." OR p.nu_cpf=".$dados_paciente['cpf'], $bind);
+										$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+									}else{
+										$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf=".$dados_paciente['cpf'], $bind);
 									}
 								}
 								if($dados_paciente['sistema'] == 'ibranutro'){
