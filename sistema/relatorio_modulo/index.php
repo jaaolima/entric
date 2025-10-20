@@ -1255,7 +1255,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<tbody>
 								<tr>
 									<?php 
-									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 and id <> 8 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
+									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 									if ($danone){
 										echo '<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">';
 										for ($i = 0; $i < count($danone); $i++) {
@@ -1289,7 +1289,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<tr>
 									<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:11px;padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-around;">
 										<?php 
-										$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 and id <> 8 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
+										$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 										if ($danone){
 											//echo "<p><strong>OUTROS</strong></p>";
 											for ($i = 0; $i < count($danone); $i++) {
