@@ -1474,6 +1474,16 @@ $(function(){
         }
     });
 
+    $('input:checkbox[name=cat_modulo[]]').on("click", function () {
+        if ($(this).val() == 'Proteína'){
+            if($(this).is(':checked')){
+                $("#div_tipo_proteina").show();
+            }else{
+                $("#div_tipo_proteina").hide();
+            }
+        }
+    });
+
     $("input:radio[name='apres_enteral[]']").change(function () {
         if ($("input[name='apres_enteral[]']:checked").val() == 'Aberto (Pó)') {
             $("#frmproduto .entric_comptitulo").html("Informações Nutricionais na Diluição Padrão (100ml)");
