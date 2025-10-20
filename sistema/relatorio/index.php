@@ -1271,7 +1271,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												if($usuario['login'] == 'ibranutro' && $danone[$i]['uf'] == 'DF'){
 													if($danone[$i]['id'] == '1' || $danone[$i]['id'] == '24'){
 														echo '<div style="width:40%;margin:10px;">
-																<p style="text-align: left;">';									
+																<p>';									
 																	echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
 																	if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
 																	if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
