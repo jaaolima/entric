@@ -4533,7 +4533,7 @@ $app->group("", function () use ($app) {
 					$array_carac = $dados['cat_modulo'];
 					$query.= ' (';
 					if(in_array('Proteína', $array_carac)){
-						$query.= ' OR (cat_modulo LIKE "%Proteína%")';
+						$query.= ' OR (cat_modulo LIKE "%Proteína%" AND (tipo_proteina = "'.$dados['tipo_proteina'].'"))';
 					}
 					if(in_array('Colágeno ou Aminoácidos', $array_carac)){
 						$query.= ' OR (cat_modulo LIKE "%Colágeno ou Aminoácidos%")';
@@ -4559,11 +4559,6 @@ $app->group("", function () use ($app) {
 					$query = substr($query, 4);
 					$query.= ' )';
 
-				}
-				if(isset($dados['cat_modulo'])){
-					if(in_array('Proteína', $array_carac)){
-						$query.= ' AND (tipo_proteina = '.$dados['tipo_proteina'].')';
-					}
 				}
 
 		        if ($query <> '') $query = 'WHERE (status=1) AND ('.$query.')';
