@@ -4531,7 +4531,6 @@ $app->group("", function () use ($app) {
 		        $query = '';
 				if(isset($dados['cat_modulo'])){
 					$array_carac = $dados['cat_modulo'];
-					$query.= ' (';
 					if(in_array('Proteína', $array_carac)){
 						$query.= ' OR (cat_modulo LIKE "%Proteína%" AND (tipo_proteina = "'.$dados['tipo_proteina'].'"))';
 					}
@@ -4557,8 +4556,6 @@ $app->group("", function () use ($app) {
 						$query.= ' OR (cat_modulo LIKE "%Espessante%")';
 					}
 					$query = substr($query, 4);
-					$query.= ' )';
-
 				}
 
 		        if ($query <> '') $query = 'WHERE (status=1) AND ('.$query.')';
