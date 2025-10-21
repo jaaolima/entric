@@ -2207,7 +2207,7 @@ $(function(){
         $('#cadastro').addClass('active').addClass('show').attr('aria-expanded','true');
     });
     $('#calculo_avancar').on('click', function() {
-        fc_salvar('calculo', true);
+        busca_produto_relatorio();
         if ($("input[name='cat_modulo[]']:checked").length > 0) {
             $("#modal_selecao").modal("toggle");
         }
