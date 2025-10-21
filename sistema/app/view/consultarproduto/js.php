@@ -1474,7 +1474,7 @@ $(function(){
         }
     });
 
-    $('input:checkbox[name=cat_modulo[]]').on("click", function () {
+    $('input:checkbox[name="cat_modulo[]"]').on("click", function () { 
         if ($(this).val() == 'Proteína'){
             if($(this).is(':checked')){
                 $("#div_tipo_proteina").show();
