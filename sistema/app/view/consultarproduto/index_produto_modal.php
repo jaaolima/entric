@@ -255,8 +255,24 @@
                                     <div class="row">
                                         <div class="col-6 p-4">
                                             <div class="form-check col-sm-12">
-                                                <input id="m_categoria_modulo_proteina" disabled required name="m_cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Proteína">
-                                                <label for="m_categoria_modulo_proteina" class="form-check-label radio-green">Proteína</label>
+                                                <div>
+                                                    <input id="m_categoria_modulo_proteina" disabled required name="m_cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Proteína">
+                                                    <label for="m_categoria_modulo_proteina" class="form-check-label radio-green">Proteína</label>
+                                                </div>
+                                                <div class="col-sm-12" id="div_m_tipo_proteina" style="display: none;">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-radio">
+                                                            <input id="m_tipo_proteina_animal" checked class="radio-outlined" name="m_tipo_proteina" type="radio" value="Animal">
+                                                            <label for="m_tipo_proteina_animal" class="radio-green">Animal</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-radio">
+                                                            <input id="m_tipo_proteina_vegetal" class="radio-outlined" name="m_tipo_proteina" type="radio" value="Vegetal">
+                                                            <label for="m_tipo_proteina_vegetal" class="radio-green">Vegetal</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="form-check col-sm-12">
                                                 <input id="m_categoria_modulo_colageno_aminoacidos" disabled name="m_cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Colágeno ou Aminoácidos">

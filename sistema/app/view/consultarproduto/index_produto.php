@@ -258,13 +258,13 @@
                                             <div class="col-sm-12" id="div_tipo_proteina" style="display: none;">
                                                 <div class="col-sm-6">
                                                     <div class="form-radio">
-                                                        <input id="tipo_proteina_animal" checked class="radio-outlined" name="tipo_produto" type="radio" value="Animal">
+                                                        <input id="tipo_proteina_animal" checked class="radio-outlined" name="tipo_proteina" type="radio" value="Animal">
                                                         <label for="tipo_proteina_animal" class="radio-green">Animal</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-radio">
-                                                        <input id="tipo_proteina_vegetal" checked class="radio-outlined" name="tipo_produto" type="radio" value="Vegetal">
+                                                        <input id="tipo_proteina_vegetal" class="radio-outlined" name="tipo_proteina" type="radio" value="Vegetal">
                                                         <label for="tipo_proteina_vegetal" class="radio-green">Vegetal</label>
                                                     </div>
                                                 </div>
