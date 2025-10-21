@@ -251,7 +251,7 @@
                                 <div class="row">
                                     <div class="col-6 p-4">
                                         <div class="form-check col-sm-12">
-                                            <div class="col-sm-12">
+                                            <div>
                                                 <input id="categoria_modulo_proteina" required name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Proteína">
                                                 <label for="categoria_modulo_proteina" class="form-check-label check-green">Proteína</label>
                                             </div>
