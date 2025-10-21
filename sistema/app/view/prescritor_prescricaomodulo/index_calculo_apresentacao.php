@@ -8,9 +8,25 @@
             <div class="row">
                 <div class="col-6 p-4">
                     <div class="form-check col-sm-12">
-                        <input id="categoria_modulo_proteina" required name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Proteína">
-                        <label for="categoria_modulo_proteina" class="form-check-label check-green">Proteína</label>
-                    </div>
+                        <div>
+                            <input id="categoria_modulo_proteina" required name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Proteína">
+                            <label for="categoria_modulo_proteina" class="form-check-label check-green">Proteína</label>
+                        </div>
+                        <div class="col-sm-12" id="div_tipo_proteina" style="display: none;">
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <input id="tipo_proteina_animal" checked class="radio-outlined" name="tipo_proteina" type="radio" value="Animal">
+                                    <label for="tipo_proteina_animal" class="radio-green">Animal</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-radio">
+                                    <input id="tipo_proteina_vegetal" class="radio-outlined" name="tipo_proteina" type="radio" value="Vegetal">
+                                    <label for="tipo_proteina_vegetal" class="radio-green">Vegetal</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
                     <div class="form-check col-sm-12">
                         <input id="categoria_modulo_colageno_aminoacidos" name="cat_modulo[]" class="form-check-input styled-checkbox" type="checkbox" value="Colágeno ou Aminoácidos">
                         <label for="categoria_modulo_colageno_aminoacidos" class="form-check-label check-green">Colágeno ou Aminoácidos</label>

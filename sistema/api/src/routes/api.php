@@ -4506,7 +4506,7 @@ $app->group("", function () use ($app) {
 		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
 		$result = JWTAuth::verifyToken($token);
 		$data = array();
-		if ($result) {
+		if ($result) { 
 			$db = new Database();
 			$bind = array(':id'=> $result->header->id);
 			$db_ibranutro = new Database_ibranutro();
@@ -4531,7 +4531,7 @@ $app->group("", function () use ($app) {
 		        $query = '';
 				if(isset($dados['cat_modulo'])){
 					$array_carac = $dados['cat_modulo'];
-
+					$query.= ' (';
 					if(in_array('Proteína', $array_carac)){
 						$query.= ' OR (cat_modulo LIKE "%Proteína%")';
 					}
@@ -4557,7 +4557,13 @@ $app->group("", function () use ($app) {
 						$query.= ' OR (cat_modulo LIKE "%Espessante%")';
 					}
 					$query = substr($query, 4);
+					$query.= ' )';
 
+				}
+				if(isset($dados['cat_modulo'])){
+					if(in_array('Proteína', $array_carac)){
+						$query.= ' AND (tipo_proteina = '.$dados['tipo_proteina'].')';
+					}
 				}
 
 		        if ($query <> '') $query = 'WHERE (status=1) AND ('.$query.')';

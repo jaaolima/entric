@@ -2826,6 +2826,16 @@ $(function(){
     $("#volume_horario").on("keypress keyup", function(e) {
         volume_total_hidratacao();
     });
+    
+    $('input:checkbox[name="cat_modulo[]"]').on("click", function () { 
+        if ($(this).val() == 'Proteína'){
+            if($(this).is(':checked')){
+                $("#div_tipo_proteina").show();
+            }else{
+                $("#div_tipo_proteina").hide();
+            }
+        }
+    });
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
@@ -2969,7 +2979,7 @@ $(function(){
         }
 
 
-        if (error_alert == ""){
+        if (error_alert == ""){ 
             var _this = $("#relatorio form");
             var frm = _this.serialize();   
             var _id_paciente = $("#id_paciente").val();

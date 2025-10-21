@@ -293,7 +293,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Nome</th>
-                                                    <th scope="col">Data de Nascimento</th>
+                                                    <th scope="col">Data de Nascimento</th> 
                                                 </tr>
                                             </thead>
                                             <tbody>
