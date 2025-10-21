@@ -512,7 +512,12 @@ function gtProdutoFiltro(_id){
                     var cat_modulo = JSON.parse(data.cat_modulo);
                     $.each(cat_modulo, function() {
                         $('#frmproduto').find('input:checkbox[name="cat_modulo[]"]').filter('[value="'+this+'"]').prop('checked', true);
-                    });
+                        if(this == 'Proteína'){
+                            $("#div_tipo_proteina").show();
+                            var tipo_proteina = data.tipo_proteina;
+                            $('#frmproduto').find('input:radio[name="tipo_proteina"]').filter('[value="'+tipo_proteina+'"]').prop('checked', true);
+                        }
+                    }); 
                     
                     // var carac_oral = JSON.parse(data.carac_oral);
                     // $.each(carac_oral, function() {
