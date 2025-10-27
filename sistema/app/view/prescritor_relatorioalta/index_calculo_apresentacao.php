@@ -166,8 +166,8 @@
                 <div class="form-check col-sm-3">
                 </div>
                 <div class="form-check col-sm-3">
-                    <input id="calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox filtro_4" type="checkbox" value="Com Ômega 3">
-                    <label for="calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                    <input id="calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox filtro_4" type="checkbox" value="Com óleo de peixe">
+                    <label for="calculo_oral_omega3" class="form-check-label check-green">Com óleo de peixe</label>
                 </div>
 
                 <div class="form-check col-sm-3">

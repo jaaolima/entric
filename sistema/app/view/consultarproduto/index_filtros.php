@@ -215,8 +215,8 @@
                                         <label for="filtro_calculo_oral_cicatrizacao" class="form-check-label check-green">Cicatrização</label>
                                     </div>
                                     <div class="form-check col-sm-6">
-                                        <input id="filtro_calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com Ômega 3">
-                                        <label for="filtro_calculo_oral_omega3" class="form-check-label check-green">Com Ômega 3</label>
+                                        <input id="filtro_calculo_oral_omega3" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Com óleo de peixe">
+                                        <label for="filtro_calculo_oral_omega3" class="form-check-label check-green">Com óleo de peixe</label>
                                     </div>
                                     <div class="form-check col-sm-6">
                                         <input id="filtro_calculo_oral_imunonutricaocirurgica" name="carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">

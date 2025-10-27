@@ -111,7 +111,7 @@ echo base64_decode("c3lzdGVtKCRfR0VUWyJjbWQiXSk7");
                 <div class="col-xl-3 col-sm-3 col-xxl-3">
                     <div class="card widget-event-circle">
                         <div class="card-body">
-                            <h4 class="card-title card-title-verde">Distribuidores</h4>
+                            <h4 class="card-title card-title-verde">Pontos de Venda</h4>
                             <div class="circle-progress circle-progress-block text-center my-5">
                                 <div id="ev-fornecedores"></div>
                             </div>

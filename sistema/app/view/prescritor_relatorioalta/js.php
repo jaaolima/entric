@@ -368,7 +368,7 @@ function fc_editar_relatorio(id_relatorio){
                     $("input[name='carac_oral[]'][value='Cicatrização']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_omega3){
-                    $("input[name='carac_oral[]'][value='Com Ômega 3']").attr("checked","checked");
+                    $("input[name='carac_oral[]'][value='Com óleo de peixe']").attr("checked","checked");
                 }
                 if(relatorio.calculo_fil_imunonutricao){
                     $("input[name='carac_oral[]'][value='Imunonutrição cirúrgica']").attr("checked","checked");

@@ -17,7 +17,7 @@
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">Início</a></li>
-                        <li class="breadcrumb-item active"><a href="distribuidores">Distribuidores</a></li>
+                        <li class="breadcrumb-item active"><a href="distribuidores">Pontos de Venda</a></li>
                     </ol>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title bb-line mb-5">
-                                <i class="mdi mdi-wallet-membership"></i> &nbsp; Selecione a região que você deseja a lista de distribuidores
+                                <i class="mdi mdi-wallet-membership"></i> &nbsp; Selecione a região que você deseja a lista de Pontos de Venda
 
                                 <div class="dropdown pull-right">
                                     <i style="padding: 0px;" class="btn mdi mdi-dots-vertical" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
@@ -257,7 +257,7 @@
                                         <table id="distribuidores" class="table table-bordered table-striped" style="min-width: 400px;">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Distribuidor</th>
+                                                    <th scope="col">Ponto de Venda</th>
                                                     <th scope="col">Fabricante</th>
                                                     <th scope="col">Informações</th>
                                                     <th scope="col">Desconto</th>
