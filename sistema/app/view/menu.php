@@ -25,7 +25,7 @@ if (!isset($bruker->type)){
             </a>
         </li>
         <li class="mega-menu mega-menu-lg"> 
-            <a href="paciente_distribuidores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Distribuidores</span></a>
+            <a href="paciente_distribuidores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Pontos de Vendas</span></a>
         </li>
     </ul>
     <?php
@@ -60,7 +60,7 @@ else{
                 <a href="consultarproduto"><img src="assets/images/icones/icon-consultar-produto.png" border="0"><span class="nav-text">Consultar Produto</span></a>
             </li>
             <li class="mega-menu mega-menu-lg">
-                <a href="distribuidores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Distribuidores</span></a>
+                <a href="distribuidores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Pontos de Vendas</span></a>
             </li>        
             <li class="mega-menu mega-menu-lg">
                 <a href="videosalta"><img src="assets/images/icones/icon-video-alta.png" border="0"><span class="nav-text">Vídeos</span></a>
@@ -93,7 +93,7 @@ else{
                 <a href="prescritor_ferramentas"><img src="assets/images/icones/icon-ferramentas.png" border="0"><span class="nav-text">Ferramentas</span></a>
             </li>
             <li class="mega-menu mega-menu-lg">
-                <a href="prescritor_fornecedores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Distribuidores</span></a>
+                <a href="prescritor_fornecedores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Pontos de Vendas</span></a>
             </li> 
         </ul>
         <?php
@@ -110,7 +110,7 @@ else{
                 <a href="paciente_relatorioalta"><img src="assets/images/icones/icon-gerar-relatorio.png" border="0"><span class="nav-text">Relatório de Alta</span></a>
             </li>
             <li class="mega-menu mega-menu-lg">
-                <a href="paciente_distribuidores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Distribuidores</span></a>
+                <a href="paciente_distribuidores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Pontos de Vendas</span></a>
             </li>
             <li class="mega-menu mega-menu-lg">
                 <a href="paciente_contato"><img src="assets/images/icones/icon-contato.png" border="0"><span class="nav-text">Contato</span></a>
@@ -144,7 +144,7 @@ else{
                 <a href="prescritor_consultarproduto"><img src="assets/images/icones/icon-consultar-produto.png" border="0"><span class="nav-text">Consultar Produto</span></a>
             </li>
             <li class="mega-menu mega-menu-lg">
-                <a href="prescritor_fornecedores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Distribuidores</span></a>
+                <a href="prescritor_fornecedores"><img src="assets/images/icones/icon-fornecedores.png" border="0"><span class="nav-text">Pontos de Vendas</span></a>
             </li>
             <li class="mega-menu mega-menu-lg">
                 <a href="prescritor_videosalta"><img src="assets/images/icones/icon-video-alta.png" border="0"><span class="nav-text">Vídeos de Alta</span></a>
