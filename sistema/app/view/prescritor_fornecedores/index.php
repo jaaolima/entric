@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title bb-line mb-5">
-                                <i class="mdi mdi-wallet-membership"></i> &nbsp; Selecione a região que você deseja a lista de distribuidores
+                                <i class="mdi mdi-wallet-membership"></i> &nbsp; Selecione a região que você deseja a lista de Pontos de Venda
 
                             </h4>
 
@@ -250,7 +250,7 @@
                                         <table id="distribuidores" class="table table-bordered table-striped" style="min-width: 400px;">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Distribuidor</th>
+                                                    <th scope="col">Ponto de Venda</th>
                                                     <th scope="col">Fabricante</th>
                                                     <th scope="col">Informações</th>
                                                     <th scope="col">Desconto</th>
