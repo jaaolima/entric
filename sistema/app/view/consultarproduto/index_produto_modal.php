@@ -234,7 +234,7 @@
                                             <input id="m_calculo_oral_imunonutricaocirurgica" disabled name="m_carac_oral[]" class="form-check-input styled-checkbox" type="checkbox" value="Imunonutrição cirúrgica">
                                             <label for="m_calculo_oral_imunonutricaocirurgica" class="form-check-label check-green">Imunonutrição cirúrgica</label>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="row p-4">
                                         <div class="col-sm-6">
                                             <div class="form-check form-toggle">

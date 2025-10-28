@@ -288,7 +288,7 @@ class ProdutoModel extends Model {
             $bind[':carac_oral'] = (($carac_oral)?json_encode($carac_oral, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE):null);
         }
 
-        $dados['data_edicao'] = date("Y-m-d H:i:s");
+        $bind['data_edicao'] = date("Y-m-d H:i:s");
 
         if (isset($_FILES['foto']['error']) and ($_FILES['foto']['error'] == 0)){
             $upfoto = uploadFile(  $_FILES['foto'], 
