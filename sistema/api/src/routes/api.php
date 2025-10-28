@@ -1891,7 +1891,7 @@ $app->group("", function () use ($app) {
 					}
 					if (isset($dados['filtro_calculo_fil_polimerico']) and ($dados['filtro_calculo_fil_polimerico'] == "Polimérico")) $query.= ' AND (carac_enteral LIKE "%Polimérico%")';
 		            if (isset($dados['filtro_calculo_fil_polimerico']) and ($dados['filtro_calculo_fil_polimerico'] == "Oligomérico")) $query.= ' AND (carac_enteral LIKE "%Oligomérico%")';
-		            if (isset($dados['filtro_calculo_fil_polimerico']) and ($dados['filtro_calculo_fil_polimerico'] == "Ambos")) $query.= ' AND (carac_enteral LIKE "%Oligomérico%") OR (carac_enteral LIKE "%Polimérico%")';
+		            if (isset($dados['filtro_calculo_fil_polimerico']) and ($dados['filtro_calculo_fil_polimerico'] == "Ambos")) $query.= ' AND ((carac_enteral LIKE "%Oligomérico%") OR (carac_enteral LIKE "%Polimérico%"))';
 		            if (isset($dados['filtro_calculo_fil_comfibras']) and ($dados['filtro_calculo_fil_comfibras'] == "Com Fibras")) $query.= ' AND (carac_enteral LIKE "%Com Fibras%")';
 		            if (isset($dados['filtro_calculo_fil_comfibras']) and ($dados['filtro_calculo_fil_comfibras'] == "Sem Fibras")) $query.= ' AND (carac_enteral LIKE "%Sem Fibras%")';
 		            if (isset($dados['filtro_calculo_fil_comfibras']) and ($dados['filtro_calculo_fil_comfibras'] == "Ambos")) $query.= ' AND ((carac_enteral LIKE "%Com Fibras%") OR (carac_enteral LIKE "%Sem Fibras%"))';
