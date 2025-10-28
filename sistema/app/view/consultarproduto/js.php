@@ -1499,8 +1499,10 @@ $(function(){
         if ($(this).val() == 'Proteína'){
             if($(this).is(':checked')){
                 $("#div_tipo_proteina").show();
+                $("#div_filtro_tipo_proteina").show();
             }else{
-                $("#div_tipo_proteina").hide();
+                $("#div_tipo_proteina").show();
+                $("#div_filtro_tipo_proteina").hide();
             }
         }
     });

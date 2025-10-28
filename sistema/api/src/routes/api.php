@@ -1934,7 +1934,11 @@ $app->group("", function () use ($app) {
 						$_query = "";
 						foreach ($dados['cat_modulo'] as $key => $val) {
 							if ($val <> "Todos"){
-								$_query.= ' AND (cat_modulo LIKE "%'.$val.'%")';
+								if($val == "Proteína"){
+									$_query.= ' AND (cat_modulo LIKE "%'.$val.'%" AND (tipo_proteina = "'.$dados['tipo_proteina'].'"))';
+								}else{
+									$_query.= ' AND (cat_modulo LIKE "%'.$val.'%")';
+								}
 							}
 							else{
 								$_query = "";
@@ -1943,7 +1947,7 @@ $app->group("", function () use ($app) {
 						}
 						$query .= $_query;
 					}
-				}
+				} 
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = array();
