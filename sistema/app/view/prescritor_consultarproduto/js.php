@@ -1324,21 +1324,26 @@ $(function(){
                         apresentacao = apresentacao + apres_oral_item +'<br>';
                     });
 
-                    var carac_oral = jQuery.parseJSON(item.carac_oral);
                     var caracteristicas = '';
-                    $.each(carac_oral, function (carac_oral_key, carac_oral_item) {
-                        caracteristicas = caracteristicas + carac_oral_item +'<br>';
-                    });
 
-                    var carac_oral = jQuery.parseJSON(item.carac_enteral);
-                    $.each(carac_oral, function (carac_oral_key, carac_oral_item) {
-                        caracteristicas = caracteristicas + carac_oral_item +'<br>';
-                    });
-
-                    var cat_modulo = jQuery.parseJSON(item.cat_modulo);
-                    $.each(cat_modulo, function (cat_modulo_key, cat_modulo_item) {
-                        caracteristicas = caracteristicas + cat_modulo_item +'<br>';
-                    });
+                    if(item.via == "Enteral"){
+                        var carac_oral = jQuery.parseJSON(item.carac_enteral);
+                        $.each(carac_oral, function (carac_oral_key, carac_oral_item) {
+                            caracteristicas = caracteristicas + carac_oral_item +'<br>';
+                        });
+                    }
+                    if(item.via == "Suplemento"){
+                        var carac_oral = jQuery.parseJSON(item.carac_oral);
+                        $.each(carac_oral, function (carac_oral_key, carac_oral_item) {
+                            caracteristicas = caracteristicas + carac_oral_item +'<br>';
+                        });
+                    }
+                    if(item.via == "Módulo"){
+                        var cat_modulo = jQuery.parseJSON(item.cat_modulo);
+                        $.each(cat_modulo, function (cat_modulo_key, cat_modulo_item) {
+                            caracteristicas = caracteristicas + cat_modulo_item +'<br>';
+                        });
+                    }
 
 
                     rows = rows + '<tr class="tabrow" rel="'+item.id+'">'+ 

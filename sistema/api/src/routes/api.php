@@ -1872,6 +1872,7 @@ $app->group("", function () use ($app) {
 		        }
 		        if (isset($dados['especialidade']) and ($dados['especialidade'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['especialidade'].'%")';
 		        if (isset($dados['via']) and ($dados['via'] <> "")) $query.= ' AND (via LIKE "%'.$dados['via'].'%")';
+		        if (isset($dados['categoria']) and ($dados['categoria'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['categoria'].'%")';
 
 				if($dados['via'] == "Enteral"){
 					if (isset($dados['apres_enteral'])){
