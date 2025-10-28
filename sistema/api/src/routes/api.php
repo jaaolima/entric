@@ -1872,70 +1872,78 @@ $app->group("", function () use ($app) {
 		        }
 		        if (isset($dados['especialidade']) and ($dados['especialidade'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['especialidade'].'%")';
 		        if (isset($dados['via']) and ($dados['via'] <> "")) $query.= ' AND (via LIKE "%'.$dados['via'].'%")';
-		        if (isset($dados['apres_enteral'][0])){
-		            $c_query = "";
-		            $query.= " AND ";
-		            foreach ($dados['apres_enteral'] as $key => $val) {
-		                if ($c_query == ""){
-		                    $query .= '(';
-		                    $c_query = "(";
-		                }
-		                else{
-		                    $query .= ' OR ';
-		                }
-		                $query.= '(apres_enteral LIKE "%'.$val.'%")';
-		            }
-		            $query.= ')';
-		        }
-		        if (isset($dados['carac_enteral'][0])){
-		            foreach ($dados['carac_enteral'] as $key => $val) {
-		                $query.= ' AND (carac_enteral LIKE "%'.$val.'%")';
-		            }
-		        }
-		        if (isset($dados['apres_oral'][0])){
-		            $c_query = "";
-		            $query.= " AND ";
-		            foreach ($dados['apres_oral'] as $key => $val) {
-		                if ($c_query == ""){
-		                    $query .= '(';
-		                    $c_query = "(";
-		                }
-		                else{
-		                    $query .= ' OR ';
-		                }
-		                $query.= '(apres_oral LIKE "%'.$val.'%")';
-		            }
-		            $query.= ')';
-		        }
-		        if (isset($dados['carac_oral'][0])){
-		            $_query = "";
-		            foreach ($dados['carac_oral'] as $key => $val) {
-		                if ($val <> "Todos"){
-		                    $_query.= ' AND (carac_oral LIKE "%'.$val.'%")';
-		                }
-		                else{
-		                    $_query = "";
-		                    break;
-		                }
-		            }
-		            $query .= $_query;
-		        }
 
-				if (isset($dados['cat_modulo'][0])){
-		            $_query = "";
-		            foreach ($dados['cat_modulo'] as $key => $val) {
-		                if ($val <> "Todos"){
-		                    $_query.= ' AND (cat_modulo LIKE "%'.$val.'%")';
-		                }
-		                else{
-		                    $_query = "";
-		                    break;
-		                }
-		            }
-		            $query .= $_query;
-		        }
-
-				
+				if($dados['tipo_produto'] == "Enteral"){
+					if (isset($dados['apres_enteral'][0])){
+						$c_query = "";
+						$query.= " AND ";
+						foreach ($dados['apres_enteral'] as $key => $val) {
+							if ($c_query == ""){
+								$query .= '(';
+								$c_query = "(";
+							}
+							else{
+								$query .= ' OR ';
+							}
+							$query.= '(apres_enteral LIKE "%'.$val.'%")';
+						}
+						$query.= ')';
+					}
+					if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Polimérico")) $query.= ' AND (carac_enteral LIKE "%Polimérico%")';
+		            if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Oligomérico")) $query.= ' AND (carac_enteral LIKE "%Oligomérico%")';
+		            if (isset($dados['calculo_fil_polimerico']) and ($dados['calculo_fil_polimerico'] == "Ambos")) $query.= ' AND (carac_enteral LIKE "%Oligomérico%") OR (carac_enteral LIKE "%Polimérico%")';
+		            if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Com Fibras")) $query.= ' AND (carac_enteral LIKE "%Com Fibras%")';
+		            if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Sem Fibras")) $query.= ' AND (carac_enteral LIKE "%Sem Fibras%")';
+		            if (isset($dados['calculo_fil_comfibras']) and ($dados['calculo_fil_comfibras'] == "Ambos")) $query.= ' AND ((carac_enteral LIKE "%Com Fibras%") OR (carac_enteral LIKE "%Sem Fibras%"))';
+		            if (isset($dados['calculo_fil_semlactose']) and ($dados['calculo_fil_semlactose'] <> "")) $query.= ' AND (carac_enteral LIKE "%Sem Lactose%")';
+		            if (isset($dados['calculo_fil_semsacarose']) and ($dados['calculo_fil_semsacarose'] <> "")) $query.= ' AND (carac_enteral LIKE "%Sem Sacarose%")';
+		            if (isset($dados['calculo_fil_100proteina']) and ($dados['calculo_fil_100proteina'] <> "")) $query.= ' AND (carac_enteral LIKE "%100% Proteína Vegetal%")';
+				}
+				if($dados['tipo_produto'] == "Suplemento"){
+					if (isset($dados['apres_oral'][0])){
+						$c_query = "";
+						$query.= " AND ";
+						foreach ($dados['apres_oral'] as $key => $val) {
+							if ($c_query == ""){
+								$query .= '(';
+								$c_query = "(";
+							}
+							else{
+								$query .= ' OR ';
+							}
+							$query.= '(apres_oral LIKE "%'.$val.'%")';
+						}
+						$query.= ')';
+					}
+					if (isset($dados['carac_oral'][0])){
+						$_query = "";
+						foreach ($dados['carac_oral'] as $key => $val) {
+							if ($val <> "Todos"){
+								$_query.= ' AND (carac_oral LIKE "%'.$val.'%")';
+							}
+							else{
+								$_query = "";
+								break;
+							}
+						}
+						$query .= $_query;
+					}
+				}
+		        if($dados['tipo_produto'] == "Módulo"){
+					if (isset($dados['cat_modulo'][0])){
+						$_query = "";
+						foreach ($dados['cat_modulo'] as $key => $val) {
+							if ($val <> "Todos"){
+								$_query.= ' AND (cat_modulo LIKE "%'.$val.'%")';
+							}
+							else{
+								$_query = "";
+								break;
+							}
+						}
+						$query .= $_query;
+					}
+				}
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
 		        $produtos = array();
