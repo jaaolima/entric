@@ -1873,7 +1873,7 @@ $app->group("", function () use ($app) {
 		        if (isset($dados['especialidade']) and ($dados['especialidade'] <> "")) $query.= ' AND (especialidade LIKE "%'.$dados['especialidade'].'%")';
 		        if (isset($dados['via']) and ($dados['via'] <> "")) $query.= ' AND (via LIKE "%'.$dados['via'].'%")';
 
-				if($dados['tipo_produto'] == "Enteral"){
+				if($dados['via'] == "Enteral"){
 					if (isset($dados['apres_enteral'][0])){
 						$c_query = "";
 						$query.= " AND ";
@@ -1899,7 +1899,7 @@ $app->group("", function () use ($app) {
 		            if (isset($dados['calculo_fil_semsacarose']) and ($dados['calculo_fil_semsacarose'] <> "")) $query.= ' AND (carac_enteral LIKE "%Sem Sacarose%")';
 		            if (isset($dados['calculo_fil_100proteina']) and ($dados['calculo_fil_100proteina'] <> "")) $query.= ' AND (carac_enteral LIKE "%100% Proteína Vegetal%")';
 				}
-				if($dados['tipo_produto'] == "Suplemento"){
+				if($dados['via'] == "Suplemento"){
 					if (isset($dados['apres_oral'][0])){
 						$c_query = "";
 						$query.= " AND ";
@@ -1929,7 +1929,7 @@ $app->group("", function () use ($app) {
 						$query .= $_query;
 					}
 				}
-		        if($dados['tipo_produto'] == "Módulo"){
+		        if($dados['via'] == "Módulo"){
 					if (isset($dados['cat_modulo'][0])){
 						$_query = "";
 						foreach ($dados['cat_modulo'] as $key => $val) {
