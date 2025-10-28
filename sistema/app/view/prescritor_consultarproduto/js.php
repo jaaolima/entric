@@ -249,7 +249,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     data_edicao = dataHora[0].split("-");
                     var data_edicao = data_edicao[2]+'/'+data_edicao[1]+'/'+data_edicao[0];
                     $('#div_data_edicao').show();
-                    $('#div_data_edicao').find('p').html('<strong>Última edição do produto:</strong> '+data_edicao+' às '+dataHora[1]);
+                    $('#div_data_edicao').find('p').html('<strong>Última atualização do produto:</strong> '+data_edicao+' às '+dataHora[1]);
                 }else{
                     $('#div_data_edicao').hide();
                 }
