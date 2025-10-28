@@ -1950,7 +1950,6 @@ $app->group("", function () use ($app) {
 				} 
 
 		        if ($query <> '') $query = 'WHERE (status=1 '.$query.')';
-				echo $query; 
 
 		        $produtos = array();
 
