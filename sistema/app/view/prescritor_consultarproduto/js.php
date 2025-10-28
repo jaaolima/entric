@@ -251,7 +251,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     $('#div_data_edicao').show();
                     $('#div_data_edicao').find('p').html('<strong>Última atualização do produto:</strong> '+data_edicao+' às '+dataHora[1]);
                 }else{
-                    $('#div_data_edicao').hide();
+                    $('#div_data_edicao').hide(); 
                 }
                 
 
@@ -1554,6 +1554,20 @@ $(function(){
         $(this).parent().remove();
         $(".apresentacao .nav-tabs li").children('a').first().click();
     });
+
+    $('input:checkbox[name="cat_modulo[]"]').on("click", function () { 
+        if ($(this).val() == 'Proteína'){
+            if($(this).is(':checked')){
+                $("#div_tipo_proteina").show();
+                $("#div_filtro_tipo_proteina").show();
+            }else{
+                $("#div_tipo_proteina").show();
+                $("#div_filtro_tipo_proteina").hide();
+            }
+        }
+    });
+
+
     $('.nova-apresentacao').click(function(e) {
         var tabs = $("#tab-apresentacao .nav-item").length;
         var navlink = $("#tab-apresentacao .nav-item:nth-child("+(tabs-1)+") .nav-link").attr("href");
