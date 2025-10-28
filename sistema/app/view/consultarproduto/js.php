@@ -272,6 +272,16 @@ function gtModalProdutoFiltro(_id, _tipo){
                     }
                 }
 
+                if(data.data_edicao){
+                    dataHora = data.data_edicao.split(" ");
+                    data_edicao = dataHora[0].split("-");
+                    var data_edicao = data_edicao[2]+'/'+data_edicao[1]+'/'+data_edicao[0];
+                    $('#div_data_edicao').show();
+                    $('#div_data_edicao').find('p').html('<strong>Última edição do produto:</strong> '+data_edicao+' às '+dataHora[1]);
+                }else{
+                    $('#div_data_edicao').hide();
+                }
+
 
                 $('#modalfrmproduto').find('input:radio[name=m_unidmedida]').filter('[value='+data.unidmedida+']').prop('checked', true);
                 var tab_densidade = false;

@@ -181,7 +181,7 @@ function gtModalProdutoFiltro(_id, _tipo){
                     $(".m_unidademedida").removeClass("none").addClass("block");
                     $(".m_nounidademedida").removeClass("block").addClass("none");
 
-                    if (data.unidmedida == 'gramas') {
+                    if (data.unidmedida == 'gramas') { 
                         $('#modalfrmproduto').find('input:radio[name="m_unidmedida"][value="gramas"]').prop('checked', true);
                         $("#modalfrmproduto .dosagem_quantidade").html("Quantidade por 100g");
                     }else{
@@ -243,6 +243,17 @@ function gtModalProdutoFiltro(_id, _tipo){
                         $("#modalfrmproduto .dosagem_quantidade").html("Quantidade por 100ml");
                     }
                 }
+
+                if(data.data_edicao){
+                    dataHora = data.data_edicao.split(" ");
+                    data_edicao = dataHora[0].split("-");
+                    var data_edicao = data_edicao[2]+'/'+data_edicao[1]+'/'+data_edicao[0];
+                    $('#div_data_edicao').show();
+                    $('#div_data_edicao').find('p').html('<strong>Última edição do produto:</strong> '+data_edicao+' às '+dataHora[1]);
+                }else{
+                    $('#div_data_edicao').hide();
+                }
+                
 
 
                 $('#modalfrmproduto').find('input:radio[name=m_unidmedida]').filter('[value='+data.unidmedida+']').prop('checked', true);
