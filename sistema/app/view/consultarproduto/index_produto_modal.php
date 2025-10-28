@@ -933,6 +933,11 @@
                             </div>
                         </div>        
                     </div>
+                    <div class="row" id="div_data_edicao" style="display: none;">
+                        <div class="col-sm-12 justify-content-center text-center pb-4">
+                            <p></p>
+                        </div>
+                    </div>
 
                 </form>
             </div>
