@@ -1874,7 +1874,7 @@ $app->group("", function () use ($app) {
 		        if (isset($dados['via']) and ($dados['via'] <> "")) $query.= ' AND (via LIKE "%'.$dados['via'].'%")';
 
 				if($dados['via'] == "Enteral"){
-					if (isset($dados['apres_enteral'][0])){
+					if (isset($dados['apres_enteral'])){
 						$c_query = "";
 						$query.= " AND ";
 						foreach ($dados['apres_enteral'] as $key => $val) {
