@@ -1889,6 +1889,8 @@ $app->group("", function () use ($app) {
 						}
 						$query.= ')';
 					}
+					var_dump($dados['carac_enteral']);
+					echo $query; 
 					if (isset($dados['filtro_calculo_fil_polimerico']) and ($dados['filtro_calculo_fil_polimerico'] == "Polimérico")) $query.= ' AND (carac_enteral LIKE "%Polimérico%")';
 		            if (isset($dados['filtro_calculo_fil_polimerico']) and ($dados['filtro_calculo_fil_polimerico'] == "Oligomérico")) $query.= ' AND (carac_enteral LIKE "%Oligomérico%")';
 		            if (isset($dados['filtro_calculo_fil_polimerico']) and ($dados['filtro_calculo_fil_polimerico'] == "Ambos")) $query.= ' AND (carac_enteral LIKE "%Oligomérico%") OR (carac_enteral LIKE "%Polimérico%")';
