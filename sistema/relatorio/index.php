@@ -1075,6 +1075,80 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> ORIENTAÇÕES DE PREPARO / MANIPULAÇÃO</p>
 			
+			<p><strong>Cuidados Gerais</strong></p>
+			<p>- Sempre verifique a data de validade ou se a dieta apresenta alguma alteração de cor ou aspecto.
+Não ofertar caso encontre alguma diferença;
+- Antes de instalar a dieta enteral, observe se há danos na sonda do paciente, como rachaduras,
+problemas na conexão ou vazamentos que impossibilitem a infusão;
+- Certifique-se que todas as etapas de higiene e preparo tenham sido feitas de forma adequada;
+- O posicionamento correto do paciente é imprescindível para minimizar o risco de broncoaspiração,
+ou seja, a entrada de alimentos, líquidos, saliva ou vômito para o pulmão;
+- Caso o paciente esteja acamado, a cabeceira deverá permanecer elevada de 30 a 45 graus durante
+a administração da dieta. Se o paciente não estiver acamado, ele pode também ficar sentado durante
+a infusão.</p>
+
+			<p><strong>Higiene Pessoal e Ambiental</strong></p>
+			<p>A higiene pessoal de quem irá manipular a dieta é muito importante, por isso a pessoa deve manter
+os cabelos presos ou protegidos com touca, lenço ou rede; usar roupas limpas; manter unhas curtas
+e limpas; retirar anéis, pulseiras ou qualquer outro adorno; lavar bem as mãos com água e sabonete
+neutro; secar as mãos com toalha limpa ou com papel toalha; cobrir eventuais machucados na região
+das mãos, não fumar, tossir, espirrar ou conversar durante o preparo da dieta.
+O ambiente de preparo e manipulação da dieta, seja ele bancada, mesa ou outro, também merece
+atenção e deve ser lavado e desinfetado com álcool 70%. Lembre-se de sempre observar o frasco e
+equipo, descartar o produto que apresentar furos, rachaduras ou qualquer dano que impossibilite o
+uso.
+</p>		
+			<?php 
+			if ($relatorio['calculo_apres_fechado'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong style="justify-content: center;display: flex;">SISTEMA FECHADO</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['armazenamento'] = $config['armazenamento'];
+				$relatorio['instalacao'] = $config['instalacao'];
+				?>
+				<p><strong>Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['armazenamento']);?></p>
+
+
+				<p><strong>Higienização e Preparo</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Instalação e Administração da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['instalacao']);?></p>
+				<?php
+			}
+			?>
+
+			<?php 
+			if ($relatorio['calculo_apres_aberto_liquido'] == 1){
+				?>
+				<p style="text-align: center;">
+				<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
+				</p>
+				<?php
+				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto'", null);
+				$relatorio['higienizacao'] = $config['higienizacao'];
+				$relatorio['armazenamento'] = $config['armazenamento'];
+				$relatorio['instalacao'] = $config['instalacao'];
+				?>
+				<p><strong>Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['armazenamento']);?></p>
+
+
+				<p><strong>Higienização e Preparo</strong></p>
+				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+
+
+				<p><strong>Instalação e Administração da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['instalacao']);?></p>
+				<?php
+			}
+			?>
 
 			<?php 
 			if ($relatorio['calculo_apres_aberto_po'] == 1){
@@ -1085,73 +1159,36 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<?php
 				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto_po'", null);
 				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
+				$relatorio['armazenamento'] = $config['armazenamento'];
+				$relatorio['instalacao'] = $config['instalacao'];
 				?>
-				<p><strong>Higienização para Manipulação</strong></p>
+				<p><strong>Armazenamento</strong></p>
+				<p><?php echo nl2br($relatorio['armazenamento']);?></p>
+
+
+				<p><strong>Higienização e Preparo</strong></p>
 				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
 
 
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
+				<p><strong>Instalação e Administração da Dieta</strong></p>
+				<p><?php echo nl2br($relatorio['instalacao']);?></p>
 				<?php
 			}
 			?>
-			<?php 
-			if ($relatorio['calculo_apres_aberto_liquido'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA ABERTO (LÍQUIDO)</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='aberto'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
+			<p><strong>Pós-Administração e Monitoramento</strong></p>
+			<p>- Mantenha o paciente na posição elevada (30-45 graus) ou sentado por 20-30 minutos após a
+infusão da dieta;
+- Desconecte e limpe o equipo com álcool 70%; armazene protegido;
+- Observe sinais de complicações e contate o médico/nutricionista imediatamente se: febre >38°C,
+dor abdominal intensa, vômitos ou diarreia persistentes, sonda obstruída ou exteriorizada, sinais de
+infecção no local da sonda (vermelhidão, pus) ou perda de peso inesperada. </p>
 
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
-
-			<?php 
-			if ($relatorio['calculo_apres_fechado'] == 1){
-				?>
-				<p style="text-align: center;">
-				<strong>SISTEMA FECHADO</strong>
-				</p>
-				<?php
-				$config = $db->select_single_to_array("config", "*", "WHERE tipo='fechado'", null);
-				$relatorio['higienizacao'] = $config['higienizacao'];
-				$relatorio['cuidados'] = $config['cuidados'];
-				$relatorio['preparo'] = $config['preparo'];
-				?>
-				<p><strong>Higienização para Manipulação</strong></p>
-				<p><?php echo nl2br($relatorio['higienizacao']);?></p>
-
-
-				<p><strong>Cuidados na Administração e Armazenamento</strong></p>
-				<p><?php echo nl2br($relatorio['cuidados']);?></p>
-
-
-				<p><strong>Preparo e Instalação da Dieta</strong></p>
-				<p><?php echo nl2br($relatorio['preparo']);?></p>
-				<?php
-			}
-			?>
+			<p><strong>Informações Adicionais</strong></p>
+			<p>Acompanhe o peso semanalmente e anote ingestão/hidratação em um diário simples para consultas
+de follow-up.
+Revise estas orientações regularmente e marque retornos com a equipe de saúde.
+Para acesso aos vídeos de orientação de alta, acesse o site: <a href="https://entric.com.br" target="_blank">www.entric.com.br</a> ou o QR Code
+disponível nesta orientação.</p>
 
 			<?php if($usuario['login'] != 'ibranutro') : ?>
 			<img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /> CONTATOS DO PRESCRITOR</p>
