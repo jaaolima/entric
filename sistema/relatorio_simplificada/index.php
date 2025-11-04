@@ -1286,7 +1286,7 @@ dor abdominal intensa, vômitos ou diarreia persistentes, sonda obstruída ou ex
 infecção no local da sonda (vermelhidão, pus) ou perda de peso inesperada. </p>
 
 			<p><strong>Informações Adicionais</strong></p>
-			<p>Acompanhe o peso semanalmente e anote ingestão/hidratação em um diário simples para consultas
+			<p style="margin-bottom: 70px;">Acompanhe o peso semanalmente e anote ingestão/hidratação em um diário simples para consultas
 de follow-up.
 Revise estas orientações regularmente e marque retornos com a equipe de saúde.
 Para acesso aos vídeos de orientação de alta, acesse o site: <a href="https://entric.com.br" target="_blank">www.entric.com.br</a> ou o QR Code
