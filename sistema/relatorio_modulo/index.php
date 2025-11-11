@@ -1255,7 +1255,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<tbody>
 								<tr>
 									<?php 
-									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
+									if($paciente['hospital'] == "HOSPITAL SANTA LUCIA SUL"){
+										$danone = $db->select_to_array("distribuidores", "*", "WHERE id = 24", null);
+									}else{
+										$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
+									}
 									if ($danone){
 										echo '<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">';
 										for ($i = 0; $i < count($danone); $i++) {
@@ -1290,7 +1294,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:11px;padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-around;">
 										<?php 
 										$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
-										if ($danone){
+										if ($danone && $paciente['hospital'] != "HOSPITAL SANTA LUCIA SUL"){
 											//echo "<p><strong>OUTROS</strong></p>";
 											for ($i = 0; $i < count($danone); $i++) {
 												echo '<div style="width:40%;margin:10px;">
