@@ -1445,8 +1445,8 @@ function fc_salvar(tab, notify){
     $.ajax({
         type: "POST", 
         url: "ajax/relatorio_salvar_simplificada",
-        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo,
-        cache: false,
+        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo+"&atendimento="+atendimento,
+        cache: false, 
         dataType: 'json',
         success: function( data ){
             if (data.relatorio){

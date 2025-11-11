@@ -1411,7 +1411,7 @@ function fc_salvar(tab, notify){
     $.ajax({
         type: "POST",
         url: "ajax/relatorio_salvar_modulo",
-        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo,
+        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo+"&atendimento="+atendimento,
         cache: false,
         dataType: 'json',
         success: function( data ){
