@@ -10311,7 +10311,7 @@ $app->group("", function () use ($app) {
 							if($dados_paciente['sistema'] == 'cadastrado'){
 								if($dados_paciente['cpf'] != ''){
 									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and atendimento ='".$relatorio['atendimento']."'", $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and nu_atendimento ='".$relatorio['atendimento']."'", $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10456,7 +10456,7 @@ $app->group("", function () use ($app) {
 							if($dados_paciente['sistema'] == 'cadastrado'){
 								if($dados_paciente['cpf'] != ''){
 									$bind = array(':st_orientado' => 'S');
-									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and atendimento ='".$relatorio['atendimento']."'", $bind);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and nu_atendimento ='".$relatorio['atendimento']."'", $bind);
 								}
 							}
 							if($dados_paciente['sistema'] == 'ibranutro'){
@@ -10603,7 +10603,7 @@ $app->group("", function () use ($app) {
 								if($dados_paciente['sistema'] == 'cadastrado'){
 									if($dados_paciente['cpf'] != ''){
 										$bind = array(':st_orientado' => 'S');
-										$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and atendimento ='".$relatorio['atendimento']."'", $bind);
+										$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$dados_paciente['cpf']."' and nu_atendimento ='".$relatorio['atendimento']."'", $bind);
 									}
 								}
 								if($dados_paciente['sistema'] == 'ibranutro'){
