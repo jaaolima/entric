@@ -45,7 +45,7 @@
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
-    }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){ 
+    }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){  
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $nu_cpf = $_SESSION['paciente_redirect']['nu_cpf'];
@@ -107,7 +107,7 @@
                 <?php endif; ?>
                 <?php
 
-                if ($sistema == 'EN2' || $sistema == 'ibranutro') {
+                if (($sistema == 'EN2' || $sistema == 'ibranutro') || $_SESSION['login'] == 'ibranutro') {
                     // Usar nomes dos hospitais como chaves e valores para o select
                     $hospitais_select_por_nome = [];
                     foreach ($hospitais_map as $id => $nome) {
