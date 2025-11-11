@@ -1441,6 +1441,8 @@ function fc_salvar(tab, notify){
     } 
 
     login_tipo = $("#login_tipo").val();
+    atendimento = $("#atendimento").val();
+
 
     $.ajax({
         type: "POST", 
