@@ -949,44 +949,18 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if ($danone){
 									echo '<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">';
 									for ($i = 0; $i < count($danone); $i++) {
-										if($usuario['login'] == 'ibranutro' && $danone[$i]['uf'] == 'DF'){
-											if($danone[$i]['id'] == '1'){
-													echo '<div ">
-														<p style="text-align: center;font-size: 13px;">';
-														echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
-														if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-														if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-														if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-														if (trim($danone[$i]['site']) <> "") echo "<br>".$danone[$i]['site'];
-														if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-														echo "</p>
-													</div>";
-													echo "";
-										
-												echo '</div>
-												</td>';
-											}
-										}
-										else{
+										if($danone[$i]['id'] == '1'){
 												echo '<div ">
-												<p style="text-align: center;font-size: 13px;">';
-												echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
-												if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-												if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-												if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-												if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-												echo "</p>
+													<p style="text-align: center;font-size: 13px;">';
+													echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
+													if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+													if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+													if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+													if (trim($danone[$i]['site']) <> "") echo "<br>".$danone[$i]['site'];
+													if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+													echo "</p>
 												</div>";
-												echo "<div style='display:flex;'>
-														<div style='text-align:end;'>
-															<h5 class='titulo'style='margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
-															<h5 class='titulo'style='margin:0px;'>RECEBA ATENDIMENTO PERSONALIZADO</h5>
-															<h5 class='titulo'style='margin:0px;'>APONTANDO A CÂMERA PARA O QR CODE:</h5>
-														</div>
-														<div>
-															<img src='imagem/qrcode-sistema.png' style='display:inline-block;margin-left:10px;' width='60' alt=''>
-														</div>
-													</div>";
+												echo "";
 									
 											echo '</div>
 											</td>';
@@ -998,37 +972,26 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<tr>
 								<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:11px;padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-around;">
 									<?php 
-									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
-									if ($danone){
-										//echo "<p><strong>OUTROS</strong></p>";
-										for ($i = 0; $i < count($danone); $i++) {
-											if($usuario['login'] == 'ibranutro' && $danone[$i]['uf'] == 'DF'){
-												if($danone[$i]['id'] == '1' || $danone[$i]['id'] == '24'){
-													echo '<div style="width:40%;margin:10px;">
-															<p>';									
-																echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
-																if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-																if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-																if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-																if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
-															echo '</p>';
-													echo '</div>';
-												}
-											}
-											else{
+									// $danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
+									if($paciente['hospital'] == "HOSPITAL SANTA LUCIA SUL"){
+										$danone = $db->select_to_array("distribuidores", "*", "WHERE id = 24", null);
+										if ($danone){
+											//echo "<p><strong>OUTROS</strong></p>";
+											for ($i = 0; $i < count($danone); $i++) {
 												echo '<div style="width:40%;margin:10px;">
-												<p style="text-align: left;">';									
-													echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
-													if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
-													if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
-													if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
-													if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+														<p>';									
+															echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
+															if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+															if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+															if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+															if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
 														echo '</p>';
 												echo '</div>';
 											}
+											
 										}
-										
 									}
+									
 									?>
 									
 								</td>
@@ -1060,11 +1023,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						<tbody>
 							<tr>
 								<?php 
-								if($paciente['hospital'] == "HOSPITAL SANTA LUCIA SUL"){
-									$danone = $db->select_to_array("distribuidores", "*", "WHERE id = 24", null);
-								}else{
-									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
-								}
+								$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 								if ($danone){
 									echo '<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">';
 									for ($i = 0; $i < count($danone); $i++) {
@@ -1097,8 +1056,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							<tr>
 								<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:11px;padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-around;">
 									<?php 
-									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
-									if ($danone && $paciente['hospital'] != "HOSPITAL SANTA LUCIA SUL"){
+										$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 										//echo "<p><strong>OUTROS</strong></p>";
 										for ($i = 0; $i < count($danone); $i++) {
 											echo '<div style="width:40%;margin:10px;">
@@ -1112,7 +1070,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												echo '</div>';
 										}
 										
-									}
 									?>
 									
 								</td>
