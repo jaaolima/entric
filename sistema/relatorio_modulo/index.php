@@ -1142,7 +1142,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<?php 
 									$danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=1  and id <> 8 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
 									if ($danone){
-										echo '<td style="width:  100%; text-align: center;display:flex;border-bottom:1px solid #8fcfe5; padding-bottom:10px;justify-content: space-around;">';
+										echo '<td style="width:  100%; text-align: center;display:flex; padding-bottom:10px;justify-content: space-around;">';
 										for ($i = 0; $i < count($danone); $i++) {
 											if($danone[$i]['id'] == '1'){
 													echo '<div ">
