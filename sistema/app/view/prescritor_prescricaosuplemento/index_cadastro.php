@@ -207,10 +207,12 @@
                                     "col" => 5,
                                     "label" => "Telefone:"
                                 ),
-                                "up_hospital" => array(
-                                    "col" => 6,
-                                    "label" => "Hospital:"
-                                ),
+                                "up_hospital" => $campo_hospital,
+
+                                // "up_hospital" => array(
+                                //     "col" => 6,
+                                //     "label" => "Hospital:"
+                                // ),
                                 "up_atendimento" => array(
                                     "col" => 4,
                                     "label" => "Atendimento:"

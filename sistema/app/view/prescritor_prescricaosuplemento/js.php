@@ -60,6 +60,7 @@ function fc_retorno_pacientes(){
         $('#up_telefone').val(dados_json.telefone);
         $('#up_hospital').val(dados_json.hospital);
         $('#up_atendimento').val(dados_json.atendimento);
+        $('#up_cpf').val(dados_json.cpf);
         $('#up_data_nascimento').val(dados_json.data_nascimento);
         //if ( dados_json.relatorios.length == 0 ) {
         if ( dados_json.relatorios === null ) {
@@ -410,7 +411,7 @@ function fc_editar_relatorio(id_relatorio){
                 }
 
                 $("#fracionamento_dia").val(relatorio.fra_fracionamento_dia);
-                fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario);
+                fra_dieta_horario = JSON.parse(relatorio.fra_dieta_horario); 
                 horarios = '';
                 if(fra_dieta_horario){
                     for(i = 1; i < Object.keys(fra_dieta_horario).length; i++) {
