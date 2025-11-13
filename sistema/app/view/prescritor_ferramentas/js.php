@@ -209,7 +209,7 @@ function fc_Gotejamento(){
         var _R = "";
 
         if (f8_gota == "Macro"){
-            _R = f8_volume / (f8_infusao * 3);
+            _R = f8_volume / (f8_infusao * 3); 
             _R = numberFormatPrecision(_R, 2);
             $("#f8_gotejamento").val(_R);
         }

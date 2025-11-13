@@ -632,7 +632,8 @@
                                                                                         "label" => "Tempo de infusão (horas):",
                                                                                         "required" => "required",
                                                                                         "class" => "float gotejamento",
-                                                                                        "parameters" => 'maxlength=1 data-affixes-stay="true" data-prefix="" data-thousands="" data-decimal="" data-precision="0"'
+                                                                                        "parameters" => 'maxlength=4 data-affixes-stay="true" data-prefix="" data-thousands="" data-decimal=":" data-precision="2"'
+
                                                                                     ),
                                                                                     "f8_gota" => array(
                                                                                         "col" => 12,
