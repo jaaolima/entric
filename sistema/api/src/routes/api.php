@@ -11218,7 +11218,7 @@ $app->group("", function () use ($app) {
 		            $pacientes = $db->select_to_array("pacientes_modulo",
 		                                                "max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone, cpf",
 		                                                "WHERE ".$bind_query." GROUP BY nome, id_paciente ORDER BY nome ASC, id desc",
-		                                                null);
+		                                                null); 
 		            if ($pacientes){
 		                for($i = 0; $i < count($pacientes); $i++){
 		                    $relatorios = $db->select_to_array("relatorios_modulo",
