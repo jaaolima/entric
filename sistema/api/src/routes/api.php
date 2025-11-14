@@ -2978,7 +2978,7 @@ $app->group("", function () use ($app) {
 												if (!isset($medida_g[0])) $medida_g = 1; else $medida_g = $medida_g[0];
 												$medida_g = str_replace(",", ".", $medida_g);
 												
-												$_medida = (isset($medida[$key])?$medida[$key]:0);
+												$_medida = (isset($medida[$m])?$medida[$m]:0);
 
 												$_volume_final = json_decode($produtos[$i]['final'], true);
 												if (!isset($_volume_final[0])) $_volume_final = 1; else $_volume_final = $_volume_final[0];
@@ -3018,11 +3018,11 @@ $app->group("", function () use ($app) {
 												$volume_horario = (chknumber($volume_final) / $fracionamento_dia)." ml";
 
 
-												$nf_medida = ((chkstring2float($medida[$key]) * chkstring2float($volume_horario)) / chkfloat($final[$key]));
+												$nf_medida = ((chkstring2float($medida[$m]) * chkstring2float($volume_horario)) / chkfloat($final[$m]));
 												$nf_medida = round($nf_medida * 2) / 2;
 
-												$nf_grama = chkstring2float($grama[$key]);
-												$nf_grama = (($nf_grama * $nf_medida) / chkstring2float($medida[$key]));
+												$nf_grama = chkstring2float($grama[$m]);
+												$nf_grama = (($nf_grama * $nf_medida) / chkstring2float($medida[$m]));
 
 												$nf_dias_grama = ($nf_grama * $fracionamento_dia);
 
