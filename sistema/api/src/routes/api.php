@@ -3026,6 +3026,9 @@ $app->group("", function () use ($app) {
 
 												$nf_dias_grama = ($nf_grama * $fracionamento_dia);
 
+												var_dump($nf_dias_grama);
+												var_dump($produtos[$i]['kcal']);
+
 												$nf_kcal_dia = ($nf_dias_grama * $produtos[$i]['kcal']) / 100;
 												$nf_kcal_dia = numberFormatPrecision($nf_kcal_dia, 0);
 
