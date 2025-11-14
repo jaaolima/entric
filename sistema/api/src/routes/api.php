@@ -2965,8 +2965,6 @@ $app->group("", function () use ($app) {
 												$sistema = 'aberto_liquido';
 											}
 											else if ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]'){
-
-												
 												$_kcal = $dados['kcal_valor'];
 												$volume_final_dieta = $_kcal / $_medida_dc;                        
 												$volume_horario = $volume_final_dieta / $fracionamento_dia;
