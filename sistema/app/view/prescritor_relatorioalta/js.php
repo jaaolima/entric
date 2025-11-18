@@ -2540,7 +2540,7 @@ $(function(){
     $(document).on("change", ".div_nova_dieta input[name='dieta_volume[]'], .div_nova_dieta input[name='dieta_fracionamento_dia[]']", function() {
         var div_nova_dieta = $(this).closest('.div_nova_dieta');
         var infusao_selecionada = div_nova_dieta.find('.radio_infusao:checked').val();
-        if (infusao_selecionada === 'Fracionada') {
+        if (infusao_selecionada === 'Gravitacional') {
             fc_calculo_fracionada($(this));
         }
     });
@@ -3695,6 +3695,12 @@ $(function(){
             }
             $('.hora').mask("99:99");
             $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
+        });
+
+        $(document).on("change", ".div_nova_dieta input[name='dieta_volume[]'], .div_nova_dieta input[name='dieta_fracionamento_dia[]']", function() {
+            if ($(this).closest('.div_nova_dieta').find('.radio_infusao:checked').val() === 'Gravitacional') {
+                fc_calculo_fracionada($(this));
+            }
         });
 
         stickyTop('combinacao'+id);
