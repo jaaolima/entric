@@ -48,8 +48,8 @@ function disponivel(_id, _elem){
 
 function fc_calculo_fracionada(_this){
     var div_nova_dieta = _this.closest('.div_nova_dieta');
-    var volume_input = div_nova_dieta.find('input[name="dieta_volume[]"]');
-    var fracionamento_input = div_nova_dieta.find('input[name="dieta_fracionamento_dia[]"]');
+    var volume_input = div_nova_dieta.find('.fracionamento_dia');
+    var fracionamento_input = div_nova_dieta.find('.volume_dia');
 
     var volume = parseFloat(volume_input.val());
     var fracionamento = parseInt(fracionamento_input.val());
@@ -3697,7 +3697,7 @@ $(function(){
             $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
         });
 
-        $(document).on("change", ".div_nova_dieta input[name='dieta_volume[]'], .div_nova_dieta input[name='dieta_fracionamento_dia[]']", function() {
+        $(document).on("change", ".div_nova_dieta .volume_dia, .div_nova_dieta .fracionamento_dia", function() {
             if ($(this).closest('.div_nova_dieta').find('.radio_infusao:checked').val() === 'Gravitacional') {
                 fc_calculo_fracionada($(this));
             }
