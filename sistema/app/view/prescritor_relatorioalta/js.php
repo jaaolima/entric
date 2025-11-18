@@ -49,8 +49,8 @@ function disponivel(_id, _elem){
 function fc_calculo_fracionada(_this){
     console.log('calculo fracionada');
     var div_nova_dieta = _this.closest('.div_nova_dieta');
-    var volume_input = div_nova_dieta.find('.fracionamento_dia');
-    var fracionamento_input = div_nova_dieta.find('.volume_dia');
+    var volume_input = div_nova_dieta.find('.volume_dia');
+    var fracionamento_input = div_nova_dieta.find('.fracionamento_dia');
 
     var volume = parseFloat(volume_input.val());
     var fracionamento = parseInt(fracionamento_input.val());
