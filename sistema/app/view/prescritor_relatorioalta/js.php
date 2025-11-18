@@ -29,6 +29,23 @@
   };
 }) (jQuery.fn.clone);
 
+function fc_calculo_fracionada(_this){
+    var div_nova_dieta = _this.closest('.div_nova_dieta');
+    var volume_input = div_nova_dieta.find('input[name="dieta_volume[]"]');
+    var fracionamento_input = div_nova_dieta.find('input[name="dieta_fracionamento_dia[]"]');
+
+    var volume = parseFloat(volume_input.val());
+    var fracionamento = parseInt(fracionamento_input.val());
+
+    if (!isNaN(volume) && !isNaN(fracionamento) && fracionamento > 0) {
+        var resultado = volume / fracionamento;
+        var arredondado = Math.ceil(resultado / 10) * 10;
+        var novo_volume = arredondado * fracionamento;
+
+        volume_input.val(novo_volume);
+    }
+}
+
 function disponivel(_id, _elem){
     $.ajax({
         type: "POST",
@@ -357,7 +374,7 @@ function fc_editar_relatorio(id_relatorio){
                 }
                 if(relatorio.calculo_fil_semsacarose){
                     $("input[name='carac_oral[]'][value='Sem Sacarose']").attr("checked","checked");
-                }
+                } 
                 if(relatorio.calculo_fil_semlactose){
                     $("input[name='carac_oral[]'][value='Sem Lactose']").attr("checked","checked");
                 }
@@ -2517,6 +2534,13 @@ $(function(){
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
     });
+    $(document).on("change", ".div_nova_dieta input[name='dieta_volume[]'], .div_nova_dieta input[name='dieta_fracionamento_dia[]']", function() {
+        var div_nova_dieta = $(this).closest('.div_nova_dieta');
+        var infusao_selecionada = div_nova_dieta.find('.radio_infusao:checked').val();
+        if (infusao_selecionada === 'Fracionada') {
+            fc_calculo_fracionada($(this));
+        }
+    });
     // -------------------------------------------------------------------------------------------------
     $(".btn_modulo_add").on("click", function(e) {
         var divClone = $(this).parent().parent().parent().find(".div_modulo:first").clone(true);
@@ -2769,6 +2793,12 @@ $(function(){
             $('.hora').mask("99:99");
             $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
         });
+        $(document).on("change", ".div_nova_dieta input[name='dieta_volume[]'], .div_nova_dieta input[name='dieta_fracionamento_dia[]']", function() {
+            if ($(this).closest('.div_nova_dieta').find('.radio_infusao:checked').val() === 'Fracionada') {
+                fc_calculo_fracionada($(this));
+            }
+        });
+
 
         stickyTop('combinacao'+id);
     });

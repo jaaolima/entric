@@ -45,7 +45,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-sm-8 mb-1">
-                                                                <div class="row">
+                                                                <div class="row"> 
                                                                     <div class="form-group col-sm-2 mb-1">
                                                                         <label for="volume">Volume:</label>
                                                                         <input type="text" class="form-control numeros campos_limpar" data-precision="0" required="required" name="dieta_volume[]">
