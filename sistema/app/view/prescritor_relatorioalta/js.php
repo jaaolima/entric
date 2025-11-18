@@ -2537,6 +2537,13 @@ $(function(){
             $(this).parent().parent().find(".dobras_lados").css({ "opacity": "1", "pointer-events": "auto" });
         }
     });
+    $(document).on("change", ".div_nova_dieta input[name='dieta_volume[]'], .div_nova_dieta input[name='dieta_fracionamento_dia[]']", function() {
+        var div_nova_dieta = $(this).closest('.div_nova_dieta');
+        var infusao_selecionada = div_nova_dieta.find('.radio_infusao:checked').val();
+        if (infusao_selecionada === 'Fracionada') {
+            fc_calculo_fracionada($(this));
+        }
+    });
     $('#data').change(function () {
         var dateEntered = $(this).val();
         var d_date = dateEntered.substring(0, 2);
