@@ -46,6 +46,23 @@ function disponivel(_id, _elem){
     });
 }
 
+function fc_calculo_fracionada(_this){
+    var div_nova_dieta = _this.closest('.div_nova_dieta');
+    var volume_input = div_nova_dieta.find('input[name="dieta_volume[]"]');
+    var fracionamento_input = div_nova_dieta.find('input[name="dieta_fracionamento_dia[]"]');
+
+    var volume = parseFloat(volume_input.val());
+    var fracionamento = parseInt(fracionamento_input.val());
+
+    if (!isNaN(volume) && !isNaN(fracionamento) && fracionamento > 0) {
+        var resultado = volume / fracionamento;
+        var arredondado = Math.ceil(resultado / 10) * 10;
+        var novo_volume = arredondado * fracionamento;
+
+        volume_input.val(novo_volume);
+    }
+}
+
 function fc_retorno_pacientes(){
     $("#modal_retorno_pacientes tbody tr").click(function () {
         $('#id_paciente').val($(this).attr('rel'));
