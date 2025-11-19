@@ -1099,7 +1099,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		<?php endif;?>
 		<?php } ?>
 		
-		<p style="margin-top:10px; font-size:10px; margin-bottom:70px;">A lista de pontos de venda é apenas sugestiva. A escolha do local de compra é totalmente livre e cabe ao paciente ou responsável, que pode adquirir os itens recomendados em qualquer estabelecimento de sua preferência, como farmácias, drogarias ou outras lojas especializadas.</p>
+		<p style="margin-top:10px; font-size:10px; margin-bottom:70px;">Em respeito à sua autonomia e conforme o Código de Ética, a lista acima é meramente sugestiva para sua comodidade. A aquisição dos itens prescritos é de livre escolha e pode ser realizada em qualquer estabelecimento de sua confiança.</p>
 		<div style="margin-bottom:30px;">
 			<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 				<div style="width: 250px;border-top: 1px solid;">
