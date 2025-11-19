@@ -1005,23 +1005,23 @@ function necessidades_peso_checar(){
         $('#nec_agua_peso option:eq(0)').prop('selected', true);
         $('#nec_agua_peso_valor').val(select_peso_valor);
     }
-    else{
-        if (select_peso !== ""){
-            $('#nec_calorias_peso option[value="'+select_peso+'"]').attr('selected','selected');
-            $('#nec_calorias_peso_valor').val(select_peso_valor);
-            $('#nec_proteinas_peso option[value="'+select_peso+'"]').attr('selected','selected');
-            $('#nec_proteinas_peso_valor').val(select_peso_valor);
-            $('#nec_agua_peso option[value="'+select_peso+'"]').attr('selected','selected');
-            $('#nec_agua_peso_valor').val(select_peso_valor);
-        }else{
-            $('#nec_calorias_peso option:eq(0)').prop('selected', true);
-            $('#nec_calorias_peso_valor').val(select_peso_valor);
-            $('#nec_proteinas_peso option:eq(0)').prop('selected', true);    
-            $('#nec_proteinas_peso_valor').val(select_peso_valor);
-            $('#nec_agua_peso option:eq(0)').prop('selected', true);
-            $('#nec_agua_peso_valor').val(select_peso_valor);
-        }        
-    }
+    // else{
+    //     if (select_peso !== ""){
+    //         $('#nec_calorias_peso option[value="'+select_peso+'"]').attr('selected','selected');
+    //         $('#nec_calorias_peso_valor').val(select_peso_valor);
+    //         $('#nec_proteinas_peso option[value="'+select_peso+'"]').attr('selected','selected');
+    //         $('#nec_proteinas_peso_valor').val(select_peso_valor);
+    //         $('#nec_agua_peso option[value="'+select_peso+'"]').attr('selected','selected');
+    //         $('#nec_agua_peso_valor').val(select_peso_valor);
+    //     }else{
+    //         $('#nec_calorias_peso option:eq(0)').prop('selected', true);
+    //         $('#nec_calorias_peso_valor').val(select_peso_valor);
+    //         $('#nec_proteinas_peso option:eq(0)').prop('selected', true);    
+    //         $('#nec_proteinas_peso_valor').val(select_peso_valor);
+    //         $('#nec_agua_peso option:eq(0)').prop('selected', true);
+    //         $('#nec_agua_peso_valor').val(select_peso_valor);
+    //     }        
+    // }
 
     necessidades_calorias_total(null, null);
     necessidades_proteinas_total(null, null);
