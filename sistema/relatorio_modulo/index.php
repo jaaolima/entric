@@ -1168,8 +1168,25 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<td style="width:  100%; border-left: 0px solid #8fcfe5; text-align: center;display:flex;font-size:11px;padding-top:10px;display:flex;flex-wrap:wrap;justify-content:space-around;">
 										<?php 
 										// $danone = $db->select_to_array("distribuidores", "*", "WHERE principal_regiao=0 AND UPPER(uf)='".strtoupper($relatorio['distribuidores'])."'", null);
-										if($paciente['hospital'] == "HOSPITAL SANTA LUCIA SUL"){
+										if($paciente['hospital'] == "HOSPITAL SANTA LUCIA SUL" || $paciente['hospital'] == "HOSPITAL SANTA LUCIA NORTE"){
 											$danone = $db->select_to_array("distribuidores", "*", "WHERE id = 24", null);
+											if ($danone){
+												//echo "<p><strong>OUTROS</strong></p>";
+												for ($i = 0; $i < count($danone); $i++) {
+													echo '<div style="width:40%;margin:10px;">
+															<p>';									
+																echo '<strong>'.$danone[$i]['distribuidor']."</strong>";
+																if (trim($danone[$i]['endereco']) <> "") echo "<br>".$danone[$i]['endereco'];
+																if (trim($danone[$i]['telefone']) <> "") echo "<br>".$danone[$i]['telefone'];
+																if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
+																if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
+															echo '</p>';
+													echo '</div>';
+												}
+												
+											}
+										}else{
+											$danone = $db->select_to_array("distribuidores", "*", "WHERE id = 26", null);
 											if ($danone){
 												//echo "<p><strong>OUTROS</strong></p>";
 												for ($i = 0; $i < count($danone); $i++) {
@@ -1314,6 +1331,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 			<?php
 			}
 			?>
+			<p style="margin-top:10px; font-size:10px; margin-bottom:70px;">A lista de pontos de venda é apenas sugestiva. A escolha do local de compra é totalmente livre e cabe ao paciente ou responsável, que pode adquirir os itens recomendados em qualquer estabelecimento de sua preferência, como farmácias, drogarias ou outras lojas especializadas.</p>
 			<div style="margin-bottom:30px;">
 				<div style="justify-content:center;text-align: center;display: flex;margin-top: 50px;">
 					<div style="width: 250px;border-top: 1px solid;">
