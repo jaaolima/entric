@@ -3201,11 +3201,11 @@ $(function(){
     });
     $('.radio_infusao').on("change", function(e) {
         if ($(this).filter(':checked').val() == 'Gravitacional') {
-            $(this).parent().parent().parent().find(".div_infusao_bomba").hide();
-            $(this).parent().parent().parent().find(".div_infusao_gravitacional").show();
+            $(this).closest('.div_nova_dieta').find(".div_infusao_bomba").hide();
+            $(this).closest('.div_nova_dieta').find(".div_infusao_gravitacional").show();
         }else{
-            $(this).parent().parent().parent().find(".div_infusao_bomba").show();
-            $(this).parent().parent().parent().find(".div_infusao_gravitacional").hide();
+            $(this).closest('.div_nova_dieta').find(".div_infusao_bomba").show();
+            $(this).closest('.div_nova_dieta').find(".div_infusao_gravitacional").hide();
         }
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
