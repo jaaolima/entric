@@ -34,7 +34,7 @@
                                                             <div class="form-group col-sm-4 mb-1">
                                                                 <label for="formula">Fórmula</label>
                                                                 <div class="input-group">
-                                                                    <div class="input-group-prepend div_formula_rm">
+                                                                    <div class="input-group-prepend div_formula_rm none">
                                                                         <button class="btn btn-danger btn_formula_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
                                                                     <select class="form-control select2_ajax_formula select2_formula select_calculo" required="required" name="dieta_formula[1__1__0]"></select>
@@ -69,12 +69,14 @@
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_gravitacional" style="display:none;">
                                                                         <label for="dieta_fracionamento_dia[1__1__0]">Fracionamento/dia:</label>
                                                                         <input type="text"  maxlength='2'  class="form-control numeros campos_limpar fracionamento_dia" required="required" name="dieta_fracionamento_dia[1__1__0]">
+                                                                        <div>
+                                                                            <div class="form-group row col-sm-3 mb-1 div_infusao_gravitacional div_horario_administracao" style="display:none;">
+                                                                                <label for="dieta_horario_administracao[1__1__0]" class="label_horario_administracao">Horário:</label>
+                                                                                <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[1__1__0]">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-group row col-sm-4 mb-1 div_infusao_gravitacional div_horario_administracao" style="display:none;">
-                                                                        <label for="dieta_horario_administracao[1__1__0]" class="label_horario_administracao">Horário de Administração:</label>
-                                                                        <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[1__1__0]">
-                                                                    </div>
-                                                                    <div class="form-group col-sm-6 mb-1 div_infusao_gravitacional" style="display:none;">
+                                                                    <div class="form-group col-sm-3 mb-1 div_infusao_gravitacional" style="display:none;">
                                                                         <label for="dieta_quantas_horas_ocorrer[1__1__0]">Em quantas horas cada dieta deve ocorrer?</label>
                                                                         <input type="text" class="form-control hora campos_limpar dieta_quantas_horas_ocorrer" required="required" name="dieta_quantas_horas_ocorrer[1__1__0]">
                                                                     </div>
@@ -109,7 +111,7 @@
                                                             <div class="col-sm-4 mb-1">
                                                                 <label for="produto">Produto:</label>
                                                                 <div class="input-group">
-                                                                    <div class="input-group-prepend div_produto_rm">
+                                                                    <div class="input-group-prepend div_produto_rm none">
                                                                         <button class="btn btn-danger btn_produto_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
                                                                     <select class="form-control select2_ajax_produto select2_produto select_calculo" required="required" name="modulo_produto[1__1__0]"></select>
@@ -182,7 +184,7 @@
                                                             <div class="col-sm-4 mb-1">
                                                                 <label for="suplemento_produto">Produto:</label>
                                                                 <div class="input-group">
-                                                                    <div class="input-group-prepend div_suplemento_rm">
+                                                                    <div class="input-group-prepend div_suplemento_rm none">
                                                                         <button class="btn btn-danger btn_suplemento_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
                                                                     <select class="form-control select2_ajax_produto select2_suplemento_produto select_calculo" required="required" name="suplemento_produto[1__1__0]"></select>
