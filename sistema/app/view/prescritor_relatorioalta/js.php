@@ -3693,11 +3693,9 @@ $(function(){
             if ($(this).filter(':checked').val() == 'Gravitacional') {
                 $(this).parent().parent().parent().find(".div_infusao_bomba").hide();
                 $(this).parent().parent().parent().find(".div_infusao_gravitacional").show();
-                $(this).parent().parent().parent().parent().parent().find(".div_infusao_gravitacional").show();
             }else{
                 $(this).parent().parent().parent().find(".div_infusao_bomba").show();
                 $(this).parent().parent().parent().find(".div_infusao_gravitacional").hide();
-                $(this).parent().parent().parent().parent().parent().find(".div_infusao_gravitacional").hide();
             }
             $('.hora').mask("99:99");
             $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});

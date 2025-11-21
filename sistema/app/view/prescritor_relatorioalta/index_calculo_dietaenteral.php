@@ -45,18 +45,17 @@
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label for="volume">Volume (ml/dia):</label>
                                                                         <input type="text" maxlength='4'  class="form-control numeros campos_limpar volume_dia disparar_calculo" data-precision="0" required="required" name="dieta_volume[1__1__0]">
-                                                                    </div>
-                                                                    <div class="form-group col-sm-4 mb-1">
-                                                                        <label>Infusão:</label>
-                                                                        <div class="form-radio">
-                                                                            <input type="radio" id="infusao_bomba[1__1__0]" class="radio-outlined radio_infusao infusao_bomba" name="dieta_infusao[1__1__0]" value="Bomba de Infusão" checked="checked">  
-                                                                            <label for="infusao_bomba[1__1__0]" class="radio-green radio_continua infusao_bomba">Bomba de Infusão</label> 
-                                                                            <br>
-                                                                            <input type="radio" id="infusao_gravitacional[1__1__0]" class="radio-outlined radio_infusao infusao_gravitacional" name="dieta_infusao[1__1__0]" value="Gravitacional">  
-                                                                            <label for="infusao_gravitacional[1__1__0]" class="radio-green radio_fracionada infusao_gravitacional">Gravitacional</label> 
+                                                                        <div>
+                                                                            <label>Infusão:</label>
+                                                                            <div class="form-radio">
+                                                                                <input type="radio" id="infusao_bomba[1__1__0]" class="radio-outlined radio_infusao infusao_bomba" name="dieta_infusao[1__1__0]" value="Bomba de Infusão" checked="checked">  
+                                                                                <label for="infusao_bomba[1__1__0]" class="radio-green radio_continua infusao_bomba">Bomba de Infusão</label> 
+                                                                                <br>
+                                                                                <input type="radio" id="infusao_gravitacional[1__1__0]" class="radio-outlined radio_infusao infusao_gravitacional" name="dieta_infusao[1__1__0]" value="Gravitacional">  
+                                                                                <label for="infusao_gravitacional[1__1__0]" class="radio-green radio_fracionada infusao_gravitacional">Gravitacional</label> 
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-
                                                                     <div class="form-group col-sm-3 mb-1 div_infusao_bomba">
                                                                         <label for="dieta_vazao_h">Vazão (ml/h):</label>
                                                                         <input type="text" maxlength='3' class="form-control numeros campos_limpar vazao_ml" required="required" name="dieta_vazao_h[1__1__0]">
@@ -69,20 +68,14 @@
                                                                         <label for="dieta_fracionamento_dia[1__1__0]">Fracionamento/dia:</label>
                                                                         <input type="text"  maxlength='2'  class="form-control numeros campos_limpar fracionamento_dia" required="required" name="dieta_fracionamento_dia[1__1__0]">
                                                                     </div>
-                                                                </div>
-
-                                                                
-                                                            </div>
-                                                        </div>
-                                                        <div class="row justify-content-between">
-                                                            <div class="form-group col-sm-5 mb-1 div_infusao_gravitacional" style="display:none;">
-                                                                <label for="dieta_quantas_horas_ocorrer[1__1__0]">Em quantas horas cada dieta deve correr?</label>
-                                                                <input type="text" class="form-control hora campos_limpar dieta_quantas_horas_ocorrer" required="required" name="dieta_quantas_horas_ocorrer[1__1__0]">
-                                                            </div>
-                                                            <div>
-                                                                <div class="form-group row col-sm-3 mb-1 div_infusao_gravitacional div_horario_administracao" style="display:none;">
-                                                                    <label for="dieta_horario_administracao[1__1__0]" class="label_horario_administracao">Horário:</label>
-                                                                    <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[1__1__0]">
+                                                                    <div class="form-group row col-sm-4 mb-1 div_infusao_gravitacional div_horario_administracao" style="display:none;">
+                                                                        <label for="dieta_horario_administracao[1__1__0]" class="label_horario_administracao">Horário de Administração:</label>
+                                                                        <input type="text" class="form-control hora horario_administracao campos_limpar" required="required" name="dieta_horario_administracao[1__1__0]">
+                                                                    </div>
+                                                                    <div class="form-group col-sm-6 mb-1 div_infusao_gravitacional" style="display:none;">
+                                                                        <label for="dieta_quantas_horas_ocorrer[1__1__0]">Em quantas horas cada dieta deve ocorrer?</label>
+                                                                        <input type="text" class="form-control hora campos_limpar dieta_quantas_horas_ocorrer" required="required" name="dieta_quantas_horas_ocorrer[1__1__0]">
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
