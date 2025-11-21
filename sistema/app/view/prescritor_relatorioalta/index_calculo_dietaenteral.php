@@ -165,7 +165,7 @@
                                     <div class="accordion form-group col-sm-12 accor_suplemento" id="accor_suplemento">
                                         <div class="card">
                                             <div class="card-header accor_suplemento_head" id="accor_suplemento_head">
-                                                <a href="javascript:void(0);" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#accor_suplemento_body" aria-expanded="false" aria-controls="accor_suplemento_body">Suplemento (Oral)</a>
+                                                <a href="javascript:void(0);" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#accor_suplemento_body" aria-expanded="false" aria-controls="accor_suplemento_body">Suplemento (Enteral)</a>
                                             </div>
 
                                             <div id="accor_suplemento_body" class="collapse accor_suplemento_body" aria-labelledby="accor_suplemento_head" data-parent="#accor_suplemento">

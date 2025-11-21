@@ -1025,7 +1025,7 @@ function necessidades_peso_checar(){
 
     necessidades_calorias_total(null, null);
     necessidades_proteinas_total(null, null);
-    necessidades_agua_total(null, null);
+    necessidades_agua_total(null, null); 
 }
 
 function volume_total_hidratacao(){
@@ -2795,6 +2795,9 @@ $(function(){
         });
         $(document).on("change", ".div_nova_dieta input[name='dieta_volume[]'], .div_nova_dieta input[name='dieta_fracionamento_dia[]']", function() {
             if ($(this).closest('.div_nova_dieta').find('.radio_infusao:checked').val() === 'Fracionada') {
+                if($(this).attr('name') == 'dieta_volume[]'){
+                    $(this).closest('.div_nova_dieta').find('input[name="dieta_fracionamento_dia[]"]').val('');
+                }
                 fc_calculo_fracionada($(this));
             }
         });
