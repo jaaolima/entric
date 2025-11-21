@@ -2542,6 +2542,9 @@ $(function(){
         var div_nova_dieta = $(this).closest('.div_nova_dieta');
         var infusao_selecionada = div_nova_dieta.find('.radio_infusao:checked').val();
         if (infusao_selecionada === 'Gravitacional') {
+            if( $(this).hasClass('volume_dia') ) {
+                $(this).parent().parent().find('.fracionamento_dia').val('');
+            }
             fc_calculo_fracionada($(this));
         }
     });
