@@ -3380,16 +3380,16 @@ $(function(){
 
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
-        var selector = $("select[name='suplemento_produto[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
-        selector.removeAttr('data-live-search')
-                .removeAttr('data-select2-id')
-                .removeAttr('aria-hidden')
-                .removeAttr('tabindex')
-                .removeClass('select2-hidden-accessible');
-        selector.find('option[value]').remove();
-        selector.empty();
-        selector.removeData();
-        select2_ajax_produto_suplemento(selector);
+        // var selector = $("select[name='suplemento_produto[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
+        // selector.removeAttr('data-live-search')
+        //         .removeAttr('data-select2-id')
+        //         .removeAttr('aria-hidden')
+        //         .removeAttr('tabindex')
+        //         .removeClass('select2-hidden-accessible');
+        // selector.find('option[value]').remove();
+        // selector.empty();
+        // selector.removeData();
+        // select2_ajax_produto_suplemento(selector);
     });
     $('body').on('click', ".btn_suplemento_rm", async function (e) {
 
@@ -3499,7 +3499,7 @@ $(function(){
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();    
         
         divClone.find(".div_volume_total").not(':first').remove();
-        // divClone.find(".campos_limpar").val('');
+        divClone.find(".suplemento_horario").val('');
         divClone.find(".hora").unbind();
         divClone.find(".numeros").unbind();
         $(this).closest("div[id^='combinacao']").find(".suplemento").append(divClone);
