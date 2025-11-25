@@ -1101,7 +1101,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
+									echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
 								}
 							}
 
@@ -1118,7 +1118,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									echo "<p><b>ÁGUA LIVRE</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
+									echo "<p><b>Água Livre</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
 								}
 							}
 							echo "</div>";
@@ -1128,7 +1128,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 			<?php } ?>
 
-			<?php if ((trim($relatorio['rel_observacoes'])<>"")){ ?>
+			<?php if ((trim($relatorio['rel_observacoes'])<>"") && $relatorio['observacoes'] != ''){ ?>
 			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> OBSERVAÇÕES</p>
 			<p><?php echo $relatorio['observacoes'];?></p>
 			<?php } ?>
@@ -1340,7 +1340,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 													if (trim($danone[$i]['whatsapp']) <> "") echo "<br>".$danone[$i]['whatsapp'];
 													if (trim($danone[$i]['cupom']) <> "") echo "<br>Cupom: ".$danone[$i]['cupom'];
 													echo "</p>
-													</div>";
+													</div>"; 
 													echo "<div style='display:flex;'>
 															<div style='text-align:end;'>
 																<h5 class='titulo'style='margin:0px;margin-top:8px;'>FACILITE SUA COMPRA!</h5>
