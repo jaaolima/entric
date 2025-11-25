@@ -3478,9 +3478,14 @@ $(function(){
     });
     $(".btn_suplemento_total_add").on("click", function(e) {
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
+        console.log(divCombinacao);
         idCampo =  $(this).closest("div[id^='combinacao']").find(".div_suplemento").length + 1;
+        console.log(idCampo);
+
         idCombinacao = divCombinacao.replace('combinacao','');
         var divClone = $(this).closest("div[id^='combinacao']").find(".div_suplemento:first").clone(true);
+        console.log(divClone);
+
         var p = $.now();
 
         divClone.removeAttr("id");
