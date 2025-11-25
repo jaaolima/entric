@@ -3502,7 +3502,7 @@ $(function(){
         // divClone.find(".campos_limpar").val('');
         divClone.find(".hora").unbind();
         divClone.find(".numeros").unbind();
-        $(this).parent().parent().parent().find(".suplemento").append(divClone);
+        $(this).closest("div[id^='combinacao']").find(".suplemento").append(divClone);
 
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
