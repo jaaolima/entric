@@ -3480,7 +3480,7 @@ $(function(){
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCampo =  $(this).closest("div[id^='combinacao']").find(".div_suplemento").length + 1;
         idCombinacao = divCombinacao.replace('combinacao','');
-        var divClone = $(this).parent().parent().parent().find(".div_suplemento:first").clone(true);
+        var divClone = $(this).closest("div[id^='combinacao']").find(".div_suplemento:first").clone(true);
         var p = $.now();
 
         divClone.removeAttr("id");
