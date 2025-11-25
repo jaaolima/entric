@@ -3369,8 +3369,8 @@ $(function(){
         divClone.find(".select2_ajax_produto").attr('name', 'suplemento_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".hora_correr").attr('name', 'hora_correr[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
-        divClone.find(".select2_ajax_produto").parent().find(".select2-container--below").remove();
-        divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();    
+        // divClone.find(".select2_ajax_produto").parent().find(".select2-container--below").remove();
+        // divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();    
         
         divClone.find(".div_volume_total").not(':first').remove();
         divClone.find(".campos_limpar").val('');
