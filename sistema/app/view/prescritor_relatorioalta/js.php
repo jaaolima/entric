@@ -3519,29 +3519,41 @@ $(function(){
     });
 
     $(".btn_modulo_total_add").on("click", function(e) {
+        idCampo =  $(this).closest("div[id^='combinacao']").find(".div_modulo").length + 1;
+
         divCombinacao =  $(this).closest("div[id^='combinacao']").attr("id");
         idCombinacao = divCombinacao.replace('combinacao','');
-        var divClone = $(this).closest(".div_volume_total").clone(true);
-        var divModulo = $(this).closest(".div_modulo");
-        i = divModulo.find('[name^="modulo_horario"]').length + 1;
-        var nameString = divClone.find('[name^="modulo_horario"]').first().attr('name');
-        var regex = /\[(.*?)\]/;
-        nameStringmatch = nameString.match(regex);
-        nameStringmatchNew = nameStringmatch[1].substring(0, nameStringmatch[1].length - 3); 
-
+        var divClone = $(this).closest("div[id^='combinacao']").find(".div_modulo:first").clone(true);
         var p = $.now();
 
-        divClone.find(".btn_modulo_total_add").remove();
-        divClone.find(".btn_modulo_total_rm").removeClass("none");
-        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' +nameStringmatchNew + "__" + i +']').end();
-
-        divClone.find(".campos_limpar").val('');
+        divClone.removeAttr("id").attr("id","modulo"+p);
+        divClone.find(".div_produto_rm").removeClass("none");
+        divClone.find(".modulo_horario").attr('name', 'modulo_horario[' + idCombinacao + '__'+idCampo+ '__' + p +'__1]').end();
+        divClone.find(".modulo_volume_total").attr('name', 'modulo_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".modulo_quantidade").attr('name', 'modulo_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".modulo_volume_agua").attr('name', 'modulo_volume[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        divClone.find(".select2_ajax_produto").attr('name', 'modulo_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
+        // divClone.find(".select2_ajax_produto").parent().find(".select2-container--below").remove();  
+        // divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();        
+        
+        divClone.find(".div_volume_total").not(':first').remove();
+        divClone.find(".modulo_horario").val('');
         divClone.find(".hora").unbind();
         divClone.find(".numeros").unbind();
-        $(this).closest(".div_volume_total_col").append(divClone);
+        $(this).closest("div[id^='combinacao']").find(".modulo").append(divClone);
 
         $('.hora').mask("99:99");
         $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
+        // var selector = $("#modulo"+p).find("select[name='modulo_produto[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
+        // selector.removeAttr('data-live-search')
+        //         .removeAttr('data-select2-id')
+        //         .removeAttr('aria-hidden')
+        //         .removeAttr('tabindex')
+        //         .removeClass('select2-hidden-accessible');
+        // selector.find('option[value]').remove();
+        // selector.empty();
+        // selector.removeData();
+        // select2_ajax_produto_modulo(selector);
     });
     $(".btn_suplemento_total_rm").on("click", function(e) {
         $(this).closest(".div_volume_total").remove();
