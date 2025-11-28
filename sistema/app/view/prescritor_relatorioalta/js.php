@@ -2146,6 +2146,19 @@ $(function(){
         div_select = $(this).closest(".div_suplemento");
         input = div_select.find("input[name^='suplemento_quantidade']");
         input.val("");
+
+        $.ajax({
+            type: "POST",
+            url: "ajax/produto_abrir",
+            data: {
+                id: $(this).val()
+            },
+            cache: false,
+            dataType: 'json',
+            success: function( data ){
+                console.log(data);
+            }
+        });
     });
 
 
@@ -3527,7 +3540,7 @@ $(function(){
         var p = $.now();
 
         divClone.removeAttr("id").attr("id","modulo"+p);
-        divClone.find(".div_produto_rm").removeClass("none");
+        divClone.find(".div_produto_rm").removeClass("none"); 
         divClone.find(".modulo_horario").attr('name', 'modulo_horario[' + idCombinacao + '__'+idCampo+ '__' + p +'__1]').end();
         divClone.find(".modulo_volume_total").attr('name', 'modulo_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".modulo_quantidade").attr('name', 'modulo_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();

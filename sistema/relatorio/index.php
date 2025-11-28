@@ -1090,6 +1090,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
+									$volumeProduto = $dieta_volume->$key;
 									$HorasCorrer = $hora_correr->$key;
 									$StringSuplementoHorario = '';
 									foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
@@ -1101,7 +1102,13 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas.</p>";
+
+									$valorHorasOcorrer = str_replace(":", ".", $HorasCorrer);
+									$indexX = (floatval($suplementoQuantidade) / floatval($valorHorasOcorrer));
+
+									$indexY = (floatval($suplementoQuantidade) / (floatval($valorHorasOcorrer) * 3));
+
+									echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.</p>";
 								}
 							}
 
