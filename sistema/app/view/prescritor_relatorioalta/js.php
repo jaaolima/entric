@@ -2173,6 +2173,36 @@ $(function(){
         });
     });
 
+    $('body').on('select', ".select2_densidade", function (e) {
+        div_select = $(this).closest(".div_suplemento");
+        produto = div_select.find(".select2_suplemento_produto").val();
+        $.ajax({
+            type: "POST",
+            url: "ajax/produto_abrir",
+            data: {
+                id: produto
+            },
+            cache: false,
+            dataType: 'json',
+            success: function( data ){
+                medida_dc = JSON.parse(data.medida_dc);
+                volume = JSON.parse(data.volume);
+                diluicao = JSON.parse(data.diluicao);
+                final = JSON.parse(data.final);
+                for(i=0; i<medida_dc.length; i++){
+                    if(div_select.find(".suplemento_densidade").val() == medida_dc[i]){
+                        div_select.find("input[name^='suplemento_quantidade']").val(volume[i]);
+                        div_select.find("input[name^='suplemento_diluicao']").val(diluicao[i]);
+                        div_select.find("input[name^='suplemento_volume_final']").val(final[i]);
+                    }
+                    div_select.find(".div-densidade").show();
+                    div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i]+"'>"+medida_dc[i]+"</option>");
+                }
+                console.log(data);
+            }
+        });
+    });
+
 
     $('#avaliacao .data').datepicker({
         format: "dd/mm/yyyy",
