@@ -2041,6 +2041,7 @@ function isNumeric(evt) {
 }
 
 async function recalcular_oferta($_this){
+    console.log("Recalculando oferta...");
     let divCombinacao = $($_this).closest("div[id^='combinacao']");
     let totalKcal = 0;
     let totalPtn = 0;
@@ -2173,9 +2174,12 @@ $(function(){
                         div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i]+"'>"+medida_dc[i]+"</option>");
                     }
                 }
-                recalcular_oferta($(this));
-            }
+            },
         });
+
+        recalcular_oferta($(this));
+
+
     });
 
     $('body').on('click', ".select2_densidade", function (e) {
@@ -2201,9 +2205,11 @@ $(function(){
                         div_select.find("input[name^='suplemento_volume_final']").val(final[i]);
                     }
                 }
-                recalcular_oferta($(this));
             }
         });
+
+        recalcular_oferta($(this));
+
     });
 
 
@@ -3574,7 +3580,7 @@ $(function(){
         // selector.empty();
         // selector.removeData();
         // select2_ajax_produto_suplemento(selector);
-        recalcular_oferta_total($_this);
+        recalcular_oferta($_this);
     });
 
     $(".btn_modulo_total_add").on("click", function(e) {
