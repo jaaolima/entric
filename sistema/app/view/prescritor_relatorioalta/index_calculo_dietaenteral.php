@@ -148,9 +148,9 @@
                                                                             </div> -->
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-sm-2 mb-1 div_diluir_anterior d-flex justify-content-center align-items-center" style="display:none;">
+                                                                    <div class="form-group col-sm-4 mb-1 div_diluir_anterior justify-content-center align-items-center" style="display:none;">
                                                                         <div class="form-check"> <input type="checkbox" class="form-check-input modulo_diluir_anterior campos_limpar" name="modulo_diluir_anterior[1_1_0]" id="check_diluir" value="1">
-                                                                            <label class="form-check-label" for="check_diluir">Diluir junto ao anterior</label>
+                                                                            <label class="form-check-label ml-2" for="check_diluir">Diluir junto ao anterior</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>

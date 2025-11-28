@@ -3604,6 +3604,7 @@ $(function(){
         divClone.find(".div_volume_total").not(':first').remove();
         divClone.find(".modulo_horario").val('');
         divClone.find(".div_diluir_anterior").show();
+        divClone.find(".div_diluir_anterior").addClass('d-flex');
         divClone.find(".hora").unbind();
         divClone.find(".numeros").unbind();
         $(this).closest("div[id^='combinacao']").find(".modulo").append(divClone);
