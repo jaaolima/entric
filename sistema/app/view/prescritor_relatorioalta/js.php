@@ -2173,13 +2173,12 @@ $(function(){
                         div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i]+"'>"+medida_dc[i]+"</option>");
                     }
                 }
-                console.log(data);
+                recalcular_oferta($(this));
             }
         });
     });
 
     $('body').on('click', ".select2_densidade", function (e) {
-        console.log("teste");
         div_select = $(this).closest(".div_suplemento");
         produto = div_select.find(".select2_suplemento_produto").val();
         $.ajax({
@@ -2191,7 +2190,6 @@ $(function(){
             cache: false,
             dataType: 'json',
             success: function( data ){
-                console.log(data);
                 medida_dc = JSON.parse(data.medida_dc);
                 volume = JSON.parse(data.volume);
                 diluicao = JSON.parse(data.diluicao);
@@ -2202,10 +2200,8 @@ $(function(){
                         div_select.find("input[name^='suplemento_diluicao']").val(diluicao[i]);
                         div_select.find("input[name^='suplemento_volume_final']").val(final[i]);
                     }
-                    div_select.find(".div-densidade").show();
-                    div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i]+"'>"+medida_dc[i]+"</option>");
                 }
-                console.log(data);
+                recalcular_oferta($(this));
             }
         });
     });
@@ -3578,6 +3574,7 @@ $(function(){
         // selector.empty();
         // selector.removeData();
         // select2_ajax_produto_suplemento(selector);
+        recalcular_oferta_total($_this);
     });
 
     $(".btn_modulo_total_add").on("click", function(e) {
