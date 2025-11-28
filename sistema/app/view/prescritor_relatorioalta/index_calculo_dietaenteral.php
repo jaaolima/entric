@@ -147,6 +147,10 @@
                                                                                 </div>
                                                                             </div> -->
                                                                         </div>
+                                                                        <div class="form-group col-sm-3 mb-1 div_diluir_anterior" style="display:none;">
+                                                                            <input type="checkbox" class="form-check-input modulo_diluir_anterior campos_limpar" name="modulo_diluir_anterior[1__1__0]" value="1">
+                                                                            <label for="">Diluir junto ao anterior</label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>

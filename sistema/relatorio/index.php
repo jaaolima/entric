@@ -1066,7 +1066,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
 								}
 							}
-
+							$modulos = 1;
 							foreach ($modulo_produto as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
@@ -1082,7 +1082,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir em ".$moduloVolume." ml de água e administrar às ".$StringHorario."</p>";
+									if($modulos > 1){
+										$textoDiluir = ' junto ao produto anterior';
+									}else{
+										$textoDiluir = '';
+									}
+									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir".$textoDiluir." em ".$moduloVolume." ml de água e administrar às ".$StringHorario."</p>";
 								}
 							}
 
@@ -1113,19 +1118,21 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 
 							foreach ($hidratacao_agua_livre as $key => $value) {
-								if (substr($key, 0, 1) == $i) {
-									$hidratacaoFracionamento = $hidratacao_fracionamento_dia->$key;
-									$StringHorario = '';
-									foreach ($hidratacao_horario as $keyHorario => $valueHorario) {
-										if (substr($keyHorario, 0, strlen($key)) === $key) {
-											if ($StringHorario != '') {
-												$StringHorario .= ', ' . $valueHorario;
-											} else {
-												$StringHorario .= $valueHorario;
+								if($value != ''){
+									if (substr($key, 0, 1) == $i) {
+										$hidratacaoFracionamento = $hidratacao_fracionamento_dia->$key;
+										$StringHorario = '';
+										foreach ($hidratacao_horario as $keyHorario => $valueHorario) {
+											if (substr($keyHorario, 0, strlen($key)) === $key) {
+												if ($StringHorario != '') {
+													$StringHorario .= ', ' . $valueHorario;
+												} else {
+													$StringHorario .= $valueHorario;
+												}
 											}
 										}
+										echo "<p><b>Água Livre</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
 									}
-									echo "<p><b>Água Livre</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
 								}
 							}
 							echo "</div>";
