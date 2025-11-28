@@ -2181,10 +2181,10 @@ $(function(){
                     }
                 }
             },
+            complete: function() {
+                recalcular_oferta($(this));
+            }
         });
-
-        recalcular_oferta($(this));
-
 
     });
 
@@ -2211,10 +2211,11 @@ $(function(){
                         div_select.find("input[name^='suplemento_volume_final']").val(final[i]);
                     }
                 }
+            },
+            complete: function() {
+                recalcular_oferta($(this));
             }
         });
-
-        recalcular_oferta($(this));
 
     });
 

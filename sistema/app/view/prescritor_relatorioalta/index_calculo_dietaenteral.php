@@ -191,7 +191,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-sm-3 div-densidade" style="display:none;">
                                                                         <label for="suplemento_densidade">Densidade:</label>
-                                                                        <select name="suplemento_densidade[1__1__0]" class="form-control select2_densidade suplemento_densidade campos_limpar">
+                                                                        <select name="suplemento_densidade[1__1__0]" class="form-control select2_densidade suplemento_densidade campos_limpar" required="required">
                                                                             <option value="">Selecione..</option>
                                                                         </select>
                                                                     </div>
