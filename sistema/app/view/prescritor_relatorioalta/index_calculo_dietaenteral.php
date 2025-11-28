@@ -195,15 +195,15 @@
                                                                             <option value="">Selecione..</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="form-group col-sm-4">
+                                                                    <div class="form-group col-sm-3">
                                                                         <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
                                                                         <input type="text" maxlength='4' class="form-control numeros campos_limpar suplemento_quantidade disparar_calculo" required="required" name="suplemento_quantidade[1__1__0]">
                                                                     </div>
-                                                                    <div class="form-group col-sm-4">
+                                                                    <div class="form-group col-sm-3 div-diluicao" style="display:none;">
                                                                         <label for="suplemento_diluicao">Diluição:</label>
                                                                         <input type="text" class="form-control numeros campos_limpar suplemento_diluicao disparar_calculo" required="required" name="suplemento_diluicao[1__1__0]">
                                                                     </div>
-                                                                    <div class="form-group col-sm-4">
+                                                                    <div class="form-group col-sm-3 div-final" style="display:none;">
                                                                         <label for="suplemento_volume_final">Volume final:</label>
                                                                         <input type="text" class="form-control numeros campos_limpar suplemento_volume_final disparar_calculo" required="required" name="suplemento_volume_final[1__1__0]">
                                                                     </div>

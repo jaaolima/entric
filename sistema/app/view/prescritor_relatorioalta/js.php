@@ -2159,12 +2159,17 @@ $(function(){
                 if(data.apres_oral == '["Líquido / Creme"]' || data.apres_oral == '["Cremoso"]'){
                     volume = data.volume.replace('["', '').replace('"]', '');
                     div_select.find(".suplemento_quantidade").val(volume);
+                    div_select.find(".div-densidade").hide();
+                    div_select.find(".div-diluicao").hide();
+                    div_select.find(".div-final").hide();
                 }
                 if(data.apres_oral == '["Pó"]'){
                     medida_dc = JSON.parse(data.medida_dc);
                     console.log(medida_dc);
                     for(i=0; i<medida_dc.length; i++){
                         div_select.find(".div-densidade").show();
+                        div_select.find(".div-diluicao").show();
+                        div_select.find(".div-final").show();
                         div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i]+"'>"+medida_dc[i]+"</option>");
                     }
                 }
@@ -2173,7 +2178,7 @@ $(function(){
         });
     });
 
-    $('body').on('select', ".select2_densidade", function (e) {
+    $('body').on('click', ".select2_densidade", function (e) {
         div_select = $(this).closest(".div_suplemento");
         produto = div_select.find(".select2_suplemento_produto").val();
         $.ajax({
