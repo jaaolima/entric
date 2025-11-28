@@ -2179,6 +2179,7 @@ $(function(){
     });
 
     $('body').on('click', ".select2_densidade", function (e) {
+        console.log("teste");
         div_select = $(this).closest(".div_suplemento");
         produto = div_select.find(".select2_suplemento_produto").val();
         $.ajax({
@@ -2190,6 +2191,7 @@ $(function(){
             cache: false,
             dataType: 'json',
             success: function( data ){
+                console.log(data);
                 medida_dc = JSON.parse(data.medida_dc);
                 volume = JSON.parse(data.volume);
                 diluicao = JSON.parse(data.diluicao);
