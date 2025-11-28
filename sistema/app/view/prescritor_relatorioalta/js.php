@@ -2162,8 +2162,10 @@ $(function(){
                 }
                 if(data.apres_oral == '["Pó"]'){
                     medida_dc = JSON.parse(data.medida_dc);
+                    console.log(medida_dc);
                     for(i=0; i<medida_dc.length; i++){
-                        div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i].quantidade+"'>"+medida_dc[i].quantidade+"</option>");
+                        div_select.find(".div-densidade").show();
+                        div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i]+"'>"+medida_dc[i]+"</option>");
                     }
                 }
                 console.log(data);
