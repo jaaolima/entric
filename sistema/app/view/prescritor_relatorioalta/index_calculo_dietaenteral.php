@@ -189,6 +189,12 @@
 
                                                             <div class="col-sm-8 mb-1">
                                                                 <div class="row">
+                                                                    <div class="form-group col-sm-3 div-densidade" style="display:none;">
+                                                                        <label for="suplemento_quantidade">Densidade:</label>
+                                                                        <select name="densidade" class="form-control select2_densidade suplemento_densidade campos_limpar">
+                                                                            <option value="">Selecione..</option>
+                                                                        </select>
+                                                                    </div>
                                                                     <div class="form-group col-sm-4">
                                                                         <label for="suplemento_quantidade">Quantidade (g ou ml):</label>
                                                                         <input type="text" maxlength='4' class="form-control numeros campos_limpar suplemento_quantidade disparar_calculo" required="required" name="suplemento_quantidade[1__1__0]">
