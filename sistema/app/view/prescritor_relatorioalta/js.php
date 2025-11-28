@@ -2156,6 +2156,11 @@ $(function(){
             cache: false,
             dataType: 'json',
             success: function( data ){
+                console.log(data.apres_oral);
+                console.log(data.volume);
+                if(data.apres_oral == '["Líquido / Creme"]' || data.apres_oral == '["Cremoso"]'){
+                    div_select.find(".suplemento_quantidade").val(data.volume);
+                }
                 console.log(data);
             }
         });
