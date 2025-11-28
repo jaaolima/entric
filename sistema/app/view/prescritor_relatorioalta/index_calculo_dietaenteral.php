@@ -124,9 +124,9 @@
                                                                         <input type="text" class="form-control numeros campos_limpar modulo_volume_agua" data-precision="2" required="required" name="modulo_volume[1__1__0]">
                                                                     </div>
 
-                                                                    <div class="col-sm-5 mb-1 div_volume_total_col">
-                                                                        <div class="row div_volume_total">
-                                                                            <div class="form-group col-sm-6 mb-1">
+                                                                    <div class="col-sm-3 mb-1 div_volume_total_col">
+                                                                        <div class="div_volume_total">
+                                                                            <div class="form-group mb-1">
                                                                                 <label for="horario">Horário:</label>
                                                                                 <div class="input-group">
                                                                                     <input type="text" class="form-control hora modulo_horario campos_limpar" required="required" name="modulo_horario[1__1__0__1]">
@@ -148,9 +148,10 @@
                                                                             </div> -->
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-sm-2 mb-1 div_diluir_anterior" style="display:none;">
-                                                                        <input type="checkbox" class="form-check-input modulo_diluir_anterior campos_limpar" name="modulo_diluir_anterior[1__1__0]" value="1">
-                                                                        <label for="modulo_diluir_anterior[1__1__0]">Diluir junto ao anterior</label>
+                                                                    <div class="form-group col-sm-2 mb-1 div_diluir_anterior d-flex justify-content-center align-items-center" style="display:none;">
+                                                                        <div class="form-check"> <input type="checkbox" class="form-check-input modulo_diluir_anterior campos_limpar" name="modulo_diluir_anterior[1_1_0]" id="check_diluir" value="1">
+                                                                            <label class="form-check-label" for="check_diluir">Diluir junto ao anterior</label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
