@@ -2137,6 +2137,10 @@ $(function(){
         recalcular_oferta($(this));
     });
 
+    $('body').on('change', ".disparar_calculo", function (e) { // Mark the function as async
+        recalcular_oferta($(this));
+    });
+
     $('body').on('select2:select', ".select2_produto", function (e) {
         div_select = $(this).closest(".div_modulo");
         input = div_select.find("input[name^='modulo_quantidade']");
@@ -2163,6 +2167,8 @@ $(function(){
                     div_select.find(".div-densidade").hide();
                     div_select.find(".div-diluicao").hide();
                     div_select.find(".div-final").hide();
+                    div_select.find(".suplemento_densidade").html("<option value=''>Selecionar...</option>");
+
                 }
                 if(data.apres_oral == '["Pó"]'){
                     medida_dc = JSON.parse(data.medida_dc);
@@ -3580,7 +3586,7 @@ $(function(){
         // selector.empty();
         // selector.removeData();
         // select2_ajax_produto_suplemento(selector);
-        recalcular_oferta($_this);
+        recalcular_oferta($(this));
     });
 
     $(".btn_modulo_total_add").on("click", function(e) {
