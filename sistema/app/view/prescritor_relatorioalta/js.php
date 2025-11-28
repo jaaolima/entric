@@ -2161,7 +2161,7 @@ $(function(){
                     div_select.find(".suplemento_quantidade").val(volume);
                 }
                 if(data.apres_oral == '["Pó"]'){
-                    medida_dc = json_decode(data.medida_dc);
+                    medida_dc = JSON.parse(data.medida_dc);
                     for(i=0; i<medida_dc.length; i++){
                         div_select.find(".suplemento_densidade").append("<option value='"+medida_dc[i].quantidade+"'>"+medida_dc[i].quantidade+"</option>");
                     }
