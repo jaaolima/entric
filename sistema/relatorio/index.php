@@ -1097,14 +1097,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 							foreach ($suplemento_produto as $key => $value) {
 								if (substr($key, 0, 1) == $i) {
-									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
+									$produto = $db->select_single_to_array("produtos", "nome, unidmedida, apres_oral", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$volumeProduto = $dieta_volume->$key;
 									$HorasCorrer = $hora_correr->$key;
 									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
-
-									var_dump($produto['apres_oral']);
 
 									if($produto['apres_oral'] == '["Pó"]'){
 										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
