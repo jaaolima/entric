@@ -1104,6 +1104,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
 
+									var_dump($produto['apres_oral']);
+
 									if($produto['apres_oral'] == '["Pó"]'){
 										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
 											if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
