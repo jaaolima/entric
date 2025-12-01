@@ -1019,6 +1019,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
 						$hora_correr = json_decode($relatorio['hora_correr']);
+						$modulo_diluir_anterior = json_decode($relatorio['modulo_diluir_anterior']);
+						$suplemento_diluicao = json_decode($relatorio['suplemento_diluicao']);
 
 						$valortotal_kcal = json_decode($relatorio['valortotal_kcal']);
 						$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
@@ -1071,6 +1073,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if (substr($key, 0, 1) == $i) {
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida", "WHERE id=:id", array(":id"=>$value));
 									$moduloQuantidade = $modulo_quantidade->$key;
+									$diluir_anterior = $modulo_diluir_anterior->$key;
 									$moduloVolume = str_replace(".00", "", $modulo_volume->$key);
 									$StringHorario = '';
 									foreach ($modulo_horario as $keyHorario => $valueHorario) {
@@ -1082,11 +1085,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 									}
-									if($modulos > 1){
+									if($modulos > 1 && $diluir_anterior){
 										$textoDiluir = ' junto ao produto anterior';
 									}else{
 										$textoDiluir = '';
 									}
+									$modulos++;
 									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir".$textoDiluir." em ".$moduloVolume." ml de água e administrar às ".$StringHorario."</p>";
 								}
 							}
@@ -1097,23 +1101,45 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$volumeProduto = $dieta_volume->$key;
 									$HorasCorrer = $hora_correr->$key;
+									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
-									foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
-										if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
-											if ($StringSuplementoHorario != '') {
-												$StringSuplementoHorario .= ', ' . $valueSuplementoHorario;
-											} else {
-												$StringSuplementoHorario .= $valueSuplementoHorario;
+
+									if($produto['apres_oral'] == '["Pó"]'){
+										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
+											if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
+												if ($StringSuplementoHorario != '') {
+													$StringSuplementoHorario .= ', ' . $valueSuplementoHorario;
+												} else {
+													$StringSuplementoHorario .= $valueSuplementoHorario;
+												}
 											}
 										}
+
+										$valorHorasOcorrer = str_replace(":", ".", $HorasCorrer);
+										$indexX = (floatval($suplementoQuantidade) / floatval($valorHorasOcorrer));
+
+										$indexY = (floatval($suplementoQuantidade) / (floatval($valorHorasOcorrer) * 3));
+
+										echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.</p>";
+									}else{
+										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
+											if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
+												if ($StringSuplementoHorario != '') {
+													$StringSuplementoHorario .= ', ' . $valueSuplementoHorario;
+												} else {
+													$StringSuplementoHorario .= $valueSuplementoHorario;
+												}
+											}
+										}
+
+										$valorHorasOcorrer = str_replace(":", ".", $HorasCorrer);
+										$indexX = (floatval($suplementoQuantidade) / floatval($valorHorasOcorrer));
+
+										$indexY = (floatval($suplementoQuantidade) / (floatval($valorHorasOcorrer) * 3));
+
+										echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.</p>";
 									}
-
-									$valorHorasOcorrer = str_replace(":", ".", $HorasCorrer);
-									$indexX = (floatval($suplementoQuantidade) / floatval($valorHorasOcorrer));
-
-									$indexY = (floatval($suplementoQuantidade) / (floatval($valorHorasOcorrer) * 3));
-
-									echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.</p>";
+				
 								}
 							}
 
