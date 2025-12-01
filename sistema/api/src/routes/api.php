@@ -8320,10 +8320,14 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['modulo_quantidade'])) $dados['modulo_quantidade'] = null;
 		        if (!isset($dados['modulo_volume'])) $dados['modulo_volume'] = null;
 		        if (!isset($dados['modulo_horario'])) $dados['modulo_horario'] = null;
+		        if (!isset($dados['modulo_diluir_anterior'])) $dados['modulo_diluir_anterior'] = null;
 		        if (!isset($dados['modulo_volume_total'])) $dados['modulo_volume_total'] = null;
 		        if (!isset($dados['suplemento_produto'])) $dados['suplemento_produto'] = null;
 		        if (!isset($dados['suplemento_quantidade'])) $dados['suplemento_quantidade'] = null;
 		        if (!isset($dados['suplemento_horario'])) $dados['suplemento_horario'] = null;
+		        if (!isset($dados['suplemento_densidade'])) $dados['suplemento_densidade'] = null;
+		        if (!isset($dados['suplemento_diluicao'])) $dados['suplemento_diluicao'] = null;
+		        if (!isset($dados['suplemento_volume_final'])) $dados['suplemento_volume_final'] = null;
 		        if (!isset($dados['hora_correr'])) $dados['hora_correr'] = null;
 		        if (!isset($dados['suplemento_volume_total'])) $dados['suplemento_volume_total'] = null;
 		        if (!isset($dados['hidratacao_agua_livre'])) $dados['hidratacao_agua_livre'] = null;

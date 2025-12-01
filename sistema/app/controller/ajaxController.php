@@ -126,7 +126,7 @@ class AjaxController extends Controller {
                 break;
                 case 'necessidades':
                     $necessidades = $this->AjaxModel->stNecessidades($_POST);
-                    echo json_encode($necessidades);
+                    echo json_encode($necessidades); 
                 break;
                 case 'calculo':
                     $calculo = $this->AjaxModel->stCalculo($_POST);

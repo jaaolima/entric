@@ -17,7 +17,7 @@ class AjaxModel extends Model {
         return json_encode($retorno);
     }
     
-    function getPrescritor($output) {
+    function getPrescritor($output) { 
         global $bruker;
         $retorno = httpPostAuth("ajax_getPrescritor", array(    "token" => $_SESSION['token'],
                                                                 "login" => $_SESSION['login'],
