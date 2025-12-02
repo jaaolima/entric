@@ -205,8 +205,9 @@ function fc_Gotejamento(){
     if (($('input[name=f8_gota]').is(":checked") == true) && ($('#f8_volume').val() !== "") && ($('#f8_infusao').val() !== "")){
         var f8_gota = $('input[name=f8_gota]:checked').val();
         var f8_volume = $('#f8_volume').val();
-        var f8_infusao = $('#f8_infusao').val();
-        var _R = "";
+        var f8_infusao = converterHorasParaMinutos($('#f8_infusao').val());
+
+        var _R = ""; 
 
         if (f8_gota == "Macro"){
             console.log(f8_volume);
@@ -227,6 +228,23 @@ function fc_Gotejamento(){
     }else{
         $("#f8_gotejamento").val("");
     }
+}
+
+function converterHorasParaMinutos(timeString) {
+    // Verifica se a string está vazia ou no formato correto
+    if (!timeString || timeString.indexOf(':') === -1) {
+        return 0; 
+    }
+
+    // Divide a string em horas e minutos
+    const partes = timeString.split(':');
+    const horas = parseInt(partes[0], 10);
+    const minutos = parseInt(partes[1], 10);
+
+    // Realiza o cálculo (Horas * 60) + Minutos
+    const totalMinutos = (horas * 60) + minutos;
+
+    return totalMinutos;
 }
 
 function fc_nrs_2002(){
