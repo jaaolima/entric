@@ -199,7 +199,7 @@ function fc_Gotejamento(){
         _R = numberFormatPrecision(_R, 2);
         $("#f8_volume").val(_R);
     }else{
-        $("#f8_volume").val("");
+        $("#f8_volume").val(""); 
     }
 
     if (($('input[name=f8_gota]').is(":checked") == true) && ($('#f8_volume').val() !== "") && ($('#f8_infusao').val() !== "")){
@@ -209,8 +209,13 @@ function fc_Gotejamento(){
         var _R = "";
 
         if (f8_gota == "Macro"){
-            _R = f8_volume / (f8_infusao * 3); 
+            console.log(f8_volume);
+            console.log(f8_infusao);
+            _R = f8_volume / (f8_infusao * 3);
+            console.log(_R);
             _R = numberFormatPrecision(_R, 2);
+            console.log(_R);
+
             $("#f8_gotejamento").val(_R);
         }
         else{
