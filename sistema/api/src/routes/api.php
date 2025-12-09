@@ -10342,6 +10342,10 @@ $app->group("", function () use ($app) {
 									$bind = array(':st_orientado' => 'S');
 									$paciente = $db_ibranutro->update("tb_admissao", "WHERE id_admissao=".$dados_paciente['id_admissao'], $bind);
 								}
+								if($dados_paciente['id_admissao_en'] != ''){
+									$bind = array(':st_orientado' => 'S');
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+								}
 							}
 		                    $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		                }
@@ -11683,6 +11687,18 @@ $app->group("", function () use ($app) {
 						if($dados['id_admissao'] == ''){
 							$dados['id_admissao'] = null;
 						}
+
+						$paciente_admissao = $db_ibranutro->select_single_to_array("tb_admissao",
+		                                            "*",
+		                                            "
+		                                            WHERE id_admissao=".$dados['id_admissao'], 
+		                                            null);
+
+						$paciente = $db_ibranutro->select_single_to_array("en.tb_admissao_en",
+		                                            "*",
+		                                            "
+		                                            WHERE id_paciente=".$paciente_admissao['id_paciente'], 
+		                                            null);
 		
 						$bind = array(	':id_prescritor' => $id_prescritor,
 										':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
@@ -11694,6 +11710,7 @@ $app->group("", function () use ($app) {
 										':telefone' => $dados["telefone"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),  
 										':id_admissao' => $dados["id_admissao"],    
+										':id_admissao_en' => $paciente["id_admissao_en"],    
 										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_simplificada", $bind);
@@ -11814,6 +11831,17 @@ $app->group("", function () use ($app) {
 						if($dados['id_admissao'] == ''){
 							$dados['id_admissao'] = null;
 						}
+						$paciente_admissao = $db_ibranutro->select_single_to_array("tb_admissao",
+		                                            "*",
+		                                            "
+		                                            WHERE id_admissao=".$dados['id_admissao'], 
+		                                            null);
+
+						$paciente = $db_ibranutro->select_single_to_array("en.tb_admissao_en",
+		                                            "*",
+		                                            "
+		                                            WHERE id_paciente=".$paciente_admissao['id_paciente'], 
+		                                            null);
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
@@ -11823,6 +11851,7 @@ $app->group("", function () use ($app) {
 										':atendimento' => $dados["atendimento"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),    
 										':id_admissao' => $dados["id_admissao"],
+										':id_admissao_en' => $paciente["id_admissao_en"],
 										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_suplemento", $bind);
@@ -11942,6 +11971,18 @@ $app->group("", function () use ($app) {
 						if($dados['id_admissao'] == ''){
 							$dados['id_admissao'] = null;
 						}
+
+						$paciente_admissao = $db_ibranutro->select_single_to_array("tb_admissao",
+		                                            "*",
+		                                            "
+		                                            WHERE id_admissao=".$dados['id_admissao'], 
+		                                            null);
+
+						$paciente = $db_ibranutro->select_single_to_array("en.tb_admissao_en",
+		                                            "*",
+		                                            "
+		                                            WHERE id_paciente=".$paciente_admissao['id_paciente'], 
+		                                            null);
 		
 						$bind = array(	$campo_prescritor => $id_prescritor,
 										':nome' => $dados["nome"],
@@ -11951,6 +11992,7 @@ $app->group("", function () use ($app) {
 										':atendimento' => $dados["atendimento"],
 										':data_nascimento' => date2sql($dados["data_nascimento"]),    
 										':id_admissao' => $dados["id_admissao"],
+										':id_admissao_en' => $paciente["id_admissao_en"],
 										':sistema' => $sistema,
 										':data_criacao' => date("Y-m-d H:i:s"));
 						$retorno = $db->insert("pacientes_modulo", $bind);
