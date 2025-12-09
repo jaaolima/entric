@@ -6715,6 +6715,14 @@ $app->group("", function () use ($app) {
 														"
 														WHERE id_admissao=".$id_admissao, 
 														null);
+					if(!$paciente){
+						$nu_atendimento = $request->getParam("nu_atendimento");
+						$paciente = $db->select_single_to_array("pacientes_suplemento",
+																"*",
+																"
+																WHERE atendimento=".$nu_atendimento, 
+																null);
+					}
 				}
 				if($sistema == 'EN'){
 					$id_paciente = $request->getParam("id_paciente");
@@ -6781,6 +6789,14 @@ $app->group("", function () use ($app) {
 														"
 														WHERE id_admissao=".$id_admissao, 
 														null);
+					if(!$paciente){
+						$nu_atendimento = $request->getParam("nu_atendimento");
+						$paciente = $db->select_single_to_array("pacientes_modulo",
+														"*",
+														"
+														WHERE atendimento=".$nu_atendimento, 
+														null);
+					}
 				}
 				if($sistema == 'EN'){
 					$id_paciente = $request->getParam("id_paciente");
@@ -6931,6 +6947,14 @@ $app->group("", function () use ($app) {
 														"
 														WHERE id_admissao=".$id_admissao, 
 														null);
+					if(!$paciente){
+						$nu_atendimento = $request->getParam("nu_atendimento");
+						$paciente = $db->select_single_to_array("pacientes_simplificada",
+														"*",
+														"
+														WHERE atendimento=".$nu_atendimento, 
+														null);
+					}
 				}
 				if($sistema == 'EN'){
 					$id_paciente = $request->getParam("id_paciente");
