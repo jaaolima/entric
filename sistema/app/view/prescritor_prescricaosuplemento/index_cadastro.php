@@ -20,7 +20,7 @@
         '18' => 'HOSPITAL SÃO LUIZ JABAQUARA',
         '19' => 'HOSPITAL DA CRIANÇA',
     );
-    $ds_nome = '';
+    $ds_nome = ''; 
     $nu_cpf = '';
     $ds_hospital = '';
     $dt_nascimento = '';
