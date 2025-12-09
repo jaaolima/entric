@@ -10491,6 +10491,10 @@ $app->group("", function () use ($app) {
 									$bind = array(':st_orientado' => 'S');
 									$paciente = $db_ibranutro->update("tb_admissao", "WHERE id_admissao=".$dados_paciente['id_admissao'], $bind);
 								}
+								if($dados_paciente['id_admissao_en'] != ''){
+									$bind = array(':st_orientado' => 'S');
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
+								}
 							}
 
 		                    $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
@@ -10637,6 +10641,10 @@ $app->group("", function () use ($app) {
 									if($dados_paciente['id_admissao'] != ''){
 										$bind = array(':st_orientado' => 'S');
 										$paciente = $db_ibranutro->update("tb_admissao", "WHERE id_admissao=".$dados_paciente['id_admissao'], $bind);
+									}
+									if($dados_paciente['id_admissao_en'] != ''){
+										$bind = array(':st_orientado' => 'S');
+										$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
 									}
 								}
 							}
