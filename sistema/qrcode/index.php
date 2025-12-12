@@ -6,13 +6,11 @@ require __DIR__ . '/libs/database.class.php';
 
 $db = new Database();
 
-$id_relatorio = isset($_GET['id']) ? endecrypt('decrypt', $_GET['id'])  : '';
+// $id_relatorio = isset($_GET['id']) ? endecrypt('decrypt', $_GET['id'])  : '';
 
-$tipo_relatorio = isset($_GET['tipo_relatorio']) ? $_GET['tipo_relatorio'] : '';
+// $tipo_relatorio = isset($_GET['tipo_relatorio']) ? $_GET['tipo_relatorio'] : '';
 
-$retorno = $db->insert("log_qrcode", ['dt_log' => date("Y-m-d H:i:s"),
-                                 'tipo_relatorio' => $tipo_relatorio,
-                                 'id_relatorio' => $id_relatorio]);
+$retorno = $db->insert("log_qrcode", [':dt_log' => date("Y-m-d H:i:s")]);
 
 
 // Redirecionar para o WhatsApp do número especificado com mensagem pré-preenchida
