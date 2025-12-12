@@ -785,7 +785,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								<h5 style='margin:0px;color:#0092c5;'>NUTRICIONISTA CONCIERGE DO IBRANUTRO:</h5>
 							</div>
 							<div style="margin-top:20px;text-align:center;">
-								<img src='imagem/qrcode-concierge.png' style='display:inline-block;' width='80' alt=''>
+								<img src='imagem/qrcode-concierge-log.png' style='display:inline-block;' width='150'>
 							</div>
 						</div>
 					</div>
