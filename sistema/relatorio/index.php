@@ -1334,7 +1334,7 @@ disponível nesta orientação.</p>
 							$qrcode_url = BASE_PATH . '/relatorio/qrcode.php?tipo_relatorio=RelatorioAlta&id=' . $relatorio['id'] . '&link=' . urlencode(BASE_PATH . '/qrcode/');
 							?>
 							<img src='<?php echo $qrcode_url; ?>' style='display:inline-block;' width='150' alt='QR Code do Relatório'> -->
-							<img src='imagem/qrcode-concierge-log.png' style='display:inline-block;' width='150'>
+							<img src='imagem/qrcode-concierge-log.png' style='display:inline-block;' width='90'>
 						</div>
 					</div>
 				</div>
