@@ -5873,7 +5873,7 @@ $app->group("", function () use ($app) {
 		        $retorno_series = array();
 
 		        
-				if($tipo == "" ){
+				if($tipo == "todos"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios",
 														"id, data_criacao",

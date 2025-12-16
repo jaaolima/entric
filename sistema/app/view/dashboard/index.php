@@ -122,7 +122,7 @@
                                                     "class" => "data_relatorios",
                                                     "required" => "required",
                                                     "select" => array(
-                                                                    "" => "Todos",
+                                                                    "todos" => "Todos",
                                                                     "SE" => "Simplificado Enteral",
                                                                     "SS" => "Simplificado Suplemento",
                                                                     "SM" => "Simplificado Módulo",
