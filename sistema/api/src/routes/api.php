@@ -5888,7 +5888,8 @@ $app->group("", function () use ($app) {
 														UNION
 														select id, data_criacao
 														from relatorios_modulo
-														where codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')", 
+														where codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
+														ORDER BY data_criacao ASC", 
 														null);
 					}
 					else{
@@ -5906,7 +5907,8 @@ $app->group("", function () use ($app) {
 														UNION
 														select rel.id, rel.data_criacao
 														from relatorios_modulo AS rel
-														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."'", 
+														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."'
+														ORDER BY data_criacao ASC", 
 														null);
 					}
 				}elseif($tipo == "RA"){
