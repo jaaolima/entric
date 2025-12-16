@@ -5538,7 +5538,6 @@ $app->group("", function () use ($app) {
 		                                                
 		                                                "LEFT JOIN prescritores pre ON r.id_prescritor = pre.id
 		                                                LEFT JOIN pacientes pa ON r.id_paciente = pa.id
-		                                                WHERE r.id_prescritor=".$id_usuario." 
 		                                                ORDER BY r.data_criacao DESC", 
 		                                                null);
 		            if ($relatorio){
@@ -5546,7 +5545,54 @@ $app->group("", function () use ($app) {
 		            }
 		            else{
 		                $retorno['relatorios'] = 0;    
-		            }            
+		            }       
+					
+					$relatorio_suplemento = $db->select_to_array("relatorios_suplemento AS r",
+		                                                
+		                                                "r.*, pa.nome AS pa_nome, pre.nome AS pre_nome",
+		                                                
+		                                                "LEFT JOIN prescritores pre ON r.id_prescritor = pre.id
+		                                                LEFT JOIN pacientes pa ON r.id_paciente = pa.id
+		                                                ORDER BY r.data_criacao DESC", 
+		                                                null);
+		            if ($relatorio_suplemento){
+		                $retorno['relatorios_suplemento'] = count($relatorio_suplemento);    
+		            }
+		            else{
+		                $retorno['relatorios_suplemento'] = 0;    
+		            }     
+					
+					
+					$relatorio_simplificada = $db->select_to_array("relatorios_simplificada AS r",
+		                                                
+		                                                "r.*, pa.nome AS pa_nome, pre.nome AS pre_nome",
+		                                                
+		                                                "LEFT JOIN prescritores pre ON r.id_prescritor = pre.id
+		                                                LEFT JOIN pacientes pa ON r.id_paciente = pa.id
+		                                                ORDER BY r.data_criacao DESC", 
+		                                                null);
+		            if ($relatorio_simplificada){
+		                $retorno['relatorios_simplificada'] = count($relatorio_simplificada);    
+		            }
+		            else{
+		                $retorno['relatorios_simplificada'] = 0;    
+		            }   
+
+
+					$relatorio_modulo = $db->select_to_array("relatorios_modulo AS r",
+		                                                
+		                                                "r.*, pa.nome AS pa_nome, pre.nome AS pre_nome",
+		                                                
+		                                                "LEFT JOIN prescritores pre ON r.id_prescritor = pre.id
+		                                                LEFT JOIN pacientes pa ON r.id_paciente = pa.id
+		                                                ORDER BY r.data_criacao DESC", 
+		                                                null);
+		            if ($relatorio_modulo){
+		                $retorno['relatorios_modulo'] = count($relatorio_modulo);    
+		            }
+		            else{
+		                $retorno['relatorios_modulo'] = 0;    
+		            }   
 		        }
 		        else if ($tipo == "patrocinador"){
 		            $relatorio = $db->select_to_array("relatorios AS r",
@@ -5832,18 +5878,97 @@ $app->group("", function () use ($app) {
 				// 	$tipo = ;	
 				// }
 		        
-		        if (!$uf){
-		            $logs = $db->select_to_array(	"relatorios",
-		                                            "id, data_criacao",
-		                                            "WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
-		                                            null);
-		        }
-		        else{
-		            $logs = $db->select_to_array( "relatorios AS rel",
-		                                            "rel.id, rel.data_criacao",
-		                                            "WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
-		                                            null);
-		        }
+				if($tipo == "" ){
+					if (!$uf){
+						$logs = $db->select_to_array(	"relatorios",
+														"id, data_criacao",
+														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC
+														UNION
+														select id, data_criacao
+														from relatorio_suplemento
+														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC
+														UNION
+														select id, data_criacao
+														from relatorio_simplificada
+														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC
+														UNION
+														select id, data_criacao
+														from relatorio_modulo
+														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														null);
+					}
+					else{
+						$logs = $db->select_to_array( "relatorios AS rel",
+														"rel.id, rel.data_criacao",
+														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC
+														UNION
+														select rel.id, rel.data_criacao
+														from relatorio_suplemento AS rel
+														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC
+														UNION
+														select rel.id, rel.data_criacao
+														from relatorio_simplificada AS rel
+														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC
+														UNION
+														select rel.id, rel.data_criacao
+														from relatorio_modulo AS rel
+														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														null);
+					}
+				}elseif($tipo = "RA"){
+					if (!$uf){
+						$logs = $db->select_to_array(	"relatorios",
+														"id, data_criacao",
+														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														null);
+					}
+					else{
+						$logs = $db->select_to_array( "relatorios AS rel",
+														"rel.id, rel.data_criacao",
+														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														null);
+					}
+				}elseif($tipo = "SE"){
+					if (!$uf){
+						$logs = $db->select_to_array(	"relatorios_simplificada",
+														"id, data_criacao",
+														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														null);
+					}
+					else{
+						$logs = $db->select_to_array( "relatorios_simplificada AS rel",
+														"rel.id, rel.data_criacao",
+														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														null);
+					}
+				}elseif($tipo = "SS"){
+					if (!$uf){
+						$logs = $db->select_to_array(	"relatorios_suplemento",
+														"id, data_criacao",
+														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														null);
+					}
+					else{
+						$logs = $db->select_to_array( "relatorios_suplemento AS rel",
+														"rel.id, rel.data_criacao",
+														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														null);
+					}
+				}elseif($tipo = "SM"){
+					if (!$uf){
+						$logs = $db->select_to_array(	"relatorios_modulo",
+														"id, data_criacao",
+														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														null);
+					}
+					else{
+						$logs = $db->select_to_array( "relatorios_modulo AS rel",
+														"rel.id, rel.data_criacao",
+														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														null);
+					}
+				}
+		        
 		        if ($logs){
 		        	for ($i = 0; $i < count($logs); $i++){
 		        		$key = date("M", strtotime($logs[$i]['data_criacao']));

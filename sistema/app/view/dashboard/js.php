@@ -155,7 +155,24 @@ $(".data_relatorios").on("change", function(e) {
         type: "POST",
         url: "ajax/gt_dash_relatorios",
         data: "&data_inicio_relatorios="+$("#data_inicio_relatorios").val()+"&data_fim_relatorios="+$("#data_fim_relatorios").val()+"&uf="+$("#ufs_relatorios").val()+"&tipo="+$("#tipos_relatorios").val(),
-        cache: false,
+        cache: false, 
+        dataType: 'json',
+        success: function( data ){
+            var data_categories = data.categories;
+            var data_series = data.series;
+            container_relatorios.xAxis[0].update({ categories: data_categories });
+            container_relatorios.series[0].update({ data: data_series });
+            container_relatorios.redraw();
+        }
+    });    
+});
+
+$("#tipos_relatorios").on("click", function(e) {
+    $.ajax({
+        type: "POST",
+        url: "ajax/gt_dash_relatorios",
+        data: "&data_inicio_relatorios="+$("#data_inicio_relatorios").val()+"&data_fim_relatorios="+$("#data_fim_relatorios").val()+"&uf="+$("#ufs_relatorios").val()+"&tipo="+$("#tipos_relatorios").val(),
+        cache: false, 
         dataType: 'json',
         success: function( data ){
             var data_categories = data.categories;

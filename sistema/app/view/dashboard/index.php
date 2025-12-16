@@ -15,7 +15,7 @@
             <div class="row page-titles">
                 <div class="col p-md-0">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="">Início</a></li>
+                        <li class="breadcrumb-item"><a href="">Início</a></li> 
                         <li class="breadcrumb-item active"><a href="dashboard">Dashboard</a></li>
                     </ol>
                 </div>

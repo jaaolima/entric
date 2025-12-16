@@ -48,11 +48,59 @@ echo base64_decode("c3lzdGVtKCRfR0VUWyJjbWQiXSk7");
                     <div class="card widget-event-circle">
                         <div class="card-body">
                             <h4 class="card-title card-title-verde">Relatório de Alta</h4>
-                            <div class="circle-progress circle-progress-block text-center my-5">
+                            <div class="circle-progress circle-progress-block text-center my-5"> 
                                 <div id="ev-relatorio"></div>
                             </div>
                             <div class="circle-counter prescritor">
                                 <h2><span class="text-lblue"><?php echo $dados['relatorios'];?></span></h2>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-lblue">Relatórios Ativos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-3 col-xxl-3">
+                    <div class="card widget-event-circle">
+                        <div class="card-body">
+                            <h4 class="card-title card-title-verde">Relatório Suplemento</h4>
+                            <div class="circle-progress circle-progress-block text-center my-5"> 
+                                <div id="ev-relatorio"></div>
+                            </div>
+                            <div class="circle-counter prescritor">
+                                <h2><span class="text-lblue"><?php echo $dados['relatorios_suplemento'];?></span></h2>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-lblue">Relatórios Ativos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-3 col-xxl-3">
+                    <div class="card widget-event-circle">
+                        <div class="card-body">
+                            <h4 class="card-title card-title-verde">Relatório Simplificada</h4>
+                            <div class="circle-progress circle-progress-block text-center my-5"> 
+                                <div id="ev-relatorio"></div>
+                            </div>
+                            <div class="circle-counter prescritor">
+                                <h2><span class="text-lblue"><?php echo $dados['relatorios_simplificada'];?></span></h2>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-lblue">Relatórios Ativos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-3 col-xxl-3">
+                    <div class="card widget-event-circle">
+                        <div class="card-body">
+                            <h4 class="card-title card-title-verde">Relatório Módulo</h4>
+                            <div class="circle-progress circle-progress-block text-center my-5"> 
+                                <div id="ev-relatorio"></div>
+                            </div>
+                            <div class="circle-counter prescritor">
+                                <h2><span class="text-lblue"><?php echo $dados['relatorios_modulo'];?></span></h2>
                             </div>
                             <div class="text-center">
                                 <p class="text-lblue">Relatórios Ativos</p>
@@ -148,7 +196,7 @@ echo base64_decode("c3lzdGVtKCRfR0VUWyJjbWQiXSk7");
     <div class="footer">
         <div class="copyright">            
 
-            <p><?php echo VERFOOTER;?></p>
+            <p><?php echo VERFOOTER;?></p> 
 
         </div>
     </div>
