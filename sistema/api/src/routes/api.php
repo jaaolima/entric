@@ -5881,15 +5881,15 @@ $app->group("", function () use ($app) {
 														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
 														UNION
 														select id, data_criacao
-														from relatorio_suplemento
+														from relatorios_suplemento
 														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
 														UNION
 														select id, data_criacao
-														from relatorio_simplificada
+														from relatorios_simplificada
 														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
 														UNION
 														select id, data_criacao
-														from relatorio_modulo
+														from relatorios_modulo
 														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')", 
 														null);
 					}
@@ -5899,15 +5899,15 @@ $app->group("", function () use ($app) {
 														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')
 														UNION
 														select rel.id, rel.data_criacao
-														from relatorio_suplemento AS rel
+														from relatorios_suplemento AS rel
 														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')
 														UNION
 														select rel.id, rel.data_criacao
-														from relatorio_simplificada AS rel
+														from relatorios_simplificada AS rel
 														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')
 														UNION
 														select rel.id, rel.data_criacao
-														from relatorio_modulo AS rel
+														from relatorios_modulo AS rel
 														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')", 
 														null);
 					}
