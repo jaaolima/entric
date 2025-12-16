@@ -27,13 +27,14 @@ class DashboardModel extends Model {
         return $retorno;
     }
 
-    function getDadosRelatorios($uf = null, $data1, $data2) {
+    function getDadosRelatorios($uf = null, $data1, $data2, $tipo) {
         global $bruker;
         $retorno = httpPostAuth("dashboard_getDadosRelatorios", array("token" => $_SESSION['token'],
                                                                         "login" => $_SESSION['login'],
                                                                     "uf" => $uf,
                                                                     "data1" => $data1,
-                                                                    "data2" => $data2));
+                                                                    "data2" => $data2,
+                                                                    "tipo" => $tipo));
         return $retorno;
     }
 }

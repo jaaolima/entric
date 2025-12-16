@@ -13,12 +13,13 @@ class DashboardController extends Controller {
 
         $data1 = date("d/m/Y");
         $data2 = date('d/m/Y',strtotime('-12 month',strtotime(date("Y-m-d"))));
+        $tipo = 'todos';
         $this->set('data1', $data1);
         $this->set('data2', $data2);
 
         $this->set('dados_site', $this->DashboardModel->getDadosSite($data1, $data2) );
         $this->set('dados_videos', $this->DashboardModel->getDadosVideos($data1, $data2) );
-        $this->set('dados_relatorios', $this->DashboardModel->getDadosRelatorios(null, $data1, $data2) );
+        $this->set('dados_relatorios', $this->DashboardModel->getDadosRelatorios(null, $data1, $data2, $tipo) );
         $this->set('dados_log', $this->DashboardModel->getDadosLog() );
     }
 
