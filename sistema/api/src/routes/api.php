@@ -5876,89 +5876,89 @@ $app->group("", function () use ($app) {
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios",
 														"id, data_criacao",
-														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
+														"WHERE codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
 														UNION
 														select id, data_criacao
 														from relatorios_suplemento
-														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
+														where codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
 														UNION
 														select id, data_criacao
 														from relatorios_simplificada
-														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
+														where  codigo is not null and(data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')
 														UNION
 														select id, data_criacao
 														from relatorios_modulo
-														where (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')", 
+														where codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')", 
 														null);
 					}
 					else{
 						$logs = $db->select_to_array( "relatorios AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."
 														UNION
 														select rel.id, rel.data_criacao
 														from relatorios_suplemento AS rel
-														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')
+														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."
 														UNION
 														select rel.id, rel.data_criacao
 														from relatorios_simplificada AS rel
-														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')
+														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."
 														UNION
 														select rel.id, rel.data_criacao
 														from relatorios_modulo AS rel
-														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."')", 
+														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."", 
 														null);
 					}
 				}elseif($tipo == "RA"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios",
 														"id, data_criacao",
-														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														"WHERE codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
 														null);
 					}
 					else{
 						$logs = $db->select_to_array( "relatorios AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}elseif($tipo == "SE"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios_simplificada",
 														"id, data_criacao",
-														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														"WHERE codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
 														null);
 					}
 					else{
 						$logs = $db->select_to_array( "relatorios_simplificada AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}elseif($tipo == "SS"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios_suplemento",
 														"id, data_criacao",
-														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														"WHERE codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."')  ORDER BY data_criacao ASC", 
 														null);
 					}
 					else{
 						$logs = $db->select_to_array( "relatorios_suplemento AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}elseif($tipo == "SM"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios_modulo",
 														"id, data_criacao",
-														"WHERE (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
+														"WHERE codigo is not null and (data_criacao >= '".date2sql($data2)."' AND data_criacao <= '".date2sql($data1)."') ORDER BY data_criacao ASC", 
 														null);
 					}
 					else{
 						$logs = $db->select_to_array( "relatorios_modulo AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}
