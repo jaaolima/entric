@@ -5872,6 +5872,7 @@ $app->group("", function () use ($app) {
 		        $retorno_categories = array();
 		        $retorno_series = array();
 
+				var_dump($tipo);
 		        
 				if($tipo == "todos"){
 					if (!$uf){
