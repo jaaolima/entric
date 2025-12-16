@@ -5872,11 +5872,6 @@ $app->group("", function () use ($app) {
 		        $retorno_categories = array();
 		        $retorno_series = array();
 
-				// if($tipo == ""){
-				// 	$tipo = "is not null";
-				// }else{
-				// 	$tipo = ;	
-				// }
 		        
 				if($tipo == "" ){
 					if (!$uf){
@@ -5915,7 +5910,7 @@ $app->group("", function () use ($app) {
 														WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
 														null);
 					}
-				}elseif($tipo = "RA"){
+				}elseif($tipo == "RA"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios",
 														"id, data_criacao",
@@ -5928,7 +5923,7 @@ $app->group("", function () use ($app) {
 														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
 														null);
 					}
-				}elseif($tipo = "SE"){
+				}elseif($tipo == "SE"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios_simplificada",
 														"id, data_criacao",
@@ -5941,7 +5936,7 @@ $app->group("", function () use ($app) {
 														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
 														null);
 					}
-				}elseif($tipo = "SS"){
+				}elseif($tipo == "SS"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios_suplemento",
 														"id, data_criacao",
@@ -5954,7 +5949,7 @@ $app->group("", function () use ($app) {
 														"WHERE (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND EXISTS (SELECT pre.uf FROM prescritores AS pre WHERE rel.id_prescritor=pre.id AND pre.uf='".$uf."') ORDER BY rel.data_criacao ASC", 
 														null);
 					}
-				}elseif($tipo = "SM"){
+				}elseif($tipo == "SM"){
 					if (!$uf){
 						$logs = $db->select_to_array(	"relatorios_modulo",
 														"id, data_criacao",
