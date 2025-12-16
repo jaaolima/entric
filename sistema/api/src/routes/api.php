@@ -5894,19 +5894,19 @@ $app->group("", function () use ($app) {
 					else{
 						$logs = $db->select_to_array( "relatorios AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."'
 														UNION
 														select rel.id, rel.data_criacao
 														from relatorios_suplemento AS rel
-														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."
+														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."'
 														UNION
 														select rel.id, rel.data_criacao
 														from relatorios_simplificada AS rel
-														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."
+														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."'
 														UNION
 														select rel.id, rel.data_criacao
 														from relatorios_modulo AS rel
-														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf."", 
+														WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."'", 
 														null);
 					}
 				}elseif($tipo == "RA"){
@@ -5919,7 +5919,7 @@ $app->group("", function () use ($app) {
 					else{
 						$logs = $db->select_to_array( "relatorios AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."' ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}elseif($tipo == "SE"){
@@ -5932,7 +5932,7 @@ $app->group("", function () use ($app) {
 					else{
 						$logs = $db->select_to_array( "relatorios_simplificada AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."' ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}elseif($tipo == "SS"){
@@ -5945,7 +5945,7 @@ $app->group("", function () use ($app) {
 					else{
 						$logs = $db->select_to_array( "relatorios_suplemento AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."' ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}elseif($tipo == "SM"){
@@ -5958,7 +5958,7 @@ $app->group("", function () use ($app) {
 					else{
 						$logs = $db->select_to_array( "relatorios_modulo AS rel",
 														"rel.id, rel.data_criacao",
-														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = ''".$uf." ORDER BY rel.data_criacao ASC", 
+														"WHERE codigo is not null and (rel.data_criacao >= '".date2sql($data2)."' AND rel.data_criacao <= '".date2sql($data1)."') AND distribuidores = '".$uf."' ORDER BY rel.data_criacao ASC", 
 														null);
 					}
 				}
