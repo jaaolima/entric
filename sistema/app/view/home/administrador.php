@@ -65,7 +65,7 @@ echo base64_decode("c3lzdGVtKCRfR0VUWyJjbWQiXSk7");
                         <div class="card-body">
                             <h4 class="card-title card-title-verde">Relatório Suplemento</h4>
                             <div class="circle-progress circle-progress-block text-center my-5"> 
-                                <div id="ev-relatorio"></div>
+                                <div id="ev-relatorio-suplemento"></div>
                             </div>
                             <div class="circle-counter prescritor">
                                 <h2><span class="text-lblue"><?php echo $dados['relatorios_suplemento'];?></span></h2>
@@ -81,7 +81,7 @@ echo base64_decode("c3lzdGVtKCRfR0VUWyJjbWQiXSk7");
                         <div class="card-body">
                             <h4 class="card-title card-title-verde">Relatório Simplificada</h4>
                             <div class="circle-progress circle-progress-block text-center my-5"> 
-                                <div id="ev-relatorio"></div>
+                                <div id="ev-relatorio-simplificada"></div>
                             </div>
                             <div class="circle-counter prescritor">
                                 <h2><span class="text-lblue"><?php echo $dados['relatorios_simplificada'];?></span></h2>
@@ -97,7 +97,7 @@ echo base64_decode("c3lzdGVtKCRfR0VUWyJjbWQiXSk7");
                         <div class="card-body">
                             <h4 class="card-title card-title-verde">Relatório Módulo</h4>
                             <div class="circle-progress circle-progress-block text-center my-5"> 
-                                <div id="ev-relatorio"></div>
+                                <div id="ev-relatorio-modulo"></div>
                             </div>
                             <div class="circle-counter prescritor">
                                 <h2><span class="text-lblue"><?php echo $dados['relatorios_modulo'];?></span></h2>

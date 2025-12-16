@@ -26,7 +26,7 @@ class AjaxController extends Controller {
     function gt_dash_relatorios() {
         @header('Content-Type: application/json; charset=utf-8;');
         $dashboard = new DashboardModel();
-        $dashboard = $dashboard->getDadosRelatorios($_POST['uf'], $_POST['data_fim_relatorios'], $_POST['data_inicio_relatorios']);
+        $dashboard = $dashboard->getDadosRelatorios($_POST['uf'], $_POST['data_fim_relatorios'], $_POST['data_inicio_relatorios'], $_POST['tipo']);
         echo json_encode($dashboard);
     }
 

@@ -144,7 +144,7 @@ let container_relatorios = Highcharts.chart('container_relatorios', {
         name: '',
         data: [
             <?php 
-            echo implode(', ', $dados_relatorios['series']);
+            echo implode(', ', $dados_relatorios['series']); 
             ?>
         ]
     }]
