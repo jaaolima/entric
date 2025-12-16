@@ -22,7 +22,7 @@
             </div>
 
             <div class="row"> 
-                
+                <?php echo $dados_relatorio; ?>
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body entric">
