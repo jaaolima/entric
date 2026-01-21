@@ -35,6 +35,19 @@
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
                 <input type="hidden" name="login_tipo" id="login_tipo" value="<?php echo $_SESSION['login']; ?>">
                 <?php
+                if (($sistema == 'EN2' || $sistema == 'ibranutro') || $_SESSION['login'] == 'ibranutro') {
+                    // Usar nomes dos hospitais como chaves e valores para o select
+                    $hospitais_select_por_nome = [];
+                    foreach ($hospitais_map as $id => $nome) {
+                        // A chave e o valor da opção serão o NOME do hospital
+                        $hospitais_select_por_nome[$nome] = $nome;
+                    }
+                    $hospitais_select_por_nome = array("" => "Selecione") + $hospitais_select_por_nome;
+                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome);
+                } else {
+                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital);
+                }
+
                 $item_dados =  $html->addRow(
                                 array(
                                     "nome" => array(
@@ -106,7 +119,10 @@
                                         "col" => 2,
                                         "label" => "Desconhece",
                                         "checkbox" => true
-                                    )
+                                    ),
+                                    "hospital" => $campo_hospital,
+
+                                    
                                 )
                             );
                     echo $item_dados;
@@ -126,7 +142,7 @@
                     <input type="hidden" name="action" id="action" value="atualizar"/>
                     <input type="hidden" name="up_id" id="up_id" value=""/>
                     <?php
-                    $item_dados =  $html->addRow(
+                    $item_dados =  $html->addRow( 
                                     array(
                                         "up_nome" => array(
                                             "col" => 12,
@@ -202,7 +218,8 @@
                                             "col" => 2,
                                             "label" => "Desconhece",
                                             "checkbox" => true
-                                        )
+                                        ),
+                                        "up_hospital" => $campo_hospital
                                     )
                                 );
                         echo $item_dados;

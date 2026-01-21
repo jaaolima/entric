@@ -11528,6 +11528,7 @@ $app->group("", function () use ($app) {
 		                            ':cpf_possui' => $dados["cpf_possui"],
 		                            ':mae' => $mae,
 		                            ':mae_possui' => $dados["mae_possui"],                     
+		                            ':hospital' => $dados["hospital"],                     
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->insert("pacientes", $bind);
 		            $retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);
@@ -11605,6 +11606,7 @@ $app->group("", function () use ($app) {
 		                            ':cpf_possui' => $dados["up_cpf_possui"],
 		                            ':mae' => $dados["up_mae"],
 		                            ':mae_possui' => $dados["up_mae_possui"],                     
+		                            ':hospital' => $dados["up_hospital"],                     
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->update("pacientes", "WHERE id=".$dados['up_id'], $bind);
 		            $retorno = array("success" => "Cadastro atualizado com sucesso.");
