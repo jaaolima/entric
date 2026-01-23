@@ -1,4 +1,24 @@
 <?php
+    $hospitais_map = array(
+        '1' => 'HOSPITAL SANTA HELENA',
+        '3' => 'HOSPITAL SANTA LÚCIA GAMA',
+        '4' => 'HOSPITAL SANTA LUCIA SUL',
+        '5' => 'HOSPITAL SÃO FRANCISCO',
+        '6' => 'HOSPITAL DO CORAÇÃO',
+        '7' => 'HOSPITAL SANTA LUZIA',
+        '8' => 'HOSPITAL DF STAR',
+        '9' => 'HOSPITAL DE TESTES',
+        '10' => 'HOSPITAL SANTA LÚCIA NORTE',
+        '11' => 'HOSPITAL ANCHIETA',
+        '12' => 'HOSPITAL VILA NOVA STAR',
+        '13' => 'HOSPITAL SANTA ISABEL',
+        '14' => 'HOSPITAL DAHER',
+        '15' => 'HOSPITAL SÃO LUIZ ITAIM',
+        '16' => 'HOSPITAL SÃO LUIZ MORUMBI', 
+        '17' => 'TERCEIROS VILA NOVA STAR',
+        '18' => 'HOSPITAL SÃO LUIZ JABAQUARA',
+        '19' => 'HOSPITAL DA CRIANÇA',
+    );
     
     $ds_nome = '';
     if($_SESSION['paciente_redirect']['buscar'] == 'alterar_relatorio'){
@@ -35,7 +55,7 @@
                 <input type="hidden" name="action" id="action" value="cadastrar"/>
                 <input type="hidden" name="login_tipo" id="login_tipo" value="<?php echo $_SESSION['login']; ?>">
                 <?php
-                if (($sistema == 'EN2' || $sistema == 'ibranutro') || $_SESSION['login'] == 'ibranutro') {
+                if ($_SESSION['login'] == 'ibranutro') {
                     // Usar nomes dos hospitais como chaves e valores para o select
                     $hospitais_select_por_nome = [];
                     foreach ($hospitais_map as $id => $nome) {
