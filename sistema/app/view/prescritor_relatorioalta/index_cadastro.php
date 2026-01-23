@@ -19,7 +19,9 @@
         '18' => 'HOSPITAL SÃO LUIZ JABAQUARA',
         '19' => 'HOSPITAL DA CRIANÇA',
     );
-    
+
+    $ds_hospital = '';
+
     $ds_nome = '';
     if($_SESSION['paciente_redirect']['buscar'] == 'alterar_relatorio'){
         $tab1 = 'buscar';
