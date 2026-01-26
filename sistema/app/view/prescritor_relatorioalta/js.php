@@ -80,6 +80,7 @@ function fc_retorno_pacientes(){
         $('#up_parentesco').val(dados_json.parentesco);
         $('#up_data_nascimento').val(dados_json.data_nascimento);
         $('input[type="radio"][name="up_sexo"]').filter('[value='+dados_json.sexo+']').prop('checked', true);
+        $("#up_hospital option[value='"+dados_json.hospital+"']").attr("selected","selected");
         $('#up_email').val(dados_json.email);
         $('#up_cpf').val(dados_json.cpf);
         if (dados_json.cpf_possui == 1){            
@@ -166,7 +167,7 @@ function fc_cadastrar_paciente(){
                             type: 'green',
                             content: data.success
                         });
-                        fc_iniciar_relatorio(data.paciente);
+                        fc_iniciar_relatorio(data.paciente); 
                     }
                     else{                
                         $.alert({

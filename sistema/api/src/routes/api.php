@@ -11089,7 +11089,7 @@ $app->group("", function () use ($app) {
 		            $bind_query = " ".$bind_query;
 					
 		            $pacientes = $db->select_to_array("pacientes",
-		                                                "max(id) as id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui",
+		                                                "max(id) as id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui, hospital",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC, id DESC",
 		                                                null);
 		            if ($pacientes){
