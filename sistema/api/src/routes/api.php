@@ -10321,6 +10321,13 @@ $app->group("", function () use ($app) {
 		                                    ':data_criacao'=> date("Y-m-d H:i:s"));
 		                    $interacoes = $this->insert('interacoes', $bind);
 		                    */
+							$dados_paciente = $db->select_single_to_array("pacientes", "*", "WHERE id=:id", [':id' => $dados['id_paciente']]);
+
+							if($dados_paciente['cpf'] != ''){
+								$bind = array(':st_orientado' => 'S');
+								$cpf = preg_replace( '/[^0-9]/is', '', $dados_paciente['cpf'] );
+								$paciente = $db_ibranutro->update("en.tb_admissao_en a INNER JOIN tb_paciente p on a.id_paciente = p.id_paciente", "WHERE p.nu_cpf='".$cpf."' and nu_atendimento ='".$relatorio['atendimento']."'", $bind);
+							}
 
 		                    $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		                }
