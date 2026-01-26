@@ -143,7 +143,11 @@
                                         "checkbox" => true
                                     ),
                                     "hospital" => $campo_hospital,
-
+                                    "atendimento" => array(
+                                        "col" => 4,
+                                        "label" => "Número do Atendimento:",
+                                        "required" => "required"
+                                    )
                                     
                                 )
                             );
@@ -241,7 +245,12 @@
                                             "label" => "Desconhece",
                                             "checkbox" => true
                                         ),
-                                        "up_hospital" => $campo_hospital
+                                        "up_hospital" => $campo_hospital,
+                                        "up_atendimento" => array(
+                                            "col" => 4,
+                                            "label" => "Número do Atendimento:",
+                                            "required" => "required"
+                                        )
                                     )
                                 );
                         echo $item_dados;

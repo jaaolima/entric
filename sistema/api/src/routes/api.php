@@ -8575,6 +8575,7 @@ $app->group("", function () use ($app) {
 		        
 		        if ($dados['id_relatorio'] == ""){
 		            $bind = array(  ':id_paciente' => $dados['id_paciente'],
+		                        	':atendimento' => $dados['atendimento'],			
 		                            ':id_prescritor' => $id_prescritor,
 		                            ':id_prescritor_ibranutro' => $id_prescritor_ibranutro,
 		                            ':historia' => $dados["historia"],
@@ -11096,7 +11097,7 @@ $app->group("", function () use ($app) {
 		            $bind_query = " ".$bind_query;
 					
 		            $pacientes = $db->select_to_array("pacientes",
-		                                                "max(id) as id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui, hospital",
+		                                                "max(id) as id, nome, cpf, mae, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, celular, data_nascimento AS idade, sexo, email, pertence, parentesco, cpf_possui, mae_possui, hospital, atendimento",
 		                                                "WHERE ".$bind_query." GROUP BY nome ORDER BY nome ASC, id DESC",
 		                                                null);
 		            if ($pacientes){
@@ -11536,6 +11537,7 @@ $app->group("", function () use ($app) {
 		                            ':mae' => $mae,
 		                            ':mae_possui' => $dados["mae_possui"],                     
 		                            ':hospital' => $dados["hospital"],                     
+		                            ':atendimento' => $dados["atendimento"],                     
 		                            ':data_criacao' => date("Y-m-d H:i:s") );
 		            $retorno = $db->insert("pacientes", $bind);
 		            $retorno = array("success" => "Cadastro efetuado com sucesso.", "paciente" => $retorno);

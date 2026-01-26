@@ -81,6 +81,7 @@ function fc_retorno_pacientes(){
         $('#up_data_nascimento').val(dados_json.data_nascimento);
         $('input[type="radio"][name="up_sexo"]').filter('[value='+dados_json.sexo+']').prop('checked', true);
         $("#up_hospital option[value='"+dados_json.hospital+"']").attr("selected","selected");
+        $("#up_atendimento").val(dados_json.atendimento);
         $('#up_email').val(dados_json.email);
         $('#up_cpf').val(dados_json.cpf);
         if (dados_json.cpf_possui == 1){            
@@ -1474,11 +1475,13 @@ function fc_salvar(tab, notify){
         var frm = _this.serialize();   
     } 
     login_tipo = $("#login_tipo").val();
+    atendimento = $("#atendimento").val();
+
 
     $.ajax({
         type: "POST",
         url: "ajax/relatorio_salvar",
-        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo,
+        data: frm+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio+"&tab="+tab+"&login_tipo="+login_tipo+"&atendimento="+atendimento,
         cache: false,
         dataType: 'json',
         success: function( data ){
