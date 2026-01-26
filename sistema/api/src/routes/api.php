@@ -10462,7 +10462,10 @@ $app->group("", function () use ($app) {
 								if($dados_paciente['id_admissao'] != ''){
 									$bind = array(':st_orientado' => 'S');
 									$paciente = $db_ibranutro->update("tb_admissao", "WHERE id_admissao=".$dados_paciente['id_admissao'], $bind);
+									$dados_paciente_sis = $db_ibranutro->select_single_to_array("tb_admissao", "*", "WHERE id_admissao=:id_admissao", [':id_admissao' => $dados_paciente['id_admissao']]);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente_sis['id_admissao_en'], $bind);
 								}
+
 								if($dados_paciente['id_admissao_en'] != ''){
 									$bind = array(':st_orientado' => 'S');
 									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente['id_admissao_en'], $bind);
@@ -10611,6 +10614,8 @@ $app->group("", function () use ($app) {
 								if($dados_paciente['id_admissao'] != ''){
 									$bind = array(':st_orientado' => 'S');
 									$paciente = $db_ibranutro->update("tb_admissao", "WHERE id_admissao=".$dados_paciente['id_admissao'], $bind);
+									$dados_paciente_sis = $db_ibranutro->select_single_to_array("tb_admissao", "*", "WHERE id_admissao=:id_admissao", [':id_admissao' => $dados_paciente['id_admissao']]);
+									$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente_sis['id_admissao_en'], $bind);
 								}
 								if($dados_paciente['id_admissao_en'] != ''){
 									$bind = array(':st_orientado' => 'S');
@@ -10762,6 +10767,8 @@ $app->group("", function () use ($app) {
 									if($dados_paciente['id_admissao'] != ''){
 										$bind = array(':st_orientado' => 'S');
 										$paciente = $db_ibranutro->update("tb_admissao", "WHERE id_admissao=".$dados_paciente['id_admissao'], $bind);
+										$dados_paciente_sis = $db_ibranutro->select_single_to_array("tb_admissao", "*", "WHERE id_admissao=:id_admissao", [':id_admissao' => $dados_paciente['id_admissao']]);
+										$paciente = $db_ibranutro->update("en.tb_admissao_en", "WHERE id_admissao_en=".$dados_paciente_sis['id_admissao_en'], $bind);
 									}
 									if($dados_paciente['id_admissao_en'] != ''){
 										$bind = array(':st_orientado' => 'S');
