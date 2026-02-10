@@ -32,7 +32,7 @@
                                 <i class="mdi mdi-message-draw"></i> &nbsp; Prescrição Simplificada
                             </h4>
                             
-                            <div class="default-tab bordered-tab entric">
+                            <div class="default-tab bordered-tab entric"> 
                                 <!-- <ul class="nav nav-tabs" role="tablist">
                                     <li class="nav-item tabcadastro">
                                         <a class="nav-link active" data-toggle="tab" href="#cadastro">Dados Gerais</a>
@@ -84,6 +84,8 @@
                                     <?php require_once("index_cadastro.php"); ?>
 
                                     <?php require_once("index_calculo.php"); ?>
+
+                                    <?php require_once("index_calculo_modulo.php"); ?>
 
                                     <?php require_once("index_distribuidores.php"); ?>
 

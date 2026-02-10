@@ -46,7 +46,7 @@ function disponivel(_id, _elem){
     });
 }
 
-function fc_retorno_pacientes(){
+function fc_retorno_pacientes(){ 
     $("#modal_retorno_pacientes tbody tr").click(function () {
         $('#id_paciente').val($(this).attr('rel'));
         var dados = $(this).find(".retorno_pacientes_relatorios").text();

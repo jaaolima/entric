@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal_selecao" tabindex="-1" role="dialog" aria-labelledby="modal_selecaoTitle" aria-hidden="true">
+<div class="modal fade" id="modal_selecao_modulo" tabindex="-1" role="dialog" aria-labelledby="modal_selecaoTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,7 +14,7 @@
                                 <th class="entric_group_destaque3">DIETA</th>
                                 <th class="entric_group_destaque3">DILUIÇÃO (KCAL/ML)</th>
                                 <th class="entric_group_destaque3">VOLUME FINAL</th>
-                                <th class="entric_group_destaque3">VOLUME POR HORÁRIO</th>
+                                <th class="entric_group_destaque3">VOLUME POR HORÁRIO</th> 
                             </tr>
                         </thead>
                         <tbody>
