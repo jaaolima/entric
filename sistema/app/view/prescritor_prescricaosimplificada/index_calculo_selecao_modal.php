@@ -30,9 +30,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-end mt-2">
+                    <div class="row justify-content-end my-2">
                         <div class="col-6">
-                            <button id="incluir_modulo_proteina" class="btn btn-primary btn-sm" type="button">Incluir módulo de proteína</button>
+                            <button id="incluir_modulo_proteina" class="btn btn-primary " type="button">Incluir módulo de proteína</button>
                         </div> 
                     </div>
                     <table class="table table-bordered" id="dietas_dc">

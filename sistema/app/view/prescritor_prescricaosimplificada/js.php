@@ -2430,9 +2430,9 @@ $(function(){
     });
 
     $("#incluir_modulo_proteina").on("click", function(){
-        $("#modal_incluir_modulo_proteina").modal("toggle");
+        $("#modal_modulo_proteina").modal("toggle");
     }); 
-    
+
     $('#calculo_apres_fechado').change(function () {
         if ($("input[name='calculo_apres_fechado']:checked").val() == 'Fechado') {
             $("#modal_sistema_fechado").show();
