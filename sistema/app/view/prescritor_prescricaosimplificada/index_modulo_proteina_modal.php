@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body" id="modal-pdf-body"> 
                 <form id="modal_form_adicionar_proteina" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
-                    <div class="row">
+                    <div class="row"> 
                         <div class="col-6">
                             <label for="">A necessidade de proteína atual é de:</label>
                         </div>
