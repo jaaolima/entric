@@ -2430,7 +2430,13 @@ $(function(){
     });
 
     $("#incluir_modulo_proteina").on("click", function(){
+        $("#modal_selecao").modal("hide");
         $("#modal_modulo_proteina").modal("toggle");
+    }); 
+
+    $("#fechar_modal_modulo_proteina").on("click", function(){
+        $("#modal_selecao").modal("toggle");
+        $("#modal_modulo_proteina").modal("hide");
     }); 
 
     $('#calculo_apres_fechado').change(function () {

@@ -34,7 +34,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-secondary" id="fechar_modal_modulo_proteina" data-dismiss="modal">Voltar</button>
                 <button type="button" class="btn btn-warning" id="salvar_adicionar_modulo">Confirmar</button>
             </div>
         </div>
