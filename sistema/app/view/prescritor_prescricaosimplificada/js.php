@@ -2432,10 +2432,19 @@ $(function(){
     $("#incluir_modulo_proteina").on("click", function(){
         $("#modal_selecao").modal("hide");
         $("#modal_modulo_proteina").modal("toggle");
+        $("#modal_modulo_proteina").attr("data-origin", "#modal_selecao");
     }); 
 
+    $("#incluir_modulo_proteina_modulo").on("click", function(){
+        $("#modal_selecao_modulo").modal("hide");
+        $("#modal_modulo_proteina").modal("toggle");
+        $("#modal_modulo_proteina").attr("data-origin", "#modal_selecao_modulo");
+    });
+
     $("#fechar_modal_modulo_proteina").on("click", function(){
-        $("#modal_selecao").modal("toggle");
+        var origin = $("#modal_modulo_proteina").attr("data-origin");
+        if (!origin) origin = "#modal_selecao";
+        $(origin).modal("toggle");
         $("#modal_modulo_proteina").modal("hide");
     }); 
 

@@ -8,6 +8,11 @@
             <div class="modal-body" id="modal-pdf-body">
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
 
+                    <div class="row justify-content-end my-2">
+                        <div class="col-6 text-center">
+                            <button id="incluir_modulo_proteina_modulo" class="btn btn-primary " type="button">Incluir módulo de proteína</button>
+                        </div> 
+                    </div>
                     <table class="table table-bordered" id="dietas_dc">
                         <thead>
                             <tr>
