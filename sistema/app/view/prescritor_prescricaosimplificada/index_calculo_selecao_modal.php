@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-end my-2">
-                        <div class="col-6">
+                        <div class="col-6 text-center">
                             <button id="incluir_modulo_proteina" class="btn btn-primary " type="button">Incluir módulo de proteína</button>
                         </div> 
                     </div>
