@@ -29,8 +29,6 @@
 
     </form>
 
-    <?php include("index_modulo_proteina_modal.php");?>
-
     <?php include("index_calculo_fracionamento_modal_modulo.php");?> 
 
     <?php include("index_calculo_selecao_modal_modulo.php");?>
