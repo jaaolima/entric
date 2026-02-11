@@ -47,6 +47,7 @@
                         <tbody>
                         </tbody>
                     </table>
+                    <?php include("index_modulo_proteina_modal.php");?>
                 </form>
             </div>
             

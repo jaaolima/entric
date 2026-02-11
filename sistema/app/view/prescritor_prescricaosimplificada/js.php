@@ -2433,6 +2433,8 @@ $(function(){
         $("#modal_selecao").modal("hide");
         $("#modal_modulo_proteina").modal("toggle");
         $("#modal_modulo_proteina").attr("data-origin", "#modal_selecao");
+
+        $("#necessidade_proteica_atual").val($("#proteina_dia").val());
     }); 
 
     $("#incluir_modulo_proteina_modulo").on("click", function(){
@@ -2447,6 +2449,19 @@ $(function(){
         $(origin).modal("toggle");
         $("#modal_modulo_proteina").modal("hide");
     }); 
+
+    $("#forma_modulo_proteina").change(function () {
+        necessidade_proteica = parseFloat($("#necessidade_proteica_atual").val());
+        forma_proteina = parseFloat((this).val());
+        $("#quantidade_proteina").val((necessidade_proteica - forma_proteina));
+    })
+
+    $("#salvar_adicionar_modulo").on("click", function(e) {
+        var _this = $(this);
+        var _id_paciente = $("#id_paciente").val();
+        
+    });
+        
 
     $('#calculo_apres_fechado').change(function () {
         if ($("input[name='calculo_apres_fechado']:checked").val() == 'Fechado') {

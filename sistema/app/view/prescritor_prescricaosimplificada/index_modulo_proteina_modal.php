@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body" id="modal-pdf-body"> 
                 <form id="modal_form_adicionar_proteina" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
-                    <div class="row"> 
+                    <div class="row mb-5"> 
                         <div class="col-6">
                             <label for="">A necessidade de proteína atual é de:</label>
                         </div>
@@ -15,15 +15,15 @@
                             <input type="text" class="form-control" id="necessidade_proteica_atual" name="necessidade_proteica_atual" readonly placeholder="XX g/dia">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-5">
                         <div class="col-6">
                             <label for="">Ofertar na forma de módulo de proteína:</label>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" id="forma_modulo_proteina" name="forma_modulo_proteina" placeholder="XX g/dia">
+                            <input type="text" maxlength="3" class="form-control" id="forma_modulo_proteina" name="forma_modulo_proteina" placeholder="XX g/dia">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-5">
                         <div class="col-6">
                             <label for="">A nova quantidade de proteína a ser fornecida pela dieta enteral é de:</label>
                         </div>
