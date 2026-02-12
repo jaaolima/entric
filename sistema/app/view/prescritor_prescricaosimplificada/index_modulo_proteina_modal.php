@@ -11,7 +11,7 @@
                         <div class="col-6">
                             <label for="">A necessidade de proteína atual é de:</label>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6"> 
                             <input type="text" class="form-control" id="necessidade_proteica_atual" name="necessidade_proteica_atual" readonly placeholder="XX g/dia">
                         </div>
                     </div>

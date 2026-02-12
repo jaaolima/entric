@@ -2469,10 +2469,30 @@ $(function(){
             cache: false,
             dataType: 'json',
             success: function( data ){
+                var _formula_total = $("#quantidade_proteina").val();
+                if (_formula_total !== ""){
+                    _formula_total = _formula_total.replace(",", ".");
+                    _formula_total = parseFloat(_formula_total);
+                }else{
+                    _formula_total = 0;
+                }
+                proteina_kg = _formula_total / parseFloat($("#peso").val());
+
+                $("#ptn_valor").val(numberFormatPrecision((_formula_total), 0));
+                _formula_valor = numberFormatPrecision((_formula_total), 1)+" ("+numberFormatPrecision(proteina_kg, 1)+" g/kg)";
+                // $("#ptn_valor").val(_formula_valor);
+                $("#presc_ptn").html(_formula_valor);
+                rangeProteina(_formula_total);
+
+                $("#categoria_modulo_proteina").attr("checked", true);
+                
+
                 var origin = $("#modal_modulo_proteina").attr("data-origin");
                 if (!origin) origin = "#modal_selecao";
                 $(origin).modal("toggle");
                 $("#modal_modulo_proteina").modal("hide");
+
+
             }
         });
 
