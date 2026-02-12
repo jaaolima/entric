@@ -2433,9 +2433,9 @@ $(function(){
         $("#modal_selecao").modal("hide");
         $("#modal_modulo_proteina").modal("toggle");
         $("#modal_modulo_proteina").attr("data-origin", "#modal_selecao");
-        console.log($("#proteina_dia").val());
+        console.log($("#ptn_valor").val());
 
-        $("#necessidade_proteica_atual").val($("#proteina_dia").val());
+        $("#necessidade_proteica_atual").val($("#ptn_valor").val());
         console.log($("#necessidade_proteica_atual").val());
 
     }); 
