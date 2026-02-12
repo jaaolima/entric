@@ -2441,6 +2441,8 @@ $(function(){
         $("#modal_selecao_modulo").modal("hide");
         $("#modal_modulo_proteina").modal("toggle");
         $("#modal_modulo_proteina").attr("data-origin", "#modal_selecao_modulo");
+
+        $("#necessidade_proteica_atual").val($("#proteina_dia").val());
     });
 
     $("#fechar_modal_modulo_proteina").on("click", function(){
@@ -2452,7 +2454,7 @@ $(function(){
 
     $("#forma_modulo_proteina").change(function () {
         necessidade_proteica = parseFloat($("#necessidade_proteica_atual").val());
-        forma_proteina = parseFloat((this).val());
+        forma_proteina = parseFloat($(this).val());
         $("#quantidade_proteina").val((necessidade_proteica - forma_proteina));
     })
 
