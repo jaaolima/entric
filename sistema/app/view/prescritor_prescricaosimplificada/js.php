@@ -2433,16 +2433,17 @@ $(function(){
         $("#modal_selecao").modal("hide");
         $("#modal_modulo_proteina").modal("toggle");
         $("#modal_modulo_proteina").attr("data-origin", "#modal_selecao");
+        console.log($("#proteina_dia").val());
 
         $("#necessidade_proteica_atual").val($("#proteina_dia").val());
+        console.log($("#necessidade_proteica_atual").val());
+
     }); 
 
     $("#incluir_modulo_proteina_modulo").on("click", function(){
         $("#modal_selecao_modulo").modal("hide");
         $("#modal_modulo_proteina").modal("toggle");
         $("#modal_modulo_proteina").attr("data-origin", "#modal_selecao_modulo");
-
-        $("#necessidade_proteica_atual").val($("#proteina_dia").val());
     });
 
     $("#fechar_modal_modulo_proteina").on("click", function(){
