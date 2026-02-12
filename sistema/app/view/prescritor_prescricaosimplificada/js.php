@@ -2459,7 +2459,23 @@ $(function(){
     $("#salvar_adicionar_modulo").on("click", function(e) {
         var _this = $(this);
         var _id_paciente = $("#id_paciente").val();
-        
+        var _id_relatorio = $("#id_relatorio").val();
+        var formSerialize = $("#modal_form_adicionar_proteina").serialize();
+
+        $.ajax({
+            type: "POST",
+            url: "ajax/selecao_salvar_simplificada",
+            data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+            cache: false,
+            dataType: 'json',
+            success: function( data ){
+                var origin = $("#modal_modulo_proteina").attr("data-origin");
+                if (!origin) origin = "#modal_selecao";
+                $(origin).modal("toggle");
+                $("#modal_modulo_proteina").modal("hide");
+            }
+        });
+
     });
         
 

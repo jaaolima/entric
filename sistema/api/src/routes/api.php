@@ -9243,10 +9243,14 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
 		        if (!isset($dados['margem_calorica'])) $dados['margem_calorica'] = null;
 		        if (!isset($dados['margem_proteica'])) $dados['margem_proteica'] = null;
+		        if (!isset($dados['forma_modulo_proteina'])) $dados['forma_modulo_proteina'] = null;
+		        if (!isset($dados['quantidade_proteina'])) $dados['quantidade_proteina'] = null;
 
 		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),
 		                        ':margem_calorica' => $dados["margem_calorica"],
-		                        ':margem_proteica' => $dados["margem_proteica"]);
+		                        ':margem_proteica' => $dados["margem_proteica"],
+								':forma_modulo_proteina' => $dados["forma_modulo_proteina"],
+								':quantidade_proteina' => $dados["quantidade_proteina"]);
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
