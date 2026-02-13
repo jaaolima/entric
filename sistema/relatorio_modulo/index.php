@@ -16,7 +16,7 @@
 */
 require __DIR__ . '/libs/conf6ion.php';
 require __DIR__ . '/libs/common.php';
-require __DIR__ . '/libs/database.class.php';
+require __DIR__ . '/libs/database.class.php'; 
 //echo endecrypt("encrypt", 466);
 //die();
 // if(!isset($_SESSION['login'])){
@@ -289,6 +289,10 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				<div style="width:50%;">
 					<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
 				</div>
+			</div>
+			<div style="display:flex;">
+				<?php if($paciente['hospital'] <> '') echo "<div style='width:50%;'><p><strong>Hospital:</strong> ".$paciente['hospital']." </p></div>"; ?>
+				<?php if($paciente['atendimento'] <> '') echo "<div style='width:50%;'><p><strong>Atendimento:</strong> ".$paciente['atendimento']." </p></div>"; ?>
 			</div>
 			<?php } ?>
 

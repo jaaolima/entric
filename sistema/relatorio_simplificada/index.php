@@ -288,7 +288,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				</div>
 				<div style="width:50%;">
 					<p><strong>Data de Nascimento:</strong> <?php echo sql2date($paciente['data_nascimento']);?></p>
-				</div>
+				</div> 
 			</div>
 			<?php } ?>
 
