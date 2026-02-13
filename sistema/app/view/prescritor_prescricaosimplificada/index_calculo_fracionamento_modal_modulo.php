@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button> 
-                <button type="button" class="btn btn-warning" id="salvar_alteracoes">Salvar Alterações</button>
+                <button type="button" class="btn btn-warning" id="salvar_alteracoes_modulo">Salvar Alterações</button>
             </div>
         </div>
     </div>
