@@ -25,54 +25,13 @@ require __DIR__ . '/libs/database.class.php';
 // session_start();
 // var_dump($_SESSION);
 
-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// imprimir = somente secao de header =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-$p_header = false;
-if (strpos($_GET['url'], "___h") !== false) {
-	$url = explode("___h", $_GET['url']);
-	$url = $url[0];
-	$p_header = true;
-}
-else{
-	$url = $_GET['url'];
-}
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-// imprimir = somente secao de produtos =-=-=-=-=-=-=-=-=-=-=-=-=-=-
-$p_produtos = false;
-if (strpos($_GET['url'], "___p") !== false) {
-	$url = explode("___p", $_GET['url']);
-	$url = $url[0];
-	$p_produtos = true;
-}
-else{
-	$url = $_GET['url'];
-}
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-// imprimir = somente secao de footer =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-$p_footer = false;
-if (strpos($_GET['url'], "___f") !== false) {
-	$url = explode("___f", $_GET['url']);
-	$url = $url[0];
-	$p_footer = true;
-}
-else{
-	$url = $_GET['url'];
-}
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-
-$url = endecrypt("decrypt", $url);
-if ($url=="") Redirect(BASE_PATH);
-
 ?>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="">
-		<title>Relatório - <?php echo $url;?></title>
+		<title>Relatório </title>
 		<link rel="stylesheet" type="text/css" href="css/sheets-of-paper-a4.css">
 		<style>
 			body{
