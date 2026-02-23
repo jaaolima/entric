@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body" id="modal-pdf-body">
                 <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
-                    <table class="table table-bordered" id="dietas_dc">
+                    <table class="table table-bordered" id="dietas_dc_modulo">
                         <thead>
                             <tr>
                                 <th class="entric_group_destaque3">DIETA</th>

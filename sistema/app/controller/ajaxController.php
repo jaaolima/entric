@@ -432,6 +432,16 @@ class AjaxController extends Controller {
         //}
     }
 
+        function busca_produto_relatorio_simplificada_modulo() {
+        //if (isset($_POST['calculo_apres_aberto_po']) and (trim($_POST['calculo_apres_aberto_po'])<>"")){            
+            $produto = new ProdutoModel();
+            $produtos = $produto->gtProdutoRelatorioSimplificadaModulo($_POST);
+            echo $produtos; //echo json_encode($produtos);
+        //}else{            
+            //echo ""; //echo json_encode(array('error'=>array('message'=>'Informe os dados corretamente.')));
+        //}
+    }
+
     function busca_produto_relatorio_suplemento() {
         //if (isset($_POST['calculo_apres_aberto_po']) and (trim($_POST['calculo_apres_aberto_po'])<>"")){            
             $produto = new ProdutoModel();

@@ -1093,19 +1093,19 @@ function busca_produto_relatorio_modulo(m_calorica, m_proteica){
     //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
         $.ajax({
             type: "POST",
-            url: "ajax/busca_produto_relatorio_modulo", 
+            url: "ajax/busca_produto_relatorio_simplificada_modulo", 
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
             data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica,
             cache: false,
             dataType: 'html',
             success: function( dados ){
                 if (dados == ""){
-                    $('#dietas_dc').empty();
-                    $('#dietas_dc').append("<br><div style='text-align: center;'>Não foram encontrados produtos compatíveis com todas as características selecionadas.<br> Você pode rever a prescrição nutricional para realizar o cálculo automático <br>ou realizar uma prescrição manual.</div><br>");
+                    $('#dietas_dc_modulo').empty();
+                    $('#dietas_dc_modulo').append("<br><div style='text-align: center;'>Não foram encontrados produtos compatíveis com todas as características selecionadas.<br> Você pode rever a prescrição nutricional para realizar o cálculo automático <br>ou realizar uma prescrição manual.</div><br>");
                 }
                 else{
-                    $('#dietas_dc').empty();
-                    $('#dietas_dc').append(dados);
+                    $('#dietas_dc_modulo').empty();
+                    $('#dietas_dc_modulo').append(dados);
 
                     fc_collapsecheckbox(1);
                     fc_collapsecheckbox(2);
@@ -2465,7 +2465,7 @@ $(function(){
         }
 
         if (isValidFrac && isValidHid) {
-            salvar_calculo_fracionamento($(this));
+            salvar_calculo_fracionamento($(this)); 
         }
         
     });

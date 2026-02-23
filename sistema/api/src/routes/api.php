@@ -138,6 +138,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/prescritor_videosalta_editar2",
 				"/produto_gtProdutoRelatorio",
 				"/produto_gtProdutoRelatorioSimplificada",
+				"/produto_gtProdutoRelatorioSimplificadaModulo",
 				"/produto_gtProdutoRelatorioSuplemento",
 				"/produto_gtProdutoRelatorioModulo",
 				"/produto_gtProdutoFiltros",
@@ -3648,6 +3649,328 @@ $app->group("", function () use ($app) {
 		                        // ajustar o rowspan da listagem de produtos caso esteja errado
 		                        if (($rowspan <> count($medida_dc)) && ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
 		                            $retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
+		                        }
+		                    }
+		                }
+		            }
+		        }
+		        if ($retorno<>"") $retorno .= "</tbody>";
+
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/produto_gtProdutoRelatorioSimplificadaModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+
+			if ($usuario){
+				$dados = $request->getParam("dados");
+
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // construção de query MySQL
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+				if (isset($dados['margem_calorica']) and ($dados['margem_calorica'] <> "")){ $margem_calorica = explode(",", $dados['margem_calorica']); $margem_calorica[0] = strtok($margem_calorica[0],' '); $margem_calorica[1] = strtok($margem_calorica[1],' '); }else{ $margem_calorica[0] = 0; $margem_calorica[1] = 0;}
+		        if (isset($dados['margem_proteica']) and ($dados['margem_proteica'] <> "")){ $margem_proteica = explode(",", $dados['margem_proteica']); $margem_proteica[0] = strtok($margem_proteica[0],' '); $margem_proteica[1] = strtok($margem_proteica[1],' '); }else{ $margem_proteica[0] = 0; $margem_proteica[1] = 0;}
+
+		        $query = '';
+				if(isset($dados['cat_modulo'])){
+					$array_carac = $dados['cat_modulo'];
+
+					if(in_array('Proteína', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Proteína%")';
+					}
+					if(in_array('Colágeno ou Aminoácidos', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Colágeno ou Aminoácidos%")';
+					}
+					if(in_array('Carboidrato', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Carboidrato%")';
+					}
+					if(in_array('Lipídeo', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Lipídeo%")';
+					}
+					if(in_array('Fibras', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Fibras%")';
+					}
+					if(in_array('Probióticos', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Probióticos%")';
+					}
+					if(in_array('Simbióticos', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Simbióticos%")';
+					}
+					if(in_array('Espessante', $array_carac)){
+						$query.= ' OR (cat_modulo LIKE "%Espessante%")';
+					}
+					$query = substr($query, 4);
+
+				}
+
+		        if ($query <> '') $query = 'WHERE (status=1) AND ('.$query.')';
+		        $produtos = $db->select_to_array(
+												"produtos p",
+												"p.id, p.nome, p.fabricante, p.apres_enteral, p.kcal, p.cho, p.ptn, p.lip, p.fibras, p.medida_dc, p.unidade, p.medida_g, p.medida, p.unidmedida, p.volume, p.apresentacao, p.final, p.apres_oral, p.cat_modulo",
+												$query . " ORDER BY 
+													CASE 
+														WHEN p.fabricante = 'PRODIET' THEN 1
+														WHEN p.fabricante = 'DANONE' THEN 2
+														ELSE 3
+													END",
+												null
+											);
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+		        $retorno = '';
+		        $retorno_thead = '';
+		        if ($produtos){
+		            if (isset($dados['fracionamento_dia']) and ($dados['fracionamento_dia'] <> "")){
+		                $fracionamento_dia = $dados['fracionamento_dia'];
+		                if ($fracionamento_dia == "0") $fracionamento_dia = 1;
+		            }
+		            else{
+		                $fracionamento_dia = 1;
+		            }
+
+					// Processa os produtos para associar as categorias
+					$produtosPorCategoria = [];
+					$array_carac = isset($dados['cat_modulo']) ? $dados['cat_modulo'] : [];
+
+					foreach ($produtos as $produto) {
+						// Decodifica o campo cat_modulo (que é um JSON)
+						$categorias = json_decode($produto['cat_modulo'], true);
+						
+						// Se o produto não tiver categorias ou o JSON for inválido, pula
+						if (!is_array($categorias)) {
+							continue;
+						}
+
+						// Verifica cada categoria do produto
+						foreach ($categorias as $categoria) {
+							// Se a categoria está na lista de categorias desejadas ($array_carac)
+							if (in_array($categoria, $array_carac)) {
+								// Cria uma cópia do produto e adiciona a categoria atual
+								$produtoComCategoria = $produto;
+								$produtoComCategoria['categoria'] = $categoria;
+								
+								// Adiciona o produto ao array, agrupado por categoria
+								$produtosPorCategoria[$categoria][] = $produtoComCategoria;
+							}
+						}
+					}
+
+					// Reorganiza os produtos em uma lista única, sem duplicatas por categoria
+					$produtos = [];
+					foreach ($produtosPorCategoria as $categoria => $produtosDaCategoria) {
+						foreach ($produtosDaCategoria as $produto) {
+							$produtos[] = $produto;
+						}
+					}
+
+		            for ($i = 0; $i < count($produtos); $i++){
+		                $kcal = $produtos[$i]['kcal'];
+		                $ptn = $produtos[$i]['ptn'];
+		                if ($kcal<>"") $kcal = str_replace(",", ".", $kcal); else $kcal = 0;
+		                if ($ptn<>"") $ptn = str_replace(",", ".", $ptn); else $ptn = 0;
+		                $kcal = floatval($kcal);
+		                $ptn = floatval($ptn);
+
+		                // se tiver mais de 01 volume cadastrado
+		                $margem_liberadas = false;
+		                $volume_produto = json_decode($produtos[$i]['volume'], true);
+		                if (json_last_error() === 0) {
+		                    if (is_array($volume_produto)){
+		                        if (count($volume_produto)>0){
+
+		                            $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
+									$_medida_dc = 1;
+		                            for ($j = 0; $j < count($volume_produto); $j++){
+		                                $_volume = str_replace(" ","", trim($volume_produto[$j]));
+
+		                                $valor_calorio = "-";
+		                                $valor_proteico = "-";
+		                                $valor_fibra = "-";
+
+
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // formatação de string
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                if (strpos($_volume, 'mL') !== false) {
+		                                    $_volume = str_replace("mL","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else if ($_volume == "1L"){
+		                                    $_volume = 1000;
+		                                }
+		                                else if (strpos($_volume, 'g cada') !== false) {
+		                                    $_volume = str_replace("g cada","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else if (strpos($_volume, 'g/cada') !== false) {
+		                                    $_volume = str_replace("g/cada","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else if (strpos($_volume, 'g') !== false) {
+		                                    $_volume = str_replace("g","", $_volume);
+		                                    $_volume = str_replace(",",".", $_volume);
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                else{
+		                                    $_volume = chkfloat($_volume);
+		                                }
+		                                if (isset($medida_dc[$j]) && $medida_dc[$j] != ''){
+											
+		                                    $_medida_dc = str_replace(",",".", trim($medida_dc[$j]));
+		                                }
+		                                $calorias_dia = "";
+		                                $proteina_dia = "";
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+										$margem_liberadas = true;
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                            }
+		                        }
+		                    }
+		                }
+
+
+		                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                // se for liberada: se passou pelo ranger acima
+		                // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+		                if ($margem_liberadas){
+		                    $medida_dc = 0;
+		                    if ($produtos[$i]['medida_dc'] <> ""){
+		                        $medida_dc = json_decode($produtos[$i]['medida_dc'], true);
+		                        $medida_g = json_decode($produtos[$i]['medida_g'], true);
+		                        $medidas = json_decode($produtos[$i]['medida'], true);
+		                        $unidade = json_decode($produtos[$i]['unidade'], true);
+
+		                        $titulo = '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'"><div class="form-check col-sm-12"><input id="check_dieta'.$produtos[$i]['id'].'" rel="'.$produtos[$i]['id'].'" class="form-check-input styled-checkbox check_dieta" onclick="check_dieta(this, '.$produtos[$i]['id'].');" name="check_dieta'.$produtos[$i]['id'].'" type="checkbox" value=""><label for="check_dieta'.$produtos[$i]['id'].'" class="form-check-label collapseSistema check-green">&nbsp;</label></div> </td>';
+		                        $titulo .= '<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">'.$produtos[$i]['nome'].'</td>';
+
+		                        $cont_array = 0;
+		                        $rowspan = 0;
+								// for ($m=0; $m < count($medida_dc); $m++) { 
+									$dc = str_replace(",", ".", $medida_dc[0]);
+
+		                            // se tiver no ranger, listar
+		                            if ($margem_liberadas){
+		                                // if ($produtos[$i]['apres_enteral'] == '["Fechado"]'){
+		                                //     $volume_horario = " - ";
+		                                // }
+
+		                                $categoria = $produtos[$i]['categoria'];
+		                                $categoria_num = '0';
+		                                if ($categoria == 'Proteína'){
+											$categoria = 'Proteína'; 
+											$categoria_num = '1';
+		                                }else if ($categoria == 'Colágeno ou Aminoácidos'){
+											$categoria = 'Colágeno ou Aminoácidos';
+											$categoria_num = '2';
+		                                }else if ($categoria == 'Carboidrato'){
+											$categoria = 'Carboidrato';
+											$categoria_num = '3';
+		                                }else if ($categoria == 'Lipídeo'){
+											$categoria = 'Lipídeo';
+											$categoria_num = '4';
+		                                }else if ($categoria == 'Fibras'){
+											$categoria = 'Fibras';
+											$categoria_num = '5';
+		                                }else if ($categoria == 'Probióticos'){
+											$categoria = 'Probióticos';
+											$categoria_num = '6';
+		                                }else if ($categoria == 'Simbióticos'){
+											$categoria = 'Simbióticos';
+											$categoria_num = '7';
+		                                }else if ($categoria == 'Espessante'){
+											$categoria = 'Espessante';
+											$categoria_num = '8';
+		                                }
+
+		                                if ($retorno_thead <> $categoria){
+		                                    $retorno_thead = $categoria;
+		                                    $retorno .= '<thead>
+		                                                    <tr>
+		                                                        <th colspan="8" class="entric_group_destaque4 text-center">
+		                                                        '.$categoria.' <a href="javascript:void(0);" onclick="fc_collapseSistema(\''.$categoria_num.'\');" class="pull-right" style="color: #fff;"><i class="fa fa-minus-square"></i></a></th>
+		                                                    </tr>
+		                                                    <tr>
+		                                                        <th rowspan="2" class="entric_group_destaque5">
+																	PRODUTO 
+																</th>
+																<th rowspan="2" class="entric_group_destaque5">
+																	FABRICANTE 
+																</th>
+																<th rowspan="2" class="entric_group_destaque5">
+																	MEDIDA
+																</th>
+																<th rowspan="2" class="entric_group_destaque5">
+																	PORÇÃO(g ou ml)
+																</th>
+		                                                        <th rowspan="2" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
+		                                                        <th rowspan="2" class="entric_group_destaque5">PORÇÕES/DIA</th> 
+		                                                        <th rowspan="2" class="entric_group_destaque5">HORÁRIOS(opcionais)</th> 
+		                                                    </tr>
+		                                                </thead>
+		                                                <tbody id="tbody'.$categoria_num.'">';
+		                                }										
+
+										$medida = $medidas[0]. " " . $unidade[0];
+										$retorno .= '<tr>
+														<td>
+															<div class="form-check col-sm-12">
+																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].'">
+																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
+															</div>
+														</td>
+														<td>'.$produtos[$i]['fabricante'].'</td>
+														<td>'.$medida.'</td>
+														<td name="porcao">'.$medida_g[0].'</td>
+														<td name="total_dose"></td>
+														<td name="porcao_dias"><input min="0.5" step="0.5" style="width:40px;text-align:center;" name="valor_porcao[]" onchange="fc_porcao_dia(this)" type="number"></td>
+														<td name="horarios"><button type="button" class="btn btn-secondary ml-2" onclick="novoHorario(this)" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></td>
+													</tr>';
+										$titulo = "";
+		                            }
+		                            $cont_array = $cont_array+1;
+		                        // }
+
+		                        // ajustar o rowspan da listagem de produtos caso esteja errado
+		                        if (($rowspan <> $medida_dc) and ($produtos[$i]['apres_enteral'] == '["Aberto (Pó)"]')){
+		                            //$retorno = str_replace('<td rel="'.$produtos[$i]['id'].'" rowspan="'.count($medida_dc).'">', '<td rel="'.$produtos[$i]['id'].'" rowspan="'.$rowspan.'">', $retorno);
 		                        }
 		                    }
 		                }

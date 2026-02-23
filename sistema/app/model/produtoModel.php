@@ -4,7 +4,7 @@ class ProdutoModel extends Model {
     function gtProdutoRelatorio($dados) {
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorio", array("token" => $_SESSION['token'],
-        "login" => $_SESSION['login'],
+        "login" => $_SESSION['login'], 
                                                                     "dados" => $dados)); 
         return $retorno;
     }
@@ -12,6 +12,14 @@ class ProdutoModel extends Model {
     function gtProdutoRelatorioSimplificada($dados) { 
         global $bruker;
         $retorno = httpPostAuth("produto_gtProdutoRelatorioSimplificada", array("token" => $_SESSION['token'],
+        "login" => $_SESSION['login'],
+                                                                    "dados" => $dados));
+        return $retorno;
+    }
+
+    function gtProdutoRelatorioSimplificadaModulo($dados) { 
+        global $bruker;
+        $retorno = httpPostAuth("produto_gtProdutoRelatorioSimplificadaModulo", array("token" => $_SESSION['token'],
         "login" => $_SESSION['login'],
                                                                     "dados" => $dados));
         return $retorno;
