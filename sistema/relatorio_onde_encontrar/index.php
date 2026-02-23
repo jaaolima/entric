@@ -203,7 +203,7 @@ require __DIR__ . '/libs/database.class.php';
 	<body class="document">
 		<div class="page logo_efeito" style="position:relative;">
 			<img class="background" style="position:absolute;left:2cm;width:150px;" src="imagem/logo_ibranutro.png" alt="">
-			<div style="display:flex;">
+			<div style="display:flex;margin-top: 50px;">
 				<div style="width:50%;padding-left: 10px;padding-right: 10px;">
 					<P style="text-align: center;" class="subtitutlo">ONDE ENCONTRAR?</p>
 					<p>
