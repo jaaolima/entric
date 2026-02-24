@@ -117,7 +117,7 @@
                         $hospitais_select_por_nome[$nome] = $nome;
                     }
                     $hospitais_select_por_nome = array("" => "Selecione") + $hospitais_select_por_nome;
-                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome, "readonly" => $readonly);
+                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome, $readonly);
                 } else {
                     $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital);
                 }
@@ -129,14 +129,14 @@
                                         "label" => "Nome do Paciente:",
                                         "required" => "required",
                                         "value" => $ds_nome,
-                                        "readonly" => $readonly
+                                        $readonly
                                     ),
                                     "cpf" => array(
                                         "col" => 4,
                                         "label" => "CPF:",
                                         "required" => "required",
                                         "value" => $nu_cpf,
-                                        "readonly" => $readonly
+                                        $readonly
                                     ),
                                     "cpf_possui" => array(
                                         "col" => 3,
@@ -150,7 +150,7 @@
                                         "placeholder" => "dd/mm/aaaa",
                                         "required" => "required",
                                         "value" => $dt_nascimento,
-                                        "readonly" => $readonly
+                                        $readonly
                                     ),
                                     "telefone" => array(
                                         "col" => 5,
@@ -162,7 +162,7 @@
                                         "col" => 4,
                                         "label" => "Atendimento:",
                                         "value" => $nu_atendimento,
-                                        "readonly" => $readonly
+                                        $readonly
                                     ), 
                                 )
                             );
