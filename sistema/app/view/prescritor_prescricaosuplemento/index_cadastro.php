@@ -27,7 +27,7 @@
     $nu_telefone = '';
     $nu_atendimento = '';
     $sistema = '';
-    $readonly = 'false';
+    $readonly = '';
 
     if($_SESSION['paciente_redirect']['sistema'] == 'EN2'){
         $id_paciente_redirecionado = $_SESSION['paciente_redirect']['id_paciente'];
@@ -47,7 +47,7 @@
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
     }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){
-        $readonly = 'readonly';
+        $readonly = array('readonly' => true);
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $nu_cpf = $_SESSION['paciente_redirect']['nu_cpf'];
