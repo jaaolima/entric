@@ -186,7 +186,7 @@
                     <input type="hidden" name="action" id="action" value="atualizar"/>
                     <input type="hidden" name="up_id" id="up_id" value=""/>
                     <?php
-                        $item_dados =  $html->addRow(
+                        $item_dados =  $html->addRow( 
                             array(
                                 "up_nome" => array(
                                     "col" => 12,

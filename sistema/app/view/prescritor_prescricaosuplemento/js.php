@@ -15,7 +15,7 @@
         my_textareas     = this.find('textarea').add(this.filter('textarea')),
         result_textareas = result.find('textarea').add(result.filter('textarea')),
         my_selects       = this.find('select').add(this.filter('select')),
-        result_selects   = result.find('select').add(result.filter('select'));
+        result_selects   = result.find('select').add(result.filter('select')); $readonly => true
 
     for (var i = 0, l = my_textareas.length; i < l; ++i) $(result_textareas[i]).val($(my_textareas[i]).val());
     for (var i = 0, l = my_selects.length;   i < l; ++i) {
@@ -55,6 +55,13 @@ function fc_retorno_pacientes(){
         
         $('#cad_idade').val(dados_json.idade);
 
+        if(dados_json.id_admissao_en != null){
+            $("#up_nome").attr("readonly", true);
+            $("#up_hospital").attr("readonly", true);
+            $("#up_data_nascimento").attr("readonly", true);
+            $("#up_atendimento").attr("readonly", true);
+            $("#up_cpf").attr("readonly", true);
+        }
         $('#up_id').val(dados_json.id);
         $('#up_nome').val(dados_json.nome);
         $('#up_telefone').val(dados_json.telefone);

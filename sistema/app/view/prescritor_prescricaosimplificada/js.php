@@ -53,6 +53,14 @@ function fc_retorno_pacientes(){
         var dados = $(this).find(".retorno_pacientes_relatorios").text();
         dados = JSON.parse(dados);
         var dados_json = dados;
+
+        if(dados_json.id_admissao_en != null){
+            $("#up_nome").attr("readonly", true);
+            $("#up_hospital").attr("readonly", true);
+            $("#up_data_nascimento").attr("readonly", true);
+            $("#up_atendimento").attr("readonly", true);
+            $("#up_cpf").attr("readonly", true);
+        }
         
         $('#cad_idade').val(dados_json.idade);
 
