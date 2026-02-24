@@ -47,7 +47,7 @@
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $_SESSION['paciente_redirect']['buscar'] = null;
     }else if($_SESSION['paciente_redirect']['buscar'] == 'cadastrar'){
-        $readonly = array('readonly' => true);
+        $readonly = "readonly";
         $ds_nome = $_SESSION['paciente_redirect']['ds_nome'];
         $_SESSION['paciente_redirect']['ds_nome'] = null;
         $nu_cpf = $_SESSION['paciente_redirect']['nu_cpf'];
@@ -117,7 +117,7 @@
                         $hospitais_select_por_nome[$nome] = $nome;
                     }
                     $hospitais_select_por_nome = array("" => "Selecione") + $hospitais_select_por_nome;
-                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome, $readonly);
+                    $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital, "select" => $hospitais_select_por_nome, $readonly => true);
                 } else {
                     $campo_hospital = array("col" => 6, "label" => "Hospital:", "value" => $ds_hospital);
                 }
@@ -129,14 +129,14 @@
                                         "label" => "Nome do Paciente:",
                                         "required" => "required",
                                         "value" => $ds_nome,
-                                        $readonly
+                                        $readonly => true
                                     ),
                                     "cpf" => array(
                                         "col" => 4,
                                         "label" => "CPF:",
                                         "required" => "required",
                                         "value" => $nu_cpf,
-                                        $readonly
+                                        $readonly => true
                                     ),
                                     "cpf_possui" => array(
                                         "col" => 3,
@@ -150,7 +150,7 @@
                                         "placeholder" => "dd/mm/aaaa",
                                         "required" => "required",
                                         "value" => $dt_nascimento,
-                                        $readonly
+                                        $readonly => true
                                     ),
                                     "telefone" => array(
                                         "col" => 5,
@@ -162,7 +162,7 @@
                                         "col" => 4,
                                         "label" => "Atendimento:",
                                         "value" => $nu_atendimento,
-                                        $readonly
+                                        $readonly => true
                                     ), 
                                 )
                             );
