@@ -2324,12 +2324,12 @@ $(function(){
     })
 
     $('#calculo_modulo_avancar').on('click', function() {
-        if (($("input[name='cat_modulo']:checked").length > 0)){
+        console.log($("input[name='cat_modulo']:checked").length);
+        if ($("input[name='cat_modulo']:checked").length > 0){
             fc_salvar('calculo', false);
             $('#index_calculo_fracionamento_modal_modulo').modal('toggle');
             
-        }else{
-            $(".tabmodulos").addClass('disabledTab');    
+        }else{   
             $('.tabmodulos a').removeClass('active');
             $('#modulos').removeClass('active').removeClass('show').attr('aria-expanded','false');
     
