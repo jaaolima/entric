@@ -1,6 +1,6 @@
 
 <div class="tab-pane fade" id="modulos" role="tabpanel">
-    <form id="prescritor_calculo" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
+    <form id="prescritor_calculo_modulo" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
         <input type="hidden" name="action" value="modulos">
         <input type="hidden" name="selecao_dieta" id="selecao_dieta" value="">
         <input type="hidden" name="login_tipo" value="<?php echo $_SESSION['login']; ?>">

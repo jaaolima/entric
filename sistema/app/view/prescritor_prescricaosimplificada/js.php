@@ -1099,7 +1099,7 @@ function busca_produto_relatorio_modulo(m_calorica, m_proteica){
         type: "POST",
         url: "ajax/busca_produto_relatorio_simplificada_modulo", 
         //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
-        data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica,
+        data: $("#prescritor_calculo_modulo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica,
         cache: false,
         dataType: 'html',
         success: function( dados ){
