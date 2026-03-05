@@ -14,7 +14,7 @@
         <div class="form-group row pt-5">
             <div class="col-sm-6 text-left">
                 <button type="button" class="btn btn-secondary btn-sm" id="calculo_salvar">
-                    <span class="btn-icon-right"><i class="fa fa-save"></i></span>
+                    <span class="btn-icon-right"><i class="fa fa-save"></i></span> 
                     SALVAR
                 </button>
             </div>

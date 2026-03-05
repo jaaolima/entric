@@ -2269,6 +2269,7 @@ $(function(){
         $('.tabcalculo a').addClass('active');
         $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
     });
+
     $('#calculo_avancar').on('click', function() {
         if ((!$("input[name='dispositivo']:checked").val()) && ($("input[name='tipo_produto']:checked").val() != "Suplemento") ) {
             $.alert({
@@ -2568,6 +2569,8 @@ $(function(){
                 rangeProteina(_formula_total);
 
                 $("#categoria_modulo_proteina").attr("checked", true);
+                $("#categoria_modulo_proteina").style("pointer-events", "none");
+                $("#categoria_modulo_proteina").attr("onClick", "return false;");
                 
 
                 var origin = $("#modal_modulo_proteina").attr("data-origin");

@@ -30,7 +30,7 @@
             </div>
             <div class="col-sm-6 text-right">
 
-                <button type="button" class="btn btn-secondary btn-form" id="calculo_voltar">VOLTAR</button>
+                <button type="button" class="btn btn-secondary btn-form" id="calculo_voltar">VOLTAR</button> 
                 &nbsp;
                 <button type="button" class="btn btn-warning btn-form" id="calculo_avancar">AVANÇAR</button>
             </div>
