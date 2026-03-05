@@ -1082,6 +1082,12 @@ function busca_produto_relatorio(m_calorica, m_proteica){
     //}
 }
 
+function novoHorario(_this){ 
+    divPai = $(_this).parent();
+    divPai.append('<div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
+    $('.hora').mask("99:99");
+}
+
 function busca_produto_relatorio_modulo(m_calorica, m_proteica){
     if (typeof m_calorica === "undefined") {
         m_calorica = new Array(0, 0);
@@ -1089,36 +1095,33 @@ function busca_produto_relatorio_modulo(m_calorica, m_proteica){
     if (typeof m_proteica === "undefined") {
         m_proteica = new Array(0, 0);
     }
-    console.log(m_calorica, m_proteica);
-    //if ($("input[name='calculo_apres_aberto_po']:checked").length > 0) {
-        $.ajax({
-            type: "POST",
-            url: "ajax/busca_produto_relatorio_simplificada_modulo", 
-            //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
-            data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica,
-            cache: false,
-            dataType: 'html',
-            success: function( dados ){
-                if (dados == ""){
-                    $('#dietas_dc_modulo').empty();
-                    $('#dietas_dc_modulo').append("<br><div style='text-align: center;'>Não foram encontrados produtos compatíveis com todas as características selecionadas.<br> Você pode rever a prescrição nutricional para realizar o cálculo automático <br>ou realizar uma prescrição manual.</div><br>");
-                }
-                else{
-                    $('#dietas_dc_modulo').empty();
-                    $('#dietas_dc_modulo').append(dados);
-
-                    fc_collapsecheckbox(1);
-                    fc_collapsecheckbox(2);
-                    fc_collapsecheckbox(3);
-                    fc_collapsecheckbox(4);
-                    fc_collapsecheckbox(5);
-                    fc_collapsecheckbox(6);
-                    fc_collapsecheckbox(7);
-                    fc_collapsecheckbox(8);
-                }
+    $.ajax({
+        type: "POST",
+        url: "ajax/busca_produto_relatorio_simplificada_modulo", 
+        //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
+        data: $("#prescritor_calculo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica,
+        cache: false,
+        dataType: 'html',
+        success: function( dados ){
+            if (dados == ""){
+                $('#dietas_dc_modulo').empty();
+                $('#dietas_dc_modulo').append("<br><div style='text-align: center;'>Não foram encontrados produtos compatíveis com todas as características selecionadas.<br> Você pode rever a prescrição nutricional para realizar o cálculo automático <br>ou realizar uma prescrição manual.</div><br>");
             }
-        });
-    //}
+            else{
+                $('#dietas_dc_modulo').empty();
+                $('#dietas_dc_modulo').append(dados);
+
+                fc_collapsecheckbox(1);
+                fc_collapsecheckbox(2);
+                fc_collapsecheckbox(3);
+                fc_collapsecheckbox(4);
+                fc_collapsecheckbox(5);
+                fc_collapsecheckbox(6);
+                fc_collapsecheckbox(7);
+                fc_collapsecheckbox(8);
+            }
+        }
+    });
 }
 
 function rangeCaloria(calorias){
@@ -2315,19 +2318,21 @@ $(function(){
         if($(this).is(":checked")){
             categoria = $(this).attr('id');
             nome = $(this).val();
-            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-5">Por quanto tempo:</div><div class="col-sm-7"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div><div class="row mt-4"><div class="col-sm-5">Horário(s) (opcional)</div><div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"></div><button type="button" class="btn btn-secondary ml-2" onclick="novoHorario(this)" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
+            html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-5">Por quanto tempo:</div><div class="col-sm-7"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
             $("#div_modal_fracionamento").append(html);
         }else{
             categoria = $(this).attr('id');
             $("#div_"+categoria).remove();
         }
+        busca_produto_relatorio_modulo();
+
     })
 
     $('#calculo_modulo_avancar').on('click', function() {
         console.log($("input[name='cat_modulo[]']:checked").length);
         if ($("input[name='cat_modulo[]']:checked").length > 0){
             fc_salvar('calculo', false);
-            $('#index_calculo_fracionamento_modal_modulo').modal('toggle');
+            $('#modal_selecao_modulo').modal('toggle');
             
         }else{   
             $('.tabmodulos a').removeClass('active');

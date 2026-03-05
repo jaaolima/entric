@@ -2198,7 +2198,7 @@ $(function(){
     });
     $('#calculo_avancar').on('click', function() {
         fc_salvar('calculo', true);
-        if ($("input[name='cat_modulo[]']:checked").length > 0) {
+        if ($("input[name='cat_modulo[]']:checked").length > 0) { 
             $("#modal_selecao").modal("toggle");
         }
         else{
