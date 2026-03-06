@@ -999,6 +999,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$porcao = '½';
 								}
 								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1048,6 +1051,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">
 										Porções/dia
 									</th>
+									<th rowspan="2">
+										Horários
+									</th>
 								</tr>
 								<tr>
 									<th class="col_azul">
@@ -1059,39 +1065,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tr>
 						<?php
 						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						$dieta_porcao_dia = array_values($dieta_porcao_dia);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-							$fabricante = $partes[5]; 
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria,
-								'fabricante' => $fabricante
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Colágeno ou Aminoácidos"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1107,6 +1088,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										</td>
 										<td  >
 											".$porcao."
+										</td>
+										<td  >
+											".$horarios."
 										</td>
 									</tr>
 								";
@@ -1137,6 +1121,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">
 										Porções/dia
 									</th>
+									<th rowspan="2">
+										Horários
+									</th>
 								</tr>
 								<tr>
 									<th class="col_azul">
@@ -1148,39 +1135,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tr>
 						<?php
 						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						$dieta_porcao_dia = array_values($dieta_porcao_dia);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-							$fabricante = $partes[5]; 
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria,
-								'fabricante' => $fabricante
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Carboidrato"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1196,6 +1158,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										</td>
 										<td  >
 											".$porcao."
+										</td>
+										<td  >
+											".$horarios."
 										</td>
 									</tr>
 								";
@@ -1226,6 +1191,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">
 										Porções/dia
 									</th>
+									<th rowspan="2">
+										Horários
+									</th>
 								</tr>
 								<tr>
 									<th class="col_azul">
@@ -1237,39 +1205,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tr>
 						<?php
 						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						$dieta_porcao_dia = array_values($dieta_porcao_dia);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-							$fabricante = $partes[5]; 
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria,
-								'fabricante' => $fabricante
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Lipídeo"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1285,6 +1228,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										</td>
 										<td  >
 											".$porcao."
+										</td>
+										<td  >
+											".$horarios."
 										</td>
 									</tr>
 								";
@@ -1315,6 +1261,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">
 										Porções/dia
 									</th>
+									<th rowspan="2">
+										Horários
+									</th>
 								</tr>
 								<tr>
 									<th class="col_azul">
@@ -1326,39 +1275,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tr>
 						<?php
 						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						$dieta_porcao_dia = array_values($dieta_porcao_dia);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-							$fabricante = $partes[5]; 
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria,
-								'fabricante' => $fabricante
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Fibras"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1374,6 +1298,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										</td>
 										<td  >
 											".$porcao."
+										</td>
+										<td  >
+											".$horarios."
 										</td>
 									</tr>
 								";
@@ -1404,6 +1331,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">
 										Porções/dia
 									</th>
+									<th rowspan="2">
+										Horários
+									</th>
 								</tr>
 								<tr>
 									<th class="col_azul">
@@ -1415,39 +1345,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tr>
 						<?php
 						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						$dieta_porcao_dia = array_values($dieta_porcao_dia);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-							$fabricante = $partes[5]; 
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria,
-								'fabricante' => $fabricante
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Probióticos"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1463,6 +1368,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										</td>
 										<td  >
 											".$porcao."
+										</td>
+										<td  >
+											".$horarios."
 										</td>
 									</tr>
 								";
@@ -1493,6 +1401,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">
 										Porções/dia
 									</th>
+									<th rowspan="2">
+										Horários
+									</th>
 								</tr>
 								<tr>
 									<th class="col_azul">
@@ -1504,39 +1415,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tr>
 						<?php
 						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						$dieta_porcao_dia = array_values($dieta_porcao_dia);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-							$fabricante = $partes[5]; 
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria,
-								'fabricante' => $fabricante
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Simbióticos"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1552,6 +1438,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										</td>
 										<td  >
 											".$porcao."
+										</td>
+										<td  >
+											".$horarios."
 										</td>
 									</tr>
 								";
@@ -1582,6 +1471,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									<th rowspan="2">
 										Porções/dia
 									</th>
+									<th rowspan="2">
+										Horários
+									</th>
 								</tr>
 								<tr>
 									<th class="col_azul">
@@ -1593,39 +1485,14 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								</tr>
 						<?php
 						
-						$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc'], true);
-						$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-						$dieta_porcao_dia = array_values($dieta_porcao_dia);
-
-						$dadosProcessados = [];
-						foreach ($dieta_produto_dc as $chave => $valor) {
-							// Divide a string do valor em partes usando "___" como delimitador
-							$partes = explode("___", $valor);
-						
-							// Extrai as informações
-							$id = $partes[0];           // Ex.: 393
-							$produto = $partes[1];      // Ex.: Isofort Beauty
-							$medida = $partes[2];       // Ex.: 1 Colher-medida
-							$quantidade = $partes[3];   // Ex.: 25
-							$categoria = $partes[4];    // Ex.: Proteína
-							$fabricante = $partes[5]; 
-						
-							// Monta um array associativo com as informações
-							array_push($dadosProcessados, [
-								'id' => $id,
-								'produto' => $produto,
-								'medida' => $medida,
-								'quantidade' => $quantidade,
-								'categoria' => $categoria,
-								'fabricante' => $fabricante
-							]);
-						}
-
-
 						for ($i=0; $i < count($dadosProcessados); $i++) { 
 							$produto = $dadosProcessados[$i];
 							if($produto['categoria'] == "Espessante"){
 								$porcao = str_replace('.5', ' ½', floatval($dieta_porcao_dia[$i])); 
+								$horarios = $produto['horarios'];
+								if(empty($horarios)){
+									$horarios = "Conforme preferência.";
+								}
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
@@ -1641,6 +1508,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										</td>
 										<td  >
 											".$porcao."
+										</td>
+										<td  >
+											".$horarios."
 										</td>
 									</tr>
 								";
