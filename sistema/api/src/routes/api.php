@@ -55,6 +55,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_stSelecaoSimplificada",
 				"/ajax_stSelecaoSuplemento",
 				"/ajax_stSelecaoModulo",
+				"/ajax_stSelecaoSimplicadaModulo",
 				"/ajax_stObservacoes",
 				"/ajax_stDistribuidores",
 				"/ajax_stDistribuidoresSimplificada",
@@ -3942,7 +3943,7 @@ $app->group("", function () use ($app) {
 																</th>
 		                                                        <th rowspan="2" class="entric_group_destaque5">DOSE TOTAL/DIA</th>
 		                                                        <th rowspan="2" class="entric_group_destaque5">PORÇÕES/DIA</th> 
-		                                                        <th rowspan="2" class="entric_group_destaque5">HORÁRIOS(opcionais)</th> 
+		                                                        <th rowspan="2" class="entric_group_destaque5">HORÁRIOS (opcionais)</th> 
 		                                                    </tr>
 		                                                </thead>
 		                                                <tbody id="tbody'.$categoria_num.'">';
@@ -3961,7 +3962,7 @@ $app->group("", function () use ($app) {
 														<td name="porcao">'.$medida_g[0].'</td>
 														<td name="total_dose"></td>
 														<td name="porcao_dias"><input min="0.5" step="0.5" style="width:40px;text-align:center;" name="valor_porcao[]" onchange="fc_porcao_dia(this)" type="number"></td>
-														<td name="horarios"><button type="button" class="btn btn-secondary ml-2" onclick="novoHorario(this)" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></td>
+														<td name="horarios"><button type="button" class="btn btn-secondary ml-3 mb-2" onclick="novoHorario(this)" name="novo_horario"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></td>
 													</tr>';
 										$titulo = "";
 		                            }
@@ -9683,6 +9684,57 @@ $app->group("", function () use ($app) {
 		        }
 		        else{
 		            $retorno = $db->update("relatorios_modulo", "WHERE id=".$dados['id_relatorio'], $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
+		        }
+
+
+		        $data = $retorno;
+			}
+			else{
+				$data["status"] = "Erro: Token de autenticação é inválido.";	
+			}
+
+		} else {
+			$data["status"] = "Erro: Token de autenticação é inválido.";
+		}
+		$response = $response->withHeader("Content-Type", "application/json");
+		$response = $response->withStatus(200, "OK");
+		$response = $response->getBody()->write(json_encode($data));
+		return $response;
+	});
+
+	$app->post("/ajax_stSelecaoSimplificadaModulo", function (Request $request, Response $response) {
+		$token = str_replace("Bearer ", "", $request->getServerParams()["HTTP_AUTHORIZATION"]);		
+		$result = JWTAuth::verifyToken($token);
+		$data = array();
+		if ($result) {
+			$db = new Database();
+			$bind = array(':id'=> $result->header->id);
+			$db_ibranutro = new Database_ibranutro();
+			$login = $request->getParam("login");
+			if($login == 'ibranutro'){
+				$usuario = $db_ibranutro->select_single_to_array("tb_usuario", "*", "WHERE id_usuario=:id", $bind);
+			}elseif($login == 'entric'){
+				$usuario = $db->select_single_to_array("usuarios", "*", "WHERE id=:id", $bind);
+			}
+			if ($usuario){
+				$dados = $request->getParam("dados");
+
+
+		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
+		        if (!isset($dados['valor_porcao'])) $dados['valor_porcao'] = null;
+				$dados["valor_porcao"] = array_filter($dados["valor_porcao"]);
+
+		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]));
+
+		        if ($dados['id_relatorio'] == ""){
+					$bind[':id_paciente'] = $dados['id_paciente'];
+					$bind[':data_criacao'] = date("Y-m-d H:i:s");
+		            $retorno = $db->insert("relatorios_simplificada", $bind);
+		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $retorno, "relatorio_code" => endecrypt("encrypt", $retorno));
+		        }
+		        else{
+		            $retorno = $db->update("relatorios_simplificada", "WHERE id=".$dados['id_relatorio'], $bind);
 		            $retorno = array("success" => "Dados salvos com sucesso.", "relatorio" => $dados['id_relatorio'], "relatorio_code" => endecrypt("encrypt", $dados['id_relatorio']));
 		        }
 

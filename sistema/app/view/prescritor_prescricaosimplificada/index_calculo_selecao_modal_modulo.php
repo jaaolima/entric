@@ -23,7 +23,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-warning" id="salvar_selecao">Salvar Alterações</button>
+                <button type="button" class="btn btn-warning" id="salvar_selecao_modulo">Salvar Alterações</button>
             </div>
         </div>
     </div>

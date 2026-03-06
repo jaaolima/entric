@@ -1084,7 +1084,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
 
 function novoHorario(_this){ 
     divPai = $(_this).parent();
-    divPai.append('<div class="col-sm-4"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"><button type="button" class="btn btn-secondary ml-2" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
+    divPai.append('<div class="col-sm-12 d-flex"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"><button type="button" class="btn btn-secondary ml-2" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
     $('.hora').mask("99:99");
 }
 
@@ -1519,6 +1519,28 @@ function fc_salvar(tab, notify){
             }
         }
     });
+}
+
+function fc_porcao_dia(input){
+    // Obtém o <td> pai do input
+    const $tdPai = $(input).parent();
+
+    // Obtém os irmãos do <td> pai (outras células da mesma linha)
+    const $irmaos = $tdPai.siblings();
+
+    // Encontra a célula 'porcao' e 'total_dose' pelos atributos 'name'
+    const $porcaoElement = $irmaos.filter('[name="porcao"]');
+    const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
+
+    // Obtém os valores
+    const valorPorcao = parseFloat($(input).val()) || 1; // Valor do input, default 1
+    const porcao = parseFloat($porcaoElement.text()) || 0; // Valor da célula porcao, default 0
+
+    // Calcula o total_dose (porcao * valor_porcao)
+    const totalDose = porcao * valorPorcao;
+
+    // Atualiza o valor na célula total_dose
+    $totalDoseElement.text(totalDose);
 }
 
 function disableF5(e) { 
@@ -2517,6 +2539,48 @@ $(function(){
             });
         }
         
+
+    });
+
+    $("#salvar_selecao_modulo").on("click", function(e) {
+        if ($(".check_dieta").filter(":checked").length === 0) {
+            $.alert({
+                    title: 'Atenção',
+                    icon: 'fa fa-warning',
+                    type: 'red',
+                    content: 'Por favor, é necessário selecionar pelo menos um produto.'
+                });
+            return false;
+        }else{
+
+            var _this = $(this);
+            var _id_paciente = $("#id_paciente").val();
+            var _id_relatorio = $("#id_relatorio").val();
+            var formSerialize = $("#modal_form_selecao").serialize();
+            b_lo(_this);
+
+            $.ajax({
+                type: "POST",
+                url: "ajax/selecao_salvar_simplificada_modulo",
+                data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+                cache: false,
+                dataType: 'json',
+                success: function( data ){
+                    b_res(_this);
+                    $("#modal_selecao").modal("hide");
+                    $('#modal_fracionamento').modal('toggle'); 
+                    $('.hora').mask("99:99");
+                    fc_salvar('calculo', false);
+                    // $('#modal_selecao').modal('toggle');
+                    // $('.tabcalculo a').removeClass('active');
+                    // $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
+                
+                    // $(".tabdistribuidores").removeClass('disabledTab');
+                    // $('.tabdistribuidores a').addClass('active');
+                    // $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                }
+            });
+        }
 
     });
 

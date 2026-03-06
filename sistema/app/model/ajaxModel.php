@@ -279,6 +279,15 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
+    
+    function stSelecaoSimplificadaModulo($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stSelecaoSimplificadaModulo", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
+                                                        "dados" => $dados));       
+        return $retorno;
+    }
+
     function stObservacoes($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stObservacoes", array("token" => $_SESSION['token'],
