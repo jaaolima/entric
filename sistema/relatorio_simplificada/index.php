@@ -1002,20 +1002,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_proteina'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
+
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
@@ -1105,20 +1092,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_colageno_aminoacidos'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
@@ -1208,20 +1181,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_carboidrato'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
@@ -1311,20 +1270,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_lipideo'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
@@ -1414,20 +1359,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_fibras'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
@@ -1517,20 +1448,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_probioticos'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
@@ -1620,20 +1537,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_simbioticos'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
@@ -1723,20 +1626,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 							}
 						}
 
-						$horarios = [];
-						foreach ($categoria_fracionamento['categoria_modulo_espessante'] as $chave => $valor) {
-							// Se a chave começa com "horario" (ex.: horario1, horario2, etc.)
-							if (strpos($chave, 'horario') === 0) {
-								$horarios[] = $valor;
-							}
-						}
-						if($horarios != []){
-							// Passo 3: Juntar os horários em uma string (separados por vírgula, por exemplo)
-							$horariosString = implode(', ', $horarios);
-							$textoHorarios = ', às '.$horariosString;
-						}else{
-							$textoHorarios = '';
-						}
 						echo "</table>
 							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
