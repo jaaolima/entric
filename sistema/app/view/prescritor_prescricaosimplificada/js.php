@@ -1084,7 +1084,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
 
 function novoHorario(_this){ 
     divPai = $(_this).parent();
-    divPai.append('<div class="col-sm-12 d-flex"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"><button type="button" class="btn btn-secondary ml-2" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
+    divPai.append('<div class="col-sm-12 d-flex"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"><button type="button" class="btn btn-secondary ml-2" style="padding:7px; font-size:8px;" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
     $('.hora').mask("99:99");
 }
 
@@ -1107,7 +1107,7 @@ function busca_produto_relatorio_modulo(m_calorica, m_proteica){
         data: $("#prescritor_calculo_modulo").serialize()+"&margem_calorica="+m_calorica+"&margem_proteica="+m_proteica,
         cache: false,
         dataType: 'html',
-        success: function( dados ){
+        success: function( dados ){ 
             if (dados == ""){
                 $('#dietas_dc_modulo').empty();
                 $('#dietas_dc_modulo').append("<br><div style='text-align: center;'>Não foram encontrados produtos compatíveis com todas as características selecionadas.<br> Você pode rever a prescrição nutricional para realizar o cálculo automático <br>ou realizar uma prescrição manual.</div><br>");
@@ -1379,6 +1379,95 @@ function fc_collapsecheckbox( $apres_enteral_num){
 
     const total = $('#tbody'+$apres_enteral_num+' input[type="checkbox"]').length;
     $("#count_"+$apres_enteral_num).html("("+total+")");
+}
+
+function fc_collapsecheckboxModulos( $apres_enteral_num){
+    if ($("#tbody_modulos"+$apres_enteral_num).hasClass("checked")) {
+        $("#tbody_modulos"+$apres_enteral_num).removeClass("checked");
+        $("#tbody_modulos"+$apres_enteral_num+" .check_dieta").each(function() {
+            $(this).prop( "checked", false);
+            let diluicao_id = $(this).attr('rel');
+
+            $("#tbody_modulos"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+                $(this).prop( "checked", false);
+                $(this).attr( "disabled", true);
+                $(this).addClass( "check_apagado");
+            });
+        });
+    }
+    else{
+        $("#tbody_modulos"+$apres_enteral_num).addClass("checked");
+        if($("#tipo_login").val() == 'ibranutro'){
+            qtd = 1;
+            $("#tbody_modulos"+$apres_enteral_num+" .check_dieta").each(function() {
+                if(qtd < 4){
+                    $(this).prop( "checked", true);
+                    const $tdPai = $(this).parent().parent();
+                    const $irmaos = $tdPai.siblings();
+                    const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+                    inputPorcaoDias = $porcaoDias.children("input");
+                    if(inputPorcaoDias.val() == ''){
+                        inputPorcaoDias.val("1");
+                    }
+                    const $porcaoElement = $irmaos.filter('[name="porcao"]');
+                    const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
+
+                    const valorPorcao = parseFloat(inputPorcaoDias.val()) || 1; 
+                    const porcao = parseFloat($porcaoElement.text()) || 0; 
+                    const totalDose = porcao * valorPorcao;
+
+                    $totalDoseElement.text(totalDose);
+                    inputPorcaoDias.attr("required", true);
+                }else{
+                    $(this).attr( "disabled", true);
+                    const $tdPai = $(this).parent().parent();
+                    const $irmaos = $tdPai.siblings();
+                    const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+                    inputPorcaoDias = $porcaoDias.children("input");
+                    inputPorcaoDias.attr("disabled", true);
+                    $(this).addClass( "check_apagado");
+                }
+                qtd++;
+            });
+        }else{
+            qtd = 1;
+            $("#tbody_modulos"+$apres_enteral_num+" .check_dieta").each(function() {
+                if(qtd < 6){
+                    $(this).prop( "checked", true);
+                    const $tdPai = $(this).parent().parent();
+                    const $irmaos = $tdPai.siblings();
+                    const $porcaoDias = $irmaos.filter('[name="porcao_dias"]');
+                    inputPorcaoDias = $porcaoDias.children("input");
+                    if(inputPorcaoDias.val() == ''){
+                        inputPorcaoDias.val("1");
+                    }
+                    const $porcaoElement = $irmaos.filter('[name="porcao"]');
+                    const $totalDoseElement = $irmaos.filter('[name="total_dose"]');
+
+                    const valorPorcao = parseFloat(inputPorcaoDias.val()) || 1; 
+                    const porcao = parseFloat($porcaoElement.text()) || 0; 
+                    const totalDose = porcao * valorPorcao;
+
+                    $totalDoseElement.text(totalDose);
+                    inputPorcaoDias.attr("required", true);
+                }else{
+                    $(this).attr( "disabled", true);
+                    $(this).addClass( "check_apagado");
+                }
+                qtd++;
+            });
+            // $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
+            //     $(this).prop( "checked", true);
+            //     let diluicao_id = $(this).attr('rel');
+
+            //     $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+            //         $(this).prop( "checked", true);
+            //         $(this).attr( "disabled", false);
+            //         $(this).removeClass( "check_apagado");
+            //     });
+            // });
+        }
+    }
 }
 
 function fc_gerarelatorio(){

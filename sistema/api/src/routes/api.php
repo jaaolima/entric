@@ -3946,7 +3946,7 @@ $app->group("", function () use ($app) {
 		                                                        <th rowspan="2" class="entric_group_destaque5">HORÁRIOS (opcionais)</th> 
 		                                                    </tr>
 		                                                </thead>
-		                                                <tbody id="tbody'.$categoria_num.'">';
+		                                                <tbody id="tbody_modulos'.$categoria_num.'">';
 		                                }										
 
 										$medida = $medidas[0]. " " . $unidade[0];
