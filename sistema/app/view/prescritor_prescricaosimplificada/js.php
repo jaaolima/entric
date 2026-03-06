@@ -1255,6 +1255,32 @@ function salvar_calculo_fracionamento(_this){
     });
 }
 
+function salvar_calculo_fracionamento_modulo(_this){
+    var _id_paciente = $("#id_paciente").val();
+    var _id_relatorio = $("#id_relatorio").val();
+    //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
+    var formSerialize = $("#modal_form_fracionamento").serialize();
+    if (_this != null)  b_lo(_this);
+
+    $.ajax({
+        type: "POST",
+        url: "ajax/fracionamento_salvar_simplificada",
+        data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
+        cache: false,
+        dataType: 'json',
+        success: function( data ){
+            $("#modal_form_fracionamento").on('hidden.bs.modal', function (e) {
+                $('.tabmodulos a').removeClass('active');
+                $('#modulos').removeClass('active').removeClass('show').attr('aria-expanded','false');
+        
+                $('.tabdistribuidores a').addClass('active');
+                $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+            });
+
+        }
+    });
+}
+
 function check_dieta(_this, diluicao_id){
     if ($(_this).is(':checked')){
         $('.diluicao'+diluicao_id).each(function(){ 
@@ -2490,8 +2516,7 @@ $(function(){
         busca_produto_relatorio();
     });
     $("#salvar_alteracoes_modulo").on("click", function(e) {
-        busca_produto_relatorio_modulo();
-        salvar_calculo_fracionamento($(this));
+        salvar_calculo_fracionamento_modulo($(this));
     });
     $("#salvar_alteracoes").on("click", function(e) {
         isValidFrac = true;

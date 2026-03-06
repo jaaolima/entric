@@ -9318,6 +9318,8 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['hidrahorario'])) $dados['hidrahorario'] = null;
 		        if (!isset($dados['info_complementares'])) $dados['info_complementares'] = null;
 		        if (!isset($dados['in_volume_ml'])) $dados['in_volume_ml'] = null;
+		        if (!isset($dados['qto_tempo'])) $dados['qto_tempo'] = null;
+		        if (!isset($dados['instrucoes_uso'])) $dados['instrucoes_uso'] = null;
 
 		        $bind = array(  ':fra_h_i_dieta' => $dados["h_i_dieta"],
 		                        ':fra_h_inf_dieta' => $dados["h_inf_dieta"],
@@ -9328,7 +9330,9 @@ $app->group("", function () use ($app) {
 		                        ':fra_volume_horario' => $dados["volume_horario"],
 		                        ':fra_hidrahorario' => array_json($dados["hidrahorario"]),
 		                        ':fra_info_complementares' => $dados["info_complementares"],
-		                        ':fra_volume_ml' => $dados["in_volume_ml"]);
+		                        ':fra_volume_ml' => $dados["in_volume_ml"],
+		                        ':qto_tempo' => $dados["qto_tempo"],
+		                        ':instrucoes_uso' => $dados["instrucoes_uso"]);											
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
