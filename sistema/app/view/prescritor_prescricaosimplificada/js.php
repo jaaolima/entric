@@ -2438,7 +2438,7 @@ $(function(){
             categoria = $(this).attr('id');
             nome = $(this).val();
             html = '<div class="col-sm-6" id="div_'+categoria+'"><div class="row"><div class="col-sm-12 text-center "><p class="entric_group_destaque mt-0">'+nome+'</p></div></div><div class="row mt-4"><div class="col-sm-5">Por quanto tempo:</div><div class="col-sm-7"><input type="text" required="required" name="qto_tempo" id="qto_tempo" class="form-control"></div></div><div class="row mt-4"><div class="col-sm-12">Instruções de Uso (opcional):</div><div class="col-sm-12"><input type="text" name="instrucoes_uso" id="instrucoes_uso" class="form-control"></div></div></div>';
-            $("#div_modal_fracionamento").append(html);
+            $("#div_modal_fracionamento_modulo").append(html);
         }else{
             categoria = $(this).attr('id');
             $("#div_"+categoria).remove();
