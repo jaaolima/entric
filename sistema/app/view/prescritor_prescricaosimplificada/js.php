@@ -1084,7 +1084,7 @@ function busca_produto_relatorio(m_calorica, m_proteica){
 
 function novoHorario(_this){ 
     divPai = $(_this).parent();
-    i = $(_this).closest('tr').find('name^="produto_dc_modulo"]').val();
+    i = $(_this).closest('tr').find('name^=["produto_dc_modulo"]').val();
     i_horario = divPai.find('input').length + 1;
     divPai.append('<div class="col-sm-12 d-flex"><input type="text" placeholder="00:00" name="horario['+i+'_'+i_horario+']" id="horario['+i+'_'+i_horario+']" class="form-control hora"><button type="button" class="btn btn-secondary ml-2" style="padding:7px; font-size:8px;" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
     $('.hora').mask("99:99");
