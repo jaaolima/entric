@@ -9729,6 +9729,8 @@ $app->group("", function () use ($app) {
 				$dados["valor_porcao"] = array_filter($dados["valor_porcao"]);
 				$dados["horario"] = array_filter($dados["horario"]);
 
+				var_dump($dados["horario"]);
+
 		        $bind = array(  ':dieta_produto_dc_modulo' => array_json($dados["produto_dc_modulo"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]), ':dieta_horario' => array_json($dados["horario"]));
 
 		        if ($dados['id_relatorio'] == ""){
