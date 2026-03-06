@@ -917,7 +917,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
 				$categoria_fracionamento = json_decode($relatorio['categoria_fracionamento'], true); 
 				$dieta_horario = json_decode($relatorio['dieta_horario'], true); 
-				var_dump($dieta_horario);
+				// var_dump($dieta_horario);
 				
 				$dieta_porcao_dia = array_values($dieta_porcao_dia);
 
@@ -934,8 +934,16 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 					$categoria = $partes[4];    // Ex.: Proteína
 					$fabricante = $partes[5]; 
 
-					$horarios = $dieta_horario[$i] ?? '';
-					var_dump($horarios);
+					$horarios = [];
+					if($dieta_horario){
+						foreach($dieta_horario as $k => $h){
+							$k_explode = explode('_', $k);
+							if($k_explode[0] == $id){
+								$horarios[] = $h;
+							}
+						}
+					}
+					$horarios = implode(' - ', $horarios);
 				
 					// Monta um array associativo com as informações
 					array_push($dadosProcessados, [
@@ -990,7 +998,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 								if($porcao == '0 ½'){
 									$porcao = '½';
 								}
-								$horarios = "";
+								$horarios = $produto['horarios'];
 								echo "<tr height='10px'>
 										<td  >
 											".$produto['produto']."
