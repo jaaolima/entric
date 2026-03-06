@@ -1269,7 +1269,8 @@ function salvar_calculo_fracionamento_modulo(_this){
         cache: false,
         dataType: 'json',
         success: function( data ){
-            $("#index_calculo_fracionamento_modal_modulo").on('hidden.bs.modal', function (e) {
+            $("#modal_fracionamento_modulo").modal("hidden");
+            $("#modal_fracionamento_modulo").on('hidden.bs.modal', function (e) {
                 $('.tabmodulos a').removeClass('active');
                 $('#modulos').removeClass('active').removeClass('show').attr('aria-expanded','false');
         
@@ -2684,7 +2685,7 @@ $(function(){
                 success: function( data ){
                     b_res(_this);
                     $("#modal_selecao_modulo").modal("hide");
-                    $('#index_calculo_fracionamento_modal_modulo').modal('toggle'); 
+                    $('#modal_fracionamento_modulo').modal('toggle'); 
                     $('.hora').mask("99:99");
                     // fc_salvar('calculo', false);
                     // $('#modal_selecao').modal('toggle');
