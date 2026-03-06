@@ -916,6 +916,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc_modulo'], true);
 				$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
 				$categoria_fracionamento = json_decode($relatorio['categoria_fracionamento'], true); 
+
+				var_dump($categoria_fracionamento);
 				
 				$dieta_porcao_dia = array_values($dieta_porcao_dia);
 
@@ -1004,8 +1006,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
-					}
+							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+					}	
 					$temColageno = !empty(array_filter($dadosProcessados, function($item) {
 						return $item['categoria'] == 'Colágeno ou Aminoácidos';
 					}));
@@ -1093,7 +1095,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+						<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
 					$temCarboidrato = !empty(array_filter($dadosProcessados, function($item) {
 						return $item['categoria'] == 'Carboidrato';
@@ -1182,7 +1184,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+						<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
 					$temLipideo = !empty(array_filter($dadosProcessados, function($item) {
 						return $item['categoria'] == 'Lipídeo';
@@ -1271,7 +1273,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+						<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
 					$temFibras = !empty(array_filter($dadosProcessados, function($item) {
 						return $item['categoria'] == 'Fibras';
@@ -1360,7 +1362,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+						<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
 					$temProbioticos = !empty(array_filter($dadosProcessados, function($item) {
 						return $item['categoria'] == 'Probióticos';
@@ -1449,7 +1451,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+						<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
 					$temSimbioticos = !empty(array_filter($dadosProcessados, function($item) {
 						return $item['categoria'] == 'Simbióticos';
@@ -1538,7 +1540,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+						<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
 					$temEspessante = !empty(array_filter($dadosProcessados, function($item) {
 						return $item['categoria'] == 'Espessante';
@@ -1627,7 +1629,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						}
 
 						echo "</table>
-							<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].$textoHorarios.", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
+						<p>Utilizar a quantidade de porções/dia prescrita por ".$categoria_fracionamento['categoria_modulo_proteina']['quantidade_tempo'].", conforme horários sujeridos. ".$categoria_fracionamento['categoria_modulo_proteina']['instrucoes']."</p>";
 					}
 					?>
 				<?php
