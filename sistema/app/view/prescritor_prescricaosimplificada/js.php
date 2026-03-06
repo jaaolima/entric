@@ -1276,7 +1276,7 @@ function salvar_calculo_fracionamento_modulo(_this){
                 $('.tabdistribuidores a').addClass('active');
                 $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
             });
-            $("#modal_fracionamento_modulo").modal("hidden");
+            $("#modal_fracionamento_modulo").modal("hide");
 
         }
     });
