@@ -1256,35 +1256,6 @@ function salvar_calculo_fracionamento(_this){
 }
 
 function salvar_calculo_fracionamento_modulo(_this){
-    var _id_paciente = $("#id_paciente").val();
-    var _id_relatorio = $("#id_relatorio").val();
-    //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
-    var formSerialize = $("#modal_form_fracionamento_modulo").serialize();
-    if (_this != null)  b_lo(_this);
-
-    $.ajax({
-        type: "POST",
-        url: "ajax/fracionamento_salvar_simplificada",
-        data: formSerialize+"&id_paciente="+_id_paciente+"&id_relatorio="+_id_relatorio,
-        cache: false,
-        dataType: 'json',
-        success: function( data ){
-            $("#modal_fracionamento_modulo").on('hidden.bs.modal', function (e) {
-                $('.tabmodulos a').removeClass('active');
-                $('#modulos').removeClass('active').removeClass('show').attr('aria-expanded','false');
-        
-                $('.tabdistribuidores a').addClass('active');
-                $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
-            });
-            $("#modal_fracionamento_modulo").modal("hide");
-
-        }
-    });
-
-    
-}
-
-function salvar_calculo_fracionamento_modulo(_this){
 
     isValidFrac = true;
     $('#div_modal_fracionamento_modulo input[name="qto_tempo"]').each(function(index) {
