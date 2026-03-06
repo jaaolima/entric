@@ -1084,7 +1084,9 @@ function busca_produto_relatorio(m_calorica, m_proteica){
 
 function novoHorario(_this){ 
     divPai = $(_this).parent();
-    divPai.append('<div class="col-sm-12 d-flex"><input type="text" placeholder="00:00" name="horario_1" id="horario_1" class="form-control hora"><button type="button" class="btn btn-secondary ml-2" style="padding:7px; font-size:8px;" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
+    i = $(_this).closest('tr').find('name^="produto_dc_modulo"]').val();
+    i_horario = divPai.find('input').length + 1;
+    divPai.append('<div class="col-sm-12 d-flex"><input type="text" placeholder="00:00" name="horario['+i+'_'+i_horario+']" id="horario['+i+'_'+i_horario+']" class="form-control hora"><button type="button" class="btn btn-secondary ml-2" style="padding:7px; font-size:8px;" onclick="retirarHorario(this)"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></div>');
     $('.hora').mask("99:99");
 }
 
@@ -2656,10 +2658,10 @@ $(function(){
                 dataType: 'json',
                 success: function( data ){
                     b_res(_this);
-                    $("#modal_selecao").modal("hide");
-                    $('#modal_fracionamento').modal('toggle'); 
+                    $("#modal_selecao_modulo").modal("hide");
+                    $('#modal_fracionamento_modulo').modal('toggle'); 
                     $('.hora').mask("99:99");
-                    fc_salvar('calculo', false);
+                    // fc_salvar('calculo', false);
                     // $('#modal_selecao').modal('toggle');
                     // $('.tabcalculo a').removeClass('active');
                     // $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
@@ -2735,11 +2737,8 @@ $(function(){
                 $("#categoria_modulo_proteina").style("pointer-events", "none");
                 $("#categoria_modulo_proteina").attr("onClick", "return false;");
                 
-
-                var origin = $("#modal_modulo_proteina").attr("data-origin");
-                if (!origin) origin = "#modal_selecao";
-                $(origin).modal("toggle");
                 $("#modal_modulo_proteina").modal("hide");
+                $("#modal_selecao").modal("toggle");
 
 
             }

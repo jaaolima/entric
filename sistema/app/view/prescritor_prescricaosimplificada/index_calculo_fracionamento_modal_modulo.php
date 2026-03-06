@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <form id="modal_form_fracionamento" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
-                    <div class="row" id="div_modal_fracionamento">
+                    <div class="row" id="div_modal_fracionamento_modulo">
                         
                     </div>
                 </form>

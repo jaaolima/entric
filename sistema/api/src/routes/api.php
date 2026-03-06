@@ -55,7 +55,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 				"/ajax_stSelecaoSimplificada",
 				"/ajax_stSelecaoSuplemento",
 				"/ajax_stSelecaoModulo",
-				"/ajax_stSelecaoSimplicadaModulo",
+				"/ajax_stSelecaoSimplificadaModulo",
 				"/ajax_stObservacoes",
 				"/ajax_stDistribuidores",
 				"/ajax_stDistribuidoresSimplificada",
@@ -3953,8 +3953,8 @@ $app->group("", function () use ($app) {
 										$retorno .= '<tr>
 														<td>
 															<div class="form-check col-sm-12">
-																<input onclick="check_dieta(this)" id="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].'">
-																<label for="produto_dc['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
+																<input onclick="check_dieta(this)" id="produto_dc_modulo['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-input check_dieta styled-checkbox diluicao'.$produtos[$i]['id'].'" name="produto_dc['.$produtos[$i]['id'].'___'.$medida.']" type="checkbox" value="'.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].'">
+																<label for="produto_dc_modulo['.$produtos[$i]['id'].'___'.$produtos[$i]['nome'].'___'.$medida.'___'.$medida_g[0].'___'.$categoria.'___'.$produtos[$i]['fabricante'].']" class="form-check-label check-green">'.$produtos[$i]['nome'].'</label>
 															</div>
 														</td>
 														<td>'.$produtos[$i]['fabricante'].'</td>
@@ -9721,11 +9721,12 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 
 
-		        if (!isset($dados['produto_dc'])) $dados['produto_dc'] = null;
+		        if (!isset($dados['produto_dc_modulo'])) $dados['produto_dc_modulo'] = null;
+		        if (!isset($dados['horario'])) $dados['horario'] = null;
 		        if (!isset($dados['valor_porcao'])) $dados['valor_porcao'] = null;
 				$dados["valor_porcao"] = array_filter($dados["valor_porcao"]);
 
-		        $bind = array(  ':dieta_produto_dc' => array_json($dados["produto_dc"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]));
+		        $bind = array(  ':dieta_produto_dc_modulo' => array_json($dados["produto_dc_modulo"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]), ':fra_dieta_horario' => array_json($dados["horario"]));
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
