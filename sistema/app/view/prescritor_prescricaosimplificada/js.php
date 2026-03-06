@@ -1287,7 +1287,7 @@ function salvar_calculo_fracionamento_modulo(_this){
 function salvar_calculo_fracionamento_modulo(_this){
 
     isValidFrac = true;
-    $('#div_modal_fracionamento input[name="qto_tempo"]').each(function(index) {
+    $('#div_modal_fracionamento_modulo input[name="qto_tempo"]').each(function(index) {
         console.log("chegou");
         const valor = $(this).val().trim();
         if (!valor) {
@@ -1311,7 +1311,7 @@ function salvar_calculo_fracionamento_modulo(_this){
         let dados = {};
 
         // Percorre cada categoria (div com id começando com "div_")
-        $("#div_modal_fracionamento > div[id^='div_']").each(function() {
+        $("#div_modal_fracionamento_modulo > div[id^='div_']").each(function() {
             let categoriaNome = $(this).attr("id").replace("div_", ""); // Ex.: "proteina", "aminoacidos"
             let quantidadeTempo = $(this).find("input[name='qto_tempo']").val() || "";
             let instrucoes = $(this).find("input[name='instrucoes_uso']").val() || "";

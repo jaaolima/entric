@@ -906,7 +906,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		if ((!$p_header) and (!$p_footer)){
 		?>
 			<p class="text-left subtitutlo" style="margin:0px;">
-			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> PRESCRIÇÃO NUTRICIONAL ESPECIALIZADA - Escolha uma das opções.</p>
+			<?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> MÓDULOS NUTRICIONAIS - Escolha apenas uma das opções por categoria.</p>
 			<?php 
 				$landscape = false;
 				$_produtos_nomes = array();
@@ -915,7 +915,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 				// }
 				$dieta_produto_dc = json_decode($relatorio['dieta_produto_dc_modulo'], true);
 				$dieta_porcao_dia = json_decode($relatorio['dieta_porcao_dia'], true);
-				$categoria_fracionamento = json_decode($relatorio['categoria_fracionamento'], true);
+				$categoria_fracionamento = json_decode($relatorio['categoria_fracionamento'], true); 
 				
 				$dieta_porcao_dia = array_values($dieta_porcao_dia);
 
