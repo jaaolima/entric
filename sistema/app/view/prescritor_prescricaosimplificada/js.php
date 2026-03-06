@@ -2648,7 +2648,7 @@ $(function(){
             var _this = $(this);
             var _id_paciente = $("#id_paciente").val();
             var _id_relatorio = $("#id_relatorio").val();
-            var formSerialize = $("#modal_form_selecao").serialize();
+            var formSerialize = $("#modal_form_selecao_modulos").serialize();
             b_lo(_this);
 
             $.ajax({

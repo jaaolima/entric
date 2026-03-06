@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body" id="modal-pdf-body">
-                <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
+                <form id="modal_form_selecao_modulos" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
                     <table class="table table-bordered" id="dietas_dc_modulo">
                         <thead>
                             <tr>
