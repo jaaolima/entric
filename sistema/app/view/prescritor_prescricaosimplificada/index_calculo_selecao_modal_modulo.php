@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="modal_selecaoTitle">Seleção da dieta</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-            <div class="modal-body" id="modal-pdf-body">
+            <div class="modal-body row" id="modal-pdf-body">
                 <form id="modal_form_selecao_modulos" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
                     <table class="table table-bordered" id="dietas_dc_modulo">
                         <thead>

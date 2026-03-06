@@ -2644,7 +2644,6 @@ $(function(){
                 });
             return false;
         }else{
-
             var _this = $(this);
             var _id_paciente = $("#id_paciente").val();
             var _id_relatorio = $("#id_relatorio").val();
@@ -2660,7 +2659,7 @@ $(function(){
                 success: function( data ){
                     b_res(_this);
                     $("#modal_selecao_modulo").modal("hide");
-                    $('#modal_fracionamento_modulo').modal('toggle'); 
+                    $('#index_calculo_fracionamento_modal_modulo').modal('toggle'); 
                     $('.hora').mask("99:99");
                     // fc_salvar('calculo', false);
                     // $('#modal_selecao').modal('toggle');

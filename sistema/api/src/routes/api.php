@@ -9726,7 +9726,7 @@ $app->group("", function () use ($app) {
 		        if (!isset($dados['valor_porcao'])) $dados['valor_porcao'] = null;
 				$dados["valor_porcao"] = array_filter($dados["valor_porcao"]);
 
-		        $bind = array(  ':dieta_produto_dc_modulo' => array_json($dados["produto_dc_modulo"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]), ':fra_dieta_horario' => array_json($dados["horario"]));
+		        $bind = array(  ':dieta_produto_dc_modulo' => array_json($dados["produto_dc_modulo"]),  ':dieta_porcao_dia' => array_json($dados["valor_porcao"]), ':dieta_horario' => array_json($dados["horario"]));
 
 		        if ($dados['id_relatorio'] == ""){
 					$bind[':id_paciente'] = $dados['id_paciente'];
