@@ -11339,7 +11339,7 @@ $app->group("", function () use ($app) {
 							//buscar relatorios simplificada
 							$relatorios_simplificada = $db->select_to_array("relatorios_simplificada",
 		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
-		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY r.id ASC",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
 						
 						
