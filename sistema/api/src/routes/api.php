@@ -11357,8 +11357,12 @@ $app->group("", function () use ($app) {
 														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
 														null);
 
-							$relatorios = array_merge($relatorios_simplificada, $relatorios_suplemento);
-							$relatorios = array_merge($relatorios, $relatorios_modulo);
+							var_dump($relatorios_simplificada);
+							var_dump($relatorios_suplemento);
+							var_dump($relatorios_modulo);
+
+							// $relatorios = array_merge($relatorios_simplificada, $relatorios_suplemento);
+							// $relatorios = array_merge($relatorios, $relatorios_modulo);
 
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
