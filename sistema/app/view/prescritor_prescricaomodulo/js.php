@@ -1154,9 +1154,9 @@ function salvar_calculo_fracionamento(_this){
                     $('.tabcalculo a').removeClass('active');
                     $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
                 
-                    $(".tabdistribuidores").removeClass('disabledTab');
-                    $('.tabdistribuidores a').addClass('active');
-                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                    $(".tabobservacoes").removeClass('disabledTab');
+                    $('.tabobservacoes a').addClass('active');
+                    $('#observacoes').addClass('active').addClass('show').attr('aria-expanded','true');
                 });
             }
         });

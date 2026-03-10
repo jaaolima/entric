@@ -63,6 +63,12 @@
                                             <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
                                         </a>                                                       
                                     </li> 
+                                    <li class="nav-item tabsec tabobservacoes">
+                                        <a class="nav-link" data-toggle="tab" href="#observacoes">Observações
+                                            <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
+                                            <span class="pull-right none tabok  tabambos" style="margin-top: -10px;"> </span>
+                                        </a>
+                                    </li>
                                     <li class="nav-item tabsec tabdistribuidores">
                                         <a class="nav-link" data-toggle="tab" href="#distribuidores">Pontos de Venda
                                             <span class="pull-right none tabnook tabambos" style="margin-top: -10px;"> </span>
@@ -78,6 +84,8 @@
                                     <?php require_once("index_cadastro.php"); ?>
 
                                     <?php require_once("index_calculo.php"); ?>
+
+                                    <?php require_once("index_observacoes.php"); ?>
 
                                     <?php require_once("index_distribuidores.php"); ?>
 

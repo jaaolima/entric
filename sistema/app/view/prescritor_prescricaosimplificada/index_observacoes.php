@@ -11,7 +11,7 @@
                     <span class="btn-icon-right"><i class="fa fa-save"></i></span>
                     SALVAR
                 </button>
-            </div>
+            </div> 
             <div class="col-sm-6 text-right">
                 <button type="button" class="btn btn-secondary btn-form" id="observacoes_voltar">VOLTAR</button>
                 &nbsp;

@@ -187,6 +187,10 @@ class AjaxController extends Controller {
                     $calculo = $this->AjaxModel->stCalculoSimplificada($_POST);
                     echo json_encode($calculo);
                 break;
+                case 'observacoes':
+                    $observacoes = $this->AjaxModel->stObservacoesSimplificada($_POST);
+                    echo json_encode($observacoes);
+                break;
                 case 'distribuidores':
                     $distribuidores = $this->AjaxModel->stDistribuidoresSimplificada($_POST);
                     echo json_encode($distribuidores);
@@ -219,6 +223,10 @@ class AjaxController extends Controller {
                     $calculo = $this->AjaxModel->stCalculoSuplemento($_POST);
                     echo json_encode($calculo);
                 break;
+                case 'observacoes':
+                    $observacoes = $this->AjaxModel->stObservacoesSuplemento($_POST);
+                    echo json_encode($observacoes);
+                break;
                 case 'distribuidores':
                     $distribuidores = $this->AjaxModel->stDistribuidoresSuplemento($_POST);
                     echo json_encode($distribuidores);
@@ -250,6 +258,10 @@ class AjaxController extends Controller {
                 case 'calculo':
                     $calculo = $this->AjaxModel->stCalculoModulo($_POST);
                     echo json_encode($calculo);
+                break;
+                case 'observacoes':
+                    $observacoes = $this->AjaxModel->stObservacoesModulo($_POST);
+                    echo json_encode($observacoes);
                 break;
                 case 'distribuidores':
                     $distribuidores = $this->AjaxModel->stDistribuidoresModulo($_POST);

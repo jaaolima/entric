@@ -287,6 +287,30 @@ class AjaxModel extends Model {
         return $retorno;
     }
 
+    function stObservacoesSimplificada($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stObservacoesSimplificada", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
+                                                            "dados" => $dados));       
+        return $retorno;
+    }
+
+    function stObservacoesSuplemento($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stObservacoesSuplemento", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
+                                                            "dados" => $dados));       
+        return $retorno;
+    }
+
+    function stObservacoesModulo($dados) {
+        global $bruker;
+        $retorno = httpPostAuth("ajax_stObservacoesModulo", array("token" => $_SESSION['token'],
+                                                                        "login" => $_SESSION['login'],
+                                                            "dados" => $dados));       
+        return $retorno;
+    }
+
     function stDistribuidores($dados) {
         global $bruker;
         $retorno = httpPostAuth("ajax_stDistribuidores", array( "token" => $_SESSION['token'],

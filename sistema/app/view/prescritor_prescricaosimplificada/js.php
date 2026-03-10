@@ -1277,13 +1277,13 @@ function fc_collapseSistema($apres_enteral_num){
 }
 
 function fc_collapsecheckbox( $apres_enteral_num){ 
-    if ($("#tbody"+$apres_enteral_num).hasClass("checked")) {
+    if ($("#tbody"+$apres_enteral_num).hasClass("checked")) { 
         $("#tbody"+$apres_enteral_num).removeClass("checked");
         $("#tbody"+$apres_enteral_num+" .check_dieta").each(function() {
             $(this).prop( "checked", false);
             let diluicao_id = $(this).attr('rel');
 
-            $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){ 
+            $("#tbody"+$apres_enteral_num+" .diluicao"+diluicao_id).each(function(){  
                 $(this).prop( "checked", false);
                 $(this).attr( "disabled", true);
                 $(this).addClass( "check_apagado");
@@ -2447,9 +2447,9 @@ $(function(){
                     $('.tabcalculo a').removeClass('active');
                     $('#calculo').removeClass('active').removeClass('show').attr('aria-expanded','false');
             
-                    $(".tabdistribuidores").removeClass('disabledTab');
-                    $('.tabdistribuidores a').addClass('active');
-                    $('#distribuidores').addClass('active').addClass('show').attr('aria-expanded','true');
+                    $(".tabobservacoes").removeClass('disabledTab');
+                    $('.tabobservacoes a').addClass('active');
+                    $('#observacoes').addClass('active').addClass('show').attr('aria-expanded','true');
                 }
             });
         }
