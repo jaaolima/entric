@@ -11344,7 +11344,7 @@ $app->group("", function () use ($app) {
 		                                                        null);
 
 
-							$relatorios = array_merge($relatorios,$db->select_to_array("relatorios_modulo r
+							$relatorios = array_merge($relatorios, $db->select_to_array("relatorios_modulo r
 														inner join pacientes_modulo p on p.id = r.id_paciente",
 														"*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
 														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
