@@ -243,6 +243,7 @@
                             <tr>
                                 <th scope="col">Relatório</th>
                                 <th scope="col">Data</th>
+                                <th scope="col">Tipo</th>
                                 <th scope="col">Usuário</th>
                                 <th scope="col">Editar/Desativar/Visualizar</th>
                             </tr>
