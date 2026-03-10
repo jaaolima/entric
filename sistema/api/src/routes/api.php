@@ -11357,12 +11357,18 @@ $app->group("", function () use ($app) {
 														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
 														null);
 
-							var_dump($relatorios_simplificada);
-							var_dump($relatorios_suplemento);
-							var_dump($relatorios_modulo);
 
-							// $relatorios = array_merge($relatorios_simplificada, $relatorios_suplemento);
-							// $relatorios = array_merge($relatorios, $relatorios_modulo);
+							if(!$relatorios_simplificada){
+								$relatorios_simplificada = array();
+							}
+							if(!$relatorios_suplemento){
+								$relatorios_suplemento = array();
+							}
+							if(!$relatorios_modulo){
+								$relatorios_modulo = array();
+							}
+							
+							$relatorios = array_merge($relatorios_simplificada, $relatorios_suplemento, $relatorios_modulo);
 
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
