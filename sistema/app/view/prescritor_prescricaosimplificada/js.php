@@ -82,16 +82,30 @@ function fc_retorno_pacientes(){
                 var cont = (dados_json.relatorios.length) - i;
                 // item.id
                 var status = "";
-                if (item.status == 1){
-                    status = "checked='checked'";
-                    var editar = "";
-                }else{
-                    if(item.codigo == null){
-                        var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
+                if(item.relatorio_tipo == "simplificada"){
+                    if (item.status == 1){
+                        status = "checked='checked'";
+                        var editar = "";
                     }else{
-                        var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_simplificada/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                        if(item.codigo == null){
+                            var editar = '<a href="javascript:void(0);" onclick="fc_editar_relatorio(\'' + item.id + '\');"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="fc_excluir_relatorio(\'' + item.id + '\', this);"><i class="fa fa-trash-o"></i></a>';
+                        }else{
+                            var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_simplificada/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                        }
+                    }
+                }else{
+                    if (item.status == 1){
+                        status = "checked='checked'";
+                        var editar = "";
+                    }else{
+                        if(item.codigo == null){
+                            var editar = "<button name='alterar_relatorio' style='border:0px;color:#abafb3;' data-relatorio='"+item.tipo_relatorio+"' data-nome='"+dados_json.nome+"' ><i class='fa fa-pencil-square-o'></i></button>";
+                        }else{
+                            var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_'+item.tipo_relatorio+'/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
+                        }
                     }
                 }
+                
 
                 tr += '<tr><td>' + cont + '</td><td>' + item.data_criacao + '</td>><td>' + item.ds_nome_usuario + '</td><td> '+ editar +' </td></tr>';
             });
@@ -1727,6 +1741,62 @@ $(function(){
         $("#div_cadastrar_paciente").hide();
         $("#div_buscar_paciente").show();
     });
+
+    $("[name='alterar_relatorio']").on("click", function () {
+    	var nome = $(this).data('nome');
+    	var relatorio = $(this).data('relatorio');
+        if(relatorio == 'suplemento'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_prescricaosuplemento/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_prescricaosuplemento';
+            });;
+        }
+        if(relatorio == 'modulo'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_prescricaomodulo/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_prescricaomodulo';
+            });;
+        }
+        if(relatorio == 'simplificada'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_prescricaosimplificada/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_prescricaosimplificada';
+            });;
+        }
+        if(relatorio == 'alta'){
+            $.ajax({
+                type: "POST",
+                url: "prescritor_relatorioalta/alterarRelatorio",
+                data: "&nome="+nome,
+                cache: false,
+                dataType: 'json'
+            }).always(function() {
+                // Executa sempre, independente da resposta do servidor
+                window.location.href = 'prescritor_relatorioalta';
+            });;
+        }
+       
+
+    });
+
     $("input[name=up_cpf_possui]").change(function() {
         if(this.checked) {
             $("#up_cpf").removeClass("error");
@@ -2977,7 +3047,7 @@ $(function(){
         $('#calculo').addClass('active').addClass('show').attr('aria-expanded','true');
     });
 
-    $("#observacoes_avancar").on("click", function(e) {
+    $("#observacoes_avancar").on("click", function(e) { 
         fc_salvar('observacoes', false);
         $('.tabobservacoes a').removeClass('active');
         $('#observacoes').removeClass('active').removeClass('show').attr('aria-expanded','false');

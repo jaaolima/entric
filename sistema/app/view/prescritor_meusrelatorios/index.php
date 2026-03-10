@@ -61,7 +61,7 @@
                                                 <?php if($relatorio["tipo"] == 'Suplemento') : ?>
                                                 <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_suplemento/".$relatorio['relatorio_code']."'><i class='fa fa-file-text-o'></i></a>" : "<button name='alterar_relatorio' style='border:0px;color:#abafb3;' data-relatorio='suplemento' data-nome='".$relatorio['nome']."' ><i class='fa fa-pencil-square-o'></i></button>") ?></th>
                                                 <?php endif; ?>
-                                                <?php if($relatorio["tipo"] == 'Módulos') : ?>
+                                                <?php if($relatorio["tipo"] == 'Módulos') : ?> 
                                                 <th><?php echo (($relatorio['codigo']) ? "<a target='_BLANK' href='https://sis.entric.com.br/relatorio_modulo/".$relatorio['relatorio_code']."'><i class='fa fa-file-text-o'></i></a>" : "<button name='alterar_relatorio' style='border:0px;color:#abafb3;' data-relatorio='modulo' data-nome='".$relatorio['nome']."' ><i class='fa fa-pencil-square-o'></i></button>") ?></th>
                                                 <?php endif; ?>
                                             </tr>

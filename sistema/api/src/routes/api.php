@@ -11336,10 +11336,26 @@ $app->group("", function () use ($app) {
 		                                                null);
 		            if ($pacientes){
 		                for($i = 0; $i < count($pacientes); $i++){
-		                    $relatorios = $db->select_to_array("relatorios_simplificada",
-		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
-		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
+							//buscar relatorios suplemento 
+							$relatorios = $db->select_to_array("relatorios_suplemento r
+																inner join pacientes_suplemento p on p.id = r.id_paciente",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+		                                                        "WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
 		                                                        null);
+
+
+							$relatorios = array_merge($relatorios,$db->select_to_array("relatorios_modulo r
+														inner join pacientes_modulo p on p.id = r.id_paciente",
+														"*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
+														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
+														null));
+
+
+							$relatorios = array_merge($relatorios, $db->select_to_array("relatorios_simplificada",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
+		                                                        null));
+
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
 									$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
