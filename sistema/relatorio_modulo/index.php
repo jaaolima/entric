@@ -1119,8 +1119,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 
-		<?php if (strlen($relatorio['observacao'])>3){ ?>
-			<p><strong>Observação:</strong> <?php echo $relatorio['observacao'];?></p>
+		<?php if ((trim($relatorio['rel_observacoes'])<>"")){ ?>
+			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> OBSERVAÇÕES</p>
+			<p><?php echo $relatorio['observacoes'];?></p>
 		<?php } ?>
 
 		<?php 
