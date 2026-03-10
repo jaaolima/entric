@@ -99,7 +99,7 @@ function fc_retorno_pacientes(){
                         var editar = "";
                     }else{
                         if(item.codigo == null){
-                            var editar = "<button name='alterar_relatorio' style='border:0px;color:#abafb3;' data-relatorio='"+item.tipo_relatorio+"' data-nome='"+dados_json.nome+"' ><i class='fa fa-pencil-square-o'></i></button>";
+                            var editar = "<button type='button' name='alterar_relatorio' style='border:0px;color:#abafb3;' data-relatorio='"+item.tipo_relatorio+"' data-nome='"+dados_json.nome+"' ><i class='fa fa-pencil-square-o'></i></button>";
                         }else{
                             var editar = '<a target="_blank" href="https://sis.entric.com.br/relatorio_'+item.tipo_relatorio+'/'+item.relatorio_code+'"><i class="fa fa-file-text-o"></i></a>';
                         }
