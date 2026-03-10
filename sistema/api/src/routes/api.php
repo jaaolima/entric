@@ -11337,7 +11337,7 @@ $app->group("", function () use ($app) {
 		            if ($pacientes){
 		                for($i = 0; $i < count($pacientes); $i++){
 							//buscar relatorios simplificada
-							$relatorios = $db->select_to_array("relatorios_simplificada",
+							$relatorios_simplificada = $db->select_to_array("relatorios_simplificada",
 		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
 		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
@@ -11357,7 +11357,8 @@ $app->group("", function () use ($app) {
 														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
 														null);
 
-							$relatorios = array_merge($relatorios, $relatorios_suplemento, $relatorios_modulo);
+							$relatorios = array_merge($relatorios_simplificada, $relatorios_suplemento);
+							$relatorios = array_merge($relatorios, $relatorios_modulo);
 
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
