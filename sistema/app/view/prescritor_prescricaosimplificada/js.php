@@ -1750,9 +1750,8 @@ $(function(){
         $("#div_buscar_paciente").show();
     });
 
-    $("button[name='alterar_relatorio']").on("click", function () {
+    $(document).on("click", "button[name='alterar_relatorio']", function () {
     	var nome = $(this).data('nome');
-        console.log("chegou");
     	var relatorio = $(this).data('relatorio');
         if(relatorio == 'suplemento'){
             $.ajax({
