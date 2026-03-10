@@ -1750,7 +1750,7 @@ $(function(){
         $("#div_buscar_paciente").show();
     });
 
-    $("[name='alterar_relatorio']").on("click", function () {
+    $("button[name='alterar_relatorio']").on("click", function () {
     	var nome = $(this).data('nome');
         console.log("chegou");
     	var relatorio = $(this).data('relatorio');
@@ -1802,8 +1802,6 @@ $(function(){
                 window.location.href = 'prescritor_relatorioalta';
             });;
         }
-       
-
     });
 
     $("input[name=up_cpf_possui]").change(function() {
