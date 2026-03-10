@@ -11,7 +11,7 @@ class LoginModel extends Model {
 
         if (isset($dados["status"])){
             // Redirect(BASE_PATH . '/logout'); 
-            return true;
+            return false;
         }else{
             $_SESSION['token'] = $dados['data']['session']['token'];
             $_SESSION['admin_session_id'] = $dados['data']['session']['admin_session_id'];
