@@ -10,9 +10,8 @@ class LoginModel extends Model {
                                             "tipo" => $tipo));
 
         if (isset($dados["status"])){
-            Redirect(BASE_PATH . '/logout'); 
+            // Redirect(BASE_PATH . '/logout'); 
             return true;
-
         }else{
             $_SESSION['token'] = $dados['data']['session']['token'];
             $_SESSION['admin_session_id'] = $dados['data']['session']['admin_session_id'];
@@ -35,7 +34,7 @@ class LoginModel extends Model {
         }
     }
 
-    public function checarLoginIbranutro($id_usuario=null, $tipo = null, $id_paciente = null, $buscar = null, $sistema = null, $nu_atendimento) {
+    public function checarLoginIbranutro($id_usuario=null, $tipo = null, $id_paciente = null, $buscar = null, $sistema = null, $nu_atendimento) { 
         $dados = httpPost("login_ibranutro", array(   "id_usuario" => $id_usuario));
 
         if (isset($dados["status"])){

@@ -222,8 +222,7 @@ class LoginController extends Controller {
             $logar = $this->LoginModel->checarLoginIbranutro($id_usuario, $tipo, $id_paciente, $buscar, $sistema, $nu_atendimento);
             if (!$logar){
                 alertretorno("toastr['error']('Dados de acesso inválidos.', '', {positionClass: 'toast-top-right' });");
-
-            }
+            } 
         }    
     }
 
