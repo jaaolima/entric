@@ -937,6 +937,11 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		?>
 		<?php } ?>	
 
+		<?php if (strlen($relatorio['observacoes'])>3){ ?>
+			<p class="text-left subtitutlo"><?php if($usuario['login'] != 'ibranutro') : ?><img src="imagem/simbolo.png" width="18px" border="0" style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> OBSERVAÇÕES</p>
+			<p><?php echo $relatorio['observacoes'];?></p>
+		<?php } ?>
+
 		<?php 
 			if ($relatorio['rel_distribuidores']<>""){
 		?>
