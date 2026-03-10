@@ -1119,15 +1119,9 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 		}
 		?>
 
-		
-		<!-- <?php 
-		if ($p_footer) {
-		?>	
-			<div class="page <?php if ($relatorio['rel_logo']<>"") echo "logo_efeito";?>">
-		<?php
-		}
-		?> -->
-
+		<?php if (strlen($relatorio['observacao'])>3){ ?>
+			<p><strong>Observação:</strong> <?php echo $relatorio['observacao'];?></p>
+		<?php } ?>
 
 		<?php 
 		if ( ((!$p_produtos) and (!$p_header)) or ($p_footer)) {
