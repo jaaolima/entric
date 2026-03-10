@@ -1751,7 +1751,7 @@ $(function(){
     });
 
     $(document).on("click", "button[name='alterar_relatorio']", function () {
-    	var nome = $(this).data('nome');
+    	var nome = $(this).data('nome');    
     	var relatorio = $(this).data('relatorio');
         if(relatorio == 'suplemento'){
             $.ajax({

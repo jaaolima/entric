@@ -11462,10 +11462,39 @@ $app->group("", function () use ($app) {
 		                                                null);
 		            if ($pacientes){
 		                for($i = 0; $i < count($pacientes); $i++){
-		                    $relatorios = $db->select_to_array("relatorios_suplemento",
-		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
+		                   //buscar relatorios suplemento
+							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
 		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
+						
+						
+							//buscar relatorios simplificada 
+							$relatorios_simplificada = $db->select_to_array("relatorios_simplificada r
+																inner join pacientes_simplificada p on p.id = r.id_paciente",
+		                                                        "*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
+		                                                        "WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY r.id ASC",
+		                                                        null);
+
+							//buscar relatorios modulo
+							$relatorios_modulo = $db->select_to_array("relatorios_modulo r
+														inner join pacientes_modulo p on p.id = r.id_paciente",
+														"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
+														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY r.id ASC",
+														null);
+
+
+							if(!$relatorios_simplificada){
+								$relatorios_simplificada = array();
+							}
+							if(!$relatorios_suplemento){
+								$relatorios_suplemento = array();
+							}
+							if(!$relatorios_modulo){
+								$relatorios_modulo = array();
+							}
+
+							$relatorios = array_merge($relatorios_simplificada, $relatorios_suplemento, $relatorios_modulo);
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
 									$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
@@ -11560,10 +11589,40 @@ $app->group("", function () use ($app) {
 		                                                null); 
 		            if ($pacientes){
 		                for($i = 0; $i < count($pacientes); $i++){
-		                    $relatorios = $db->select_to_array("relatorios_modulo",
-		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao",
+							//buscar relatorios modulo
+							$relatorios_modulo = $db->select_to_array("relatorios_modulo",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
 		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
 		                                                        null);
+						
+						
+							//buscar relatorios simplificada 
+							$relatorios_simplificada = $db->select_to_array("relatorios_simplificada r
+																inner join pacientes_simplificada p on p.id = r.id_paciente",
+		                                                        "*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
+		                                                        "WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY r.id ASC",
+		                                                        null);
+
+							//buscar relatorios suplemento
+							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
+														inner join pacientes_suplemento p on p.id = r.id_paciente",
+														"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY r.id ASC",
+														null);
+
+
+							if(!$relatorios_simplificada){
+								$relatorios_simplificada = array();
+							}
+							if(!$relatorios_suplemento){
+								$relatorios_suplemento = array();
+							}
+							if(!$relatorios_modulo){
+								$relatorios_modulo = array();
+							}
+
+							$relatorios = array_merge($relatorios_simplificada, $relatorios_suplemento, $relatorios_modulo);
+							
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
 									$relatorios[$j]['relatorio_code'] = endecrypt("encrypt", $relatorios[$j]['id']);
