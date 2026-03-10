@@ -11336,25 +11336,28 @@ $app->group("", function () use ($app) {
 		                                                null);
 		            if ($pacientes){
 		                for($i = 0; $i < count($pacientes); $i++){
+							//buscar relatorios simplificada
+							$relatorios = $db->select_to_array("relatorios_simplificada",
+		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
+		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
+		                                                        null);
+						
+						
 							//buscar relatorios suplemento 
-							$relatorios = $db->select_to_array("relatorios_suplemento r
+							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
 																inner join pacientes_suplemento p on p.id = r.id_paciente",
 		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
 		                                                        "WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
 		                                                        null);
 
-
-							$relatorios = array_merge($relatorios, $db->select_to_array("relatorios_modulo r
+							//buscar relatorios modulo
+							$relatorios_modulo = $db->select_to_array("relatorios_modulo r
 														inner join pacientes_modulo p on p.id = r.id_paciente",
 														"*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
 														"WHERE p.cpf='".$pacientes[$i]['cpf']."' ORDER BY id ASC",
-														null));
+														null);
 
-
-							$relatorios = array_merge($relatorios, $db->select_to_array("relatorios_simplificada",
-		                                                        "*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
-		                                                        "WHERE id_paciente='".$pacientes[$i]['id']."' ORDER BY id ASC",
-		                                                        null));
+							$relatorios = array_merge($relatorios, $relatorios_suplemento, $relatorios_modulo);
 
 		                    if ($relatorios){
 								for ($j=0; $j < count($relatorios); $j++) { 
