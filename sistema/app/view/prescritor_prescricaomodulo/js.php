@@ -81,7 +81,7 @@ function fc_retorno_pacientes(){
                 // item.id
                 var status = "";
 
-                if(item.relatorio_tipo == "simplificada"){
+                if(item.relatorio_tipo == "modulo"){ 
                    if (item.status == 1){
                         status = "checked='checked'";
                         var editar = "";
@@ -104,7 +104,7 @@ function fc_retorno_pacientes(){
                         }
                     }
                 }
-                if(item.tipo_relatorio == "simplificada"){
+                if(item.tipo_relatorio == "simplificada"){ 
                     item.tipo_relatorio = "Dieta Enteral";
                 }
                 if(item.tipo_relatorio == "modulo"){
