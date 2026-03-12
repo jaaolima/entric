@@ -82,7 +82,7 @@ function fc_retorno_pacientes(){
                 var cont = (dados_json.relatorios.length) - i;
                 // item.id
                 var status = "";
-                if(item.relatorio_tipo == "simplificada"){
+                if(item.tipo_relatorio == "simplificada"){
                     if (item.status == 1){
                         status = "checked='checked'";
                         var editar = "";

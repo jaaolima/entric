@@ -81,7 +81,7 @@ function fc_retorno_pacientes(){
                 // item.id
                 var status = "";
 
-                if(item.relatorio_tipo == "modulo"){ 
+                if(item.tipo_relatorio == "modulo"){ 
                    if (item.status == 1){
                         status = "checked='checked'";
                         var editar = "";

@@ -80,7 +80,7 @@ function fc_retorno_pacientes(){
                 // item.id
                 var status = "";
                 
-                if(item.relatorio_tipo == "suplemento"){
+                if(item.tipo_relatorio == "suplemento"){
                     if (item.status == 1){
                         status = "checked='checked'";
                         var editar = "";
