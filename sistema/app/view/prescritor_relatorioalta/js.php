@@ -3299,11 +3299,11 @@ $(function(){
         divClone.find(".div_diluir_anterior").show();
         divClone.find(".div_diluir_anterior").addClass('d-flex');
         divClone.find(".hora").unbind();
-        divClone.find(".numeros").unbind();
+        divClone.find(".numeros_volume").unbind();
         $(this).parent().parent().parent().find(".modulo").append(divClone);
 
         $('.hora').mask("99:99");
-        $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
+        $('.numeros_volume').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
         var selector = $("#modulo"+p).find("select[name='modulo_produto[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
@@ -3434,7 +3434,6 @@ $(function(){
         divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__'+idCampo+ '__' + p +'__1]').end();
         divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").attr('name', 'suplemento_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
-        divClone.find(".hora_correr").attr('name', 'hora_correr[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--below").remove();
         divClone.find(".select2_ajax_produto").parent().find(".select2-container--default").remove();    
@@ -3560,7 +3559,6 @@ $(function(){
         divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + idCombinacao + '__'+idCampo+ '__' + p +'__1]').end();
         divClone.find(".suplemento_volume_total").attr('name', 'suplemento_volume_total[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".select2_ajax_produto").attr('name', 'suplemento_produto[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
-        divClone.find(".hora_correr").attr('name', 'hora_correr[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".suplemento_densidade").attr('name', 'suplemento_densidade[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
         divClone.find(".suplemento_diluicao").attr('name', 'suplemento_diluicao[' + idCombinacao + '__'+idCampo+ '__' + p +']').end();
@@ -3628,6 +3626,23 @@ $(function(){
         // selector.empty();
         // selector.removeData();
         // select2_ajax_produto_modulo(selector);
+    });
+
+    $(".modulo_diluir_anterior").on("click", function(e) {
+        divModulo =  $(this).closest(".div_modulo");
+        if ($(this).is(":checked")) {
+            divModulo.find(".modulo_volume_agua").attr("readonly", true);
+            divModulo.find(".modulo_volume_agua").val("");
+
+            divModulo.find(".modulo_horario").attr("readonly", true);
+            divModulo.find(".modulo_horario").val("");
+        } else {
+            divModulo.find(".modulo_volume_agua").attr("readonly", false);
+            divModulo.find(".modulo_volume_agua").val("");
+
+            divModulo.find(".modulo_horario").attr("readonly", false);
+            divModulo.find(".modulo_horario").val("");
+        }
     });
     $(".btn_suplemento_total_rm").on("click", function(e) {
         $(this).closest(".div_volume_total").remove();
@@ -3744,7 +3759,6 @@ $(function(){
         divClone.find(".modulo_volume_agua").attr('name', 'modulo_volume[' + id +"__1__" + p +']').end();
         divClone.find(".modulo_horario").attr('name', 'horario[' + id +"__1__" + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + id +"__1__" + p +']').end();
-        divClone.find(".hora_correr").attr('name', 'hora_correr[' + id +"__1__" + p +']').end();
         divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + id +"__1__" + p +']').end();
         divClone.find(".hidratacao_fracionamento").attr('name', 'hidratacao_fracionamento_dia[' + id +"__1__" + p +']').end();
 

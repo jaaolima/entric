@@ -121,7 +121,7 @@
                                                                     </div>
                                                                     <div class="form-group col-sm-3 mb-1">
                                                                         <label for="volume">Volume de Água (ml):</label>
-                                                                        <input type="text" class="form-control numeros campos_limpar modulo_volume_agua" data-precision="2" required="required" name="modulo_volume[1__1__0]">
+                                                                        <input type="text" class="form-control numeros_volume campos_limpar modulo_volume_agua" required="required" name="modulo_volume[1__1__0]">
                                                                     </div>
 
                                                                     <div class="col-sm-3 mb-1 div_volume_total_col">
@@ -184,7 +184,7 @@
                                                         <div class="row p-0 div_suplemento" id="div_suplemento">
                                                             <div class="col-sm-4 mb-1">
                                                                 <label for="suplemento_produto">Produto:</label>
-                                                                <div class="input-group">
+                                                                <div class="input-group"> 
                                                                     <div class="input-group-prepend div_suplemento_rm none">
                                                                         <button class="btn btn-danger btn_suplemento_rm" type="submit"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
                                                                     </div>
@@ -226,14 +226,6 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-sm-5 pl-5">
-                                                                        <div class="row">
-                                                                            <div class="form-group mb-1">
-                                                                                <label for="hora_correr">Em quantas horas deve correr?</label>
-                                                                                <input type="text" class="form-control hora hora_correr campos_limpar w-50" required="required" name="hora_correr[1__1__0]">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -262,7 +254,7 @@
                                                 <div class="card-body pt-0">
                                                     <div class="row">
                                                         <div class="col-sm-4">
-                                                            <input type="text" class="form-control numeros campos_limpar hidratacao_agua_livre" required="required" name="hidratacao_agua_livre[1__1__0]">
+                                                            <input type="text" class="form-control numeros campos_limpar hidratacao_agua_livre" placeholder="Volume por horário" required="required" name="hidratacao_agua_livre[1__1__0]">
                                                         </div>
                                                         <div class="form-group col-sm-3 mb-1" style="margin-top: -24px;">
                                                             <label for="hidratacao_fracionamento_dia[1__1__0]">Fracionamento/dia:</label>

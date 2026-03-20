@@ -16,7 +16,7 @@
 */
 require __DIR__ . '/libs/conf6ion.php';
 require __DIR__ . '/libs/common.php';
-require __DIR__ . '/libs/database.class.php';
+require __DIR__ . '/libs/database.class.php'; 
 //echo endecrypt("encrypt", 466);
 //die();
 // if(!isset($_SESSION['login'])){
@@ -1018,7 +1018,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
-						$hora_correr = json_decode($relatorio['hora_correr']);
 						$modulo_diluir_anterior = json_decode($relatorio['modulo_diluir_anterior']);
 						$suplemento_diluicao = json_decode($relatorio['suplemento_diluicao']);
 
@@ -1065,7 +1064,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 										$infusao = "gravitacional " .$dieta_fracionamento_diaProduto . (($dieta_fracionamento_diaProduto == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ". Correr cada dieta em " . $dieta_quantas_horas_ocorrerProduto . " horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.";
 									}
-									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
+									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - utilizar de forma " . $infusao . "</p>";
 								}
 							}
 							$modulos = 1;
@@ -1086,12 +1085,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 										}
 									}
 									if($modulos > 1 && $diluir_anterior){
-										$textoDiluir = ' junto ao produto anterior';
+										$textoDiluir = 'Diluir junto ao item anterior';
 									}else{
-										$textoDiluir = '';
+										$textoDiluir = 'Diluir'.$textoDiluir." em ".$moduloVolume." ml de água e utilizar às ".$StringHorario;
 									}
 									$modulos++;
-									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - Diluir".$textoDiluir." em ".$moduloVolume." ml de água e administrar às ".$StringHorario."</p>";
+									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - ".$textoDiluir."</p>";
 								}
 							}
 
@@ -1100,7 +1099,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida, apres_oral", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$volumeProduto = $dieta_volume->$key;
-									$HorasCorrer = $hora_correr->$key;
 									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
 
@@ -1115,12 +1113,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 
-										$valorHorasOcorrer = str_replace(":", ".", $HorasCorrer);
-										$indexX = (floatval($suplementoQuantidade) / floatval($valorHorasOcorrer));
-
-										$indexY = (floatval($suplementoQuantidade) / (floatval($valorHorasOcorrer) * 3));
-
-										echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.</p>";
+										echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.".</p>";
 									}else{
 										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
 											if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
@@ -1132,12 +1125,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 
-										$valorHorasOcorrer = str_replace(":", ".", $HorasCorrer);
-										$indexX = (floatval($suplementoQuantidade) / floatval($valorHorasOcorrer));
-
-										$indexY = (floatval($suplementoQuantidade) / (floatval($valorHorasOcorrer) * 3));
-
-										echo "<p><b>".$produto['nome']."</b> - Administrar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.</p>";
+										echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.".</p>";
 									}
 				
 								}
@@ -1157,7 +1145,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 										}
-										echo "<p><b>Água Livre</b> - Administrar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
+										echo "<p><b>Água Livre</b> - Utilizar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
 									}
 								}
 							}
