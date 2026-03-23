@@ -149,7 +149,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group col-sm-4 mb-1 div_diluir_anterior justify-content-center align-items-center" style="display:none;">
-                                                                        <div class="form-check"> <input type="checkbox" class="form-check-input modulo_diluir_anterior campos_limpar" name="modulo_diluir_anterior[1_1_0]" value="1">
+                                                                        <div class="form-check"> <input type="checkbox" class="form-check-input modulo_diluir_anterior" name="modulo_diluir_anterior[1_1_0]" value="1">
                                                                             <label class="form-check-label ml-2" >Diluir junto ao anterior</label>
                                                                         </div>
                                                                     </div>
