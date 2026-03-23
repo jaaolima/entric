@@ -1683,13 +1683,10 @@ function validacao_manual(){
             $(divModulo).find("input[name^='modulo_quantidade']").each(function() {
                 var $inputQuantidade = $(this); // O input atual no loop
                 var valorInputQuantidade = $inputQuantidade.val();
-                diluir_anterior = $(divModulo).find(".modulo_diluir_anterior").is(":checked");
-                console.log(diluir_anterior);
-
 
 
                 // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-                if ((!valorInputQuantidade || valorInputQuantidade.trim() === "") && !diluir_anterior) {
+                if (!valorInputQuantidade || valorInputQuantidade.trim() === "") {
                     todosPreenchidos = false; // Encontrou um campo vazio
                     
                     // Exibe o alerta
@@ -1731,9 +1728,11 @@ function validacao_manual(){
             $(divModulo).find("input[name^='modulo_horario']").each(function() {
                 var $inputHorario = $(this); // O input atual no loop
                 var valorInputHorario = $inputHorario.val();
+                diluir_anterior = $(divModulo).find(".modulo_diluir_anterior").is(":checked");
+
 
                 // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-                if (!valorInputHorario || valorInputHorario.trim() === "") {
+                if ((!valorInputHorario || valorInputHorario.trim() === "") && !diluir_anterior) {
                     todosPreenchidos = false; // Encontrou um campo vazio
                     
                     // Exibe o alerta
