@@ -1107,7 +1107,6 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$volumeProduto = $dieta_volume->$key;
 									$HorasCorrer = $hora_correr->$key;
-									var_dump($key);
 									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
 
