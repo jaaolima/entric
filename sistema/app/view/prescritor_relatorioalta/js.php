@@ -1683,7 +1683,8 @@ function validacao_manual(){
             $(divModulo).find("input[name^='modulo_quantidade']").each(function() {
                 var $inputQuantidade = $(this); // O input atual no loop
                 var valorInputQuantidade = $inputQuantidade.val();
-                diluir_anterior = $(divModulo).find("input[name^='modulo_diluir_anterior']").is(":checked");
+                diluir_anterior = $(divModulo).find(".modulo_diluir_anterior").is(":checked");
+                console.log(diluir_anterior);
 
 
 
@@ -1707,7 +1708,7 @@ function validacao_manual(){
             $(divModulo).find("input[name^='modulo_volume']").each(function() {
                 var $inputVolume = $(this); // O input atual no loop
                 var valorInputVolume = $inputVolume.val();
-                diluir_anterior = $(divModulo).find("input[name^='modulo_diluir_anterior']").is(":checked");
+                diluir_anterior = $(divModulo).find(".modulo_diluir_anterior").is(":checked");
 
 
                 // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
