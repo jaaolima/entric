@@ -1018,6 +1018,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$hidratacao_fracionamento_dia = json_decode($relatorio['hidratacao_fracionamento_dia']);
 						$hidratacao_horario = json_decode($relatorio['hidratacao_horario']);
 						$hidratacao_agua_livre = json_decode($relatorio['hidratacao_agua_livre']);
+						$hora_correr = json_decode($relatorio['hora_correr']);
 						$modulo_diluir_anterior = json_decode($relatorio['modulo_diluir_anterior']);
 						$suplemento_diluicao = json_decode($relatorio['suplemento_diluicao']);
 
@@ -1105,6 +1106,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$produto = $db->select_single_to_array("produtos", "nome, unidmedida, apres_oral", "WHERE id=:id", array(":id"=>$value));
 									$suplementoQuantidade = $suplemento_quantidade->$key;
 									$volumeProduto = $dieta_volume->$key;
+									$HorasCorrer = $hora_correr->$key;
 									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
 
@@ -1120,7 +1122,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 
-										echo "<p><b>".$produto['nome']."</b> - ".$termoAdministrar." ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.".</p>";
+										echo "<p><b>".$produto['nome']."</b> - ".$termoAdministrar." ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.". ".(($HorasCorrer != '') ? "Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto." : "")."</p>";
 									}else{
 										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
 											if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
@@ -1132,7 +1134,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 
-										echo "<p><b>".$produto['nome']."</b> - ".$termoAdministrar." ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.".</p>";
+										echo "<p><b>".$produto['nome']."</b> - ".$termoAdministrar." ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.". ".(($HorasCorrer != '') ? "Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto." : "")."</p>";
 									}
 				
 								}
