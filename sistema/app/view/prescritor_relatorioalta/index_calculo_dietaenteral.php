@@ -149,8 +149,8 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group col-sm-4 mb-1 div_diluir_anterior justify-content-center align-items-center" style="display:none;">
-                                                                        <div class="form-check"> <input type="checkbox" class="form-check-input modulo_diluir_anterior campos_limpar" name="modulo_diluir_anterior[1_1_0]" id="check_diluir" value="1">
-                                                                            <label class="form-check-label ml-2" for="check_diluir">Diluir junto ao anterior</label>
+                                                                        <div class="form-check"> <input type="checkbox" class="form-check-input modulo_diluir_anterior campos_limpar" name="modulo_diluir_anterior[1_1_0]" value="1">
+                                                                            <label class="form-check-label ml-2" >Diluir junto ao anterior</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -226,7 +226,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="form-group col-sm-5 pl-5 div_hora_correr" style="display:none;">
+                                                                    <div class="form-group col-sm-5 pl-5 div_hora_correr" >
                                                                         <div class="row">
                                                                             <div class="form-group mb-1">
                                                                                 <label for="hora_correr">Em quantas horas deve correr?</label>

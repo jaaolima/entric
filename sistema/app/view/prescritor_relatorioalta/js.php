@@ -1683,9 +1683,12 @@ function validacao_manual(){
             $(divModulo).find("input[name^='modulo_quantidade']").each(function() {
                 var $inputQuantidade = $(this); // O input atual no loop
                 var valorInputQuantidade = $inputQuantidade.val();
+                diluir_anterior = $(divModulo).find("input[name^='modulo_diluir_anterior']").is(":checked");
+
+
 
                 // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-                if (!valorInputQuantidade || valorInputQuantidade.trim() === "") {
+                if ((!valorInputQuantidade || valorInputQuantidade.trim() === "") && !diluir_anterior) {
                     todosPreenchidos = false; // Encontrou um campo vazio
                     
                     // Exibe o alerta
@@ -1704,9 +1707,11 @@ function validacao_manual(){
             $(divModulo).find("input[name^='modulo_volume']").each(function() {
                 var $inputVolume = $(this); // O input atual no loop
                 var valorInputVolume = $inputVolume.val();
+                diluir_anterior = $(divModulo).find("input[name^='modulo_diluir_anterior']").is(":checked");
+
 
                 // Verifica se o input está vazio (considerando strings vazias ou apenas espaços)
-                if (!valorInputVolume || valorInputVolume.trim() === "") {
+                if ((!valorInputVolume || valorInputVolume.trim() === "") && !diluir_anterior) {
                     todosPreenchidos = false; // Encontrou um campo vazio
                     
                     // Exibe o alerta
@@ -3301,11 +3306,11 @@ $(function(){
         divClone.find(".div_diluir_anterior").show();
         divClone.find(".div_diluir_anterior").addClass('d-flex');
         divClone.find(".hora").unbind();
-        divClone.find(".numeros_volume").unbind();
+        divClone.find(".numeros").unbind();
         $(this).parent().parent().parent().find(".modulo").append(divClone);
 
         $('.hora').mask("99:99");
-        $('.numeros_volume').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
+        $('.numeros').maskMoney({prefix:'', allowNegative: false, thousands:'', decimal:'.', affixesStay: false, precision: 0});
         var selector = $("#modulo"+p).find("select[name='modulo_produto[" + idCombinacao + '__'+idCampo+ '__' + p +"]']");
         selector.removeAttr('data-live-search')
                 .removeAttr('data-select2-id')
