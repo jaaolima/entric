@@ -1110,6 +1110,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
 
+									if($HorasCorrer != ''){
+										$valorHorasOcorrer = str_replace(":", ".", $HorasCorrer);
+										$indexX = (floatval($suplementoQuantidade) / floatval($valorHorasOcorrer));
+										$indexY = (floatval($suplementoQuantidade) / (floatval($valorHorasOcorrer) * 3));
+									}
+
 
 									if($produto['apres_oral'] == '["Pó"]'){
 										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
@@ -1121,6 +1127,8 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 										}
+
+										
 
 										echo "<p><b>".$produto['nome']."</b> - ".$termoAdministrar." ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.". ".(($HorasCorrer != '') ? "Correr em ".$HorasCorrer." horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto." : "")."</p>";
 									}else{
