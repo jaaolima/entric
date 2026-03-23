@@ -3778,6 +3778,7 @@ $(function(){
         divClone.find(".modulo_horario").attr('name', 'horario[' + id +"__1__" + p +']').end();
         divClone.find(".suplemento_quantidade").attr('name', 'suplemento_quantidade[' + id +"__1__" + p +']').end();
         divClone.find(".suplemento_horario").attr('name', 'suplemento_horario[' + id +"__1__" + p +']').end();
+        divClone.find(".hora_correr").attr('name', 'hora_correr[' + id +"__1__" + p +']').end();
         divClone.find(".hidratacao_fracionamento").attr('name', 'hidratacao_fracionamento_dia[' + id +"__1__" + p +']').end();
 
         divClone.find('.entric_ofertotal').removeAttr("style");
