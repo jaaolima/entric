@@ -226,6 +226,14 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="form-group col-sm-5 pl-5 div_hora_correr" style="display:none;">
+                                                                        <div class="row">
+                                                                            <div class="form-group mb-1">
+                                                                                <label for="hora_correr">Em quantas horas deve correr?</label>
+                                                                                <input type="text" class="form-control hora hora_correr campos_limpar w-50" required="required" name="hora_correr[1__1__0]">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -260,7 +268,7 @@
                                                             <label for="hidratacao_fracionamento_dia[1__1__0]">Fracionamento/dia:</label>
                                                             <input type="text"  maxlength='2' class="form-control numeros campos_limpar hidratacao_fracionamento" required="required" name="hidratacao_fracionamento_dia[1__1__0]">
                                                         </div>
-                                                        <div class="form-group col-sm-3 mb-1 div_fracionamento_hidratacao d-flex row" style="margin-top: -24px;">
+                                                        <div class="form-group col-sm-4 mb-1 div_fracionamento_hidratacao d-flex row" style="margin-top: -24px;">
                                                             <label for="dieta_horario[1__1__0]" class="label_horario">Horário:</label>
                                                             <input type="text" class="form-control hora campos_limpar" required="required" name="hidratacao_horario[1__1__0]">
                                                         </div>

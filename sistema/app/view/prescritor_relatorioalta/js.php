@@ -3105,6 +3105,7 @@ $(function(){
             $(".apres_oral").show();
             $(".apres_nooral").hide();
             $("#title_suplemento").html("Suplemento (Oral)");
+            $(".div_hora_correr").hide();
         }else{
             $("#dispositivos").show();
             $(".apres_nooral").show();
@@ -3112,6 +3113,7 @@ $(function(){
             $("#accor_dietal").show();
             $("#accor_hidratacao").show();
             $("#title_suplemento").html("Suplemento (Enteral)");
+            $(".div_hora_correr").show();
 
         }
     });
@@ -3633,15 +3635,25 @@ $(function(){
         if ($(this).is(":checked")) {
             divModulo.find(".modulo_volume_agua").attr("readonly", true);
             divModulo.find(".modulo_volume_agua").val("");
+            divModulo.find(".modulo_volume_agua").attr("required", false);
 
             divModulo.find(".modulo_horario").attr("readonly", true);
             divModulo.find(".modulo_horario").val("");
+            divModulo.find(".modulo_horario").attr("required", false);
+
+            divModulo.find(".btn_modulo_total_add").attr("disabled", true);
+
         } else {
             divModulo.find(".modulo_volume_agua").attr("readonly", false);
             divModulo.find(".modulo_volume_agua").val("");
+            divModulo.find(".modulo_volume_agua").attr("required", true);
+
 
             divModulo.find(".modulo_horario").attr("readonly", false);
             divModulo.find(".modulo_horario").val("");
+            divModulo.find(".modulo_horario").attr("required", true);
+
+            divModulo.find(".btn_modulo_total_add").attr("disabled", false);
         }
     });
     $(".btn_suplemento_total_rm").on("click", function(e) {

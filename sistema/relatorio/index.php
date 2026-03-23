@@ -1024,6 +1024,12 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 						$valortotal_kcal = json_decode($relatorio['valortotal_kcal']);
 						$valortotal_ptn = json_decode($relatorio['valortotal_ptn']);
 						$valortotal_fibra = json_decode($relatorio['valortotal_fibra']);
+
+						if($relatorio['tipo_produto'] == 'Suplemento'){
+							$termoAdministrar = 'Utilizar';
+						}else{
+							$termoAdministrar = 'Administrar';
+						}
 						
 						for ($i=1; $i <= count($valortotal_kcal); $i++) {
 							$j = $i - 1;
@@ -1064,7 +1070,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 
 										$infusao = "gravitacional " .$dieta_fracionamento_diaProduto . (($dieta_fracionamento_diaProduto == '1') ? " vez" : " vezes") ." ao dia às " . $StringHoraAdministracao . ". Correr cada dieta em " . $dieta_quantas_horas_ocorrerProduto . " horas, a " . ceil($indexX) . " ml por hora ou ".ceil($indexY)." gotas por minuto.";
 									}
-									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - utilizar de forma " . $infusao . "</p>";
+									echo "<p><b>".$produto['nome']."</b> - ".$volumeProduto."ml/dia - Administrar de forma " . $infusao . "</p>";
 								}
 							}
 							$modulos = 1;
@@ -1087,7 +1093,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									if($modulos > 1 && $diluir_anterior){
 										$textoDiluir = 'Diluir junto ao item anterior';
 									}else{
-										$textoDiluir = 'Diluir'.$textoDiluir." em ".$moduloVolume." ml de água e utilizar às ".$StringHorario;
+										$textoDiluir = 'Diluir em '.$moduloVolume.' ml de água e utilizar às '.$StringHorario;
 									}
 									$modulos++;
 									echo "<p><b>".$produto['nome']."</b> - ".$moduloQuantidade." ".$produto['unidmedida']." - ".$textoDiluir."</p>";
@@ -1102,6 +1108,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 									$diluicao = $suplemento_diluicao->$key;
 									$StringSuplementoHorario = '';
 
+
 									if($produto['apres_oral'] == '["Pó"]'){
 										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
 											if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
@@ -1113,7 +1120,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 
-										echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.".</p>";
+										echo "<p><b>".$produto['nome']."</b> - ".$termoAdministrar." ".$suplementoQuantidade." gramas diluídas em ".$diluicao." ml de água às ".$StringSuplementoHorario.".</p>";
 									}else{
 										foreach ($suplemento_horario as $keySuplementoHorario => $valueSuplementoHorario) {
 											if (substr($keySuplementoHorario, 0, strlen($key)) === $key) {
@@ -1125,7 +1132,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 											}
 										}
 
-										echo "<p><b>".$produto['nome']."</b> - Utilizar ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.".</p>";
+										echo "<p><b>".$produto['nome']."</b> - ".$termoAdministrar." ".$suplementoQuantidade." ".$produto['unidmedida']." às ".$StringSuplementoHorario.".</p>";
 									}
 				
 								}
@@ -1145,7 +1152,7 @@ if (trim($relatorio['preparo'])=="") $relatorio['preparo'] = $config['preparo'];
 												}
 											}
 										}
-										echo "<p><b>Água Livre</b> - Utilizar ".$value." ml por dia, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario."</p>";
+										echo "<p><b>Água Livre</b> - ".$termoAdministrar." ".$value." ml por horário, fracionado em ".$hidratacaoFracionamento.(($hidratacaoFracionamento == '1') ? " vez" : " vezes")." às ".$StringHorario.".</p>";
 									}
 								}
 							}

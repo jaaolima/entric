@@ -13,7 +13,7 @@
                 <div class="col-xl-5">
                     <div class="row h-100 justify-content-center align-items-center bg-login">
                         <a href="login">
-                            <img src="assets/images/login-logo-horizontal.png" border="0" width="250" />
+                            <img src="assets/images/login-logo-horizontal.png" border="0" width="250" /> 
                         </a>
                     </div>
                 </div>
