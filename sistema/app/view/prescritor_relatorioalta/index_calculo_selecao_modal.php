@@ -1,4 +1,5 @@
-<div class="modal fade" id="modal_selecao" tabindex="-1" role="dialog" aria-labelledby="modal_selecaoTitle" aria-hidden="true">
+<div class="modal fade" id="modal_selecao" tabindex="-1" role="dialog" aria-labelledby="modal_selecaoTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,18 +7,22 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body" id="modal-pdf-body">
-                <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
+                <form id="modal_form_selecao" action="prescritor_relatorioalta" method="post" autocomplete="off"
+                    onsubmit="return false">
                     <div class="form-check form-toggle mb-2">
-                        <input id="calculo_produto_especializado" name="produto_especializado" class="toggle-checkbox" type="checkbox" value="S">
+                        <input id="calculo_produto_especializado" name="produto_especializado" class="toggle-checkbox"
+                            type="checkbox" value="S">
                         <label for="calculo_produto_especializado" class="form-check-label check-green toggle-label">
-                            <span class="toggle-switch"></span> Exibir produtos especializados <img class="ml-2" src="../../../public/assets/images/bandeira.png" alt="">
+                            <span class="toggle-switch"></span> Exibir produtos especializados <img class="ml-2"
+                                src="../../../public/assets/images/bandeira.png" alt="">
                         </label>
                     </div>
-                    <div class="row">
+                    <div class="row" id="div_variacoes">
                         <div class="col-sm-6 text-center">
                             <label class="grid_label pb-4 mb-3">Variação Calórica: ajuste se necessário.</label><br />
                             <div class="mt-3">
-                                <b>-10%</b> <input type="text" value="" id="margem_calorica" name="margem_calorica" class="margens_kptn" /> <b>10%</b>
+                                <b>-10%</b> <input type="text" value="" id="margem_calorica" name="margem_calorica"
+                                    class="margens_kptn" /> <b>10%</b>
                                 <div class="text-center"><b id="var_calorica"></b></div>
                             </div>
                         </div>
@@ -25,7 +30,8 @@
                         <div class="col-sm-6 text-center">
                             <label class="grid_label pb-4 mb-3">Variação Proteica: ajuste se necessário.</label><br />
                             <div class="mt-3">
-                                <b>-20%</b> <input type="text" value="" id="margem_proteica" name="margem_proteica" class="margens_kptn" /> <b>20%</b>
+                                <b>-20%</b> <input type="text" value="" id="margem_proteica" name="margem_proteica"
+                                    class="margens_kptn" /> <b>20%</b>
                                 <div class="text-center"><b id="var_proteina"></b></div>
                             </div>
                         </div>

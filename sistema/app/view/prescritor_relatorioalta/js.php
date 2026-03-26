@@ -1218,11 +1218,15 @@
         }
     }
 
-    function salvar_calculo_fracionamento(_this) {
+    function salvar_calculo_fracionamento(_this, tipo) {
         var _id_paciente = $("#id_paciente").val();
         var _id_relatorio = $("#id_relatorio").val();
         //var formSerialize = $("#modal_form_fracionamento :input:not(:hidden)").serialize();
-        var formSerialize = $("#modal_form_fracionamento").serialize();
+        if (tipo == 'suplemento') {
+            var formSerialize = $("#modal_form_fracionamento_suplemento").serialize();
+        } else {
+            var formSerialize = $("#modal_form_fracionamento").serialize();
+        }
         if (_this != null) b_lo(_this);
         var selecao_dieta = $("#selecao_dieta").val();
 
@@ -1242,6 +1246,11 @@
                             rangeCaloria($("#kcal_valor").val());
                             rangeProteina($("#ptn_valor").val());
                         }
+                        if (tipo == 'suplemento') {
+                            $("#div_variacoes").hide();
+                        } else {
+                            $("#div_variacoes").show();
+                        }
                         $("#modal_selecao").modal("toggle");
                     });
                 } else {
@@ -1249,6 +1258,11 @@
                     if (selecao_dieta.length == 0) {
                         rangeCaloria($("#kcal_valor").val());
                         rangeProteina($("#ptn_valor").val());
+                    }
+                    if (tipo == 'suplemento') {
+                        $("#div_variacoes").hide();
+                    } else {
+                        $("#div_variacoes").show();
                     }
                     $("#modal_selecao").modal("toggle");
                 }
@@ -2094,7 +2108,24 @@
             necessidades_agua_total($(this), e);
         });
         // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
+        $('#fracionamento_dia').on('click', function () {
+            $(this).select();
+        });
+        $('#fracionamento_dia').on('keyup', function () {
+            $('.fracio_horario').empty();
+            var horarios = '';
+            for (i = 1; i <= parseInt($(this).val()); i++) {
+                if (i < 10) {
+                    var numi = "0" + i;
+                } else {
+                    var numi = i;
+                }
+                horarios = horarios + '<div class="col-sm-3">Horário ' + numi + ' (opcional):</div>' +
+                    '<div class="col-sm-3"><input type="text" placeholder="00:00" name="dieta_horario[' + numi + ']" id="horario_' + numi + '" class="form-control hora"></div>';
+            }
+            $('.fracio_horario').html(horarios);
+            $('.hora').mask("99:99");
+        });
 
 
 
@@ -2130,9 +2161,9 @@
                             $("input[name='carac_oral[]'].filtro_2:checked").length > 0 &&
                             $("input[name='carac_oral[]'].filtro_3:checked").length > 0 &&
                             ($("input[name='calculo_apres_liquidocreme']:checked").length > 0 || $("input[name='calculo_apres_po']:checked").length > 0 || $("input[name='calculo_apres_cremoso']:checked").length > 0)) {
-                            fc_salvar('calculo', false);
-                            salvar_calculo_fracionamento(null);
-                            // $('#modal_fracionamento').modal('toggle');
+                            // fc_salvar('calculo', false);
+                            // salvar_calculo_fracionamento(null);
+                            $('#modal_fracionamento_suplemento').modal('toggle');
                         }
                         else {
                             $.alert({
@@ -2295,8 +2326,11 @@
             }
 
             if (isValidFrac && isValidHid) {
-                salvar_calculo_fracionamento($(this));
+                salvar_calculo_fracionamento($(this), 'enteral');
             }
+        });
+        $("#salvar_alteracoes_suplemento").on("click", function (e) {
+            salvar_calculo_fracionamento($(this), 'suplemento');
         });
         $("#salvar_selecao").on("click", function (e) {
             if ($(".check_dieta").filter(":checked").length === 0) {
@@ -2810,11 +2844,11 @@
             stickyTop('combinacao' + id);
         });
         // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-        $('#fracionamento_dia').on('click', function () {
+        $('#fracionamento_dia_suplemento').on('click', function () {
             $(this).select();
         });
-        $('#fracionamento_dia').on('keyup', function () {
-            $('.fracio_horario').empty();
+        $('#fracionamento_dia_suplemento').on('keyup', function () {
+            $('.fracio_horario_suplemento').empty();
             var horarios = '';
             for (i = 1; i <= parseInt($(this).val()); i++) {
                 if (i < 10) {
@@ -2823,9 +2857,9 @@
                     var numi = i;
                 }
                 horarios = horarios + '<div class="col-sm-3">Horário ' + numi + ':</div>' +
-                    '<div class="col-sm-3"><input type="text" placeholder="00:00" required="required" name="dieta_horario[' + numi + ']" id="horario_' + numi + '" class="form-control hora"></div>';
+                    '<div class="col-sm-3"><input type="text" placeholder="00:00" required="required" name="dieta_horario_suplemento[' + numi + ']" id="horario_suplemento_' + numi + '" class="form-control hora"></div>';
             }
-            $('.fracio_horario').html(horarios);
+            $('.fracio_horario_suplemento').html(horarios);
             $('.hora').mask("99:99");
         });
         $('#hidratacao_dia').on('click', function () {
