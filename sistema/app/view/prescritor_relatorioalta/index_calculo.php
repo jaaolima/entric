@@ -1,25 +1,25 @@
-
 <div class="tab-pane fade" id="calculo" role="tabpanel">
-    <form id="prescritor_calculo" action="prescritor_relatorioalta" method="post" autocomplete="off" onsubmit="return false">
+    <form id="prescritor_calculo" action="prescritor_relatorioalta" method="post" autocomplete="off"
+        onsubmit="return false">
         <input type="hidden" name="action" value="calculo">
         <input type="hidden" name="selecao_dieta" id="selecao_dieta" value="">
 
         <div class="form_blue pb-0">
-            <?php include("index_calculo_categoria.php");?>
+            <?php include("index_calculo_categoria.php"); ?>
 
 
-            <?php include("index_calculo_dispositivos.php");?>
+            <?php include("index_calculo_dispositivos.php"); ?>
 
 
-            <?php include("index_calculo_dietaenteral.php");?>
+            <?php include("index_calculo_dietaenteral.php"); ?>
 
 
-            <?php include("index_calculo_apresentacao.php");?>
+            <?php include("index_calculo_apresentacao.php"); ?>
 
         </div>
 
 
-        <?php include("index_calculo_prescricao_nutricional.php");?>
+        <?php include("index_calculo_prescricao_nutricional.php"); ?>
 
         <div class="form-group row pt-5">
             <div class="col-sm-6 text-left">
@@ -39,8 +39,9 @@
 
     </form>
 
-    <?php include("index_calculo_fracionamento_modal.php");?>
+    <?php include("index_calculo_fracionamento_modal.php"); ?>
+    <?php include("index_calculo_fracionamento_suplemento_modal.php"); ?>
 
-    <?php include("index_calculo_selecao_modal.php");?>
+    <?php include("index_calculo_selecao_modal.php"); ?>
 
 </div>
