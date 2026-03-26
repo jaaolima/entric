@@ -1096,7 +1096,7 @@
             type: "POST",
             url: "ajax/busca_produto_relatorio",
             //data: $("#prescritor_calculo").serialize()+"&margem_calorica="+$("#margem_calorica").val()+"&margem_proteica="+$("#margem_proteica").val(),
-            data: $("#prescritor_calculo").serialize() + "&margem_calorica=" + m_calorica + "&margem_proteica=" + m_proteica + "&fracionamento_dia=" + $("#fracionamento_dia").val(),
+            data: $("#prescritor_calculo").serialize() + "&margem_calorica=" + m_calorica + "&margem_proteica=" + m_proteica + "&fracionamento_dia=" + $("#fracionamento_dia").val() + "&produto_especializado=" + $("[name='produto_especializado']:checked").val(),
             cache: false,
             dataType: 'html',
             success: function (dados) {
@@ -1239,20 +1239,30 @@
             success: function (data) {
                 if (_this != null) b_res(_this);
                 if (_this != null) {
-                    $('#modal_fracionamento').modal('toggle');
-                    $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
-                        console.log(selecao_dieta);
-                        if (selecao_dieta.length == 0) {
-                            rangeCaloria($("#kcal_valor").val());
-                            rangeProteina($("#ptn_valor").val());
-                        }
-                        if (tipo == 'suplemento') {
+                    if (tipo == "suplemento") {
+                        $('#modal_fracionamento_suplemento').modal('toggle');
+                        $("#modal_fracionamento_suplemento").on('hidden.bs.modal', function (e) {
+                            console.log(selecao_dieta);
+                            if (selecao_dieta.length == 0) {
+                                rangeCaloria($("#kcal_valor").val());
+                                rangeProteina($("#ptn_valor").val());
+                            }
                             $("#div_variacoes").hide();
-                        } else {
+                            $("#modal_selecao").modal("toggle");
+                        });
+                    } else {
+                        $('#modal_fracionamento').modal('toggle');
+                        $("#modal_fracionamento").on('hidden.bs.modal', function (e) {
+                            console.log(selecao_dieta);
+                            if (selecao_dieta.length == 0) {
+                                rangeCaloria($("#kcal_valor").val());
+                                rangeProteina($("#ptn_valor").val());
+                            }
                             $("#div_variacoes").show();
-                        }
-                        $("#modal_selecao").modal("toggle");
-                    });
+                            $("#modal_selecao").modal("toggle");
+                        });
+                    }
+
                 } else {
                     console.log(selecao_dieta);
                     if (selecao_dieta.length == 0) {
