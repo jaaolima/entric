@@ -3022,7 +3022,7 @@
                 error_alert = 'Por favor, informe o valor do peso em calorias e proteínas na aba "Necessidades Nutricionais".';
             }
 
-            if ($("input[name='calculo_apres_fechado']:checked").val() == 'Fechado') {
+            if ($("input[name='calculo_apres_fechado']:checked").val() == 'Fechado' && $("input[name='tipo_produto']:checked").val() == "Enteral") {
                 if ($("#hidratacao_dia").val() != "") {
                 }
                 else if (error_alert == "") {
@@ -3030,7 +3030,7 @@
                 }
             }
 
-            if (($("input[name='calculo_apres_aberto_liquido']:checked").val() == 'Aberto (Líquido)') || ($("input[name='calculo_apres_aberto_po']:checked").val() == 'Aberto (Pó)')) {
+            if (($("input[name='calculo_apres_aberto_liquido']:checked").val() == 'Aberto (Líquido)') || ($("input[name='calculo_apres_aberto_po']:checked").val() == 'Aberto (Pó)') && $("input[name='tipo_produto']:checked").val() == "Enteral") {
                 if ($("#fracionamento_dia").val() != "") {
                 }
                 else if (error_alert == "") {
