@@ -3030,7 +3030,7 @@
                 }
             }
 
-            if (($("input[name='calculo_apres_aberto_liquido']:checked").val() == 'Aberto (Líquido)') || ($("input[name='calculo_apres_aberto_po']:checked").val() == 'Aberto (Pó)') && $("input[name='tipo_produto']:checked").val() == "Enteral") {
+            if ((($("input[name='calculo_apres_aberto_liquido']:checked").val() == 'Aberto (Líquido)') || ($("input[name='calculo_apres_aberto_po']:checked").val() == 'Aberto (Pó)')) && $("input[name='tipo_produto']:checked").val() == "Enteral") {
                 if ($("#fracionamento_dia").val() != "") {
                 }
                 else if (error_alert == "") {
