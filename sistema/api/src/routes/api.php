@@ -11884,6 +11884,8 @@ $app->group("", function () use ($app) {
 
 
 				$bind_query = "";
+
+
 				if ($login == 'entric') {
 					if (isset($dados['nome']) and (trim($dados['nome']) <> "")) {
 						$bind_query .= " AND nome LIKE '%" . $dados['nome'] . "%'";
@@ -11987,6 +11989,9 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
+
+				$dados['cpf'] = str_replace(".", "", $dados['cpf']);
+				$dados['cpf'] = str_replace("-", "", $dados['cpf']);
 
 
 				$bind_query = "";
@@ -12123,6 +12128,8 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
+				$dados['cpf'] = str_replace(".", "", $dados['cpf']);
+				$dados['cpf'] = str_replace("-", "", $dados['cpf']);
 
 
 				$bind_query = "";
@@ -12261,6 +12268,8 @@ $app->group("", function () use ($app) {
 				$dados = $request->getParam("dados");
 				$id_prescritor = $request->getParam("id_prescritor");
 				$retorno = null;
+				$dados['cpf'] = str_replace(".", "", $dados['cpf']);
+				$dados['cpf'] = str_replace("-", "", $dados['cpf']);
 
 
 				$bind_query = "";
