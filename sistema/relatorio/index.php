@@ -479,8 +479,8 @@ if (trim($relatorio['preparo']) == "")
 						<?php if ($usuario['login'] != 'ibranutro'): ?><img src="imagem/simbolo.png" width="18px" border="0"
 								style="vertical-align:bottom; margin-right: 5px;" /><?php endif; ?> CONDUTA
 					</p>
-					<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia']; ?>
-						<?php if ($relatorio['fra_fracionamento_dia'] == '1')
+					<p style='margin:0px;'>Utilizar <?php echo $relatorio['fra_fracionamento_dia_suplemento']; ?>
+						<?php if ($relatorio['fra_fracionamento_dia_suplemento'] == '1')
 							echo "vez";
 						else
 							echo "vezes"; ?> ao
@@ -488,8 +488,8 @@ if (trim($relatorio['preparo']) == "")
 							echo " por " . $relatorio['fra_qto_tempo'] . ' dias.'; ?>
 					</p>
 					<?php
-					if ($relatorio['fra_dieta_horario'] <> "") {
-						$_horarios = json_decode($relatorio['fra_dieta_horario'], true);
+					if ($relatorio['fra_dieta_horario_suplemento'] <> "") {
+						$_horarios = json_decode($relatorio['fra_dieta_horario_suplemento'], true);
 						$horarios = array();
 						foreach ($_horarios as $chave => $valor) {
 							$horarios[] = $valor;

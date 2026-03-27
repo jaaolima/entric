@@ -11997,6 +11997,9 @@ $app->group("", function () use ($app) {
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")) {
 						$bind_query .= " AND data_nascimento='" . date2sql($dados['data_nascimento']) . "'";
 					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")) {
+						$bind_query .= " AND cpf='" . $dados['cpf'] . "'";
+					}
 					$bind_query = " id_prescritor=" . $id_prescritor . " " . $bind_query;
 				} else {
 					$bind_query = " id_prescritor_ibranutro is not null";
@@ -12006,6 +12009,9 @@ $app->group("", function () use ($app) {
 					}
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")) {
 						$bind_query .= " AND data_nascimento='" . date2sql($dados['data_nascimento']) . "'";
+					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")) {
+						$bind_query .= " AND cpf='" . $dados['cpf'] . "'";
 					}
 				}
 				if ($bind_query <> "") {
@@ -12127,6 +12133,9 @@ $app->group("", function () use ($app) {
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")) {
 						$bind_query .= " AND data_nascimento='" . date2sql($dados['data_nascimento']) . "'";
 					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")) {
+						$bind_query .= " AND cpf='" . $dados['cpf'] . "'";
+					}
 					$bind_query = " id_prescritor=" . $id_prescritor . " " . $bind_query;
 				} else {
 					$bind_query = " id_prescritor_ibranutro is not null";
@@ -12136,6 +12145,9 @@ $app->group("", function () use ($app) {
 					}
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")) {
 						$bind_query .= " AND data_nascimento='" . date2sql($dados['data_nascimento']) . "'";
+					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")) {
+						$bind_query .= " AND cpf='" . $dados['cpf'] . "'";
 					}
 				}
 				if ($bind_query <> "") {
@@ -12259,6 +12271,9 @@ $app->group("", function () use ($app) {
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")) {
 						$bind_query .= " AND data_nascimento='" . date2sql($dados['data_nascimento']) . "'";
 					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")) {
+						$bind_query .= " AND cpf='" . $dados['cpf'] . "'";
+					}
 					$bind_query = " id_prescritor=" . $id_prescritor . " " . $bind_query;
 				} else {
 					$bind_query = " id_prescritor_ibranutro is not null";
@@ -12268,6 +12283,9 @@ $app->group("", function () use ($app) {
 					}
 					if (isset($dados['data_nascimento']) and (trim($dados['data_nascimento']) <> "")) {
 						$bind_query .= " AND data_nascimento='" . date2sql($dados['data_nascimento']) . "'";
+					}
+					if (isset($dados['cpf']) and (trim($dados['cpf']) <> "")) {
+						$bind_query .= " AND cpf='" . $dados['cpf'] . "'";
 					}
 				}
 				if ($bind_query <> "") {
