@@ -12055,24 +12055,26 @@ $app->group("", function () use ($app) {
 							$pacientes[] = $p;
 						}
 					}
-					usort($pacientes, function($a, $b) { return strcmp($a['nome'], $b['nome']); });
+					usort($pacientes, function ($a, $b) {
+						return strcmp($a['nome'], $b['nome']);
+					});
 					$pacientes = array_slice($pacientes, 0, 20);
 
 					if ($pacientes) {
 						for ($i = 0; $i < count($pacientes); $i++) {
-							//buscar relatorios simplificada
-							$relatorios_simplificada = $db->select_to_array(
-								"relatorios_simplificada",
-								"*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
-								"WHERE id_paciente='" . $pacientes[$i]['id'] . "' ORDER BY id ASC",
+							//buscar relatorios suplemento
+							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
+																inner join pacientes_suplemento p on p.id = r.id_paciente",
+								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
 
 
-							//buscar relatorios suplemento 
-							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
-																inner join pacientes_suplemento p on p.id = r.id_paciente",
-								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+							//buscar relatorios simplificada 
+							$relatorios_simplificada = $db->select_to_array("relatorios_simplificada r
+																inner join pacientes_simplificada p on p.id = r.id_paciente",
+								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
 								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
@@ -12225,16 +12227,18 @@ $app->group("", function () use ($app) {
 							$pacientes[] = $p;
 						}
 					}
-					usort($pacientes, function($a, $b) { return strcmp($a['nome'], $b['nome']); });
+					usort($pacientes, function ($a, $b) {
+						return strcmp($a['nome'], $b['nome']);
+					});
 					$pacientes = array_slice($pacientes, 0, 20);
 
 					if ($pacientes) {
 						for ($i = 0; $i < count($pacientes); $i++) {
 							//buscar relatorios suplemento
-							$relatorios_suplemento = $db->select_to_array(
-								"relatorios_suplemento",
-								"*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
-								"WHERE id_paciente='" . $pacientes[$i]['id'] . "' ORDER BY id ASC",
+							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
+																inner join pacientes_suplemento p on p.id = r.id_paciente",
+								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
 
@@ -12396,16 +12400,18 @@ $app->group("", function () use ($app) {
 							$pacientes[] = $p;
 						}
 					}
-					usort($pacientes, function($a, $b) { return strcmp($a['nome'], $b['nome']); });
+					usort($pacientes, function ($a, $b) {
+						return strcmp($a['nome'], $b['nome']);
+					});
 					$pacientes = array_slice($pacientes, 0, 20);
 
 					if ($pacientes) {
 						for ($i = 0; $i < count($pacientes); $i++) {
-							//buscar relatorios modulo
-							$relatorios_modulo = $db->select_to_array(
-								"relatorios_modulo",
-								"*, DATE_FORMAT(data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
-								"WHERE id_paciente='" . $pacientes[$i]['id'] . "' ORDER BY id ASC",
+							//buscar relatorios suplemento
+							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
+																inner join pacientes_suplemento p on p.id = r.id_paciente",
+								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
 
@@ -12418,10 +12424,10 @@ $app->group("", function () use ($app) {
 								null
 							);
 
-							//buscar relatorios suplemento
-							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
-														inner join pacientes_suplemento p on p.id = r.id_paciente",
-								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+							//buscar relatorios modulo
+							$relatorios_modulo = $db->select_to_array("relatorios_modulo r
+														inner join pacientes_modulo p on p.id = r.id_paciente",
+								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
 								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
