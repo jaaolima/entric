@@ -12021,12 +12021,43 @@ $app->group("", function () use ($app) {
 				}
 				if ($bind_query <> "") {
 					$bind_query = " " . $bind_query;
-					$pacientes = $db->select_to_array(
+
+					$pacientes_simp = $db->select_to_array(
 						"pacientes_simplificada",
 						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso, atendimento, telefone, hospital, cpf, id_admissao_en",
 						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
 						null
 					);
+					$pacientes_sup = $db->select_to_array(
+						"pacientes_suplemento",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, NULL as peso, atendimento, telefone, hospital, cpf, id_admissao_en",
+						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
+						null
+					);
+					$pacientes_mod = $db->select_to_array(
+						"pacientes_modulo",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, NULL as peso, atendimento, telefone, hospital, cpf, id_admissao_en",
+						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
+						null
+					);
+
+					// Mesclar os três e deduplicar por CPF
+					$all_pacientes = array_merge(
+						$pacientes_simp ?: array(),
+						$pacientes_sup ?: array(),
+						$pacientes_mod ?: array()
+					);
+					$pacientes = array();
+					$cpfs_vistos = array();
+					foreach ($all_pacientes as $p) {
+						if (!in_array($p['cpf'], $cpfs_vistos)) {
+							$cpfs_vistos[] = $p['cpf'];
+							$pacientes[] = $p;
+						}
+					}
+					usort($pacientes, function($a, $b) { return strcmp($a['nome'], $b['nome']); });
+					$pacientes = array_slice($pacientes, 0, 20);
+
 					if ($pacientes) {
 						for ($i = 0; $i < count($pacientes); $i++) {
 							//buscar relatorios simplificada
@@ -12160,12 +12191,43 @@ $app->group("", function () use ($app) {
 				if ($bind_query <> "") {
 					// $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 					$bind_query = " " . $bind_query;
-					$pacientes = $db->select_to_array(
+
+					$pacientes_sup = $db->select_to_array(
 						"pacientes_suplemento",
-						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone, cpf, id_admissao_en",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, NULL as peso, atendimento, telefone, hospital, cpf, id_admissao_en",
 						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
 						null
 					);
+					$pacientes_simp = $db->select_to_array(
+						"pacientes_simplificada",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso, atendimento, telefone, hospital, cpf, id_admissao_en",
+						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
+						null
+					);
+					$pacientes_mod = $db->select_to_array(
+						"pacientes_modulo",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, NULL as peso, atendimento, telefone, hospital, cpf, id_admissao_en",
+						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
+						null
+					);
+
+					// Mesclar os três e deduplicar por CPF
+					$all_pacientes = array_merge(
+						$pacientes_sup ?: array(),
+						$pacientes_simp ?: array(),
+						$pacientes_mod ?: array()
+					);
+					$pacientes = array();
+					$cpfs_vistos = array();
+					foreach ($all_pacientes as $p) {
+						if (!in_array($p['cpf'], $cpfs_vistos)) {
+							$cpfs_vistos[] = $p['cpf'];
+							$pacientes[] = $p;
+						}
+					}
+					usort($pacientes, function($a, $b) { return strcmp($a['nome'], $b['nome']); });
+					$pacientes = array_slice($pacientes, 0, 20);
+
 					if ($pacientes) {
 						for ($i = 0; $i < count($pacientes); $i++) {
 							//buscar relatorios suplemento
@@ -12300,12 +12362,43 @@ $app->group("", function () use ($app) {
 				if ($bind_query <> "") {
 					// $bind_query = " id_prescritor=".$id_prescritor." ".$bind_query;
 					$bind_query = " " . $bind_query;
-					$pacientes = $db->select_to_array(
+
+					$pacientes_mod = $db->select_to_array(
 						"pacientes_modulo",
-						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, hospital, atendimento, telefone, cpf, id_admissao_en",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, NULL as peso, atendimento, telefone, hospital, cpf, id_admissao_en",
 						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
 						null
 					);
+					$pacientes_simp = $db->select_to_array(
+						"pacientes_simplificada",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, peso, atendimento, telefone, hospital, cpf, id_admissao_en",
+						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
+						null
+					);
+					$pacientes_sup = $db->select_to_array(
+						"pacientes_suplemento",
+						"max(id) as id, nome, DATE_FORMAT(data_nascimento,'%d/%m/%Y') AS data_nascimento, data_nascimento AS idade, NULL as peso, atendimento, telefone, hospital, cpf, id_admissao_en",
+						"WHERE " . $bind_query . " GROUP BY nome, id_paciente ORDER BY nome ASC, id desc limit 20",
+						null
+					);
+
+					// Mesclar os três e deduplicar por CPF
+					$all_pacientes = array_merge(
+						$pacientes_mod ?: array(),
+						$pacientes_simp ?: array(),
+						$pacientes_sup ?: array()
+					);
+					$pacientes = array();
+					$cpfs_vistos = array();
+					foreach ($all_pacientes as $p) {
+						if (!in_array($p['cpf'], $cpfs_vistos)) {
+							$cpfs_vistos[] = $p['cpf'];
+							$pacientes[] = $p;
+						}
+					}
+					usort($pacientes, function($a, $b) { return strcmp($a['nome'], $b['nome']); });
+					$pacientes = array_slice($pacientes, 0, 20);
+
 					if ($pacientes) {
 						for ($i = 0; $i < count($pacientes); $i++) {
 							//buscar relatorios modulo
