@@ -5,12 +5,18 @@ define('VERSION','0.1.0');
 define('TITLE','Entric');
 define('VERFOOTER','&copy; 2021 Programa de Alta Hospitalar de Pacientes em Dieta Enteral - Entric. Todos os direitos reservados.');
 
-if ($_SERVER['SERVER_NAME'] <> "localhost"){
-	define('BASE_PATH','https://sis.entric.com.br'); 
+if ($_SERVER['SERVER_NAME'] == 'entric.local') {
+	define('BASE_PATH','http://entric.local');
+	define('BASE_URI', 'c:/wamp64/www/entric.com.br/sistema/public/arquivos');
+	define('BASE_SISTEMA_URI','http://entric.local/arquivos');
+	define('BASE_API','http://entric.local/api/v1/');
+
+} elseif ($_SERVER['SERVER_NAME'] <> "localhost"){
+	define('BASE_PATH','https://sis.entric.com.br');
 	// define('BASE_PATH','http://142.93.0.124');
 	define('BASE_URI','/var/www/html/sistema/public/arquivos');
 	define('BASE_SISTEMA_URI','https://sis.entric.com.br/arquivos');
-	// define('BASE_SISTEMA_URI','http://142.93.0.124/arquivos');
+	// define('BASE_SISTEMA_URI','http://142.93.0.124/arquitors');
 	define('BASE_API','https://sis.entric.com.br/api/v1/');
 
 }else{

@@ -12237,7 +12237,7 @@ $app->group("", function () use ($app) {
 							//buscar relatorios suplemento
 							$relatorios_suplemento = $db->select_to_array("relatorios_suplemento r
 																inner join pacientes_suplemento p on p.id = r.id_paciente",
-								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
+								"r.*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'suplemento' as tipo_relatorio",
 								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
@@ -12246,7 +12246,7 @@ $app->group("", function () use ($app) {
 							//buscar relatorios simplificada 
 							$relatorios_simplificada = $db->select_to_array("relatorios_simplificada r
 																inner join pacientes_simplificada p on p.id = r.id_paciente",
-								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
+								"r.*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'simplificada' as tipo_relatorio",
 								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
@@ -12254,7 +12254,7 @@ $app->group("", function () use ($app) {
 							//buscar relatorios modulo
 							$relatorios_modulo = $db->select_to_array("relatorios_modulo r
 														inner join pacientes_modulo p on p.id = r.id_paciente",
-								"*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
+								"r.*, DATE_FORMAT(r.data_criacao,'%d/%m/%Y %H:%i:%s') AS data_criacao, 'modulo' as tipo_relatorio",
 								"WHERE p.cpf='" . $pacientes[$i]['cpf'] . "' ORDER BY r.id ASC",
 								null
 							);
