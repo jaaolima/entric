@@ -2674,8 +2674,11 @@ $app->group("", function () use ($app) {
 											$_medida_dc = 1;
 											if (isset($medida_dc[$j])) {
 												$_medida_dc = str_replace(",", ".", trim($medida_dc[$j]));
-												if ($_medida_dc == "")
+												if ($_medida_dc == ""){
 													$_medida_dc = 1;
+												}
+											}else{
+												$_medida_dc = str_replace(",", ".", trim($medida_dc[0]));
 											}
 											$calorias_dia = "";
 											$proteina_dia = "";
@@ -2754,6 +2757,8 @@ $app->group("", function () use ($app) {
 														) {
 															$margem_liberadas = true;
 															$_nome = "";
+														}else{
+															$margem_liberadas = false;
 														}
 													}
 												} else if ($produtos[$i]['apres_enteral'] == '["Aberto (Líquido)"]') {
