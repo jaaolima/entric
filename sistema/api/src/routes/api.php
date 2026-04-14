@@ -2717,7 +2717,13 @@ $app->group("", function () use ($app) {
 													$kcal_valor_maximo = floor($kcal_valor_maximo);
 													if ($kcal_valor_minimo <= $kcal_valor_maximo) {
 														$qtd_bolsas = $kcal_valor_minimo;
-														$_kcal_total = $qtd_bolsas * $_volume * $_medida_dc;
+														$kcal = 1;
+														if (trim($produtos[$i]['kcal']) <> "") {
+															$kcal = trim($produtos[$i]['kcal']);
+															$kcal = str_replace(",", ".", $kcal);
+														}
+														// $_kcal_total = $qtd_bolsas * $_volume * $_medida_dc;
+														$_kcal_total = ($qtd_bolsas * $_volume * $kcal) / 100;
 
 
 														/*
@@ -2738,7 +2744,6 @@ $app->group("", function () use ($app) {
 														$_ptn_total = ($qtd_bolsas * $_volume * $ptn) / 100;
 
 
-														$_nome = ""; // retirar depois    
 														$valor_calorio = $_kcal_total;
 														$valor_proteico = $_ptn_total;
 														$calorias_dia = $_kcal_total;
@@ -3015,7 +3020,8 @@ $app->group("", function () use ($app) {
 													$valor_calorio = 1;
 												if (!is_numeric($_medida_dc))
 													$_medida_dc = 1;
-												$volume_final = $valor_calorio / $_medida_dc;
+												// $volume_final = $valor_calorio / $_medida_dc;
+												$volume_final = $qtd_bolsas * $_volume;
 												$volume_final = numberFormatPrecision($volume_final, 2) . " ml";
 												// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
